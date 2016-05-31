@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>task-5 </title>
+		<style type="text/css">
+			body{
+				font-family: "微软雅黑";>
+				font-size:16px;
+				line-height: 1.5;
+				color: #333;
+			}
+			p{
+				text-indent: 2em;
+				line-height: 1.5;
+				background-color: #000;
+				color: red;
+			}
+		</style>
+	</head>
+		<body>
+			<h1>Keep coding</h1>
+			<p>简单点 说话的方式简单点 递进的情绪请省略
+				你又不是个演员 别设计那些情节
+				没意见 我只想看看你怎么圆
+				你难过的太表面 像没天赋的演员
+				观众一眼能看见
+				该配合你演出的我演视而不见
+				在逼一个最爱你的人即兴表演
+				什么时候我们开始收起了底线
+				顺应时代的改变看那些拙劣的表演
+				可你曾经那么爱我干嘛演出细节
+				我该变成什么样子才能延缓厌倦
+				原来当爱放下防备后的这些那些
+			        才是考验
+			</p>
+		</body>
+</html>
