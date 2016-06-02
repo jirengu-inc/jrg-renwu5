@@ -1,0 +1,23 @@
+<!doctype html5>
+<html>
+<meta charset="utf-8">
+<head>
+  <title>任务5</title>
+  <style type="text/css">
+  body{
+    font-family: "微软雅黑";
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+  }
+  p{
+    color: #000;
+    text-indent: 2em;
+  }
+  </style>
+</head>
+<body>
+<div>我是div</div>
+<p>我是P</p>
+</body>
+</html>
