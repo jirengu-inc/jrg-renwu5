@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+   <style type="text/css">
+     .register li{
+       list-style: none;
+     }
+   </style>
+  <body>
+    <form class="" action="#" method="get">
+      <ul class="register">
+        <li>用户:<input type="text" name="user" placeholder="用户名"></li>
+        <li>密码:<input type="password" name="pwd"></li>
+        <li>性别:<input type="radio" name="sex" value="m">男
+          <input type="radio" name="sex" value="f">女
+        </li>
+        <li>
+          性别:<input type="radio" name="target" value="m">男
+          <input type="radio" name="sex" value="f">女
+        </li>
+        <li>
+          爱好:<input type="checkbox" name="love[]" value="dota">dota
+          <input type="checkbox" name="love[]" value="tarvel" >旅游
+          <input type="checkbox" name="love[]" value="pet">宠物
+        </li>
+        <li>评论:<textarea name="comment" maxlength="10" placeholder="ddd"></textarea></li>
+        <li>我的car:
+          <select  name="mycar">
+            <option value="saab" selected>萨博</option>
+            <option value="bike" >自行车</option>
+            <option value="sanlun" >三轮车</option>
+          </select>
+          <input type="submit" value="提交">
+        </li>
+      </ul>
+
+    </form>
+  </body>
+</html>
