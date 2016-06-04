@@ -1,0 +1,21 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	font-style:"微软雅黑";
+	font-size:16px;
+	line-height:1.5em;
+	color:#333;
+}
+#swap{
+	width:900px;
+	margin:0 auto;
+	border:1px solid gray;
+	text-align:center;
+}
+p{
+	text-indent:2em;
+	line-height:1.5em;
+	color:#000;
+}
