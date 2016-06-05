@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    /**初始化**/
+      *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body{
+        font-family: "微软雅黑";
+      }
+      a{
+        text-decoration: none;
+      }
+
+      /**公用部分**/
+      .header,.content,.footer{
+        /*border: 1px solid;
+        background: black;*/
+      }
+      /**浮动设置**/
+      .left{
+        float: left;
+      }
+      .right{
+        float: right;
+      }
+      .clear:before,.clear:after{
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+      }
+      /**容器公用设置**/
+      .container{
+        width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        /*border: 1px solid;*/
+      }
+
+      /**header**/
+      .header{
+        background: #2D2A2A;
+        height: 45px;
+      }
+      .header.container{
+        height: 45px;
+      }
+      .header img{
+        height: 45px;
+        width: 150px;
+      }
+      .header .list a{
+        height: 45px;
+        padding: 0 8px;
+        margin: 0 10px;
+        line-height: 45px;  /*line-height:用来设置文字居中*/
+        border-radius: 3px;
+        color: white;
+      }
+      .header .list a:hover{
+        background: white;
+        color: #2D2A2A;
+      }
+      .header .list li{
+        list-style: none;
+      }
+      /**content**/
+      .content .container{
+        padding-top: 20px;
+        /*height: 500px;*/
+      }
+      .content .aside{
+        background: #eee;
+        height: 500px;
+        width: 200px;
+        /*border: 1px solid;*/
+      }
+      .content .main{
+        background: #eee;
+        margin-left: 210px;  /*aside浮动 main使用margin 空出位置*/
+        height: 300px;
+        width: 900px;
+        /*border: 1px solid;*/
+      }
+      /**footer**/
+      .footer{
+        background: #2D2A2A;
+      }
+      .footer .container{
+        height: 30px;
+      }
+      .footer a{
+        height: 30px;
+        line-height: 30px; /*line-height 设置文字居中*/
+        padding: 0 8px;
+        margin: 0 10px;
+        border-radius: 3px;
+        color: white;
+      }
+      .footer a:hover{
+        background: white;
+        color: #2D2A2A;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <div class="header">
+      <div class="container clear">
+          <a href="#"  class="left">
+              <img src="./img/logo-tiny.png" alt="首页" />
+          </a>
+      <ul class="list">
+        <li><a href="#" class="right">技能</a></li>
+        <li><a href="#" class="right">作品</a></li>
+        <li><a href="#" class="right">经历</a></li>
+        <li><a href="#" class="right">关于</a></li>
+      </ul>
+    </div>
+  </div>
+    <div class="content">
+      <div class="container clear">
+        <div class="aside left">
+        </div>
+        <div class="main">
+
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="container clear">
+        <a href="#" class="left">饥人谷</a>
+        <a href="#" class="left">JSCode</a>
+        <a href="#" class="left">JSBin</a>
+      </div>
+    </div>
+  </body>
+</html>
