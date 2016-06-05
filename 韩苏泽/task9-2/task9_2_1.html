@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+
+      .block{
+        box-sizing: border-box;
+          list-style: none;
+
+      }
+      .block .button,.block .text{
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+      .block .button{
+        width: 30px;
+        height: 30px;
+        background-image: url(./img/button.png);
+        background-repeat: no-repeat;
+        float: left;
+      }
+      .block .text{
+        height: 30px;
+        padding-top: 6px;
+        font-size: 18px;
+        float: left;
+      }
+      .clear:after{
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+      }
+      .button.go{
+        background-position: -1px -140px;
+      }
+      .button.play{
+        background-position: 1px -230px;
+      }
+      .button.pause{
+        background-position: -3px -188px;
+      }
+      .button.go:hover{
+        background-position: -2px -3px;
+
+      }
+      .button.play:hover{
+        background-position: -4px -53px;
+      }
+      .button.pause:hover{
+        background-position: 1px -97px;
+      }
+
+    </style>
+  </head>
+  <!--看大家都用i标签做小图标 原因是什么呢？i标签可以理解为icon？？-->
+  <body>
+    <ul class="block clear">
+        <li>
+          <i class="button go"></i>
+          <div class="text">前进</div>
+        </li>
+        <li>
+          <i class="button play"></i>
+          <div class="text">播放</div>
+        </li>
+        <li>
+          <i class="button pause"></i>
+          <div class="text">暂停</div>
+        </li>
+      </ul>
+  </body>
+</html>
