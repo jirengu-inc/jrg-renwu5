@@ -16,12 +16,10 @@
       a{
         text-decoration: none;
       }
-
-      /**公用部分**/
-      .header,.content,.footer{
-        /*border: 1px solid;
-        background: black;*/
+      ul,li{
+        list-style: none;
       }
+
       /**浮动设置**/
       .left{
         float: left;
@@ -44,101 +42,115 @@
       }
 
       /**header**/
-      .header{
+      #header{
         background: #2D2A2A;
+        height: 50px;
+      }
+      #header img{
         height: 45px;
       }
-      .header.container{
-        height: 45px;
+      #header .nav{
+        margin-right: 20px;
       }
-      .header img{
-        height: 45px;
-        width: 150px;
+      #header .nav>li{
+        float: left;
+        height: 50px;
       }
-      .header .list a{
-        height: 45px;
+      #header .nav a{
+        display: block;  /*a属于行内元素 不能设置高度*/
+        height: 50px;
         padding: 0 8px;
-        margin: 0 10px;
-        line-height: 45px;  /*line-height:用来设置文字居中*/
+        margin-right: 10px;
+        line-height: 50px;  /*line-height:用来设置文字居中*/
         border-radius: 3px;
         color: white;
       }
-      .header .list a:hover{
+      #header .nav a:hover{
         background: white;
         color: #2D2A2A;
       }
-      .header .list li{
-        list-style: none;
-      }
       /**content**/
-      .content .container{
+      #content .container{
         padding-top: 20px;
         /*height: 500px;*/
       }
-      .content .aside{
+      #content .aside{
         background: #eee;
         height: 500px;
         width: 200px;
         /*border: 1px solid;*/
       }
-      .content .main{
+      #content .main{
         background: #eee;
         margin-left: 210px;  /*aside浮动 main使用margin 空出位置*/
         height: 300px;
-        width: 900px;
+        padding: 20px;
+        color: #45454e;
         /*border: 1px solid;*/
       }
+      #content .main h1{
+        margin-left: 20px;
+        line-height: 2em;
+      }
+      #content .main p{
+        line-height: 1.5em;
+      }
+
       /**footer**/
-      .footer{
+      #footer{
         background: #2D2A2A;
       }
-      .footer .container{
+      #footer .container{
         height: 30px;
+        padding-left: 10px;
       }
-      .footer a{
+      #footer li{
+        float: left;
+      }
+      #footer a{
         height: 30px;
         line-height: 30px; /*line-height 设置文字居中*/
         padding: 0 8px;
-        margin: 0 10px;
+        margin-right: 10px;
         border-radius: 3px;
         color: white;
-      }
-      .footer a:hover{
-        background: white;
-        color: #2D2A2A;
       }
 
     </style>
 
   </head>
   <body>
-    <div class="header">
+    <div id="header">
       <div class="container clear">
-          <a href="#"  class="left">
-              <img src="./img/logo-tiny.png" alt="首页" />
+          <a href="#">
+              <img src="./img/logo-tiny.png" title="回到首页" alt="回到首页" />
           </a>
-      <ul class="list">
-        <li><a href="#" class="right">技能</a></li>
-        <li><a href="#" class="right">作品</a></li>
-        <li><a href="#" class="right">经历</a></li>
-        <li><a href="#" class="right">关于</a></li>
+      <ul class="nav right">
+        <li><a href="#" >技能</a></li>
+        <li><a href="#">作品</a></li>
+        <li><a href="#" >经历</a></li>
+        <li><a href="#">关于</a></li>
       </ul>
     </div>
   </div>
-    <div class="content">
+    <div id="content">
       <div class="container clear">
         <div class="aside left">
         </div>
         <div class="main">
-
+            <h1>生活</h1>
+            <p>生活不止眼前的苟且</p>
+            <p>还有诗和远方...</p>
         </div>
       </div>
     </div>
-    <div class="footer">
+    <div id="footer">
       <div class="container clear">
-        <a href="#" class="left">饥人谷</a>
-        <a href="#" class="left">JSCode</a>
-        <a href="#" class="left">JSBin</a>
+        <ul>
+          <li><a href="#">饥人谷</a></li>
+          <li><a href="#">JSCode</a></li>
+          <li><a href="#">JSBin</a></li>
+        </ul>
       </div>
     </div>
   </body>
