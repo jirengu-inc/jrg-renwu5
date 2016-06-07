@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>圣杯三栏布局</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        body{
+          font-family: "微软雅黑";
+        }
+
+        #footer,
+        #header {
+            height: 50px;
+            background: #ccc;
+        }
+
+        #content {
+            height: 800px;
+            min-width: 600px;
+        }
+        /*清除浮动*/
+
+        #content .container:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+        }
+
+        #content .container>div {
+            float: left;
+            height: 100%;
+
+        }
+
+        #content .container {
+            padding-left: 200px;
+            padding-right: 200px;
+            height: 100%
+        }
+        #content .container .main {
+            width: 100%;
+            height: auto;
+            min-height: 200px;
+            background-color: green;
+        }
+
+        #content .container .aside {
+            width: 200px;
+            background: red;
+            margin-left: -100%;
+            position: relative;
+            left: -200px
+        }
+
+        #content .container .extra {
+            width: 200px;
+            background-color: yellow;
+            margin-left: -200px;
+            position: relative;
+            left: 200px;
+        }
+
+        #content .container .main .content {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">头部</div>
+    <div id="content">
+        <div class="container">
+            <div class="main">
+                <div class="content">
+                    <p>
+                        实现圣杯布局的步骤 1.HTML布局：三栏放在同一个container容器中，其中main（中间窗体）放在前面，aside（左边栏）extra（右边栏）放在后面 2.全部设置浮动（以左浮动为例子），其中中间部分宽度设置100%，左右两栏设置固定宽度 3.container容器设置左右padding 为左右边栏的宽度 4.aside（左边栏）设置 margin-left:-100%,extra（右边栏）设置margin-left：本身宽度乘以-1； 5.左边栏设置position:relative;
+                        left:左边栏宽度乘以-1 6.右边栏设置position:relative;left:右边栏宽度
+                    </p>
+                </div>
+
+            </div>
+            <div class="aside">左侧边栏，固定宽度</div>
+            <div class="extra">右侧边栏，固定宽度</div>
+        </div>
+    </div>
+    <div id="footer">尾部</div>
+</body>
+
+</html>
