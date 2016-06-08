@@ -1,0 +1,9 @@
+body{
+    font: 16px/1.5 "微软雅黑";
+    color: #333;
+}
+p{
+    color: #000;
+    text-indent: 2em;
+    line-height: 1.5em;
+}
