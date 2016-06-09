@@ -6,7 +6,10 @@
 	<title>task9-2</title>
 	<meta name="discription" content="CSS sprite">
 	<meta name="keywords" content="作业9">
-	<!-- <link rel="stylesheet" type="text/css" href="iconfont/ux_1465447448_7264936/dome.css"> -->
+	<!-- 引入以下全局样式设置在浏览器中会报错？？？ -->
+	<!-- <link rel="stylesheet" type="text/css" href="iconfont/dome.css"> -->
+
+	<!-- 代码1样式 -->
 	<style type="text/css">
 		#div1, #div2, #div3{
 			display:inline-block;
@@ -38,11 +41,13 @@
 	</style>
 
 	
-	<!-- hover样式是直接在iconfont.css中添加的； -->
-	<link rel="stylesheet" type="text/css" href="iconfont/ux_1465447448_7264936/iconfont.css" />
+	<!--代码2的样式引入，hover样式是直接在iconfont.css中添加的； -->
+	<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css" />
+	<!-- 代码3的样式引入 -->
 	<link rel="stylesheet" type="text/css" href="task9-2-3.css"/>
 </head>
 <body>
+	<!-- 下面是代码1 -->
 	<h2>代码1</h2>
 	<div id="div1">
 		<span class="btn">前进</span>
@@ -60,6 +65,7 @@
 	<span class="iconfont">&#xe7c3;开始</span>
 	<span class="iconfont">&#xe626;停止</span>
 	<hr/><br/>
+	<!-- 以下是代码3 -->
 	<h2>代码3</h2>
 	<div class="box1"></div><br/>
 	<div class="box2"></div><br/>
