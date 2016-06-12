@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style media="screen">
+    ul,li {
+      margin: 0;
+      padding: 0;
+    }
+    ul li {
+      display: inline-block;
+      width: 60px;
+      height: 33px;
+      padding-left: 33px;
+      background: url(img/result.png) no-repeat;
+      line-height: 33px;
+      cursor: pointer;
+    }
+    .next {
+      background-position: 0 -140px;
+    }
+    .start {
+      background-position: 0 -183px;
+    }
+    .stop {
+      background-position: -3px -230px;
+    }
+    ul li:hover {
+      color: #D78DC1;
+    }
+    .next:hover {
+      background-position: 0 -44px;
+    }
+    .start:hover {
+      background-position: -5px -94px;
+    }
+    .stop:hover {
+      background-position: 0 0;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="next">前进</li>
+    <li class="start">开始</li>
+    <li class="stop">停止</li>
+  </ul>
+</body>
+</html>
