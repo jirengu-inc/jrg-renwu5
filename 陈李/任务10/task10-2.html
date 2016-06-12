@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style media="screen">
+    .rec {
+      width: 200px;
+      height: 100px;
+      border: 1px solid #000;
+      margin: 40px;
+      position: relative;
+    }
+    .tri {
+      width: 0;
+      height: 0;
+      border: 20px solid;
+      border-color: transparent transparent #000 transparent;
+      position: absolute;
+      left: 10px;
+      top: -40px;
+    }
+    .tri2 {
+      border-color: red red transparent transparent;
+      left: 160px;
+      top: 0;
+    }
+    .tri3 {
+      width: 0;
+      height: 0;
+      border: 20px solid;
+      border-color: transparent transparent #fff transparent;
+      position: absolute;
+      left: 10px;
+      top: -39px;
+    }
+  </style>
+</head>
+<body>
+  <div class="rec"><div class="tri"></div></div>
+  <div class="rec"><div class="tri tri2"></div></div>
+  <div class="rec">
+    <div class="tri"></div>
+    <div class="tri3"></div>
+  </div>
+</body>
+</html>
