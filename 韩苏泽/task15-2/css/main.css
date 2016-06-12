@@ -1,0 +1,390 @@
+html, body, ul, li, p {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+ul, li {
+    list-style: none;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+h1 {
+    font-size: 2.3em;
+}
+h2 {
+    font-size: 1.8em;
+}
+
+/*公用设置*/
+
+.layout {
+    width: 1000px;
+    margin: 0 auto;
+}
+.clear:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+}
+p {
+    color: #aaa;
+    margin-bottom: 20px;
+    line-height: 150%;
+}
+
+/*字体居中 右对齐 透明 斜体*/
+
+.text-align-center {
+    text-align: center;
+}
+.text-align-right {
+    text-align: right;
+}
+.translucent {
+    color: #aaa;
+}
+.text-italic {
+    font-style: italic
+}
+a.link-yellow {
+    color: #FFC107;
+}
+a.link-yellow:hover {
+    text-decoration: underline;
+    font-size: 1.2em;
+}
+.copyright {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/*按钮设置*/
+
+.btn {
+    display: inline-block;
+    border-radius: 3px;
+    border-width: 0;
+    margin: 0 20px;
+    padding: 0.2em;
+    font-size: 1.8em;
+    line-height: 1.8em;
+    cursor: auto;
+    color: white;
+    background-color: #FFC107;
+}
+.btn:hover {
+    background-color: #d0aa28;
+}
+
+/*上下内边距 背景色*/
+
+#services, #portfolio, #about, #team {
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+#client {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+#contact, #footer {
+    padding-bottom: 120px;
+}
+#portfolio, #team {
+    background-color: #eee;
+}
+
+/*header*/
+
+#header {
+    background: url(../img/header-bg.jpg) center center no-repeat;
+    min-width: 1000px;
+}
+#header .layout {
+    overflow: hidden;
+    position: relative;
+}
+
+/*header的按钮栏*/
+
+.header-menu {
+    position: absolute;
+    width: 100%;
+    line-height: 50px;
+}
+.header-menu .logo {
+    float: left;
+    padding-left: 20px;
+    color: #FFC107;
+    font-size: 36px;
+}
+.header-menu .logo a {
+    color: #FFC107;
+}
+.header-menu .nav-menu {
+    float: right;
+}
+.header-menu .nav-menu>li {
+    float: left;
+    margin-left: 30px;
+}
+.header-menu .nav-menu a {
+    color: white;
+}
+.header-menu .nav-menu a:hover {
+    color: #FFC107;
+}
+#header .content {
+    width: 100%;
+    margin-top: 300px;
+    margin-bottom: 300px;
+    text-align: center;
+    color: white;
+}
+#services .pannel>li {
+    float: left;
+    width: 313px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#services .pannel span {
+    position: relative;
+    display: inline-block;
+    width: 108px;
+    height: 108px;
+    font-size: 54px;
+    line-height: 108px;
+}
+#services .pannel .icon-background {
+    position: absolute;
+    left: 0;
+    line-height: inherit;
+    width: 100%;
+    font-size: 2em;
+    color: #FFC107;
+}
+#services .pannel .icon {
+    position: absolute;
+    left: 0;
+    line-height: inherit;
+    width: 100%;
+    font-size: 1em;
+    color: white;
+}
+#portfolio .pannel>li {
+    float: left;
+    width: 313px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/*PORTFOLIO中的图像 img-wrap*/
+
+.img-wrap {
+    position: relative;
+    display: block;
+}
+.img-wrap img {
+    width: 100%;
+}
+.img-wrap .plus-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFC107;
+    opacity: 0;
+}
+.img-wrap .plus {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin-top: -2em;
+    font-size: 4em;
+    line-height: 4em;
+    color: white;
+    opacity: 0;
+}
+.img-wrap:hover .plus {
+    z-index: 3;
+    opacity: 1;
+    transition: 0.3s;
+}
+.img-wrap:hover .plus-background {
+    opacity: 0.8;
+    transition: 0.3s
+}
+
+/*ABOUT中的 timeline*/
+
+.timeline {
+    position: relative;
+}
+.timeline li:nth-child(1):before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    z-index: 1;
+}
+.timeline img, .timeline .circle-text, .timeline .caption {
+    box-sizing: border-box;
+}
+.timeline>li {
+    margin-bottom: 50px;
+}
+.timeline>li.left-float {
+    padding-left: 50%;
+}
+.timeline>li.right-float {
+    padding-right: 50%;
+}
+.timeline>li.left-float>* {
+    float: left;
+}
+.timeline>li.right-float>* {
+    float: right;
+}
+.timeline .left-float .caption {
+    width: 380px;
+    margin-left: 20px;
+    text-align: left;
+}
+.timeline .right-float .caption {
+    width: 380px;
+    margin-right: 20px;
+    text-align: right;
+}
+.timeline img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.timeline .circle-text {
+    position: relative;
+    display: table;
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    border: 7px solid #ccc;
+    background-color: #FFC107;
+    color: white;
+    z-index: 2;
+}
+.timeline .left-float .circle-text {
+    margin-left: -64px;
+}
+.timeline .right-float .circle-text {
+    margin-right: -64px;
+}
+.timeline .circle-text p {
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    vertical-align: middle;
+    color: white;
+    font-weight: bold;
+}
+
+/*TEAM*/
+
+#team .pannel>li {
+    float: left;
+    width: 313px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#team .pannel img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 7px solid #ece8e8;
+}
+
+/*联系方式的三个图标 contact-list*/
+
+.contact-list>li {
+    display: inline-block;
+    margin: 0 5px 40px 0;
+}
+.contact-list>li a {
+    display: block;
+    width: 40px;
+    width: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    border-radius: 50%;
+    color: white;
+    background-color: black;
+}
+.contact-list>li a:hover {
+    background-color: #FFC107;
+    transition: 0.3s;
+}
+
+/*client*/
+
+#client .pannel>li {
+    display: inline-block;
+}
+
+/*CONTACT*/
+
+#contact {
+    background: url(../img/map-image.png) center center no-repeat;
+    min-width: 1000px;
+}
+#contact .input-col {
+    box-sizing: border-box;
+    width: 500px;
+    height: 282px;
+    float: left;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+#contact .inputbox-wrap {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+#contact .textarea-wrap {
+    display: block;
+    width: 100%;
+    height: 262px;
+}
+#contact .inputbox-wrap >*, #contact .textarea-wrap>* {
+    box-sizing: border-box;
+    width: 100%;
+    line-height: 50px;
+    font-size: 30px;
+    margin: 0;
+    padding: 10px;
+    border-width: 2px;
+    border-radius: 3px;
+}
+#contact .textarea-wrap>* {
+    height: 100%;
+}
+
+/*footer*/
+
+#footer .pannel>li {
+    display: inline-block;
+    width: 310px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#footer .link-list>li {
+    display: inline-block;
+    width: 45%;
+}

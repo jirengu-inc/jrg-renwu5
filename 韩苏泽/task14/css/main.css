@@ -1,0 +1,221 @@
+/*初始化*/
+
+html, body, ul, li {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+}
+body {
+    font-family: "微软雅黑";
+    line-height: 1.5;
+}
+
+/*设置一些通用的内边距值*/
+
+.padding-set {
+    padding: 20px;
+}
+
+/*通用设置*/
+
+a {
+    text-decoration: none;
+}
+ul, li {
+    list-style: none;
+}
+hr.small {
+    max-width: 100px;
+}
+.email {
+    color: black;
+}
+.email:hover {
+    color: blue;
+    text-decoration: underline;
+}
+.copyright {
+    opacity: 0.7;
+}
+
+/*按钮颜色变化*/
+
+a.btn-dark {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+a.btn-dark:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+a.btn-light {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+a.btn-light:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/*上下距离设置*/
+
+#introduce, #skills, #product-list, #others, #footer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/*页面居中*/
+
+.pannel {
+    width: 960px;
+    margin: 0 auto;
+}
+
+/*header*/
+
+#header {
+    display: table;
+    height: 100%;
+    width: 100%;
+    background: url(../img/bg.jpg) 0 0 no-repeat;
+    font-size: 1.5em;
+}
+
+/*文本居中子元素设定table-cell 父元素设置table*/
+
+.text-aligin-center {
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/*自我介绍部分 introduce*/
+
+#introduce {
+    text-align: center;
+}
+
+/*skills*/
+
+#skills {
+    color: white;
+    text-align: center;
+    background-color: #2196F3;
+}
+#skills .pannel>li {
+    float: left;
+    width: 220px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/*#skills 中图标处理*/
+
+#skills .circle-text {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-color: white;
+}
+#skills .pannel-icon {
+    font-size: 48px;
+    color: #2196F3;
+}
+
+/*pannel 的通用设置 :清除浮动，在后面#product-list 也用到了*/
+
+.pannel:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+/*#declaration*/
+
+#declaration {
+    display: table;
+    height: 300px;
+    width: 100%;
+    background: url(../img/success.jpg) 0 0 no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+/*#product-list*/
+
+#product-list {
+    text-align: center;
+}
+#product-list .pannel>li {
+    float: left;
+    width: 460px;
+    margin: 5px;
+    /*background-color: green;*/
+}
+#product-list>a {
+    margin-top: 40px;
+}
+
+/*控制背景图片宽度*/
+
+#product-list .pannel a {
+    display: block;
+}
+#product-list .pannel img {
+    width: 100%;
+}
+#product-list .img-hover:hover {
+    opacity: 0.8;
+}
+
+/*#others*/
+
+#others {
+    display: table;
+    width: 100%;
+    color: white;
+    background-color: #2196F3;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+/*#footer*/
+
+#footer {
+    width: 100%;
+    text-align: center;
+}
+#footer .link-list {
+    display: inline-block;
+    margin: 0 auto;
+}
+#footer .link-list>li {
+    float: left;
+    margin: 10px;
+}
+#footer .link-list:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+}
+#footer i.link-icon {
+    color: #2196F3;
+    font-size: 32px;
+}
+#footer i.link-icon:hover {
+    color: #065fa7;
+}
