@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge,chrome=1">
+	<title>task9-2</title>
+	<meta name="discription" content="CSS sprite">
+	<meta name="keywords" content="作业9">
+	<!-- 引入以下全局样式设置在浏览器中会报错？？？ -->
+	<!-- <link rel="stylesheet" type="text/css" href="iconfont/dome.css"> -->
+
+	<!-- 代码1样式 -->
+	<style type="text/css">
+		#div1, #div2, #div3{
+			display:inline-block;
+			line-height:35px;
+			cursor:pointer;
+		}
+		.btn{
+			display:inline-block;
+			padding-left:35px;
+		}
+		#div1{
+			background:url(./img/result.png) 0 0 no-repeat;
+		}
+		#div1:hover{
+			background:url(./img/result.png) -1px -135px no-repeat;
+		}
+		#div2{
+			background:url(./img/result.png) 0 -43px no-repeat;
+		}
+		#div2:hover{
+			background:url(./img/result.png) -5px -184px no-repeat;
+		}
+		#div3{
+			background:url(./img/result.png) -4px -89px no-repeat;
+		}
+		#div3:hover{
+			background:url(./img/result.png) 0px -227px no-repeat;
+		}	
+	</style>
+
+	
+	<!--代码2的样式引入，hover样式是直接在iconfont.css中添加的； -->
+	<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css" />
+	<!-- 代码3的样式引入 -->
+	<link rel="stylesheet" type="text/css" href="task9-2-3.css"/>
+</head>
+<body>
+	<!-- 下面是代码1 -->
+	<h2>代码1</h2>
+	<div id="div1">
+		<span class="btn">前进</span>
+	</div>
+	<div id="div2">
+		<span class="btn">开始</span>
+	</div>
+	<div id="div3">
+		<span class="btn">停止</span>
+	</div>
+	<hr/><br/>
+	<!-- 以下是使用字体图标实现的 -->
+	<h2>代码2</h2>
+	<span class="iconfont">&#xe601;前进</span>
+	<span class="iconfont">&#xe7c3;开始</span>
+	<span class="iconfont">&#xe626;停止</span>
+	<hr/><br/>
+	<!-- 以下是代码3 -->
+	<h2>代码3</h2>
+	<div class="box1"></div><br/>
+	<div class="box2"></div><br/>
+	<div class="box3"></div><br/>
+	<div class="box4"></div><br/>
+	<div class="box5"></div><br/>
+	<div class="box6"></div><br/>
+	<div class="box7"></div>
+</body>
+</html>

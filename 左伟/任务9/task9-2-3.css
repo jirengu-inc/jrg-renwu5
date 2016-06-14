@@ -1,0 +1,53 @@
+/*以下设置为白色的边框线在实际应用中需修改为与父容器相同的背景色*/
+.box1{
+	width:0;
+	height:0;
+	border-top:20px solid blue;
+	border-right:20px solid yellow;
+	border-bottom:20px solid green;
+	border-left:20px solid red;
+}
+.box2{
+	width:0;
+	height:0;
+	border-top:20px solid blue;
+	border-right:20px solid white;
+	border-left:20px solid white;
+}
+.box3{
+	width:0;
+	height:0;
+	border-top:20px solid white;
+	border-bottom:20px solid white;
+	border-left:20px solid red;
+}
+.box4{
+	width:0;
+	height:0;
+	border-top:20px solid white;
+	border-right:20px solid yellow;
+	border-bottom:20px solid white;
+}
+.box5{
+	width:0;
+	height:0;
+	border-right:20px solid white;
+	border-bottom:20px solid green;
+	border-left:20px solid white;
+}
+.box6{
+	width:0;
+	height:0;
+	border-top:30px solid white;
+	/*border-right:20px solid yellow;
+	border-bottom:20px solid green;*/
+	border-left:30px solid red;
+}
+.box7{
+	width:0;
+	height:0;
+	/*border-top:20px solid blue;
+	border-right:20px solid yellow;*/
+	border-bottom:30px solid green;
+	border-left:30px solid white;
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    /**初始化**/
+      *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body{
+        font-family: "微软雅黑";
+      }
+      a{
+        text-decoration: none;
+      }
+      ul,li{
+        list-style: none;
+      }
+
+      /**浮动设置**/
+      .left{
+        float: left;
+      }
+      .right{
+        float: right;
+      }
+      .clear:before,.clear:after{
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+      }
+      /**容器公用设置**/
+      .container{
+        width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        /*border: 1px solid;*/
+      }
+
+      /**header**/
+      #header{
+        background: #2D2A2A;
+        height: 50px;
+      }
+      #header img{
+        height: 45px;
+      }
+      #header .nav{
+        margin-right: 20px;
+      }
+      #header .nav>li{
+        float: left;
+        height: 50px;
+      }
+      #header .nav a{
+        display: block;  /*a属于行内元素 不能设置高度*/
+        height: 50px;
+        padding: 0 8px;
+        margin-right: 10px;
+        line-height: 50px;  /*line-height:用来设置文字居中*/
+        border-radius: 3px;
+        color: white;
+      }
+      #header .nav a:hover{
+        background: white;
+        color: #2D2A2A;
+      }
+      /**content**/
+      #content .container{
+        padding-top: 20px;
+        /*height: 500px;*/
+      }
+      #content .aside{
+        background: #eee;
+        height: 500px;
+        width: 200px;
+        /*border: 1px solid;*/
+      }
+      #content .main{
+        background: #eee;
+        margin-left: 210px;  /*aside浮动 main使用margin 空出位置*/
+        height: 300px;
+        padding: 20px;
+        color: #45454e;
+        /*border: 1px solid;*/
+      }
+      #content .main h1{
+        margin-left: 20px;
+        line-height: 2em;
+      }
+      #content .main p{
+        line-height: 1.5em;
+      }
+
+      /**footer**/
+      #footer{
+        background: #2D2A2A;
+      }
+      #footer .container{
+        height: 30px;
+        padding-left: 10px;
+      }
+      #footer li{
+        float: left;
+      }
+      #footer a{
+        height: 30px;
+        line-height: 30px; /*line-height 设置文字居中*/
+        padding: 0 8px;
+        margin-right: 10px;
+        border-radius: 3px;
+        color: white;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <div id="header">
+      <div class="container clear">
+          <a href="#">
+              <img src="./img/logo-tiny.png" title="回到首页" alt="回到首页" />
+          </a>
+      <ul class="nav right">
+        <li><a href="#" >技能</a></li>
+        <li><a href="#">作品</a></li>
+        <li><a href="#" >经历</a></li>
+        <li><a href="#">关于</a></li>
+      </ul>
+    </div>
+  </div>
+    <div id="content">
+      <div class="container clear">
+        <div class="aside left">
+        </div>
+        <div class="main">
+            <h1>生活</h1>
+            <p>生活不止眼前的苟且</p>
+            <p>还有诗和远方...</p>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container clear">
+        <ul>
+          <li><a href="#">饥人谷</a></li>
+          <li><a href="#">JSCode</a></li>
+          <li><a href="#">JSBin</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

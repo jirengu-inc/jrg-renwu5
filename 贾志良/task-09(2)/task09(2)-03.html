@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css Sprite</title>
+	<style>
+		body{
+			font-size: 25px;
+			font-family: "微软雅黑";
+		}
+		ul{
+			line-height: 25px;
+		}
+		li{
+
+			display: inline-block;
+			width:100px;
+			line-height: 33px;
+			list-style-type: none;
+		}
+		span{
+			vertical-align: top;
+			background-image: url(play.png);
+			background-size: cover;
+			display: inline-block;
+			width:30px;
+			height: 30px;
+			content:"";
+		}
+		li#play>span{
+			background-position: 0px 0px;
+		}
+		li#play>span:hover{
+			background-position: 0px -655px;
+		}
+		li#pause>span{
+			background-position: 0px -30px;
+		}
+		li#pause>span:hover{
+			background-position: 0px -873px;
+		}
+		li#screen>span{
+			background-position: 0px -60px;
+		}
+		li#screen>span:hover{
+			background-position: 0px -1092px;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li id="play"><span></span>播放</li>
+		<li id="pause"><span></span>暂停</li>
+		<li id="screen"><span></span>全屏</li>
+	</ul>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css Sprite</title>
+	<style>
+		body{
+			font-size: 25px;
+			font-family: "微软雅黑";
+		}
+		ul{
+			line-height: 25px;
+		}
+		li{
+			display: inline-block;
+			width:100px;
+			line-height: 33px;
+			list-style-type: none;
+		}
+		span{
+			vertical-align: top;
+			background-image: url(result-logo.png);
+			background-size: cover;
+			display: inline-block;
+			width:30px;
+			height: 30px;
+			content:"";
+		}
+		li#forward>span{
+			background-position: 0px 0px;
+		}
+		li#forward>span:hover{
+			background-position: -1px -115px;
+		}
+		li#begin>span{
+			background-position: 0px -36px;
+		}
+		li#begin>span:hover{
+			background-position: -4px -156px;
+		}
+		li#stop>span{
+			background-position: 0px -75px;
+		}
+		li#stop>span:hover{
+			background-position: 3.5px -193px;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li id="forward"><span></span>前进</li>
+		<li id="begin"><span></span>开始</li>
+		<li id="stop"><span></span>停止</li>
+	</ul>
+</html>

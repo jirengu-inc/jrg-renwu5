@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+
+    .box1,.box2,.box3{
+      width: 300px;
+      height: 100px;
+      position: relative;
+      border: 2px solid ;
+      margin-top: 40px;
+      margin-left: 50px;
+    }
+    .box1:before{
+      position: absolute;
+      display: block;
+      content: "";
+      top: -20px;
+      left: 20px;
+      border-top: 10px solid transparent;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom:10px solid black;
+    }
+    .box2:before{
+      position: absolute;
+      display: block;
+      content: "";
+      left:100%;
+      margin-left: -20px;
+      top:0;
+      border-top: 10px solid red;
+      border-left: 10px solid transparent;
+      border-right: 10px solid red;
+      border-bottom: 10px solid transparent;
+    }
+    /*用大的套小的呀！！*/
+    .box3:before{
+      content: "";
+      position: absolute;
+      top:-24px;
+      left: 20px;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-bottom: 12px solid black;
+      border-top: 12px solid transparent;
+    }
+    .box3:after{
+      content: "";
+      position: absolute;
+      top:-20px;
+      left: 22px;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid white;
+      border-top: 10px solid transparent;
+    }
+    </style>
+  </head>
+  <body>
+  <div class="box1">
+  </div>
+  <div class="box2">
+  </div>
+  <div class="box3">
+  </div>
+  </body>
+</html>

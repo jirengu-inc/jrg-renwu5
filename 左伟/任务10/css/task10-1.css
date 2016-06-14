@@ -1,0 +1,64 @@
+*{
+	margin:0;
+	padding:0;
+}
+a{
+	display: inline-block;
+	text-decoration: none;
+	color:white;
+	font-family:"黑体";
+}
+.swap{
+	width:900px;
+	margin:0 auto;
+	clear:both;
+}
+/*以上设置公共样式*/
+
+#header,#footer{
+	width:100%;
+	background-color:#222;
+}
+#nav{
+	float:right;
+	padding-right:10px;
+}
+#nav li{
+	float:left;
+	list-style:none;
+}
+#nav li a{
+	width:60px;
+	line-height:62px;
+	text-align:center;
+}
+#nav li a:hover{
+	background-color:white;
+	color:#000;
+}
+#aside{
+	display: inline-block;
+	width:200px;
+	height:500px;
+	background-color:#eee;
+}
+#main{
+	width:670px;
+	float:right;
+	background-color:#eee;
+	padding-left:10px;
+	padding-top:30px;
+	padding-bottom:15px;
+}
+#main h2{
+	color:gray;
+	line-height:2em;
+}
+#main p{
+	color:gray;
+	font-size:14px;
+	line-height:1.5em;
+}
+#footer{
+	line-height:30px;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>双飞翼两栏布局</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #header,
+        #footer {
+            height: 50px;
+            background: #aaa;
+        }
+
+        #content {
+            height: 800px;
+        }
+
+        #content .container {
+            height: 100%;
+            min-width: 220px;
+        }
+
+        #content .container:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+        }
+
+        #content .container .main {
+            width: 100%;
+            float: left;
+        }
+
+        #content .container .aside {
+            width: 200px;
+            height: 100%;
+            float: left;
+            margin-left: -200px;
+            background: yellow;
+        }
+
+        #content .container .main .content {
+            margin-right: 200px;
+            padding: 10px;
+            min-height: 300px;
+            background: green;
+        }
+    </style>
+</head>
+<div id="header">头部</div>
+<div id="content">
+    <div class="container">
+        <div class="main">
+            <div class="content">
+                双飞翼布局的实现步骤: 1.HTML布局：三栏放在同一个container容器中，其中main（中间窗体）放在前面，aside（左边栏）extra（右边栏）放在后面 2.全部设置浮动（以左浮动为例子），其中中间部分宽度设置100%，左右两栏设置固定宽度 4.aside（左边栏）设置 margin-left:-100%,extra（右边栏）设置margin-left：本身宽度乘以-1； 5.在main中加一个content content设置左右边距，margin-left:左边栏宽度 margin-right:右边栏宽度
+
+            </div>
+        </div>
+        <div class="aside">右侧边栏，固定宽度</div>
+    </div>
+</div>
+<div id="footer">尾部</div>
+
+<body>
+
+</body>
+
+</html>

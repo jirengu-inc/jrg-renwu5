@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style media="screen">
+    body,ul,li {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+    }
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+    .nav {
+      height: 30px;
+      background: #a9a9a9;
+    }
+    .nav>li {
+      float: left;
+      line-height: 30px;
+      text-align: center;
+      width: 90px;
+      position: relative;
+    }
+    .nav>li:hover {
+      background: #696969;
+    }
+    .nav>li:hover .child {
+      display: block;
+    }
+    .child {
+      width: 88px;
+      border: 1px solid #000;
+      border-top: none;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      display: none;
+    }
+    .child>li:hover {
+      background: #a9a9a9;
+    }
+  </style>
+</head>
+<body>
+    <ul class="nav">
+      <li>
+        <a href="#">前端</a>
+        <ul class="child">
+          <li><a href="#">HTML</a></li>
+          <li><a href="#">CSS</a></li>
+          <li><a href="#">JavaScript</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">服务端</a>
+        <ul class="child">
+          <li><a href="#">Node</a></li>
+          <li><a href="#">PHP</a></li>
+          <li><a href="#">JAVA</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">前端工具</a>
+        <ul class="child">
+          <li><a href="#">GIT</a></li>
+          <li><a href="#">Atom</a></li>
+          <li><a href="#">Sublime</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">HTML</a>
+      </li>
+      <li>
+        <a href="#">NODE</a>
+      </li>
+    </ul>
+</body>
+</html>

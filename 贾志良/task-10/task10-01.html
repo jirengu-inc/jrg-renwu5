@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>两栏布局</title>
+	<style>
+		html,body,ul,li,h2,p{
+			padding:0px;
+			margin:0px;
+			font-family: "微软雅黑";
+		}
+		.box{
+			width:900px;
+			margin:0px auto;
+		}
+		#header{
+			background-color: #333;
+			height:50px;
+		}
+		img{
+			height:50px;
+		}
+		ul{
+			list-style-type: none;
+			float:right;
+		}
+		li{
+			float:left;
+			margin-left:;
+		}
+		a{
+			text-decoration: none;
+			color:white;
+			display:block;
+			height:50px;
+			width:40px;
+			text-align: center;
+			line-height: 50px;
+			padding:0px 10px;
+		}
+		#header a:hover{
+			background-color: #fff;
+			color:#000;
+		}
+		#container{
+			margin-top:10px;
+		}
+		div#aside{
+			width:200px;
+			height: 500px;
+			float:left;
+			background-color: #eee;
+		}
+		div#main{
+			width:690px;
+			margin-left: 10px;
+			float: left;
+			height:200px;
+			background-color: #eee;
+		}
+		h2{
+			margin:40px 0 20px 20px;
+		}
+		p{
+			margin-left: 20px;
+			line-height: 1.5;
+			color:#555;
+		}
+		div#footer{
+			height:50px;
+			background-color: #333;
+		}
+		div#footer ul,li{
+			float:left;
+		}
+		div#footer a{
+			width:50px;
+		}
+		div#header:after,div#container:after,div#footer:after{
+			content:"";
+			display: block;
+			width:0;
+			height:0;
+			clear:both;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div class="box">
+			<img src="http://cdn.jirengu.com/public/logo-tiny.png" alt="饥人谷logo">
+			<ul>
+				<li><a href="#">技能</a></li>
+				<li><a href="#">经历</a></li>
+				<li><a href="#">作品</a></li>
+				<li><a href="#">关于</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="container">
+		<div class="box">
+			<div id="aside">	
+			</div>
+			<div id="main">
+				<h2>我的作品</h2>
+				<p>生活很美好</p>
+				<p>心情不错</p>
+				<p>代码写得漂亮</p>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="box">
+			<ul>
+				<li><a href="#">饥人谷</a></li>
+				<li><a href="#">JSCODE</a></li>
+				<li><a href="#">JSBIN</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>习题1</title>
+  </head>
+    <style>
+    html,body,ul,li{
+      margin: 0;
+      padding: 0;
+    }
+    ul,li{
+      list-style: none;
+    }
+    .layout{
+      width: 880px;            /*880+20=(280+20)*3*/
+      margin: 0 auto;
+      background-color: #ccc;  /*背景放在这里 很重要！*/
+    }
+    .pannel{
+      padding-top: 20px;
+      margin-left: -20px;
+    }
+    .pannel:after{
+      content: "";
+      display: block;
+      height: 0;
+      clear: both;
+    }
+    .pannel>li{
+      float: left;
+      height: 100px;
+      width: 280px;
+      background: green;
+      margin-left:20px;
+      margin-bottom: 10px;
+    }
+
+    </style>
+  <body>
+    <div id="container" class="layout">
+      <ul class="pannel">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+      </ul>
+    </div>
+  </body>
+</html>

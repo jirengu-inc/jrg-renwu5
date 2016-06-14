@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+ <style type="text/css">
+form{
+	line-height: 40px;
+	
+}
+textarea
+{
+	width: 300px;
+	height:300px;
+}
+ </style>
+</head>
+<body>
+<form name="myForm" method="post" action="http://eeeke.com/houtai.php">
+	姓名：<input name="username" type="text" placeholder="用户名" maxlength=8 > <br/>
+	密码：<input name="password" type="password" maxlength=8  > <br/>
+	性别: <input name="sex" value="male" type="radio" checked > 男  
+	      <input name="sex" value="female" type="radio" > 女  <br/>
+	取向: <input name="quxiao" value="male" type="radio"  > 男  
+	      <input name="quxiao" value="female" type="radio" checked > 女  <br/>
+	爱好：<input name="like" value="dota" type="checkbox" > dota
+          <input name="like" value="lvyou" type="checkbox" checked> 旅游
+          <input name="like" value="chongwu" type="checkbox" checked> 宠物 <br/>
+    评论：<textarea name="pinglun" maxlength=20 placeholder="ddd"></textarea> <br/>
+    我的car：<select name="car"> 
+             <option value="sabo" selected>萨博 </option>
+             <option value="aodi" >奥迪 </option>
+             <option value="baoma" >宝马 </option>
+             <option value="benchi" >奔驰 </option>
+             </select>
+           <input name="submitname" type="submit" value="提交" > <br/>
+           
+</form>            
+</body>
+</html>
