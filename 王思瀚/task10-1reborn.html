@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jrg</title>
+  <style>
+    html,body,p,a,ul,li,h1,h2,h3{
+      margin:0;
+      padding: 0;
+      text-decoration: none;
+      font-family: 'Microsoft Yahei',“微软雅黑”;
+      font-size: 16px;
+    }
+    li{
+      list-style-type: none;
+    }
+    .container{
+      margin:0 auto;
+      width:900px;
+    }
+    #header{
+      height:50px;
+      background-color: #333;
+    }
+    #header .logo img{
+      height:40px;
+    }
+    #header .nav{
+      float: right;
+    }
+    #header .nav li{
+      float: left;
+      margin-right: 20px;
+    }
+    #header .nav li a{
+      color: white;
+      display:block;
+      border-radius: 3px;
+      padding: 0 10px;
+      line-height: 50px;
+    }
+    #header .nav li a:hover{
+      background-color: #fff;
+      color: #333;
+    }
+
+    #content{
+      margin-top: 10px;
+    }
+
+    #content .aside{
+      width: 200px;
+      float: left;
+      min-height: 500px;
+      background-color: #eee;
+    }
+    #content .main{
+      margin-left: 210px;
+      height: 300px;
+      background-color: #eee;
+    }
+    #content::after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+    #content .main>p{
+      text-align: center;
+      padding: 90px;
+    }
+    #footer{
+      background-color: black;
+      padding: 10px 0;
+    }
+    #footer::after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+    #footer .container>ul>li{
+      float: left;
+      margin-left: 10px;
+    }
+    #footer .container>ul>li>a{
+      color: white;
+    }
+  </style>
+</head>
+<body>
+    <div id="header">
+      <div class="container">
+
+          <a href="#" class="logo">
+            <img src="./task10logo.png" alt="">
+          </a>
+
+          <ul class="nav">
+            <li><a href="">技能</a></li>
+            <li><a href="">经历</a></li>
+            <li><a href="">作品</a></li>
+            <li><a href="">关于</a></li>
+          </ul>
+
+      </div>
+    </div>
+    <div id="content">
+      <div class="container">
+
+          <div class="aside">
+
+          </div>
+
+          <div class="main">
+            <p>本来准备写会东西了，但是开工之前听了很长时间李志，现在心特别累，
+              总是忧伤而废物的年轻人，奋起对抗无涯且强大的欲望，最终自取其辱，
+              在委屈和自责里故作镇定的活下去。他现在结婚了，很久没有作品，感觉可能是幸福了，
+            面对黄昏有信心。他的下一个创作高潮不知道还要多久，他什么时候才中年危机啊...</p>
+          </div>
+
+      </div>
+    </div>
+    <div id="footer">
+          <div class="container">
+              <ul>
+                <li><a href="">饥人谷</a></li>
+                <li><a href="">JSCODE</a></li>
+                <li><a href="">JSBIN</a></li>
+              </ul>
+
+          </div>
+    </div>
+</body>
+</html>
