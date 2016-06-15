@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jrg</title>
+  <style>
+    html,body,div{
+      margin: 0;
+      padding: 0;
+      font: 'Microsoft Yahei',16px;
+    }
+    #header,#footer{
+      background-color: #ccc;
+      height: 100px;
+    }
+    .container{
+      padding-left: 200px;
+    }
+    .container::after{
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .main{
+      float: left;
+      background-color: green;
+      width: 100%;
+    }
+    .aside{
+      width: 200px;
+      float: left;
+      background-color: red;
+      margin-left: -100%;
+      position: relative;
+      left:-200px;
+    }
+  </style>
+</head>
+<body>
+    <div id="header">生于理想</div>
+    <div class="container">
+      <div class="main">2010年冬天，我按照豆瓣上给的地址，去了石家庄一家纹身店，
+        买到50块一张的原版cd，店主是万青的朋友，说很少有人会来买。没过多久，
+        万青火了。那一年我还是个摇滚青年，为了一张专辑穿越大半个中国，
+        我在现场甩头，pogo，跳水，挤着要签名，合影，现在我只会站在最后一排，
+        一个人听歌，然后离开。</div>
+      <div class="aside">多数人25岁就死了，一直到75岁才埋。可我不愿意这样</div>
+    </div>
+    <div id="footer">死于欲望</div>
+</body>
+</html>

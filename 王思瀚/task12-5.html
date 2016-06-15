@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jrg</title>
+  <style>
+        html,body,div{
+          margin: 0;
+          padding: 0;
+
+        }
+        #header,#footer{
+          background-color: #ccc;
+          height: 50px;
+        }
+        .contianer:after{
+          content: '';
+          display: block;
+          clear: both;
+        }
+        .main{
+          float: left;
+          width: 100%;
+        }
+        .text{
+          background-color: green;
+          height: 200px;
+          margin-right: 200px;
+        }
+        .aside{
+          float: left;
+          width: 200px;
+          height: 200px;
+          background-color: red;
+          margin-left: -200px;
+        }
+  </style>
+</head>
+<body>
+  <div id="header">1234</div>
+  <div class="contianer">
+    <div class="main">
+      <div class="text">
+          我喜欢听歌，经常用歌曲计算时间。比如：泡面，
+          1首歌；步行去买菜，6首歌；坐高铁去北京，9首歌；周末下午茶，歌曲列表循环两次；
+          等等。然而，有些事却不能用歌曲计时，比如：回首一段往事，或者，思念某个人。
+      </div>
+    </div>
+    <div class="aside">123</div>
+  </div>
+  <div id="footer">footer</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jrg</title>
+  <style>
+     html,body,ul,li{
+       margin: 0;
+       padding: 0;
+       list-style-type: none;
+     }
+
+     .container{
+       background-color: #ccc;
+       width: 620px;
+       margin: 0 auto;
+       padding-top: 10px;
+     }
+     .container::after{
+       content: '';
+       display: block;
+       clear: both;
+     }
+     li{
+       background-color: green;
+       width: 200px;
+       height: 100px;
+       float: left;
+       margin-left: 10px;
+       margin-bottom: 10px;
+     }
+     ul{
+       margin-left: -10px;
+     }
+  </style>
+</head>
+<body>
+    <div class="container">
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+      </ul>
+    </div>
+</body>
+</html>
