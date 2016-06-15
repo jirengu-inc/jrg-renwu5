@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style media="screen">
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  header,footer {
+    height: 50px;
+    background-color: #eee;
+  }
+  #content {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+  #content:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .main {
+    width: 100%;
+    float: left;
+    background-color: #09f;
+  }
+  .aside {
+    width: 200px;
+    float: left;
+    background-color: yellow;
+    margin-left: -100%;
+    position: relative;
+    right: 200px;
+  }
+  .extra {
+    width: 200px;
+    float: left;
+    background-color: red;
+    margin-left: -200px;
+    position: relative;
+    left: 200px;
+  }
+</style>
+<body>
+  <header>头部</header>
+  <div id="content">
+    <div class="main">
+      圣杯的由来<br>
+      圣杯布局是讨论「三栏液态布局」的实现，它最早出自于谁或许不得而查了，但最早的完美实现是来自于 Matthew Levine 于2006年在「A LIST APART」上写的一篇文章，它主要讲述了网页中关于最佳圣杯的实现方法。 所谓液态布局是相对固态布局而言的，固态布局就是固定值不变的布局，液态就好比在容器里到了一杯水，它可以随着容器宽度的变化而自适应宽度<br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>        
+    </div>
+    <div class="aside">侧边栏</div>
+    <div class="extra">侧边栏</div>
+  </div>
+  <footer>尾部</footer>
+</body>
+</html>
