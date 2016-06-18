@@ -256,7 +256,8 @@ a{
 #footer h1{
   font-size: 40px;
   font-weight: bolder;
-  margin-bottom: 20px;
+  margin-top: 60px;
+  margin-bottom: 30px;
 }
 
 #footer p{
@@ -268,7 +269,7 @@ a{
   display: inline-block;
   width: 100px;
   height: 100px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 #footer a{
