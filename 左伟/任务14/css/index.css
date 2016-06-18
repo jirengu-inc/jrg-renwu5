@@ -1,0 +1,115 @@
+#header{
+	background-image: url(../img/bg.jpg);
+	background-size: cover;
+	text-align:center;
+	padding:300px 0;
+}
+#header h1{font-size:50px;}
+#header a{
+	display:inline-block;
+	padding:5px 0;
+	border:1px solid #000;
+	background-color:#ccc;
+	font-size:16px;
+	color:white;
+}
+#header a:hover{background-color:gray;}
+#intro{
+	padding:20px 0;
+}
+
+
+#skill{
+	padding:50px;
+	background-color:#337ab7;
+	color:white;  /*在此处设置是利用了a标签不会继承此属性值*/
+}
+#skill ul li{
+	float:left;
+	width:25%;
+	text-align:center;
+}
+.swap-icon{
+	width:80px;
+	height:80px;
+	margin-left:75px;
+	margin-bottom:10px;
+	background-color:white;
+	border-radius:40px;
+}
+#skill a{
+	display:inline-block;
+	padding:10px;
+	background-color:#eee;
+}
+#skill a:hover{background-color:#ccc;}
+
+#myword{
+	background: url(../img/bg2.jpg);
+	background-size:cover;
+	padding:150px 0;
+}
+#myword q{
+	color:white;
+	font-size:40px;
+}
+
+#myworks{
+	padding:10px 0;
+}
+#myworks h2{
+	display:inline-block;
+	border-bottom:2px solid gray;
+	padding:15px 0;
+}
+#myworks ul{
+
+}
+#myworks ul li{
+	float:left;
+}
+#myworks ul li img{
+	display:block;
+	width:420px;
+	height:300px;
+	margin:10px;
+}
+#myworks a{
+	display: inline-block;
+	padding:5px;
+	background-color:#ccc;
+}
+#myworks a:hover{
+	background-color:gray;
+}
+#other{
+	background-color:#337ab7;
+	padding:50px;
+}
+#other h2{color:white;}
+#other li{
+	float:left;
+}
+#other li a{
+	display:inline-block;
+	width:180px;
+	padding:10px;
+	margin-left:160px;
+	background-color:#ccc;
+}
+#other li a:hover{background-color:gray;}
+
+#footer{
+	padding:30px 0;
+}
+#email{color:#337ab7;}
+#email:hover{
+	color:black;
+	text-decoration:underline;
+}
+#footer ul{margin-left:-30px;}
+#footer ul li{
+	display:inline-block;
+	width:80px;
+	margin:0 10px;
+}
