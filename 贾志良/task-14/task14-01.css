@@ -1,0 +1,251 @@
+	html,body,div,h1,h2,p,ul,li{
+			padding:0;
+			margin:0;
+			font-family: "微软雅黑";
+		}
+		html,body{
+			height: 100%;
+		}
+		div#header{
+			height:100%;
+			background:url(pic/bacpic.jpg);
+			background-size: cover;
+			padding-top: 230px;
+			box-sizing: border-box;
+		}
+		div.layout{
+			text-align: center;
+		}
+		div#header h1{
+			letter-spacing: 3px;
+			margin-bottom: 10px;
+			font-size: 40px;
+			font-weight: normal;
+		}
+		div#header p{
+			font-size:20px;
+			color:#555;
+			letter-spacing: 2px;
+			margin-bottom: 10px;
+		}
+		div#header a{
+			display:inline-block;
+			width:70px;
+			height:40px;
+			background-color: #888;
+			line-height: 40px;
+			font-size: 16px;
+			text-decoration: none;
+			color:white;
+		}
+		div#header a:hover{
+			background-color: #333;
+		}
+		div#about{
+			width:960px;
+			margin:0 auto;
+			text-align: center;
+			padding:50px 0;
+		}
+		div#about h2{
+			font-weight: normal;
+		}
+		div#about p{
+			margin-top: 20px;
+			letter-spacing: 1px;
+		}
+		div#skill{
+			width:100%;
+			background-color: #06b9d1;
+		}
+		div#skill>.layout{
+			width:960px;
+			margin:0px auto;
+			padding:30px 0;
+		}
+		div#skill p{
+			color:#fff;
+			font-size: 40px;
+			letter-spacing: 2px;
+			display: inline-block;
+			border-bottom: 1px solid #fff;
+			padding-bottom: 7px;
+			margin-bottom: 10px;
+		}
+		ul#webSkill li{
+			list-style-type: none;
+			float:left;
+			width:240px;
+		}ul#webSkill:after{
+			content:"";
+			display:block;
+			clear:both;
+		}
+		ul#webSkill span,ul#webSkill a{
+			display: block;
+			margin-top: 15px;
+			color:white;
+			text-decoration: none;
+		}
+		ul#webSkill a{
+			width:80px;
+			height:30px;
+			background-color: #eee;
+			color:#000;
+			line-height: 30px;
+			position: relative;
+			left: 80px;
+		}
+		ul#webSkill a:hover{
+			background-color: #ccc;
+		}
+		ul#webSkill span.logo{
+			width:100px;
+			height:100px;
+			background-color: #fff;
+			border-radius: 50%;
+			position: relative;
+			left:70px;
+			line-height:140px;
+		}
+		ul#webSkill i.fa{
+			font-size: 70px;
+			color:#06b9d1;
+		}
+		i.word{
+			font-family: Calibri;
+		}
+		div#pic{
+			box-sizing: border-box;
+			padding-top:130px;
+			height:400px;
+			background-image: url(pic/wind.jpg);
+			background-size: cover;
+		}
+		div#pic p{
+			color:#fff;
+			font-size: 80px;
+			text-align:center;
+			letter-spacing: 6px;
+		}
+		div#works>div.layout{
+			width:960px;
+			margin:40px auto;
+		}
+		div#works p{
+			display:inline-block;
+			font-size: 40px;
+			padding-bottom: 10px;
+			border-bottom: 1px solid #ccc;
+			margin-bottom: 20px;
+		}
+		ul#marvel:after{
+			content:"";
+			display:block;
+			clear:both;
+		}
+		div#works li{
+			width:460px;
+			float:left;
+			margin:5px 10px;
+			list-style-type: none;
+		}
+		div#works li img:hover{
+			opacity: 0.8;
+		}
+		ul#marvel+a{
+			margin-top: 10px;
+			display: inline-block;
+			line-height: 30px;
+			color:#000;
+			width:80px;
+			height:30px;
+			background-color: #ccc;
+			text-decoration: none;
+		}
+		ul#marvel+a:hover{
+			background-color: #888;
+		}
+		div#plus{
+			width:100%;
+			background-color: #06b9d1;
+			padding:20px 0;
+		}
+		div#plus>div.layout{
+			width:960px;
+			margin:0 auto;
+		}
+		div#plus p{
+			color:#fff;
+			font-size:40px;
+		} 
+		div#plus a{
+			display:inline-block;
+			width:100px;
+			height:30px; 
+			line-height: 30px;
+			text-decoration: none;
+			margin-top: 20px;
+		}
+		div#plus>div.layout a:nth-of-type(1){
+			background-color: #ccc;
+			color:#000;
+			margin-right: 10px;
+		}
+		div#plus>div.layout a:nth-of-type(1):hover{
+			background-color: #eee;
+		}
+		div#plus>div.layout a:nth-of-type(2){
+			background-color: #888;
+			color:#fff;
+			margin-left: 10px;
+		}
+		div#plus>div.layout a:nth-of-type(2):hover{
+			background-color: #555;
+		}
+		div#footer{
+			padding:40px 0;
+			font-size: 14px;
+		}
+		div#footer>div.layout{
+			width:960px;
+			margin:0 auto;
+		}
+		div#footer span{
+			display:block;
+		}
+		div#footer span>a{
+			color:#06b9d1;
+			text-decoration: none;
+		}
+		div#footer span>a:hover{
+			text-decoration: underline;
+		}
+		div#footer span,p,b{
+			margin-top: 7px;
+		}
+		div#footer span>i{
+			margin-right: 5px;
+		}
+		div#footer li{
+			list-style-type: none;
+			display: inline-block;
+			margin: 30px 10px 10px;
+		}
+		div#footer ul:after{
+			content:"";
+			display:block;
+			clear:both;
+		}
+		div#footer ul i{
+			font-size:40px;
+			color:#06b9d1;
+		}
+		div#footer ul i:hover{
+			opacity: 0.8;
+		}
+		div#footer hr{
+			width:160px;
+			color:#eee;
+			opacity: 0.3;
+		}
