@@ -74,12 +74,17 @@
 	height:300px;
 	margin:10px;
 }
-#myworks a{
+#myworks ul li img:hover{
+	opacity:0.7;
+	transition: opacity 0.5s;
+}
+
+#myworks-more{
 	display: inline-block;
 	padding:5px;
 	background-color:#ccc;
 }
-#myworks a:hover{
+#myworks-more:hover{
 	background-color:gray;
 }
 #other{
