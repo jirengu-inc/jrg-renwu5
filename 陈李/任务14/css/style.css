@@ -1,0 +1,210 @@
+/* 样式重置 */
+html,body,h1,h2,h4,hr,p,a,ul,li {
+    margin: 0;
+    padding: 0;
+}
+
+html,body {
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    font-family: 微软雅黑;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+li {
+    list-style: none;
+}
+
+/* 全局样式 */
+.layout {
+    width: 960px;
+    margin: 0 auto;
+}
+.text-vertical-center {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 20px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.4);
+    transition: .7s;
+}
+
+.btn:hover {
+    background-color: rgba(0,0,0,.7);
+}
+
+hr {
+    width: 100px;
+    margin: 0 auto;
+    border: 1px solid #eee;
+}
+
+h1 {
+    font-size: 63px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+/* header */
+#header {
+    display: table;
+    height: 100%;
+    width: 100%;
+    background: url(../img/bg-1.jpg) no-repeat;
+}
+
+#header p {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-size: 24px;
+}
+
+/* about */
+#about {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    text-align: center;
+}
+
+#about p {
+    padding-top: 25px;
+    font-size: 21px;
+}
+
+/* skill */
+#skill {
+    padding-top: 70px;
+    padding-bottom: 100px;
+    background-color: rgb(51,122,183);
+    text-align: center;
+    color: #fff;
+}
+
+#skill h2 {
+    padding-bottom: 25px;
+}
+
+#skill li {
+    width: 240px;
+    float: left;
+    padding-top: 25px;
+}
+
+#skill i {
+    font-size: 80px;
+    color: rgb(51,122,183);
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+#skill p {
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+/* sign */
+#sign {
+    height: 400px;
+    text-align: center;
+    background: url(../img/bg-2.jpg) no-repeat;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    color: #fff;
+}
+
+#sign h1 {
+    padding-top: 200px;
+}
+
+/* works */
+#works {
+    padding-top: 70px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+#works h2 {
+    padding-bottom: 25px;
+}
+
+#works ul {
+    margin: 10px -20px 20px 0;
+}
+#works li {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+#works li:hover {
+    opacity:  .7;
+}
+
+/* more */
+#more {
+    padding-top: 70px;
+    padding-bottom: 60px;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(51,122,183);
+}
+
+#more h2 {
+    padding-bottom: 15px;
+}
+
+/* footer */
+#footer {
+    padding-top: 110px;
+    text-align: center;
+}
+
+#footer a {
+    color: rgb(51,122,183);
+}
+
+#footer p {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#footer .social {
+    display: inline-block;
+    padding-top: 35px;
+    padding-bottom: 20px;
+}
+
+#footer .social i {
+    margin-right: 15px;
+    color: rgb(51,122,183);
+    font-size: 45px;
+}
+
+#footer .social li {
+    float: left;
+}
+
+#footer .copyright {
+    color: #cecece;
+}
