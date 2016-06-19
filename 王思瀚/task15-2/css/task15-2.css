@@ -491,12 +491,12 @@ a{
   color: #fed136;
 }
 
-#company a{
+#company ul{
   margin-left: 100px;
 }
-
 #company li{
   float: left;
+  margin-left: 150px;
 }
 
 #company img{
