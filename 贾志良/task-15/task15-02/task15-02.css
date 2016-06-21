@@ -1,0 +1,427 @@
+html,body,div,p,h1,h3,ul,li,img{
+			padding: 0;
+			margin:0;
+		}
+		li{
+			list-style-type: none;
+		}
+		h3{
+			font-size: 2.5rem;
+			font-family: "Palanquin";
+		}
+		p.description{
+			font-family: "Hind Vadodara";
+			font-style: italic;
+			color:#888;
+		}
+		div.layout{
+			width:1000px;
+			margin:0 auto;
+		}
+		div#headerNav>a{
+			font-family:'Yellowtail';
+		}
+		div#header{
+			background-image:url(pic/header-bac.jpg);
+			background-repeat: no-repeat;
+			background-position: 0 -70px;
+			background-size:100%;
+		}
+		div#header div.layout{
+			padding-bottom: 200px;
+		}
+		h1{
+			font-size: 5em;
+		}
+		h3.headTitle{
+			font-size: 2.5em;
+			font-style:italic;
+		}
+		div#headerNav{
+			padding:20px 0;
+			margin-bottom: 200px;
+			line-height: 30px;
+		}
+		div#headerNav>a{
+			color:#fed136;
+			text-decoration: none;
+			font-size: 30px;
+		}
+		div#headerNav ul{
+			float:right;
+		}
+		div#headerNav li{
+			float:left;
+			padding:0 10px;
+		}
+		div#headerNav li>a{
+			color:#fff;
+			font-size: 15px;
+			text-decoration: none;
+			font-family: "Hind Vadodara";
+		}
+		div#headerNav li>a:hover{
+			color:#fed136;
+		}
+		div#headContent{	
+			text-align: center;
+			color:#fff;
+			line-height:1.5;
+			font-family: 'Palanquin';
+		}
+		div#headContent a{
+			margin-top: 50px;
+			display: inline-block;
+			width:150px;
+			line-height:50px;
+			background: #fed136;
+			text-decoration: none;
+			color:white;
+			border-radius: 3px;
+			font-weight: bold;
+			font-size: 18px;
+		}
+		div#headContent a:hover{
+			background-color: #ffe136
+		}
+		div#services>div.layout{
+			text-align: center;
+			padding:100px 0;
+		}
+		div#services ul,div#portfolio ul{
+			margin-left: -20px;
+		}
+		div#services ul:after,div#portfolio ul:after{
+			content:"";
+			display:block;
+			clear:both;
+		}
+		div#services li,div#portfolio li{
+			float:left;
+			width:318px;
+			margin-left:20px;
+		}
+		div#services span{
+			display: inline-block;
+			width:100px;
+			height:100px;
+			background-color: #fed136;
+			border-radius: 50%;
+			line-height: 130px;
+		}
+		div#services span>i{
+			font-size: 60px;
+			color:#fff;
+		}
+		 p.serviceIterm{
+			margin:10px;
+			font-size: 18px;
+			font-family: "Hind Vadodara";
+			font-weight: bold;
+		}
+		div#services>div.layout>p{
+			margin-bottom: 100px;
+		}
+		div#portfolio{
+			background: #eee;
+		}
+		div#portfolio>div.layout{
+			text-align: center;
+			padding:100px 0;
+		}
+		div#portfolio>div.layout>p{
+			margin-bottom: 100px;
+		}
+		div#portfolio img{
+			width:318px;
+		}
+		div#portfolio li{
+			background-color: #fff;
+			margin-bottom: 20px;
+			padding-bottom: 30px;
+		}
+		div#portfolio li a{
+			position: relative;
+		}
+		div#portfolio p.serviceIterm{
+			margin-top: 20px;
+		}
+		div#portfolio p.authorName{
+			font-family: 'Bad Script';
+			font-weight: bold;
+			color:#777;
+		}
+		div#portfolio div.hoverUp{
+			width:318px;
+			height: 231px;
+			background-color: rgba(254,209,54,0.8);
+			position: absolute;
+			top:-233px;
+			line-height: 260px;
+			display:none;
+		}
+		div.hoverUp>i.fa-plus{
+			color:#fff;	
+			font-size: 50px;
+			
+		}
+		div#portfolio ul a:hover div.hoverUp{
+			display:block;
+		}
+
+		div#about>div.layout{
+			padding:100px 0;
+			position: relative;
+			text-align: center;
+		}		
+		
+		li.leftSide,li.rightSide{
+			text-align:center;
+			position: relative;
+		}
+		li.leftSide div.leftSide{
+			width:370px;
+			text-align: right;
+			position: absolute;
+		}
+
+		li.rightSide div.rightSide{
+			width:370px;
+			text-align: left;
+			position: absolute;
+			right:0;	
+		}
+		div#about img{
+			width:150px;
+			height:150px;
+			border-radius: 50%;
+			border:10px solid #f1f1f1;
+		}
+		div#about li{
+			padding:50px 0;
+		}
+
+		div#about div.layout>ul>li:before{
+			content: "";
+			display: block;
+			position: absolute;
+			width:1px;
+			background-color: #f1f1f1;
+			height:70%;
+			top:20%;
+			bottom: 20%;
+			left: 50%;
+			z-index: -1;
+		}
+		div#about div.lastCircle{
+			display: inline-block;
+			width:150px;
+			height: 150px;
+			background-color: #fed136;
+			border-radius: 50%;
+			text-align: center;
+			border:10px solid #f1f1f1;
+
+		}
+		div#about div.lastCircle span{
+			display: inline-block;
+			font-weight: bold;
+			margin-top: 40px;
+			color:white;
+			font-size: 21px;
+		}
+		p.date,p.dateWord{
+			font-family: "Palanquin";
+			font-weight: bolder;
+		}
+		
+		p.timeLine{
+			font-family: "Hind Vadodara";
+			line-height: 1.5;
+			margin-top: 10px;
+			color:#888;
+		}
+
+
+		div#team{
+			background-color: #eee;
+		}
+		div#team div.layout{
+			text-align: center;
+			padding:100px;
+		}
+		div#team>div.layout>ul>li{
+			float:left;
+		}
+		div#team div.layout p.name{
+			font-family: "Palanquin";
+			font-weight: bolder;
+		}
+		
+		div#team div.layout p.job{
+			color:#888;
+		}
+		div#team img{
+			border-radius: 50%;
+		}
+		div#team div.layout>ul{
+			padding: 80px 0 0;
+			margin-left: -20px;
+		}
+		div#team div.layout>ul:after{
+			content:"";
+			display: block;
+			clear: both;
+		}
+		div#team div.layout>ul>li{
+			width:318px;
+			margin-left: 20px;
+		}
+		div#team div.layout>ul>li a{
+			display: inline-block;
+			width:40px;
+			height:40px;
+			background-color: #333;
+			border-radius: 50%;
+			line-height: 45px;
+		}
+		div#team div.layout>ul>li a:hover{
+			background-color: #fed136;
+		}
+		div#team div.layout>ul>li>ul>li{
+			display:inline-block;
+			margin-top: 20px;
+			margin-left: 5px;
+		}	
+		
+		div#team div.layout>ul>li>ul>li i{
+			color:#fff;
+			font-size: 25px;
+		}
+		div#corp div.layout{
+			padding:50px;
+			padding-bottom: 100px;
+		}
+
+		div#corp li{
+			float:left;
+			width:230px;
+			margin-left: 10px;
+		}
+		
+		
+		div#contact{
+			background-color: #222;
+			background-image:url(pic/map-image.png);
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		div#contact div.layout{
+			text-align: center;
+			padding:100px 0;
+		}					
+		div#contact h3{
+			color:#fff;
+		}
+		div#contact p.description{
+			margin-bottom: 50px;
+		}
+
+		div#contact ul{
+			margin-left:-15px;
+		}
+		div#contact ul:after{
+			content:"";
+			display: block;
+			clear:both;
+		}
+	
+		div#contact ul>li{
+			width:490px;
+			display: inline-block;
+			height:270px;
+			float:left;
+			margin-left: 15px;
+		}
+		
+		div#contact ul>li input{
+			width:440px;
+			height:40px;
+			padding:10px;
+			margin: 10px;
+			outline: none;
+			border-radius: 3px;
+			border: none;
+		}
+
+		div#contact textarea{
+			width:460px;
+			margin:10px 0 20px 0;
+			height:200px;
+			padding: 10px;
+			outline: none;
+			border-radius: 5px;
+			border:none;
+		}
+
+		input::-webkit-input-placeholder,   
+		textarea::-webkit-input-placeholder {   
+		   font-family: "Hind Vadodara";
+		   font-size: 16px; 
+		} 	/*新技能*/
+
+		div#contact>div.layout>a{
+			display: inline-block;
+			width:200px;
+			height:70px;
+			background-color:#fed136;
+			margin:30px 0;
+			text-decoration: none;
+			line-height: 70px;
+			border-radius: 5px;
+			color:#fff;
+			font-family: "Palanquin";
+			font-weight: bold;
+			font-size: 18px;
+		}
+
+		div#footer .layout>span,div#footer .layout>div,div#footer .layout>ul{
+			width:333px;
+			height:40px;
+			float:left;
+			text-align: center;
+			line-height: 50px;
+			padding:20px 0;
+		}
+
+		div#footer .layout>ul>li{
+			display: inline-block;
+			text-align: center;
+			padding:0 5px;
+		}
+
+		div#footer .layout>ul>li>a{
+			display: inline-block;
+			width:40px;
+			height:40px;
+			background-color: #222;
+			border-radius: 50%;
+			color:#fff;
+			line-height: 40px;
+			font-size: 25px;
+			
+		}
+		div#footer .layout>div>a{
+			display: inline-block;
+			padding:  0 10px;
+			color:#fed136;
+			text-decoration: none;
+			font-family: "Hind Vadodara";
+			font-weight: 500;
+
+		}
+
+		div#footer .layout>span{
+			font-family: "Hind Vadodara";
+			font-weight: bold;
+		}
