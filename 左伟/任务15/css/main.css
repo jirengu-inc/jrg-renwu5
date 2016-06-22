@@ -1,0 +1,137 @@
+html,body,ul{
+	padding:0;
+	margin:0;
+	font-family:"宋体";
+}
+li{list-style: none;}
+a{
+	text-decoration:none;
+	color:black;
+}
+.layout{
+	width:1000px;
+	margin:0 auto;
+}
+.clear:after{
+	content:'';
+	display:block;
+	clear:both;
+}
+/*以上为全局样式*/
+
+#header{
+	position:fixed;
+	top:0;
+	width:100%; 
+	/*若不给fixed定位的元素设定宽度，则它的宽度会变为内容宽度*/
+	background-color:white;
+	border-bottom:1px solid #ccc;
+	z-index: 1000;
+}
+.title-logo{
+	display:block;
+	float:left;
+	padding:20px 10px;
+	font-size:18px;
+	color:gray;
+	font-weight:bold;
+}
+.menu{
+	position:relative;
+	top:2px;
+}
+.menu>li{float:left;}
+.menu>li>a{
+	display:inline-block;
+	padding:20px 10px;
+	color:gray;
+}
+.menu>li>a:hover{color:black;}
+.submenu{
+	display:none;
+	position:absolute;
+	background-color:white;
+}
+.submenu a{
+	display:block;
+	width:120px;
+	padding:10px 0 10px 10px;
+}
+#disable{
+	color:#777;
+	padding:10px 0 10px 10px;
+	border-top:1px solid gray;
+}
+.menu>li:hover .submenu{
+	display:block;
+	z-index: 10;
+}
+.submenu a:hover{background-color:#ccc;}
+#discrite{
+	line-height:20px;
+	padding:30px;
+	margin-top:62px;
+	background-color:rgb(212, 93, 92);
+	color:white;
+}
+#discrite h1{font-size:50px;}
+#discrite p{font-size:25px;}
+.nav{
+	margin:30px 0 15px 0;
+	padding:10px;
+	border-radius:7px;
+	background-color:#eee;
+}
+.nav a{color:#f33;}
+.nav span{color:#777;}
+.nav a:hover{
+	color:#c30;
+	text-decoration:underline;
+}
+.view-item{margin-left:-30px;}
+.view-common{
+	float:left;
+	text-align: center;
+	width:310px;
+	height:450px;
+	margin:0 0 30px 30px;
+	border:1px solid #ccc;
+	border-radius:7px;
+}
+.view-common img{
+	display: block;
+	width:300px;
+	height:250px;
+	margin:5px;
+}
+.view-common img:hover{
+	opacity:0.5;
+	transition:opacity 0.3s;
+}
+.view-common p{height:50px;}  /*设置描述段落的高度，防止文字换行时导致“查看”按钮的位置不一致*/
+.view-btn{
+	display:inline-block;
+	width:50px;
+	padding:5px 10px;
+	border:1px solid gray;
+	border-radius:5px;
+}
+.view-btn:hover{background-color:#ccc;}
+#kownmore{
+	width:100%;
+	background-color:rgb(212, 93, 92);
+	text-align:center;
+	padding:30px 0;
+	margin:40px 0 80px 0;
+	color:white;
+}
+#footer{
+	text-align:center;
+	padding:20px 0;
+	border-top:1px solid #ccc;
+}
+#footer a{color:rgb(212, 93, 92);}
+#footer a:hover{
+	color:gray;
+	text-decoration:underline;
+}
