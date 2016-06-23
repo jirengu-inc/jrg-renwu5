@@ -37,6 +37,7 @@ a{
 #header{
   height: 50px;
   border-bottom: 1px solid #ccc;
+  background-color: #fff;
 }
 
 #header .container:after{
@@ -49,29 +50,29 @@ a{
   font-family: "宋体";
   font-size: 20px;
   cursor: pointer;
-  margin-left: -28px;
+  margin-left: -30px;
 }
 
 #header .tri{
-  width:10px;
+  width:0;
   height:0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 10px solid #ccc;
+  border-top: 5px solid #ccc;
   position: relative;
-  top:18px;
+  top:15px;
 }
 
-#header .container li{
+#header .container>ul>li{
   float: left;
-  background-color: #fff;
-  margin-left: 30px;
+  padding:0 30px;
   line-height: 50px;
   position: relative;
 }
 
 #header .work4{
   border-top: 1px solid #ccc;
+  text-align: center;
 }
 
 #header a{
@@ -79,19 +80,16 @@ a{
 }
 #header .son{
   display: none;
-  width: 120px;
   border: 1px solid #ccc;
   border-radius: 3px;
   position: absolute;
-  left:0;
+  left:25px;
   top: 100%;
-  margin-left: -20px;
+  background-color: #fff;
 }
 
 #header .son li{
-  width: 100%;
-  margin-left: 0;
-  text-align: center;
+  padding: 0 10px;
 }
 
 #header .son li:hover{
