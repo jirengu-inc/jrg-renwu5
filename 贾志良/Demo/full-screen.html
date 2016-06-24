@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页背景全屏demo</title>
+	<style>
+		body,html,div,p,h1,h2{
+			margin:0;
+			padding:0;
+		}
+		body,html{
+			height:100%;
+		}
+		div.layout{
+			width:1000px;
+			margin:0 auto;
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+
+		}
+		div#header{
+			background-image: url(img/bacpic.jpg);
+			height:100%;
+			background-repeat: no-repeat;
+			background-size: cover;
+			display: table;
+			width:100%;
+		}
+
+	</style>
+</head>
+<body>
+<div id="header">
+	<div class="layout">
+		<h1>我是贾志良</h1>
+		<h3>你好</h3>
+	</div>
+</div>
+</body>
+</html>
