@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,body,div,ul,li{
+			margin:0;
+			padding: 0;
+		}
+
+		div#wraper{
+			width:800px;
+			height: 500px;
+			border:1px solid blue;
+			margin-left: 20px;
+			margin-top: 20px;
+		}
+		ul{
+			margin-left: -20px;
+		}
+		ul:after{
+			content:"";
+			display: block;
+			clear:both;
+		}
+		li{
+			list-style-type: none;
+			float:left;
+			width:142px;
+			height:200px;
+			border:1px solid red;
+			margin-left: 20px;
+			margin-top: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wraper">
+		<ul id="nav">
+			<Li>li1</Li>
+			<Li>li2</Li>
+			<Li>li3</Li>
+			<Li>li4</Li>
+			<Li>li5</Li>
+			<Li>li6</Li>
+			<Li>li7</Li>
+			<Li>li8</Li>
+			<Li>li9</Li>
+			<Li>li10</Li>
+		</ul>
+	</div>
+	<script>
+	  function Add(){};
+     var a=new Add();
+     console.log(a instanceof Add);
+	</script>
+</body>
+</html>
