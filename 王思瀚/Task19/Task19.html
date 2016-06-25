@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+      function getIntv(val){
+        var target = Date.parse(val);
+        var now = Date.now();
+        var result = target - now;
+        if(result >=  0){
+        var day = Math.floor(result/1000/60/60/24);
+        var hour = Math.floor(result/1000/60/60-day*24);
+        var min = Math.floor(result/1000/60-day*24*60-hour*60);
+        var sec = Math.floor(result/1000-min*60-day*24*60*60-hour*60*60);
+        var str = "距" +val+ "还有" + day + "天" + hour + "小时" + min + "分" + sec +"秒";
+      }else{
+            str = "已经过去了。"
+      }
+        return str;
+      }
+
+      function getCNDate(val){
+        var char=["零","一","二","三","四","五","六","七","八","九","十"];
+        var val2 = val.replace(/\-/g,'');
+        var str =[];
+        for(var i = 0; i<val.length;i++){
+          for(var j =0; j<char.length;j++){
+            if (val[i] ==j){
+              str.push(char[j]);
+            }
+          }
+        }
+        if (str[4]!="零" && str[6] != "零"){
+        var str2 = str[0]+str[1]+str[2]+str[3]+"年"+str[4]+str[5]+"月"+str[6]+str[7]+"日";
+      }else if (str[4]!="零" && str[6] == "零") {
+        var str2 = str[0]+str[1]+str[2]+str[3]+"年"+str[4]+str[5]+"月"+str[7]+"日";
+      }else if (str[4] == "零" && str[6]!="零") {
+        var str2 = str[0]+str[1]+str[2]+str[3]+"年"+str[5]+"月"+str[6]+str[7]+"日";
+      }else{
+        var str2 = str[0]+str[1]+str[2]+str[3]+"年"+str[5]+"月"+str[7]+"日";
+      }
+        return str2;
+      }
+
+
+      function getLast(val){
+        var now = Date.now();
+        var inter = val * 24 * 60 * 60 * 1000;
+        var target = now - inter;
+        var thatDay = new Date(target);
+        return thatDay.toLocaleDateString().replace(/\//g,'-');
+      }
+
+
+      // var Runtime = (function(){
+      //       var start=0,end=0,inter=0;
+      //     return {
+      //         start: function(){
+      //              start = Date.now();
+      //         },
+      //         end: function(){
+      //              end = Date.now();
+      //         },
+      //         get: function(){
+      //             return  inter = end - start;
+      //         }
+      //     };
+      // }());
+      // Runtime.start();
+      // for (var i = 0; i < 10000; i++) {
+      //   console.log(1);}
+      // Runtime.end();
+      // console.log(  Runtime.get() );
+
+
+      function stair(n){
+          if(n==1) return 1;
+          if(n==2) return 2;
+          return stair (n-1) + stair (n-2);
+          }
+
+      var obj1 = {
+               "firstName": "John",
+               "lastName": "Smith",
+               "sex": "third",
+               "age": 25,
+               "address":
+               {
+                   "streetAddress": "21 2nd Street",
+                   "city": "New York",
+                   "state": "NY",
+                   "postalCode": "10021"
+               }
+           }
+
+           var obj2 = {
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "sex": "third",
+                    "age": 25,
+                    "phoneNumber":
+                    [
+                        {
+                          "type": "home",
+                          "number": "212 555-1234"
+                        },
+                        {
+                          "type": "fax",
+                          "number": "646 555-4567"
+                        }
+                    ]
+                }
+
+            var obj3 = {
+                         "firstName": "John",
+                         "lastName": "Smith",
+                         "sex": "third",
+                         "age": 25,
+                         "address":
+                         {
+                             "streetAddress": "21 2nd Street",
+                             "city": "New York",
+                             "state": "NY",
+                             "postalCode": "10021"
+                         },
+                         "phoneNumber":
+                         [
+                             {
+                               "type": "home",
+                               "number": "212 555-1234"
+                             },
+                             {
+                               "type": "fax",
+                               "number": "646 555-4567"
+                             }
+                         ]
+                     }
+
+
+
+        function objCopy1(obj){
+              var newObj ={};
+             for (var key in obj) {
+                 if( typeof (obj[key]) == 'object'){
+                     newObj[key] = objCopy1(obj[key]);
+                 }else{
+                   newObj[key] = obj[key];
+                 }
+             }
+             console.log(newObj);
+             return newObj;
+           }
+
+           function objCopy2(obj){
+                 var newObj =[];
+                for (var key in obj) {
+                    if( typeof(obj[key]) == 'Array'){
+                        newObj[key] = objCopy2(obj[key]);
+                    }else{
+                      newObj[key] = obj[key];
+                    }
+                }
+                console.log(newObj);
+                return newObj;
+              }
+
+          function objCopy3(obj){
+            var newObj ={};
+           for (var key in obj) {
+               if( typeof (obj[key]) == 'object'){
+                   newObj[key] = objCopy3(obj[key]);
+               }else{
+                 newObj[key] = obj[key];
+               }
+           }
+           console.log(newObj);
+           return newObj;
+          }
+  </script>
+</body>
+</html>
