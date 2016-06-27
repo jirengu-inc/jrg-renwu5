@@ -9,11 +9,25 @@
    var obj = {
    className: 'open menu'};
 
+  // arr = ["a", 1,3,5, "b", 2];
+//  newarr = filterNum(arr); // [1,3,5,2]
+
+   function filterNum(arr){
+         var store = [];
+   for(var i=0; i < arr.length;i++){
+     if(typeof arr[i] == "number"){
+         store.push(arr[i]);
+      };
+   }
+return store;
+}
+
+  var obj={className:'open menu'};
    function addClass(arr,str){
        var store=arr.className.split(' ');
 
        for(var i = 0; i < store.length; i++){
-             if (str == store[i]){
+             if (str === store[i]){
                     break;
      }else{
              store.push(str);
@@ -36,9 +50,37 @@
          return arr.className = store.join(' ');
      }
 
+      var str = "background-color";
      function camelize(str){
-       return str.replace(/\-/g,'');
+       var arr,arr2,arr3;
+        arr = str.split('-');
+        if (arr.length>1) {
+          for (var i = 1; i < arr.length; i++) {
+             arr2 = arr[i].split('');
+             arr2.splice(0,1,arr2[0].toUpperCase());
+             arr3 = arr2.join('');
+             arr[i] = arr3;
+          }
+        }
+        return arr.join('');
      }
+
+
+    function camelize2(str){
+      var arr=[],arr2;
+      for (var i = 0; i < str.length; i++) {
+         if(str[i] === '-'){
+            arr.push(i);
+         }
+      }
+      for (var i = 0; i < arr.length; i++) {
+        arr2=str.split('');
+        arr2.splice(arr[i+1],1,arr2[arr[i+1]].toUpperCase());
+      }
+      return arr2.join('');
+    }
+
+
 
      arr = ["a", 1,3,4,5, "b", 2];
      function filterNum2(arr){
