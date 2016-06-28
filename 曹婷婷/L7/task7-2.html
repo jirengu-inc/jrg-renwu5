@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" /> 
+	<meta http-equiv="X-UA-Compatible" content="IE=Edeg chrome=1" />
+	<title>form表单</title>
+	<style type="text/css">
+	textarea{
+		width: 300px;
+		height: 200px;
+	}
+	</style>
+</head>
+<body>
+	<form name="myForm" action="/test/6.php" method="post">
+	姓名：<input name="username" type="text" placeholder="用户名" maxlength=10 /> <br/>
+	密码：<input name="pwd" type="password" placeholder="密码" maxlength=20 /> <br/>
+	性别：<input name="sex" type="radio" value="male" checked />男
+		  <input naem="sex" type="radio" value="female" />女 <br/>
+    取向：<input type="radio"name="preference" value="male" />男
+    	  <input type="radio"name="preference" value="female" checked />女 <br/>
+    爱好：<input type="checkbox" name="hobby[]" value="dota" />dota
+    	  <input type="checkbox" name="hobby[]" value="travel" checked />旅游
+    	  <input type="checkbox" name="hobby[]" value="pet" checked />宠物 <br/>
+    评论：<textarea name="comment" type="text" placeholder="ddd" maxlength=100 /></textarea> <br/>
+	我的car：
+		  <select name="mycar">
+		  <option value="volvo">volvo</option>
+		  <option value="audi">audi</option>
+		  <option value="opel">opel</option>
+		  <option value="sabo" selected>萨博</option>
+
+		  <input type="submit" value="提交" /> <br/>
+
+
+    </form>
+
+</body>
+</html>
