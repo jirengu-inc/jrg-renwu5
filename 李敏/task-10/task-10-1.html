@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>两栏布局</title>
+	<meta charset="UTF-8"/>
+	<style type="text/css">
+
+.head{height:50px;background:#333333;clear:both;}
+img{height:40px;float:left;margin-left: 225px;}
+ul{display: inline-block;float:right;margin-right: 225px;}
+li{list-style: none;display: inline-block;margin-left:30px;}
+a{text-decoration: none;color:white;font-family: "微软雅黑";font-size: 18px;}
+.main{width:900px;height:400px;position:absolute;left:50%;margin-left: -450px;clear: both;}
+.aside-left{width:200px;height:400px;float:left;background: #dddddd;}
+.aside-right{width:698px;height:200px;float:right;background: #dddddd;}
+h3,p{margin-left:10px}
+.footer{height:30px;background:#333333;clear:both;margin-top:400px;color:white;font-family: "微软雅黑";font-size: 14px;line-height: 30px;}
+span{float:left;margin-left: 225px;}
+a:hover{background: white;color:#ffffff;}
+	</style>
+
+</head>
+<body>
+<div class="head">
+<img src="images/logo-tiny.png"/>	
+<ul>
+	<li><a href="">技能</a></li>
+	<li><a href="">经历</a></li>
+	<li><a href="">作品</a></li>
+	<li><a href="">关于</a></li>
+</ul>
+</div>
+<div class="main">
+	<div class="aside-left"></div>
+	<div class="aside-right">
+		<h3>我的作品</h3>
+		<p>生活很不错</p>
+		<p>心情很美好</p>
+		<p>代码很顺利</p>
+	</div>
+</div>
+<div class="footer">
+	<span>饥人谷 JSCODE JSBIN</span>
+</div>
+</body>
+</html>
