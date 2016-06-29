@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ENVY</title>
+  <style>
+    html,body,div,p,ul,li{
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      list-style: none;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    a{
+      text-decoration: none;
+      color: #000;
+    }
+    .container{
+      border: 1px solid #000;
+      width: 306px;
+      height: 300px;
+      position: relative;
+    }
+    .container:after{
+      content: '';
+      display: block;
+      clear: both;
+    }
+    li{
+      float: left;
+      border: 1px solid #000;
+      width: 100px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+
+    }
+    .par>li:active{
+      background-color: #ccc;
+    }
+    .par>li:hover{
+      background-color: #ccc;
+    }
+    .son{
+      display: none;
+
+    }
+    .par>li:active .son{
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 50px;
+    }
+    .son li{
+      border-color: transparent;
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <ul class="par">
+    <li><a href="">tab1</a>
+      <ul class="son"><li>内容1</li></ul>
+    </li>
+    <li><a href="">tab2</a>
+      <ul class="son"><li>内容2</li></ul>
+    </li>
+    <li><a href="">tab3</a>
+      <ul class="son"><li>内容3</li></ul>
+    </li>
+  </ul>
+
+</div>
+<script>
+
+</script>
+</body>
+</html>
