@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  // (function(){
+  //     var fnArr = [];
+  //     for (var i = 0; i < 10; i++) {
+  //       fnArr[i] = (function(num){
+  //         return function(){
+  //           return num;
+  //         };
+  //       })(i);
+  //     }
+  //     console.log(fnArr[7]());
+  //   }())
+
+
+
+      // var fnArr = [];
+      // for (var i = 0; i < 10; i++) {
+      //    fnArr[i] = (function fn(num){
+      //      function fn2(){
+      //        return num;
+      //      }
+      //      return fn2;
+      //    })(i);
+      // }
+      //    console.log(fnArr[6]());
+
+
+      //
+      // var fnArr = [];
+      // for (var i = 0; i < 10; i++) {
+      //   var fn = function(){};
+      //   fn.idx = i;
+      //   fnArr[i] = fn;
+      // }
+      // console.log(fnArr[5].idx);
+
+
+    //  var car = (function(){
+    //    var speed = 0;
+    //    function getSpeed(){
+    //      return speed;
+    //    };
+    //    function accelerate(){
+    //       speed += 10;
+    //    };
+    //    function decelerate(){
+    //       speed -= 10;
+    //    }
+    //    function getStatus(){
+    //      if(speed > 0){
+    //         console.log("running");
+    //       }else {
+    //         console.log("stop");
+    //         }
+    //      }
+    //     return {
+    //         "getSpeed": getSpeed,
+    //         "accelerate":accelerate,
+    //         "decelerate":decelerate,
+    //         "getStatus":getStatus
+    //     }
+     //
+    //  })()
+      //   var i = 0;
+      // function a(){
+      //   setTimeout(function(){
+      //     console.log(i++);
+      //     a();
+      //   }
+      //     ,4);
+      // };
+      // a();
+  //
+  //   function getmin(){
+  //     var i=0;
+  //     var start = Date.now();
+  //     var clock = setTimeout(function (){
+  //       i++;
+  //       if (i == 1000) {
+  //         clearTimeout(clock);
+  //         var end  = Date.now();
+  //         console.log((end - start)/i);
+  //       }else{
+  //         clock = setTimeout(arguments.callee,0)
+  //       }
+  //     },0)
+  // }
+
+
+  // for(var i=0;i<10;i++){
+  // (function (num){setTimeout(
+  //   function (){
+  //     console.log("delayer:" + num);
+  //   },0)
+  // })(i);
+  // // console.log(i);
+  // }
+
+
+for (var i = 0; i < 5; i++) {
+    setTimeout((function(sum){
+      return function(){
+        console.log('delayer:' + sum);
+      }
+    })(i),0)
+}
+    </script>
+</body>
+</html>
