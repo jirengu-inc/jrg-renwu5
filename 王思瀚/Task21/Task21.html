@@ -20,12 +20,13 @@
       }
 
        function hasClass(el,cls){
-         return /\bcls\b/g.test(el.className);
+         return new RegExp("\\b"+ cls +"\\b") .test(el.className);
        }
 
        function removeClass(el,cls){
          if(hasClass(el,cls)){
-           el.className.replace(cls,'');
+           var cls2 = ek.className;
+          el.className = cls2.replace(new RegExp("\\b"+cls+"\\b"),'');
          }
        }
 
@@ -74,7 +75,7 @@
       // var re = /<[A-z\s\"\=\/]+>/g
       // var str = '<> <a href="/"> <input type="radio" checked> <b>'
       // str.match(re)
-      
+
 
   </script>
 </body>
