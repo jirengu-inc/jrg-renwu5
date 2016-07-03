@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+		<meta charset="UTF-8">
+		<title>任务8视频抄写</title>
+		<style type="text/css">
+          .box>h1:first-of-type{
+            color:#99f
+          }
+          .box >h1:nth-of-type(2){
+            color:pink;/* 找到h1标签，然后数第2个 */
+          }
+          .box h1:nth-child(3){
+            font-size:14px;
+          }/* 先找到第3个孩子，再看是不是h1这个标签才能生效 */
+		.botton{
+          display: inline-block;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          border-radius: 3px;
+          background-color: pink;
+          color: white;
+          text-decoration:none;
+          padding:0 5px;
+          cursor:pointer;
+		}
+          .botton:hover{
+            opacity:0.7;
+          }
+          .botton:active{
+            opacity:0.3;           
+          }
+		</style>
+	</head>
+	<body>
+		<h1 style="color :blue;">我是大标题</h1>
+		<div class="box">
+			<div class="content">
+				<h1>我还是1</h1>
+			</div>
+			<div class="first">
+				i am div's first
+			</div>
+			<h1 class="first">我也是大标题2</h1>
+			<div class="second">我是事实</div>
+			<h1>我是事实3</h1>
+		</div>
+		<div class="botton">确定</div>
+		<a class="botton" href="#">确定</a>
+	</body>
+</html>
