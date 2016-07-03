@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>伪类选择器</title>
+<style>
+a:link{
+  color: #0f0;
+}
+a:visited{
+  color: #ccc;
+}
+a:hover{
+  color: red;
+}
+a:active{
+  background: #00f;
+}
+q:lang(no){
+  quotes: "~" "~"
+}
+input[type="text"]:focus{
+  background: yellow;
+}
+p:first-child{
+  font-weight: bold;
+}
+li:first-child{
+  text-transform:uppercase;
+}
+span:last-child{
+  color: red;
+} 
+.programming span:nth-child(2n){
+  background-color: #ccc;
+}
+p:nth-of-type(2n+1){
+  color: #ddee00;
+}
+.preference > span:first-child{ 
+  border: 1px solid #44dd88;
+}
+.fruit > span:first-of-type{
+ background: #00f;
+}
+</style>
+</head>
+<body>
+  <a href="http://book.jirengu.com" target="myPage">饥人谷</a>
+  <a href="http://www.w3cschool.com" target="myPage">w3cshool</a>
+   <p>超人<q lang="no">会飞</q></p>
+  <form name="myForm" method="post">
+    姓名：<input name="username" type="text" placeholder="用户名" /><br/>
+    密码：<input name="pwd" type="password" placeholder="密码" enable/><br/> 
+  </form>
+<div>
+<p>学习步骤：</p>
+<ul>
+<li>听课</li>
+<li>做<strong>作业</strong></li>
+<li>总结</li>
+</ul>
+<p>记住<em>不要</em> 眼高手低</p>
+</div>
+  <div class="programming">
+    <span>前端</span>
+    <span>java</span>
+    <span>c++</span>
+  </div>
+  <div class="preference">
+    <span>旅游</span>
+    <span>交<span>知心</span>朋友</span>
+    <span>运动</span>
+  </div> 
+  <h1 class="fruit">
+    <p>香蕉</p>
+    <p>西瓜</p>
+    <p>葡萄</P>
+  <span>橙子</span>
+  </h1>
+</body>
+</html>

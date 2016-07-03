@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>利用BFC的原理制作两栏布局</title>
+	<meta charset="UTF-8"/>
+	<style type="text/css">
+#header{width: 100%;background: #f00;height: 80px;}
+#content{width:100%;}
+.aside{width:30%;background: #ccc;float: left;}
+.main{background: #ff00bc;overflow: auto;min-height: 500px;}
+#footer{width: 100%;background: #f00;height: 30px;}
+	</style>
+</head>
+<body>
+ <div id="header">header</div>
+    <div id="content">
+        <div class="aside">aside</div>
+        <div class="main">
+            我是main 
+            我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 
+        </div>
+    </div>
+    <div id="footer"></div>
+</body>
+</html>

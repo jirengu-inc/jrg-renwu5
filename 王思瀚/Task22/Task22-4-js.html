@@ -48,14 +48,32 @@
 </head>
 <body>
   <div class="container">
-    <ul class="tabs active">
-      <li>tab1</li>
-      <li>tab2</li>
-      <li>tab3</li>
+    <ul class="tabs">
+      <li class="active">tab1</li>
+      <li class="">tab2</li>
+      <li class="">tab3</li>
     </ul>
     <div class="text active">内容1</div>
     <div class="text">内容2</div>
     <div class="text">内容3</div>
   </div>
+  <script>
+
+
+      var tabs = document.querySelector('.tabs');
+      var li = tabs.children;
+      var text = document.querySelectorAll('.text');
+
+      tabs.addEventListener('click',function(e){
+        for (var i = 0; i < li.length; i++) {
+          li[i].className = '';
+          text[i].className = 'text';
+          if(e.target == li[i] ){
+            li[i].className = 'active';
+            text[i].className = text[i].className + ' ' + 'active';
+          }
+        }
+      })
+  </script>
 </body>
 </html>
