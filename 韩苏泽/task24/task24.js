@@ -34,7 +34,7 @@ document.querySelector("#add-more").addEventListener("click",function(e){
       count:5
     },
     success:function(ret){
-     for(var key in ret){
+     for(var key=0;key<ret.length; key++){
        var newDiv=document.createElement("div");
        newDiv.setAttribute("class","content");
        newDiv.innerText=ret[key];
