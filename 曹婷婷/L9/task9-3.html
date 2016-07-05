@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="Edge,chrome=1" />
+	<title>用css border实现三角形</title>
+	<style>
+		.triangle{
+			width: 0px;
+			height: 0px;
+			margin: 20px;
+		}
+		.first{
+			border-top: 50px solid blue;
+			border-right: 50px solid yellow;
+			border-bottom: 50px solid green;
+			border-left: 50px solid red;		
+		}
+		.second{
+			border-top: 50px solid blue;
+			border-right: 50px solid transparent;
+			border-bottom: 50px solid transparent;
+			border-left: 50px solid transparent;
+		}
+		.third{
+			border-top: 50px solid transparent;
+			border-right: 50px solid transparent;
+			border-bottom: 50px solid transparent;
+			border-left: 50px solid red;
+		}
+		.fourth{
+			border-top: 50px solid transparent;
+			border-right: 50px solid yellow;
+			border-bottom: 50px solid transparent;
+			border-left: 50px solid transparent;
+		}
+		.fifth{
+			border-top: 50px solid transparent;
+			border-right: 50px solid transparent;
+			border-bottom: 50px solid green;
+			border-left: 50px solid transparent;
+		}
+		.sixth{
+			border-right: 70px solid transparent;
+			border-bottom: 75px solid red;
+		}
+		.seventh{
+			border-left: 75px solid transparent;
+			border-bottom: 75px solid green;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="first triangle"></div>
+	<div class="second triangle"></div>
+	<div class="third triangle"></div>
+	<div class="fourth triangle"></div>
+	<div class="fifth triangle"></div>
+	<div class="sixth triangle"></div>
+	<div class="seventh triangle"></div>
+</body>
+</html>
