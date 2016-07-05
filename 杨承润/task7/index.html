@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task7</title>
+	<style type="text/css">
+		.formStyle{
+			font-size: 25px;
+			font-family: "微软雅黑";
+			margin-bottom: 5px;
+		}
+		.textarea{
+			width: 300px;
+			height: 100px;
+		}
+		.textStyle{
+			padding: 7px;
+		}
+		.selectStyle{
+			width: 70px;
+			border-radius: 5px;
+			font-size: 16px;
+			background-color: white;
+			font-family: "微软雅黑";
+		}
+	</style>
+</head>
+<body>
+	<form name="myForm">
+		<div class="formStyle">姓名：<input class="textStyle" type="text" name="user" placeholder="用户名"></div>
+		<div class="formStyle">密码：<input class="textStyle" type="password" name="password"></div>
+		<div class="formStyle">
+			性别：<input  type="radio" name="sex" value="man" checked>男
+			<input type="radio" name="sex" value="woman">女
+		</div>
+		<div class="formStyle">
+			取向：<input class="radioStyle"  type="radio" name="sexual" value="man">男
+			<input class="radioStyle"  type="radio" name="sexual" value="woman" checked>女
+		</div>
+		<div class="formStyle">
+			爱好：<input type="checkbox" name="love[]" value="dota">dota
+			<input type="checkbox" name="love[]" value="travel" checked>旅游
+			<input type="checkbox" name="love[]" value="pet" checked>宠物
+		</div>
+		<div class="formStyle">
+			评论：<textarea type="text" class="textarea" name="comment" placeholder="ddd"></textarea>
+		</div>
+		<div class="formStyle">
+			我的car：
+			<select class="selectStyle" name="mycar">
+				<option value="AudiAG">奥迪</option>
+				<option value="sabo" selected>萨博</option>	
+				<option value="BMW">宝马</option>
+			</select>
+			<input class="selectStyle" type="submit" name="submit">
+		</div>
+	</form>
+</body>
+</html>
