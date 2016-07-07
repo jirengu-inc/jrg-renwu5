@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style>
+    html,body,ul,li {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        list-style: none;
+    }
+    #ct {
+        width: 900px;
+        margin: 100px auto;
+        border: 1px solid #ccc;
+    }
+    .tab li {
+        width: 298px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        text-align: center;
+        float: left;
+        border: 1px solid #ccc;
+        cursor: pointer;
+    }
+    .tab:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .content {
+        padding: 20px;
+        margin-bottom: 100px;
+        display: none;
+    }
+    .tab>.active {
+        background-color: #ccc;
+    }
+    #ct>.active {
+        display: block;
+    }
+</style>
+</head>
+<body>
+
+    <div id="ct">
+        <ul class="tab">
+            <li>tab1</li>
+            <li>tab2</li>
+            <li>tab2</li>
+        </ul>
+        <div class="content">内容一</div>
+        <div class="content">内容二</div>
+        <div class="content">内容三</div>
+    </div>
+
+ <script>
+
+    var tab = document.querySelector('.tab'),
+        li = document.querySelectorAll('li'),
+        content = document.querySelectorAll('.content');
+
+    tab.addEventListener('click',function(e){
+        for(var i=0; i<li.length;i++){
+            li[i].className = '';
+            content[i].className = 'content';
+            if( tab.children[i] === e.target){
+                content[i].className += ' active';
+            }
+        }
+        e.target.className = 'active';
+
+    });
+
+ </script>
+</body>
+</html>
