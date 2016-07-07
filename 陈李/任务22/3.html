@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+
+
+    <ul class="ct">
+        <li data-img="1.png">鼠标放置查看图片1</li>
+        <li data-img="2.jpg">鼠标放置查看图片2</li>
+        <li data-img="3.jpg">鼠标放置查看图片3</li>
+    </ul>
+    <div class="img-preview"></div>
+
+
+<script>
+    var ct = document.querySelector('.ct'),
+        div = document.querySelector('.img-preview');
+
+    ct.addEventListener('mouseover',function(e){
+        if(div.children[0]){
+            div.removeChild(div.children[0]);
+        }
+        var img = document.createElement('img'),
+            dataImg = e.target.getAttribute('data-img');
+        img.setAttribute('src',dataImg);
+        div.appendChild(img);
+    });
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

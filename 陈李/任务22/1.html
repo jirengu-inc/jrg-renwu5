@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+
+
+    <ul class="ct">
+        <li>这里是</li>
+        <li>饥人谷</li>
+        <li>前端6班</li>
+    </ul>
+
+
+<script>
+    var ct = document.querySelector('.ct');
+    ct.addEventListener('click',function(e){
+        if(e.target.tagName.toLowerCase() === 'li'){  //边界会console整个列表
+            console.log(e.target.innerText);
+        }
+    });
+</script>
+
+
+
+
+
+</body>
+</html>
