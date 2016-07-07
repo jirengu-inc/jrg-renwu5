@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>task24</title>
+    <style>
+        .content {
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #ccc;
+            margin: 5px;
+            padding-left: 10px;
+            vertical-align: middle;
+        }
+        .content:hover{
+          background-color: green;
+          color: white;
+        }
+        .btn {
+            display: block;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            margin: 5px auto;
+            padding: 5px;
+            text-decoration: none;
+            border: 1px solid #FF5722;
+            border-radius: 3px;
+            text-align: center;
+            color: #FF5722;
+        }
+        .btn img{
+          height: 100%;
+        }
+        #register dt {
+          float:left;
+          height: 24px;
+          line-height: 24px;
+        }
+        #register dd {
+          margin-left: 140px;
+          margin-bottom: 8px;
+        }
+        #register input{
+          border: 1px solid #ccc;
+          border-radius: 3px;
+          height: 24px;
+
+        }
+        #register dd>span{
+          color: #aaa;
+          font-size: 80%;
+        }
+        #btn-reg{
+          cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>习题1</h3>
+    <a href="" id="btn">点我</a>
+    <hr>
+    <h3>习题2</h3>
+    <div class="div-wrap">
+        <div class="content">内容1</div>
+        <div class="content">内容2</div>
+        <a class="btn" id="add-more" href="">加载更多</a>
+    </div>
+    <hr>
+    <h3>习题3</h3>
+    <h3>注册</h3>
+    <form id="register" action="">
+      <dl>
+        <dt>用户名:</dt>
+        <dd><input id="username" type="text" placeholder="用户名"></dd>
+        <dd><span id="username-msg"class="msg" >只能是字母、数字、下划线，3-10个字符</span></dd>
+        <dt>密码:</dt>
+        <dd><input id="password" type="text" placeholder="密码"></dd>
+        <dd><span id="pwd-msg"class="msg" >大写字母、小写、数字、下划线最少两种，6-15个字符</span></dd>
+        <dt><span>再输入一次:</span></dt>
+        <dd><input id="confirm-pwd" type="text" placeholder="确认密码"></dd>
+        <dd><span id="confirm-msg" class="msg">密码必须一致</span></dd>
+        <dd><input id="btn-reg" type="button" value="注册"></dd>
+      </dl>
+
+    </form>
+    <script src="task24.js"></script>
+    <script src="util-ajax.js"></script>
+</body>
+
+</html>
