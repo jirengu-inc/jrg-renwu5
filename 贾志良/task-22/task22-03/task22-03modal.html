@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>modal test</title>
+	<style>
+		html,body{
+			height:100%;
+		}
+		div#modal{
+			width:100%;
+			height:100%;
+			position: absolute;
+			top:0;
+			display:none;
+		}
+		div.cover{
+			position: absolute;
+			top:0;
+			left:0;
+			right:0;
+			bottom: 0;
+			background-color: rgba(128,128,128,0.4);
+		}
+		div.wraper{
+			position: relative;
+			top:50%;
+			left:50%;
+			width:350px;
+			transform:translate(-50%,-50%);
+			background-color: #fff;
+			padding:20px;
+			border-radius: 5px;
+			
+		}
+	
+		div#header:after,div#footer:after{
+			content:"";
+			display: block;
+			clear: both;
+		}
+		div.wraper h3{
+			float:left;
+		}
+		div#header a,div#footer a{
+			display: inline-block;
+			line-height: 60px;
+			float:right;
+			padding:0 10px;
+			text-decoration: none;
+			color:#333;
+		}
+	</style>
+</head>
+<body>
+	<button id="b1">按钮</button>
+	<div id="modal">
+		<div class="cover"></div>
+		<div class="wraper">
+			<div id="header">
+				<h3>我是标题一</h3>
+				<a href="#" class="leave">X</a>
+			</div>
+			<div id="content">
+				<p>我是内容1</p>
+				<p>我是内容2</p>
+			</div>
+			<div id="footer">
+				<a href="#" class="sure">取消</a>
+				<a href="#" class="cancel">确定</a>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		var btn=document.querySelector("#b1");
+		var body=document.body;
+		var modal=document.querySelector("#modal");
+
+		btn.addEventListener("click",function(){
+			displayModal(modal);
+		})
+
+		body.addEventListener("click",function(e){
+			var target=e.target;
+			if(hasClass(target,"cancel")||hasClass(target,"leave")||hasClass(target,"cover")||hasClass(target,"sure")){
+				hideModal(modal);
+			}
+		})
+
+		function displayModal(ele){
+			ele.style.display="block";
+		}
+		function hideModal(ele){
+			ele.style.display="none";
+		}
+		function hasClass(ele,cla){
+			return !!ele.className.match(new RegExp('\\b'+cla+'\\b'));
+		}
+	</script>
+
+</body>
+</html>

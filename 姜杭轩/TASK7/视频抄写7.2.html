@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>视频抄写</title>
+</head>
+<body>
+	<form name="myform" action="a.php"  method="get">
+	   <div>性别：<input name="sex" value="wangle?" type="text"></div>
+	   <div>年龄：<input name="age" type="text"></div>
+       
+      <p>用户名：<input name="username" type="text" placeholder="鹰虎门" value="hello" maxlength="10"><br/>
+      密码：<input name="pass" type="password"  placeholder="鹰虎" value="hello" maxlength="10">
+      <div>
+      	水果：<input type="radio" name="fruit" value="iphone4">iphone4
+      	     <input type="radio" name="fruit" value="iphone6">iphone6<br/>
+      	蔬菜：<input type="checkbox" name="fruit" value="iphone4">iphone4
+      	     <input type="checkbox" name="fruit" value="iphone6" checked >iphone6
+
+      </div>
+      </p> 
+
+      评论：<textarea name="comment" maxlength=70 placeholder="ddd"></textarea><br/>
+           <input name="secert" type="hidden" value="12312**"/><!--防止伪造信息提交到服务器-->
+
+           <input type="submit" value="提交">
+	</form>
+</body>
+</html>
