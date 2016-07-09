@@ -17,8 +17,10 @@
 <script>
     var ct = document.querySelector('.ct');
     ct.addEventListener('click',function(e){
-        console.log(e.target.innerText);
-    })
+        if(e.target.tagName.toLowerCase() === 'li'){  //边界会console整个列表
+            console.log(e.target.innerText);
+        }
+    });
 </script>
 
 
