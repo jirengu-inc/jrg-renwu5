@@ -1,11 +1,11 @@
 <?php
-    $username = $_GET['username'];
-
-    if ($username === 'kevin') {
-        $ret = array('sex' =>'男', 'age' => 18);
-    }elseif ($username === 'hunger') {
-        $ret = array('sex' =>'男', 'age' => 20);
-    }else {
-      $ret = array('sex' =>'女', 'age' => 30);
-    }
-    echo json_encode($ret);
+header('content-type:text/html;charset="utf-8"');
+error_reporting(0);
+$now=$_GET['start'];
+$len=$_GET['length'];
+$newContent=array();
+for($i=0;$i<$len;$i++){
+	array_push($newContent, $now+$i+1);
+}
+$arr = array('data'=>$newContent);
+echo json_encode($arr);

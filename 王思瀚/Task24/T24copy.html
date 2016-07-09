@@ -1,94 +1,104 @@
- <!DOCTYPE html>
-<html lang="zh">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>加载更多</title>
-	<script src="helper.js"></script>
-	<style>
-		ul{
-			padding: 0;
-			margin: 0;
+	<style type="text/css">
+		#ul1{
+			list-style-type: none;
+			padding:0;
+			margin:0 auto;
+			width:1000px;
 		}
-		li{
-			list-style: none;
+		#ul1 li{
+			border:1px solid red;
+			width:1000px;
+			height:50px;
+			border-radius: 2px;
+			margin:10px 0;
 		}
-		a{
-			text-decoration: none;
-		}
-		.btn{
-			height: 40px;
-			line-height: 40px;
-			width: 80px;
-			border:1px #E27272 solid;
-			color: #E27272;
-			display: block;
+		#btn{
+			width:100px;
+			display:block;
+			border:1px solid #ccc;
 			text-align: center;
-			margin: 10px auto;
-			border-radius:4px;
+			border-radius: 2px;
+			margin:10px auto;
+			padding:10px 0;
 		}
-		.btn>img{
-			width: 40px;
-			height: 40px;
-		}
-		.ct>li{
-			border-radius: 4px;
-			border: 1px solid #ccc;
-			padding: 10px;
-			margin-bottom: 10px;
-		}
-		.ct>li:hover{
-			color:#fff;
-			background-color:#F49484;
+		#btn:hover{
+			background:red;
 		}
 	</style>
 </head>
 <body>
-	<ul class="ct">
-		<li>内容1</li>
-		<li>内容2</li>
-	</ul>
-	<a href="#" class="btn">加载更多</a>
-	<script>
-		var start=3;
-		var length=5;
-		var i=3;
-		var isloading=false;
-		document.querySelector(".btn").addEventListener("click",function(e){
-			e.preventDefault();
-			if(isloading){
-				return;
-			}
-			isloading=true;
-			this.innerHTML="<img src='loading.gif' />";
+		<ul id="ul1">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<a id="btn">加载更多</a>
+	<script type="text/javascript">
+		var btn=document.getElementById('btn');
+		var cur=3;
+		btn.addEventListener('click',function(){
+
 			ajax({
-				url:"loading-handle.php",
-				type:"get",
+				url:'ajax_1.php',
+				type:'get',
 				data:{
-					start:start,
-					length:length
+					now:cur,
+					len:5
 				},
-				success:function(json){
-					onSuccess(json)
+				sucess:function(json){
+
+					sucess(json);
 				},
 				error:function(){
-					console.log("error");
-					isloading=false;
-					document.querySelector(".btn").innerText="加载更多";
+					alert('出错了');
 				}
-			});
-			function onSuccess(json){
-				console.log(json);
-				if(parseInt(json.status)===1){
-					for(var i=0;i<json.data.length;i++){
-						document.querySelector(".ct").innerHTML+='<li>内容'+json.data[i]+'</li>';
-					}
-					start+=length;
-					isloading=false;
-					document.querySelector(".btn").innerText="加载更多";
-				}
-			}
-		})
 
+			});
+			function sucess(json){
+					var oUl=document.getElementById('ul1');
+				//alert(json);
+					for(var i=0;i<json.data.length;i++){
+						var newLi=document.createElement('li');
+						newLi.innerText=json.data[i];
+						oUl.appendChild(newLi);
+					}
+				cur+=5;
+
+			};
+			function ajax(opts){
+				var dataStr='';
+				for(var key in opts.data){
+					dataStr += key+'='+opts.data[key]+'&';
+				}
+				dataStr=dataStr.substr(0,dataStr.length-1);
+				var xmlHttp=new XMLHttpRequest();
+				xmlHttp.onreadystatechange=function(){
+					if(xmlHttp.readyState==4 && xmlHttp.status==200){
+							var json=JSON.parse(xmlHttp.responseText);
+              console.log(json);
+							opts.sucess(json);
+
+						}
+					if(xmlHttp.status==404){
+						opts.error();
+					}
+						}
+						if(opts.type=='get'){
+							xmlHttp.open(opts.type,opts.url+'?'+dataStr,true)
+							xmlHttp.send();
+						}
+						if(opts.type=='post'){
+							xmlHttp.open(opts.type,opts.url,true)
+							xmlHttp.send(dataStr);
+							xmlHttp.setRequestHeader('content-type','application/x-www-form-urlencoded')
+						}
+			}
+
+
+		})
 	</script>
 </body>
-</html><!--本注释用于清除实名认证提示<script type="text/javascript">!function(){var closed=false,bdiv;var charset=document.charset||document.characterSet;var utf8=['该页面的提供者尚未完成','实名认证','您的访问可能存在风险'];var gbk=['��ҳ�����ṩ����δ����','ʵ����֤','���ķ��ʿ��ܴ��ڷ���'];var en=['The provider of this page is not','verified','there are risks when you visiting'];function banner(){var char=charset.toLowerCase(),lang='';switch(true){case char.indexOf('utf')==0:lang=utf8;break;case char.indexOf('gb')==0:lang=gbk;break;default:lang=en;}var _div='<div style="position:fixed;_position:absolute;top:0;left:0;right:0;padding:12px;background-color:rgba(0,0,0,0.5);filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000,endcolorstr=#7F000000);color:#fff;text-align:center;font-size:16px;font-family:simsun,serif;cursor:default;z-index:2147483647;"><p style="margin:0;padding:0;">'+lang[0]+' <a style="text-decoration:none;color:#37afe4;" target="_blank" href="http://sae.sina.com.cn/?m=faq&a=view&doc_id=22">'+lang[1]+'</a> '+lang[2]+'</p><a style="position:absolute;right:12px;top:50%;font-size:20px;color:#fff;border:none;margin:0;padding:0;;margin-top:-10px;line-height:20px;background:none;cursor:pointer;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;outline:none;">x</a></div>',div=document.createElement('div');div.innerHTML=_div;var close=div.getElementsByTagName('a')[1],x=0,y=0;close.onmouseover=function(event){var e=event?event:window.event;x=e.clientX;y=e.clientY;};close.onclick=function(event){if(event&&!event.initMouseEvent){return}var e=event?event:window.event;if(Math.abs(e.clientX-x)<10&&Math.abs(e.clientY-y)<10){div.style.display='none';closed=true;}};return div}function t(){if(closed){clearInterval(tt);return}if(bdiv&&bdiv.parentNode){bdiv.parentNode.removeChild(bdiv)}bdiv=banner();document.body.appendChild(bdiv);}t();var tt=setInterval(t,5000);}();</script>
+</html>
