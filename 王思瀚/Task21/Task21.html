@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+       var str = ' hello world ';
+      function trim(str){
+        return str.replace(/^\s+|\s+$/g,'');
+      }
+
+
+      function addClass(el,cls){
+        if (!hasClass(el,cls)){
+          el.className += ' ' + cls;
+        }
+      }
+
+       function hasClass(el,cls){
+         return new RegExp("\\b"+ cls +"\\b") .test(el.className);
+       }
+
+       function removeClass(el,cls){
+         if(hasClass(el,cls)){
+           var cls2 = ek.className;
+          el.className = cls2.replace(new RegExp("\\b"+cls+"\\b"),'');
+         }
+       }
+
+       function isEmail(str){
+         if(/^\w+@\w+\.\w+$/g.test(str)){
+           console.log("y");
+         }else {
+           console.log("n");
+         }
+       }
+
+       function isPhoneNum(str){
+         if(/^1[3456789]\d{9}$/.test(str)){
+           console.log("y");
+         }else {
+           console.log("n");
+         }
+       }
+
+       function isValid(str){
+         if (/\w{6,20}/.test(str)) {
+           console.log("y");
+         }else {
+           console.log("n");
+         }
+       }
+
+
+       function isValidP(str){
+         if (str.length < 6 || str.length > 20) {
+               console.log("n");
+         }else if (/\W/.test(str)) {
+               console.log("n");
+         }else if (/^_+$|^[A-Z]+$|^[a-z]+$|^[0-9]+$/) {
+               console.log("n");
+         }else {
+               console.log("y");
+         }
+       }
+      //
+      // var re = /#[A-z0-9]{6}/g;
+      // var subj = "color: #121212; background-color: #AA00ef; width: 12px; bad-colors: f#fddee #fd2 "
+      // alert( subj.match(re) )  // #121212,#AA00ef
+
+
+      // var re = /<[A-z\s\"\=\/]+>/g
+      // var str = '<> <a href="/"> <input type="radio" checked> <b>'
+      // str.match(re)
+
+
+  </script>
+</body>
+</html>

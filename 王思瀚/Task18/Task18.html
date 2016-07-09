@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+   var obj = {
+   className: 'open menu'};
+
+  // arr = ["a", 1,3,5, "b", 2];
+//  newarr = filterNum(arr); // [1,3,5,2]
+
+   function filterNum(arr){
+         var store = [];
+   for(var i=0; i < arr.length;i++){
+     if(typeof arr[i] == "number"){
+         store.push(arr[i]);
+      };
+   }
+return store;
+}
+
+  var obj={className:'open menu'};
+   function addClass(arr,str){
+       var store=arr.className.split(' ');
+
+       for(var i = 0; i < store.length; i++){
+             if (str === store[i]){
+                    break;
+     }else{
+             store.push(str);
+
+             break;
+             }
+     }
+
+       return arr.className = store.join(' ');
+     }
+
+
+     function removeClass(arr,str){
+         var store=arr.className.split(' ');
+         for (var i =0; i<store.length;i++){
+           if(str == store[i]){
+             store.splice(i,1);
+           }
+         }
+         return arr.className = store.join(' ');
+     }
+
+      var str = "background-color";
+     function camelize(str){
+       var arr,arr2,arr3;
+        arr = str.split('-');
+        if (arr.length>1) {
+          for (var i = 1; i < arr.length; i++) {
+             arr2 = arr[i].split('');
+             arr2.splice(0,1,arr2[0].toUpperCase());
+             arr3 = arr2.join('');
+             arr[i] = arr3;
+          }
+        }
+        return arr.join('');
+     }
+
+
+    function camelize2(str){
+      var arr=[],arr2;
+      for (var i = 0; i < str.length; i++) {
+         if(str[i] === '-'){
+            arr.push(i);
+         }
+      }
+      for (var i = 0; i < arr.length; i++) {
+        arr2=str.split('');
+        arr2.splice(arr[i+1],1,arr2[arr[i+1]].toUpperCase());
+      }
+      return arr2.join('');
+    }
+
+
+
+     arr = ["a", 1,3,4,5, "b", 2];
+     function filterNum2(arr){
+      for(var i=0; i < arr.length;i++){
+      if(typeof arr[i] != "number"){
+         arr.splice(i,1);
+      }
+     }
+     }
+
+    var john = { name: "John Smith", age: 23 }
+    var mary = { name: "Mary Key", age: 18 }
+    var bob = { name: "Bob-small", age: 6 }
+    var people = [ john, mary, bob ]
+     function ageSort(arr){
+         var store =[];
+        arr.sort(function(a,b){
+          return a.age - b.age;
+        })
+        for (var i=0;i<arr.length;i++){
+          store.push(arr[i].name);
+        }
+        return store;
+     }
+
+    arr = ["a",3,4,true, -1, 2, "b"]
+    function isNumeric (el){
+    return typeof el === 'number';
+}
+    function filter(arr,fuc){
+      var store=[];
+      for(var i=0;i<arr.length;i++){
+        if (fuc(arr[i]) == true){
+          store.push(arr[i]);
+        }
+      }
+      return store;
+    }
+
+
+    function ucF(arr){
+      return arr.replace(arr[0],arr[0].toUpperCase());
+    }
+
+    function turncate(str,val){
+        var store=[];
+      if(val<str.length){
+       store=str.slice(0,val);
+       store +="...";
+    }else{
+      store=str;
+    }
+        return store;
+    }
+
+    function limit2(val){
+      return Math.round(val*100)/100;
+    }
+
+    function ran1(min,max){
+      return Math.random()*(max-min)+min;
+    }
+
+    function ran2(min,max){
+      return Math.random()*(max-min+1)+min;
+    }
+
+    function randomArr(arrLength,min,max){
+        var resultArr = [];
+       for(var i=0;i<arrLength;i++){
+          resultArr.push(Math.floor(Math.random()*(max-min+1))+min)
+      }
+      return resultArr;
+      }
+  </script>
+</body>
+</html>

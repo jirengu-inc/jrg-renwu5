@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ENVY</title>
+</head>
+<body>
+  <ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+  </ul>
+<input class="ipt-add-content" placeholder="添加内容"/>
+<button id="btn-add-start">开头添加</button>
+<button id="btn-add-end">结尾添加</button>
+<script>
+  var text = document.querySelector('.ipt-add-content');
+  var before = document.querySelector('#btn-add-start');
+  var after = document.querySelector('#btn-add-end');
+  var ct = document.querySelector('.ct');
+
+  ct.addEventListener('click',function(e){
+    if (e.target.tagName.toLowerCase() == 'li') {
+        console.log(e.target.innerText);
+    }
+  });
+
+
+  before.addEventListener('click',function() {
+    var li = document.createElement('li');
+    li.innerText = text.value;
+    ct.insertBefore(li,ct.childNodes[0]);
+  })
+
+  after.addEventListener('click',function(){
+    var li = document.createElement('li');
+    li.innerText = text.value;
+    ct.appendChild(li);  
+  })
+</script>
+</body>
+</html>

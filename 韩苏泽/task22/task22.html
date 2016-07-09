@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task22</title>
+    <style>
+      a{
+        text-decoration: none;
+        color: black;
+      }
+      .tab-table *{
+        box-sizing: border-box;
+        margin: 0;
+        padding:0;
+      }
+      .tab-table{
+        display: table;
+        width: 900px;
+        margin: 0 auto;
+        border-collapse: collapse;
+      }
+      .tabs li{
+        display: table-cell;
+        width: 300px;
+        height:40px;
+        line-height: 40px;
+        border: 1px solid;
+        text-align: center;
+      }
+      .pannel{
+        display: table-cell;
+        height: 400px;
+        display: none;
+        border: 1px solid;
+      }
+      .pannel.active{
+        display: block;
+
+      }
+      .clear:after{
+        content: "";
+        display: block;
+        clear: both;
+      }
+      .tabs .active{
+        background-color: #ccc;
+      }
+      .container{
+        height: 600px;
+        overflow: hidden;
+      }
+      .cover{
+        height: 100%;
+        padding: 10px;
+      }
+      .btn-click{
+        padding: 5px;
+        border: 1px solid;
+        border-radius: 3px;
+      }
+      .content{
+        display: none;
+        width: 500px;
+        margin: 0 auto;
+        padding: 10px;
+        background-color: white;
+        border: 1px solid;
+        border-radius: 3px;
+
+      }
+      .header{
+        position: relative;
+      }
+      .header .btn-close{
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin-right: 10px;
+        font-size: 1.17em;
+      }
+      .btn {
+        float: right;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="ct1">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+  </ul>
+  <hr>
+  <ul class="ct2">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+</ul>
+<input class="ipt-add-content" placeholder="添加内容"/>
+<button id="btn-add-start">开头添加</button>
+<button id="btn-add-end">结尾添加</button>
+<hr>
+<img src="" alt="">
+<ul class="ct3">
+    <li data-img="img/1.jpg">鼠标放置查看图片1</li>
+    <li data-img="img/2.jpg">鼠标放置查看图片2</li>
+    <li data-img="img/3.jpg">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+<hr>
+<div class="tab-table">
+  <ul class="tabs clear">
+    <li class="active">Tab1</li
+    ><li>Tab2</li
+    ><li>Tab3</li>
+  </ul>
+  <div class="pannel active">内容一</div>
+  <div class="pannel">内容二</div>
+  <div class="pannel">内容三</div>
+</div>
+<hr>
+<div class="container">
+  <div class="cover">
+      <a class="btn-click" href="">点我</a>
+      <div class="content clear">
+        <div class="header clear">
+          <h3>我是标题1</h3>
+          <a class="btn-close" href="">×</a>
+        </div>
+        <hr >
+        <p>我是内容1</p>
+        <p>我是内容2</p>
+        <a class="btn btn-confirm" href="">确定</a>
+        <a class="btn btn-cancel" href="">取消</a>
+      </div>
+  </div>
+</div>
+<script type="text/javascript" src="task22.js"></script>
+  </body>
+</html>

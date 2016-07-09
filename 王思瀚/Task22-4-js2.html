@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ENVY</title>
+  <style>
+    html,body,div,li,ul{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    a{
+      text-decoration: none;
+    }
+    .tabs li{
+      float: left;
+      width: 200px;
+      height: 30px;
+      border: 1px solid #000;
+      border-top: none;
+      cursor: pointer;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+    }
+    .container{
+      border: 1px solid #000;
+      height: 300px;
+      width: 606px;
+    }
+    .container::after{
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .text{
+      display: none;
+      width: 60px;
+      height: 200px;
+    }
+    .container .active{
+      display: block;
+    }
+    .tabs .active{
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul class="tabs">
+      <li class="active">tab1</li>
+      <li class="">tab2</li>
+      <li class="">tab3</li>
+    </ul>
+    <div class="text active">内容1</div>
+    <div class="text">内容2</div>
+    <div class="text">内容3</div>
+  </div>
+  <script>
+     function hasClass(ele,cls){
+       return !!ele.className.match(new RegExp('\\b'+cls+'\\b','g'));
+     }
+     function removeClass(ele,cls){
+       ele.className = ele.className.replace(new RegExp('\\b'+cls+'\\b','g'),'');
+     }
+     function addClass(ele,cls){
+       if(hasClass(ele,cls)) return;
+       ele.className += ' ' + cls;
+     }
+
+     function multiAdd(ele,cls){
+       if (ele.length && ele.length > 0) {
+         for (var i = 0; i < ele.length; i++) {
+           addClass(ele[i],cls);
+         }
+       }else{
+         addClass(ele,cls);
+       }
+     }
+     function multiRemove(ele,cls){
+       if (ele.length && ele.length > 0) {
+         for (var i = 0; i < ele.length; i++) {
+           removeClass(ele[i],cls);
+         }
+       }else {
+         removeClass(ele,cls);
+       }
+     }
+     function indexOf(ele){
+       var parent = ele.parentElement;
+           slibings = parent.children;
+      for (var i = 0; i < slibings.length; i++) {
+              if (ele === slibings[i]) {
+                return i;
+              }
+      }
+      return -1;
+     }
+
+     var tabs = document.querySelector('.tabs');
+     var li = tabs.children;
+     var text = document.querySelectorAll('.text');
+
+     tabs.addEventListener('click',function(e){
+       var target = e.target;
+       var index = indexOf(target);          
+       if (index > -1) {
+         multiRemove(li,'active');
+         multiAdd(target,'active');
+         multiRemove(text,'active');
+         multiAdd(text[index],'active');
+       }
+     })
+  </script>
+</body>
+</html>

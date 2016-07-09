@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style>
+    html,body,a,p,h5 {
+        margin: 0;
+        padding: 0;
+    }
+    a {
+        text-decoration: none;
+        color: #000;
+        float: right;
+        display: inline-block;
+        padding: 8px 8px;
+    }
+    .modal {
+        width: 400px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background-color: #fff;
+        display: none;
+    }
+    .content {
+        border-top: solid 1px #000;
+        border-bottom: solid 1px #000;
+        padding: 40px 10px;
+    }
+    .header p {
+        display: inline-block;
+        line-height: 30px;
+    }
+    .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .cover {
+        background-color: #000;
+        opacity: 0.5;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+    <button class="btn">点我123</button>
+    <div class="cover"></div>
+    <div class="modal">
+        <div class="header clearfix">
+            <p>内容123</p>
+            <a href="#">X</a>
+        </div>
+        <div class="content">
+            <p>显示内容一</p>
+            <p>显示内容二</p>
+        </div>
+        <div class="footer clearfix">
+            <a href="#">取消</a>
+            <a href="#">确定</a>
+        </div>
+    </div>
+
+ <script>
+    var cover = document.querySelector('.cover'),
+        btn =document.querySelector('.btn'),
+        modal = document.querySelector('.modal');
+
+        function show(e){
+            e.style.display = 'block';
+        }
+        function hide(e){
+            e.style.display = 'none';
+        }
+
+        btn.addEventListener('click',function(){
+            show(cover);
+            show(modal);
+        });
+        cover.addEventListener('click',function(){
+            hide(cover);
+            hide(modal);
+        });
+        modal.addEventListener('click',function(e){
+            e.stopPropagation();
+            if(e.target.innerText === 'X' || e.target.innerText === '取消'){
+                hide(cover);
+                hide(modal);
+            }
+        });
+
+ </script>
+</body>
+</html>
