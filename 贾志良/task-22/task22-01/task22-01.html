@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>li-text</title>
+</head>
+<body>
+	<ul class="ct">
+	     <li>这里是</li>
+	     <li>饥人谷</li>
+	     <li>前端6班</li>
+	 </ul>
+
+	 <input class="ipt-add-content" placeholder="添加内容"/>
+	 <button id="btn-add-start">开头添加</button>
+	 <button id="btn-add-end">结尾添加</button>
+	 
+	 <script>
+	   var ulCt=document.querySelector(".ct");
+	   ulCt.addEventListener("click",function(e){
+	       var target=e.target;
+	       console.log(target.innerText);
+	   })
+
+	   var textBox=document.querySelector(".ipt-add-content");
+	   var btnHead=document.querySelector("#btn-add-start");
+	   var btnEnd=document.querySelector("#btn-add-end");
+
+	   btnHead.addEventListener("click",function(){
+	      var newLi=document.createElement("li");
+	      var text=document.createTextNode(textBox.value);
+	      newLi.appendChild(text);
+	       ulCt.insertBefore(newLi,ulCt.childNodes[0]);
+	   })
+
+	   btnEnd.addEventListener("click",function(){
+	      var newLi=document.createElement("li");
+	      var text=document.createTextNode(textBox.value);
+	      newLi.appendChild(text);
+	      ulCt.appendChild(newLi);
+	   })
+	 </script>
+</body>
+</html>

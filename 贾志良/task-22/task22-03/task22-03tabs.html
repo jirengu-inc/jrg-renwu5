@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Tabs</title>
+   <style>
+	    div,ul,li{
+	      padding:0;
+	      margin:0;
+	    }
+	    div#wraper ul:after{
+	      content:"";
+	      display: block;
+	      clear: both;
+	    }
+	    div#wraper li{
+	      float:left;
+	      width:300px;
+	      border: 1px solid;
+	      border-right:0;
+	      list-style-type: none;
+	      line-height: 50px;
+	      text-align: center;
+	      box-sizing: border-box;
+	    }
+	    div#wraper li:nth-Child(3){
+	    	border-right: 1px solid
+	    }
+	    .panel{
+	      width:900px;
+	      height:300px;
+	      box-sizing: border-box;
+	      border: 1px solid #333;
+	      border-top: 0;
+	      display:none;
+	    }
+	    
+	    .active{
+	      display:block;
+	      position: absolute;
+	      top:60px;
+	    }
+
+	    .activeTab{
+	      background-color: #ccc;
+	    }
+	</style>
+</head>
+<body>
+	<div id="wraper">
+      <ul id="tabs">
+        <Li class>tab1</Li>
+        <Li class="activeTab">tab2</Li>
+        <Li class>tab3</Li>
+      </ul>
+      <div class="panel">我是内容1</div>
+      <div class="panel">我是内容2</div>
+      <div class="panel">我是内容3</div>
+    </div>
+
+    <script>
+      var tabs=document.querySelector("#tabs");
+      tabs.addEventListener("click",function(e){
+          var target=e.target;
+          var children=tabs.children;
+          var tarI=detect(target);
+          var panels=document.querySelectorAll(".panel");
+          console.log(target);
+      
+          if(tarI > -1){
+           removeClass(children,"activeTab");
+           addClass(target,"activeTab");
+           console.log(tarI);
+           removeClass(panels, 'active');
+           addClass(panels[tarI], 'active');
+          }
+      })
+
+      function hasClass(ele,cla){
+      return !!ele.className.match(new RegExp('\\b'+cla+'\\b'));
+     }
+      function addSingle(ele,cla){
+          var reg=new RegExp("\\b"+cla+"\\b");
+           if(ele.className.search(reg)>-1){
+            return;
+          }else{
+            ele.className+=""+ele.className;
+          } 
+      }
+
+      function singleRemoveClass(ele,cla){
+        ele.className = ele.className.replace(new RegExp('\\b'+cla+'\\b', 'g'), '');
+      }
+         
+      function removeClass(ele,cla){
+        if(ele.length && ele.length > 0){
+          for(var i=0; i<ele.length; i++){
+           singleRemoveClass(ele[i], cla); 
+          }
+      }else{
+          singleRemoveClass(ele, cla);
+      }   
+      }
+
+      function addClass(ele,cla){
+      if(hasClass(ele,cla)) return;
+        ele.className += ' ' + cla;
+      }
+      
+      function detect(ele){
+        var par=ele.parentElement;
+        var chil=par.children;
+        for(var i=0;i<chil.length;i++){
+          if(ele === chil[i]){
+            return i;
+          }
+        }
+      }
+    </script>
+</body>
+</html>
