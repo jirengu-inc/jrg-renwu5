@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>img-tabs</title>
+</head>
+<body>
+	<ul class="ct">
+    <li data-img="img/1.jpg">鼠标放置查看图片1</li>
+    <li data-img="img/2.jpg">鼠标放置查看图片2</li>
+    <li data-img="img/3.jpg">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+<script>
+  var ulCt=document.querySelector(".ct");
+  var imgZone=document.querySelector(".img-preview");
+  ulCt.addEventListener("mouseover",function(e){
+    var target=e.target;
+    var imgSrc=target.getAttribute("data-img");
+    imgZone.innerHTML='<img src="'+imgSrc+'">'
+  })
+</script>
+</body>
+</html>
