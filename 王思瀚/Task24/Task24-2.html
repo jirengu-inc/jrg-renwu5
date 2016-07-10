@@ -48,75 +48,86 @@
     <a href="" class="btn">MORE</a>
 
 <script>
-
-
-    function ajax(){
-      var dataStr ='';
-      for (var key in opts.data) {
-        dataStr += key + '=' + opts.data[key] + '&';
-      }
-      dataStr = dataStr.substr(0,dataStr.length - 1);
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange =function(opts){
-        if (xmlhttp.readyState == 4 && xmlhttp.status ==200) {
-          var json = JSON.parse(xmlhttp.responseText);
-          opts.success(json);
-        }
-        if (xmlhttp.readyState == 4 && xmlhttp.status ==404) {
-          opts.error();
-        }
-        if (opts.type.toLowerCase() == "get") {
-          xmlhttp.open(opts.url,opts.url+'?'+dataStr,true);
-          xmlhttp.send();
-        }
-        if (opts.type.toLowerCase() == "post") {
-          xmlhttp.open(opts.url,opts.url,true);
-          xmlhttp.setRequestHeader('content-type','application/x-www-form-urlencoded');
-          xmlhttp.send(dataStr);
-        }
-      }
-    }
-
-    function success(json){
-      var ct  = document.querySelector('.ct');
-
-      for (var i = 0; i < opts.data.length; i++) {
-            var newLi = document.createElement("li");
-            newLi.innerText = "内容"+json.data[i];
-            ct.appendChild(newLi);
-      };
-      this.btn.innerHTML = <a href="" class="btn">MORE</a>;
-      start += 5;
-    }
-    var isloading = false;
-    var start =3;
-    var btn = document.querySelector('.btn');
+// var isloading = false;
 
 
 
-    btn.addEventListener('click',function(e){
-      e.preventDefault();
-      if (isloading) {
-        return;
-      }
-      isloading =true;
-      this.btn.innerHTML = <img src="loading.gif" alt=""/>
-      ajax({
-         url:"ajax_1.php",
-         type:"get",
-         data:{
-           start:start,
-           length:5
-         },
-         success:function(json){
-           success(json);
-         },
-         error:function(){
-           console.log("oh...出问题了....");
-         }
-      });
+function ajax(options){
+  console.log(options.url);
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function(){
+  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+    var data = JSON.parse(xmlhttp.responseText);
+    options.success(data)
+  }
+  if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
+    options.error();
+  }
 
-    })
+}
+var dataStr = '';
+for(key in options.data){
+  dataStr += key+'='+options.data[key] + '&';
+}
+dataStr = dataStr.substr(0,dataStr.length-1);
+if (options.type.toLowerCase() == 'get') {
+  var url = options.url + '?' +dataStr;
+  xmlhttp.open(options.type,url,true);
+  xmlhttp.send();
+}
+
+if (options.type.toLowerCase() == 'post') {
+  xmlhttp.open(options.type,options.url,true)
+  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  xmlhttp.send(dataStr)
+}
+}
+
+
+var start = 3;
+var length =5;
+var isloading =false;
+var btn = document.querySelector(".btn");
+
+btn.addEventListener('click',function(e){
+e.preventDefault();
+
+
+  if (isloading) {
+    return;
+  }
+console.log(btn.innerHTML);
+btn.innerHTML = "<img src='loading.gif' width=50px height=20px/>";
+
+  ajax({
+     url:'Task24-2.php',
+     type:'get',
+     data:{
+         start:start,
+         length:length
+     },
+     success:function(json){
+    
+       success(json)
+     },
+     error:function(){
+       console.log("oh...出问题了....");
+     }
+  });
+})
+function success(json){
+
+  var ct  = document.querySelector('.ct');
+  for (var i = 0; i < json.data.length; i++) {
+
+        var newLi = document.createElement('li');
+        newLi.innerText = json.data[i];
+        ct.appendChild(newLi);
+  }
+btn.innerHTML = "MORE";
+isloading =false;
+start += 5;
+}
 </script>
 </body>
 </html>
