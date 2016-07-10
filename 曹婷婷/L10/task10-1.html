@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+	<title>饥人谷</title>
+	<style>
+	html,body,div,ul,li,h2,p{
+		margin: 0px;
+		padding: 0px;
+	}
+	body{
+		font-family: "Microsoft YaHei";
+	}
+	a{
+		text-decoration: none;
+		color: #fff;
+	}
+	.box{
+		width: 900px;
+		clear: both;
+		margin: 0px auto;
+	}
+	/*.box:after{
+		content: " ";
+		display: inline-block;
+		width: 0px;
+		height: 100%;
+		clear: both;
+	}*/
+	.header img{
+		height: 40px;
+		float: left;
+	}
+	.header img:hover{
+		opacity: 0.5;
+	}
+	.header ul{
+		float: right;
+	}
+	.header li{
+		width: 50px;
+		height: 40px;
+		list-style: none;
+		float: left;
+		text-align: center;
+		line-height: 50px;
+	}
+	.header li:hover{
+		border-bottom: 5px solid #fff;
+	}
+	.content h2{
+		margin: 50px 0px 25px 10px;
+	}
+	.content p{
+		margin: 5px 10px;
+	}
+	
+	.header, .footer{
+		height: 50px;
+		background: rgb(51,51,51);
+	}
+	.content .aside,.main{
+		background: rgb(238,238,238);
+	}
+	.content .aside{
+		width: 200px;
+		height: 500px;
+		float: left;
+		margin-top: 10px;
+	}
+	.content .main{
+		width: 690px;
+		height: 200px;
+		float: right;
+		margin-top: 10px;
+		margin-left: 10px;
+		color: rgb(101,101,101);
+	}
+	/*.footer{
+		clear: both;
+	}*/
+	 .footer ul{
+	 	float: left;
+	 }
+	 .footer li{
+	 	width: 60px;
+		height: 50px;
+		list-style: none;
+		float: left;
+		text-align: center;
+		line-height: 50px;
+		font-size: 15px;
+	 }
+	 .header:after, .content:after, .footer:after{
+		content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+
+        /*content:"";
+        display:table;
+        clear:both;*/
+	 }
+	</style>
+</head>
+<body>
+	<div class="header">
+	<div class="box">
+		<a href="http://www.jirengu.com/"><img src="http://cdn.jirengu.com/public/logo-tiny.png" alt="这是饥人谷官网"></a>
+		<ul>
+			<li><a href="#" title="前端技能">技能</a></li>
+			<li><a href="#" title="一路走来">经历</a></li>
+			<li><a href="#" title="学员作品">作品</a></li>
+			<li><a href="#" title="关于我们">关于</a></li>
+		</ul>
+		</div>
+	</div>
+	<div class="content">
+		<div class="box">
+		<div class="aside"></div>
+		<div class="main">
+			<h2>我的作品</h2>
+			<p>生活很美好</p>
+			<p>心情不错</p>
+			<p>代码写的很漂亮</p>
+		</div>
+	</div>
+	</div>
+	<div class="footer">
+		<div class="box">
+			<ul>
+				<li><a href="http://www.jirengu.com/">饥人谷</a></li>
+				<li><a href="http://jscode.me/">JSCODE</a></li>
+				<li><a href="http://js.jirengu.com/?html,output">JSBIN</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
