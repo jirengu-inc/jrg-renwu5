@@ -46,7 +46,7 @@
     </ul>
     <a class="btn" href="#">加载更多</a>
 
-<script src="task24-1.js"></script>
+<script src="util.js"></script>
 <script>
     var ct = document.querySelector('.ct'),
         btn = document.querySelector('.btn');
@@ -54,22 +54,22 @@
     btn.addEventListener('click',function(){
         btn.innerHTML = '<img src="loading.gif">';
         ajax({
-            url: 'http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E9%99%88%E6%9D%8E/%E4%BB%BB%E5%8A%A124/load',
+            url: '/load',
             type: 'get',
             data: {
                 start: ct.children.length+1,
-                len: 6
+                len: 3
             },
             success: function(ret){
-                for(var i=0; i<ret.arr.length; i++){
+                for(var i=0; i<ret.msg.length; i++){
                     var li = document.createElement("li");
-                    li.innerText = ret.arr[i];
+                    li.innerText = ret.msg[i];
                     ct.appendChild(li);
                 }
                 btn.innerHTML = '加载更多';
             },
             error: function(){
-                alert('出错了');
+                console.log('出错了');
             }
         });
     });
