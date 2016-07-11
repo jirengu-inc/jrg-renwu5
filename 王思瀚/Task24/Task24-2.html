@@ -107,7 +107,6 @@ btn.innerHTML = "<img src='loading.gif' width=50px height=20px/>";
          length:length
      },
      success:function(json){
-    
        success(json)
      },
      error:function(){
@@ -119,7 +118,6 @@ function success(json){
 
   var ct  = document.querySelector('.ct');
   for (var i = 0; i < json.data.length; i++) {
-
         var newLi = document.createElement('li');
         newLi.innerText = json.data[i];
         ct.appendChild(newLi);
