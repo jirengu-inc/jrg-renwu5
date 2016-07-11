@@ -71,9 +71,11 @@
             note3 = document.querySelector('.note3'),
             btn = document.querySelector('.btn');
 
+        //用户名js验证
         username.addEventListener('change',function(){
             if(isValidUsername(username.value)){
                 note1.innerText = '用户名可用';
+                removeClass(username,'error');
             }
             else{
                 note1.innerText = '用户名格式不正确';
@@ -81,10 +83,60 @@
             }
         });
 
-        // function addClass(el,cls){
-        //     el.className += ' ' + cls;
-        // }                               //使用从util.js引入的addClass不知为何没有作用
+        //首次密码js验证
+        pwd1.addEventListener('change',function(){
+            if(isValidPassword(pwd1.value)){
+                removeClass(pwd1,'error');
+                note2.innerText = '';
+            }
+            else{
+                note2.innerText = '密码格式不正确';
+                addClass(pwd1,'error');
+            }
+        });
 
+        //二次输入密码js验证
+        pwd2.addEventListener('change',function(){
+            if(isValidPassword(pwd2.value) && pwd2.value === pwd1.value){
+                removeClass(pwd2,'error');
+                note3.innerText = '';
+            }
+            else{
+                note3.innerText = '请再输一遍';
+                addClass(pwd2,'error');
+            }
+        });
+
+        //ajax验证
+        btn.addEventListener('click',function(e){
+            e.preventDefault();
+            if(!pwd1.value || !pwd2.value || !username.value){
+                return alert('请输入信息');
+            }
+            if(hasClass(username, 'error') || hasClass(pwd1, 'error') || hasClass(pwd2, 'error')){
+                return alert('请重新输入');
+            }
+            ajax({
+                url: '/check',
+                type: 'post',
+                data: {
+                    username: username.value,
+                    password: pwd2
+                },
+                success: function(ret){
+                    if(ret.status == 0){        //这里全等判断失败 有点迷
+                        alert('注册成功');
+                    }
+                    else{
+                        note1.innerText = '用户名已存在';
+                        addClass(username,'error');
+                    }
+                },
+                error: function(){
+                    console.log('出错了');
+                }
+            });
+        });
     </script>
 </body>
 </html>

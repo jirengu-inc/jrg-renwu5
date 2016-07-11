@@ -1,66 +1,37 @@
-// 判断el是否为一个数组，返回一个bool值
-function isArray (el) {
-    return typeof el === 'object' && el instanceof Array;
-}
-
-//判断el是否为一个json，返回一个bool值
-function isJson(el){
-    return typeof el === 'object' && el.toString() === '[object Object]';
-}
-
-// 使用递归来实现一个深拷贝
-// 拷贝对象以及内部嵌套的值可以是字符串、数字、布尔、数组、json对象中的任意项。不会包含函数、正则对象等
-function cloneObject(obj){
-    var newObj;
-
-    //数字、布尔值、字符串
-    if(typeof obj === "number" || typeof obj === "boolean" || typeof obj === "string"){
-        newObj = obj;
-    }
-
-    //数组
-
-
-    //json
-
-}
-
-//判断el是否拥有classname
-function hasClass(el,cls){
-    var str = el.className;
-    var reg = new RegExp('\\b'+cls+'\\b');
-    return reg.test(str);
-}
-
-//增加el的classname
-function addClass(el,cls){
-    var str = el.className;
-    if(!hasClass(el,cls)){
-        str += ' ' + cls;
+//为el增加一个样式名为cls的新样式
+function addClass(el, cls) {
+    if (!hasClass(el, cls)) {
+        el.className += " " + cls;
     }
 }
 
-//删除el的classname
-function removeClass(el,cls){
-    var str = el.className;
-    var reg = new RegExp('\\b'+cls+'\\b');
-    return str.relace(reg,'');
+//移除el中的样式cls
+function removeClass(el, cls) {
+    var reg = new RegExp('\\b' + cls + '\\b', 'g'),
+        tmp = el.className.replace(reg, '').replace(/\s{2,}/g, ' ');
+    el.className = trim(tmp);
+}
+
+//判断el中是否拥有cls样式
+function hasClass(el, cls) {
+    var reg = new RegExp('\\b' + cls + '\\b', 'g');
+    return reg.test(el.className);
 }
 
 //去除字符串两边空白字符
-function trim(str){
-    return str.replace(/^\s*|\s*$/g,'');
+function trim(str) {
+    return str.replace(/^\s+|\s+$/g, "");
 }
 
-//简单的用户名判断：长度6-20个字符，只能包括字母、数字、下划线
+//简单的用户名判断：长度3-10个字符，只能包括字母、数字、下划线
 function isValidUsername(str){
-    var reg = /^\w{6,20}$/;
+    var reg = /^\w{3,10}$/;
     return reg.test(str);
 }
 
-//简单的密码判断：长度6-20个字符，包括大写字母、小写字母、数字、下划线至少两种
+//简单的密码判断：长度6-15个字符，包括大写字母、小写字母、数字、下划线至少两种
 function isValidPassword(str){
-    if(str.length<6||str.length>20){
+    if(str.length<6||str.length>15){
         return false;
     }
     if(/(^[a-z]+$)|(^[A-Z]+$)|(^_+$)|(^\d+$)/g.test(str)){
@@ -96,7 +67,6 @@ function ajax(opts){
         }
     };
 
-    // 需要发送的信息转换成字符串
     var dataStr = '';
     for(var key in opts.data){
         dataStr += key + '=' + opts.data[key] + '&';
