@@ -1,0 +1,46 @@
+.top,.middle,.bottom{
+	position: relative;
+	width: 200px;
+	margin: 30px;
+}
+.con{
+	width: 200px;
+	border: 1px solid #ccc;
+	height: 100px;
+}
+.triangle{
+	position: absolute;
+	width: 0px;
+	border-top: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-bottom:10px solid #ccc;
+	top: -19px;
+	left: 10px;
+}
+.trianglem{
+	position: absolute;
+	width: 0px;
+	border-right:15px solid red;
+	border-bottom:15px solid transparent;  
+	right: -2px;
+}
+.triangleb{
+	position: absolute;
+	width: 0px;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-bottom:10px solid #ccc;
+	top: -10px;
+	left: 10px;
+}
+.triangleb:after{
+	content: "";
+	display: block;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-bottom:10px solid white;
+	position: absolute;
+	top: 1px;
+	left: -10px;
+}
