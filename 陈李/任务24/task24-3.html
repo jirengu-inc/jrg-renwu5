@@ -110,6 +110,7 @@
         //ajax验证
         btn.addEventListener('click',function(e){
             e.preventDefault();
+            //防止无视错误提示 直接提交
             if(!pwd1.value || !pwd2.value || !username.value){
                 return alert('请输入信息');
             }
