@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Examples</title>
+<style>
+    .form dd {
+        margin-left: 90px;
+    }
+    .form dt {
+        float: left;
+        width: 80px;
+        height: 25px;
+        line-height: 25px;
+    }
+    .form input {
+        height: 25px;
+        line-height: 25px;
+        padding-left: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .form input.error{
+        border-color: red;
+    }
+    .form .note{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: #ccc;
+        height: 12px;
+        font-size: 12px;
+    }
+</style>
+</head>
+<body>
+
+    <div class="ct">
+        <h3>注册</h3>
+        <form action="">
+            <dl class="form">
+                <dt>用户名:</dt>
+                <dd>
+                    <input class="username" type="text" placeholder="用户名(hunger被注册过)">
+                </dd>
+                <dd class="note note1">只能是字母、数字、下划线，3-10个字符</dd>
+                <dt>密码:</dt>
+                <dd>
+                    <input type="password" class="pwd1">
+                </dd>
+                <dd class="note note2">大写字母、小写、数字、下划线最少两种，6-15个字符</dd>
+                <dt>再输一次:</dt>
+                <dd>
+                    <input type="password" class="pwd2" placeholder="再输入一次密码">
+                </dd>
+                <dd class="note note3"></dd>
+                <dd><button class="btn">注册</button></dd>
+            </dl>
+        </form>
+    </div>
+
+    <script src="util.js"></script>
+    <script>
+        var form = document.querySelector('.form'),
+            username = document.querySelector('.username'),
+            note1 = document.querySelector('.note1'),
+            pwd1 = document.querySelector('.pwd1'),
+            note2 = document.querySelector('.note2'),
+            pwd2 = document.querySelector('.pwd2'),
+            note3 = document.querySelector('.note3'),
+            btn = document.querySelector('.btn');
+
+        //用户名js验证
+        username.addEventListener('change',function(){
+            if(isValidUsername(username.value)){
+                note1.innerText = '用户名可用';
+                removeClass(username,'error');
+            }
+            else{
+                note1.innerText = '用户名格式不正确';
+                addClass(username,'error');
+            }
+        });
+
+        //首次密码js验证
+        pwd1.addEventListener('change',function(){
+            if(isValidPassword(pwd1.value)){
+                removeClass(pwd1,'error');
+                note2.innerText = '';
+            }
+            else{
+                note2.innerText = '密码格式不正确';
+                addClass(pwd1,'error');
+            }
+        });
+
+        //二次输入密码js验证
+        pwd2.addEventListener('change',function(){
+            if(isValidPassword(pwd2.value) && pwd2.value === pwd1.value){
+                removeClass(pwd2,'error');
+                note3.innerText = '';
+            }
+            else{
+                note3.innerText = '请再输一遍';
+                addClass(pwd2,'error');
+            }
+        });
+
+        //ajax验证
+        btn.addEventListener('click',function(e){
+            e.preventDefault();
+            //防止无视错误提示 直接提交
+            if(!pwd1.value || !pwd2.value || !username.value){
+                return alert('请输入信息');
+            }
+            if(hasClass(username, 'error') || hasClass(pwd1, 'error') || hasClass(pwd2, 'error')){
+                return alert('请重新输入');
+            }
+            ajax({
+                url: '/check',
+                type: 'post',
+                data: {
+                    username: username.value,
+                    password: pwd2
+                },
+                success: function(ret){
+                    if(ret.status == 0){        //这里全等判断失败 有点迷
+                        alert('注册成功');
+                    }
+                    else{
+                        note1.innerText = '用户名已存在';
+                        addClass(username,'error');
+                    }
+                },
+                error: function(){
+                    console.log('出错了');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
