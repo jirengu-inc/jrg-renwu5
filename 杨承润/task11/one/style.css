@@ -1,0 +1,44 @@
+html,body,div,ul,li{
+	margin: 0;
+	padding: 0;
+}
+ul,li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+#bars{
+	width: 600px;
+	height: 31px;
+	background-color: rgb(203,203,203);
+	font-family: "微软雅黑";
+	margin: 0 auto;
+}
+#bars .nav>li{
+	display: inline-block;
+	padding: 5px;
+	position: relative;
+}
+#bars .nav>li:hover{
+	background-color: rgb(170,170,170);
+}
+#bars .nav>li:hover .child{
+	display: block;
+}
+#bars .child{
+	display: none;
+	background-color: white;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	border: 1px solid rgb(203,203,203);
+}
+#bars .child>li:hover{
+	background-color: rgb(203,203,203);
+}
+#bars .child>li{
+	font-size: 16px;
+	padding: 5px;
+}
