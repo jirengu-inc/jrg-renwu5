@@ -1,0 +1,268 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+	list-style: none;
+}
+
+.layout {
+	width: 1000px;
+	margin: 0px auto;
+}
+
+#header {
+	border: 1px solid gold;/*这里加了一个测试用的border*/
+}
+
+#header:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.the-head-ul {}
+
+.the-head-ul>li>a {
+	float: left;
+	display: block;
+	padding: 10px 20px;
+}
+
+.the-head-ul>li a:hover {
+	background-color: orange;
+	color: white;
+	transition: all .2s;
+}
+
+.the-head-ul>li:hover .the-child {
+	display: block;
+	background-color: white;
+	padding-left: 10px;
+	padding-right: 10px;
+	line-height: 30px;
+}
+
+.the-head-ul-li-span1 {
+	width: 0px;
+	height: 0px;
+	border-top: 7px solid black;
+	border-right: 7px solid transparent;
+	border-bottom: 7px solid transparent;
+	border-left: 7px solid transparent;
+	position: relative;
+	top: 15px;
+}
+
+.the-child {
+	display: none;
+	position: absolute;
+	top: 43px;
+	left: 550px;
+	color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*内容区块的开始*/
+.head-content{
+	background-color: #b84d45;
+	padding-top: 100px;
+	padding-bottom: 60px;
+	border: 1px solid gold;
+}
+.head-content-h3{
+	color: white;
+	font-size: 30px;
+}
+.head-content-p1{
+	color: white;
+	line-height: 50px;
+}
+.head-content-p2{
+	color: white;
+}
+.first-content{
+	border: 1px solid gold;
+	height: 40px;
+	background-color: #e9e9e9;
+	padding-left: 20px;
+	margin-top: 20px;
+}
+.first-content:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.first-content-ul{
+	margin-top: 8px;
+}
+
+.first-content-ul>li{
+	float: left;
+	color: white;
+}
+.first-content-ul>li a{
+	color: black;
+	margin-right: 10px;
+	transition: all .2s;
+}
+.first-content-ul>li a:hover{
+	color: white;
+}
+#nowSelected a{
+	color: #d30000;
+}
+/*在经历了一群混乱之后,来到了第二个内容区块的DIV*/
+.second-content{
+	border: 1px solid gold;/*测试用的框框*/
+}
+.second-content:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.second-content-ul{
+	margin-top: 20px;
+	text-align: center;
+	line-height: 32px;
+}
+.second-content-ul>li{
+	width: 310px;
+	height: 330px;
+	float: left;
+	margin: 0 35px 22px 0;
+	outline: 1px solid #AAA;
+}
+.second-content-ul>li>a:last-of-type{
+	padding: 5px 10px;
+	background-color: #f54500;
+	color: white;
+}
+.second-content-ul>li>a:last-of-type:hover{
+	padding: 5px 10px;
+	background-color: #406dff;
+	color: white;
+	border-radius: 20%;
+	transition: all .3s;
+}
+.second-content-ul>li>a>img{
+	width: 310px;
+}
+.second-content-ul>li>a>img:hover{
+	opacity: .5;
+	transition: all .3s;
+}
+#Fu-bianju{
+	margin-right: -35px;
+}
+.thirdly-content{
+	background-color: #b84d45;
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.thirdly-content h3{
+	color: white;
+	line-height: 50px;
+	font-size: 30px;
+}
+.thirdly-content p{
+	color: white;
+	font-size: 20px;
+}
+.thirdly-content a{
+	margin-top: 5px;
+	line-height: 50px;
+	color: white;
+	padding: 5px;
+	border: 1px solid white;
+	border-radius: 7px;
+}
+.thirdly-content a:hover{
+	margin-top: 5px;
+	line-height: 50px;
+	color: white;
+	padding: 5px;
+	border: 1px solid orange;
+	border-radius: 7px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*内容区块的结束*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#footer {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	text-align: center;
+}
