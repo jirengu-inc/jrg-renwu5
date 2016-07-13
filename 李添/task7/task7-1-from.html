@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+</head>
+<body>
+    <form action="index.html" method="post">
+        <label for="">姓名：</label>
+        <input type="text" name="username" placeholder="用户名"><br>
+        <label for="">密码：</label>
+        <input type="password" name="password" maxlength="10"><br>
+        性别：
+        <input type="radio" name="sex" value="male" checked="checked">
+        <label for="male">男</label>
+        <input type="radio" name="sex" value="female">
+        <label for="female">女</label>
+        <br>
+        性取向：
+        <input type="radio" name="sexuality" value="male">
+        <label for="male">男</label>
+        <input type="radio" name="sexuality" value="female" checked="checked">
+        <label for="female">女</label>
+        <br>
+        爱好：
+        <input type="checkbox" name="hobby[]" value="dota">
+        <label for="dota">dota</label>
+        <input type="checkbox" name="hobby[]" value="travel" checked="checked">
+        <label for="travel">旅游</label>
+        <input type="checkbox" name="hobby[]" value="pet" checked="checked">
+        <label for="pet">宠物</label>
+        <br>
+        评论：
+        <textarea name="comment" rows="8" cols="40" placeholder="ddd"></textarea>
+        <br>
+        我的car：
+        <select name="mycar">
+            <option value="volvo">沃尔沃</option>
+            <option value="saab" selected="selected">萨博</option>
+            <option value="opel">欧宝</option>
+            <option value="audi">奥迪</option>
+        </select>
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>
