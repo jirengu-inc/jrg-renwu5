@@ -3,36 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <title>ENVY</title>
-    <script src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <style>
         html,body,ul,li,div,h1,h2,h3,p{
             margin: 0;
             padding: 0;
-            text-decoration: none;
+           list-style: none;
             font-size: 16px;
             font-family: "Microsoft Yahei";
         }
         a{
             text-decoration: none;
+            color: #fff;
         }
-        .icon{
+        #container{
+            margin:10px;
+            position: relative;
+        }
+        #container>li{
+            background-color: #de272e;
+            width: 120px;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+        }
 
+        .icon{
+           position: relative;
+            left: 30px;
+            color: #fff;
         }
+
+        .child{
+            width: 200px;
+            border: 1px solid #ccc;
+            position: absolute;
+            left: 140px;
+            top:0;
+            background-color: #fff;
+        }
+        .child>li{
+            width: 60px;
+            padding: 10px;
+            height: 20px;
+            float: left;
+            color: #000;
+        }
+        .child:after{
+            content: '';
+            display: none;
+            clear: both;
+        }
+
 
     </style>
 </head>
 <body>
     <ul id="container">
-        <li><a href="#">珠宝玉器</a>
-           <span class="icon"></span>
-            <ul>
+        <li  class="nav"><a href="#">珠宝玉器</a>
+
+<!--          为什么这里将class加载a标签上就不好使呢 -->
+
+           <span class="icon">></span>
+            <ul class="child">
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+            </ul>
+        </li>
+        <li class="nav"><a href="#">珠宝玉器</a>
+           <span class="icon">></span>
+            <ul class="child">
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+            </ul>
+        </li>
+        <li class="nav"><a href="#">珠宝玉器</a>
+        <span class="icon">></span>
+        <ul class="child">
+                 <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
 
             </ul>
         </li>
-        <li><a href="#">珠宝玉器</a></li>
-        <li><a href="#">珠宝玉器</a></li>
-        <li><a href="#">珠宝玉器</a></li>
-        <li><a href="#">珠宝玉器</a></li>
+        <li class="nav"><a href="#">珠宝玉器</a>
+        <span class="icon">></span>
+        <ul class="child">
+                  <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+            </ul>
+        </li>
+        <li class="nav"><a href="#">珠宝玉器</a>
+         <span class="icon">></span>
+          <ul class="child">
+                 <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+                <li>翡翠</li>
+            </ul>
+        </li>
     </ul>
+    <script>
+    var $nav = $('.nav');
+    var $child = $('.child');
+
+    $child.hide();
+
+    $nav.on('mouseenter',function(){
+            $(this).find('.child').show();
+        });
+    $nav.on('mouseleave',function(){
+            $(this).find('.child').hide();
+        });
+
+    </script>
 </body>
 </html>
