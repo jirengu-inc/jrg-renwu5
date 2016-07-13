@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>25-1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+    ul,li,p {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .item {
+        width: 200px;
+        position: absolute;
+        left: 145px;
+        top: 0;
+        border: 1px solid #ccc;
+        color: #000;
+    }
+    .item li {
+        width: 60px;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 20px;
+        float: left;
+    }
+    .menu-item {
+        width: 140px;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 5px;
+        border-bottom: 1px solid #eee;
+        background-color: red;
+        color: #fff;
+        cursor: pointer;
+        position: relative;
+    }
+    .menu-item span {
+        padding-left: 60px;
+    }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <ul class="menu">
+            <li class="menu-item">
+                <p>珠宝玉器<span>></span></p>
+                <ul class="item">
+                    <li>翡翠</li>
+                    <li>玉石</li>
+                    <li>宝石</li>
+                    <li>玛瑙</li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <p>珠宝玉器<span>></span></p>
+                <ul class="item">
+                    <li>翡翠</li>
+                    <li>玉石</li>
+                    <li>宝石</li>
+                    <li>玛瑙</li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <p>珠宝玉器<span>></span></p>
+                <ul class="item">
+                    <li>翡翠</li>
+                    <li>玉石</li>
+                    <li>宝石</li>
+                    <li>玛瑙</li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <p>珠宝玉器<span>></span></p>
+                <ul class="item">
+                    <li>翡翠</li>
+                    <li>玉石</li>
+                    <li>宝石</li>
+                    <li>玛瑙</li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <p>珠宝玉器<span>></span></p>
+                <ul class="item">
+                    <li>翡翠</li>
+                    <li>玉石</li>
+                    <li>宝石</li>
+                    <li>玛瑙</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        var $mi = $('.menu-item'),
+            $item = $('.item');
+
+        $item.hide();
+        $mi.on('mouseenter',function(){
+            $(this).find('.item').show();
+        });
+        $mi.on('mouseleave',function(){
+            $(this).find('.item').hide();
+        });
+
+    </script>
+</body>
+</html>

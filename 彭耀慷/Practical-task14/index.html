@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="CSS/ux_1468139707_626769/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="CSS/ux_1468139707_626769/demo.css"/>
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+				text-decoration: none;
+				list-style: none;
+				font-family: "微软雅黑";
+			}
+			
+			hr {
+				border-top: 1px solid #eee;
+				max-width: 100px;
+				margin-top: 20px;
+				margin-right: auto;
+				margin-bottom: 10px;
+				margin-left: auto;
+			}
+			a:hover{
+				text-decoration: none;
+			}
+			@font-face {
+				font-family: 'iconfont';
+				src: url('iconfont.eot');
+				/* IE9*/
+				src: url('iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('iconfont.woff') format('woff'), /* chrome、firefox */
+				url('iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+				url('iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-size: 16px;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			
+			#margin_none {
+				margin-right: 0px;
+			}
+			
+			.layout {
+				width: 900px;
+				margin: 0 auto;
+			}
+			
+			.test_color {
+				background-color: gray;
+			}
+			
+			#header {
+				background: url(img/42947917_p0.jpg) no-repeat;
+				background-size: cover;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				display: table;
+			}
+			
+			#header .header_position {
+				padding: 438px;
+				color: white;
+				text-shadow: 1px 1px 1px black;
+			}
+			
+			#header .header_position>h1 {
+				font-size: 40px;
+				margin-bottom: 20px;
+			}
+			
+			#header .header_position>a {
+				padding: 10px 20px;
+				background-color: #ffa200;
+				color: white;
+				text-shadow: none;
+				box-shadow: 1px 1px 1px #909090;
+				display: inline-block;
+				margin-top: 15px;
+				transition: all .5s;
+			}
+			
+			#header .header_position>a:hover {
+				background-color: #63b0ff;
+			}
+			/*内容区块的CSS开始*/
+			
+			#content {}
+			
+			#content .introduce {
+				padding: 60px 0px;
+				text-align: center;
+			}
+			
+			#content .introduce>h2 {
+				color: #202020;
+			}
+			
+			#content .introduce>p {
+				color: #747474;
+			}
+			
+			.introduce_portrait img {
+				width: 60px;
+				height: 60px;
+			}
+			
+			.my_ability {
+				width: 100%;
+				height: 100%;
+				background: #3197ff;
+				text-align: center;
+				min-height: 500px;
+			}
+			
+			.my_ability h2 {
+				color: white;
+				border-top: 5px solid transparent;
+				border-right: 5px solid transparent;
+				border-bottom: 5px solid white;
+				border-left: 5px solid transparent;
+				display: inline-block;
+				padding-bottom: 10px;
+				margin-top: 50px;
+				margin-bottom: 20px;
+				font-size: 20px;
+			}
+			
+			.component {
+				text-align: center;
+				margin-bottom: 30px;
+				margin-left: -165px;
+			}
+			
+			.component:after {
+				display: block;
+				content: "";
+				clear: both;
+			}
+			
+			.component li {
+				float: left;
+				margin-left: 166px;
+				width: 100px;
+				height: 180px;
+				text-align: center;
+			}
+			
+			.component h3 {
+				color: white;
+				margin-top: 10px;
+			}
+			
+			.component p {
+				font-size: 13px;
+				margin-top: 20px;
+				margin-bottom: 20px;
+				max-width: 150px;
+				text-align: center;
+				color: white;
+			}
+			
+			#component_span_cricle {
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				background-color: white;
+				display: inline-block;
+			}
+			
+			.icon_font_img {
+				display: block;
+				margin-top: 20px;
+			}
+			
+			.icon_font_img>img {
+				width: 60px;
+				height: 60px;
+				transition: all .5s;
+				-webkit-transition: all .5s;
+				-moz-transition: all .5s;
+				-moz-transition: all .5s;
+			}
+			
+			.icon_font_img>img:hover {
+				margin-top: -10px;
+				width: 80px;
+				height: 80px;
+			}
+			
+			.a_become_a_button {
+				margin-top: 15px;
+				width: 100px;
+				display: inline-block;
+				padding: 10px 10px;
+				background-color: white;
+				color: black;
+				transition: all .1s;
+			}
+			
+			.a_become_a_button:hover {
+				background-color: #ffa200;
+				color: black;
+				font-size: 18px;
+				padding: 8.5px 10px;
+				font-weight: 400;
+			}
+			
+			.my_personal_style {
+				width: 100%;
+				padding: 200px 0;
+				color: white;
+				background-image: url(img/callout.jpg);
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+			
+			.my_personal_style>.container_words {
+				width: 960px;
+				margin: 0px auto;
+			}
+			
+			.my_personal_style>.container_words h1 {
+				text-align: center;
+				font-size: 3em;
+			}
+			
+			#my_production>h3 {
+				text-align: center;
+				margin-top: 60px;
+			}
+			
+			.wrap {
+				width: 960px;
+				margin: 0px auto;
+			}
+			
+			.my_production_ul li a {
+				float: left;
+				width: 465px;
+				height: 305px;
+				margin-top: 20px;
+				margin-bottom: 30px;
+				margin-right: 30px;
+				background-image: url(img/hand_and_phone.jpg);
+				transition: all .2s;
+			}
+			
+			.my_production_ul li a:hover {
+				background-image: url(img/hand_and_phone_hover.png);
+			}
+			
+			.my_production_ul:after {
+				content: "";
+				display: block;
+				clear: both;
+			}
+			
+			#call_to_action {
+				background-color: #337ab7;
+			}
+			
+			.call_to_action_content {
+				text-align: center;
+				padding: 50px;
+				color: white;
+			}
+			
+			.call_to_action_content h3 {
+				font-weight: 100;
+			}
+			
+			.call_to_action_content a:first-of-type {
+				color: white;
+				padding: 15px 30px;
+				margin-top: 20px;
+				background-color: grey;
+				display: inline-block;
+				transition: all .3s;
+			}
+			
+			.call_to_action_content a:first-of-type:hover {
+				background-color: white;
+				color: black;
+			}
+			
+			.call_to_action_content a:last-of-type {
+				color: white;
+				padding: 15px 30px;
+				margin-top: 20px;
+				background-color: #204789;
+				display: inline-block;
+				transition: all .3s;
+			}
+			
+			.call_to_action_content a:last-of-type:hover {
+				background-color: #ffa200;
+				color: black;
+			}
+			
+			#footer {
+				text-align: center;
+				margin-top: 100px;
+			}
+			
+			#footer p {
+				line-height: 25px;
+			}
+			
+			.icon_phone span img {
+				width: 20px;
+				height: 20px;
+				float: left;
+				position: relative;
+				left: 390px;
+			}
+			
+			.icon_email span img {
+				width: 25px;
+				height: 25px;
+				float: left;
+				position: relative;
+				left: 355px;
+			}
+			
+			.icon_email li a {
+				color: #ffa200;
+			}
+			
+			.icon_email li a:hover {
+				color: red;
+			}
+			.tantact_icon i{
+				font-size: 40px;
+				margin-right: 20px;
+				transition: all .2s;
+			}
+			.tantact_icon i:hover{
+				opacity: .5;
+			}
+			#footer pre{
+				font-size: 14px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="header">
+			<div class="layout header_position">
+				<h1>我是彭耀慷</h1>
+				<h3>一个有信仰的FE工程师</h3>
+				<a class="btn" href="#">More</a>
+			</div>
+		</div>
+		<!--里面内容区开始了-->
+		<div id="content">
+			<div class="introduce">
+				<span class="introduce_portrait">
+					<img src="img/head_portrait.png"/>
+				</span>
+				<h2>个人的见解	包含一些小故事</h2>
+				<p>这里将会是有点长的简介，然后放点具体的一丢丢描述放着，应该会很高大上很炫吧哈哈~</p>
+			</div>
+			<div class="my_ability">
+				<div class="layout">
+					<h2>my ability</h2>
+					<ul class="component">
+						<li>
+							<span id="component_span_cricle">
+								<i class="icon_font_img"><img src="img/beaker.png"/></i>
+							</span>
+							<h3>静态页面</h3>
+							<p>Lorem ipsum dolor sit amet,consectetur adipisicing elit.</p>
+							<a class="a_become_a_button" href="">Learn more</a>
+						</li>
+						<li>
+							<span id="component_span_cricle">
+								<i class="icon_font_img"><img src="img/cloud.png"/></i>
+							</span>
+							<h3>JD组件插件</h3>
+							<p>Lorem ipsum dolor sit amet,consectetur adipisicing elit.</p>
+							<a class="a_become_a_button" href="">Learn more</a>
+						</li>
+						<li>
+							<span id="component_span_cricle">
+								<i class="icon_font_img"><img src="img/compass.png"/></i>
+							</span>
+							<h3>工具构建</h3>
+							<p>Lorem ipsum dolor sit amet,consectetur adipisicing elit.</p>
+							<a class="a_become_a_button" href="">Learn more</a>
+						</li>
+						<li>
+							<span id="component_span_cricle">
+								<i class="icon_font_img"><img src="img/shield.png"/></i>
+							</span>
+							<h3>HTML5&amp;CSS3</h3>
+							<p>Lorem ipsum dolor sit amet,consectetur adipisicing elit.</p>
+							<a class="a_become_a_button" href="">Learn more</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="my_personal_style">
+				<div class="container_words">
+					<h1>这里是一段小小的句子</h1>
+				</div>
+			</div>
+
+		</div>
+		<div id="my_production" class="wrap">
+			<h3>我的作品</h3>
+			<hr />
+			<ul class="my_production_ul">
+				<li>
+					<a href=""></a>
+				</li>
+				<li>
+					<a href="" id="margin_none"></a>
+				</li>
+				<li>
+					<a href=""></a>
+				</li>
+				<li>
+					<a href="" id="margin_none"></a>
+				</li>
+			</ul>
+		</div>
+		<div id="call_to_action">
+			<div class="wrap call_to_action_content">
+				<h3>我是一个勤奋的人.</h3>
+				<a href="#">Click me</a>
+				<a href="#">Click me</a>
+			</div>
+		</div>
+		<!--里面内容区从此结束了-->
+		<div id="footer">
+			<div class="layout">
+				<h4>我的信息</h4>
+				<p>
+					3481 Melrose Place
+					<br /> Beverly Hills, CA 90210
+				</p>
+				<ul class="icon_phone">
+					<span>
+						<img src="img/phone.png"/>
+					</span>
+					<li>
+						(123) 456-7890
+					</li>
+				</ul>
+				<ul class="icon_email">
+					<span>
+						<img src="img/email.png"/>
+					</span>
+					<li><a href="">pengyaokang@qq.com</a></li>
+				</ul>
+				<ul class="tantact_icon">
+					<i class="icon iconfont">&#xe66c;</i>
+					<i class="icon iconfont">&#xe604;</i>
+					<i class="icon iconfont">&#xe6b4;</i>
+				</ul>
+				<hr />
+				<p><pre>copyright&copy; StarLikeRain</pre></p>
+			</div>
+			
+		</div>
+	</body>
+
+</html>
