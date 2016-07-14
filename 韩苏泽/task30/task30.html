@@ -76,7 +76,9 @@
               me.placehandle($cur);
             });
             var parHeight=Math.max.apply(null,this.colHeight);
-            this.$par.height(parHeight);
+            if(this.$par.height()<parHeight){
+              this.$par.height(parHeight);
+            }
           },
           placehandle:function($el){
             var arr=this.colHeight
