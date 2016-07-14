@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task-7</title>
+    <style type="text/css">
+        form {
+            font-size: 25px;
+            font-family: "微软雅黑";
+        }
+
+        .decorate {
+            height: 28px;
+            width: 240px;
+            font-size: 20px;
+          border: 2px solid rgb(230, 230, 230);
+
+        }
+
+        .sub,.sel {
+            border-radius: 8px;
+            font-size: 18px;
+            font-family: "微软雅黑";
+        }
+
+        .sel {
+            width: 110px;
+            text-align: center;
+        }
+        .txt{
+          height:347px;
+           width:634px;
+           border:2px solid rgb(110, 110, 110);
+           font-size: 25px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form action="index.html" method="post">
+        姓名：
+        <input class="decorate" type="text" name="name" placeholder="用户名" />
+        <br> 密码：
+        <input class="decorate" type="password" name="pwd" placeholder="密码" maxlength="8" />
+        <br> 性别：
+        <input  type="radio" name="sex" value="man" checked />男
+        <input  type="radio" name="sex" value="woman" />女
+        <br> 取向：
+        <input  type="radio" name="love" value="man" />男
+        <input  type="radio" name="love" value="woman" checked />女
+        <br> 爱好：
+        <input type="checkbox" name="hobby" value="dota" />dota
+        <input type="checkbox" name="hobby" value="tourism" checked />旅游
+        <input type="checkbox" name="hobby" value="pet" checked />宠物
+        <br> 评论：
+        <textarea class="txt" name="comment" value="" placeholder="ddd"></textarea>
+        <br> 我的car：
+        <select class="sel">
+            <option value="萨博" selected="selected">萨博</option>
+            <option value="volvo">volvo</option>
+            <option value="saab">Saab</option>
+            <option value="opel">Opel</option>
+        </select>
+        <input class="sub" type="submit" value="提交" />
+    </form>
+</body>
+
+</html>
