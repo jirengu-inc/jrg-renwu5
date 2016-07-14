@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-4</title>
+    <style>
+    html,body,ul,li{
+      margin: 0;
+      padding: 0;
+    }
+    html,body,#header,#header .carousel,#header .img-ct{
+      width: 100%;
+      height: 100%;
+    }
+    ul,li{
+      list-style: none;
+    }
+    #header .carousel{
+      position: relative;
+      overflow: hidden;
+    }
+    #header .img-ct{
+      position: absolute;
+    }
+    #header .carousel .item{
+      height: 100%;
+      float: left;
+    }
+    #header .carousel .cover{
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .carousel .bullet{
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+    }
+    .carousel .bullet>li{
+      display: inline-block;
+      height: 5px;
+      width: 20px;
+      border-radius: 2px;
+      background-color: white;
+      cursor: pointer;
+    }
+    .bullet>li.active{
+      background-color: #666;
+    }
+    </style>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <div class="carousel">
+        <ul class="img-ct">
+          <li class="item">
+            <div class="cover" data-bg-img="http://cdn.jirengu.com/book.jirengu.com/img/6.jpg"></div>
+          </li>
+          <li class="item">
+            <div class="cover" data-bg-img="http://cdn.jirengu.com/book.jirengu.com/img/7.jpg"></div>
+          </li>
+          <li class="item">
+            <div class="cover" data-bg-img="http://cdn.jirengu.com/book.jirengu.com/img/8.jpg"></div>
+          </li>
+          <li class="item">
+            <div class="cover" data-bg-img="http://cdn.jirengu.com/book.jirengu.com/img/9.jpg"></div>
+          </li>
+        </ul>
+        <ul class="bullet">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      $(function(){
+        var carouselModel=function($carousel){
+          var $lists=$carousel.find(".img-ct");
+          var $listChild=$lists.find(".item");
+          var imgCount=$listChild.length;
+          var $first=$listChild.first();
+          var $last=$listChild.last();
+          $lists.prepend($last.clone());
+          $lists.append($first.clone());
+          var $listChildNew=$lists.find(".item");
+          var realCount=$listChildNew.length;
+          var imgWidth=$(window).width();
+          var imgHeight=$(window).height();
+          $listChildNew.css("width",imgWidth);
+          var $bulletChild=$carousel.find(".bullet>li")
+          var curIdx=0;
+          var nextIdx=0;
+          $lists.css({
+            width:(imgWidth*realCount),
+            left:0-imgWidth
+          });
+          function showBullet(){
+            $bulletChild.removeAttr("style");
+            $bulletChild.eq(curIdx).css("background-color","#666");
+          }
+          function playNext(num){
+            var num=num||1;
+            nextIdx=(imgCount+curIdx+num)%imgCount;
+            play(num);
+          }
+          function playPre(num){
+            var num=num||1;
+            nextIdx=(imgCount+curIdx-num)%imgCount;
+            play(0-num);
+          }
+          function play(num){
+            if(num==0||$lists.data("playing")) return;
+            $lists.data("playing",true);
+            setBgImg(num);
+            $lists.animate({
+              left:'-='+(num*imgWidth)
+            },"fast",function(){
+              curIdx=nextIdx;
+              if(curIdx==0&&num>0){
+                $lists.css("left",0-imgWidth);
+              }
+              if(curIdx==imgCount-1&&num<0){
+                $lists.css("left",0-imgWidth*imgCount);
+              }
+              showBullet();
+              $lists.data("playing",false);
+            })
+          }
+          function setBgImg(num){
+            if(num==0){
+              loadImg($first.find(".cover"));
+            }else if(num>0){
+              if(nextIdx!=0){
+                //没有走过最后一张
+                $listChild.slice(curIdx+1,nextIdx+1).each(function(idx,el){
+                  var $cur=$(this).find(".cover");
+                  loadImg($cur);
+                })
+              }else{
+                //走过了最后一张
+                $listChildNew.slice(curIdx+2,realCount).each(function(idx,el){
+                  var $cur=$(this).find(".cover");
+                  loadImg($cur);
+                });
+                loadImg($first.find(".cover"));
+              }
+            }else{
+              if(nextIdx!=imgCount-1){
+                  //没有走过第一张
+                  $listChild.slice(nextIdx,curIdx).each(function(idx,el){
+                    var $cur=$(this).find(".cover");
+                    loadImg($cur);
+                  })
+              }else{
+                //走过了第一张
+                $listChildNew.slice(0,curIdx+1).each(function(idx,el){
+                  var $cur=$(this).find(".cover");
+                  loadImg($cur);
+                })
+                loadImg($last.find(".cover"));
+              }
+            }
+          }
+          function autoPlay(){
+            clock=setInterval(function(){
+              playNext();
+            },3000)
+          }
+          function loadImg(cur){
+            var $cur=$(cur);
+            if(!$cur.attr("loaded")){
+              $cur.css('background-image','url(' + $cur.attr("data-bg-img") + ')');
+              $cur.attr("loaded",true);
+            }
+          }
+          $bulletChild.on("click",function(){
+            var index=$(this).index();
+            var num=index-curIdx;
+            nextIdx=(imgCount+index)%imgCount;
+            play(num);
+          });
+          return (function(){
+            setBgImg(0);
+            showBullet();
+            autoPlay();
+          })()
+        }
+          var $carousel=$("#header .carousel");
+          carouselModel($carousel);
+
+
+      })
+    </script>
+  </body>
+</html>
