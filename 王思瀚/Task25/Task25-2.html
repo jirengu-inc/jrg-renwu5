@@ -4,8 +4,520 @@
     <meta charset="UTF-8">
     <title>ENVY</title>
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        html,body,p,ul,li,div,h1,h2,h3{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        .container{
+            margin: 10px;
+            display: none;
+        }
+        .header_one{
+            border: 1px solid #ccc;
+            width: 190px;
+            border-radius: 6px;
+            position: relative;
+            left: 10px;
+            top: 10px;
+        }
+        .header_one>li{
+            float: left;
+            padding:6px;
+        }
+
+        .header_one:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .nav:nth-child(2){
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+        }
+        .click{
+            background-color: #ccc;
+        }
+        .nav.click a{
+             color: #fff;
+        }
+        .content_one{
+            width: 1300px;
+        }
+        .content_one:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .content_list{
+            position: relative;
+            border: 1px solid #ccc;
+            float: left;
+        }
+        .content_list img{
+            width: 380px;
+            height: 230px;
+        }
+        .content_list .content_node{
+            display: block;
+            width: 400px;
+            height: 300px;
+            text-align: center;
+            position: relative;
+        }
+        .title{
+            padding: 10px;
+            font-size: 19px;
+            font-weight: bolder;
+        }
+        .price{
+            font-weight: bolder;
+        }
+        .content_list .btn{
+            display: inline-block;
+            text-align: center;
+            border-radius: 5px;
+            width: 70px;
+            height: 35px;
+           line-height: 35px;
+            font-size: 15px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+           transform: translate(-50%,-70%);
+            background-color: #333;
+              color:#fff;
+            font-weight: bolder;
+
+        }
+        .bgc{
+            position: absolute;
+            top:0;
+            background-color: #ccc;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+
+        }
+        .active{
+            display: block;
+        }
+
+    </style>
 </head>
 <body>
+       <div class="tab">
+           <ul class="header_one">
+            <li class="nav click"><a href="" >Mac</a></li>
+             <li class="nav"><a href="">AppleWatch</a></li>
+              <li class="nav"><a href="">iPhone</a></li>
+          </ul>
 
+
+    <div class="container active">
+        <ul class="content_one">
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+              <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+              <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="container">
+        <ul class="content_one">
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="3.jpg" alt="">
+                    <p class="title">Apple Watch</p>
+                    <p class="price">$ 199</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="3.jpg" alt="">
+                    <p class="title">Apple Watch</p>
+                    <p class="price">$ 199</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="3.jpg" alt="">
+                    <p class="title">Apple Watch</p>
+                    <p class="price">$ 199</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="3.jpg" alt="">
+                    <p class="title">Apple Watch</p>
+                    <p class="price">$ 199</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+              <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="3.jpg" alt="">
+                    <p class="title">Apple Watch</p>
+                    <p class="price">$ 199</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+              <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="3.jpg" alt="">
+                    <p class="title">Apple Watch</p>
+                    <p class="price">$ 199</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+     <div class="container">
+        <ul class="content_one">
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="2.jpg" alt="">
+                    <p class="title">iPhone</p>
+                    <p class="price">$ 299</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="2.jpg" alt="">
+                    <p class="title">iPhone</p>
+                    <p class="price">$ 299</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                   <img src="2.jpg" alt="">
+                    <p class="title">iPhone</p>
+                    <p class="price">$ 299</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="2.jpg" alt="">
+                    <p class="title">iPhone</p>
+                    <p class="price">$ 299</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+              <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="2.jpg" alt="">
+                    <p class="title">iPhone</p>
+                    <p class="price">$ 299</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+              <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="2.jpg" alt="">
+                    <p class="title">iPhone</p>
+                    <p class="price">$ 299</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+ </div>
+
+
+
+
+
+
+       <div class="tab">
+           <ul class="header_one">
+            <li class="nav click"><a href="" >Mac</a></li>
+             <li class="nav"><a href="">AppleWatch</a></li>
+              <li class="nav"><a href="">iPhone</a></li>
+          </ul>
+
+
+    <div class="container active">
+        <ul class="content_one">
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+              <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+              <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="container">
+        <ul class="content_one">
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="3.jpg" alt="">
+                    <p class="title">Apple Watch</p>
+                    <p class="price">$ 199</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="3.jpg" alt="">
+                    <p class="title">Apple Watch</p>
+                    <p class="price">$ 199</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="3.jpg" alt="">
+                    <p class="title">Apple Watch</p>
+                    <p class="price">$ 199</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="3.jpg" alt="">
+                    <p class="title">Apple Watch</p>
+                    <p class="price">$ 199</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+              <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="3.jpg" alt="">
+                    <p class="title">Apple Watch</p>
+                    <p class="price">$ 199</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+              <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="3.jpg" alt="">
+                    <p class="title">Apple Watch</p>
+                    <p class="price">$ 199</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+     <div class="container">
+        <ul class="content_one">
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="2.jpg" alt="">
+                    <p class="title">iPhone</p>
+                    <p class="price">$ 299</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="2.jpg" alt="">
+                    <p class="title">iPhone</p>
+                    <p class="price">$ 299</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                   <img src="2.jpg" alt="">
+                    <p class="title">iPhone</p>
+                    <p class="price">$ 299</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="2.jpg" alt="">
+                    <p class="title">iPhone</p>
+                    <p class="price">$ 299</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+              <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="2.jpg" alt="">
+                    <p class="title">iPhone</p>
+                    <p class="price">$ 299</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+              <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="2.jpg" alt="">
+                    <p class="title">iPhone</p>
+                    <p class="price">$ 299</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+ </div>
+    <script>
+        var $nav = $('.nav');
+        var $bgc = $('.bgc');
+        var $btn = $('.btn');
+        var $list = $('.content_list');
+        $bgc.hide();
+        $btn.hide();
+
+        $nav.on('click',function(e){
+           var $this = $(this);
+           var $index = $(this).index();
+
+            e.preventDefault();
+            $this.siblings().removeClass('click');
+            $this.addClass('click');
+
+            $this.parents('.tab').find('.container').removeClass('active');
+            $this.parents('.tab').find('.container').eq($index).addClass('active');
+
+        })
+
+        $list.on('mouseenter',function(){
+            $(this).find('.bgc').show();
+            $(this).find('.btn').show();
+        })
+        $list.on('mouseleave',function(){
+            $(this).find('.bgc').hide();
+            $(this).find('.btn').hide();
+        })
+    </script>
 </body>
 </html>
