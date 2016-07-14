@@ -72,10 +72,11 @@
           render:function(){
               var me=this;
               this.$items.each(function(){
-                var $cur=$(this);
-                me.placehandle($cur);
-
+              var $cur=$(this);
+              me.placehandle($cur);
             });
+            var parHeight=Math.max.apply(null,this.colHeight);
+            this.$par.height(parHeight);
           },
           placehandle:function($el){
             var arr=this.colHeight
