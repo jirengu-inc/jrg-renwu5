@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-1</title>
+    <style>
+      html{
+        font-size: 1.5rem;
+      }
+      #header{
+        height: 100px;
+        background-color: red;
+        line-height: 100px;
+        text-align: center;
+      }
+      #content{
+        height: 1500px;
+        padding: 10px;
+        background-color: #ccc;
+      }
+      .clear:after{
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+      }
+      .nav{
+        height: 60px;
+        margin-top:20px;
+        background-color: blue;
+      }
+      #content .aside{
+        float:left;
+        height:600px;
+        width: 100px;
+        background-color: green;
+      }
+      #content .main{
+        height: 100%;
+        margin-left: 120px;
+        background-color: white;
+        padding-left: 20px;
+      }
+      #footer{
+        height: 60px;
+        color: white;
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+   <div id="header">header</div>
+   <div class="nav">nav</div>
+   <div class="clear" id="content">
+     <div class="aside">aside</div>
+     <div class="main">main</div>
+   </div>
+   <div id="footer">footer</div>
+   <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+   <script>
+   $(function(){
+      $cur=$(".nav");
+      var offsetTop=$cur.offset().top;
+      var offsetLeft=$cur.offset().left;
+      var navW=$cur.width();
+      var navH=$cur.height();
+      var $curClone=$(".nav").clone().hide().insertBefore($cur);
+
+      $(window).on("scroll",function(){
+        if(offsetTop<$(this).scrollTop()){
+          if(!isFixed()){
+            setFixed();
+          }
+        }else{
+          if(isFixed){
+            unsetFixed();
+          }
+        }
+      })
+      function setFixed(){
+        $cur.data("isFixed",true);
+        $cur.css({
+          position:"fixed",
+          width:navW,
+          height:navH,
+          top:0,
+          left:offsetLeft,
+          margin:0,
+          'z-index':999
+        });
+        $curClone.show();
+      }
+      function unsetFixed(){
+        $cur.data("isFixed",false)
+            .removeAttr("style");
+        $curClone.show();
+      }
+      function isFixed(){
+        return $cur.data("isFixed")
+      }
+    })
+   </script>
+  </body>
+</html>
