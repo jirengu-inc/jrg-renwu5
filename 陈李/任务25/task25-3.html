@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>25-3</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+    ul,li,p {
+        margin: 0;
+        padding: 0;
+    }
+    ul,li {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+        padding: 8px;
+        color: red;
+        background-color: #fff;
+        border: 1px solid red;
+        border-radius: 5px;
+        font-size: 14px;
+        position: absolute;
+        top: 70px;
+        left: 60px;
+    }
+    .mod {
+        display: none;
+    }
+    .show {
+        width: 700px;
+        margin: 0 auto;
+    }
+    .show-list {
+        margin-right: -60px;
+    }
+    .item {
+        float: left;
+        width: 200px;
+        margin-right: 50px;
+        margin-bottom: 20px;
+        text-align: center;
+        border: 1px solid #ccc;
+        position: relative;
+    }
+    .item p>span {
+        color: red;
+    }
+    .active {
+        display: block;
+    }
+    .cover {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #000;
+        opacity: 0.3;
+    }
+    .show-list:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .btn {
+        padding: 8px;
+        color: red;
+        border: 1px solid red;
+        border-radius: 4px;
+        outline: none;
+        background-color: #fff;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <div class="show">
+        <h2>珠宝首饰</h2>
+        <ul class="show-list">
+            <li class="item">
+                <img src="32269.png" alt="图片" width="150px" height="150px">
+                <p>这是啥</p>
+                <p><span>$123</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="#">立即购买</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="图片" width="150px" height="150px">
+                <p>这是啥</p>
+                <p><span>$123</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="#">立即购买</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="图片" width="150px" height="150px">
+                <p>这是啥</p>
+                <p><span>$123</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="#">立即购买</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="图片" width="150px" height="150px">
+                <p>这是啥</p>
+                <p><span>$123</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="#">立即购买</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="图片" width="150px" height="150px">
+                <p>这是啥</p>
+                <p><span>$123</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="#">立即购买</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="图片" width="150px" height="150px">
+                <p>这是啥</p>
+                <p><span>$123</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="#">立即购买</a>
+                </div>
+            </li>
+        </ul>
+        <button class="btn">更多</button>
+    </div>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        var $sl = $('.show-list'),
+            $btn = $('.btn');
+        var products = [
+            {
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金手 猴哥款',
+                price: '￥405.00'
+            },{
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金转运珠 猴哥款',
+                price: '￥100.00'
+            },{
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金手链 3D猴哥款',
+                price: '￥45.00'
+            }
+        ];
+
+        function tpl(el){
+            var html = '';
+            html += '<li class="item">';
+            html += '<img src="'+el.img+'" alt="图片" width="150px" height="150px">';
+            html +=  '<p>'+el.name+'</p>';
+            html +=  '<p><span>'+el.price+'</span></p>';
+            html +=  '<div class="mod">';
+            html +=  '<div class="cover"></div>';
+            html +=  '<a href="#">立即购买</a>';
+            html +=  '</div>';
+            html +=  '</li>';
+            return html;
+        }
+        //不使用事件代理的话，新增元素无法响应事件
+        $sl.on('mouseenter','.item',function(){
+            $(this).find('.mod').addClass('active');
+        });
+        $sl.on('mouseleave','.item',function(){
+            $(this).find('.mod').removeClass('active');
+        });
+
+        $btn.on('click', function() {
+            $.each(products,function(index, el) {
+                var html = tpl(el);
+                $('.show-list').append(html);
+            });
+        });
+    </script>
+</body>
+</html>
