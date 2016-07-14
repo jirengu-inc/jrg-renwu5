@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-2</title>
+    <style>
+      html{
+        font-size: 1.5rem;
+      }
+      #header{
+        height: 80px;
+        background-color: red;
+      }
+      .layout{
+        width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .clear:after{
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+      }
+      #content .ct{
+        margin-top: 20px;
+      }
+      #content .nav{
+        height: 40px;
+        background-color: yellow;
+      }
+      #content .wrap{
+        height: 800px;
+      }
+      #content .wrap .aside{
+        float: left;
+        width: 100px;
+        height: 100%;
+        background-color: pink;
+      }
+      #content .wrap .main{
+        height: 100%;
+        margin-left: 120px;
+        padding-left: 20px;
+        background-color: blue;
+      }
+      #footer{
+        margin-top: 20px;
+        height: 40px;
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout" id="header">header</div>
+    <div class="layout" id="content">
+        <div class="ct clear">
+          <div class="nav" id="nav1">nav1</div>
+          <div class="wrap">
+            <div class="aside">aside</div>
+            <div class="main">main</div>
+          </div>
+        </div>
+        <div class="ct clear">
+          <div class="nav">nav2</div>
+          <div class="wrap">
+            <div class="aside">aside</div>
+            <div class="main">main</div>
+          </div>
+        </div>
+        <div class="ct clear">
+          <div class="nav">nav3</div>
+          <div class="wrap">
+            <div class="aside">aside</div>
+            <div class="main">main</div>
+          </div>
+        </div>
+    </div>
+    <div class="layout" id="footer">footer</div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+      $(function(){
+        $.fn.stickup=function(){
+          return this.each(function(){
+            var $cur=$(this);
+            console.log($cur.selector)
+            var offsetTop=$cur.offset().top;
+            var offsetLeft=$cur.offset().left;
+            var curH=$cur.height();
+            var curW=$cur.width();
+            var curouterH=$cur.outerHeight(true);
+            var $parent=$cur.parent();
+            var upperline=$parent.offset().top+$parent.height()-curouterH;  //fixed nocache 的截至线
+            var botline=$parent.offset().top+$parent.height()               //nofixed cacheFixed 的截至线
+            var $curClone=$cur.clone().hide().insertBefore($cur);
+            var $curClone2=$cur.clone().hide();
+            $parent.append($curClone2);
+            // status:
+            //normal            其他情况 nav清除fixed并显示 curClone和curClone2隐藏
+            //===========================offsetTop====================================
+            // fixed nocache    在par开始段和最后一段之前:  nav 添加fixed并显示 curClone显示 curClone2隐藏
+            //===========================upperline====================================
+            // nofixed cache   在par的最后一段:  nav隐藏, curClone隐藏 使用curClone2显示
+            //===========================botline======================================
+            $(window).on("scroll",function(){
+              var scrollTop=$(this).scrollTop();
+              if(scrollTop>offsetTop&&scrollTop<=upperline){
+                //fixed nocache
+                 if(!isFixed()){
+                     //console.log("fixed nocache")
+                     setFixed();
+                   }
+                }else if(scrollTop>upperline&&scrollTop<=botline){
+                  //nofixed cache
+                  if(!isCache()){
+                      //console.log("nofixed cache")
+                      cacheFixed();
+                    }
+                }else{
+                  //normal
+                  if(isFixed()||isCache()){
+                    //console.log("normal")
+                    unsetCache();
+                  }
+                }
+              });
+              function isFixed(){
+                return $cur.attr("isFixed");
+              }
+              function isCache(){
+                return $cur.attr("isCache")
+              }
+              function setFixed(){
+                $cur.css({
+                  position:'fixed',
+                  left:offsetLeft,
+                  top:0,
+                  width:curW,
+                  height:curH
+                }).attr("isFixed",true).removeAttr("isCache").show();
+                $curClone.show();
+                $curClone2.hide();
+              }
+              function cacheFixed(){
+                $cur.removeAttr("isFixed").attr("isCache",true).hide();
+                $curClone.hide();
+                $curClone2.show();
+              }
+              function unsetCache(){
+                $cur.removeAttr("style").show().removeAttr("isCache").removeAttr("isFixed");
+                $curClone2.hide();
+                $curClone.hide();
+              }
+          })
+
+        }
+        $(".nav").stickup();
+      })
+    </script>
+  </body>
+</html>

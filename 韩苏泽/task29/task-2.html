@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-2</title>
+    <style>
+      ul,li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .container{
+        width: 900px;
+        border: 1px solid #ccc;
+      }
+      .clear:after{
+        content: "";
+        height: 0;
+        display: block;
+        clear: both;
+      }
+      .wrap{
+        margin-left: -20px;
+        margin-bottom:-20px;
+      }
+      .container li{
+        float:left;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        width: 286.6px;
+        height: 400px;
+      }
+      .container img{
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <ul class="wrap clear">
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+        <li><a href="#"><img src="" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a></li>
+      </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script type="text/javascript">
+      var clock;
+      function isVisable($el){
+        var offsetTop=$el.offset().top;
+        var scrollTop=$(window).scrollTop();
+        var winH=$(window).height();
+        if(offsetTop<scrollTop+winH){
+          return true;
+        }
+        return false;
+      }
+      function showImg($el){
+        var dataImg=$el.attr("data-src")||"";
+        if(dataImg=="") return;
+        $el.attr("src",dataImg).attr("isLoaded",true);
+      }
+      function checkShow(){
+        var $lists=$(".wrap").find("img");
+
+        $lists.each(function(){
+          var $cur=$(this);
+          if($cur.attr("isLoaded")) return ;
+          if(isVisable($cur)){
+            showImg($cur);
+          };
+        })
+      }
+      checkShow();
+      $(window).on("scroll",function(){
+         if(clock){
+           clearTimeout(clock);
+         }
+         clock=setTimeout(function(){
+          checkShow();
+         },300)
+      })
+    </script>
+  </body>
+</html>
