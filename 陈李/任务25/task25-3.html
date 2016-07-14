@@ -181,7 +181,7 @@
         });
 
         $btn.on('click', function() {
-            $.each(products,function(index, el) {
+            $.each(products,function(index, el) {      //与each另一种写法的区别：可以用于迭代任意元素
                 var html = tpl(el);
                 $('.show-list').append(html);
             });
