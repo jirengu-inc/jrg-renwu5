@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1467598777'); /* IE9*/
-  src: url('iconfont.eot?t=1467598777#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1467598777') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1467598777') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1467598777#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1468716992'); /* IE9*/
+  src: url('iconfont.eot?t=1468716992#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1468716992') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1468716992') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1468716992#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -15,4 +15,6 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
-.icon-icon:before { content: "\e600"; }
+.icon-tingzhi:before { content: "\e600"; }
+.icon-iconbofangqiyou:before { content: "\e601"; }
+.icon-iconbofangqizanting:before { content: "\e602"; }
