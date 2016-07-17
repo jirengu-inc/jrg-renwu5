@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>login页面</title>
+	<style>
+		body{
+			font-size: 14px;
+		}
+		
+		dt{
+			width:80px;
+			line-height:30px;
+			float: left;
+		}
+		dd{
+			margin-left: 100px;
+			margin-top:5px;
+
+		}
+		dd.words{
+			color:#aaa;
+			font-size: 13px;
+			margin-top: 0;
+		}
+		dl input{
+			width:250px;
+			line-height: 25px;
+			padding:0 5px;
+			border:1px solid #aaa;
+			border-radius: 2px;
+			margin-bottom: 5px;
+		}
+		button.btn{
+			width:50px;
+			line-height: 20px;
+			margin-top: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h3>注册</h3>
+		<dl class="login">
+			<dt>用户名：</dt>
+			<dd><input type="text" placeholder="请输入用户名(hunger被注册过)" class="usr" /></dd>
+			<dd class="words nameCheck">只能是字母、数字、下划线，3-10个字符</dd>
+			<dt>密码：</dt>
+			<dd><input type="password" class="pswFir"/></dd>
+			<dd class="words pswCheck">大写字母、小写、数字、下划线最少两种，6-15个字符</dd>
+			<dt>再输一次：</dt>
+			<dd><input type="password" placeholder="再输入一次密码" class="pswSec"/></dd>
+			<dd class="words pswIden"></dd>
+			<dd><button class="btn">注册</button></dd>
+		</dl>
+	</div>
+	<script>
+		function ajax(opts){
+			var xtp=new XMLHttpRequest();
+			var dataStr="";
+			for(var key in opts.data){
+				dataStr+=key+"="+opts.data[key];
+			}
+
+			if(opts.type.toLowerCase()==="get"){
+				xtp.open(opts.type,opts.url+"?"+dataStr,true);
+				xtp.send();
+			}
+			if(opts.type.toLowerCase()==="post"){
+				xtp.open(opts.type,opts.url,true);
+				xtp.sendRequestHeader("content-type","application/x-www-form-urlencoded");
+				xtp.send(dataStr);
+			}
+
+			xtp.onreadystatechange=function(){
+				if(xtp.readyState==4 && xtp.status==200){
+					var word=xtp.responseText;
+					opts.success(word);
+				}
+				if(xtp.status==404){
+					opts.error();
+				}
+			}
+		}
+		var usr = document.querySelector(".usr");
+		var btn = document.querySelector(".btn");
+		var pswFir = document.querySelector(".pswFir");
+		var pswSec = document.querySelector(".pswSec");//这是一个细节
+		var pswCheck = document.querySelector(".pswCheck");
+		var pswIden = document.querySelector(".pswIden");
+		var btn = document.querySelector(".btn");
+
+		usr.addEventListener("blur",function(){
+			usrName=usr.value;
+			if(usrName.length==0){
+				return;
+			}
+			isValidUsername(usrName);
+			ajax({
+				type:"get",
+				url:"task2403.php",
+				data:{
+					usrInfo:usrName
+				},
+				success:function(res){
+					success(res)
+				},
+				error:function(){
+					error()
+				}
+			});
+		});
+		pswFir.addEventListener("blur",function(){
+			if(pswFir.value.length==0){
+				return;
+			}
+			if(isValidPassword(pswFir)){
+				pswCheck.innerText="";
+				pswFir.style.border="1px solid #aaa";
+			}
+			if(!isValidPassword(pswFir)){
+				pswCheck.innerText="密码格式不正确！";
+				pswFir.style.border="1px solid red";
+			}	
+		})
+		pswSec.addEventListener("blur",function(){
+			if(pswSec.value.length==0){
+			return;//阻止表单内容为空时出现错误提示
+			}
+			if(isValidPassword(pswSec) ){
+				pswIden.innerText="";
+				pswSec.style.border="1px solid #aaa";
+			}
+			if(!isValidPassword(pswSec)){
+				pswIden.innerText="密码格式不正确！";
+				pswSec.style.border="1px solid red";
+				return;
+			}
+			if(pswSec.value!==pswFir.value){
+				pswSec.style.border="1px solid red";
+				pswIden.innerText="两次输入的密码不一致，请重新输入!";
+			}
+		})
+		btn.addEventListener("click",function(){
+			if(usr.value==""){
+				alert("请填写信息！");
+			}
+		})
+		function success(res){
+			if(!isValidUsername(usrName)){
+				document.querySelector(".nameCheck").innerText="该用户名不可用！";
+				document.querySelector(".usr").style.border="1px solid red";
+			}
+			if(res==0){
+				document.querySelector(".nameCheck").innerText="用户名已经存在";
+				document.querySelector(".usr").style.border="1px solid red";
+			}
+			if(res==1 && isValidUsername(usrName)){
+				document.querySelector(".nameCheck").innerText="该用户名可以使用";
+				document.querySelector(".usr").style.border="1px solid #aaa";
+			}
+		}
+		function error(){
+			alert("出错了...");
+		}
+		function isValidUsername(str){
+		     var reg=/^\w{3,10}$/;
+		     if(reg.exec(str)){
+		         return true;
+		         var res="ok";
+		     }else{
+				return false;
+				var res="no";
+		     }
+		}
+		function isValidPassword(str){
+			var reg=/(^[0-9]{6,15}$)|(^[a-z]{6,15}$)|(^[A-Z]{6,15}$)|(^\_{6,15}$)/;
+		     if(str.value.length>15 || str.value.length<6 ||reg.exec(str.value) ){
+		         return false;
+		     }else if(/^\w{6,15}$/.exec(str.value)){
+		         return true;
+		     }
+		}
+	</script>
+
+</body>
+</html>
