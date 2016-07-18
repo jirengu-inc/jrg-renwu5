@@ -14,9 +14,7 @@
 		.item1 {
 			position: relative;
 		}
-		.tree1{
-			/*width: 0;
-			height: 0;*/
+		.item1 .triangle{
 			border-top: 15px solid #fff;
 			border-bottom: 15px solid #888;
 			border-left: 15px solid #fff;
@@ -28,9 +26,7 @@
 		.item2 {
 			position: relative;
 		}
-		.tree2 {
-			width: 0;
-			height: 0;
+		.item2 .triangle {
 			border-top: 10px solid #f00;
 			border-bottom: 10px solid #fff;
 			border-left: 10px solid #fff;
@@ -42,10 +38,7 @@
 		.item3 {
 			position: relative;
 		}
-		.tree3 {
-			width: 0;
-			height: 0;
-			
+		.item3 .triangle {
 			border-bottom: 15px solid #888;
 			border-left: 15px solid transparent;
 			border-right: 15px solid transparent;
@@ -54,30 +47,26 @@
 			left: 10px;
 			
 		}
-		.tree4 {
-			width: 0;
-			height: 0;
-			
+		.item3:after {
+			content:'';
 			border-bottom: 15px solid #fff;
 			border-left: 15px solid transparent;
 			border-right: 15px solid transparent;
 			position: absolute;
 			top: -14px;
 			left: 10px;
-
 		}
 	</style>
 </head>
 <body>
 	<div class="item1">
-		<sapn class="tree1"></span>
+		<sapn class="triangle"></span>
 	</div>
 	<div class="item2">
-		<span class="tree2"></span>
+		<span class="triangle"></span>
 	</div>
 	<div class="item3">
-		<span class="tree3"></span>
-		<span class="tree4"></span>
+		<span class="triangle"></span>
 	</div>
 </body>
 </html>
