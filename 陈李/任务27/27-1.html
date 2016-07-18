@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>渐变轮播</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+    html,body,ul,li {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    .img-ct img {
+        width: 400px;
+        height: 200px;
+    }
+    .carousel {
+        width: 400px;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+    }
+    .img-ct li{
+        position: absolute;
+        display: none;
+    }
+    .bullet {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+    }
+    .bullet li {
+        height: 5px;
+        width: 20px;
+        border-radius: 5px;
+        background-color: #fff;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .active {
+        opacity: 0.5;
+    }
+    .arrow {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #000;
+        opacity: 0.5;
+        color: #fff;
+        font-size: 40px;
+        text-align: center;
+        line-height: 40px;
+        position: absolute;
+        top: 50%;
+        margin-top: -20px;
+    }
+    .arrow:hover {
+        opacity: 0.8;
+    }
+    .pre {
+        left: 10px;
+    }
+    .next {
+        right: 10px;
+    }
+    .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+</style>
+</head>
+<body>
+
+    <div class="carousel">
+        <ul class="img-ct clearfix">
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
+        </ul>
+        <a href="#" class="arrow pre"><</a>
+        <a href="#" class="arrow next">></a>
+        <ul class="bullet">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+    var $ct = $('.img-ct'),
+        $pre = $('.pre'),
+        $next = $('.next'),
+        $bullet = $('.bullet'),
+        imgCount = $ct.children().length;
+
+    $pre.on('click',function(){
+        playPre();
+    });
+    $next.on('click',function(){
+        playNext();
+    });
+    $bullet.on('click','li',function(){
+        play( $(this).index() );
+    });
+
+    var curIndex = 0,
+        isAnimate = false;
+    function play(index){
+        if(isAnimate){
+            return;
+        }
+        isAnimate = true;
+        $ct.find('li').eq(curIndex).fadeOut(500);
+        $ct.find('li').eq(index).fadeIn(500,function(){
+            isAnimate = false;
+        });
+        curIndex = index;
+        setBllet(index);
+    }
+    function playNext(){
+        play((curIndex+1)%imgCount);
+    }
+    function playPre(){
+        play((curIndex-1+imgCount)%imgCount);
+    }
+    function setBllet(index){
+        $bullet.children().removeClass('active')
+                          .eq(index).addClass('active');
+    }
+    function autoPlay(){
+        clock = setInterval(function(){
+            playNext();
+        },1000);
+    }
+
+
+
+    play(0);
+    autoPlay();
+</script>
+</body>
+</html>
