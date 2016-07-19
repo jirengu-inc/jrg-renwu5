@@ -85,10 +85,10 @@
 
     <div class="carousel">
         <ul class="show clearfix">
-            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115612mood5oifacokfrru.jpg"></a></li>
-            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115614wab8k2uibdbgkzak.jpg"></a></li>
-            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115613upujippg33h9b4pk.jpg"></a></li>
-            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115610flcjfw3dwc7n7mwd.jpg"></a></li>
+            <li 1><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115612mood5oifacokfrru.jpg"></a></li>
+            <li 2><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115614wab8k2uibdbgkzak.jpg"></a></li>
+            <li 3><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115613upujippg33h9b4pk.jpg"></a></li>
+            <li 4><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115610flcjfw3dwc7n7mwd.jpg"></a></li>
         </ul>
         <a href="#" class="arrow pre"><</a>
         <a href="#" class="arrow next">></a>
@@ -129,22 +129,22 @@
         else{
             playPre(curIdx-idx);
         }
-        curIdx = idx;
     });
 
 
     var curIdx = 0,
-        isAnimate = false;
+        isAnimate = false;  //感觉锁没有生效？
 
     function playPre(idx){
         if(!isAnimate){
             isAnimate = true;
-            idx = idx || 1;
+            var idx = idx || 1;
             for( var i=0;i<idx;i++){
-                $show.animate({left: 0})
-                     .prepend( $show.children().last() )
-                     .css('left', -imgWidth);
+                $show.prepend( $show.children().last() );
             }
+            $show.animate({left: '+='+imgWidth*idx},function(){
+                $show.css({'left': -imgWidth*idx});
+            });
         }
         curIdx = (curIdx-idx+imgCount)%imgCount;
         setBullet();
@@ -153,17 +153,39 @@
     function playNext(idx){
         if(!isAnimate){
             isAnimate = true;
-            idx = idx || 1;
-            for( var i=0;i<idx;i++){
-                $show.animate({left: -imgWidth})
-                     .append( $show.children().first() )
-                     .css('left', '0');
-            }
+            var idx = idx || 1;
+            $show.animate({left: '-='+imgWidth*idx},function(){
+                for( var i=0;i<idx;i++){
+                $show.append( $show.children().first() );
+                }
+                $show.css({'left': 0});   //只有写在animate的回调函数中才生效 不知道为什么
+            });
+
         }
         curIdx = (curIdx+idx)%imgCount;
         setBullet();
         isAnimate = false;
     }
+
+
+    // function playNext(idx){
+    //     if(!isAnimate){
+    //         isAnimate = true;
+    //         var idx = idx || 1;
+    //         $show.animate({left: '-='+imgWidth*idx});
+    //         for( var i=0;i<idx;i++){
+    //             $show.append( $show.children().first() );
+    //         }
+    //         $show.css({'left': 0});       这样顺序执行怎么修改css无效
+    //
+    //     }
+    //     curIdx = (curIdx+idx)%imgCount;
+    //     setBullet();
+    //     isAnimate = false;
+    // }
+
+
+
     function setBullet(){
         $bullet.children().removeClass('active').eq(curIdx).addClass('active');
     }
