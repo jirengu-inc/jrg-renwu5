@@ -180,8 +180,8 @@
                 $ct.animate({left:'+='+(imgWidth * idx)},function(){
                     curIdx = curIdx - idx;
                     if(curIdx === -1){
-                        //试试写成right可以么
-                        $ct.css({right:imgWidth*imgCount});
+                        //换成right后，两次向前之后图片变白。
+                        $ct.css({left:0-imgWidth*imgCount});
                         curIdx = imgCount - 1;
                     }
 //                    curIdx = (imgCount + curIdx - idx)%imgCount;

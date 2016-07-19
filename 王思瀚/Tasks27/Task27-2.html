@@ -71,7 +71,7 @@
     </style>
 </head>
 <body>
-    <div class="ct">
+     <div class="ct pt1">
         <ul class="content">
             <li><a href=""><img src="1.jpg" alt=""></a></li>
             <li><a href=""><img src="2.jpg" alt=""></a></li>
@@ -88,20 +88,69 @@
         </ul>
     </div>
 
+    <div class="ct pt2">
+        <ul class="content">
+            <li><a href=""><img src="1.jpg" alt=""></a></li>
+            <li><a href=""><img src="2.jpg" alt=""></a></li>
+            <li><a href=""><img src="3.jpg" alt=""></a></li>
+            <li><a href=""><img src="4.jpg" alt=""></a></li>
+        </ul>
+        <a href="" class="pre arrow"><</a>
+        <a href="" class="next arrow">></a>
+        <ul class="tab">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div class="ct pt3">
+        <ul class="content">
+            <li><a href=""><img src="1.jpg" alt=""></a></li>
+            <li><a href=""><img src="2.jpg" alt=""></a></li>
+            <li><a href=""><img src="3.jpg" alt=""></a></li>
+            <li><a href=""><img src="4.jpg" alt=""></a></li>
+        </ul>
+        <a href="" class="pre arrow"><</a>
+        <a href="" class="next arrow">></a>
+        <ul class="tab">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div class="ct pt4">
+        <ul class="content">
+            <li><a href=""><img src="1.jpg" alt=""></a></li>
+            <li><a href=""><img src="2.jpg" alt=""></a></li>
+            <li><a href=""><img src="3.jpg" alt=""></a></li>
+            <li><a href=""><img src="4.jpg" alt=""></a></li>
+        </ul>
+        <a href="" class="pre arrow"><</a>
+        <a href="" class="next arrow">></a>
+        <ul class="tab">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
 <script>
-        var $ct = $('.content'),
-           $items = $ct.children(),
-           $pre = $('.pre'),
-           $next = $('.next'),
-           $tab = $('.tab'),
-           imgWidth = $items.width(),
+    function band(part){
+     var   $pt = $(part),
+           $ct = $pt.find('.content'),
+           $pre = $pt.find('.pre'),
+           $next = $pt.find('.next'),
+           $tab = $pt.find('.tab'),
+           imgWidth = $ct.children().width(),
            imgCount = $ct.children().size();
 
 
-        var curIdx =0;
-        var isAnimate = false;
-
-
+     var curIdx =0;
+     var isAnimate = false;
 
     function setActive(){
         $tab.children().removeClass('active').eq(curIdx).addClass('active');
@@ -126,32 +175,34 @@
         play($(this).index())
     })
 
+    function playNext(){
+        play((curIdx + 1)%imgCount)
+    }
+    function playPre(){
+        play((imgCount+curIdx-1)%imgCount)
+    }
     function play(idx){
-        // var idx = idx || 1;
-        //这里如果使用上式的话，输入0就会没有响应直接跳过0只显示1，2，3
         if(!isAnimate){
             isAnimate = true;
-            stopAuto();
-            $ct.find('li').eq(curIdx).fadeOut(300);
-            $ct.find('li').eq(idx).fadeIn(300,function(){
+           // stopAuto();
+            $ct.children().eq(curIdx).fadeOut(300);
+            $ct.children().eq(idx).fadeIn(300,function(){
                 isAnimate = false;
-            });
-            autoPlay();
+            })
+           // autoPlay();
             curIdx = idx;
             setActive();
         }
     }
-    function playNext(){
-        play((curIdx+1)%imgCount)
-    }
-    function playPre(){
-        play((curIdx+imgCount-1)%imgCount)
-    }
-
+   //这里如果不将上面两行注释掉的话，第三个轮播将无法自动播放,添加pt4后发现，该行为会造成最后一个轮播无法自动播放
     autoPlay();
     play(0);
-   // console.log(curIdx)
+}
 
+    band('.pt1');
+    band('.pt2');
+    band('.pt3');
+    band('.pt4');
 </script>
 </body>
 </html>
