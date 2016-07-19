@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>滚动轮播</title>
+<title>滚动轮播(dom)</title>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <style>
@@ -109,14 +109,10 @@
         $next = $('.next'),
         $bullet = $('.bullet'),
         imgWidth = $items.width(),
-        imgCount = $items.length,
-        realCount = imgCount+2;
+        imgCount = $items.length;
 
-    $show.prepend( $items.last().clone() );
-    $show.append( $items.first().clone() );
     $show.css({
-        left: -imgWidth,
-        width: realCount*imgWidth
+        width: imgCount*imgWidth
     });
 
     $pre.on('click',function(){
@@ -135,44 +131,38 @@
         }
         curIdx = idx;
     });
+
+
     var curIdx = 0,
         isAnimate = false;
 
     function playPre(idx){
-        idx = idx||1;
         if(!isAnimate){
             isAnimate = true;
-            $show.animate({
-                left: '+='+(imgWidth*idx)
-            },function(){
-                curIdx = (imgCount + curIdx - idx)%imgCount;
-                if( curIdx === (imgCount-1)){
-                    $show.css({
-                        left: -imgWidth*imgCount
-                    });
-                }
-                isAnimate = false;
-                setBullet();
-            });
+            idx = idx || 1;
+            for( var i=0;i<idx;i++){
+                $show.animate({left: 0})
+                     .prepend( $show.children().last() )
+                     .css('left', -imgWidth);
+            }
         }
+        curIdx = (curIdx-idx+imgCount)%imgCount;
+        setBullet();
+        isAnimate = false;
     }
     function playNext(idx){
-        idx = idx||1;
         if(!isAnimate){
             isAnimate = true;
-            $show.animate({
-                left: '-='+( imgWidth*idx )
-            },function(){
-                curIdx = ( curIdx+idx )%imgCount;
-                if( curIdx === 0){
-                    $show.css({
-                        left: -imgWidth
-                    });
-                }
-                isAnimate = false;
-                setBullet();
-            });
+            idx = idx || 1;
+            for( var i=0;i<idx;i++){
+                $show.animate({left: -imgWidth})
+                     .append( $show.children().first() )
+                     .css('left', '0');
+            }
         }
+        curIdx = (curIdx+idx)%imgCount;
+        setBullet();
+        isAnimate = false;
     }
     function setBullet(){
         $bullet.children().removeClass('active').eq(curIdx).addClass('active');
@@ -187,6 +177,7 @@
 
 
     autoPlay();
+
 </script>
 </body>
 </html>
