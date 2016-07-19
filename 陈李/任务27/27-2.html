@@ -81,7 +81,7 @@
 </head>
 <body>
 
-    <div class="carousel">
+    <div class="carousel carousel-1">
         <ul class="show clearfix">
             <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115612mood5oifacokfrru.jpg"></a></li>
             <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115614wab8k2uibdbgkzak.jpg"></a></li>
@@ -98,7 +98,7 @@
         </ul>
     </div>
 
-    <div class="carousel">
+    <div class="carousel carousel-2">
         <ul class="show clearfix">
             <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115612mood5oifacokfrru.jpg"></a></li>
             <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115614wab8k2uibdbgkzak.jpg"></a></li>
@@ -115,7 +115,7 @@
         </ul>
     </div>
 
-    <div class="carousel">
+    <div class="carousel carousel-3">
         <ul class="show clearfix">
             <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115612mood5oifacokfrru.jpg"></a></li>
             <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115614wab8k2uibdbgkzak.jpg"></a></li>
@@ -134,7 +134,61 @@
 
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
+    function slide(part){
+        var $part = $(part),
+            $ct = $part.find('.show'),
+            $pre = $part.find('.pre'),
+            $next = $part.find('.next'),
+            $bullet = $part.find('.bullet'),
+            imgCount = $ct.children().length;
 
+        $pre.on('click',function(){
+            playPre();
+        });
+        $next.on('click',function(){
+            playNext();
+        });
+        $bullet.on('click','li',function(){
+            play( $(this).index() );
+        });
+
+        var curIndex = 0,
+            isAnimate = false;
+        function play(index){
+            if(!isAnimate){
+                isAnimate = true;
+                $ct.find('li').eq(curIndex).fadeOut(500);
+                $ct.find('li').eq(index).fadeIn(500,function(){
+                    isAnimate = false;
+                });
+                curIndex = index;
+                setBllet(index);
+            }
+        }
+        function playNext(){
+            play((curIndex+1)%imgCount);
+        }
+        function playPre(){
+            play((curIndex-1+imgCount)%imgCount);
+        }
+        function setBllet(index){
+            $bullet.children().removeClass('active')
+                              .eq(index).addClass('active');
+        }
+        function autoPlay(){
+            clock = setInterval(function(){
+                playNext();
+            },1500);
+        }
+
+
+
+        play(0);
+        autoPlay();
+    }
+    slide('.carousel-1');
+    slide('.carousel-2');
+    slide('.carousel-3');
 </script>
 </body>
 </html>
