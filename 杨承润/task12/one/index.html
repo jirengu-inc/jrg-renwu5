@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>布局效果</title>
+	<style>
+		body,html,ul,li{
+			padding: 0;
+			margin: 0;
+		}
+		ul,li{
+			list-style: none;
+		}
+		.main{
+			width: 700px;
+			margin: 0 auto;
+			background-color: gray;
+			border-bottom:1px solid gray; 
+		}
+		.nav{
+			margin-left: -20px;
+			margin-bottom:10px; 
+		}
+		.nav:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.main .nav>li{
+			width: 220px;
+			height: 50px;
+			background-color: green;
+			float: left;
+			margin-left: 20px;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<ul class="nav">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+	</div>
+</body>
+</html>
