@@ -124,16 +124,16 @@
     $bullet.on('click','li',function(){
         var idx = $(this).index();
         if(idx<curIdx){
-            playNext(curIdx-idx);
+            playPre(curIdx-idx);
         }
         else{
-            playPre(curIdx-idx);
+            playNext(idx-curIdx);
         }
     });
 
 
     var curIdx = 0,
-        isAnimate = false;  //感觉锁没有生效？
+        isAnimate = false;  //感觉锁没有生效
 
     function playPre(idx){
         if(!isAnimate){
