@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>28-1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+    #header {
+        height: 100px;
+        background-color: red;
+    }
+    #nav {
+        height: 50px;
+        background-color: blue;
+        margin-top: 20px;
+    }
+    #content {
+        background-color: #ccc;
+        padding: 20px;
+    }
+    #footer {
+        height: 80px;
+        background-color: #000;
+    }
+    #content .aside {
+        height: 500px;
+        width: 100px;
+        background-color: green;
+        float: left;
+    }
+    #content .main {
+        height: 1000px;
+        background-color: #fff;
+        margin-left: 100px;
+    }
+</style>
+</head>
+<body>
+
+    <header id="header">header</header>
+    <div id="nav">nav</div>
+    <div id="content">
+        <div class="aside">aside</div>
+        <div class="main">main</div>
+    </div>
+    <footer id="footer">footer</footer>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="stickup.js"></script>
+<script>
+
+    $('#nav').stickUp();
+
+</script>
+</body>
+</html>

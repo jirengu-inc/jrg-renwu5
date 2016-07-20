@@ -128,19 +128,20 @@
     $bullet.on('click','li',function(){
         var idx = $(this).index();
         if(idx<curIdx){
-            playNext(curIdx-idx);
+            playPre(curIdx-idx);
         }
         else{
-            playPre(curIdx-idx);
+            playNext(idx-curIdx);
         }
     });
     var curIdx = 0,
         isAnimate = false;
 
     function playPre(idx){
-        idx = idx||1;
+        var idx = idx||1;
         if(!isAnimate){
             isAnimate = true;
+            stopPlay();
             $show.animate({
                 left: '+='+(imgWidth*idx)
             },function(){
@@ -150,15 +151,17 @@
                         left: -imgWidth*imgCount
                     });
                 }
+                autoPlay();
                 isAnimate = false;
                 setBullet();
             });
         }
     }
     function playNext(idx){
-        idx = idx||1;
+        var idx = idx||1;
         if(!isAnimate){
             isAnimate = true;
+            stopPlay();
             $show.animate({
                 left: '-='+( imgWidth*idx )
             },function(){
@@ -168,6 +171,7 @@
                         left: -imgWidth
                     });
                 }
+                autoPlay();
                 isAnimate = false;
                 setBullet();
             });
@@ -180,9 +184,11 @@
     function autoPlay(){
         clock = setInterval(function(){
             playNext();
-        },1500);
+        },2000);
     }
-
+    function stopPlay(){
+        clearInterval(clock);
+    }
 
 
     autoPlay();

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+	<title>居中样式</title>
+	<style>
+		html,body,div,ul,li{
+			margin: 0px;
+			padding: 0px;
+		}
+		.inner{
+			list-style: none;
+		}
+		.inner>li{
+			width: 300px;
+			height: 100px;
+			background: rgb(0,66,16);
+			float: left;
+			margin-top: 20px;
+			margin-left: 10px;
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+		.wrapper{
+			width: 940px;
+			margin-top: 30px;
+			margin-left: auto;
+			margin-right: auto;
+			background: rgb(204,204,204);
+		}
+		.inner{
+			margin-left: -10px;
+			margin-right: -10px;        /*这里是利用负margin扩大面积，不是移位。因为如果一个元素没有width，只有左右负margin，它就会变宽。*/
+			overflow: hidden;
+		}	
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<ul class="inner">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+	</div>
+</body>
+</html>
