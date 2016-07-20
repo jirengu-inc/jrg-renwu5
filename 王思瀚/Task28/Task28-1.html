@@ -57,7 +57,7 @@
     $(function(){
 
         $.fn.stick = function(handler){
-            var $cur = this,
+            var $cur = $(this),
                 curW = $cur.width(),
                 curH = $cur.height(),
                 offsetTop=$cur.offset().top,
