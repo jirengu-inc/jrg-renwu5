@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ENVY</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+    <style>
+        html,body,p,ul,li,div{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .tab li.active{
+            background-color: #333;
+        }
+        img{
+            width: 400px;
+            height: 250px;
+        }
+        .ct{
+            width: 400px;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        .content>li{
+            float: left;
+        }
+        .content:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .arrow{
+            width: 30px;
+            height: 30px;
+            color: #fff;
+            background-color: #4e443c;
+            line-height: 30px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            opacity: 0.8;
+            border-radius: 50%;
+            font-weight: bolder;
+        }
+        .next{
+            right: 10px;
+        }
+        .pre{
+            left: 10px;
+        }
+        .tab{
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .tab>li{
+            display: inline-block;
+            width: 20px;
+            height: 5px;
+            border-radius: 2px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="ct">
+        <ul class="content">
+            <li><a href=""><img src="1.jpg" alt=""></a></li>
+            <li><a href=""><img src="2.jpg" alt=""></a></li>
+            <li><a href=""><img src="3.jpg" alt=""></a></li>
+            <li><a href=""><img src="4.jpg" alt=""></a></li>
+        </ul>
+        <a href="" class="pre arrow"><</a>
+        <a href="" class="next arrow">></a>
+        <ul class="tab">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+<script>
+        var $ct = $('.content'),
+           $items = $ct.children(),
+           $pre = $('.pre'),
+           $next = $('.next'),
+           $tab = $('.tab'),
+           imgWidth = $items.width(),
+           imgCount = $ct.children().size();
+
+
+        var curIdx =0;
+        var isAnimate = false;
+
+
+
+    function setActive(){
+        $tab.children().removeClass('active').eq(curIdx).addClass('active');
+        }
+    function autoPlay(){
+        clock = setInterval(function(){
+            playNext()
+        },3000)
+    }
+    function stopAuto(){
+         clearInterval(clock);
+    }
+    $next.on('click',function(e){
+      e.preventDefault();
+        playNext();
+    })
+    $pre.on('click',function(e){
+      e.preventDefault();
+        playPre();
+    })
+    $tab.on('click','li',function(){
+        play($(this).index())
+    })
+
+    function play(idx){
+        // var idx = idx || 1;
+        //这里如果使用上式的话，输入0就会没有响应直接跳过0只显示1，2，3
+        if(!isAnimate){
+            isAnimate = true;
+            stopAuto();
+            $ct.find('li').eq(curIdx).fadeOut(300);
+            $ct.find('li').eq(idx).fadeIn(300,function(){
+                isAnimate = false;
+            });
+            autoPlay();
+            curIdx = idx;
+            setActive();
+        }
+    }
+    function playNext(){
+        play((curIdx+1)%imgCount)
+    }
+    function playPre(){
+        play((curIdx+imgCount-1)%imgCount)
+    }
+
+    autoPlay();
+    play(0);
+   // console.log(curIdx)
+
+</script>
+</body>
+</html>

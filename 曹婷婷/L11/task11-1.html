@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+	<title>导航条</title>
+	<style>
+	html,body,ul,li{
+		margin: 0px;
+		padding: 0px;
+	}
+	body{
+		font-size: 15px;
+		font-family: "Microsoft Yahei";
+		width: 600px;
+	}
+	a{
+		text-decoration: none;
+		color: rgb(51,51,51);
+	}
+	li{
+		list-style: none;
+	}
+	#nav-bar{
+		background: rgb(203,203,203);
+		margin: 2px;	
+	}
+	#nav-bar:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	#nav-bar>li{
+		line-height: 30px;
+		text-align: center;
+		float: left;
+		padding: 0px 10px;
+		position: relative;
+	}
+	#nav-bar>li:hover{	
+		background: rgb(170,170,170);
+	}
+	#nav-bar>li .menu{
+	    position: absolute;  /* 让子元素不受父元素影响。*/
+		top: 100%;          /*父元素的高度。*/
+		left: 0px;
+		display: none;
+		border: 1px solid rgb(231,231,231);
+	}
+	#nav-bar>li:hover .menu{
+		display: block;
+	}
+	#nav-bar>li>.menu>li{
+		padding: 5px;
+	}
+	#nav-bar>li>.menu>li:hover{
+		background: rgb(203,203,203);
+	}
+	
+	</style>
+</head>
+<body>
+	<ul id="nav-bar">
+		<li><a href="#">前端</a>
+			<ul class="menu">
+				<li><a href="#">JavaScript</a></li>
+				<li><a href="#">CSS</a></li>
+				<li><a href="#">HTML</a></li>
+			</ul>
+		</li>
+		<li><a href="#">服务端</a>
+			<ul class="menu">
+				<li><a href="#">Node</a></li>
+				<li><a href="#">PHP</a></li>
+				<li><a href="#">Java</a></li>
+			</ul>
+		</li>
+		<li><a href="#">前端工具</a>
+			<ul class="menu">
+				<li><a href="#">Sublime</a></li>
+				<li><a href="#">WebStrom</a></li>
+				<li><a href="#">Git</a></li>
+			</ul>
+		</li>
+		<li><a href="#">HTML</a></li>
+		<li><a href="#">NODE</a></li>
+	</ul>
+</body>
+</html>

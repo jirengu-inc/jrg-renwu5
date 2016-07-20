@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.main{
+		height: 150px;
+		width: 200px;
+		border: 1px solid #ccc;
+		margin: 100px;
+	}
+	.up-gray{
+		width: 0px;
+		height: 0px;
+		border-top: 25px transparent solid;
+		border-right: 25px transparent solid;
+		border-bottom:25px solid #ccc;
+		border-left: 25px transparent solid; 
+		position: absolute;
+		top: 150px;
+		left: 220px;
+	}
+	.right-red{
+		width: 0px;
+		height: 0px;
+		border-top: 12px red solid;
+		border-right: 12px red solid;
+		border-bottom:12px solid transparent;
+		border-left: 12px transparent solid; 
+		position: absolute;
+		top: 500px;
+		left: 377px;
+	}
+	.up-white {
+		width: 0px;
+		height: 0px;
+		border-top: 25px transparent solid;
+		border-right: 25px transparent solid;
+		border-bottom:25px solid #ccc;
+		border-left: 25px transparent solid; 
+		position: absolute;
+		top: 850px;
+		left: 220px;
+
+	}
+
+	.up-white2 {
+		width: 0px;
+		height: 0px;
+		border-top: 25px transparent solid;
+		border-right: 25px transparent solid;
+		border-bottom:25px solid #fff;
+		border-left: 25px transparent solid; 
+		position: absolute;
+		top: 852px;
+		left: 220px;
+		z-index: 1;
+
+	}
+
+	.main-gray{
+		position: absolute;
+		top: 100px;
+		left: 100px;
+	}
+	.main-red{
+		position: absolute;
+		top: 400px;
+		left: 100px;
+
+	}
+	.main-white{
+		position: absolute;
+		top: 800px;
+		left: 100px;
+
+	}	
+	
+	</style>
+</head>
+<body>
+	<div class="up-gray"></div>
+	<div class="main-gray main"></div>
+	<div class="right-red"></div>
+	<div class="main-red main" ></div>
+	<div class="up-white"></div>
+	<div class="up-white2"></div>	
+	<div class="main-white main"></div>
+</body>
+</html>

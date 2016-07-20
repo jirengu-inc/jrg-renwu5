@@ -90,19 +90,15 @@
           {
             url:"1.php",
             method:"get",
+            dataType:"json",
             data:{
               start:start,
               len:len
             },
             success:function(result){
-              try{
-                var result=JSON.parse(result);
-              }catch(e){
-              }finally{
-                if(result.status===1){
-                  var data=result.data||[];
-                  appendHtml($cur,data);
-                }
+              if(result.status===1){
+                var data=result.data||[];
+                appendHtml($cur,data);
               }
             },
             error:function(jqXHR,textStatus){

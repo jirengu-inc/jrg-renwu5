@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ENVY</title>
+     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+     <style>
+         html,body,p,ul,li,div,h1,h2,h3{
+             margin: 0;
+             padding: 0;
+             list-style: none;
+         }
+         a{
+             text-decoration: none;
+         }
+         html,body{
+             width: 100%;
+             height: 100%;
+         }
+         .ct{
+             width: 100%;
+             height: 100%;
+             overflow: hidden;
+             position: relative;
+         }
+         .content{
+             width: 100%;
+             height: 100%;
+             position: absolute;
+         }
+
+         .content>li{
+             width: 100%;
+             height: 100%;
+            position: relative;
+             background-size: cover;
+             float: left;
+         }
+          .content:after{
+             content: '';
+             display: block;
+             clear: both;
+         }
+         .content .cover{
+             position: absolute;
+             background-size: cover;
+             top: 0;
+             left: 0;
+             bottom: 0;
+             right: 0;
+         }
+         .main{
+             position: absolute;
+             top:50%;
+            left:50%;
+             color: #fff;
+             font-size: 24px;
+             transform: translate(-50%,-70%);
+         }
+         .tab{
+             position: absolute;
+             bottom: 20px;
+             left: 50%;
+             transform: translateX(-100px);
+         }
+         .tab>li{
+             display: inline-block;
+             width:35px;
+             height: 10px;
+             background-color: #fff;
+             border-radius: 4px;
+             cursor: pointer;
+         }
+         .tab li.active{
+             background-color: #ccc;
+         }
+    </style>
+</head>
+<body>
+    <div class="ct">
+        <ul class="content">
+            <li>
+                <div class="cover" data-image="g.jpg"></div>
+                <div class="main">
+                    <h1>Gravity Falls</h1>
+                </div>
+            </li>
+            <li>
+                <div class="cover" data-image="b.jpg"></div>
+                <div class="main">
+                    <h1>不屈者难渡人世，予正直者以安眠。</h1>
+                </div>
+            </li>
+            <li>
+                <div class="cover" data-image="q.jpg"></div>
+                <div class="main">
+                    <h1>It gets easier. Every day, it gets a little easier, but you gotta do it everyday. That's the hard part.But it does get easier.</h1>
+                </div>
+            </li>
+            <li>
+                <div class="cover" data-image="r.jpg"></div>
+                <div class="main">
+                    <h1>Nobody exists on purpose.Nobody belongs anywhere.Everybody's gonna die.Come watch TV.</h1>
+                </div>
+            </li>
+            <li>
+                <div class="cover" data-image="m.jpg"></div>
+                <div class="main">
+                    <h1>A record that will live on in people's memories for years to come. what more could anyone ask for.FREE.</h1>
+                </div>
+            </li>
+        </ul>
+        <ul class="tab">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        var $ct = $('.content'),
+            $tab= $('.tab'),
+            $items=$ct.children(),
+            imgWidth=$(window).width(),
+            imgCount=$ct.children().size();
+        $ct.append($items.first().clone());
+        $ct.prepend($items.last().clone());
+         imgRealCount=$ct.children().size();
+        $ct.find('li').css('width',imgWidth);
+        $ct.find('.cover').css('width',imgWidth);
+        $ct.css({
+            left:0-imgWidth,
+            width:imgRealCount*imgWidth
+        })
+
+        var curIdx = 0;
+        var isAnimate = false;
+
+        $tab.on('click','li',function(){
+           var idx = $(this).index();
+            if(idx>curIdx){
+                playNext(idx -curIdx)
+            }else if(idx < curIdx){
+                playPre(curIdx-idx)
+            }
+         //   curIdx = idx;  wrong
+        })
+        function autoPlay(){
+            clock = setInterval(function(){
+                playNext();
+            },7000)
+        }
+        function playNext(idx){
+            var idx = idx || 1;
+            if(!isAnimate){
+                isAnimate = true;
+                loadImg(curIdx+2);
+                $ct.animate({left:'-='+(imgWidth*idx)},function(){
+                    curIdx = curIdx +idx;
+                    if(curIdx == imgCount){
+                        $ct.css({left:0-imgWidth});
+                        curIdx =0;
+                    }
+
+                    isAnimate =false;
+                    setActive();
+                })
+            }
+        }
+           function playPre(idx){
+            var idx = idx || 1;
+            if(!isAnimate){
+                isAnimate = true;
+                loadImg(curIdx);
+                $ct.animate({left:'+='+(imgWidth*idx)},function(){
+                    curIdx = curIdx - idx;
+                    if(curIdx == -1){
+                       $ct.css({left:0-imgWidth*imgCount});
+                        curIdx = imgCount - 1;
+                    }
+
+                    isAnimate =false;
+                    setActive();
+                })
+            }
+        }
+        function setActive(){
+            $tab.children().removeClass('active').eq(curIdx).addClass('active');
+        }
+
+        function loadImg(idx){
+            var idx = idx || 0;
+            var $node =$ct.children().eq(idx);
+            var $img = $node.find('.cover');
+             //   console.log($img);
+            var imgUrl=$img.attr('data-image');
+            if($node.data('isSet')){
+                return;
+            }
+            console.log(imgUrl)
+            $img.css('background-image','url('+imgUrl+')');
+            $node.data('isSet',true);
+        }
+        loadImg(1);
+        autoPlay();
+    </script>
+</body>
+</html>
