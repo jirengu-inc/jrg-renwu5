@@ -28,7 +28,7 @@
                     unStick();
                 }
             });
-            //将目标设置不可见，插入fixed定位的新元素，不会改变文档结构
+            //将目标设置不可见，插入fixed定位的新元素
             function stick(){
                 $nav.css('opcity', 0);
                 $nav.append($new);

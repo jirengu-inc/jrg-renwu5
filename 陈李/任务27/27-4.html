@@ -223,8 +223,8 @@
 
     loadImg(1);
     loadImg(2);
-    loadImg(3);
-    loadImg(4);  //图片较少就预先加载好了，懒加载反而会导致加载延迟白屏，不知道怎么解决
+    loadImg(3);  // 图片较少就预先全部加载完成
+    loadImg(4);  // 懒加载反而会导致首次直接点击最后一张图片时白屏
     autoPlay();
 </script>
 </body>
