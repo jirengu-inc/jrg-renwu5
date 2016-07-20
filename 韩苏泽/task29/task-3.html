@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-3</title>
+  </head>
+    <style>
+      ul,li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .list>li{
+        height: 20px;
+        line-height: 20px;
+        border: 1px solid #ccc;
+        margin-top: 10px;
+        padding: 10px;
+      }
+      div.btn{
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+        width: 80px;
+        height: 20px;
+        line-height: 20px;
+        border: 1px solid red;
+        border-radius: 3px;
+        padding: 10px;
+        color: red;
+        text-align: center;
+        cursor: pointer;
+      }
+      .list>li.hover{
+        color: white;
+        background-color: green;
+      }
+    </style>
+  <body>
+    <ul class="list">
+      <li>内容1</li>
+      <li>内容2</li>
+      <li>内容3</li>
+    </ul>
+    <div class="btn" id="add-more">加载更多</div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+
+      var $cur=$(".list");
+      $cur.on("mouseenter","li",function(){
+        $(this).addClass("hover");
+      })
+      $cur.on("mouseleave","li",function(){
+        $(this).removeClass("hover");
+      })
+      var $add=$("#add-more");
+      $add.on("click",
+      loadData);
+      $(window).on("scroll",function(){
+        if(isVisable()){
+          loadData()
+        }
+      });
+      loadData();
+      function loadData(){
+        var start=$cur.find("li").size();
+        var len=20;
+        load(start,len);
+      }
+      function isVisable(){
+        var offsetTop=$add.offset().top;
+        var $win=$(window);
+        var winH=$win.height();
+        var scrollTop=$win.scrollTop();
+        if(offsetTop<winH+scrollTop){
+          return true;
+        }
+        return false;
+      }
+      function appendHtml($el,data){
+        for(var i=0;i<data.length;i++){
+          var html='<li>' + data[i] + '</li>'
+          $el.append(html);
+        }
+      }
+      function load(start,len){
+        if($add.data("isLoading")) return;
+        $add.data("isLoading",true);
+        $.ajax(
+          {
+            url:"1.php",
+            method:"get",
+            dataType:"json",
+            data:{
+              start:start,
+              len:len
+            },
+            success:function(result){
+              if(result.status===1){
+                var data=result.data||[];
+                appendHtml($cur,data);
+              }
+            },
+            error:function(jqXHR,textStatus){
+              console.log(textStatus);
+            },
+            complete:function(){
+              $add.data("isLoading",false);
+            },
+            cache:false
+          }
+        )
+      }
+    </script>
+  </body>
+</html>

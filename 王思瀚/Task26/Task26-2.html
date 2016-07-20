@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ENVY</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <style>
+        html,body,p,h1,h2,h3{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        #btn{
+            display: inline-block;
+            border: 3px solid #ccc;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        .bg{
+           border: 1px solid #000;
+           width: 200px;
+           height: 200px;
+           background-color: #ccc;
+        }
+        .boderColor{
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色</legend>
+        <a href="" id="btn">BUTTON</a>
+
+        <script>
+        $('#btn').on('click',function(e){
+            e.preventDefault();
+           $(this).stop(true,false)
+               .animate({'background-color':'red'},300)
+               .animate({'background-color':'blue'},300);
+
+    });
+        </script>
+    </fieldset>
+
+    <fieldset>
+        <legend>当窗口滚动时，获取垂直滚动距离</legend>
+        <div class="out"></div>
+        <script>
+            $(window).on('scroll',function(){
+                $('.out').text($(window).scrollTop())
+            })
+        </script>
+    </fieldset>
+
+    <fieldset>
+        <legend>当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色</legend>
+        <div class="bg"></div>
+        <script>
+            $('.bg').on('mouseenter',function(){
+                $(this).css({"backgroundColor":"red"})
+            })
+            $('.bg').on('mouseleave',function(){
+                $(this).css({"background-color":"#fff"})
+            })
+        </script>
+    </fieldset>
+
+    <fieldset>
+        <legend>当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字</legend>
+        <input type="text" id="ip">
+        <script>
+        $('#ip').on('focus',function(){
+            $(this).addClass('borderColor')
+        })
+          $('#ip').on('blur',function(){
+            $(this).removeClass('borderColor');
+              console.log($(this).val())
+        })
+          $('#ip').on('keyup',function(){
+            $(this).val($(this).val().toUpperCase())
+        })
+        </script>
+    </fieldset>
+
+    <fieldset>
+        <legend>当选择 select 后，获取用户选择的内容</legend>
+        <input type="text" id="final">
+        <select name="" id="final2">
+            <option value="1">1</option>
+             <option value="2">2</option>
+              <option value="3">3</option>
+               <option value="4">4</option>
+        </select>
+        <script>
+            $('#final2').on('change',function(){
+                $('#final').val(3);
+                console.log($(this).val())
+            })
+        </script>
+    </fieldset>
+</body>
+</html>

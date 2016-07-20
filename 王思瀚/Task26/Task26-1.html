@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ENVY</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        html,body,p,div,p1,p2,p3{
+            margin: 0;
+            padding: 0;
+        }
+        .active{
+            background-color: #ccc;
+            font-weight: bolder;
+        }
+        .content{
+            width: 100px;
+            height: 100px;
+            border: 3px solid #ccc;
+            border-radius: 4px;
+            margin: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+  <fieldset>
+      <legend>给元素 $node 添加 class active，给元素 $node 删除 class active</legend>
+      <p id="p1">Love all, trust a few, do wrong to none. --William Shakespeare</p>
+      <button id="addclass">addClass</button>
+      <button id="removeclass">removeClass</button>
+      <script>
+        var $p = $("#p1");
+        $("#addclass").on('click',function(){
+            $p.addClass("active");
+        })
+        $("#removeclass").on('click',function(){
+            $p.removeClass("active");
+        })
+    </script>
+  </fieldset>
+
+   <fieldset>
+       <legend>展示元素$node, 隐藏元素$node</legend>
+       <p id="p2">Love all, trust a few, do wrong to none. --William Shakespeare</p>
+       <button id="show">show</button>
+        <button id="hide">hide</button>
+        <script>
+            $("#show").on("click",function(){
+                $("#p2").show("fast");
+            })
+            $("#hide").on("click",function(){
+                $("#p2").hide("slow");
+            })
+       </script>
+   </fieldset>
+
+   <fieldset>
+       <legend>获取元素$node 的 属性: id、src、title， 修改以上属性</legend>
+       <img src="1.jpg" title="Mac" id="Macbook Pro ME07980GE">
+       <div id="id"></div>
+       <div id="src"></div>
+       <div id="title"></div>
+       <button id="get">get</button>
+       <button id="modify">modify</button>
+       <script>
+        $("#get").on('click',function(){
+           var img = $(this).parent("fieldset").find("img");
+            $("#id").text("id = "+img.attr("id"));
+            $("#src").text("src = "+img.attr("src"));
+            $("#title").text("title = "+img.attr("title"));
+        })
+        $("#modify").on('click',function(){
+             var img = $(this).parent("fieldset").find("img");
+            img.attr("src","3.jpg");
+            img.attr("title","Apple Watch");
+            img.attr("id","Watch OS1");
+        })
+
+       </script>
+   </fieldset>
+   <fieldset>
+       <legend>给$node 添加自定义属性data-src</legend>
+       <p id="p3">console</p>
+       <button id="add">add</button>
+       <script>
+           $("#add").on('click',function(){
+               $('#p3').attr('data-src',"3.jpg");
+               console.log(p3)
+           })
+       </script>
+   </fieldset>
+
+   <fieldset>
+       <legend>在$ct 内部最开头添加元素$node/在$ct 内部最末尾添加元素$node/删除$node/把$ct里内容清空/在$ct 里设置 html </legend>
+       <ul id="ul">
+           <li>1</li>
+           <li>2</li>
+           <li>3</li>
+       </ul>
+       <button id="append">append</button>
+       <button id="prepend">prepend</button>
+       <button id="delete">delete</button>
+       <button id="button">empty</button>
+       <button id="set">在$ct 里设置 html </button>
+       <script>
+        $("#append").on('click',function(){
+            $('#ul').append('<li>more</li>')
+        })
+        $("#prepend").on('click',function(){
+            $('#ul').prepend('<li>more</li>')
+        })
+        $("#delete").on('click',function(){
+            $('#ul').find("li").last().remove();
+        })
+        $("#button").on('click',function(){
+            $('#ul').empty();
+        })
+        $("#set").on('click',function(){
+            $('#ul').html('<div class="btn">DIV</div>');
+        })
+       </script>
+   </fieldset>
+
+    <fieldset>
+        <legend>获取、设置$node 的宽度、高度(分别不包括内边距、包括内边距、包括边框、包括外边距)</legend>
+        <div class="content">
+        </div>
+        <div class="width"></div>
+        <div class="width2"></div>
+        <div class="width3"></div>
+        <div class="width4"></div>
+        <button id="huoqu">get</button>
+        <button id="xiugai">modify</button>
+        <script>
+        $('#huoqu').on('click',function(){
+            var img = $(".content")
+           // console.log(img.css("innerWidth()"))
+            $('.width').text("不包含内边距："+img.css("width"));
+            $('.width2').text("包含内边距："+img.innerWidth()+"px");
+            $('.width3').text("包含内边距和边框："+img.outerWidth()+"px");
+            $('.width4').text("包含内边距边框和外边距："+img.outerWidth(true)+"px");
+       })
+        $('#xiugai').on('click',function(){
+            var img = $(".content");
+            img.width(img.width()*2);
+            img.innerWidth(img.innerWidth()*2);
+            img.outerWidth(img.outerWidth()*2);
+            img.outerWidth(true,img.outerWidth(true)*2);
+        })
+
+        </script>
+    </fieldset>
+
+    <fieldset>
+        <legend>获取窗口滚动条垂直滚动距离</legend>
+        <p>滚动距离：</p>
+        <h1 id="distance"></h1>
+        <script>
+            $(window).on('scroll',function(){
+                $('#distance').text($(this).scrollTop());
+            })
+        </script>
+    </fieldset>
+
+    <fieldset>
+        <legend>获取$node 到根节点水平、垂直偏移距离</legend>
+        <p id="p4">node</p>
+        <div id="juli"></div>
+        <button id="offset">offset</button>
+        <script>
+            $("#offset").on('click',function(){
+                var off = $('#p4').offset();
+                $('#juli').text("left:"+off.left +"px"+ ", top:"+off.top+"px");
+            })
+        </script>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>修改$node 的样式，字体颜色设置红色，字体大小设置14px</legend>
+        <p id="p5">Love all, trust a few, do wrong to none. --William Shakespeare</p>
+        <button id="xiugai2">modify</button>
+        <script>
+            $('#xiugai2').on('click',function(){
+                $('#p5').css({
+                    "color":"red",
+                    "font-size":"14px"
+                })
+            })
+        </script>
+    </fieldset>
+    <fieldset>
+        <legend>遍历节点，把每个节点里面的文本内容重复一遍</legend>
+        <table id="t1">
+            <tr>
+                <th>name</th>
+                <th>author</th>
+                <th>album</th>
+            </tr>
+            <tr>
+                <td>修炼爱情</td>
+                <td>林俊杰</td>
+                <td>因你而在</td>
+            </tr>
+        </table>
+        <button id="xiugai3">print</button>
+        <script>
+            $('#xiugai3').on('click',function(){
+                $('#t1').find('td').each(function(){
+                    $(this).text($(this).text()+$(this).text())
+                })
+            })
+        </script>
+    </fieldset>
+
+    <fieldset>
+        <legend>从$ct 里查找 class 为 .item的子元素/获取$ct 里面的所有孩子/对于$node，向上找到 class 为’.ct’的父亲，在从该父亲找到’.panel’的孩子
+</legend>
+        <div class="ct">
+            <div class="item">item</div>
+            <div class="item2">item2</div>
+            <div class="item3">item3</div>
+        </div>
+        <button id="clic">item</button>
+        <button id="all">get all</button>
+        <button id="son">son</button>
+        <script>
+            $('#clic').on('click',function(){
+                         $('.ct').find('.item').css({
+                             "background-color":"#ccc"
+                         })
+                           });
+            $('#all').on('click',function(){
+                        $('.ct').children().css({
+                             "border":"1px solid #000",
+                            "width":"70px"
+                        })
+            })
+            $('#son').on('click',function(){
+                        $(this).parent("fieldset").find(".item3").text("father!")
+            })
+        </script>
+    </fieldset>
+
+    <fieldset>
+        <legend>获取选择元素的数量</legend>
+        <div id="ct2">
+            <input type="checkbox" value="music">音乐
+            <input type="checkbox" value="movie">电影
+            <input type="checkbox" value="reading">读书
+            <div class="output"></div>
+        </div>
+        <script>
+            var num = 0;
+            $('#ct2').on('click','input',function(){
+                if(this.checked == true){
+                    num++;
+                }else{
+                    num--;
+                }
+                $('.output').text(num + " guys have been choosen")
+            })
+
+        </script>
+    </fieldset>
+
+    <fieldset>
+        <legend>获取当前元素在兄弟中的排行</legend>
+        <ul id="final">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="final2"></div>
+        <script>
+        $('#final').on('click','li',function(){
+            var inx = $(this).index() + 1;
+            $('.final2').text("index:"+ inx );
+        })
+        </script>
+    </fieldset>
+
+</body>
+</html>

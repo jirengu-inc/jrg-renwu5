@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>任务11代码1</title>
+		<style>
+		html,body,ul,li,p{
+		margin:0;
+		padding:0;
+		
+		}
+		li{
+		list-style:none;
+		
+		}
+		a{
+		text-decoration: none;
+		color: #333;
+		}
+		body{
+		font:23px/1.5 '微软雅黑';
+		}
+		#nav{
+		background-color: #ccc;
+		height: 50px;
+		
+		}
+		#nav>ul >li >a{
+		display: block;
+		height: 50px;
+		padding: 0 10px;
+		
+		}
+		#nav>ul>li:hover .child{
+		display: block;
+		}
+		#nav .child{
+		position: absolute;
+		border: 1px solid #ccc;
+		top:49px;
+		left: 5px;
+		margin:0px;
+		min-width: 64px;
+		display: none;
+		}
+		#nav .child li{
+		
+		height: 50px;
+		line-height: 50px;
+		
+		}
+		
+		
+		#nav > ul >li >a:hover{
+		background-color: #888;
+		display: block;
+		}
+		#nav .child li:hover{
+		
+		background-color: #888;
+		}
+		#nav > ul >li {
+		float: left;
+		padding:0 5px;
+		position: relative;
+		line-height: 50px;
+		}
+		
+		#nav:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		
+		</style>
+	</head>
+	<body>
+		<div id="nav">
+			<ul>
+				<li >
+					<a href="#">前端</a>
+					<ul class="child" >
+						<li>JAVASCRIPT</li>
+						<li>CSS</li>
+						<li>HTML</li>
+					</ul>
+				</li>
+				
+				
+				
+				<li ><a href="#">服务端</a>
+				<ul class="child">
+					<li>NODE</li>
+					<li>PHP</li>
+					<li>JAVA</li>
+				</ul>
+			</li>
+			<li >
+				<a href="#">前端工具</a>
+				<ul class="child" >
+					<li>Sublime</li>
+					<li>Webstrom</li>
+					<li>Git</li>
+				</ul>
+			</li>
+			<li ><a href="#">HTML</a></li>
+			<li ><a href="#">NODE</a></li>
+		</ul>
+	</div>
+</body>
+</html>

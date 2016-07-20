@@ -1,0 +1,549 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+	list-style: none;
+}
+
+
+/*居中用的layout*/
+
+.layout {
+	margin: 0px auto;
+	width: 1000px;
+}
+
+
+/*测试用border*/
+
+.textBorder {
+	border: 2px solid red;
+}
+
+
+/*用作撑开*/
+
+.fuckFloat:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+
+/*顶部FIX的地方*/
+
+#mainNav {
+	background-color: rgb(33, 33, 33);
+	padding: 20px 0;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 2;
+}
+
+#mainNav:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.mainTopLogo {
+	font-family: "arial black";
+	display: inline-block;
+	color: rgb(253, 210, 71);
+	font-size: 1.5rem;
+	font-weight: 300;
+}
+
+.mainTopLogo:hover {
+	color: #ff5a00;
+}
+
+#mainNav ul {
+	float: right;
+}
+
+#mainNav ul li {
+	display: inline-block;
+	padding: 10px;
+}
+
+#mainNav ul li a {
+	color: white;
+}
+
+#mainNav ul li a:hover {
+	color: #FF5A00;
+	transition: all .5s;
+	-moz-transition: all .5s;
+}
+
+
+/*开始写顶部的banner*/
+
+#topBanner {
+	margin-top: 82px;
+	width: 100%;
+	height: 100%;
+	background: url(../img/header-bg.jpg) no-repeat center center scroll;
+	background-size: cover;
+}
+
+.infomationText {
+	color: white;
+	text-align: center;
+	padding-top: 300px;
+	padding-bottom: 300px;
+}
+
+.infomationText h3 {
+	font-family: "arial rounded mt bold";
+	position: relative;
+	top: 30px;
+}
+
+.infomationText h1 {
+	font-size: 40px;
+	line-height: 130px;
+}
+
+.infomationText p a {
+	color: white;
+}
+
+.infomationText>p>a {
+	padding: 15px;
+	background-color: rgb(253, 210, 71);
+	border-radius: 5px;
+	text-shadow: 1px 1px 1px gray;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.infomationText>p>a:hover {
+	background-color: #e49600;
+	transition: all .3s;
+}
+
+
+/*services开始*/
+
+#services {}
+
+.servicesContentTop {
+	text-align: center;
+	padding-top: 100px;
+}
+
+.servicesContentTop p {
+	color: #777;
+	font-weight: 100;
+}
+
+.servicesContentMiddle:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.servicesContentMiddle a {
+	color: black;
+}
+
+.servicesContentMiddle a>p {
+	color: #8a8a8a;
+}
+
+.servicesContentTop>p {
+	line-height: 30px;
+}
+
+.servicesContentMiddle>ul>li {
+	text-align: center;
+	float: left;
+	width: 32%;
+}
+
+.servicesIconCricle {
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	background-color: #fdd247;
+}
+
+.servicesIconCricle {
+	margin-left: 120px;
+	margin-top: 60px;
+	margin-bottom: 20px;
+}
+
+.iconFontSize1 {
+	font-size: 50px!important;
+	position: relative;
+	top: 15px;
+	right: -2px;
+}
+
+
+/*这里正式开始portfolio*/
+
+#portfolio {
+	text-align: center;
+	margin-top: 137px;
+}
+
+#portfolio:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+#portfolio h4 {
+	font-weight: 100;
+	color: #777;
+	margin-bottom: 50px;
+}
+
+.portfolioItem {
+	float: left;
+	outline: 1px solid #d5d5d5;
+	background-color: white;
+	padding-bottom: 20px;
+	margin-right: 5px;
+	margin-top: 10px;
+}
+
+.negaticeMargin {
+	margin-right: -3px;
+}
+
+.portfolioItem img {
+	width: 330px;
+	height: 254px;
+	margin-bottom: 20px;
+}
+
+.portfolioItem a:hover {
+	opacity: .5;
+	transition: all .5s;
+}
+
+
+/*ABOUT开始了额*/
+
+#theAbout {
+	text-align: center;
+	margin-top: 150px;
+}
+
+.aboutFirst h2 {
+	font-size: 35px;
+}
+
+.aboutFirst h3 {
+	color: #777;
+	font-weight: 100;
+}
+
+.imgcircle>img {
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	border: 8px solid #e7e7e7;
+	margin: 0px auto;
+	float: right;
+	position: relative;
+	right: 394px;
+}
+
+.aboutContent>ul>li {
+	margin-top: 60px;
+}
+
+.pureTimeLine {
+	width: 0px;
+	height: 1360px;
+	border: 2px solid #e7e7e7;
+	position: absolute;
+	left: 945px;
+}
+
+.aboutContent>ul>li:first-of-type {
+	margin-top: 10px;
+}
+
+.timeLineBody {
+	float: left;
+	max-width: 379px;
+	margin-top: 30px;
+	text-align: right;
+	line-height: 23px;
+}
+
+.timeLineBody2 {
+	float: right;
+	max-width: 379px;
+	margin-top: 30px;
+	text-align: left;
+	line-height: 23px;
+	position: relative;
+	left: 210px;
+}
+
+.timeline-words {
+	color: #777;
+}
+
+.theLastContent1 {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-color: #e7e7e7;
+	display: inline-block;
+	z-index: 10;
+	position: relative;
+}
+
+.theLastContent2 {
+	width: 185px;
+	height: 185px;
+	background-color: rgb(254, 209, 54);
+	border-radius: 50%;
+	position: relative;
+	top: 7px;
+	left: 8px;
+}
+
+.theLastContent2>p {
+	position: relative;
+	top: 43px;
+	font-size: 25px;
+	font-weight: bold;
+	color: white;
+}
+
+
+/*ourAmazingTeamBegin*/
+
+#ourTeamIntroduce {
+	margin-top: 150px;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	background-color: #f7f7f7;
+}
+
+.theTeamHeader {
+	text-align: center;
+	padding-bottom: 100px;
+}
+
+.theTeamHeader>p {
+	color: #777;
+	line-height: 30px;
+}
+
+.profile1 {
+	width: 33%;
+	display: inline-block;
+	padding-bottom: 230px;
+}
+
+.negativeMargin {
+	margin-left: -6px;
+}
+
+.portrait {
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	border: 8px solid #e7e7e7;
+	margin: 0px auto;
+	text-align: center;
+}
+
+.portrait img {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}
+
+.portrait>h4 {
+	margin-top: 20px;
+	font-size: 22px;
+}
+
+.portrait>p {
+	line-height: 25px;
+	color: #777;
+}
+
+.portrait>ul>li {
+	display: inline-block;
+}
+
+.iconFontSize2 {
+	font-size: 40px!important;
+	position: relative;
+	top: 10px;
+	right: -2px;
+}
+
+.extraPosition {
+	top: 13px;
+}
+
+.hereIsTeamBottomWords {
+	width: 900px;
+	text-align: center;
+	margin: 0px auto;
+	color: #777;
+}
+
+
+/*ourAmazingTeamFinish*/
+
+
+/*ClientsBegin*/
+
+#clients {
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+
+.clientsPic {
+	display: inline-block;
+	margin-right: 55px;
+}
+
+.clientsNegativeMargin {
+	margin-left: -28px;
+}
+
+
+/*ClientsFinish*/
+
+#contactUs {
+	background: url(../img/map-image.png);
+	background-color: black;
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+.contactHeader {
+	text-align: center;
+	padding-bottom: 100px;
+}
+
+.contactHeader h1 {
+	color: white
+}
+
+.contactHeader>p {
+	color: #777;
+	line-height: 30px;
+}
+
+.formCol {
+	float: left;
+}
+
+.formGroup input {
+	height: 70px;
+	width: 470px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 3px;
+	padding-left: 10px;
+}
+
+.formGroup input:focus {
+	outline: 1px solid gold;
+	border-radius: 3px;
+}
+
+.leftForom textarea {
+	margin-top: 10px;
+	float: right;
+	display: block;
+	width: 470px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	height: 249px;
+}
+
+.contentUssendMessageButton p a {
+	color: white;
+}
+
+.contentUssendMessageButton>p>a {
+	padding: 15px;
+	background-color: rgb(253, 210, 71);
+	border-radius: 5px;
+	text-shadow: 1px 1px 1px gray;
+	font-weight: bold;
+	font-size: 16px;
+	position: relative;
+	left: 420px;
+	top: 30px;
+}
+.contentUssendMessageButton>p>a:hover {
+	background-color: #e49600;
+	transition: all .3s;
+}
+
+/*footer*/
+#footer{
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.footerLink a{
+	color: #e9bc2a;
+}
+.iconFontSize3 {
+	font-size: 40px!important;
+	position: relative;
+	left: -29px;
+	top: -12px;
+}
+.extraPosition2 {
+	top: -10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

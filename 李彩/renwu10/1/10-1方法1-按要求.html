@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>10-1要求</title>
+  <style>
+  *{
+      margin: 0px;
+      padding: 0px;
+      box-sizing:border-box;    
+
+  }
+  .container{
+    margin: 0 auto;
+    width: 900px;
+  }
+  #header{
+    height: 50px;
+    background-color: #333;
+  }
+  #header:after{
+    content: "";
+    display:table;
+    clear: both;
+
+  }
+  ul,li{
+    display: inline-block;
+    list-style: none;
+    vertical-align: middle;
+  }
+  .nav-ul{
+    float: right;
+  }
+  .nav-ul>li{
+    float: left;
+  }
+
+
+
+  .nav-content>a{
+
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+
+    
+  }
+  .nav-content>a:hover{
+    background-color: #fff;
+    color: #333;
+  }
+
+
+  .jirengu-logo{
+    height: 50px;
+    float: left;
+
+  }
+  #main:after{
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  #left-sidebar{
+    background-color: #eee;
+    width: 200px;
+    min-height: 500px; 
+    margin-top: 10px;
+    float: left;
+
+
+
+  }
+  #main-content{
+    background-color: #eee;
+    width: 690px;
+    margin-top: 10px;
+    float: left; 
+    margin-left: 10px;
+    
+
+
+  }
+  #footer{
+    background-color: #333;
+    clear: left;
+  }
+  
+  .footer-li>a{
+
+    text-decoration: none;
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    padding-left: 20px;
+
+
+  }
+  #main-content>h1,p{
+    padding: 12px;
+  }
+
+
+  </style>
+</head>
+<body>
+    <div id="header">
+      <div class="container">      
+        <a href="http://jirengu.com"><img src="http://cdn.jirengu.com/public/logo-tiny.png" alt="jirengu logo" class="jirengu-logo">
+        </a>
+        <ul class="nav-ul">
+        <li class="nav-content"><a href="#">技能</a></li>
+        <li class="nav-content"><a href="#">经历</a></li>
+        <li class="nav-content"><a href="#">作品</a></li>
+        <li class="nav-content"><a href="#">关于</a></li>
+      </ul>
+      </div>        
+    </div>
+    <div id="main">
+      <div class="container">
+
+        <div id="left-sidebar">
+            
+        </div>
+        <div id="main-content">            
+            <h1>我的作品</h1>
+            <p>生活很美好</p>
+            <p>心情不错</p> 
+            <p>代码写的很漂亮</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <ul>
+          <li class="footer-li"><a href="http://jirengu.com">饥人谷</a></li>
+          <li class="footer-li"><a href="http://jscode.me">JSCODE</a></li>
+          <li class="footer-li"><a href="http://js.jirengu.com">JSBIN</a></li>
+        </ul>  
+           
+      </div>
+    </div>
+
+</body>
+</html>

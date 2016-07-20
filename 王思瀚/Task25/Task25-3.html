@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ENVY</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+    <style>
+        html,body,p,h1,h2,h3,div,ul,li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: 19px;
+            font-family: "Micrisoft Yahei";
+        }
+        h1{
+            position: relative;
+            left: 60px;
+        }
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        .container{
+            width: 1300px;
+            margin: 0 auto;
+        }
+        .content:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .content_list{
+            float: left;
+            border: 1px solid #ccc;
+            position: relative;
+            text-align: center;
+            list-style: none;
+/*            为什么初始化里面的样式重置没起作用*/
+        }
+        .content_list img{
+            width: 400px;
+            height: 250px;
+        }
+        .title{
+            padding: 10px;
+            font-size: 19px;
+            font-weight: bolder;
+        }
+        .price{
+            font-weight: bolder;
+        }
+        .content_list .btn{
+            display: inline-block;
+            text-align: center;
+            border-radius: 5px;
+            width: 70px;
+            height: 35px;
+           line-height: 35px;
+            font-size: 15px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+           transform: translate(-50%,-70%);
+            background-color: #333;
+              color:#fff;
+            font-weight: bolder;
+            list-style: none;
+            display: none;
+        }
+
+        .bgc{
+            position: absolute;
+            top:0;
+            background-color: #ccc;
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+            display: none;
+        }
+        .add{
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            position: relative;
+            top: 20px;
+            left: 60px;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>APPLE PRODUCTS</h1>
+        <ul class="content">
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+            <li class="content_list">
+                <a href="" class="content_node">
+                    <img src="1.jpg" alt="">
+                    <p class="title">Mabook Pro</p>
+                    <p class="price">$ 1999</p>
+                    <div class="bgc"></div>
+                    <a href="" class="btn">查看预览</a>
+                </a>
+            </li>
+        </ul>
+        <a href="" class="add">查看更多</a>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+
+        var $list = $('.content');
+        var $bgc = $('.bgc');
+        var $btn = $('.btn');
+        var $add = $('.add');
+
+
+        $list.on('mouseenter','.content_list',function(){
+//            这里用到了事件绑定，也就是前面一个父容器后面一个子元素
+            $(this).find('.bgc').show();
+            $(this).find('.btn').show();
+        })
+        $list.on('mouseleave','.content_list',function(){
+            $(this).find('.bgc').hide();
+            $(this).find('.btn').hide();
+        })
+
+        $add.on('click',function(e){
+            e.preventDefault();
+//            又出现了这个毛病，如果不加这个阻止的话就不显示效果，而且又是a标签
+                $('.content').append('<li class="content_list"><a href="" class="content_node"><img src="3.jpg" alt=""><p class="title">Mabook Pro</p><p class="price">$ 1999</p><div class="bgc"></div><a href="" class="btn">查看预览</a></a></li><li class="content_list"><a href="" class="content_node"><img src="3.jpg" alt=""><p class="title">Mabook Pro</p><p class="price">$ 1999</p><div class="bgc"></div><a href="" class="btn">查看预览</a></a></li><li class="content_list"><a href="" class="content_node"><img src="3.jpg" alt=""><p class="title">Mabook Pro</p><p class="price">$ 1999</p><div class="bgc"></div><a href="" class="btn">查看预览</a></a></li>')
+//                这里如果不是连接在一起字符串也会报错
+                });
+//        var $list = $('.content');
+//        var $bgc = $('.bgc');
+//        var $btn = $('.btn');
+//        var $add = $('.add');
+//        var products = [
+//            {
+//                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+//                name: '珂兰 黄金手 猴哥款',
+//                price: '￥405.00'
+//            },{
+//                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+//                name: '珂兰 黄金转运珠 猴哥款',
+//                price: '￥100.00'
+//            },{
+//                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+//                name: '珂兰 黄金手链 3D猴哥款',
+//                price: '￥45.00'
+//            }
+//        ];
+//
+//
+//        $list.on('mouseenter','.content_list',function(){
+////            这里用到了事件绑定，也就是前面一个父容器后面一个子元素
+//            $(this).find('.bgc').show();
+//            $(this).find('.btn').show();
+//        })
+//        $list.on('mouseleave','.content_list',function(){
+//            $(this).find('.bgc').hide();
+//            $(this).find('.btn').hide();
+//        })
+//
+//
+//        function appendHtml(obj){
+//          var html=""
+//          html+='<li class="content_list">';
+//          html+='<a href="" class="content_node">';
+//          html+='<img src=" '+ obj.img +' " alt="">';
+//          html+='<p class="title">'+obj.name+'</p>';
+//          html+='<a href="" class="btn">' + obj.price + '</a>';
+//          html+='<div class="bgc">';
+//          html+='</div>';
+//          html+='<a href="" class="btn">' + '查看预览' + '</a>';
+//          html+='</a>';
+//          html+='</li>';
+//          return html;
+//          }
+//
+//
+//        $(".add").on("click",function(e){
+//          e.preventDefault();
+//          var $cur=$(this);
+//          $.each(products,function(idx,val){
+//            var html=appendHtml(val);
+//           $('.content').append(html);
+//          })
+//        });
+
+    </script>
+</body>
+</html>

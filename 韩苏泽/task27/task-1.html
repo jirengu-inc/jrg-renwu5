@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-1</title>
+    <style>
+     html,body,ul,li{
+       margin: 0;
+       padding: 0;
+     }
+     ul,li{
+       list-style: none;
+     }
+     a{
+       text-decoration: none;
+     }
+      .carousel{
+        position: relative;
+        width: 310px;
+        height: 206px;
+        overflow: hidden;
+      }
+      .carousel .img-list{
+        position: relative;
+      }
+      .carousel .img-list>li{
+        position: absolute;
+        display: none;
+      }
+      .carousel .img-list img{
+        width: 310px;
+        height: 206px;
+      }
+      a.arrow{
+        position: absolute;
+        top: 50%;
+        width: 40px;
+        height: 40px;
+        margin-top: -20px;
+        border-radius: 20px;
+        box-shadow:0 0 2px #666;
+        color: #fff;
+        background-color: #676666;
+        text-align: center;
+        line-height: 40px;
+        opacity: 0.8
+      }
+      a.arrow.prev{
+        left: 20px;
+      }
+      a.arrow.next{
+        right: 20px;
+      }
+      .carousel .bullet{
+        position: absolute;
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+      }
+      .carousel .bullet>li{
+        display: inline-block;
+        height: 5px;
+        width: 20px;
+        border-radius: 2px;
+        background-color: white;
+        cursor: pointer;
+      }
+      .bullet>li.active{
+        background-color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="carousel">
+      <ul class="img-list">
+        <li><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
+        <li><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
+        <li><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a></li>
+        <li><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a></li>
+      </ul>
+      <a href="" class="arrow prev"><</a>
+      <a href="" class="arrow next">></a>
+      <ul class="bullet">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+    $(function(){
+      var $carousel=$(".carousel");
+      var $list=$(".carousel .img-list li");
+      var $bullets=$(".carousel .bullet li");
+      var $pre=$(".carousel .prev");
+      var $next=$(".carousel .next");
+      var curIdx=0;
+      var imgCount=$list.length;
+      $list.eq(0).show();
+      showBullet();
+      autoPlay();
+      function playPre (num){
+        var num=num||1;
+        var nextIdx=(curIdx-num)%imgCount;
+        nextIdx=(nextIdx==0)?imgCount-1:nextIdx;
+        play(nextIdx);
+      }
+      function playNext(num){
+
+        var $carousel=$(".carousel");
+        var num=num||1;
+        var nextIdx=(curIdx+num)%imgCount;
+        play(nextIdx);
+      }
+      function play(nextIdx){
+        if(!$carousel.data("playing")){
+          $carousel.data("playing",true);
+          $list.eq(curIdx).fadeOut("fast",function(){
+            $list.eq(nextIdx).fadeIn("fast");
+            curIdx=nextIdx;
+            showBullet();
+            $carousel.data("playing",false);
+          });
+        }
+      }
+      function autoPlay(){
+              var clock=setInterval(function(){
+                playNext(1);
+              },3000)
+      }
+      function showBullet(){
+          $bullets.removeClass("active");
+          $bullets.eq(curIdx).addClass("active");
+      }
+      $pre.on("click",function(e){
+              e.preventDefault()
+              playPre(1);
+      });
+      $next.on("click",function(e){
+            e.preventDefault();
+            playNext(1);
+      });
+      $bullets.on("click",function(){
+            var curIdx=$(this).index();
+            play(curIdx);
+          });
+
+    });
+
+    </script>
+  </body>
+</html>

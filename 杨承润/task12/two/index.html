@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圣杯三栏布局</title>
+	<style>
+		#footer,#header{
+			background-color: gray;
+			height: 60px;
+			font-size: 40px;
+		}
+		#container{
+			padding: 0 200px;
+		}
+		#container .aside{
+			width: 200px;
+			background-color: red;
+			height: 200px;
+			font-size: 30px;
+			float: left;
+			margin-left: -100%;
+			position: relative;
+			left: -200px;
+		}
+		#container .extra{
+			width: 200px;
+			background-color: yellow;
+			height: 200px;
+			font-size: 30px;
+			float: left;
+			margin-left: -200px;
+			position: relative;
+			left: 200px;
+		}
+		#container .content{
+			float: left;
+			background-color: green;
+			width: 100%;
+			float: left;
+			font-size: 30px;
+			height: 150px;
+		}
+		#container:after{
+			content:'';
+			display: block;
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">头部</div>
+	<div id="container">
+		<div class="content">中间栏</div>
+		<div class="aside">左侧边栏，固定宽度</div>
+		<div class="extra">右侧边栏，固定宽度</div>
+	</div>
+	<div id="footer">尾部</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task30</title>
+    <style>
+      .item{
+        position: absolute;
+        margin-top: 10px;
+        margin-left: 10px;
+        display: inline-block;
+        width:200px;
+        transition: 1s;
+      }
+      .h1{
+        height: 200px;
+        background-color: yellow;
+      }
+      .h2{
+        height: 300px;
+        background-color: blue;
+      }
+      .h3{
+        height: 500px;
+        background-color: #2e2e90;
+      }
+    </style>
+  </head>
+  <body>
+   <div id="content">
+     <div class="item h1">1</div>
+     <div class="item h2">2</div>
+     <div class="item h3">3</div>
+     <div class="item h3">4</div>
+     <div class="item h2">5</div>
+     <div class="item h1">6</div>
+     <div class="item h2">7</div>
+     <div class="item h3">8</div>
+     <div class="item h1">9</div>
+     <div class="item h2">10</div>
+     <div class="item h1">11</div>
+     <div class="item h3">12</div>
+     <div class="item h2">13</div>
+     <div class="item h3">14</div>
+     <div class="item h1">15</div>
+   </div>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+  <script>
+        var waterfloor={
+          init:function($par){
+            this.$par=$par;
+            this.$items=$par.find(".item");
+            var me=this;
+            this.bind(me);
+            this.start();
+          },
+          start:function(){
+            itemWidth=this.$items.first().outerWidth(true);
+            parWidth=this.$par.width();
+            this.colHeight=[];
+            col=Math.floor(parWidth/itemWidth);
+            for(var i=0;i<col;i++){
+              this.colHeight.push(0);
+            }
+            this.render();
+          },
+          bind:function(me){
+            $(window).on("resize",function(){
+              me.start();
+            })
+          },
+          render:function(){
+              var me=this;
+              this.$items.each(function(){
+              var $cur=$(this);
+              me.placehandle($cur);
+            });
+            var parHeight=Math.max.apply(null,this.colHeight);
+            if(this.$par.height()<parHeight){
+              this.$par.height(parHeight);
+            }
+          },
+          placehandle:function($el){
+            var arr=this.colHeight
+                MinHObj=this.getMinHeight(arr),
+                min=MinHObj.min,
+                idx=MinHObj.idx;
+            $el.css({
+              left:idx*itemWidth,
+              top:min
+            });
+            arr[idx]+=$el.outerHeight(true);
+          },
+          getMinHeight:function(arr){
+            var idx=0,
+                min=arr[0];
+            for(var i=0;i<arr.length;i++){
+              if(min>arr[i]){
+                idx=i;
+                min=arr[i];
+              }
+            }
+            return {idx:idx,min:min};
+          }
+        };
+        waterfloor.init($("#content"));
+  </script>
+  </body>
+</html>
