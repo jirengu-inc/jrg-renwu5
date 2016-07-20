@@ -134,7 +134,7 @@
 
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
-    function slide(part){
+    function slide(part,clock){
         var $part = $(part),
             $ct = $part.find('.show'),
             $pre = $part.find('.pre'),
@@ -154,15 +154,18 @@
 
         var curIndex = 0,
             isAnimate = false;
+
         function play(index){
             if(!isAnimate){
                 isAnimate = true;
+                stopPlay();
                 $ct.find('li').eq(curIndex).fadeOut(500);
                 $ct.find('li').eq(index).fadeIn(500,function(){
                     isAnimate = false;
                 });
+                autoPlay();
                 curIndex = index;
-                setBllet(index);
+                setBllet();
             }
         }
         function playNext(){
@@ -171,24 +174,26 @@
         function playPre(){
             play((curIndex-1+imgCount)%imgCount);
         }
-        function setBllet(index){
+        function setBllet(){
             $bullet.children().removeClass('active')
-                              .eq(index).addClass('active');
+                              .eq(curIndex).addClass('active');
         }
         function autoPlay(){
             clock = setInterval(function(){
                 playNext();
-            },1500);
+            },2000);
+        }
+        function stopPlay(){
+        clearInterval(clock);
         }
 
-
-
-        play(0);
         autoPlay();
+        play(0);
     }
-    slide('.carousel-1');
-    slide('.carousel-2');
-    slide('.carousel-3');
+
+    slide('.carousel-1','clock1');
+    slide('.carousel-2','clock2');
+    slide('.carousel-3','clock3');
 </script>
 </body>
 </html>

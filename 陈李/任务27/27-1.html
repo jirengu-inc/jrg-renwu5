@@ -119,15 +119,18 @@
 
     var curIndex = 0,
         isAnimate = false;
+
     function play(index){
         if(!isAnimate){
             isAnimate = true;
+            stopPlay();
             $ct.find('li').eq(curIndex).fadeOut(500);
             $ct.find('li').eq(index).fadeIn(500,function(){
                 isAnimate = false;
             });
+            autoPlay();
             curIndex = index;
-            setBllet(index);
+            setBllet();
         }
     }
     function playNext(){
@@ -136,20 +139,23 @@
     function playPre(){
         play((curIndex-1+imgCount)%imgCount);
     }
-    function setBllet(index){
+    function setBllet(){
         $bullet.children().removeClass('active')
-                          .eq(index).addClass('active');
+                          .eq(curIndex).addClass('active');
     }
     function autoPlay(){
         clock = setInterval(function(){
             playNext();
-        },1500);
+        },2000);
+    }
+    function stopPlay(){
+        clearInterval(clock);
     }
 
 
-
+    autoPlay();   //应该先开定时器 不然play()中的定时器还未定义
     play(0);
-    autoPlay();
+
 </script>
 </body>
 </html>
