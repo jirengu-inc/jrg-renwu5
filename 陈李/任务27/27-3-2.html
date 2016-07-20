@@ -138,53 +138,37 @@
     function playPre(idx){
         if(!isAnimate){
             isAnimate = true;
+            stopPlay();
             var idx = idx || 1;
             for( var i=0;i<idx;i++){
                 $show.prepend( $show.children().last() );
             }
-            $show.animate({left: '+='+imgWidth*idx},function(){
-                $show.css({'left': -imgWidth*idx});
-            });
+            $show.css({'left': -imgWidth*idx});
+            $show.animate({left: '+='+imgWidth*idx});
         }
         curIdx = (curIdx-idx+imgCount)%imgCount;
+        autoPlay();
         setBullet();
         isAnimate = false;
     }
     function playNext(idx){
         if(!isAnimate){
             isAnimate = true;
+            stopPlay();
             var idx = idx || 1;
             $show.animate({left: '-='+imgWidth*idx},function(){
                 for( var i=0;i<idx;i++){
                 $show.append( $show.children().first() );
                 }
-                $show.css({'left': 0});   //只有写在animate的回调函数中才生效 不知道为什么
+                $show.css({'left': 0});   //只有写在animate的回调函数中才生效
             });
 
         }
         curIdx = (curIdx+idx)%imgCount;
+        autoPlay();
         setBullet();
         isAnimate = false;
     }
-
-
-    // function playNext(idx){
-    //     if(!isAnimate){
-    //         isAnimate = true;
-    //         var idx = idx || 1;
-    //         $show.animate({left: '-='+imgWidth*idx});
-    //         for( var i=0;i<idx;i++){
-    //             $show.append( $show.children().first() );
-    //         }
-    //         $show.css({'left': 0});       这样顺序执行怎么修改css无效
-    //
-    //     }
-    //     curIdx = (curIdx+idx)%imgCount;
-    //     setBullet();
-    //     isAnimate = false;
-    // }
-
-
 
     function setBullet(){
         $bullet.children().removeClass('active').eq(curIdx).addClass('active');
@@ -193,7 +177,10 @@
     function autoPlay(){
         clock = setInterval(function(){
             playNext();
-        },1500);
+        },2000);
+    }
+    function stopPlay(){
+        clearInterval(clock);
     }
 
 
