@@ -133,7 +133,7 @@
 
 
     var curIdx = 0,
-        isAnimate = false;  //感觉锁没有生效
+        isAnimate = false;
 
     function playPre(idx){
         if(!isAnimate){
@@ -143,13 +143,13 @@
             for( var i=0;i<idx;i++){
                 $show.prepend( $show.children().last() );
             }
-            $show.css({'left': -imgWidth*idx});
-            $show.animate({left: '+='+imgWidth*idx});
-        }
+        $show.css({'left': -imgWidth*idx});
+        $show.animate({left: '+='+imgWidth*idx});
         curIdx = (curIdx-idx+imgCount)%imgCount;
         autoPlay();
         setBullet();
         isAnimate = false;
+        }
     }
     function playNext(idx){
         if(!isAnimate){
@@ -162,12 +162,11 @@
                 }
                 $show.css({'left': 0});   //只有写在animate的回调函数中才生效
             });
-
-        }
         curIdx = (curIdx+idx)%imgCount;
         autoPlay();
         setBullet();
         isAnimate = false;
+        }
     }
 
     function setBullet(){
