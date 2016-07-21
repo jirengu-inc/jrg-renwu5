@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#header,
+	#footer{
+		background-color: red;
+		height: 50px;
+	}
+	#content>.aside{
+		background-color: #ccc;
+		width: 350px;
+		float: left;
+	}
+	#content>.main{
+		background-color: pink;
+		min-height: 500px;
+		width: 1000px;
+		float:left;
+
+	}
+	#content:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="header">header</div>
+	<div id="content">
+	    <div class="aside">aside</div>
+	    <div class="main">
+	        我是main 
+	        我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main... 
+	    </div>
+	</div>
+	<div id="footer"></div>
+	
+</body>
+</html>
