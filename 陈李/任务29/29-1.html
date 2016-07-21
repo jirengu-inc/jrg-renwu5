@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>29-1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+    p {
+        line-height: 70px;
+    }
+    .mark {
+        background-color: blue;
+    }
+    .go-top {
+        padding: 30px;
+        border: 1px solid red;
+        border-radius: 50%;
+        position: fixed;
+        right: 80px;
+        bottom: 20px;
+        cursor: pointer;
+        display: none;
+    }
+</style>
+</head>
+<body>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p class="mark">内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+    var goTop = (function(){
+
+        var $goTop = $('<div class="go-top">Top</div>');
+        $('body').append($goTop);
+
+        function isVisible($node){
+            var height = $node.offset().top,
+                scrollTop = $(window).scrollTop(),
+                windowHeight = $(window).height();
+
+            if( height <= scrollTop+windowHeight ){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function init($mark){
+            $(window).on('scroll',function(){
+                if( isVisible($mark) ){
+                    $goTop.show();
+                }
+                else{
+                    $goTop.hide();
+                }
+            });
+            $goTop.on('click',function(){
+                $(window).scrollTop(0);
+            });
+        }
+
+        return {
+            init: init
+        };
+
+    })();
+
+
+    goTop.init($('.mark'));
+
+</script>
+</body>
+</html>
