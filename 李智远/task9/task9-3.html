@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    .img{
+      background:url(http://csssprites.com/results/aa8187bb233a4489289a7be3ee4a7c4d/result.png) no-repeat;
+      display:inline-block;
+      width:70px;/*自己做的时候设置的是35px，结果导致了图片跟蚊子凑一块，改成70px就OK了*/
+      height:35px;
+      font-family: 微软雅黑;
+      text-align:right;/*自己做时遗漏的*/
+      line-height: 35px;/*自己做时遗漏的*/
+    }
+    .img:hover{
+      background:url(http://csssprites.com/results/aa8187bb233a4489289a7be3ee4a7c4d/result.png) no-repeat;
+      color:rgb(166, 99, 190);
+      cursor: pointer;
+    .s1{
+      background-position: 0px 0px;
+    }
+    .s2{
+      background-position: 0px -43px;
+    }
+    .s3{
+      background-position: 0px -90px;
+    }
+
+    }
+    .s1:hover{
+      background-position: -1px -135px;
+    }
+    .s2:hover{
+      background-position: -5px -184px;
+    }
+    .s3:hover{
+      background-position: 4px -228px;
+    }
+  </style>
+</head>
+<body>
+    <div class="img s1">前进</div>
+    <div class="img s2">开始</div>
+    <div class="img s3">停止</div>
+
+</body>
+</html>
