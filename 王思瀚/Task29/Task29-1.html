@@ -19,7 +19,9 @@
              bottom: 10px;
              cursor: pointer;
              border: 1px solid #333;
-             padding: 10px;
+             border-radius: 4px;
+             padding: 7px 10px;
+/*             display: none;*/
          }
     </style>
 </head>
@@ -58,8 +60,83 @@
     <p>内容11</p>
     <p>内容11</p>
     <script>
-        var $top = $('<div class="top">TOP</div>');
-        $body.append($top)
+
+                var $top = $('<div class="top">TOP</div>');
+                $('body').append($top);
+
+                $(window).on('scroll',function(){
+                    var scrolltop = $('body').scrollTop();
+                    console.log(scrolltop)
+                    if(scrolltop >500){
+                        $top.show();
+                    }else{
+                        $top.hide();
+                    }
+
+                 })
+
+               $top.on('click',function(){
+                   $(window).scrollTop(0);
+               })
+
+//
+//       var GoTop = {
+//           init:function(){
+//              if($('.top').length>0){
+//                  return;
+//              }
+//                var $top = $('<div class="top">TOP</div>');
+//                $('body').append($top);
+//
+//               this.$top = $top;
+//               this.bind();
+//           },
+//           bind:function(){
+//               var me = this;
+//               $(window).on('scroll',function(){
+//                    var scrolltop = $('body').scrollTop();
+//                    console.log(scrolltop)
+//                    if(scrolltop >500){
+//                        me.$top.show();
+//                    }else{
+//                        me.$top.hide();
+//                    }
+//
+//                 })
+//
+//               me.$top.on('click',function(){
+//                   $(window).scrollTop(0);
+//               })
+//           }
+//       }
+
+
+//       var GoTop = (function(){
+//            var $top = $('<div class="top">TOP</div>');
+//                $('body').append($top);
+//
+//           function init(){
+//                $(window).on('scroll',function(){
+//                    var scrolltop = $('body').scrollTop();
+//                    console.log(scrolltop)
+//                    if(scrolltop >500){
+//                        $top.show();
+//                    }else{
+//                        $top.hide();
+//                    }
+//
+//                 })
+//
+//               $top.on('click',function(){
+//                   $(window).scrollTop(0);
+//               })
+//           }
+//           return{
+//               init:init
+//           }
+//       })()
+       GoTop.init();
+
     </script>
 </body>
 </html>

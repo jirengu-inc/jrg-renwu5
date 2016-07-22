@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ENVY</title>
+     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+     <style>
+         html,body,p,div,h1,h2,h3,ul,li{
+             margin: 0;
+             padding: 0;
+             list-style: none;
+         }
+         a{
+             text-decoration: none;
+         }
+         .content{
+             width: 1250px;
+              margin:10px auto;
+         }
+
+         .img-list>li{
+             float: left;
+            border:1px solid #ccc;
+             border-radius: 4px;
+             margin: 0 3px;
+         }
+         .img-list:after{
+             content: '';
+             display: block;
+             clear: both;
+         }
+         .content:after{
+             content: '';
+             display: block;
+             clear: both;
+         }
+         .content img{
+             width: 300px;
+
+         }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <ul class="img-list">
+<!--            这个li连着有什么用来着？？？-->
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="1.jpeg"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+            <li><a href=""><img src="" data-src="2.PNG"></a></li>
+
+        </ul>
+    </div>
+
+    <script>
+        $(window).on('scroll',function(){
+            checkShow();
+        })
+        checkShow();
+        function checkShow(){
+            $('.img-list img').each(function(){
+                var $cur = $(this);
+                if(isShow($cur)){
+                    imgShow($cur);
+                }
+            })
+        }
+        //如果上面两个函数不给参数呢？
+        function isShow(e){
+            // 这个offsettop和例子中的$el.offset().top有什么不同吗,$el和e是没有去别的。但是不能用$(this)来代替,即使将上面两个函数不加参数在后面赋值给this也不可以。
+            var $offsetTop = e.offset().top,
+                $scrollTop = $(window).scrollTop(),
+                winH = $(window).height();
+
+            if(winH + $scrollTop > $offsetTop){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        function imgShow(e){
+//            var $cur = $(this),
+                src = e.attr('data-src');
+//            $cur.attr('src',+src+)
+            e.attr('src',src)
+        }
+    </script>
+</body>
+</html>
