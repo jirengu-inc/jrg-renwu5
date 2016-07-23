@@ -76,7 +76,7 @@
         var ulCt=document.querySelector(".ct");
         var locked=false;
         btn.addEventListener("click",function(e){
-            if(locked) return ;
+            if(locked === true) return ;
             locked=true;
             btn.style.border="none";     
             btn.innerHTML='<img src="img/loading.gif" />';
