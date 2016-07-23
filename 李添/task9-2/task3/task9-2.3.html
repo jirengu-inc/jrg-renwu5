@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS border 实现三角形</title>
+    <style media="screen">
+        .square {
+            width: 0;
+            height: 0;
+            border-color: blue yellow green red;
+            border-width: 30px;
+            border-style: solid;
+
+            margin-bottom: 30px;
+            /*border: 30px solid blue yellow green red; 不可以直接这样写*/
+        }
+        .triangle1 {
+            width: 0;
+            height: 0;
+            border: 30px solid;
+            border-color: blue transparent transparent transparent;
+
+            margin-bottom: 30px;
+        }
+        .triangle2 {
+            width: 0;
+            height: 0;
+            border: 30px solid;
+            border-color: transparent transparent transparent red;
+
+            margin-bottom: 30px;
+        }
+        .triangle3 {
+            width: 0;
+            height: 0;
+            border: 30px solid;
+            border-color: transparent yellow transparent transparent;
+
+            margin-bottom: 30px;
+        }
+        .triangle4 {
+            width: 0;
+            height: 0;
+            border: 30px solid;
+            border-color: transparent transparent green transparent;
+
+            margin-bottom: 30px;
+        }
+        .triangle5 {
+            width: 0;
+            height: 0;
+            border: 20px solid;
+            border-color: transparent transparent red red;
+
+            margin-bottom: 30px;
+        }
+        .triangle6 {
+            width: 0;
+            height: 0;
+            border: 20px solid;
+            border-color: transparent green green transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="square"></div>
+    <div class="triangle1"></div>
+    <div class="triangle2"></div>
+    <div class="triangle3"></div>
+    <div class="triangle4"></div>
+    <div class="triangle5"></div>
+    <div class="triangle6"></div>
+</body>
+</html>

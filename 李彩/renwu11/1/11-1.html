@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing:border-box;
+	}
+	ul,li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+		color: #333;
+	}
+
+	.first-nav>li{
+		float: left;
+		width: 85px;
+		padding: 6px 5px;
+		text-align: center;
+
+		position: relative;
+	}
+	.first-nav:after{
+		content: "";
+		display: block;
+		clear: both;
+
+	}
+
+    .first-nav>li:hover{
+    	background-color: #aaa;
+    }
+    .sub-nav>li:hover{
+    	background-color: #ccc;
+    }
+
+    .first-nav>li:hover .sub-nav{
+    	display: block;
+
+    }
+	.sub-nav{
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		border: 1px solid #ccc;
+
+	}
+	.sub-nav>li{
+		padding: 6px 5px;
+		width: 85px;
+
+	}
+	#nav{
+		background-color: #ccc;		
+	}
+
+	</style>
+</head>
+<body>
+	<div id="nav">
+		<ul class="first-nav">
+			<li class="first-nav1"><a href="#">前端</a>
+				<ul class="sub-nav">
+					<li class="sub-nav1"><a href="#">JavaScript</a></li>
+					<li class="sub-nav2"><a href="#">CSS</a></li>
+					<li class="sub-nav3"><a href="#">HTML</a></li>
+				</ul>
+
+			</li>
+			<li class="first-nav2"><a href="#">服务端</a>
+				<ul class="sub-nav">
+					<li class="sub-nav1"><a href="#">Node</a></li>
+					<li class="sub-nav2"><a href="#">PHP</a></li>
+					<li class="sub-nav3"><a href="#">Java</a></li>
+				</ul>
+            </li>
+			<li class="first-nav3"><a href="#">前端工具</a>
+				<ul class="sub-nav">
+					<li class="sub-nav1"><a href="#">Sublime</a></li>
+					<li class="sub-nav2"><a href="#">WebStorm</a></li>
+					<li class="sub-nav3"><a href="#">Git</a></li>
+				</ul>
+            </li>
+			<li class="first-nav4"><a href="#">HTML</a></li>
+			<li class="first-nav5"><a href="#">NODE</a></li>
+		</ul>
+		
+	</div>
+	
+</body>
+</html>

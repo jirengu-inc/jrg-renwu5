@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ENVY</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+    <style>
+        html,body,ul,li,p,div{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .content{
+            margin: 10px;
+        }
+        .ul-list>li{
+            border: 1px solid #ccc;
+            border-radius:4px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px 0;
+            padding: 10px;
+        }
+        .active{
+            background-color: #ccc;
+            color: #fff;
+        }
+        .btn{
+            cursor: pointer;
+            width: 40px;
+            height: 18px;
+            border: 1px solid #E27272;
+            color:  #E27272;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <ul class="ul-list">
+            <li>内容1</li>
+            <li>内容2</li>
+            <li>内容3</li>
+        </ul>
+        <div class="btn">MORE</div>
+    </div>
+    <script>
+        //变量声明最好放在最上面，当我开始想到哪写哪的时候报了错，调了一天的bug一直以为是自己的ajax没弄好。。。。
+            var start =3,
+                len=6,
+                $btn = $('.btn');
+
+
+        addMore();
+        addMore();
+        addMore();
+        //实际上用css样式也可以
+        $('.ul-list li').on('mouseenter',function(){
+            $(this).addClass('active')
+        })
+        $('.ul-list li').on('mouseleave',function(){
+            $(this).removeClass('active')
+        })
+
+
+
+        $(window).on('scroll',function(e){
+            if(seeBtn($btn)){
+                addMore();
+            }
+        })
+
+        function append(arr){
+            for(var i=0;i<arr.length;i++){
+                $('.ul-list').append('<li>'+arr[i]+'</li>')
+            }
+        }
+
+        function seeBtn($node){
+            var scrollTop = $(window).scrollTop(),
+                winH = $(window).height(),
+                offsetTop = $node.offset().top;
+     //       console.log(offsetTop)
+            if(scrollTop + winH >offsetTop){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        function addMore(){
+   //         if(seeBtn($btn)){
+           $.ajax({
+                url:"1.php",
+                type:"GET",
+                dataType:"json",
+                data:{
+                    start: start,
+                    len :len
+                },
+                success:function(json){
+                 //   console.log(json)
+                    if(json.status == 1){
+                       append(json.data)
+                       start += 5;
+                    }else(
+                        console.log('sth went wrong')
+                    )
+
+                },
+                error:function(){
+                    console.log("error")
+                }
+            })
+  //         }
+        }
+    </script>
+</body>
+</html>

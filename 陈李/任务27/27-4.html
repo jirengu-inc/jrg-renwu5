@@ -220,8 +220,11 @@
     }
 
 
-    loadImg(4);      //预加载，不然首次直接点击最后一张会白屏
+
     loadImg(1);
+    loadImg(2);
+    loadImg(3);  // 图片较少就预先全部加载完成
+    loadImg(4);  // 懒加载反而会导致首次直接点击最后一张图片时白屏
     autoPlay();
 </script>
 </body>
