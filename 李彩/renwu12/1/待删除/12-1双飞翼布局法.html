@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	div.lump{
+		background-color: green;
+		height: 100px;
+		width: 200px;
+		float: left;
+	}
+	.up-middle{
+		width: 100%;
+		float: left;
+	    height: 100px;
+
+
+	}
+	.up-left{
+		margin-left: -100%;
+
+	}
+	.up-right{
+		margin-left: -200px;
+	
+	}
+
+	.ct{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.inner{
+		margin-left: 583px;
+		margin-right: 583px;
+		background-color: green;
+		height: 100px;
+	}
+	.geli{
+		float: left;
+		height: 20px;
+		background-color: #fff;
+		width: 100%;
+	}
+
+ 
+	</style>
+</head>
+<body>
+	<div class="ct">		
+	   <div class="main up-middle">
+          <div class="inner">2</div>
+	   </div>
+	   <div class="lump up-left">1</div>
+	   <div class="lump up-right">3</div>
+	</div>
+    <div class="geli"></div>
+	<div class="ct">		
+	   <div class="main up-middle">
+          <div class="inner">5</div>
+	   </div>
+	   <div class="lump up-left">4</div>
+	   <div class="lump up-right">6</div>
+	</div>
+
+
+</body>
+</html>
