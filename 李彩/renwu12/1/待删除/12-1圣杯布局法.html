@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	div.lump{
+		background-color: green;
+		height: 100px;
+		width: 200px;
+		float: left;
+	}
+	.up-middle{
+		width: 100%;
+		float: left;
+		background-color: green;
+	    height: 100px;
+
+
+	}
+	.up-left{
+		margin-left: -100%;
+		position: relative;
+		left: -583px;
+	}
+	.up-right{
+		margin-left: -200px;
+		position: relative;
+		right: -583px;		
+	}
+	.ct{
+		padding-left: 583px;
+		padding-right: 583px;
+
+	}
+	.ct{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.geli{
+		height: 20px;
+		width: 100%;
+		float: left;
+		background-color: #fff;
+	}
+ 
+	</style>
+</head>
+<body>
+	<div class="ct">		
+	   <div class="main up-middle">2</div>
+	   <div class="lump up-left">1</div>
+	   <div class="lump up-right">3</div>
+	</div>
+	<div class="geli"></div>
+	<div class="ct">		
+	   <div class="main up-middle">5</div>
+	   <div class="lump up-left">4</div>
+	   <div class="lump up-right">6</div>
+	</div>
+
+</body>
+</html>
