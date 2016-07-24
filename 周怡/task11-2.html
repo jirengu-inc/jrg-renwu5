@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BFC两栏</title>
+    <style>
+        #header,
+        #footer {
+            height: 65px;
+            background-color: red;
+        }
+
+        #content {
+            font-size: 25px;
+        }
+
+        .aside {
+            float: left;
+            width: 330px;
+            background-color: #eee;
+        }
+
+        .main {
+            overflow: auto;
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">header</div>
+    <div id="content">
+        <div class="aside">aside</div>
+        <div class="main">
+            我是main我是main 我是main 我是main 我是main 我是main 我是main 我是m我是main 我是main 我是main 我是main 我是main 我是main 我是m 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main我是main 我是main 我是main 我是main 我是main 我是main 我是m我是main 我是main 我是main 我是main
+            我是main 我是main 我是m
+
+        </div>
+        <div id="footer"></div>
+</body>
+
+</html>

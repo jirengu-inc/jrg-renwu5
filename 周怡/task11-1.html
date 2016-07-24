@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #nav {
+            background-color: rgb(203, 203, 203);
+            width: 500px;
+        }
+
+        #nav:after {
+            content: ' ';
+            display: block;
+            clear: both;
+        }
+
+        #nav>li {
+            float: left;
+            padding: 0 5px;
+            line-height: 30px;
+            position: relative;
+        }
+
+        #nav>li:hover {
+            background-color: rgb(170, 170, 170);
+        }
+
+        .child {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            border: 1px solid;
+            display: none;
+        }
+
+        #nav>li:hover .child {
+            display: block;
+        }
+
+        .child>li {
+            padding: 5px 2px;
+        }
+
+        .child> li:hover {
+            background: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul id="nav">
+        <li><a href="#">前端</a>
+            <ul class="child">
+                <li><a href="#">JavaScript</a></li>
+                <li><a href="#">CSS</a></li>
+                <li><a href="#">HTML</a></li>
+            </ul>
+        </li>
+        <li><a href="#">服务端</a>
+            <ul class="child">
+                <li><a href="#">Node</a></li>
+                <li><a href="#">PHP</a></li>
+                <li><a href="#">JAVA</a></li>
+            </ul>
+        </li>
+        <li><a href="#">前端工具</a>
+            <ul class="child">
+                <li><a href="#">Sublime</a></li>
+                <li><a href="#">Webstrom</a></li>
+                <li><a href="#">Git</a></li>
+            </ul>
+        </li>
+        <li><a href="#">HTML</a></li>
+
+        <li><a href="#">NODE</a></li>
+
+    </ul>
+
+</body>
+
+</html>
