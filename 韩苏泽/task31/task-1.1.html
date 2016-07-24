@@ -10,8 +10,13 @@
         margin: 0;
         padding: 0;
       }
+
       .ct{
         position: relative;
+      }
+      .ct a{
+        text-decoration: none;
+        color: #464442;
       }
       .ct>.item{
         position: absolute;
@@ -27,11 +32,7 @@
       .ct>.item img{
         width: 100%;
       }
-      .ct .news-intro{
-        color: #464442;
-      }
       .ct .news-date,.ct .news-sour{
-        color: #464442;
         text-align: right;
       }
       #load{
@@ -41,6 +42,7 @@
   <body>
     <div class="wrap">
       <ul class="ct">
+        <a href=""></a>
       </ul>
       <div id="load">load</div>
     </div>
@@ -51,6 +53,9 @@
       waterfloor
       lazyload
       jsonp
+    */
+    /*
+    <li class="item" <a="" href="http://slide.tech.sina.com.cn/d/slide_5_453_70449.html/d/2" style="left: 0px; top: 0px; visibility: visible;"><img src="http://www.sinaimg.cn/dy/slidenews/5_t160/2016_29/453_79819_252555.jpg"><div class="news-word"><h3 class="news-short">梦幻发光水母:鱼儿寄宿</h3><hr><p class="news-intro">这些若宇宙飞船般的水母在透彻的海水中优雅起舞、闪闪发光。</p><p class="news-date">2016-07-24 12:19:05</p><p class="news-sour">来源:东方IC</p></div></li>
     */
     function Waterfloor($ct,selector){
       this.$ct=$ct;
@@ -96,7 +101,6 @@
           if(nodeNum==num){
             me.render($nodes);
           }
-
         })
       },
       //有参数的情况是添加元素，无参数父元素大小发生变化，需要重新排列
@@ -136,7 +140,7 @@
         var html="";
         for(var i=0;i<data.length;i++){
           var child=data[i];
-          html+='<li class="item"';
+          html+='<li class="item">';
           html+='<a href="'+child.url+'">';
           html+='<img src="' + child.img_url + '" />';
           html+='<div class="news-word">';
