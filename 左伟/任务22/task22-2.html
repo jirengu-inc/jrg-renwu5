@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>task22-2</title>
+	<meta name="discription" content="">
+	<meta name="keywords" content="">
+	<style>
+		.ct{
+			background-color:green;
+		}
+		#warn{
+			width:150px;
+			background-color:#ccd;
+			font-style: italic;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+<ul class="ct">
+	<li>这里是</li>
+	<li>饥人谷</li>
+	<li>任务5班</li>
+</ul>
+<input id="word" type="text" name="ipnutword" value="">
+<input id="before" type="submit" name="btn1" value="在最前面添加">
+<input id="after" type="submit" name="brn2" value="在最后面添加">
+<p id="warn"><p>
+<script type="text/javascript">
+	var ct=document.querySelector(".ct");
+	var t=document.getElementById("word");
+	var btn1=document.getElementById("before");
+	var btn2=document.getElementById("after");
+	var warn=document.getElementById("warn");
+	btn1.addEventListener("click",function(){
+		warn.innerHTML=""; 			//当触发事件先清除提示文字
+		if(t.value){
+			var li=document.createElement("li");
+			li.innerHTML=t.value;
+			ct.insertBefore(li,ct.firstChild);
+			t.value="";
+		}else{
+			warn.innerHTML="输入不能为空";
+			warn.style.color="red";
+		}
+	})
+
+	btn2.addEventListener("click",function(){
+		warn.innerHTML="";
+		if(t.value){
+			var li=document.createElement("li");
+			li.innerHTML=t.value;
+			ct.appendChild(li);
+			t.value="";
+		}else{
+			warn.innerHTML="输入不能为空";
+			warn.style.color="red";
+		}
+	})
+
+	ct.addEventListener("click",function(e){
+		console.log(e.target.innerHTML);
+	})
+
+</script>
+</body>
+</html>

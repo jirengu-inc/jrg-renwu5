@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>task22-3</title>
+	<meta name="discription" content="">
+	<meta name="keywords" content="">
+	<style type="text/css">
+		.img-preview{
+
+		}
+	</style>
+</head>
+<body>
+	<ul class="ct">
+	    <li data-img="1.jpg">鼠标放置查看图片1</li>
+	    <li data-img="2.jpg">鼠标放置查看图片2</li>
+	    <li data-img="3.jpg">鼠标放置查看图片3</li>
+	</ul>
+	<div class="img-preview"></div>
+	<script>
+	//使用事件代理
+		var ct=document.querySelector(".ct");
+		var imgview=document.querySelector(".img-preview");
+		var img=document.createElement("img");
+		imgview.appendChild(img);
+		ct.addEventListener("mouseover",function(e){
+			var imges=e.target.getAttribute("data-img");
+			img.setAttribute("src",imges);//	动态的修改src的属性值
+		})
+
+	</script>
+
+</body>
+</html>
