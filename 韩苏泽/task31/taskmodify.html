@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-1</title>
+  </head>
+    <style>
+      ul,li{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .ct{
+        position: relative;
+      }
+      .ct>.item{
+        position: absolute;
+        width:260px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 7px;
+        visibility:hidden;
+      }
+      .ct>.item img{
+        width: 100%;
+      }
+      .ct .news-intro{
+        color: #464442;
+      }
+      .ct .news-date,.ct .news-sour{
+        color: #464442;
+        text-align: right;
+      }
+      #load{
+        visibility: hidden;
+      }
+    </style>
+  <body>
+    <div class="wrap">
+      <ul class="ct">
+      </ul>
+      <div id="load">load</div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+    /*
+      瀑布流+懒加载+jsonp
+      waterfloor
+      lazyload
+      jsonp
+    */
+    function Waterfloor($ct,selector){
+      this.$ct=$ct;
+      this.isbind=false;
+      this.selector=selector;
+      this.itemWidth=$ct.find(selector).outerWidth(true),
+      this.initColHeight();
+    }
+    Waterfloor.prototype={
+      constructor:Waterfloor,
+      initColHeight:function(){
+        var ctWidth=this.$ct.width(),
+            size=Math.floor(ctWidth/this.itemWidth);
+        this.colHeight=[];
+        for(var i=0;i<size;i++){
+          this.colHeight.push(0);
+        }
+      },
+      bind:function(){
+        this.isbind=true;
+        var me=this;
+        $(window).on("resize",function(){
+          if(this.$ct.find(me.selector).size()==0) return; //因为是先绑定 然后再添加元素，如果没有元素则不需要重绘
+          var ctWidth=me.$ct.width(),
+              size=Math.floor(ctWidth/me.itemWidth);
+          if(size==me.colHeight.length) return;  //这里先尝试计算一下新的列数如果新的列数和原有一致则不需要改变
+          me.initColHeight();
+          me.render();
+        })
+      },
+      append:function($nodes){
+        this.isLoad($nodes);
+        if(!this.isbind){
+          this.bind();
+        }
+      },
+      isLoad:function($nodes){
+        var nodeNum=$nodes.size(),
+            num=0,
+            me=this;
+        $nodes.find("img").on("load",function(){
+          num++;
+          if(nodeNum==num){
+            me.render($nodes);
+          }
+
+        })
+      },
+      //有参数的情况是添加元素，无参数父元素大小发生变化，需要重新排列
+      render:function($nodes){
+        var $nodes=$nodes||this.$ct.find(this.selector),
+            me=this;
+        $nodes.each(function(){
+          var $cur=$(this),
+              getMin=me.getMinHeight(me.colHeight),
+              idx=getMin.idx,
+              min=getMin.min;
+          $cur.css({
+            left:idx*me.itemWidth,
+            top:min,
+            visibility:'visible'
+          });
+          me.colHeight[idx]+=$cur.outerHeight(true);
+        })
+        var ctHeight=Math.max.apply(null,this.colHeight);
+        this.$ct.height(ctHeight);
+      },
+      getMinHeight:function(arr){
+        var idx=0,
+            min=arr[0];
+        for(var i=0;i<arr.length;i++){
+          if(min>arr[i]){
+            idx=i,
+            min=arr[i];
+          }
+        }
+        return {idx:idx,min:min};
+      }
+    }
+    // 插入节点
+    function appendNodes(data){
+      if(Object.prototype.toString.call(data).toLowerCase()==="[object array]"&&data.length>0){
+        var html="";
+        for(var i=0;i<data.length;i++){
+          var child=data[i];
+          html+='<li class="item"';
+          html+='<a href="'+child.url+'">';
+          html+='<img src="' + child.img_url + '" />';
+          html+='<div class="news-word">';
+          html+='<h3 class="news-short">' + child.short_name + '</h3>';
+          html+='<hr>';
+          html+='<p class="news-intro">' +  child.short_intro + '</p>';
+          html+='<p class="news-date">' + child.createtime + '</p>';
+          html+='<p class="news-sour">来源:' + child.source + '</p>'
+          html+='</div>';
+          html+= '</a>';
+          html+='</li>';
+        }
+        var $nodes=$(html);
+        $ct.append($nodes);
+        return $nodes;
+      }
+    }
+    //jsonp 成功执行函数
+    function onSuccess($ct,data){
+      var $nodes=appendNodes(data);
+      if(water){
+        water.append($nodes);
+      }else{
+        water=new Waterfloor($ct,".item");
+        water.append($nodes);
+      }
+    }
+     function LoadData($ct,handler){
+       this.curPage=1;
+       this.num=20;
+       this.$ct=$ct;
+       this.handler=handler;
+     }
+     LoadData.prototype.start=function(){
+       var me=this;
+       $.ajax({
+         url: "http://platform.sina.com.cn/slide/album_tech",
+         method:"get",
+         dataType:"jsonp",
+         jsonp:"jsoncallback",
+         data:{
+          app_key:1271687855,
+          page:this.curPage,
+          num:this.num
+         }
+         }).done(function(ret){
+           if(ret&&ret.status&&ret.status.code==="0"){
+             var data=ret.data||[];
+             me.handler&&me.handler(me.$ct,data);
+           }else {
+             console.error("error:"+ret);
+           }
+       });
+       this.curPage++;
+   }
+    //判断标志dom是否可见
+    function isShow($el){
+      var winH=$(window).height(),
+          scrollH=$(window).scrollTop(),
+          offsetTop=$el.offset().top;
+          if(offsetTop<winH+scrollH){
+            return true;
+          }
+          return false;
+    }
+    //定时器延时
+    function troggleClock (method,delay){
+      var timer=null,
+          method=method||function(){},
+          delay=delay||0;
+      return function(){
+        var context=this,
+            args=arguments;
+        if(timer){
+          clearTimeout(timer);
+        }
+        timer=setTimeout(function(){
+          method.apply(context,args);
+        },delay);
+      }
+    }
+    var $load=$("#load"),  //加载标志dom
+        $ct=$(".ct"),      //父容器
+        water,            //waterfloor
+        fnLoad= new LoadData($ct,onSuccess);
+        fnLoad.start();
+    $(window).on("scroll",troggleClock(function(){
+      if(isShow($load)){
+        fnLoad.start();
+      }
+    },500))
+    </script>
+  </body>
+</html>
