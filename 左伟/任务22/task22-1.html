@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>task22-1</title>
+	<meta name="discription" content="">
+	<meta name="keywords" content="">
+</head>
+<body>
+<ul class="ct">
+	<li>这里是</li>
+	<li>饥人谷</li>
+	<li>任务5班</li>
+</ul>
+<script type="text/javascript">
+
+	// var ct=document.querySelector(".ct");
+	// var c=ct.children;  //c为一个类数组对象；
+	// for(var i=0;i<c.length;i++){
+	// 	c[i].onclick=function(){
+	// 		console.log(this.innerText);
+	// 	}
+	// }
+
+//使用事件代理,这样就不用给每个元素都绑定一个事件，只需要在父元素上绑定即可，并且当动态的在该模块添加子元素时，不需要重给该子元素重新绑定事件
+	var ct=document.querySelector(".ct");
+	ct.addEventListener("click",function(e){
+		console.log(e.target.innerText);
+	})
+
+</script>
+</body>
+</html>
