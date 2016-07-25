@@ -29,6 +29,7 @@
         margin: 10px;
         transition: all 0.5s;
         opacity: 0;
+        border: 1px solid #ccc;
     }
     .waterfall .item img {
         width: 260px;
@@ -37,6 +38,7 @@
     .waterfall .item .header{
         height: 25px;
         margin: 0 12px;
+        border-bottom: 1px solid #ccc;
     }
     .waterfall .desp{
         font-size: 12px;
@@ -59,8 +61,7 @@
 <body>
 
     <div class="waterfall-wrap">
-        <ul class="waterfall clearfix">
-        </ul>
+        <ul class="waterfall clearfix"></ul>
         <div class="mark"></div>
     </div>
 
@@ -68,7 +69,7 @@
 <script>
 
     //获取数据
-    var length = 9, curPage = 1
+    var length = 12, curPage = 1
 
     function loadData(){
         $.ajax({
@@ -90,28 +91,36 @@
             console.log("error")
         })
     }
-    //节点模板
-    function tmpl(){
-        var tmpl = ''
-        tmpl += '<li class="item">'
-        tmpl += '<a href="" class="link"><img src="" alt=""></a>'
-        tmpl += '<h4 class="header"></h4>'
-        tmpl += '<p class="desp"></p>'
-        tmpl += '</li>'
-        return $(tmpl)
-    }
-    //处理数据
+    //拼接节点
     function handle(data){
-        $.each(data, function(){
-            var $tmpl = tmpl()
-            $tmpl.find('a').attr('href',this.url)
-            $tmpl.find('img').attr('src',this.img_url)
-            $tmpl.find('h4').text(this.short_name)
-            $tmpl.find('p').text(this.short_intro)
-            $('.waterfall').append($tmpl)
+        var tmpl = ''
+        $.each(data,function(index,el){
+            tmpl += '<li class="item">'
+            tmpl += '<a href="'+ el.url +'" class="link"><img src="' + el.img_url + '" alt=""></a>'
+            tmpl += '<h4 class="header">'+ el.short_name + '</h4>'
+            tmpl += '<p class="desp">'+ el.short_intro + '</p>'
+            tmpl += '</li>'
         })
-        return $('.waterfall').find('.item')
+        var $nodes = $(tmpl)
+        $('.waterfall').append($nodes)
+        return $nodes
     }
+    //加载完成后重绘
+    function load(data){
+        var $node = handle(data)
+        var defereds = []
+        $node.find("img").each(function (){
+            var defer = $.Deferred()
+            $(this).on("load",function (){
+                defer.resolve()
+            })
+            defereds.push(defer)
+        })
+        $.when.apply(null,defereds).done(function (){
+            waterFall($node)
+        })
+    }
+    loadData()
     //瀑布流
     var arr = []
     var wrapWidth = $('.waterfall-wrap').width(),
@@ -144,23 +153,6 @@
             $('.waterfall').height(Math.max.apply(null,arr))
         })
     }
-
-    function load(data){
-        var $node = handle(data)
-        var defereds = []
-        $node.find("img").each(function () {
-            var defer = $.Deferred() //创建延迟对象，
-            $(this).on("load",function () {
-                defer.resolve() //当图片加载完成，改变延迟对象状态为，已解决
-            })
-            defereds.push(defer)
-        })
-        $.when.apply(null,defereds).done(function () {//当所有延迟对象都解决，执行函数。
-            waterFall($node)
-        })
-    }
-
-    loadData()
     //标志元素是否可见
     var clock
     $(window).on('scroll',function(){
@@ -174,7 +166,7 @@
             }
         },50)
     })
-
+    //曝光判断函数
     function isVisible($node){
         var height = $node.offset().top,
             winHeight = $(window).height(),
