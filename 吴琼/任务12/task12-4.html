@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>双飞翼三栏布局</title>
+	<style>
+		/*字体*/
+		body {
+			font: 18px "微软雅黑";
+		}
+		/*头部*/
+		#header {
+			height: 50px;
+			background: #ccc;
+		}
+		/*中间*/
+		#container:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		#container .content {
+			width: 100%;
+			float: left;
+		}
+		#container .content .main {
+			margin: 0 200px;
+			background: green;
+			height: 175px;
+		}
+		#container .aside {
+			width: 200px;
+			height: 175px;
+			background: red;
+			float: left;
+			margin-left: -100%;
+		}
+		#container .column {
+			width: 200px;
+			height: 175px;
+			background: yellow;
+			float: left;
+			margin-left: -200px;
+		}
+		/*尾部*/
+		#footer {
+			height: 50px;
+			background: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">头部</div>
+	<div id="container">
+		<div class="content">
+			<div class="main">双飞翼布局指两边顶宽，中间自适应的三栏布局，中间栏要在放在文档流前面以优先渲染</div>
+		</div>
+		<div class="aside">左侧边栏，固定宽度</div>
+		<div class="column">右侧边栏，固定宽度</div>
+	</div>
+	<div id="footer">尾部</div>
+</body>
+</html>
