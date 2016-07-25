@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+
+	}
+	.back{
+		background-color: #ccc;
+		width: 620px;
+		height: 260px;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -320px;
+		margin-top: -130px;	
+
+	}
+	ul>li{
+		height: 100px;
+		width: 200px;
+		background-color: green;
+		list-style: none;
+		margin-left: 10px;
+		margin-top: 20px;
+		float: left;
+
+	}
+	ul{
+    width: 630px;
+	height: 260px;
+	margin-left: -10px;
+
+
+	}
+	.lump3{
+		float: left;
+	}
+	ul:after{
+		content: "";
+		display: block;
+		clear: both;
+
+	}
+
+
+	</style>
+</head>
+<body>
+	<div class="back">
+      <ul>
+      			<li class="lump1">1</li>
+      			<li class="lump2">2</li>
+      			<li class="lump3">3</li>
+      			<li class="lump4">4</li>
+      			<li class="lump5">5</li>
+      			<li class="lump6">6</li>
+      	</ul>		
+	</div>
+	
+</body>
+</html>

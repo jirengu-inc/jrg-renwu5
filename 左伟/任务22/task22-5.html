@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>task22-5模态框</title>
+	<meta name="discription" content="">
+	<meta name="keywords" content="">
+	<link rel="stylesheet" href="iconfont/iconfont.css">
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+			font-size:20px;
+		}
+		a{
+			text-decoration:none;
+			color:black;
+		}
+		a:hover{
+			color:gray;
+		}
+		#model{
+			position:absolute;
+			top:0;
+			left:0;
+			display:none;
+			width:100%;
+			height:100%;
+		}
+		#cover{
+			width:100%;
+			height:100%;
+			background-color:gray;
+			opacity: 0.7;
+		}
+		#model-m{
+			position:absolute;
+			top:50%;
+			left:50%;
+			transform:translate(-200px ,-100px);
+			width:400px;
+			height:200px;
+			line-height: 25px;
+			border:1px solid;
+			border-radius:13px;
+			background-color:white;
+		}
+		#title{
+			padding:10px;
+			border-bottom:1px solid gray;
+		}
+		.close{
+			position:absolute;
+			font-size:30px;
+			top:-1px;
+			right:-2px;
+		}
+		#content{
+			padding:30px 10px;
+			border-bottom:1px solid gray;
+		}
+		#footer{
+			padding-top:10px;
+		}
+		.f-btn{
+			float:right;
+			width:70px;
+		}		
+	</style>
+</head>
+<body>
+	<button id="btn">点我</button>
+
+	<div id="model">
+		<div id="cover"></div>
+		<div id="model-m">
+			<div id="title">
+				<h3>我是标题1</h3>
+				<a class="iconfont close" href="#">&#xf0014;</a>
+			</div>
+			<div id="content">
+				<p>我是内容1</p>
+				<p>我是内容1</p>
+			</div>
+			<div id="footer"> 
+				<a id="confirm" class="f-btn" href="#">确定</a>
+				<a id="cancel" class="f-btn" href="#">取消</a>
+			</div>
+		</div>
+	</div>
+	<script>
+		var clickme=document.querySelector("#btn");
+		var model=document.querySelector("#model");
+		var cover=document.querySelector("#cover");
+		var close=document.querySelector(".close");
+		var confirm=document.querySelector("#confirm");
+		var cancel=document.querySelector("#cancel");
+		clickme.addEventListener("click",function(){
+			model.style.display="block";
+		})
+		close.addEventListener("click",function(e){
+			model.style.display="none";
+			e.preventDefault();
+		})
+		cancel.addEventListener("click",function(e){
+			model.style.display="none";
+			e.preventDefault();
+		})
+		confirm.addEventListener("click",function(e){
+			model.style.display="none";
+			e.preventDefault();
+		})
+		cover.addEventListener("click",function(){
+			model.style.display="none";
+		})
+	</script>
+
+</body>
+</html>
