@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>导航栏</title>
+	<style>
+		html,body,ul,li {
+			margin: 0;
+			padding: 0;
+			
+		}
+		a {
+			text-decoration: none;
+			color: #3B3B3B;
+			font-size: 18px;
+			line-height: 27px;
+			font-family: Arial,"Microsoft YaHei";
+		}
+		#header {
+			width: 623px;
+			height: 27px; 
+			background: #CBCBCB;
+			margin-left: 3px;
+		}
+		#header li {
+			list-style: none;
+		}
+		#header .content>li {
+			float: left;
+			padding: 0 10px;
+			position: relative;
+		}
+		#header .content:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		#header .content>li:hover {
+			background: #AAA;
+		}
+		#header .content .nav {
+			border: 1px solid #CBCBCB;
+			display: none;
+		}
+		#header .content .nav li {
+			padding: 0 10px;
+		}
+		#header .content li:hover .nav{
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 100%;
+		}
+		#header .content li:hover .nav li:hover {
+			background: #cbcbcb;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<ul class="content">
+			<li><a href="#">前端</a>
+			  <ul class="nav">
+			    <li><a href="#">Javascript</a></li>
+				<li><a href="#">CSS</a></li>
+				<li><a href="#">HTML</a></li>
+			  </ul>
+			</li>
+			<li>
+			<a href="">服务端</a>
+			  <ul class="nav">
+			    <li><a href="#">Node</a></li>
+			    <li><a href="#">PHP</a></li>
+			    <li><a href="#">Java</a></li>
+			  </ul>
+			</li>
+			<li>
+			<a href="#">前端工具</a>
+			  <ul class="nav">
+			  	<li><a href="#">Sublime</a></li>
+			  	<li><a href="#">Webstorm</a></li>
+			  	<li><a href="#">Git</a></li>
+			  </ul>
+			</li>
+			<li><a href="#">HTML</a></li>
+			<li><a href="#">NODE</a></li>
+		</ul>
+	</div>
+</body>
+</html>

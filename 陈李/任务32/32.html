@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>32</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+    html,body,ul,li,p,h4 {
+        margin: 0;
+        padding: 0;
+    }
+    ul,li {
+        list-style: none;
+    }
+    .waterfall-wrap {
+        width: 960px;
+        margin: 0 auto;
+    }
+    .waterfall {
+        position: relative;
+    }
+    .waterfall .item {
+        float: left;
+        position: absolute;
+        width: 280px;
+        margin: 10px;
+        transition: all 0.5s;
+        opacity: 0;
+        border: 1px solid #ccc;
+    }
+    .waterfall .item img {
+        width: 260px;
+        margin: 10px;
+    }
+    .waterfall .item .header{
+        height: 25px;
+        margin: 0 12px;
+        border-bottom: 1px solid #ccc;
+    }
+    .waterfall .desp{
+        font-size: 12px;
+        line-height: 1.8;
+        margin: 10px 15px 0;
+    }
+    .mark {
+        height: 20px;
+        visibility: hidden;
+    }
+    .hide {
+        display: none;
+    }
+    .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+</style>
+<body>
+
+    <div class="waterfall-wrap">
+        <ul class="waterfall clearfix"></ul>
+        <div class="mark"></div>
+    </div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+    //获取数据
+    var length = 12, curPage = 1
+
+    function loadData(){
+        $.ajax({
+            url: 'http://platform.sina.com.cn/slide/album_tech',
+            type: 'get',
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback',
+            data: {
+                app_key: '1271687855',
+                num: length,
+                page: curPage
+            }
+        })
+        .done(function(ret) {
+            load(ret.data)
+            curPage++
+        })
+        .fail(function() {
+            console.log("error")
+        })
+    }
+    //拼接节点
+    function handle(data){
+        var tmpl = ''
+        $.each(data,function(index,el){
+            tmpl += '<li class="item">'
+            tmpl += '<a href="'+ el.url +'" class="link"><img src="' + el.img_url + '" alt=""></a>'
+            tmpl += '<h4 class="header">'+ el.short_name + '</h4>'
+            tmpl += '<p class="desp">'+ el.short_intro + '</p>'
+            tmpl += '</li>'
+        })
+        var $nodes = $(tmpl)
+        $('.waterfall').append($nodes)
+        return $nodes
+    }
+    //加载完成后重绘
+    function load(data){
+        var $node = handle(data)
+        var defereds = []
+        $node.find("img").each(function (){
+            var defer = $.Deferred()
+            $(this).on("load",function (){
+                defer.resolve()
+            })
+            defereds.push(defer)
+        })
+        $.when.apply(null,defereds).done(function (){
+            waterFall($node)
+        })
+    }
+    loadData()
+    //瀑布流
+    var arr = []
+    var wrapWidth = $('.waterfall-wrap').width(),
+        itemWidth = 300
+
+    var colNum = parseInt(wrapWidth/itemWidth)
+    for(var i=0 ;i<colNum; i++){
+        arr.push(0)
+    }
+    function waterFall($node){
+        $node.each(function(){
+            var $cur = $(this),
+                idx = 0,
+                minHeight = arr[0]
+
+            for(var i=0; i<colNum; i++){
+                if(minHeight>arr[i]){
+                    minHeight = arr[i]
+                    idx = i
+                }
+            }
+
+            $cur.css({
+                left: itemWidth*idx,
+                top: minHeight,
+                opacity: 1
+            })
+
+            arr[idx] = $cur.outerHeight(true) + arr[idx]
+            $('.waterfall').height(Math.max.apply(null,arr))
+        })
+    }
+    //标志元素是否可见
+    var clock
+    $(window).on('scroll',function(){
+        if(clock){
+            clearTimeout(clock)
+        }
+        clock = setTimeout(function(){
+            if(isVisible($('.mark'))){
+                loadData()
+                console.log(1)
+            }
+        },50)
+    })
+    //曝光判断函数
+    function isVisible($node){
+        var height = $node.offset().top,
+            winHeight = $(window).height(),
+            scroll = $(window).scrollTop()
+        if(height < winHeight + scroll){
+            return true
+        }
+        return false
+    }
+</script>
+</body>
+</html>
