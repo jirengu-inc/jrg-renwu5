@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>实战</title>
+  <style type="text/css">
+html,head,body,a,ul,li,p,h1,h2{
+            margin:0;
+            padding:0;
+          }
+a{text-decoration: none;
+  font-size:26px;
+  color:#000;}
+li{list-style: none;}
+  .container{width:1000px;
+             margin:0 auto;}
+  .container:after{
+              content: "";
+              display: block;
+              clear:both;    
+              }
+  .logo{float:left;}
+  .nav{
+       float:left;
+       margin-left: 10px;
+       line-height: 57px;
+          }
+    .nav .triangle{
+                display: inline-block;
+                position: relative;
+                border-color: #000 transparent transparent transparent;
+                border-style: solid;
+                border-width: 10px;
+                width: 0;
+                height: 0;
+                top: 5px;}
+    .nav .nav-list li:hover{background: #ddd;}
+    .nav img{width:80px;}
+    .nav-list{ display: none;clear: both;}
+    .nav-list li{display: block;
+                width:120px;
+                margin:0;
+                border:1px dashed #ccc;
+                text-align: center;
+                line-height: 30px;}
+   .nav>li{ display:inline-block;
+             margin-left: 10px;}
+   .nav li:nth-child(2):hover .nav-list{display: block;
+                                      position: absolute;
+                                      border:1px solid #ccc;
+                                      top:60px;
+                                         }
+  .intro{
+    background: #80c0f0;
+    padding:30px 0;
+    }   
+#content{ margin:0 auto;}
+  .breadcrub{
+     background:rgba(200,200,200,0.3);
+     font-size: 24px;
+     margin-bottom:30px;
+     margin-top:30px;
+     padding: 10px;
+  }
+     .layout{
+       float:left;
+       border:1px solid #ddd;
+       padding-bottom: 30px;
+       margin-bottom:30px;
+       text-align: center;
+       margin-left: 35px;
+     }
+     #content ul{margin-left: -41px;}
+     .layout img{width:310px;}
+     .layout img:hover{opacity:0.3; }
+     .btn{display: inline-block;
+          width:70px;
+          height: 40px;
+          border:1px solid #ccc;
+          border-radius: 5px;
+          text-align: center;
+          line-height:40px;
+          font-size: 18px;
+          margin:0 auto;
+          }
+    .btn:hover{color:#ccc;}
+#footer{clear:both;
+       margin:0 auto;}   
+.aboutme{
+            text-align: center; 
+           color: #fff;      
+    }
+  #footer p{margin: 30px 0;
+            padding-top: 20px;
+            text-align: center;
+            border-top: 1px solid #eee;}            
+  </style>
+</head>
+<body>
+<div id="header">
+<div class="container">
+<div class="logo">
+  <a href=""><img src="images/logo-tiny.png"></a>
+</div>
+  <ul class="nav">
+    <li><a href="#">饥人谷</a></li>
+    <li><a href="#">我的作品<span class="triangle"></span></a>
+       <ul class="nav-list">
+         <li><a href="#">实战1</a></li>
+         <li><a href="#">实战2</a></li>
+         <li><a href="#">实战3</a></li>
+       </ul>
+    </li>
+    <li><a href="">博客</a></li>
+    <li><a href="">项目</a></li>
+    <li><a href="">关于我</a></li>
+  </ul> 
+</div>
+ <div class="intro">
+   <div class="container">
+      <h1>这是我的简介</h1>
+      <h2>这是我的作品</h2>
+      <h2>这是我的博客</h2>
+   </div>
+ </div>
+</div>
+
+<div id="content">
+ <div class="breadcrub container">
+   <p><a href="#">首页</a>我的作品</p>
+ </div> 
+ <div class="container">
+   <ul>
+     <li class="layout">
+      <a href="#">
+        <img src="images/agency.jpg">
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+         <div class="btn">查看</div>
+      </a>
+     
+     </li>
+     <li class="layout">
+      <a href="#"><img src="images/agency.jpg">
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+         <div class="btn">查看</div>
+        </a>
+     
+     </li>
+     <li class="layout">
+      <a href="#"><img src="images/creative.jpg">
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+         <div class="btn">查看</div>
+        </a>
+     
+     </li>
+     <li class="layout">
+      <a href="#"><img src="images/freelancer.jpg">
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+         <div class="btn">查看</div>
+        </a>
+     
+     </li>
+     <li class="layout">
+      <a href="#"><img src="images/full-slider.jpg">
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+        <div class="btn">查看</div>
+        </a>
+      
+     </li>
+     <li class="layout">
+      <a href="#"><img src="images/full-width-pics.jpg">
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+        <div class="btn">查看</div>
+        </a>
+      
+     </li>
+     <li class="layout">
+      <a href="#"><img src="images/grayscale.jpg">
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+         <div class="btn">查看</div>
+        </a>
+     
+     </li>
+     <li class="layout">
+      <a href="#"><img src="images/half-slider.jpg">
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+        <div class="btn">查看</div>
+        </a>
+      
+     </li>
+     <li class="layout">
+      <a href="#"><img src="images/one-page-wonder.jpg">
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+         <div class="btn">查看</div>
+        </a>
+     
+     </li>
+     <li class="layout">
+      <a href="#"><img src="images/stylish-portfolio.jpg">
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+        <div class="btn">查看</div>
+        </a>
+     </li>
+   </ul>
+ </div>
+</div>
+<div id="footer">
+   <div class="intro">
+   <div class="aboutme">
+     <h1>想要更详细的了解我？</h1>
+     <h2>请查看我的博客</h2>
+     <div class="btn"><a href="http://www.jianshu.com/users/39c3caf4040d/latest_articles">简书</a> </div>
+   </div>  
+ </div> 
+ <div class="container"><p>来自@崔敏嫣</p> </div>
+</div>
+</body>
+</html>
