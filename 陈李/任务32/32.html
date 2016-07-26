@@ -69,7 +69,7 @@
 <script>
 
     //获取数据
-    var length = 12, curPage = 1
+    var length = 12, curPage = 1;
 
     function loadData(){
         $.ajax({
@@ -84,7 +84,7 @@
             }
         })
         .done(function(ret) {
-            load(ret.data)
+            load(ret.data);
             curPage++
         })
         .fail(function() {
@@ -93,40 +93,40 @@
     }
     //拼接节点
     function handle(data){
-        var tmpl = ''
+        var tmpl = '';
         $.each(data,function(index,el){
-            tmpl += '<li class="item">'
-            tmpl += '<a href="'+ el.url +'" class="link"><img src="' + el.img_url + '" alt=""></a>'
-            tmpl += '<h4 class="header">'+ el.short_name + '</h4>'
-            tmpl += '<p class="desp">'+ el.short_intro + '</p>'
+            tmpl += '<li class="item">';
+            tmpl += '<a href="'+ el.url +'" class="link"><img src="' + el.img_url + '" alt=""></a>';
+            tmpl += '<h4 class="header">'+ el.short_name + '</h4>';
+            tmpl += '<p class="desp">'+ el.short_intro + '</p>';
             tmpl += '</li>'
-        })
-        var $nodes = $(tmpl)
-        $('.waterfall').append($nodes)
+        });
+        var $nodes = $(tmpl);
+        $('.waterfall').append($nodes);
         return $nodes
     }
     //加载完成后重绘
     function load(data){
-        var $node = handle(data)
-        var defereds = []
+        var $node = handle(data);
+        var defereds = [];
         $node.find("img").each(function (){
-            var defer = $.Deferred()
+            var defer = $.Deferred();
             $(this).on("load",function (){
                 defer.resolve()
-            })
+            });
             defereds.push(defer)
-        })
+        });
         $.when.apply(null,defereds).done(function (){
             waterFall($node)
         })
     }
-    loadData()
+    loadData();
     //瀑布流
-    var arr = []
+    var arr = [];
     var wrapWidth = $('.waterfall-wrap').width(),
-        itemWidth = 300
+        itemWidth = 300;
 
-    var colNum = parseInt(wrapWidth/itemWidth)
+    var colNum = parseInt(wrapWidth/itemWidth);
     for(var i=0 ;i<colNum; i++){
         arr.push(0)
     }
@@ -134,11 +134,11 @@
         $node.each(function(){
             var $cur = $(this),
                 idx = 0,
-                minHeight = arr[0]
+                minHeight = arr[0];
 
             for(var i=0; i<colNum; i++){
                 if(minHeight>arr[i]){
-                    minHeight = arr[i]
+                    minHeight = arr[i];
                     idx = i
                 }
             }
@@ -147,34 +147,31 @@
                 left: itemWidth*idx,
                 top: minHeight,
                 opacity: 1
-            })
+            });
 
-            arr[idx] = $cur.outerHeight(true) + arr[idx]
+            arr[idx] = $cur.outerHeight(true) + arr[idx];
             $('.waterfall').height(Math.max.apply(null,arr))
         })
     }
     //标志元素是否可见
-    var clock
+    var clock;
     $(window).on('scroll',function(){
         if(clock){
             clearTimeout(clock)
         }
         clock = setTimeout(function(){
             if(isVisible($('.mark'))){
-                loadData()
+                loadData();
                 console.log(1)
             }
         },50)
-    })
+    });
     //曝光判断函数
     function isVisible($node){
         var height = $node.offset().top,
             winHeight = $(window).height(),
-            scroll = $(window).scrollTop()
-        if(height < winHeight + scroll){
-            return true
-        }
-        return false
+            scroll = $(window).scrollTop();
+        return height < winHeight + scroll
     }
 </script>
 </body>
