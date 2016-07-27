@@ -50,26 +50,26 @@
     </style>
   </head>
   <body>
-    <div class="tab" id="tab2">
-      <ul class="nav">
+    <div class="tab" id="tab1">
+      <ul class="nav active">
         <li>tab1</li>
         <li>tab2</li>
         <li>tab3</li>
       </ul>
       <ul class="pannel">
-        <li>内容一</li>
+        <li class="acticve">内容一</li>
         <li>内容二</li>
         <li>内容三</li>
       </ul>
     </div>
-    <div class="tab" id="tab1">
-      <ul class="nav">
+    <div class="tab" id="tab2">
+      <ul class="nav active">
         <li>tab1</li>
         <li>tab2</li>
         <li>tab3</li>
       </ul>
       <ul class="pannel">
-        <li>内容一</li>
+        <li class="acticve">内容一</li>
         <li>内容二</li>
         <li>内容三</li>
       </ul>
@@ -109,7 +109,7 @@
         }
       }
        $(".tab").each(function(){
-         new tabPannel($(this));
+         new TabPannel($(this));
        })
     </script>
   </body>
