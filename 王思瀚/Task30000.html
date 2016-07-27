@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    arr=['a',3,4,true,-1,2,'b']
+    function filter(arr,func){    
+      for(var i = 0;i<arr.length;i++){
+        if (!func(arr[i])) {
+          arr.splice(i,1);
+          i--;
+        }
+      }
+      return arr;
+    }
+    //arr=filter(arr,isNumweric)
+    //arr=[3,4,-1,2]
+    //console.log(arr);
+    arr = filter(arr,function(val){return val >0})
+    console.log(arr)
+  </script>
+</body>
+</html>

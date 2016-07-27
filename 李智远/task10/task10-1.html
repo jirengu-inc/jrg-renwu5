@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+    *{
+      margin: 0;
+      padding:0;
+    }
+    ul,li{
+      list-style: none;
+    }
+    a{
+      text-decoration: none;
+      color:white;
+    }
+    p{
+      line-height: 1.5em;
+      margin-left:10px;
+    }
+    #header{
+      height:50px;
+      background-color: black;
+    }
+    #content{
+      width:900px;
+      margin:10px auto;
+      margin-bottom: 0px;
+    }
+    #content::after{
+      content: "";
+      display: table;
+      clear:both;
+    }
+    #footer{
+      /*box-sizing: border-box;*/
+      height:40px;
+      background-color:black;
+    }
+    .top{
+      width:900px;
+      margin:0 auto;
+    }
+    #header .logo img{
+      height: 40px;
+    /*之前未加入img 导致图片大小未变化*/
+      float:left;
+    }
+    #header .nav ul{
+      float: right;
+    }
+    #header .nav::after{
+      content: "";
+      display: table;
+      clear:both;
+    }/*此处浮动清除加不加效果一样，其父元素本身就存在高度属性*/
+    #header .nav a{
+      line-height: 50px;
+      padding: 25px 10px;
+      margin: 0 10px;
+    }
+    #header .nav li{
+      float: left;
+      line-height: 50px;
+      font-size: 16px;
+    }
+    #header .nav a:hover{
+      background:white;
+      color:black;
+    }
+    .aside{
+      width:200px;
+      height:500px;
+      background: #eee;
+      float:left;
+    }
+    .main{
+      box-sizing: border-box;
+      width:690px;
+      height:185px;
+      background: #eee;
+      float:left;
+      margin-left: 10px;
+    }
+    body{
+      font-family: 微软雅黑;
+      color: #656565;
+      font-size:14px;
+    }
+    h1{
+      margin: 40px 0 20px 10px;
+    }/*.h1与h1不一样，之前写的.h1代表class="h1"*/
+    .link{
+      width:900px;
+      margin:0px auto;/*改link的margin上下高度导致父子元素margin合并*/
+    }
+    .link li{
+      float:left;
+      margin: 10px 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <div class="top">
+      <div class="logo">
+        <a href="#">
+          <img src="http://cdn.jirengu.com/public/logo-tiny.png" alt="">
+        </a>
+      </div>
+      <div class="nav">
+        <ul>
+          <li><a href="#">技能</a></li>
+          <li><a href="#">经历</a></li>
+          <li><a href="#">作品</a></li>
+          <li><a href="#">关于</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="content">
+    <div class="aside">
+    </div>
+    <div class="main">
+      <h1>我的作品</h1>
+      <p>生活很美好</p>
+      <p>心情不错</p>
+      <p>代码写的很漂亮</p>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="link">
+      <ul>
+        <li><a href="http://jirengu.com/">饥人谷</a></li>
+        <li><a href="http://jscode.me/">JSCODE</a></li>
+        <li><a href="http://js.jirengu.com/">JSBIN</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

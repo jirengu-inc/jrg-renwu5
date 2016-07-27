@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播Dom</title>
+	<link rel="stylesheet" href="../font-awesome/css/font-awesome.css" type=text/css />
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<style>
+		div,ul,li,body{
+			padding:0;
+			margin:0;
+		}
+		li{
+			list-style-type: none;
+			float:left;
+		}
+		a{
+			text-decoration: none;
+		}
+		div.show{
+			width:460px;
+			overflow: hidden;
+			position: relative;
+			height:300px;
+			border-radius: 3px;
+			box-shadow: 2px 2px 10px #000;
+			margin:0 auto;
+		}
+		ul.zone{
+			position: relative;
+		}
+		ul.zone:after{
+			content:"";
+			display:block;
+			clear:both;
+		}
+		a.target{
+			position: absolute;
+			top:50%;
+			margin-top: -25px;
+			width:20px;
+			line-height: 50px;
+			background-color: #000;
+			text-align: center;
+			color:#fff;
+			border-radius: 4px;
+			box-shadow: 2px 2px 8px #000;		
+		}
+		a.target:hover{
+			opacity: 0.8;
+		}
+		a.pre{
+			left:15px;
+		}
+		a.next{
+			right:15px;
+		}
+		ul.here{
+			position: absolute;
+			bottom: 15px;
+			left:50%;
+			transform: translateX(-50%);
+		}
+		ul.here>li{
+			width:10px;
+			height:10px;
+			box-shadow: 1px 1px 5px #333;
+			margin:0 5px;
+			border-radius: 50%;
+			background-color: #fff;
+			left:50%;
+			cursor: pointer;
+		}
+		ul.here>li.active{
+			background-color: #000;
+		}
+		div.operate{
+			text-align: center;
+			margin-top:30px;
+		}
+		button.btn{
+			background: #000;
+			color:#fff;
+			border-radius: 4px;
+			line-height: 25px;
+			box-shadow: 1px 1px 5px #000;
+			border:none;
+			cursor:pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="wraper" class="show">
+		<ul class="zone">
+			<li class="item"><a href="#"><img src="img/0.jpg" alt="black"></a></li>
+			<li class="item"><a href="#"><img src="img/1.jpg" alt="iron man"></a></li>
+			<li class="item"><a href="#"><img src="img/2.jpg" alt="black widow"></a></li>
+			<li class="item"><a href="#"><img src="img/3.jpg" alt="captain"></a></li>
+		</ul>
+		<a href="#" class="target pre"><i class="fa fa-chevron-left"></i></a>
+		<a href="#" class="target next"><i class="fa fa-chevron-right"></i></a>
+		<ul class="here">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="operate">
+		<button class="btn">取消自动</button>
+	</div>
+	<script>
+		$(function(){
+			var $zone=$(".zone");
+			var $item=$(".item");
+			var $pre=$(".pre");
+			var $next=$(".next");
+			var $cur=0;
+			var $wid=$item.width();
+			var $locked=false;
+			$amount=$zone.find("li").size();
+
+			$zone.css({"width":$wid*$amount+"px"});
+			
+			$next.on("click",function(e){
+				e.preventDefault();
+				playNext();
+			})
+			$pre.on("click",function(e){
+				e.preventDefault();
+				playPre();
+			})
+
+			$(".here").find("li").on("click",function(){
+				var $des=$(this).index();
+				if($des>$cur){
+					playNext($des-$cur);
+				}else if($des<$cur){
+					playPre($cur-$des);
+				}
+			})
+			$(".btn").on("click",function(){
+				clearAuto();
+			})
+			function playNext(idx){
+				if($locked===true) return;
+				$locked=true;
+				var idx=idx||1;
+				$zone.animate({"left":"-="+idx*$wid+"px"},function(){
+					for(var i=0;i<idx;i++){
+						$zone.append($zone.children().first());
+						$zone.css({"left":0});
+					}
+					$cur=($cur+idx)%$amount;
+					$locked=false;
+					setNav();
+				})
+			}
+			// function playPre(idx){
+			// 	if($locked===true) return;
+			// 	$locked=true;
+			// 	var idx=idx||1;
+			// 	$zone.animate({"left":"+="+idx*$wid+"px"},function(){
+			// 		for(var i=0;i<idx;i++){
+			// 			$zone.prepend($zone.children().last());
+			// 			$zone.css({"left":0});
+			// 		}
+					
+			// 		$cur=($cur-idx+$amount) % $amount;
+			// 		$locked=false;
+			// 		setNav();
+			// 	})
+			// }
+
+			function playPre(idx){
+			if($locked) return;
+			$locked = true;
+			var idx = idx || 1;
+			for(var i=0;i<idx;i++){
+				$zone.prepend($zone.children().last());
+			}
+			$zone.css({left:0-$wid*idx});
+			$zone.animate({left:0},function(){
+				console.log("hh")
+				$cur = ($cur-idx+$amount)%$amount;
+				$locked = false;
+				setNav($cur);
+			});
+		}
+
+			function setNav(){
+				$(".here").find("li").removeClass("active").eq($cur).addClass("active");
+			}
+			
+			function auto(){
+				clock=setInterval(function(){
+					playNext();
+				},2000);
+			}
+			function clearAuto(){
+				clearInterval(clock);
+			} 
+			auto();
+		})
+	</script>
+</body>
+</html>

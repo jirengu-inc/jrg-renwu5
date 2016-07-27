@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>两栏布局</title>
+    <style>
+      body{
+        font: 14px/0.8 "Microsoft YaHei","微软雅黑",sans-serif;
+        margin: 0px;
+      }
+      #header{
+          height: 50px;
+          background: #000;
+          display: block;
+      }
+      .content{
+        width: 900px;
+        margin: 0 auto;
+      }
+      .content img{
+        width: 165px;
+      }
+      .nav{
+        float: right;
+        margin: 0px;
+      }
+      .nav li{
+        float: right;
+        list-style:none;
+        margin: 0px 10px;
+        padding: 0px 10px;
+        line-height: 50px;
+        color: #fff;
+      }
+      .nav li:hover{
+        background: #fff;
+        color: #000;
+      }
+      #middle{
+        width: 900px;
+        height: 580px;
+        margin: 0 auto;
+        margin-top: 20px;
+        clear: both;
+      }
+      .middle-l{
+        width: 190px;
+        height: 580px;
+        background: #eee;
+        margin-right: 10px;
+        float: left;
+      }
+      .middle-r{
+        display: inline-block;
+        width:670px;
+        height: 270px;
+        background: #eee;
+        margin-left: 10px;
+        padding: 10px;
+      }
+      .middle-r h1{
+        padding-top: 40px;
+        padding-bottom: 10px;
+      }
+      #bottom{
+        height: 35px;
+        background: #000;
+        display: block;
+      }
+      #footer{
+        height:35px;
+        background:#000;
+        margin: 0 auto;
+      }
+      #footer ul{
+        float: left;
+        margin: 0px;
+        padding-left: 0px;
+      }
+      #footer li{
+        float: left;
+        line-height: 35px;
+        padding: 0px 5px;
+        list-style: none;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <div class="content">
+        <a href="#"><img src="http://cdn.jirengu.com/public/logo-tiny.png" alt="饥人谷" title="饥人谷"></a>
+        <ul class="nav">
+          <a href="#"><li>关于</li></a>
+          <a href="#"><li>做品</li></a>
+          <a href="#"><li>经历</li></a>
+          <a href="#"><li>技能</li></a>
+        </ul>
+      </div>
+    </div>
+    <div id="middle">
+      <div class="middle-l"></div>
+      <div class="middle-r">
+        <h1>我的作品</h1>
+        <p>任务5班</p>
+        <p>吴柏宏</p>
+        <p>请老师查阅</p>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="content">
+        <ul>
+          <a href="http://jirengu.com/"><li>饥人谷</li></a>
+          <a href="http://jscode.me/"><li>jscode</li></a>
+          <a href="http://js.jirengu.com/"><li>jsbin</li></a>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
