@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      .div2{
+        margin-bottom: 40px;
+      }
+      .triangle-top{
+        width: 0px;
+        height: 0px;
+        border-right: 20px solid transparent;
+        border-bottom: 20px solid #888;
+        border-left: 20px solid transparent;
+        margin-left: 20px;
+      }
+      .div2{
+        width:200px;
+        height: 100px;
+        border: 1px solid #ccc;
+      }
+      .triangle-r{
+        width: 0px;
+        height: 0px;
+        border-right: 20px solid red;
+        border-bottom: 20px solid transparent;
+        border-left: 20px solid transparent;
+        margin-left: 160px;
+      }
+      .wrap2{
+        position:relative;
+      }
+      .transparent{
+        width: 0px;
+        height: 0px;
+        border-right: 20px solid transparent;
+        border-bottom: 20px solid #fff;
+        border-left: 20px solid transparent;
+        margin-left: 20px;
+      }
+      .wrap .triangle-top:after{
+        width: 0px;
+        height: 0px;
+        border-right: 20px solid transparent;
+        border-bottom: 20px solid #fff;
+        border-left: 20px solid transparent;
+        margin-left: 20px;
+      }
+      .triangle-top2{
+        position:relative;
+        width: 0px;
+        height: 0px;
+        border-right: 20px solid transparent;
+        border-bottom: 20px solid #888;
+        border-left: 20px solid transparent;
+        margin-left: 20px;
+      }
+      .triangle-top2:after{
+        content: '';
+        position: absolute;
+        top: 1px;
+        width: 0px;
+        height: 0px;
+        border-right: 20px solid transparent;
+        border-bottom: 20px solid #fff;
+        border-left: 20px solid transparent;
+        margin-left: -20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="triangle-top"></div>
+      <div class="div2"></div>
+    </div>
+    <div class="div2">
+      <div class="triangle-r"></div>
+    </div>
+    <div class="wrap">
+      <div class="triangle-top2"></div>
+      <div class="div2"></div>
+    </div>
+  </body>
+</html>
