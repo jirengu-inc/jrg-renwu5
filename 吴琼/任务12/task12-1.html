@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>效果</title>
+	<style>
+		html,body,ul,li {
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			width:900px;
+			margin: 0 auto;
+			background: #ccc;
+			margin-left: 30px;
+			margin-top: 30px;
+			padding: 10px 0;
+		}
+		.panel {
+			margin-left: -15px;
+		}
+		.panel:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.container li {
+			float:left;
+			list-style: none;
+			width: 290px;
+			height: 80px;
+			background: #004210;
+			margin-top: 10px;
+			margin-left: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+	  <ul class="panel">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+      </ul>
+	</div>
+</body>
+</html>

@@ -16,7 +16,7 @@ $(window).on('scroll',function(){
     if( isVisible($node) ){
         console.log(true);
     }
-});
+})
 
 
 $(window).on('scroll',function(){
@@ -24,4 +24,4 @@ $(window).on('scroll',function(){
         console.log(true);
         $node.data('data-times',true);
     }
-});
+})
