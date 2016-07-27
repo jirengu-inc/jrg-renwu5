@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-2</title>
+    <style>
+      ul,li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .tab {
+        width: 600px;
+        margin: 0 auto;
+      }
+      .tab .nav{
+        width: 100%;
+        height: 40px;
+        display: table;
+        box-sizing: border-box;
+        border-collapse: collapse;
+        border: 1px solid #ccc;
+      }
+      .tab .nav li{
+        display: table-cell;
+        border: 1px solid #ccc;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+      .tab .pannel{
+        position: relative;
+        height: 300px;
+        border-left:  1px solid #ccc;
+        border-right:  1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+      }
+      .tab .pannel li{
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: none;
+      }
+      .tab .pannel .active{
+        display: block;
+      }
+      .tab .nav .active{
+        background-color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tab" id="tab2">
+      <ul class="nav">
+        <li>tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+      </ul>
+      <ul class="pannel">
+        <li>内容一</li>
+        <li>内容二</li>
+        <li>内容三</li>
+      </ul>
+    </div>
+    <div class="tab" id="tab1">
+      <ul class="nav">
+        <li>tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+      </ul>
+      <ul class="pannel">
+        <li>内容一</li>
+        <li>内容二</li>
+        <li>内容三</li>
+      </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script type="text/javascript">
+      function TabPannel($node){
+        this.$node=$node;
+        this.$nav=$node.find(".nav");
+        this.$pannel=$node.find(".pannel");
+        this.init();
+      }
+      TabPannel.prototype={
+        constructor:TabPannel,
+        bind:function(){
+          var me=this;
+          this.$nav.on("click","li",function(){
+            var $cur=$(this);
+                idx=$cur.index();
+            if(me.$node.data("activeIdx")!=idx){
+              me.changeAtive($cur,idx);
+            }
+          })
+        },
+        changeAtive:function($el,idx){
+          this.$node.data("activeIdx",idx);   //将active的idx存储下来
+          this.$nav.children().removeClass("active");
+          $el.addClass("active");
+          this.$pannel.children().removeClass("active");
+          this.$pannel.children().eq(idx).addClass("active");
+        },
+        init:function(){
+          this.$nav.children().first().addClass("active");
+          this.$pannel.children().first().addClass("active");
+          this.$node.data("activeIdx",0);
+          this.bind();
+        }
+      }
+       $(".tab").each(function(){
+         new tabPannel($(this));
+       })
+    </script>
+  </body>
+</html>
