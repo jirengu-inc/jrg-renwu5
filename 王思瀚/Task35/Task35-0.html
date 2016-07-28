@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  function Car(name,color,status){
+      this.name = name;
+      this.color =color;
+      this.status =status;
+      this.run =function(){
+       if(this.status===1){
+           console.log('running');
+       }
+      }
+      this.stop=function(){
+       if(this.status===0) return;
+       else{
+         this.status = 0;
+       }
+      }
+      this.getStatus=function(){
+      console.log(this.status)
+      }
+      }
+
+  var Car =new Car('benz','white',1);
+  </script>
+</body>
+</html>
