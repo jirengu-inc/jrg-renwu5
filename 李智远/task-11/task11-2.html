@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+      #header,#footer{
+        height:40px;
+        background: red;
+      }
+      #content:after{
+        content: '';
+        display:block;
+        clear:both;
+      }
+      /*#content{
+        position: relative;
+      }*/
+      .aside{
+        background:blue;
+        float:left;
+        opacity:0.2;
+        width:200px;
+      }
+      .main{
+        background: pink;
+        margin-left:200px;
+      }/*之前加了绝对定位，结果导致父容器塌陷了。*/
+  </style>
+</head>
+<body>
+  <div id="header">header</div>
+  <div id="content">
+      <div class="aside">aside</div>
+      <div class="main">
+          我是main
+          我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+          我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+          我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+      </div>
+  </div>
+  <div id="footer"></div>
+</body>
+</html>
