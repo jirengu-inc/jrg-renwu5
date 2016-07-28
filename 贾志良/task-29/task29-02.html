@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>懒加载</title>
+	<style>
+		body,div,ul,li{
+			margin:0;
+			padding: 0;
+		}
+		body{
+			background: #ddd;
+		}
+		div.wraper{
+			width:60%;
+			background: #fff;
+			margin:0 auto;
+			box-shadow: 1px 1px 20px #333;
+		}
+		ul{
+			margin-left: -44px;
+		}
+		ul:after{
+			content:"";
+			display: block;
+			clear:both;
+		}
+		ul>li{
+			list-style-type: none;
+			float:left;
+			margin-left:44px;
+			margin-bottom: 44px;
+			box-sizing: border-box;
+			box-shadow: 1px 1px 10px #333;
+			height:320px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wraper">
+		<ul>
+			<li><a href="#"><img imgSrc="img/0.jpg" src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/1.jpg" src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/2.jpg" src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/3.jpg" src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/4.jpg" src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/5.jpg" src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/6.jpg" src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/7.jpg" src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/8.jpg" src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/9.jpg" src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/10.jpg" src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/11.jpg" src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/12.jpg" src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/13.jpg" src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/14.jpg"  src="img/loading.gif" alt="picture"></a></li>
+			<li><a href="#"><img imgSrc="img/15.jpg" src="img/loading.gif" alt="picture"></a></li>
+		</ul>
+	</div>
+
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<script>
+		$(function(){
+			$(window).on("scroll",function(){
+				checkShow();
+			})
+			checkShow();
+
+			function checkShow(){
+				$("img").each(function(){
+					var $cur=$(this);
+					if(($cur).attr("isImg")) return;
+					if(isShow($cur)){
+						show($cur);
+					}
+				})
+			}
+
+			function isShow($el){
+				var $toTop=$el.offset().top;
+				var $scroll=$(window).scrollTop();
+				var $height=$(window).height();
+
+				if($toTop<$scroll+$height){
+					return true;
+				}else{
+					return false;
+				}
+			}
+
+			function show($pic){
+				var $imgSrc=$pic.attr("imgSrc");
+				$pic.attr("src",$imgSrc);
+				$pic.attr("isImg",true);
+			}
+		})
+	</script>
+</body>
+</html>
