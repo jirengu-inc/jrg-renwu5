@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>返回顶部</title>
+	<link rel="stylesheet" href="../font-awesome/css/font-awesome.css">
+	<style>
+		body,div{
+			margin:0;
+			padding:0;
+		}
+		div.wraper{
+			background: #eee;
+			height:2000px;
+			position: relative;
+		}
+		div.header{
+			height:200px;
+			background-color: #3f51b5;
+			box-shadow:1px 1px 10px #333;
+		}
+		div.content{
+			width:50%;
+			height:1800px;
+			background:#e8eaf6;
+			position: absolute;
+			top:100px;
+			left:50%;
+			transform: translateX(-50%);
+			box-shadow:1px 1px 10px #333;
+		}
+		img.zone{
+			width:100%;
+		}
+		a.toTop{
+			position:fixed;
+			width:60px;
+			line-height:60px;
+			border-radius: 50%;
+			text-align: center;
+			background: #8192d6;
+			bottom:5%;
+			right:10%;
+			color:#fff;
+			font-size: 40px;
+			box-shadow: 0px 2px 7px #777;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="wraper">
+		<div class="header">
+		</div>
+		<div class="content">
+			<img src="http://s.qdcdn.com/cl/10310648,800,450.jpg" alt="iron man" class="zone">
+		</div>
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<script>
+		$(function(){
+			var goTo={
+				init:function(){
+					var $goTop=$('<a href="javarscript:;" class="toTop"><i class="fa fa-angle-up"></i></a>');
+					$(".wraper").append($goTop);
+					this.$goTop=$goTop;
+					this.bind();
+				},
+				bind:function(){
+					var me=this;
+					$(window).on("scroll",function(){
+					var $toTop=$("body").scrollTop();
+					if($toTop>100){
+						me.$goTop.show(200);
+					}
+					else{
+						me.$goTop.hide(200);
+				}
+			})
+
+			$(".toTop").on("click",function(){
+				$("body").animate({"scrollTop":0},200);
+			})
+				}
+			}
+
+			goTo.init();
+
+		})
+	</script>
+</body>
+</html>
