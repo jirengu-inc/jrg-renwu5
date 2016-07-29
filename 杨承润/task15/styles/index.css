@@ -127,13 +127,13 @@ a{
 /*==========resume================*/
 #content .resume{
 	background-color: rgb(184,77,69);
-	padding: 10px;
+	padding: 30px;
 	text-align: center;
 	color: white;
 	min-width: 1000px;
 }
-#content .resume ul>li{
-	margin: 20px;
+#content .resume p{
+	margin-top: 20px;
 }
 #content .resume-btn{
 	color: white;
@@ -145,6 +145,8 @@ a{
 	padding: 30px;
 	text-align: center;
 }
-#footer>hr{
-	margin: 20px;
+#footer p{
+	margin-top: 20px;
+	padding-top: 20px; 
+	border-top:1px solid #eee;
 }
