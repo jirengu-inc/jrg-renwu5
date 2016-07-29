@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+     <style>
+     *{
+     	margin: 0;
+     	padding: 0;
+     } 
+     #header,#footer{
+     	height: 50px;
+     	background-color: #ccc;
+     }
+     .left-aside{
+     	background-color: red;
+     	width: 200px;
+     	float: left;
+     	margin-left: -100%;
+     	position: relative;
+     	left: -200px; 
+     	min-height: 300px;
+
+     }
+
+     .main{
+     	background-color: green;
+     	width: 100%;
+     	float: left;
+     	min-height: 300px;
+     }
+     #content:after{
+     	content: "";
+     	display: block;
+     	clear: both;
+
+     }
+     #content{
+     	padding-left: 200px;
+     } 
+     </style>     
+
+</head>
+<body>
+	<div id="header">头部</div>
+	<div id="content">
+		<div class="main">主内容主内容主内容主内容主内容主内容主内容主内容主内容主内容主内容主内容主内容主内容主内容主内容主内容主内容主内容</div>
+		<div class="left-aside">左侧边栏</div>
+	</div>
+	<div id="footer">尾部</div>
+	
+</body>
+</html>

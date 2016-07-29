@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+      ul,li{
+        list-style: none;
+        margin:0;
+        padding:0;
+      }
+      a{
+        text-decoration: none;
+        color:black;
+      }
+      .nav{
+        background:#ccc;
+      }
+      .nav:after{
+        content: ' ';
+        display: block;
+        clear: both;
+      }/*之前去浮动用的overflow:auto;结果导致下拉菜单看不见，进滚轮里了*/
+      .nav>li{
+        float:left;
+        padding:5px 10px;
+        position: relative;/*自己遗漏的*/
+      }
+      .nav>li:hover{
+        background:#aaa;
+      }
+      .child{
+        display: none;
+        position: absolute;
+        left:0;
+        top:26px;
+        border:1px solid #ccc;
+      }/*之前用的是child.li无效*/
+      .child > li{
+        padding:5px;
+      }
+      .child > li:hover{
+        background:#ccc;
+      }
+      .nav>li:hover .child{
+        display:block;
+      }
+      .nav > .child:hover{
+        background:#aaa;
+      }
+  </style>
+</head>
+<body>
+    <ul class="nav">
+      <li>
+        <a href="#">前端</a>
+        <ul class="child">
+          <li><a href="#">JavaScript</a></li>
+          <li><a href="#">CSS</a></li>
+          <li><a href="">HTML</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">服务端</a>
+        <ul class="child">
+          <li><a href="">Node</a></li>
+          <li><a href="">PHP</a></li>
+          <li><a href="">Java</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">前端工具</a>
+        <ul class="child">
+          <li><a href="">Subline</a></li>
+          <li><a href="">WebStorm</a></li>
+          <li><a href="">Git</a></li>
+        </ul>
+      </li>
+      <li><a href="#">HTML</a></li>
+      <li><a href="#">NODE</a></li>
+    </ul>
+</body>
+</html>

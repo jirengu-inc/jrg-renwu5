@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画测试</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<style>
+		div#zone{
+			width:800px;
+			height:500px;
+			border:1px solid ;
+			position: relative;
+		}
+		div#box{
+			width:100px;
+			height:100px;
+			background-color: #f00;
+			position: absolute;
+		}
+		#btn{
+			margin-left:380px;
+			margin-top: 50px;
+		}
+		#control{
+			margin-top: 20px;
+			width:800px;
+			border:1px solid;
+			text-align: center;
+			padding:20px;
+			box-sizing: border-box;
+		}
+		#control button{
+			margin-left: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="zone">
+		<div id="box"></div>
+	</div>
+	<button id="btn">go</button>
+
+	<div id="control">
+		<button id="cqt">.clearQueue().stop())</button>
+		<br>
+		<button id="stopTf">stop(true,false)</button>
+		<br>
+		<br>
+		<button id="cqf">.clearQueue().finish())</button>
+		<br>
+		<button id="stopTt">stop(true,true)</button>
+		<br>
+		<br>
+		<button id="stop">stop()</button>
+		<br>
+		<button id="stopFf">stop(false,false)</button>
+		<br>
+		<br>
+		<button id="stopFt">stop(false,true)</button>
+		<br>
+		<br>
+		<button id="finish">finish()</button>
+	</div>
+	<script>
+		$(function(){
+			$("#btn").on("click",function(){
+					$("#box").animate({left:"700px"},1000)
+					 .animate({top:"400px",opacity:"0.5"},1000)
+					 .animate({left:"0",opacity:"1"},1000)
+					 .animate({top:"0",opacity:"1"},1000)
+			});
+
+			$("#stop").on("click",function(){
+				$("#box").stop();
+			});
+			$("#stopTt").on("click",function(){
+				$("#box").stop(true,true);
+			});
+			$("#stopTf").on("click",function(){
+				$("#box").stop(true,false);
+			});
+			$("#stopFf").on("click",function(){
+				$("#box").stop(false,false);
+			});
+			$("#stopFt").on("click",function(){
+				$("#box").stop(false,true);
+			});
+			$("#cqf").on("click",function(){
+				$("#box").clearQueue().finish();
+			});
+			$("#cqt").on("click",function(){
+				$("#box").clearQueue().stop();
+			});
+			$("#finish").on("click",function(){
+				$("#box").finish();
+			});//stop(stopAll,goToEnd) stopAll设置是否停止被选元素的所有队列的动画，goToEnd设置是否允许完成当前动画
+		})
+	</script>
+</body>
+</html>

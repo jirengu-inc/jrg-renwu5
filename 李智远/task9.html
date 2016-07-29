@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>盒模型</title>
+  <style>
+      .btn{
+        display: inline-block;
+        border-width:0px;
+        line-height: 40px;
+        text-align: center;
+        background-color: rgb(243,110,65);
+        padding: 0 5px;
+        color: white;
+        border-radius: 5px;
+        font-family: 微软雅黑;
+        font-size:25px;
+        outline: none;
+      }
+      .btn:hover{
+        background-color: #c14d21;
+        cursor:pointer;
+      }
+      .btn:active{
+        background-color: #e25f31;
+      }
+      a.btn{
+        text-decoration: none;
+      }
+  </style>
+</head>
+<body>
+    <a class="btn" href="#">确定</a>
+    <span class="btn" >取消</span>
+    <div class="btn">提交</div>
+    <button class="btn"> 发送</button>
+</body>
+</html>

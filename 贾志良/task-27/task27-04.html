@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全屏轮播</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<style>
+		body,div,ul,li{
+			padding:0;
+			margin:0;
+		}
+		html,body,div.show,ul.zone{
+			height:100%;
+			width:100%;
+		}
+		li{
+			list-style-type: none;
+		}
+		div.show{
+			overflow: hidden;
+			position: relative;
+		}
+		ul.zone{
+			position: relative;
+		}
+		ul.zone:after{
+			content:"";
+			display: block;
+			clear: both;
+			
+		}
+		li.item{
+			position: relative;
+			height:100%;
+			float:left;
+		}
+		div.cover{
+			height:100%;
+		}
+		ul.nav{
+			position: absolute;
+			bottom:30px;
+			left:50%;
+			transform: translateX(-50%);
+		}
+		ul.nav>li{
+			float:left;	
+			width:15px;
+			height:15px;
+			margin:0 8px;
+			border-radius: 50%;
+			box-shadow: 2px 2px 10px #000;
+			background: #fff;
+			cursor:pointer;
+		}
+		ul.nav>li.active{
+			background: #000;
+		}
+	</style>
+</head>
+<body>
+	<div id="wraper" class="show">
+		<ul class="zone">
+			<li class="item">
+				<div class="cover" imgSrc="img/00.jpg"></div>
+			</li>
+			<li class="item">
+				<div class="cover" imgSrc="img/01.jpg"></div>
+			</li>
+			<li class="item">
+				<div class="cover" imgSrc="img/02.jpg"></div>
+			</li>
+			<li class="item">
+				<div class="cover" imgSrc="img/03.jpg"></div>
+			</li>
+		</ul>
+		<ul class="nav">
+			<li class="navCir active" ><a href="#"></a></li>
+			<li class="navCir"><a href="#"></a></li>
+			<li class="navCir"><a href="#"></a></li>
+			<li class="navCir"><a href="#"></a></li>
+		</ul>
+	</div>
+	<script>
+	$(function(){
+		var $item=$(".item");
+		var $wid=$(window).width();
+		var $zone=$(".zone");
+		var $cur=0;
+		var $locked=false;
+
+		$amount=$zone.find("li").size();
+		$zone.append($item.first().clone());
+		$zone.prepend($item.last().clone());
+		$realAmount=$zone.find("li").size();
+
+		$zone.find("li").css({"width":$wid});
+		$zone.css({"width":$realAmount*$wid});
+
+		$zone.css({"left":0-$wid});
+		
+		$(".nav").find("li").on("click",function(){
+			$des=$(this).index();
+			if($des>$cur){
+				playNext($des-$cur);
+			}else if($des<$cur){
+				playPre($cur-$des);
+			}
+		})
+
+		function playNext(idx){
+			if($locked) return ;
+			$locked=true;
+			var idx=idx||1;
+			setBg($cur+2);//+1+1=2;
+			$zone.animate({"left":"-="+idx*$wid},function(){
+				$cur=($cur+idx)%$amount;
+				if($cur===0){
+					$zone.css({"left":0-$wid});
+				}
+				$locked=false;
+				setNav();
+			})
+		}
+
+		function playPre(idx){
+			if($locked) return ;
+			$locked=true;
+			var idx=idx||1;
+			setBg($cur)//-1+1=0;
+			$zone.animate({"left":"+="+idx*$wid},function(){
+				$cur=($cur-idx+$amount)%$amount;
+				if($cur===($amount-1)){
+					$zone.css("left",0-$amount*$wid);
+				}
+				$locked=false;
+				setNav();
+			})
+		}
+
+		function setNav(){
+			$(".nav").find("li").removeClass("active").eq($cur).addClass("active");
+		}
+
+		setBg(1);
+		setBg(2);
+		function setBg(idx){
+			var idx=idx||0;
+			var $node=$zone.find(".cover").eq(idx);
+			if($node.data("hasBg")) return ;
+			var $imgSrc=$node.attr("imgSrc");
+			$node.css({"background":"url("+$imgSrc+")"});
+			$node.data("hasBg",true);
+		}
+
+		function auto(){
+			var clock=setInterval(function(){
+				playNext();
+			},2000)
+		};
+		auto();
+	})
+	</script>
+</body>
+</html>

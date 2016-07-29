@@ -18,7 +18,7 @@
     a {
         text-decoration: none;
     }
-    .img-ct img {
+    .show img {
         width: 400px;
         height: 200px;
     }
@@ -28,7 +28,7 @@
         overflow: hidden;
         position: relative;
     }
-    .img-ct li{
+    .show li{
         position: absolute;
         display: none;
     }
@@ -82,11 +82,11 @@
 <body>
 
     <div class="carousel">
-        <ul class="img-ct clearfix">
-            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a></li>
-            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a></li>
-            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
-            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
+        <ul class="show clearfix">
+            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115612mood5oifacokfrru.jpg"></a></li>
+            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115614wab8k2uibdbgkzak.jpg"></a></li>
+            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115613upujippg33h9b4pk.jpg"></a></li>
+            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115610flcjfw3dwc7n7mwd.jpg"></a></li>
         </ul>
         <a href="#" class="arrow pre"><</a>
         <a href="#" class="arrow next">></a>
@@ -101,7 +101,7 @@
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
 
-    var $ct = $('.img-ct'),
+    var $ct = $('.show'),
         $pre = $('.pre'),
         $next = $('.next'),
         $bullet = $('.bullet'),
@@ -119,17 +119,19 @@
 
     var curIndex = 0,
         isAnimate = false;
+
     function play(index){
-        if(isAnimate){
-            return;
+        if(!isAnimate){
+            isAnimate = true;
+            stopPlay();
+            $ct.find('li').eq(curIndex).fadeOut(500);
+            $ct.find('li').eq(index).fadeIn(500,function(){
+                isAnimate = false;
+            });
+            autoPlay();
+            curIndex = index;
+            setBllet();
         }
-        isAnimate = true;
-        $ct.find('li').eq(curIndex).fadeOut(500);
-        $ct.find('li').eq(index).fadeIn(500,function(){
-            isAnimate = false;
-        });
-        curIndex = index;
-        setBllet(index);
     }
     function playNext(){
         play((curIndex+1)%imgCount);
@@ -137,20 +139,23 @@
     function playPre(){
         play((curIndex-1+imgCount)%imgCount);
     }
-    function setBllet(index){
+    function setBllet(){
         $bullet.children().removeClass('active')
-                          .eq(index).addClass('active');
+                          .eq(curIndex).addClass('active');
     }
     function autoPlay(){
         clock = setInterval(function(){
             playNext();
-        },1000);
+        },2000);
+    }
+    function stopPlay(){
+        clearInterval(clock);
     }
 
 
-
+    autoPlay();   //应该先开定时器 不然play()中的定时器还未定义
     play(0);
-    autoPlay();
+
 </script>
 </body>
 </html>

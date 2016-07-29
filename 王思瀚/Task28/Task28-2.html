@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ENVY</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+    <style>
+        html,body,div,h1,h2,h3,p{
+            margin: 0;
+            padding: 0;
+        }
+        .header{
+            height: 80px;
+            background-color: red;
+            text-align: center;
+            line-height: 80px;
+            margin: 10px;
+        }
+        .nav{
+            height: 50px;
+            background-color: blue;
+            margin: 0 10px;
+        }
+        .content{
+           overflow: auto;
+            margin: 0 10px;
+            background-color: #ccc;
+            padding: 10px;
+        }
+        .aside{
+            float: left;
+            background-color: green;
+            width: 100px;
+            height: 400px;
+        }
+        .main{
+            background-color: #fff;
+             height: 800px;
+            overflow: auto;
+        }
+        .footer{
+            margin: 0 10px;
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">header</div>
+    <div class="nav">nav1</div>
+    <div class="content">
+        <div class="aside">aside</div>
+        <div class="main">main</div>
+    </div>
+
+    <div class="nav">nav2</div>
+    <div class="content">
+        <div class="aside">aside</div>
+        <div class="main">main</div>
+    </div>
+
+    <div class="nav">nav3</div>
+    <div class="content">
+        <div class="aside">aside</div>
+        <div class="main">main</div>
+    </div>
+
+    <div class="nav">nav4</div>
+    <div class="content">
+        <div class="aside">aside</div>
+        <div class="main">main</div>
+    </div>
+    <div class="nav">nav5</div>
+    <div class="content">
+        <div class="aside">aside</div>
+        <div class="main">main</div>
+    </div>
+    <div class="footer">footer</div>
+    <script>
+   $(function(){
+       $.fn.stick=function(){
+           //对每个nav都获取自己的setoffTop这样就不会出现一个到达顶部后，所有都被激活的情况
+       $(this).each(function(){
+           var $cur = $(this),
+            setoffTop=$cur.offset().top,
+           setoffLeft=$cur.offset().left,
+            curH=$cur.height(),
+            curW=$cur.width();
+
+        var $div=$cur.clone().css('opacity',0).insertBefore($cur).hide();
+
+
+
+        $(window).on('scroll',function(){
+            var scrolltop = $(this).scrollTop();
+            if(scrolltop>=setoffTop){
+                setFixed();
+            }else{
+                if(isFixed){
+                    unsetFixed();
+                }
+            }
+        })
+            function isFixed(){
+                return !!$cur.attr('data-fix');
+            }
+
+           function setFixed(){
+               $cur.attr('data-fix',true)
+                   .css({
+                        position:'fixed',
+                        height:curH,
+                        width:curW,
+                        left:setoffLeft,
+                        top:0,
+                        margin:0,
+                        //'z-index':9999
+               })
+               $div.show();
+           }
+           function unsetFixed(){
+               $cur.removeAttr('data-fix').removeAttr('style');
+               $div.hide();
+           }
+        })
+    }
+
+
+       $('.nav').stick();
+   })
+    </script>
+</body>
+</html>

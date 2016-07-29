@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>task22-4</title>
+	<meta name="discription" content="">
+	<meta name="keywords" content="">
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		.warp{
+			position: relative;
+			width:602px;
+			height:240px;
+			margin:100px auto;
+			border:1px solid #ccd; 
+			font-size:20px;
+			overflow: hidden;
+		}
+		#list{
+			position:absolute;
+			left:-1px;
+		}
+		#list:after{
+			content:'';
+			display:block;
+			clear:both;
+		}
+		#list li{
+			list-style:none;
+			text-align:center;
+			float:left;
+			border-left:1px solid #ccd;
+			border-bottom:1px solid #ccd;
+			width:200px;
+		}
+		.warp>div{
+			padding:29px 0 0 10px;
+			width:603px;
+			height:216px;
+		}
+		.select{
+			background-color:gray;
+		}
+	</style>
+</head>
+<body>
+	<div class="warp">
+		<ul id="list">
+			<li class="select">tab1</li>
+			<li>tab2</li>
+			<li>tab3</li>
+		</ul>
+		<div>内容1</div>
+		<div>内容2</div>
+		<div>内容3</div>
+	</div>
+	<script>
+		var list=document.getElementById("list");
+		var divs=document.querySelectorAll(".warp>div");
+		var titles=list.getElementsByTagName("li");
+		(function(){
+			if(divs.length!==titles.length){
+				return ;
+			}
+			for(var i=0;i<titles.length;i++){
+				titles[i].id=i;
+				list.addEventListener("mouseover",function(e){
+					for(var j=0;j<titles.length;j++){
+						titles[j].className="";
+						divs[j].style.display="none"
+					}
+					e.target.className="select";
+					divs[e.target.id].style.display="block";
+				})	
+			}
+		}());
+
+	</script>
+
+</body>
+</html>

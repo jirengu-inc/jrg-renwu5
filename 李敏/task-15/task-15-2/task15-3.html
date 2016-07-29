@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>实战</title>
+  <style type="text/css">
+html,head,body,a,ul,li,p,h1,h2{
+            margin:0;
+            padding:0;
+          }
+a{text-decoration: none;color:#fff;}
+li{list-style: none; } 
+#header{}
+  .container{
+    width:1000px;
+    margin:0 auto;
+  }
+   .logo{
+      position: fixed;
+      line-height:50px;
+      float:left;
+  }
+    .logo h1,{
+      color:rgba(254,209,60,1);
+      font-size: 1.5rem;
+    }
+    .nav-bar{
+      position: fixed;
+      float:right;
+      line-height:50px;
+      right: 100px;
+    }
+    .nav-bar li{display:inline-block;
+               margin-left: 10px;}
+    .nav-bar a:hover{color:rgba(254,209,60,1);}
+  .intro{
+    background: url("images/header-bg.jpg") no-repeat center center;
+    background-size: cover;
+  }
+    .intro-text{
+            padding-top: 160px;
+            text-align: center;
+            font-size:3em;
+            color:#fff;
+            line-height: 130px;
+            padding-bottom: 110px;
+          }
+      .btn{
+          width:200px;
+          height: 40px;
+          border:1px solid transparent;
+          background:#FED13C;
+          border-radius: 5px;
+          text-align: center;
+          line-height:40px;
+          font-size: 26px;
+          margin:0 auto;
+          }
+#content{}
+   .section-heading{
+            text-align: center;
+            font-size:1.5em;
+            color:#000;
+            line-height:1.5;
+            padding: 60px 0;
+          }
+   .section-heading p{font-size:20px;line-height:.9;}
+     @font-face {font-family: 'iconfont';
+    src: url('fonts/ecommerce/iconfont.eot'); 
+    src: url('fonts/ecommerce/iconfont.eot#iefix') format('embedded-opentype'),
+         url('fonts/ecommerce/iconfont.woff') format('woff'),
+         url('fonts/ecommerce/iconfont.ttf') format('truetype'),
+         url('fonts/ecommerce/iconfont.svg#iconfont') format('svg'); 
+  }
+
+  @font-face {font-family: 'iconfont';
+    src: url('fonts/contant/iconfont.eot'); 
+    src: url('fonts/contant/iconfont.eot#iefix') format('embedded-opentype'),
+         url('fonts/contant/iconfont.woff') format('woff'),
+         url('fonts/contant/iconfont.ttf') format('truetype'),
+         url('fonts/contant/iconfont.svg#iconfont') format('svg'); 
+  }
+  @font-face {font-family: 'iconfont';
+    src: url('fonts/plus/iconfont.eot'); 
+    src: url('fonts/plus/iconfont.eot#iefix') format('embedded-opentype'),
+         url('fonts/plus/iconfont.woff') format('woff'),
+         url('fonts/plus/iconfont.ttf') format('truetype'),
+         url('fonts/plus/iconfont.svg#iconfont') format('svg'); 
+  }
+   .iconfont{
+           font-family:"iconfont";
+           font-size:16px;
+           font-style:normal; 
+           }
+     .layout{
+        float:left;
+        width: 320px;
+        margin-left:10px;
+  }
+  .intro:before, .intro:after, .layout:after,.portfolio-layout:before, .services:after, .portfolio-list:after, .portfolio-list:before, .bottom-nav:after, .bottom-nav:before, .about-layout:before, .about-layout:after, #footer:before, .btn:before, .btn:after, form:before, form:after{
+    content:"";
+    display: block;
+    clear:both;
+  }
+    .code{ font-size: 80px;
+           width:140px;
+           height: 140px;
+           border-radius:70px;
+           background:#FED13C; 
+           text-align: center;
+           line-height: 140px;
+           margin:0 auto;
+        }  
+  .portfolio{background: #eee;padding-bottom: 30px;}
+    .portfolio-text{
+                      text-align: center;
+                      color:#000;
+                      line-height:1.5;
+                      padding:20px;}
+        .portfolio-layout{
+          width:320px;
+          margin-left:10px;
+          margin-bottom: 30px;
+          float:left;
+          background: #fff;
+               }
+        .portfolio li{padding:0px;}
+        .portfolio img{width:320px;z-index:1; height: 210px;}
+  .about{
+          position: relative;
+          top:90px;
+          overflow: hidden;
+        }
+        .about-list{
+          text-align: center;
+          height: 300px;
+          line-height: 300px;         
+        }   
+       .about-layout li:nth-child(1) img,.about-layout li:nth-child(3) img{
+          width:140px;
+          height:140px;
+          margin-top: 20px;
+          border-radius: 75px;
+          border:5px solid #ccc;
+          margin-left: 30px;
+          float:left;
+        }
+        .about-order:after{content: "";
+                           clear:both;
+        }
+        .about-wrapper{width:395px;
+                      text-align: right;
+                      color:#000;
+                      line-height:1.5;
+                      float:left;
+                      }
+      
+    .about-layout li:nth-child(2) img,.about-layout li:nth-child(4) img{
+          width:140px;
+          height:140px;
+          margin-top: 20px;
+          border-radius: 75px;
+          border:5px solid #ccc;
+          margin-right: 40px;
+          float:right;
+        }
+        .about-wrapper-oushu{width:390px;
+                      text-align:left;
+                      color:#000;
+                      line-height:1.5;
+                      float:right;
+                      }
+        .about-list-last{margin:0 auto;
+                         width:140px;
+                         height:140px;
+                         border-radius: 75px;
+                         background:#FED13C;
+                         border:5px solid #ccc;
+                         color:#000;}
+        .about-layout li:nth-child(5) h2{
+          line-height: 30px;
+          padding-top:35px;
+        }
+        .about-line{position: absolute;
+                    margin-top: 50px;
+                    width: 3px;
+                    height: 1200px;
+                    background: #ddd;
+                    left: 50%;
+                    z-index: -3;}
+        .team{background: #eee;}
+        .team-code{ font-size:30px;
+           width:40px;
+           height:40px;
+           border-radius: 20px;
+           color:#fff;
+           background: #000;
+           display: inline-block;
+        }
+         .team img{
+            width: 180px;
+            border-radius: 95px;
+            border: 5px solid white;
+            text-align: center;
+        }
+        .team-layout{
+          width:310px;
+          margin-left:10px;
+          margin-bottom: 10px;
+          text-align: center;
+          margin-left:-5px;
+        }
+  .team-list{
+          width:310px;
+          margin-left:10px;
+          margin-bottom: 10px;
+          text-align: center;
+          float:left;
+        }
+     .bottom-nav{
+          position: relative;
+          text-align: center;
+          background: #fff;
+        }
+        .bottom-nav ul{margin-left: -30px;}
+        .bottom-nav-list{
+          width:220px;
+          float:left;
+          margin-left: 30px;
+          padding-bottom: 30px;
+          padding-top: 30px;
+        }
+#footer{
+      background-image: url("images/map-image.png");
+      background-color: #000;
+      } 
+    .form-layout{
+      width: 460px;
+      float: left;
+      margin-right: 20px;
+    } 
+    .footer-container{padding-bottom: 130px;}
+    .input-text{
+      width:440px;
+      height:45px;
+      margin-bottom: 60px;
+    }   
+    .ending{padding-bottom: 40px;padding-top: 40px;text-align: center;}
+    .copyright{float:left;}
+    .ending a{color:rgba(254,209,60,1);}
+    .ending ul{float:left;}
+    .ending ul li{float:left;margin-left: 10px;}
+    .ending-list{width:320px;}
+    .ending-list a:hover{text-decoration: underline;}
+    .btn:hover,.code:hover,.team-code:hover{
+      background:#dcb12a;
+    } 
+    .portfolio-layout a:hover .mask{
+             position: absolute;
+             width: 320px;
+             height: 210px;
+             background: #fed136;
+             color: #fff;
+             opacity: 0.8;
+             text-align: center;
+             line-height: 217px;
+             z-index:3;
+    }
+    .mask{
+             position: absolute;
+             width: 300px;
+             height: 217px;
+             background: #fed136;
+             color: #fff;
+             opacity: 0;
+             font-size: 150px;
+             z-index:3;}
+    .mask .iconfont{font-size:60px;}
+  </style>
+</head>
+<body>
+<div id="header">
+  <div class="container">
+       <a href="#" class="logo"><h1>Start Bootstrap</h1></a> 
+       <ul class="nav-bar">
+         <li><a href="#">SERVICES</a></li>
+         <li><a href="#">PORTFOLIO</a></li>
+         <li><a href="#">ABOUT</a></li>
+         <li><a href="#">TEAM</a></li>
+         <li><a href="#">CONTACT</a></li>
+       </ul>
+  </div>
+  <div class="intro">
+    <div class="intro-text">
+     <h2><i>Welcome To Our studio!</i></h2>
+     <h1>IT's NICE TO MEET YOU</h1>
+     <div class="btn"><a href="#">Tell Me More!</a> </div>
+   </div>  
+  </div>
+</div>
+<div id="content">
+  <div class="services container">
+    <div class="section-heading">
+     <h2>SERVICES</h2>
+     <p><i>Lorem ipsum dolor sit amet consectetur.</i></p>
+     </div>
+    <div class="iconfont">
+      <ul>
+       <li class="layout"><div class="code">&#xe7f1;</div>
+        <div class="section-heading">
+         <h3>E-Commerce</h3>
+           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maXime quam architecto quo inventore harum eXmagni, dicta impedit.</p>
+        </div>  
+       </li>
+       <li class="layout"><div class="code">&#xe607;</div>
+        <div class="section-heading">
+         <h3>Responsive Design</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maXime quam architecto quo inventore harum eXmagni, dicta impedit.</p>
+        </div>  
+       <li class="layout"><div class="code">&#xe606;</div>
+        <div class="section-heading">
+         <h3>Web Security</h3>
+           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maXime quam architecto quo inventore harum eXmagni, dicta impedit.</p>
+        </div>  
+       </li>
+       </ul>
+   </div>
+  </div>
+  <div class="portfolio">
+   <div class="container">
+     <div class="section-heading">
+       <h2>PORTFOLID</h2>
+       <p><i>Lorem ipsum dolor sit amet consectetur.</i></p>
+     </div> 
+     <ul class="portfolio-list">
+      <li class="portfolio-layout">
+       <a href=""><div class="mask"><div class="iconfont">&#xe716;</div></div><img src="images/roundicons.png">
+        <div class="portfolio-text" >
+         <h2>Round Icons</h2>
+           <p><i>Graphic Design</i></p>
+        </div>
+       </a>
+      </li>
+      <li class="portfolio-layout">
+       <a href=""><div class="mask"><div class="iconfont">&#xe716;</div></div><img src="images/startup-framework.png">
+        <div class="portfolio-text" >
+         <h2> Startup Framework</h2>
+          <p><i>Website Design</i></p>
+        </div>
+       </a>
+      </li>
+      <li class="portfolio-layout">
+       <a href=""><div class="mask"><div class="iconfont">&#xe716;</div></div><img src="images/treehouse-preview.png">
+        <div class="portfolio-text" >
+         <h2>Treehouse</h2>
+          <p><i>Website Design</i></p>
+        </div>
+       </a>
+      </li>
+      <li class="portfolio-layout">
+       <a href=""><div class="mask"><div class="iconfont">&#xe716;</div></div><img src="images/golden-preview.png">
+        <div class="portfolio-text">
+         <h2>Golden</h2>
+          <p><i>Website Design</i></p>
+        </div>
+       </a>
+      </li>
+      <li class="portfolio-layout">
+       <a href="#"><div class="mask"><div class="iconfont">&#xe716;</div></div><img src="images/escape-preview.png">
+        <div class="portfolio-text" >
+         <h2>Escape</h2>
+          <p><i>Website Design</i></p>
+        </div>
+       </a>
+      </li>
+      <li class="portfolio-layout">
+       <a href="#"><div class="mask"><div class="iconfont">&#xe716;</div></div><img src="images/dreams-preview.png">
+        <div class="portfolio-text" >
+         <h2>Dreams</h2>
+          <p><i>Website Design</i></p>
+        </div>
+       </a>
+      </li>
+     </ul>
+   </div>
+  </div>
+   <div class="about">
+     <div class="container">
+      <div class="section-heading">
+       <h2>ABOUT</h2>
+       <p><i>Lorem ipsum dolor sit amet consectetur.</i></p>
+     </div>
+     <div class="about-line"></div>
+     <div class="about-layout">
+       <ul>
+         <li class="about-list">
+           <a href="#">
+            <div class="about-wrapper">
+             <h2>2009-2011</h2>
+             <h2>Our Humble Beginnings</h2>
+             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+            </div>
+            <img src="images/1.jpg" class="img-1">
+           </a>
+         </li>
+         <li class="about-list">
+           <a href="#">
+            <div class="about-wrapper-oushu">
+             <h2>March 2011</h2>
+             <h2>An Agency is Born</h2>
+             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+            </div>
+            <img src="images/2.jpg">
+           </a>
+         </li>
+         <li class="about-list">
+           <a href="#">
+            <div class="about-wrapper">
+             <h2>December 2012</h2>
+             <h2>Transition to Full Service</h2>
+             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+            </div>
+            <img src="images/3.jpg">
+           </a>
+         </li>
+         <li class="about-list">
+           <a href="#">
+            <div class="about-wrapper-oushu">
+             <h2>July 2014</h2>
+             <h2>Phase Two Expansion</h2>
+             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+            </div>
+            <img src="images/4.jpg">
+           </a>
+         </li>
+         <li class="about-list">
+           <a href=""><div class="about-list-last">
+            <h2>BE PART OF <br/>OUR STORY!</h2>
+            </div>
+           </a>
+         </li>
+       </ul>
+     </div>
+   </div>
+   </div>
+   <div class="team">
+    <div class="container">
+     <div class="section-heading">
+       <h2>OUR AMAZING TEAM</h2>
+        <p><i>Lorem ipsum dolor sit amet consectetur.</i></p>
+     </div>
+       <ul>
+        <li class="team-list">
+         <a href=""><img src="images/5.jpg">
+          <div class="portfolio-text" >
+           <h2>Kay Garland</h2>
+           <p>Lead Designer</p>
+          </div>
+         </a>
+        <div class="iconfont">
+         <ul class="team-layout">
+          <li class="team-code">&#xe634;</li>
+          <li class="team-code">&#xe618;</li>
+          <li class="team-code">&#xe620;</li>
+         </ul>
+        </div> 
+        </li>
+        <li class="team-list">
+       <a href="#"><img src="images/6.jpg">
+        <div class="portfolio-text" >
+         <h2>Kay Garland</h2>
+           <p>Lead Designer</p>
+        </div>
+       </a>
+       <div class="iconfont">
+         <ul class="team-layout">
+           <li class="team-code">&#xe634;</li>
+          <li class="team-code">&#xe618;</li>
+          <li class="team-code">&#xe620;</li>
+         </ul>
+       </div> 
+        </li>
+        <li class="team-list">
+       <a href=""><img src="images/7.jpg">
+        <div class="portfolio-text" >
+         <h2>Kay Garland</h2>
+           <p>Lead Designer</p>
+        </div>
+       </a>
+        <div class="iconfont">
+         <ul class="team-layout">
+           <li class="team-code">&#xe634;</li>
+          <li class="team-code">&#xe618;</li>
+          <li class="team-code">&#xe620;</li>
+         </ul>
+        </div> 
+        </li>
+       </ul>
+     
+      <div class="section-heading">
+        <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit.Aut eaque,laboriosam veritatis,quos non quis ad perspiciatis,totam corporis ea,alias ut unde.</p>
+      </div>
+    </div>
+     </div>
+ <div class="bottom-nav">
+  <div class="container">
+      <ul>
+        <li class="bottom-nav-list"><img src="images/envato.jpg"></li>
+        <li class="bottom-nav-list"><img src="images/creative-market.jpg"></li>
+        <li class="bottom-nav-list"><img src="images/designmodo.jpg"></li>
+        <li class="bottom-nav-list"><img src="images/themeforest.jpg"></li>
+      </ul>
+    </div>
+    </div>
+<div id="footer">
+ <div class="container footer-container">
+   <div class="section-heading">
+     <a href="#"><h2>CONTACT US</h2>
+      <p><i>Lorem ipsum dolor sit amet consectetur.</i></p>
+      </a>
+   </div>
+   <form action="" method="">
+     <div class="form-layout">
+       <input type="text" name="name" class="input-text" placeholder="YOUR NAME*">
+       <input type="text" name="email" class="input-text" placeholder="YOUR EMAIL*">
+       <input type="text" name="phone" class="input-text" placeholder="YOUR PHONENUMBER*">
+     </div>
+     <div class="form-layout">
+      <textarea cols="62" rows="18" placeholder="YOUR MESSAGE*"></textarea>
+     </div>
+   </form>
+   <div class="btn"><a href="">SEND MESSAGE!</a> </div>
+   </div>
+</div> 
+<div class="ending">
+<div class="container">
+ <ul>
+ <li class="ending-list">
+    <span class="copyright">Copyright © Your Website 2014</span></li>
+          <li class="ending-list"><ul class="iconfont team-layout">
+          <li class="team-code">&#xe634;</li>
+          <li class="team-code">&#xe618;</li>
+          <li class="team-code">&#xe620;</li>
+         </ul>  </li>  
+      <li class="ending-list"><ul>
+          <li><a href="#">Privacy Policy</a>
+          </li>
+          <li><a href="#">Terms of Use</a>
+          </li>
+      </ul></li>
+</ul>
+</div>
+</div>
+</body>
+</html>

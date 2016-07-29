@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task28-01</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<style>
+		body,div,h1{
+			margin:0;
+			padding:0;
+			font-family: "微软雅黑";
+		}
+		div.header{
+			line-height:100px;
+			background: #81c2d6;
+		}
+		div.container{
+			margin: 20px 0;
+		}
+		h1{
+			text-align: center;
+		}
+		div.nav{
+			line-height:100px;
+			background: #dcf7a1;
+			margin-bottom: 20px;
+		}
+
+		div.container:after{
+			content:"";
+			display: block;
+			clear:both;
+		}
+		div.side{
+			width:200px;
+			line-height:300px;
+			background: #8192d6;
+			float:left;
+			margin-right:20px;
+		}
+		div.content{
+			width:1120px;
+			height: 1500px;
+			background: #d9b3e6;
+			float:right;
+			
+		}
+		div.footer{
+			line-height: 100px;
+			background: #83fcd8;
+		}
+	</style>
+</head>
+<body>
+	<div id="wraper">
+		<div class="header">
+			<h1>我是头部</h1>
+		</div>
+		<div class="container">
+			<div class="nav">
+				
+			</div>
+			<div class="side">
+				<h1>其实不想走</h1>
+			</div>
+			<div class="content">
+				<h1>我是内容</h1>
+			</div>
+		</div>
+		<div class="footer">
+			<h1>我是尾部</h1>
+		</div>
+	</div>
+
+	<script>
+		$(function(){
+			$.fn.stickUp=function(){
+				var $cur=this;
+				var $wid=$cur.width();
+				var $hei=$cur.height();
+				var $toLeft=$cur.offset().left;
+				var $toTop=$cur.offset().top;
+				var $des=$cur.clone()
+							 .css({"opacity":0})
+							 .insertBefore($cur)
+							 .hide();
+
+				$(window).on("scroll",function(){
+					var $scroll=$(this).scrollTop();
+					if($scroll>=$toTop){
+						if(!$cur.attr("isfixed")){
+							setStick();
+						}
+					}else{
+						if($cur.attr("isfixed")){
+							cancelStick();
+						}
+					}
+				})
+				function isFixed(){
+					return !!$cur.attr("isfixed");
+				}
+				function setStick(){
+					$cur.attr("isfixed",true);
+
+					$cur.css({
+						"opacity":1,
+						"position":"fixed",
+						"left":$toLeft,
+						"top":0,
+						"margin":0,
+					});
+					$des.show();
+				}
+				function cancelStick(){
+					$cur.removeAttr("isfixed");
+					$cur.removeAttr("style");
+					$des.hide();
+				}
+			}
+
+			$(".side").stickUp();
+	
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task26-02</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+	<style>
+		input[type="button"]{
+			border:none;
+			width:200px;
+			line-height: 30px;
+		}
+		input#int{
+			outline: none;
+		}
+		div#box{
+			border:1px solid ;
+			height:200px;
+			margin:10px 0;
+		}
+		div#info{
+			position: fixed;
+			bottom:0;
+			line-height:30px;
+			background-color: #495A80;
+			color:#fff;
+			width: 100%;
+			text-align: center;
+		}
+		div.boxes{
+			width:500px;
+			height:500px;
+			border:1px solid;
+			margin:10px 0;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="按钮" id="btn" />
+	<div id="box">
+		我是一个盒子
+	</div>
+	<div id="info">你已经滑动了<span id="scr">0</span>px</div>
+	请输入内容：
+	<input type="text" id="int" placeholder="请输入">
+	<select name="car" id="car">
+		<option value="宝马">宝马</option>
+		<option value="奔驰">奔驰</option>
+		<option value="奥迪">奥迪</option>
+	</select>
+	<input type="text" id="carIn" />
+	<div class="boxes"></div>
+	<div class="boxes"></div>
+	<div class="boxes"></div>
+	<div class="boxes"></div>
+	<div class="boxes"></div>
+	<script>
+		$(function(){
+			$("#btn").on("click",function(){
+				$("#btn").css({"background-color":"red"});
+				setTimeout(function(){
+					$("#btn").css({"background-color":"blue"})
+				},1000)
+			})
+			$(window).scroll(function(){
+				$("#scr").text($(window).scrollTop());
+			})
+			$("#box").on("mouseenter",function(){
+				$(this).css({"background-color":"red"});
+			})
+			$("#box").on("mouseleave",function(){
+				$(this).css({"background-color":"#fff"});
+			})
+			$("#int").on("focus",function(){
+				$(this).css({"border":"1px solid blue"});
+			})
+			$("#int").on("blur",function(){
+				$(this).css({"border":"1px solid #ccc"});
+				console.log($(this).val())
+			})
+			$("#int").on("keyup",function(){
+				$(this).val($(this).val().toUpperCase())
+			})
+			$("#car").on("change",function(){
+				console.log("hah ");
+
+				$("#carIn").val($("#car option:selected").text())
+			})
+		})
+	</script> 
+</body>
+</html>

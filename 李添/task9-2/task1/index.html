@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task9-2.1</title>
+    <style media="screen">
+        .control {
+            width: 80px;
+            height: 30px;
+            /*border: 1px solid red;*/
+            display: inline-block;
+        }
+        .control>i {
+            width: 30px;
+            height: 30px;
+            float: left;
+        }
+        .control>h3 {
+            margin: 0;
+            font-size: 20px;
+            padding-top: 4px;
+        }
+        .icon1>i {
+            background-image: url(sprite.png);
+            background-position: -105px -4px;
+        }
+        .icon1>i:hover {
+            background-position: -3px -4px;
+        }
+        .icon2>i {
+            background-image: url(sprite.png);
+            background-position: 60px -1px;
+        }
+        .icon2>i:hover {
+            background-position: -38px -5px;
+        }
+        .icon3>i {
+            background-image: url(sprite.png);
+            background-position: -74px -6px;
+        }
+        .icon3>i:hover {
+            background-position: -166px -3px;
+        }
+    </style>
+</head>
+<body>
+    <!--
+    若 sprite.png 并不是那种单个图标，一列下来的。
+    (这里的 sprite.png 是横向的)
+    所以需要在“前进”前面加个标签来划分出一个区域给背景图片。
+
+    参考于http://www.cnblogs.com/xiayi/p/5296152.html
+     -->
+    <div class="control icon1"><i></i><h3>前进</h3></div>
+    <div class="control icon2"><i></i><h3>开始</h3></div>
+    <div class="control icon3"><i></i><h3>停止</h3></div>
+</body>
+</html>
