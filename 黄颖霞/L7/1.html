@@ -19,7 +19,24 @@
     <!--link-->
     <link href="" rel="shortcut icon">
     <link href="../css/style.css" rel="stylesheet" type="text/css">
-    <title></title>
+    <title>form</title>
+    <style>
+        .row{
+            margin-bottom:5px;
+        }
+        .row label{
+            width:5em;
+            text-align:right;
+            display:inline-block;
+            vertical-align: middle;
+        }
+        textarea{
+            resize:none;
+        }
+        input,textarea,select{
+            vertical-align: middle;
+        }
+    </style>
 
 </head>
 <body>
@@ -31,7 +48,7 @@
     </div>
     <div class="row">
         <label >密码：</label>
-        <input type="password" name="pwd">
+        <input type="password" name="pwd" value="123456">
     </div>
     <div class="row">
         <label>性别：</label>
@@ -40,14 +57,26 @@
     </div>
     <div class="row">
         <label>取向：</label>
-        <input type="radio" name="quxiang" >
-        <input type="radio" name="quxiang" checked>
+        <input type="radio" name="quxiang" >男
+        <input type="radio" name="quxiang" checked>女
     </div>
     <div class="row">
         <label>爱好：</label>
         <input type="checkbox" name="hobby">dota
         <input type="checkbox" name="hobby" checked>旅游
         <input type="checkbox" name="hobby" checked>宠物
+    </div>
+    <div class="row">
+        <label>评论：</label>
+        <textarea name="comment" placeholder="ddd" rows="10" cols="50"></textarea>
+    </div>
+    <div class="row">
+        <label>我的car：</label>
+      <select name="car">
+          <option value="萨博">萨博</option>
+          <option value="奥迪">奥迪</option>
+      </select>
+        <input type="submit" value="提交"/>
     </div>
 </form>
 </body>
