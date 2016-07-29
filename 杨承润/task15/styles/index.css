@@ -1,0 +1,150 @@
+/*=================================reset================================*/
+html,body,ul,li,div,h1,p{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "华文中宋";
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+.layout{
+	width: 1000px;
+	margin: 0 auto;
+}
+.clearfix:after{
+	content:"";
+	display: block;
+	clear: both;
+}
+.btn{
+	border: 1px solid lightgray;
+	text-align: center;
+	border-radius: 5px;
+}
+/*=================================header================================*/
+#header .layout>a{
+	float: left;
+}
+#header .nav>li{
+	float: left;
+	padding-left:35px;
+	line-height:35px;
+	height: 35px;
+	position: relative;
+}
+#header .layout a{
+	opacity: 0.6;
+}
+#header .layout a:hover{
+	opacity: 1;
+}
+#header .nav-li:last-child>a:after{
+	content: "";
+	display: inline-block;
+	border-bottom:5px solid transparent;
+	border-left: 5px solid transparent; 
+	border-top: 5px solid black; 
+	border-right: 5px solid transparent;
+	position: absolute;
+	top: 17px;
+}
+#header .nav-li:last-child:hover .drop{
+	display: block;
+}
+#header .drop{
+	display: none;
+	border: 1px solid lightgray;
+	position: absolute;
+	top: 100%;
+}
+#header .drop>li{
+	border-bottom: 1px dashed lightgray;
+	padding: 5px;
+	background-color: white;
+}
+#header .drop>li:last-child{
+	border-bottom: 1px dashed transparent;
+}
+#header .drop>li:hover{
+	background-color: lightgray;
+}
+/*===================content=========================*/
+/*==========introduction================*/
+#content .introduction{
+	padding: 35px;
+	background-color: rgb(184,77,69);
+	color: white;
+	min-width: 1000px;
+}
+/*==========work================*/
+#content .work{
+	border: 1px solid transparent;
+	background-color: lightgray;
+	padding: 10px;
+	border-radius: 5px;
+	margin-top: 35px;
+	margin-bottom: 35px;
+}
+#content .work>a{
+	color: rgb(184,77,69);
+}
+/*==========photowall================*/
+#content .photowall .nav>li{
+	border: 1px solid lightgray;
+	float: left;
+	margin-bottom: 20px;
+	margin-right: 30px;
+}
+#content .photowall .nav>li:nth-child(3n){
+	margin-right: 0px;
+}
+/*
+#content .photowall .nav{
+	margin-right:-30px; 
+}*/
+#content .photowall .textarea{
+	padding: 10px;
+}
+#content .photowall .photo-btn{
+	display: block;
+	padding: 5px;
+	width: 40px;
+	margin: 0 auto;
+	opacity: 0.6;
+}
+#content .photowall .photo-btn:hover{
+	opacity: 1;
+}
+#content .photowall .image{
+	width: 310px;
+	height: 200px;
+}
+/*==========resume================*/
+#content .resume{
+	background-color: rgb(184,77,69);
+	padding: 10px;
+	text-align: center;
+	color: white;
+	min-width: 1000px;
+}
+#content .resume ul>li{
+	margin: 20px;
+}
+#content .resume-btn{
+	color: white;
+	padding: 10px;
+	opacity: 1;
+}
+/*===============================footer====================*/
+#footer{
+	padding: 30px;
+	text-align: center;
+}
+#footer>hr{
+	margin: 20px;
+}
