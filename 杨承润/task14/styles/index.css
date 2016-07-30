@@ -73,13 +73,15 @@ a{
 #introduction .skill .nav{
 	padding: 50px;
 	color: white;
+	margin-left: 60px;
 }
 #introduction .skill .nav>li{
 	float: left;
+	margin-right: 80px;
 }
-#introduction .skill .nav>li~li{
-	margin-left: 120px; 
-}
+/*#introduction .skill .nav>li~li{
+	margin-left: 0px; 
+}*/
 #introduction .skill .name-btn{
 	display: block;
 	background-color: white;
@@ -162,10 +164,10 @@ a{
 	margin-bottom:20px; 
 }
 #footer .nav{
-	margin:30px 0 30px 715px; 
+	margin: 30px;
 }
 #footer .nav>li{
-	float: left;
+	display: inline-block;
 }
 #footer .nav>li>a{
 	color: rgb(51,122,183);
@@ -173,7 +175,7 @@ a{
 #footer .nav>li>a:hover{
 	color: rgb(35,82,124);
 }
-#footer>hr{
+#footer .layout>hr{
 	width: 100px;
 	color: lightgray;
 }

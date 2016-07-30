@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <title>浮动版</title>
+  
+  <style>  
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  html,body{
+    height: 100%;
+  }
+  #header{
+    background: url(./img/first-p.jpg) 0 0 no-repeat;
+    background-size: cover;
+    height: 100%;
+  }
+
+  .ct{
+    width: 960px;
+    margin: 0px auto;
+    text-align: center;
+  }
+  a{
+    text-decoration: none;
+  }
+  .first-page>a{
+    color: #fff;
+    background-color: #ccc;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px 15px;
+    font-weight: bolder;
+
+  }
+  .first-page>a:hover{
+    background-color: #aaa;
+  }
+  .ct-first-page{
+    width: 960px;
+    display: table;
+    margin: 0px auto;
+    height: 100%;
+  }
+  .first-page{
+     text-align: center;
+     display: table-cell;
+     vertical-align: middle;
+     padding-top: 35px;
+
+
+ 
+  }
+
+  .first-page>h1{
+    color: #fff;
+  }
+  .first-page>h3{
+     margin: 20px 0;
+     color: rgb(10,80,145);
+  }
+
+
+  #content>.ct-introduce{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  .ct-introduce>h1{
+    padding-bottom: 50px;
+  }
+
+
+
+@font-face {
+  font-family: 'iconfont';
+  src: url('http://at.alicdn.com/t/font_1469544923_5277214.eot'); /* IE9*/
+  src: url('http://at.alicdn.com/t/font_1469544923_5277214.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('http://at.alicdn.com/t/font_1469544923_5277214.woff') format('woff'), /* chrome、firefox */
+  url('http://at.alicdn.com/t/font_1469544923_5277214.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('http://at.alicdn.com/t/font_1469544923_5277214.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+                    
+                    
+.ct-skill{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #fff;
+}
+
+hr{
+  max-width: 100px;
+  margin: 10px auto 40px auto;
+
+}
+
+.skill>.iconfont{
+  font-family: 'iconfont';
+  font-size: 100px;
+}
+#content>.skill{
+  background-color: #337ab7;
+  background-size: 100%;
+
+}
+.skill>li{
+  float: left;
+  list-style: none;
+  color: #fff;
+  margin:20px 10px;
+  width: 220px;
+
+}
+ul.skill:after{
+  content: "";
+  display: block;;
+  clear: both;
+
+}
+
+
+li.skill>h4{
+  padding-top: 25px;
+}
+li.skill>p{
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+li.skill>a{
+  color: #000;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #fff;
+  padding: 10px 8px;
+
+}
+li.skill>a:hover{
+  background-color: #aaa;
+}
+#content>.motto{
+  background: url(./img/two.jpg) 0 0 no-repeat;
+  background-size: cover;  
+  color: #fff;
+  font-weight: bolder;
+  font-size: 30px;
+  height: 100%;
+
+
+}
+.ct-motto>h1{
+  padding: 240px 0px;
+  text-align: left;
+
+}
+.ct-works{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.works>li{
+  float: left;
+  list-style: none;
+  margin:20px 10px;
+  width: 460px;
+
+}
+ul.works:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.works>li:hover{
+  opacity: 0.6;
+
+}
+
+li.works>a>img{
+  width: 400px;
+  height: 400px;
+
+}
+.ct-works>.more{
+  background-color: #aaa;
+  color: #fff;  
+  padding: 10px 10px;
+  font-weight: bolder;
+
+}
+.ct-works>.more:hover{
+    background-color: #ccc;
+}
+#content>.summary{
+  background-color: #337ab7;
+  color: #fff;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+}
+.ct-summary>h1{
+  margin-bottom: 30px;
+}
+
+.ct-summary>a.click{
+  background-color: #fff;
+  color: #000;
+  display:inline-block;
+  vertical-align: middle;
+  text-align: center; 
+  height: 50px;
+  width: 140px;
+  line-height: 50px;
+
+
+}
+.ct-summary>a.click:hover{
+  background-color: rgba(255,255,255,0.4);
+}
+.ct-summary>a.look{
+  background-color: rgba(0,0,0,0.4);
+  color: #fff;
+  display:inline-block;
+  vertical-align: middle;
+  text-align: center; 
+  height: 50px;
+  width: 140px;
+  line-height: 50px;
+
+}
+.ct-summary>a.look:hover{
+  background-color: rgba(0,0,0,0.8);
+}
+#footer{
+  margin: 30px 0px;
+}
+.contact-icon1{
+  color: #000;
+  font-size: 20px;
+  font-family: "iconfont";
+
+}
+.contact-icon2{
+  color: #337ab7;
+  font-family: "iconfont";
+  font-size: 50px;
+}
+.ct-footer>h2{
+   margin-bottom: 15px;
+
+}
+
+.contact-icon2>li{
+  display: inline-block;
+  vertical-align: middle;
+  list-style: none;
+  margin: 15px 10px 30px 10px;
+}
+
+                    
+  </style>
+
+</head>
+<body>
+  <audio src="./music/12.mp3" autoplay="autoplay">    
+  </audio>
+  <div id="header">
+    <div class="ct-first-page">
+      <div class="first-page">
+      <h1>我是李彩</h1>
+      <h3>一个前端中阶中毒者</h3>
+      <a href="#">查看更多</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="content">
+    <div class="ct ct-introduce">
+      <h1>下面是我的简历</h1>
+      <h3>关于我的详细信息<a href="#">请点击这里</a></h3>
+    </div>
+    <div class="skill">
+      <div class="ct ct-skill">
+        <h1>技能</h1>
+        <hr>
+        
+        <ul class="skill">
+          <li class="skill">
+            <span class="iconfont">&#xe600;</span>
+            <h4>HTML</h4>
+            <p>html相关技能</p>
+            <a href="#">相关作品</a>
+          </li>
+          <li class="skill">
+            <span class="iconfont">&#xe601;</span>
+            <h4>CSS</h4>
+            <p>CSS相关技能</p>
+            <a href="#">相关作品</a>
+          </li>
+          <li class="skill">
+            <span class="iconfont">&#xe602;</span>
+            <h4>项目</h4>
+            <p>项目相关技能</p>
+            <a href="#">相关作品</a>
+          </li>
+          <li class="skill">
+            <span class="iconfont">&#xe603;</span>
+            <h4>我的个人博客</h4>
+            <p>技术总结</p>
+            <a href="#">相关作品</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="motto">
+      <div class="ct ct-motto">
+      <h1>Stay hungry, <br>
+          求知若饥， <br>
+
+          Stay foolish<br>
+          虚心若愚 <br>
+      </h1>        
+      </div>
+    </div>
+    <div class="ct ct-works">
+      <h1>我的作品</h1>
+      <hr>
+      <ul class="works">
+        <li class="works"><a href="http://img05.tooopen.com/images/20140512/sy_60902946526.jpg"><img src="./img/work1.jpg" alt="works1"></a></li>
+        <li class="works"><a href="http://img01.tooopen.com/Downs/images/2011/1/22/sy_20110122211146652041.jpg"><img src="./img/work2.jpg" alt="works2"></a></li>
+        <li class="works"><a href="http://img.taopic.com/uploads/allimg/120930/219049-12093022123394.jpg"><img src="./img/work3.jpg" alt="works3"></a></li>
+        <li class="works"><a href="http://img.taopic.com/uploads/allimg/140404/240399-1404040KH333.jpg"><img src="./img/work4.jpg" alt="works4"></a></li>
+      </ul>
+      <a class="works more"href="#">更多作品</a>
+    </div>
+  <div class="summary">
+    <div class="ct ct-summary">
+      <h1>我是一个聪明勤奋的人</h1>
+      <a class="click" href="#">Click Me</a>
+      <a class="look" href="#">Look at Me</a>
+      
+    </div>
+  </div>
+
+  </div>
+
+  <div id="footer">
+    <div class="ct ct-footer">
+      <h2>我的联系方式</h2>
+      <p>江西省南昌市青山湖区X路X号</p>
+      <p> <span class="contact-icon1">&#xe604;</span>138XXXXXXXX </p>
+      <p> <span class="contact-icon1">&#xe605;</span><a href="#">XXXXX@google.com </a></p>
+      <ul class="contact-icon2">
+        <li class="contact-icon2"><a class="contact-icon2" href="#">&#xe606;</a></li>
+        <li class="contact-icon2"><a class="contact-icon2" href="#">&#xe607;</a></li>
+        <li class="contact-icon2"><a class="contact-icon2" href="#">&#xe608;</a></li>         
+      </ul>
+      <p class="copyright"><i>Copyright © 该帐号已被查封 & 饥人谷</i></p>
+
+    </div>
+  </div>
+
+</body>
+</html>
