@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流</title>
+	<style>
+		body,div{
+			padding:0;
+			margin:0;
+		}
+		div.wraper{
+			width:66%;
+			margin:0 auto;
+			position: relative;
+		}
+		div.wraper:after{
+			content: "";
+			display: block;
+			clear:both;
+		}
+		div.item{
+			width:200px;
+			float:left;
+			margin: 10px;
+			border-radius: 3px;
+			box-shadow: 0 2px 7px #666;
+			position: absolute;
+			transition: all 0.5s;
+		}
+		div.h1{
+			height:200px;
+			background: #dcf7a1;
+		}
+		div.h2{
+			height: 300px;
+			background: #d9b3e6;
+		}
+		div.h3{
+			height: 400px;
+			background: #83fcd8;
+		}
+	</style>
+</head>
+<body>
+	<div class="wraper">
+		<div class="item h1">1</div>
+		<div class="item h2">2</div>
+		<div class="item h1">3</div>
+		<div class="item h2">4</div>
+		<div class="item h1">5</div>
+		<div class="item h3">6</div>
+		<div class="item h3">7</div>
+		<div class="item h2">8</div>
+		<div class="item h2">9</div>
+		<div class="item h1">10</div>
+		<div class="item h3">11</div>
+		<div class="item h2">12</div>
+		<div class="item h1">13</div>
+		<div class="item h3">14</div>
+		<div class="item h1">15</div>
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+	<script>
+		$(function(){
+			render();
+			function render(){
+				var $wraperWidth=$(".wraper").width(),
+				 	$itemWidth=$(".item").outerWidth(true),
+				 	$colNum=Math.floor($wraperWidth/$itemWidth),
+				 	$colHeight=[];
+				for(var i=0;i<$colNum;i++){
+					$colHeight.push(0);
+				}
+
+				$(".item").each(function(){
+					var $cur=$(this);
+					var $idx=0;
+					var $minHeight=$colHeight[0];
+					for(var i=0;i<$colHeight.length;i++){
+						if($colHeight[i]<$minHeight){
+							$minHeight=$colHeight[i];
+							$idx=i;
+						}
+					}
+						$cur.css({
+						left:$idx*$itemWidth,
+						top:$minHeight
+					})
+						$colHeight[$idx]+=$cur.outerHeight(true);
+				})
+			}
+			$(window).on("resize",function(){
+				render();
+			})
+		})
+	</script>
+</body>
+</html>
