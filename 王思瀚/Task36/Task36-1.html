@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ENVY</title>
+</head>
+<body>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+<script>
+
+String.prototype.getMostOften = function(){
+  var obj = {},
+      max = 0,
+      name;
+  for (var i = 0; i < this.length; i++) {
+        var  ch = this.substr(i,1);
+        if (obj[ch]) {
+          obj[ch]++;
+        }else{
+          obj[ch] = 1;
+        }
+
+  }
+  for (var key in obj) {
+    if (obj[key] > max) {
+        max = obj[key];
+        name = key;
+      }
+  }
+    return name;
+}
+var str = 'ahbbccdeddddfg';
+var ans = str.getMostOften();
+console.log(ans);
+</script>
+</body>
+</html>
