@@ -153,13 +153,13 @@
             this.next.on('click',function(){
                 _this.toNext()
             })
-            this.bullet.on('click','li',function(){
+            this.bullet.find('li').on('click',function(){
                 var idx = $(this).index()
                 if(idx<_this.curIdx){
-                    toPre(_this.curIdx-idx)
+                    _this.toPre(_this.curIdx-idx)
                 }
                 else{
-                    toNext(idx-_this.curIdx)
+                    _this.toNext(idx-_this.curIdx)
                 }
             })
         },
