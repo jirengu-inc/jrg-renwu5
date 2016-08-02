@@ -5,8 +5,10 @@ html,body,div,h1,img,p,a,hr,ul,li{
 html,body{
 	/*width: 100%;*/
 	height: 100%;
-	font-family: "Helvetica Neue","Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-	font-size: 18px;
+	font-family:  "微软雅黑", "Microsoft YaHei", Arial, sans-serif, "Helvetica Neue", "Hiragino Sans GB";
+}
+p{
+	font-size: 20px;
 }
 a{
 	text-decoration: none;
@@ -49,7 +51,7 @@ li{
 	width: 90px;
 	line-height: 40px;
 	vertical-align: middle;
-	background: rgb(252,110,253);
+	background: #E0E3DA;
 	border-radius: 10px;
 }
 .vertical{
@@ -77,8 +79,8 @@ li{
 	margin-bottom: 15px;
 }
 .introduce{
-	background: rgb(247,228,133);
-	color: rgb(71,66,65);
+	background: #00b9f1;
+	color: #005f6b;
 	padding: 50px 0px 40px 0px;
 }
 		/*content*/
@@ -91,8 +93,7 @@ li{
 }
 .production, .together{
 	background: rgb(54,20,167);
-	color: rgb(252,110,253);
-
+	color: #E0E3DA;
 }
 #content .production>.layout, #content .together>.layout{
 	padding: 50px 0px;
@@ -100,7 +101,7 @@ li{
 #content .production-line{
 	margin: 20px auto;
 	width: 80px;
-	border: 2px solid rgb(252,110,253);
+	border: 2px solid #E0E3DA;
 }
 #content>.production .works{
 	margin-left: -20px;
@@ -115,8 +116,8 @@ li{
 }
 
 #content>.poem{
-	background: rgb(247,228,133);
-	color: rgb(71,66,65);
+	background: #00b9f1;
+	color: #005f6b;
 	padding: 50px 0px 40px 0px;
 }
 
@@ -131,8 +132,8 @@ li{
 }
 #content>.together .together-line{
 	margin: 30px auto 20px auto;
-	width: 286px;
-	border: 2px solid rgb(252,110,253);
+	width: 310px;
+	border: 2px solid #E0E3DA;
 }
 #content>.together li{
 	margin: 0px 0px 30px 30px;
@@ -151,7 +152,7 @@ li{
 }
 #content>.together a:hover span{
 	display: block;
-	color: orange;
+	color: rgb(252,110,253);
 	font-weight: bold;
 	font-size: 35px;
 	position: absolute;
@@ -159,8 +160,8 @@ li{
 	left: 0px;
 }
 #content>.grateful{
-	background: rgb(247,228,133);
-	color: rgb(71,66,65);
+	background: #00b9f1;
+	color: #005f6b;
 	padding: 50px 0px;
 }
 #content>.grateful>p{
@@ -169,15 +170,15 @@ li{
 
 		/*footer*/
 #footer{
-	background: rgb(252,110,253);
-	color: rgb(54,20,167);
+	background: #f4f4f4;
+	color: #2ec4b6;
 	padding: 100px 0px;
 }
 #footer p{
 	margin-bottom: 20px;
 }
 #footer .iconfont-size{
-	color: #fff;
+	color: #566270;
 	font-size: 40px;
 	margin: 15px;
 }
@@ -187,5 +188,5 @@ li{
 #footer .information-line{
 	margin: 20px auto 30px auto;
 	width: 127px;
-	border: 1px solid rgb(54,20,167);
+	border: 1px solid #2ec4b6;
 }
