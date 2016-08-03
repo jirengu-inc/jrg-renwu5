@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ENVY</title>
+</head>
+<body>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+  <script>
+      // //1.对象字面量,缺点是写死了
+      // var  person={
+      //   name:'envy',
+      //   sayName:function(){
+      //     console.log(this.name);
+      //   }
+      // };
+      //
+      // //2.工厂模式，无法获取对象来源,所有对象原型都指向object
+      // function person2(name){
+      //   var obj={
+      //     name:name,
+      //     sayName:function(){
+      //       console.log(this.name);
+      //     }
+      //   }
+      //   return obj;
+      // }
+      //
+      // var p1 = person2('greed222');
+      // p1.sayName();
+      //
+      // //3.构造函数
+      // function person3(name){
+      //   this.name = name;
+      //   this.sayName = function(){
+      //     console.log(this.name);
+      //   }
+      // }
+      //
+      // var p2 = new person3('lust');
+      // p2.sayName();
+      //
+      // //4.原型模式
+      // function person4(name){
+      //   this.name = name;
+      // }
+      // person4.prototype.sayName = function(){
+      //   console.log(this.name);
+      // }
+      // var p3 = new person4('pride');
+      // p3.sayName();
+
+
+    //   function person5(name,age){
+    //     this.name = name;
+    //     this.age = age;
+    //   }
+    //
+    //   person5.prototype.say = function(){
+    //     console.log("My name is "+this.name+", age is "+this.age);
+    //   }
+    //
+    //   function person6(name,age,sex){
+    //     person5.call(this,name,age);
+    //     this.sex = sex;
+    //   }
+    //
+    // var    _prototype = Object.create(person5.prototype);
+    //       _prototype.constructor = person6;
+    //       person6.prototype = _prototype;
+    //
+    //
+    //
+    // person6.prototype.saySex = function(){
+    //   console.log("and i'm  a "+this.sex);
+    // }
+    //
+    // var p4 = new person6('envy',24,'male');
+    // p4.say();
+    // p4.saySex();
+    // p4.hasOwnProperty('name')
+    // p4.hasOwnProperty('sex')
+
+//     function Person(name, sex){
+//     this.name = name;
+//     this.sex = sex;
+// }
+//
+// Person.prototype.printName = function(){
+//     console.log(this.name);
+// };
+//
+// function Male(name, sex, age){
+//    Person.call(this,name,sex);
+//    this.age = age;
+// }
+//
+// Male.prototype = Person.prototype;
+// Male.prototype.getAge = function(){
+//     console.log(this.age);
+// };
+//
+// var ruoyu = new Male('若愚', '男', 27);
+// ruoyu.printName();
+    if (typeof Object.create !== 'function') {
+      Object.create = (function(){
+        var Temp = function(){};
+        return function (prototype){
+          if (arguments.length > 1) {
+             return false;
+          }
+          if (prototype !== Object(prototype)) {
+            return false;
+          }
+          if (prototype === null) {
+            return false;
+          }
+          Temp.prototype = prototype;
+          var result = new Temp();
+          Temp.prototype = null;
+          return result;
+        }
+      })()
+    }
+  </script>
+</body>
+</html>
