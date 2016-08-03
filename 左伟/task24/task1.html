@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatibale" content="IE=edge,chrome=1">
+		<title>ajax封装</title>
+		<meta name="discription" value="">
+		<meta name="keyword" value="">
+	</head>
+	<body>
+		<input id="username" type="text" value="">
+		<button id="btn4">使用封装ajax进行查询</button>
+		<dl id="ct">
+			
+		</dl>
+		<script type="text/javascript">
+		//关于ajax的封装
+			/*
+				(1).首先确定需要用到哪些参数,需要使用的参数有；
+				(2).
+			*/
+			var ct=document.getElementById("ct");
+
+			function dealWith(useinfo){
+				var str='<dt>性别：</d>';
+				str+=   '<dd>'+useinfo.sex+'</dd>';
+				str+=   '<dt>性别：</dt>';
+				str+=   '<dd>'+useinfo.age+'</dd>';
+				ct.innerHTML=str;
+			}
+
+			function ajax(opt){
+				var xmlhttp=new XMLHttpRequest();
+				xmlhttp.onreadystatechange=function(){
+					if(xmlhttp.readyState===4 && xmlhttp.status===200){
+						var json=JSON.parse(xmlhttp.responseText);
+						opt.success(json);
+					}
+					if(xmlhttp.status===404){
+						opt.error();
+					}
+				}
+				var optstr='';
+				for(key in opt.data){
+					optstr+=key+'='+opt.data[key]+"&";
+				}
+				optstr=optstr.substr(0,optstr.length-1);
+				if(opt.type==='POST'){
+					xmlhttp.open(opt.type,opt.url,true);
+					xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					xmlhttp.send(optstr);
+				}
+				if(opt.type==='GET'){
+					xmlhttp.open(opt.type,opt.url+'?'+opstr,true);
+					xmlhttp.send();
+				}
+			}
+			
+			document.getElementById("btn4").addEventListener("click",function(){
+				ajax({
+					url:"user_ajax.php",
+					type:'POST',
+					data:{username:document.getElementById("username").value},
+					success : function(json){
+						dealWith(json);
+					},
+					error:function(){
+						console.log("error");
+					}
+				});
+			})
+		</script>
+	</body>
+</html>
