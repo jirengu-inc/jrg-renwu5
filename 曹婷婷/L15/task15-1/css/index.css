@@ -1,0 +1,28 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.layout{
+	width: 1000px;
+	margin: 0 auto;
+}
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+
+#header>.layout>.nav-logo{
+	float: left;
+}
+#header .nav-bar>li{
+	float: left;
+	margin: 30px;
+}
