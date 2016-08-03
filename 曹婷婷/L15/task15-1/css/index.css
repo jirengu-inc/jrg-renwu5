@@ -1,0 +1,143 @@
+html,body,div,ul,li,p,h1,h2,h3{
+	margin: 0px;
+	padding: 0px;
+	font-family:  "微软雅黑", "Microsoft YaHei", Arial, sans-serif, "Helvetica Neue", "Hiragino Sans GB";
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.layout{
+	width: 1000px;
+	margin: 0 auto;
+}
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.btn{
+	display: inline-block;
+	margin-bottom: 5px;
+	padding: 3px 8px;
+	border: 1px solid #999;
+	border-radius: 8px;
+	color: #666;
+}
+.btn:hover, #content .works a:hover{
+	opacity: 0.5;
+}
+		/*header*/
+#header{
+	background: #c5c6b6;
+}
+#header a{
+	color: #3c3530;
+}
+#header>.layout>.nav-logo{
+	font-size: 30px;
+	line-height: 50px;
+	float: left;
+	margin-right: 15px;
+}
+#header .nav-logo:hover{
+	color: #999;
+}
+#header .nav-bar>li{
+	line-height: 50px;
+	padding: 0px 10px;
+	float: left;
+	text-align: center;
+	position: relative;
+}
+#header .nav-bar>li:hover{
+	background: #ccc;
+}
+#header .triangle:after{
+	content: "";
+	border-top: 5px solid #3c3530;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid transparent;
+	position: relative;
+	top: 15px;
+	left: 2px;
+}
+#header .dropdown{
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0px;
+	border: 1px solid #ccc;
+}
+#header .nav-bar>li:hover .dropdown{
+	display: block;
+}
+#header .dropdown>li{
+	line-height: 30px;
+	padding: 0 3px;
+	border-top: 1px dashed #ccc;
+}
+#header .dropdown>li:nth-child(1){
+	border-top: none;
+}
+#header .dropdown>li:hover{
+	background: #eee;
+}
+		/*content*/
+#content .resume, #content .know-more{
+	padding: 50px 0px;
+	background: #F16B6F;
+	color: #fff;
+}
+#content>.resume h1, #content>.know-more h2{
+	margin: 10px 0px;
+}
+#content .home-page{
+	background: #d6ecfa;
+	margin-top: 40px;
+	padding: 15px 0px;
+}
+#content .home-page a{
+	margin: 0px 10px;
+	color: #F16B6F;
+}
+#content .works{
+	margin-top: 30px;
+}
+#content .works-show{
+	margin-right: -35px;
+	text-align: center;
+}
+#content .works li{
+	float: left;
+	margin-right: 35px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+}
+#content .works img{
+	width: 308px;
+	height: 250px;
+}
+#content .works h3{
+	margin: 15px 0 10px 0;
+}
+#content .works p, #content>.know-more p{
+	margin-bottom: 15px;
+}
+#content .know-more{
+	text-align: center;
+}
+#content>.know-more .btn{
+	color: #fff;
+	border-color: #fff;
+}
+		/*footer*/
+#footer p{
+	text-align: center;
+	border-top: 1px solid #ccc;
+	margin: 40px 0;
+	padding-top: 30px;
+}

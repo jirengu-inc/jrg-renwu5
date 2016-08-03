@@ -1,0 +1,220 @@
+  .container {
+      width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      box-sizing: border-box;
+  }
+  body, html {
+      height: 100%;
+  }
+  #header {
+      width: 100%;
+      height: 100%;
+      background: url(../img/bg.jpg);
+      background-size: cover;
+      display: table;
+  }
+  .table-vertical {
+      display: table-cell;
+      vertical-align: middle;
+  }
+  .table-vertical h1 {
+      margin: 15px;
+      font-size: 30px;
+  }
+  .table-vertical p {
+      font-size: 14px;
+      margin: 15px;
+  }
+  .table-vertical a {
+      display: inline-block;
+      width: 140px;
+      height: 45px;
+      line-height: 45px;
+      color: white;
+      font-size: 14px;
+      background-color: rgba(62, 63, 63, 0.5);
+  }
+  .table-vertical a:hover {
+      background-color: rgb(62, 63, 63);
+  }
+  .about {
+      height: 160px;
+  }
+  .about h1 {
+      font-size: 30px;
+      margin-top: 80px;
+  }
+  .about p {
+      margin-top: 20px;
+      font-size: 20px;
+  }
+  .about a {
+      margin: 0 10px;
+      font-size: 20px;
+      color: blue;
+  }
+  .about a:hover {
+      color: rgb(35, 82, 124);
+  }
+  .skill {
+      background-color: rgb(51, 122, 183);
+      padding: 50px;
+  }
+  .skill h2 {
+      font-size: 25px;
+      color: white;
+  }
+  hr {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      color: white;
+      width: 100px;
+  }
+  .skill ul {
+      margin-right: -140px;
+  }
+  .font-item {
+      float: left;
+      margin-right: 140px;
+  }
+  .font-item i {
+      color: white;
+      font-size: 100px;
+  }
+  .font-item h5 {
+      margin: 15px 0;
+      font-size: 12px;
+      color: white;
+  }
+  .font-item p {
+      margin: 15px 0;
+      font-size: 12px;
+      color: white;
+  }
+  .font-item a {
+      display: inline-block;
+      width: 80px;
+      height: 24px;
+      line-height: 24px;
+      background-color: white;
+      font-size: 12px;
+      color: black;
+  }
+  .font-item a:hover {
+      background-color: rgb(238, 238, 238);
+  }
+  .instruction {
+      background-image: url(../img/callout.jpg);
+      background-size: cover;
+      color: white;
+      font-size: 30px;
+      padding: 200px 0;
+  }
+  .projects {
+      padding-top: 65px;
+      padding-bottom: 30px;
+  }
+  .projects hr {
+      width: 78px;
+  }
+  .projects ul {
+      margin-right: -30px;
+  }
+  .img-item {
+      float: left;
+      width: 435px;
+      height: 245px;
+      margin-bottom: 30px;
+      margin-right: 30px;
+      background-image: url(../img/portfolio-1.jpg);
+      background-size: cover;
+  }
+  .more-works {
+      display: inline-block;
+      color: white;
+      font-size: 12px;
+      background-color: rgb(153, 153, 153);
+      width: 110px;
+      height: 25px;
+      line-height: 25px
+  }
+  .more-works:hover {
+      background-color: rgb(76, 76, 76);
+  }
+  .more-info {
+      background-color: rgb(51, 122, 183);
+      padding-top: 50px;
+      padding-bottom: 40px;
+  }
+  .more-info p {
+      color: white;
+      font-size: 14px;
+  }
+  .btn1 {
+      display: inline-block;
+      margin: 10px 0;
+      width: 110px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 12px;
+      color: black;
+      background-color: white;
+  }
+  .btn1:hover {
+      background-color: rgb(238, 238, 238);
+  }
+  .btn2 {
+      display: inline-block;
+      margin: 10px 0;
+      width: 110px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 12px;
+      color: white;
+      background-color: rgb(31, 73, 110);
+  }
+  .btn2:hover {
+      background-color: rgb(15, 36, 55);
+  }
+  #footer {
+      padding: 90px;
+      font-size: 12px;
+  }
+  #footer h2 {
+      margin-bottom: 20px;
+  }
+  #footer p {
+      margin-bottom: 10px;
+  }
+  #footer .icon1 {
+      font-size: 12px;
+      color: black;
+  }
+  #footer .icon2 {
+      font-size: 12px;
+      color: black;
+  }
+  .email {
+      font-size: 12px;
+      color: rgb(89, 122, 183);
+  }
+  .email:hover {
+      text-decoration: underline;
+      color: #2352A4;
+  }
+  #footer h2 {
+      margin-bottom: 20px;
+      font-size: 14px;
+  }
+  #footer .icon-footer {
+    display: inline-block;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      margin-right: 20px;
+      font-size: 40px;
+      color: rgb(51, 122, 183);
+  }
+  #footer .icon-footer:hover {
+      color:#1F496E;
+  }

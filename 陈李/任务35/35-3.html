@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>滚动轮播</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+    html,body,ul,li {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    .show img {
+        width: 400px;
+        height: 200px;
+    }
+    .carousel {
+        width: 400px;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+    }
+    .show {
+        position: absolute;
+    }
+    .show li{
+        float: left;
+    }
+    .bullet {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+    }
+    .bullet li {
+        height: 5px;
+        width: 20px;
+        border-radius: 5px;
+        background-color: #fff;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .active {
+        opacity: 0.5;
+    }
+    .arrow {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #000;
+        opacity: 0.5;
+        color: #fff;
+        font-size: 40px;
+        text-align: center;
+        line-height: 40px;
+        position: absolute;
+        top: 50%;
+        margin-top: -20px;
+    }
+    .arrow:hover {
+        opacity: 0.8;
+    }
+    .pre {
+        left: 10px;
+    }
+    .next {
+        right: 10px;
+    }
+    .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+</style>
+</head>
+<body>
+
+    <div class="carousel">
+        <ul class="show clearfix">
+            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115612mood5oifacokfrru.jpg"></a></li>
+            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115614wab8k2uibdbgkzak.jpg"></a></li>
+            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115613upujippg33h9b4pk.jpg"></a></li>
+            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115610flcjfw3dwc7n7mwd.jpg"></a></li>
+        </ul>
+        <a href="#" class="arrow pre"><</a>
+        <a href="#" class="arrow next">></a>
+        <ul class="bullet">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    
+    <div class="carousel">
+        <ul class="show clearfix">
+            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115612mood5oifacokfrru.jpg"></a></li>
+            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115614wab8k2uibdbgkzak.jpg"></a></li>
+            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115613upujippg33h9b4pk.jpg"></a></li>
+            <li><a href="#"><img src="http://images.weiphone.net/data/attachment/forum/201409/04/115610flcjfw3dwc7n7mwd.jpg"></a></li>
+        </ul>
+        <a href="#" class="arrow pre"><</a>
+        <a href="#" class="arrow next">></a>
+        <ul class="bullet">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    function Carousel($node){
+        this.imgCt = $node.find('.show')
+        this.item = this.imgCt.find('li')
+        this.imgWidth = this.item.width()
+        this.imgCount = this.item.size()
+        this.pre = $node.find('.pre')
+        this.next = $node.find('.next')
+        this.bullet = $node.find('.bullet')
+
+        this.imgCt.prepend(this.item.last().clone())
+        this.imgCt.append(this.item.first().clone())
+        this.realCount = this.imgCt.children().size()
+        this.imgCt.css({
+            left: -this.imgWidth,
+            width: this.realCount*this.imgWidth
+        })
+
+        this.curIdx = 0
+        this.isAnimate = false
+        this.clock
+
+        this.bind()
+        this.auto()
+    }
+
+    Carousel.prototype = {
+    	bind: function(){
+            var _this = this
+            this.pre.on('click',function(){
+                _this.toPre()
+            })
+            this.next.on('click',function(){
+                _this.toNext()
+            })
+            this.bullet.find('li').on('click',function(){
+                var idx = $(this).index()
+                if(idx<_this.curIdx){
+                    _this.toPre(_this.curIdx-idx)
+                }
+                else{
+                    _this.toNext(idx-_this.curIdx)
+                }
+            })
+        },
+        toPre: function(idx){
+            var _this = this
+            idx = idx||1
+            if(!_this.isAnimate){
+                _this.isAnimate = true
+                _this.stop()
+                _this.imgCt.animate({
+                    left: '+='+(_this.imgWidth*idx)
+                },function(){
+                    _this.curIdx = (_this.imgCount + _this.curIdx - idx)%_this.imgCount
+                    if( _this.curIdx === (_this.imgCount-1)){
+                        _this.imgCt.css({
+                            left: -_this.imgWidth*_this.imgCount
+                        })
+                    }
+                    _this.auto()
+                    _this.isAnimate = false
+                    _this.setBullet()
+                })
+            }
+        },
+        toNext: function(idx){
+            var _this = this
+            idx = idx||1
+            if(!_this.isAnimate){
+                _this.isAnimate = true
+                _this.stop()
+                _this.imgCt.animate({
+                    left: '-='+( _this.imgWidth*idx )
+                },function(){
+                    _this.curIdx = ( _this.curIdx+idx )%_this.imgCount
+                    if( _this.curIdx === 0){
+                        _this.imgCt.css({
+                            left: -_this.imgWidth
+                        })
+                    }
+                    _this.auto()
+                    _this.isAnimate = false
+                    _this.setBullet()
+                })
+            }            
+        },
+        setBullet: function(){
+            this.bullet.children().removeClass('active').eq(this.curIdx).addClass('active')
+        },
+        auto: function(){
+            var _this = this
+            _this.clock = setInterval(function(){
+                        _this.toNext()
+                    },2000)
+        },
+        stop: function(){
+            var _this = this
+            clearInterval(_this.clock)
+        }
+    }
+
+
+    var $node1 = $('.carousel').eq(0)
+    var $node2 = $('.carousel').eq(1)
+    var carousel1 = new Carousel($node1)
+    var carousel2 = new Carousel($node2)
+</script>
+</body>
+</html>

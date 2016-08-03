@@ -1,0 +1,178 @@
+html,body,div,h1,img,p,a,hr,ul,li{
+	margin: 0px;
+	padding: 0px;
+}
+html,body{
+	/*width: 100%;*/
+	height: 100%;
+	font-family:  "微软雅黑", "Microsoft YaHei", Arial, sans-serif, "Helvetica Neue", "Hiragino Sans GB";
+}
+p{
+	font-size: 20px;
+}
+a{
+	text-decoration: none;
+}
+.know-more:hover{
+	opacity: 0.7;
+}
+li{
+	list-style: none;
+}
+
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.layout{
+	width: 960px;
+	margin: 0 auto;
+}
+.script-center{
+	text-align: center;
+}
+.know-more{
+	display: inline-block;
+	width: 90px;
+	line-height: 40px;
+	vertical-align: middle;
+	background: #E0E3DA;
+	border-radius: 10px;
+}
+.vertical{
+	width: 1.5em;
+	float: left;
+}
+
+		/*header*/
+#header{
+	width: 100%;
+	height: 100%;
+	display: table;
+	background: url(../img/home-page-bg.jpg) 0 0 no-repeat;
+	background-size: cover;
+	background-position: center center;
+	color: rgb(247,228,133);
+}
+.hello{
+	/*width: 100%;*/
+	height: 100%;
+	display: table-cell;
+	vertical-align: middle;
+}
+#header>.hello>p{
+	margin-bottom: 15px;
+}
+.introduce{
+	background: #00b9f1;
+	color: #005f6b;
+	padding: 50px 0px 40px 0px;
+}
+		/*content*/
+#content>.introduce p, #content .main>p{
+	margin: 10px 0px;
+}
+
+#content>.introduce .bigger-gap, #content>.poem .bigger-gap{
+	margin-top: 30px;                /*不能直接写.bigger-gap,p的权重没有上一句的高*/
+}
+.production, .together{
+	background: rgb(54,20,167);
+	color: #E0E3DA;
+}
+#content .production>.layout, #content .together>.layout{
+	padding: 50px 0px;
+}
+#content .production-line{
+	margin: 20px auto;
+	width: 80px;
+	border: 2px solid #E0E3DA;
+}
+#content>.production .works{
+	margin-left: -20px;
+}
+.production .works>li{
+	float: left;
+	margin-left: 20px;
+	width: 306px;
+}
+.production .works li{
+	padding: 7px 0px;
+}
+
+#content>.poem{
+	background: #00b9f1;
+	color: #005f6b;
+	padding: 50px 0px 40px 0px;
+}
+
+#content .aside{
+	width: 200px;
+	float: left;
+	padding-left: 100px;
+}
+#content .main{
+	overflow: auto;
+	padding-left: 140px;
+}
+#content>.together .together-line{
+	margin: 30px auto 20px auto;
+	width: 310px;
+	border: 2px solid #E0E3DA;
+}
+#content>.together li{
+	margin: 0px 0px 30px 30px;
+	float: left;
+	position: relative;
+}
+#content>.together img{
+	width: 465px;
+	height: 305px;
+}
+#content>.together .together-days{
+	margin-left: -30px;
+}
+#content>.together span{
+	display: none;
+}
+#content>.together a:hover span{
+	display: block;
+	color: rgb(252,110,253);
+	font-weight: bold;
+	font-size: 35px;
+	position: absolute;
+	bottom: 10px;
+	left: 0px;
+}
+#content>.grateful{
+	background: #00b9f1;
+	color: #005f6b;
+	padding: 50px 0px;
+}
+#content>.grateful>p{
+	margin: 30px 0px;
+}
+
+		/*footer*/
+#footer{
+	background: #f4f4f4;
+	color: #2ec4b6;
+	padding: 100px 0px;
+}
+#footer p{
+	margin-bottom: 20px;
+}
+#footer .iconfont-size{
+	color: #566270;
+	font-size: 40px;
+	margin: 15px;
+}
+#footer a:hover{
+	color: #ccc;
+}
+#footer .information-line{
+	margin: 20px auto 30px auto;
+	width: 127px;
+	border: 1px solid #2ec4b6;
+}

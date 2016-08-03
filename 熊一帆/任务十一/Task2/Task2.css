@@ -1,0 +1,26 @@
+*{
+  margin:0px;
+  padding:0px;
+}
+body{
+  font-family:"微软雅黑"；
+}
+#header,#footer{
+  width:800px;
+  height:60px;
+  background: red;
+  font-size:25px;
+}
+.aside{
+  float:left;
+  width:300px;
+  background: blue;
+  opacity: 0.2;
+  font-size:25px;
+}
+.main{
+  width:500px;
+  background:#FFC0CB;
+  overflow:auto;
+  font-size:25px;
+}
