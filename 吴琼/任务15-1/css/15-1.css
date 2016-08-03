@@ -34,7 +34,7 @@ a:hover {
 	float: left;
 	margin-right: 30px;
 }
-#header .header-lists .lists {
+#header  .lists {
 	width: 60px;
 	height: 105px;
 	line-height: 35px;
@@ -43,27 +43,29 @@ a:hover {
 	background: white;
 	display: none;
 }
-#header .header-lists .lists li:nth-child(2) {
+#header  .lists li:hover {
+	background: #eee;
+	color: #666;
+}
+#header  .lists li:nth-child(2) {
 	border-bottom:1px dashed #ccc;
 	border-top:1px dashed #ccc;
 }
 #header .header-lists>li:last-child {
 	position: relative;
 }
-#header .header-lists .lists {
+#header .header-lists>li:last-child:hover .lists{
+	display: block;
 	position: absolute;
 	top: 50px;
 	left: 0;
-}
-#header .header-lists>li:last-child:hover .lists{
-	display: block;
 }
 /*内容*/
 /*内容主题*/
 #main .main-title {
 	background: #B84D45;
 	color: white;
-	padding: 60px;
+	padding: 65px;
 
 }
 #main .main-title .layout {
@@ -73,10 +75,10 @@ text-align: left;
 #main .layout {
 	text-align: center;
 }
-#main .layout .layout-title {
+#main  .layout-title {
 	text-align: left;
 }
-#main .layout .layout-title a {
+#main .layout-title a {
 	color: #B84D45;
 }
 #main .layout ul:after {
@@ -92,7 +94,10 @@ text-align: left;
 	margin-left: 50px;
 	margin-bottom: 20px;
 }
-#main .layout li .main-look {
+#main .main-image:hover {
+	opacity: 0.8;
+}
+#main .main-look {
 	display: inline-block;
 	border: 1px solid #E2E2E2;
 	padding: 5px;
