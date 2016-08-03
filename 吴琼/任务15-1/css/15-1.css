@@ -40,21 +40,24 @@ a:hover {
 	line-height: 35px;
 	border: 1px solid #ccc;
 	text-align: center;
-	background: white;
 	display: none;
+}
+#header  .lists li {
+	background: white;
 }
 #header  .lists li:hover {
 	background: #eee;
 	color: #666;
+	cursor: pointer;
 }
 #header  .lists li:nth-child(2) {
 	border-bottom:1px dashed #ccc;
 	border-top:1px dashed #ccc;
 }
-#header .header-lists>li:last-child {
+#header .header-works {
 	position: relative;
 }
-#header .header-lists>li:last-child:hover .lists{
+#header .header-works:hover .lists{
 	display: block;
 	position: absolute;
 	top: 50px;
@@ -65,7 +68,7 @@ a:hover {
 #main .main-title {
 	background: #B84D45;
 	color: white;
-	padding: 65px;
+	padding: 70px;
 
 }
 #main .main-title .layout {
@@ -77,6 +80,9 @@ text-align: left;
 }
 #main  .layout-title {
 	text-align: left;
+	background: #eee;
+	line-height: 30px;
+	padding-left: 10px;
 }
 #main .layout-title a {
 	color: #B84D45;
@@ -88,9 +94,9 @@ text-align: left;
 }
 #main .layout li {
 	width: 298px;
-	height: 405px;
 	border: 1px solid #E2E2E2;
 	float: left;
+	padding-bottom: 10px;
 	margin-left: 50px;
 	margin-bottom: 20px;
 }
