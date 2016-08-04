@@ -254,6 +254,12 @@ h2{
 	color: #777;
 	line-height: 1.5;
 }
+#team .team-nav a{
+	color: black;
+}
+#team .team-nav a:hover{
+	color: rgb(254,209,54);
+}
 /*=============================logowall==========================*/
 #logowall>img{
 	padding: 50px 48px;
