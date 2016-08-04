@@ -58,7 +58,6 @@
     margin:80px;
   }
   .skill{
-    height: 370px;
     background:rgb(246,183,86);
     padding:60px 0;
     text-align: center;
@@ -114,7 +113,6 @@
     font-family: '隶书' ;
   }
   .work{
-    height:800px;
     text-align: center;
     padding: 50px;
   }
@@ -161,7 +159,6 @@
     padding:0;
   }
   .below{
-    height: 100px;
     text-align: center;
     background:rgb(246,183,86);
     padding:60px 0 ;
