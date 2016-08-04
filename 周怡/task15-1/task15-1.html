@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>实战二</title>
+    <link rel="stylesheet" href="iconfont.css">
+    <style>
+        /*重置样式*/
+        body,
+        html,
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        li,
+        div {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 14px;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #666;
+        }
+
+        a:hover {
+            color: #333;
+        }
+
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        /*页面样式*/
+
+        .contain {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        #header {
+            border: 1px solid #ccc;
+        }
+
+        .logo {
+            float: left;
+            font-size: 30px;
+            line-height: 50px;
+        }
+
+        .nav {
+            float: left;
+            margin-left: 10px;
+        }
+
+        .nav>li {
+            float: left;
+            position: relative;
+            height: 50px;
+            line-height: 50px;
+            padding: 0 10px;
+        }
+
+        .droplist {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: none;
+            border: 1px solid #ccc;
+            background: #fff;
+        }
+
+        .nav>li:hover .droplist {
+            display: block;
+        }
+
+        .droplist li {
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        .droplist li:last-child {
+            border: none;
+        }
+
+        .droplist li:hover {
+            background-color: #eee;
+        }
+
+
+
+        .intro {
+            padding-top: 35px;
+            padding-bottom: 30px;
+            color: white;
+            background: #B84D45;
+        }
+
+        .intro h1 {
+            font-size: 30px;
+        }
+
+        .breadcrumb {
+            padding: 30px 0;
+        }
+
+        .breadcrumb ul {
+            background-color: #eee;
+            padding-left: 5px;
+        }
+
+        .breadcrumb li {
+            float: left;
+            padding: 10px 0;
+        }
+
+        .breadcrumb a {
+            color: #B84D45;
+        }
+
+        .works ul {
+            margin-right: -41px;
+        }
+
+        .works li {
+            float: left;
+            margin-right: 45px;
+            margin-bottom: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        img {
+            width: 300px;
+            height: 160px
+        }
+
+        .works h3 {
+            padding: 5px 10px;
+        }
+
+        .works p {
+            padding: 5px 10px;
+        }
+
+        .download {
+            color: white;
+            background-color: #B84D45;
+            padding: 20px 15px;
+            text-align: center;
+        }
+
+        .download p {
+            margin: 5px 0;
+        }
+
+        .download a {
+            color: white;
+        }
+
+        #footer {
+            padding: 50px 25px;
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div class="contain clearfix">
+            <a href="#"><i class="logo iconfont">&#xe695;</i></a>
+            <ul class="nav clearfix">
+                <li><a href="#">博客</a></li>
+                <li><a href="#">项目</a></li>
+                <li><a href="#">简历</a></li>
+                <li>
+                    <a href="#">更多<i class="triangle iconfont">&#xe604;</i></a>
+                    <ul class="droplist">
+                        <li><a href="">GitHub</a></li>
+                        <li><a href="">知乎</a></li>
+                        <li><a href="">微博</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div class="intro">
+            <div class="contain">
+                <h1>我的简介</h1>
+                <p>一个喜欢前端的女同学</p>
+                <p>三人行必有我师</p>
+            </div>
+        </div>
+        <div class="breadcrumb">
+            <div class="contain">
+                <ul class="clearfix">
+                    <li><a href="">首页</a></li>
+                    <li>/我的作品</li>
+                </ul>
+            </div>
+        </div>
+        <div class="works">
+            <div class="contain">
+                <ul class="clearfix">
+                    <li>
+                        <a href="#"><img src="1.jpg" alt="作品" /></a>
+                        <h3>作品标题</h3>
+                        <p>作品介绍 </p>
+                        <a href="#" class="btn">查看</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="1.jpg" alt="作品" /></a>
+                        <h3>作品标题</h3>
+                        <p>作品介绍 </p>
+                        <a href="#" class="btn">查看</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="1.jpg" alt="作品" /></a>
+                        <h3>作品标题</h3>
+                        <p>作品介绍 </p>
+                        <a href="#" class="btn">查看</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="1.jpg" alt="作品" /></a>
+                        <h3>作品标题</h3>
+                        <p>作品介绍 </p>
+                        <a href="#" class="btn">查看</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="1.jpg" alt="作品" /></a>
+                        <h3>作品标题</h3>
+                        <p>作品介绍 </p>
+                        <a href="#" class="btn">查看</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="1.jpg" alt="作品" /></a>
+                        <h3>作品标题</h3>
+                        <p>作品介绍 </p>
+                        <a href="#" class="btn">查看</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="download">
+            <div class="contain">
+                <h1>想更详细了解我？</h1>
+                <p>下载我的简历吧</p>
+                <a href="#" class="btn">下载</a>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        来自@jirengu
+    </div>
+</body>
+
+</html>
