@@ -53,7 +53,7 @@ h2{
 }
 .btn{
 	display: inline-block;
-	border: 1px solid black;
+	border: 1px solid transparent;
 	color: white;
 	padding:20px 40px;
 	background-color: rgb(254,209,54);
