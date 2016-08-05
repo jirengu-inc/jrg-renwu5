@@ -86,7 +86,7 @@
       defaultOpts:{
         title:'',
         message:'',
-        isShowCloseBtn:false,
+        isShowCloseBtn:true,
         isShowConfirmBtn:false,
         onClose:function(){},
         onConfirm:function(){}
@@ -153,35 +153,44 @@
           var $cur = this;
 
           $dialog.find('.close').on('click',function(){
+
               $cur.opts.onClose();
               $dialog.hide();
-          })
+          });
           $dialog.find('.confirm').on('click',function(){
+
               $cur.opts.onConfirm();
               $dialog.hide();
           });
-          $dialog.on('mousedown',function(e){
-              $dialog.addClass('move');
-              $cur.left = e.pageX - $cur.$dialog.offset().left;
-              $cur.top  = e.pageY - $cur.$dialog.offset().top;
-              $cur.$dialog.data('pageX',$cur.left);
-              $cur.$dialog.data('pageY',$cur.top);
+         $dialog.on('mousedown',function(e){
+
+              var _this = $(this);
               $cur.drag = true;
-          })
+              $cur.left = e.pageX - _this.offset().left;
+
+              $cur.top  = e.pageY - _this.offset().top;
+//              $cur.$dialog.data('pageX',$cur.left);
+//              $cur.$dialog.data('pageY',$cur.top);
+
+          });
           $dialog.on('mouseup',function(){
               $cur.drag = false;
-              $dialog.removeClass('move')
-          })
+
+          });
           $('body').on('mousemove',function(e){
             if ($cur.drag) {
-                $dialog.css({
-                  marginLeft:0,
-                  left:e.pageX - $cur.$dialog.data('pageX'),
-                  top:e.pageY - $cur.$dialog.data('pageY')
+
+//这块选择了$dialog很重要，因为如果直接选取dialog类的话所有的都会动
+//而前面加上$cur的话，一个动的时候其他的又会消失
+//没想到慢慢试出来了，因为这里的$dialog本身就绑定了this.$html，就是当前
+//作用域的对话框
+                $dialog.offset({
+                    left: e.pageX - $cur.left,
+                    top: e.pageY - $cur.top
                 })
-            }
-          })
-      }
+            };
+          });
+      },
   }
       $('#open1').on('click',function(){
         var dialog1 = new Dialog();
@@ -210,7 +219,7 @@
       })
 
       var tpl = '<ul><li>list1</li><li>list2</li><li>list3</li><li>list4</li></ul>';
-      $('.btn4').on('click',function(){
+      $('#open4').on('click',function(){
         var dialog4 = new Dialog();
         dialog4.open({
           title: 'welcome',
@@ -226,7 +235,7 @@
         });
       });
 
-      $('.btn5').on('click',function(){
+      $('#open5').on('click',function(){
         var dialog5 = new Dialog();
         dialog5.open({
           title: 'welcome',
