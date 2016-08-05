@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>dialog</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+	html,body {
+		height: 100%;
+	}
+	.btn {
+		box-shadow: 0 10px 14px -7px #276873;
+		background-color: #599bb3;
+		border-radius: 8px;
+		cursor: pointer;
+		padding: 13px 32px;
+		outline: none;
+	}
+	.btn:hover {
+		background-color:#408c99;
+	}
+	.dialog {
+		background-color: #eee;
+		box-shadow: 0 10px 14px -7px;
+		border-radius: 10px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.dialog-btn {
+		text-decoration: none;
+		color: #fff;
+		font-size: 12px;
+		background-color: #e33100;
+		padding: 10px 30px;
+		margin-right: 10px;
+		border-radius: 5px;
+	}
+	.dialog-foot {
+		padding: 20px 80px;
+	}
+	.dialog-head {
+		background-color: #676666;
+		padding: 10px 10px;
+		color: #fff;
+		border-radius: 10px;
+	}
+</style>
+</head>
+<body>
+    <button id="open1" class="btn">ONE</button>
+    <button id="open2" class="btn">TWO</button>
+    <button id="open3" class="btn">THREE</button>
+    <button id="open4" class="btn">FOUR</button>
+<!-- 	<div class="dialog">
+		<div class="dialog-head">欢迎来到饥人谷</div>
+		<div class="dialog-main">
+			<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>
+		</div>
+		<div class="dialog-foot">
+			<a href="#" class="dialog-btn confirm">取消</a>
+			<a href="#" class="dialog-btn close">确定</a>
+		</div>
+	</div> -->
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+	function Dialog() {}
+	Dialog.prototype = {
+		// 默认数据
+		defaultData: {
+		    title: '',
+		    message: '',
+		    isShowCloseBtn: true,
+		    isShowConfirmBtn: true,
+		    onClose: function() {},
+		    onConfirm: function() {}
+		},
+		// 用户设置
+		setData: function(data){
+			this.data = $.extend({}, this.defaultData, data)
+		},
+		// 创建模板
+		create: function(){
+			var tpl = 	'<div class="dialog">'
+					+		'<div class="dialog-head"></div>'
+					+		'<div class="dialog-main"></div>'
+					+		'<div class="dialog-foot">'
+					+			'<a href="#" class="dialog-btn confirm">取消</a>'
+					+			'<a href="#" class="dialog-btn close">确定</a>'
+					+		'</div>'
+					+	'</div>'
+			this.tpl = $(tpl)
+		},
+		// 插入模板
+		setTpl: function(){
+			var data = this.data
+			var tpl = this.tpl
+			tpl.find('.dialog-head').text(data.title)
+			tpl.find('.dialog-main').html(data.message)
+			if(!data.isShowCloseBtn){
+				tpl.find('.close').hide()
+			}
+			if(!data.isShowConfirmBtn){
+				tpl.find('.confirm').hide()
+			}
+			$('body').append(tpl)  
+		},
+		// 绑定事件
+		bind: function(){
+			var _this = this
+			_this.tpl.find('.confirm').on('click', function(e){
+				e.preventDefault()
+				_this.data.onConfirm()
+				_this.tpl.hide()
+			})
+			_this.tpl.find('.close').on('click', function(e){
+				e.preventDefault()
+				_this.data.onClose()
+				_this.tpl.hide()
+			})
+			
+            _this.tpl.on('mousedown', function(e){
+            	var drag = $(this)
+            	_this.flag = true
+            	_this.x = e.pageX - drag.offset().left
+            	_this.y = e.pageY - drag.offset().top
+            })
+            $('body').on('mousemove',function(e){
+            	if(_this.flag){
+            		_this.tpl.offset({
+	            		left: e.pageX - _this.x,
+	            		top: e.pageY - _this.y
+            		})
+            	}
+            })
+            $('body').on('mouseup', function(){
+            	_this.flag = false
+            })
+		},
+		// 执行
+		open: function(data){
+			this.setData(data)
+			this.create()
+			this.setTpl()
+			this.bind()
+		}
+	}	
+
+// 使用
+	var tpl = '<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>'
+
+	$('#open1').on('click',function(){
+	  var dialog1 = new Dialog()
+	  dialog1.open({
+	    title: 'hello,这里是饥人谷',
+	    message: '',
+	    isShowCloseBtn: true,
+	    isShowConfirmBtn: false,
+	    onClose: function() {},
+	    onConfirm: function() {}
+	  })
+	})
+
+	$('#open2').on('click',function(){
+	  var dialog2 = new Dialog()
+	  dialog2.open({
+	    title: '',
+	    message: '<a>饥人谷</a>',
+	    isShowCloseBtn: true,
+	    isShowConfirmBtn: false,
+	    onClose: function() {},
+	    onConfirm: function() {}
+	  })
+	})
+
+	$('#open3').on('click',function(){
+	  var dialog3 = new Dialog()
+	  dialog3.open({
+	    title: '欢迎来到饥人谷',
+	    message: 'hello',
+	    isShowCloseBtn: true,
+	    isShowConfirmBtn: true,
+	    onClose: function(){
+	      alert('close')
+	    },
+	    onConfirm: function(){
+	      alert('确定');
+	    }
+	  })
+	})
+
+	$('#open4').on('click',function(){
+	  var dialog4 = new Dialog()
+	  dialog4.open({
+	    title: '欢迎来到饥人谷',
+	    message: tpl,
+	    isShowCloseBtn: true,
+	    isShowConfirmBtn: true,
+	    onClose: function(){
+	      alert('close')
+	    },
+	    onConfirm: function(){
+	      alert('确定');
+	    }
+	  })
+	})
+</script>
+</body>
+</html>

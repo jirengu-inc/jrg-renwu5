@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatibale" content="IE=edge,chrome=1">
+		<title>task24-2加载更多</title>
+		<meta name="discription" value="">
+		<meta name="keyword" value="">
+		<style type="text/css">
+		html,body,ul{margin:0; padding:0;}
+		#swap>li{
+			list-style:none;
+			margin:20px;
+			padding:10px;
+			border:1px solid #ccd;
+			border-radius:5px;
+		}
+		#swap>li:hover{
+			background-color:green;
+		}
+		#btn{
+			display: block;
+			margin:0 auto;
+			padding:10px 5px;
+			width:100px;
+			border:1px solid red;
+			border-radius:5px;
+			font-size:20px;
+			color: red;
+			text-decoration:none;
+			text-align: center;
+		}
+		</style>
+	</head>
+	<body>
+		<ul id="swap">
+			<li>内容1</li>
+			<li>内容2</li>
+		</ul>
+		<a id="btn" href="#">加载更多</a>
+		<script type="text/javascript">
+		/*定义接口
+			1)、数据请求的服务器地址：url:task2_data.php
+			2)、请求发送的数据：{ (当前最后内容序号数)start:2 , (每次请求怎增加的个数)len:6 }
+			3)、请求回来的参数；{ (状态stu:0表示成功，1表示失败;) 内容con:['内容3','内容4','内容5','内容6','内容7','内容8']}
+
+		*/
+			var swap=document.getElementById("swap");
+			var btn=document.getElementById("btn");
+			var sloct=false;
+
+			function onerror(){
+				console.log("出错了...");
+			}
+			function dealWith(str){
+				if(str.stu===1){
+					onerror();
+				}
+				if(str.stu===0){
+					for(var i=0;i<6;i++){
+						var li=document.createElement("li");
+						li.innerHTML=str.con[i];
+						swap.appendChild(li);
+					}
+				}
+			}
+
+		//使用GET发送请求
+			// btn.addEventListener("click",function(e){
+			// 	e.preventDefault();
+			// 	e.stopPropagation();
+			// 	if(sloct==true) return;
+			// 	sloct=true;
+			// 	var start=swap.children.length;
+			// 	var len=6;
+			// 	var xml=new XMLHttpRequest();
+			// 	var url="task2_data.php?start="+start+"&len="+len;
+			// 	xml.onreadystatechange=function(){
+			// 		if(xml.readyState===4 && xml.status===200){
+			// 			var json=JSON.parse(xml.responseText);
+			// 			dealWith(json);
+			// 			btn.innerHTML="加载更多";
+			// 			sloct=false;
+			// 		}
+			// 	}
+			// 	xml.open("GET",url,true);
+			// 	xml.send();
+			// })
+
+			
+
+		//对该ajax进行封装；
+			function ajax(opt){
+				var xml=new XMLHttpRequest();
+				xml.onreadystatechange=function(){
+					if(xml.readyState===4 && xml.status===200){
+						var json=JSON.parse(xml.responseText);
+						opt.success(json);
+					}
+					if(xml.status===404){
+						opt.error();
+					}
+				}
+				var optstr='';
+				for(k in opt.data){
+					optstr += k+"="+opt.data[k]+"&";
+				}
+				optstr=optstr.substr(0,optstr.length-1);
+
+				if(opt.type==='POST'){
+					xml.open(opt.type,opt.url,true);
+					xml.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					xml.send(optstr);
+
+				}
+				if(opt.type==='GET'){
+					xml.open(opt.type,opt.url+"?"+optstr,true);
+					xml.send();
+				}
+
+			}
+
+			btn.addEventListener("click",function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				if(sloct==true) return;
+				sloct=true;
+				btn.innerHTML="loading...";
+				var start=swap.children.length;
+				var len=6;
+				ajax({
+					url:"task2_data.php",
+					type:"GET",
+					data:{start:start,len:len},
+					success:function(str){
+						dealWith(str);
+						btn.innerHTML="加载更多";
+						sloct=false;
+					},
+					error:onerror
+				});
+			})
+		</script>
+	</body>
+	</html>

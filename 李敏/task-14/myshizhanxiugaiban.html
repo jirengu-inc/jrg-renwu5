@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>实战修改</title>
+  <style type="text/css">
+html,head,body,a,ul,h1,h2{
+            margin:0;
+            padding:0;
+          }
+body,html{height:100%;}
+a{text-decoration: none;color:#fff;}
+li{list-style: none;}
+#header{ 
+         height:100%;
+         background:url("images/bg-1.jpg") no-repeat center center; 
+         background-size:cover;   
+    }
+    .container
+          {
+           width:1100px;
+           margin: 0 auto;
+           text-align: center; 
+          }
+    .header-wrap{
+          font-size:2em;
+          color:#800080;
+          padding-top: 200px;
+          padding-bottom: 200px;
+    }
+    .btn{display: inline-block;
+         width:190px;
+         height: 40px;
+         background:#123456;
+         text-align: center;
+         line-height:40px;
+         font-size: 24px;
+         margin-bottom: 40px;
+           }
+    .btn:hover{background:#ccc;color: #567891;} 
+   #content{
+      position: relative;
+      text-align: center;
+    }
+    .layout{font-size: 2em;
+        background: url("images/bg-1.jpg") no-repeat;
+        text-align: center;
+        line-height: 180px;
+        padding:50px 0;
+       }
+       .skill{
+             padding: 50px 0;
+             background:#6090c0;
+             }
+        .btn-1{display: inline-block;
+           width:190px;
+           height: 40px;
+           background:#ccc;
+           text-align: center;
+           line-height:40px;
+           font-size: 24px;
+                           }
+        .btn-1:hover{background:#123456;color: #567891;}      
+    .wrap{
+        font-size: 36px;
+        color:#606080;
+        }
+    .wrap:after{content:"";
+                 width:80px;
+                 display:block;
+                 border-bottom:1px solid #ccc;
+                 margin:0 auto;}
+    #content .skill li{display:inline-block;
+                     margin-left: 10px;
+                     width:200px;
+               } 
+ @font-face {font-family: 'iconfont';
+    src: url('font/iconfont.eot'); 
+    src: url('font/iconfont.eot#iefix') format('embedded-opentype'),
+         url('font/iconfont.woff') format('woff'),
+         url('font/iconfont.ttf') format('truetype'),
+         url('font/iconfont.svg#iconfont') format('svg'); 
+  }
+   #content .iconfont{
+    font-family:"iconfont";
+    font-size:16px;
+    font-style:normal;
+    padding-top: 50px; 
+  }
+  .name{ font-size: 40px;text-align: center;}
+  .code{ font-size: 80px;text-align: center;}
+  .code:hover{font-size: 120px;}
+  .work{padding:50px 0;}
+  .list{padding:60px 0;}
+  .work:after, .work:before{
+     content: "";
+     display: block;
+     clear: both;
+    }
+    .item{
+       float: left;
+       margin-bottom: 30px;
+       margin-right: 30px;            
+             }
+  .item img:hover {opacity:0.3;}  
+    #footer{
+      text-align: center;
+      font-size: 24px;
+    }
+    @font-face {font-family: 'iconfont';
+    src: url('font1/iconfont.eot'); 
+    src: url('font1/iconfont.eot#iefix') format('embedded-opentype'),
+         url('font1/iconfont.woff') format('woff'),
+         url('font1/iconfont.ttf') format('truetype'),
+         url('font1/iconfont.svg#iconfont') format('svg'); 
+  }
+   #footer .iconfont{
+    font-family:"iconfont";
+    font-size:16px;
+    font-style:normal;   
+  }
+  .code-1{font-size: 20px;text-align: center;}
+  .code-1:hover{font-size: 40px;}  
+  </style>
+</head>
+<body>
+  <div id="header">
+    <div class="container">
+     <div class="header-wrap">
+      <h1>我是李敏</h1>
+      <h2>实现梦想，超越自我</h2>
+      <div class="btn"><a href="#">更多</a> </div>
+     </div>
+    </div>
+   </div>
+  <div id="content">
+    <div class="layout">
+     <div class="container">
+      <p>You Can't Get You Want Till You Know What You Want!</p>
+     </div>
+     </div>
+    <div class="skill">
+     <div class="container">
+       <span class="wrap">我的技能</span> 
+       <ul class="iconfont container">
+         <li>
+           <div class="code">&#xe793;</div>
+           <div class="name">html5</div>
+           <div class="btn"><a href="#">更多</a></div>
+         </li>
+         <li>
+           <div class="code">&#xe87b;</div>
+           <div class="name">javascript</div>
+           <div class="btn"><a href="#">MORE</a></div>
+         </li>
+         <li>
+           <div class="code">&#xe612;</div>
+           <div class="name">css</div>
+           <div class="btn"><a href="#">MORE</a></div>
+         </li>
+         <li>
+           <div class="code">&#xe605;</div>
+           <div class="name">jquery</div>
+           <div class="btn"><a href="#">MORE</a></div>
+         </li>
+         </ul>
+      </div>
+      </div>   
+    <div class="layout">
+      <div class="container">Vertically Centered Text</div>
+     </div>
+    <div class="work">
+      <div class="container wrap">我的工作</div>
+        <div class="container">
+         <ul class="list">
+           <li class="item">
+            <a href="#"><img src="images/cre.jpg">
+            </a>
+           </li>
+           <li class="item">
+            <a href="#"><img src="images/dn.jpg">
+            </a>
+           </li>
+           <li class="item">
+            <a href="#"><img src="images/sj.jpg">
+            </a>
+           </li>
+           <li class="item">
+            <a href="#"><img src="images/zz.jpg">
+            </a>
+           </li>
+           </ul>
+        <div class="btn">
+          <a href="#">更多</a>
+        </div>
+      </div>
+    <div class="layout">
+      <div class="wrap">The buttons below are impossible to resis<br/>
+         <div class="btn"><a href="#">Hover On Me!</a></div>
+         <div class="btn-1"><a href="#">Look At Me!</a></div>
+      </div>
+     </div>
+</div>
+<div id="footer">
+     <div class="container">
+      <p>我的信息</p>
+      <p>河南郑州</p>
+    <div class="iconfont">
+      <div class="code-1">&#xe691;电话联系</div>
+      <div class="code-1">&#xe60d;短信联系</div>
+     <div class="code-1">&#xe630;邮箱联系</div> 
+    </div>
+      <p>Copyright &copy; Your Website 2016</p>
+     </div>
+  </div>
+</body>
+</html>
