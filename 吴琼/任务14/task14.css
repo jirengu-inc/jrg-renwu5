@@ -1,0 +1,215 @@
+/*总体*/
+	    html,body,ul,li,h1{
+	    	margin: 0;
+	    	padding: 0;
+	    	box-sizing: border-box;
+	    }
+	    .layout {
+	    	width: 960px;
+	    	margin: 0 auto;
+	    }
+	    li {
+	    	list-style: none;
+	    }
+	    a {
+	    	text-decoration: none;
+	    }
+	/*全屏背景*/
+	    html,body {
+	    	width: 100%;
+	    	height: 100%;
+	    }
+	    #header {
+	    	width: 100%;
+	    	height: 100%;
+			background: url(images/bg.jpg);
+			background-size: cover;
+		}
+		#header .header-nav {
+			display: table;
+			height: 100%;
+			}
+		#header .header-nav .header-content {
+			display: table-cell;
+			text-align: center;
+			vertical-align: middle;
+		}
+		#header .header-nav a {
+			display: block;
+			width: 140px;
+			height: 50px;
+			line-height: 50px;
+			margin-left: auto;
+			margin-right: auto;
+			color: white;
+			background: #737E84;
+			opacity: 0.7;
+		}
+		#header .header-nav a:hover {
+			background: #737E84;
+			opacity: 1;
+			}
+	/*标题*/
+		#container .container-works {
+			text-align: center;
+			padding-top: 62px;
+			padding-bottom: 62px;
+		}
+		#container   .container-works  a {
+			color: #337AB7;
+		}
+		#container  .container-works  a:hover {
+			text-decoration: underline;
+		}
+	/*技能*/
+	  #container .skills {
+	  	height: 300px;
+		background: #337AB7;
+		padding: 80px 0;
+	  }
+	  #container .layout .content-title {
+	  	font-size: 30px;
+	  	font-family: "Helvetica";
+	  	color: white;
+	  	text-align: center;
+	  	padding-bottom: 25px;
+	  	  }
+	  #container .layout hr {
+	  	max-width: 100px;
+	    margin-bottom: 25px;
+	  }
+	  #container .skills:after {
+	  	content: '';
+	  	display: block;
+	  	clear: both;
+	  }
+	  #container .skills .list {
+	  	float: left;
+	  	width: 165px;
+	  	margin-left: 100px;
+	  	text-align: center;
+	  }
+	  #container .skills .skills-lists {
+	  	margin-left: -100px;
+	  }
+	  #container .skills .list-title {
+	  	color: #fff;
+	  	font-size: 16px;
+	  	font-weight: bold;
+	  }
+	  #container .skills .list-intro {
+	  	color: #fff;
+	  	font-size: 14px;
+	  }
+	   #container .skills  a {
+	   	display: inline-block;
+	   	width: 95px;
+	  	height: 35px;
+	  	line-height: 35px;
+	  	background: #fff;
+	  	margin: 0 auto;
+	   	color: #000;
+	   	font-size: 14px;
+	   }
+	   #container .skills a:hover {
+	  	background: #eee;
+	  }
+	   #container .intro {
+	   	width: 100%;
+	   	background: url(images/callout.jpg);
+	   	background-size: cover;
+	   	margin-bottom: 78px;
+	   	padding-top: 290px;
+	   	padding-bottom: 290px;
+	   }
+	   #container .intro .intro-content {
+		font-size: 64px;
+		color: white;
+		font-weight: bold;
+		text-align: center;
+		margin: 0 auto;
+	   }
+	   /*作品*/
+	   #container .works .works-title {
+	   	text-align: center;
+	   	width: 120px;
+	   	margin: 0 auto;
+	   	font-size: 30px;
+	   	padding-bottom: 20px;
+	   	border-bottom: 3px solid #eee;
+	   	margin-bottom: 20px;
+	   }
+	   #container .works .works-image img{
+	   	width: 466px;
+	   	height: 304px;
+	   }
+	   #container .works .works-list{
+	   	margin-left: -28px;
+	   }
+	   #container .works .works-list:after {
+	   	content:'';
+	   	display: block;
+	   	clear: both;
+	   }
+	    #container .works .works-image {
+	    float: left;
+	    margin-bottom: 30px;
+	    margin-left: 28px;
+	    }
+	   /*更多作品*/
+	   #container .works .works-more {
+	    display: block;
+	   	width: 140px;
+	   	height: 32px;
+	   	background: #999;
+	   	margin: 0 auto 52px auto;
+	   	text-align: center;
+	   	color: white;
+	   	font-size: 14px;
+	   	line-height: 32px;
+	   
+	   }
+	   #container .works .works-more:hover {
+		background: #4C4C4C;
+	   }
+	   /*尾部*/
+	   #footer .footer-intro {
+	   	height: 204px;
+	   	background: #337AB7;
+	   }
+	   #footer .footer-intro .footer-links {
+	   	text-align: center;
+	   }
+	    #footer .footer-links  h3 {
+	    	color: white;
+	    	text-align: center;
+	    	padding-top: 66px;
+	    }
+	    #footer .footer-links a {
+	    	display: inline-block;
+	     	width: 140px;
+	     	height: 50px;
+			text-align: center;
+			font: 14px/50px "Arial";
+	    }
+	    #footer .footer-intro .footer-click {
+	    	background: white;
+			color: black;
+	     }
+	     #footer .footer-intro .footer-click:hover {
+	     	background: #eee;
+	     }
+	     #footer .footer-intro .footer-look {
+	     	background: #1F496E;
+	     	color: white;
+	     }
+	     #footer .footer-intro .footer-look:hover {
+	     	background: #0F2436;
+	     }
+	     #footer .footer-mail a {
+			color: blue;
+	     }
+	     #footer .footer-information {
+	     	padding: 120px 0;
+	     	text-align: center;
+	     }
