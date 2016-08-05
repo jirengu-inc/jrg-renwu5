@@ -62,11 +62,6 @@
       background-color: #e33100;
       cursor: pointer;
     }
-    .move{
-      cursor: move;
-      opacity: 0.8;
-    }
-
   </style>
 </head>
 <body>
@@ -163,15 +158,10 @@
               $dialog.hide();
           });
          $dialog.on('mousedown',function(e){
-
               var _this = $(this);
               $cur.drag = true;
               $cur.left = e.pageX - _this.offset().left;
-
               $cur.top  = e.pageY - _this.offset().top;
-//              $cur.$dialog.data('pageX',$cur.left);
-//              $cur.$dialog.data('pageY',$cur.top);
-
           });
           $dialog.on('mouseup',function(){
               $cur.drag = false;
@@ -182,7 +172,7 @@
 
 //这块选择了$dialog很重要，因为如果直接选取dialog类的话所有的都会动
 //而前面加上$cur的话，一个动的时候其他的又会消失
-//没想到慢慢试出来了，因为这里的$dialog本身就绑定了this.$html，就是当前
+//因为这里的$dialog本身就绑定了this.$html，就是当前
 //作用域的对话框
                 $dialog.offset({
                     left: e.pageX - $cur.left,
