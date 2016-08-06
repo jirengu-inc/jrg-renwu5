@@ -13,9 +13,7 @@ define(['jquery'],function($){
             this.realCount = this.imgCount+2
             this.curIdx = 0
             this.isAnimate = false
-        },
 
-        create: function (){
             this.show.prepend( this.items.last().clone() )
             this.show.append( this.items.first().clone() )
             this.show.find('li').css('width', this.imgWidth)
@@ -121,7 +119,6 @@ define(['jquery'],function($){
 
         open: function(){
             this.init()
-            this.create()
             this.bind()
             this.loadImg(1)
             this.autoPlay()

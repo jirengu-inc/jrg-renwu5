@@ -83,6 +83,7 @@ section {
     line-height: 80px;
     text-align: center;
     font-size: 25px;
+    box-shadow: 0 10px 14px -7px;
 }
 /* header */
 html,body,#header {
@@ -97,6 +98,7 @@ html,body,#header {
     top: 0;
     width: 100%;
     background-color: #000;
+    opacity: 0.5;
     z-index: 2;
 }
 #h-header .container {
@@ -144,10 +146,11 @@ html,body,#header {
     background-color: #fff;
     display: inline-block;
     cursor: pointer;
+    opacity: 0.3;
 }
 
-.active {
-    opacity: 0.5;
+.bullet .active {
+    opacity: 0.8;
 }
 .arrow {
     width: 40px;
@@ -231,24 +234,23 @@ html,body,#header {
 }
 
 #portfolio ul {
+    position: relative;
     margin-top: 80px;
-    margin-right: -50px;
 }
 
 #portfolio ul>li {
-    position: relative;
-    float: left;
+    position: absolute;
     margin-right: 50px;
     margin-bottom: 20px;
-    height: 300px;
+    width: 280px;
     background-color: #fff;
 }
 
 #portfolio .mask {
     display: none;
     position: absolute;
-    width: 300px;
-    height: 217px;
+    width: 280px;
+    height: 205px;
     background-color: #fed136;
     color: #fff;
     opacity:  .9;
@@ -259,6 +261,30 @@ html,body,#header {
     display: block;
 }
 
+#portfolio ul>li.card1 {
+    width: 280px;
+    height: 200px;
+    background-color: #dcf7a1;
+    box-shadow: 0 10px 14px -7px;
+}
+#portfolio ul>li.card2 {
+    width: 280px;
+    height: 600px;
+    background-color: #83fcd8;
+    box-shadow: 0 10px 14px -7px;
+}
+#portfolio ul>li.card3 {
+    width: 280px;
+    height: 300px;
+    background-color: #d9b3e6;
+    box-shadow: 0 10px 14px -7px;
+}
+#portfolio ul>li.card4 {
+    width: 280px;
+    height: 500px;
+    background-color: #d9b3e6;
+    box-shadow: 0 10px 14px -7px;
+}
 /* about */
 #a-list {
     margin-top: 100px;
