@@ -1,5 +1,5 @@
 /*总体*/
-html,body,ul,li {
+html,body,ul,li,h1,h3,p {
   margin: 0;
   padding: 0;
 }
@@ -46,7 +46,7 @@ a {
 #title li {
   float: left;
   height: 50px;
-  font: 14px/90px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font: 14px/50px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
   margin-left: 20px;
   text-align: center;
 }
@@ -57,6 +57,7 @@ a {
 #title li a:hover {
   color: #fec503;
 }
+
 /*头部*/
 #header {
   height: 100%;
@@ -98,13 +99,8 @@ a {
 #header .header-lists a:hover {
   background: #fec503;
 }
-/*services*/
-#main .main-services {
-  padding: 150px 0;
-}
-#main .main-services .main-name {
-	text-align: center;
-}
+/*main*/
+/*字体*/
 #main .main-title {
   text-align: center;
   font: 40px/44px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -116,6 +112,22 @@ a {
   font: 16px/28px "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-style: italic;
   color: #777;
+}
+#main .main-name {
+  font: 18px/30px  Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  color: #333;
+}
+#main .main-description {
+  font: 14px/30px "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #777;
+}
+/*services*/
+#main .main-services {
+  padding: 150px 0;
+}
+#main .main-services .main-name {
+	text-align: center;
 }
 #main .main-services i{
   display: block;
@@ -137,15 +149,6 @@ a {
   padding: 10px;
   text-align: center;
 }
-.main-name {
-  font: 18px/20px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-weight: bold;
-  color: #333;
-}
-#main .main-description {
-  font: 14px/28px "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
-  color: #777;
-}
 
 /*portfolio*/
 #main .main-portfolio .main-name {
@@ -153,7 +156,7 @@ a {
 }
 #main .main-portfolio {
   padding: 100px 0 150px 0;
-  background: #ddd;
+  background: #F7F7F7;
 }
 #main .main-portfolio ul {
   margin-left: -32px;
@@ -224,10 +227,11 @@ a {
 #main .about-lists>span {
 	position: absolute;
 	top: 0;
-	left: 500px;
+	left: 50%;
+  z-index: -1;
 	width: 2px;
 	height: 1400px;
-	background: #ccc;
+	background: #F7F7F7; 
 }
 #main .about-lists li:nth-child(2n) li {
   float: left;
@@ -239,77 +243,54 @@ a {
 
 }
 #main .about-lists li:nth-child(2n) li:last-child {
-  margin-left: 10px;
+  margin-left: 50px;
 }
 #main .about-lists li:nth-child(2n+1) li:last-child {
-  margin-right: 10px;
+  margin-right: 50px;
 }
 #main .about-nav li:first-child {
-  width: 390px;
+  width: 350px;
 }
-#main .about-images {
-	position: relative;
-	width: 210px;
-	height: 210px;
-	border-radius: 105px;
-	background: #ccc;
-}
-#main .about-images span{
-	position: absolute;
-	top: 5px;
-	left: 5px;
-	width: 200px;
-	height: 200px;
-	border-radius: 100px;
-	background: white;
-}
-#main .about-images img {
-	position: absolute;
-	top: 5px;
-	left: 5px;
-  border-radius: 100px;
+#main .about-images img,#main .about-images div {
+  border: 5px solid #F7F7F7;
+  border-radius: 105px;
 }
 #about-story div{
-	position: absolute;
-	top: 5px;
-	left: 5px;
-  width: 200px;
-  height: 200px;
+  width: 210px;
+  height: 210px;
   font: 18px/26px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: bold;
   text-align: center;
-  border-radius: 100px;
+  border-radius: 105px;
   background: #FED136;
   color: white;
 }
-#about-story div p{
-	width: 100px;
-	padding: 50px;
-	margin: 10px auto 0 auto;
+#about-story  p{
+  width: 105px;
+  padding-top: 10px;
+  margin: 53px auto 0 auto;
+  text-align: center;
 }
 /*team*/
 #main .main-team {
   padding-top: 155px;
-  background: #ddd;
+  background: #F7F7F7;
 }
 #main .main-team ul {
   margin-left: -152px;
   margin-top: 70px;
 }
 #main .team-images {
-	position: relative;
   float: left;
   width: 232px;
   margin-left: 152px;
 }
-#main .team-images span {
-	position: absolute;
-	top: -250px;
-	left: 0;
-	width: 236px;
-	height: 236px;
-	background: white;
-	border-radius: 118px;
+#main .team-images img {
+  border: 5px solid white;
+  border-radius: 113px;
+}
+#main .main-team {
+  text-align: center;
 }
 .icons {
   display: inline-block;
@@ -323,18 +304,6 @@ a {
 }
 .icons:hover {
   background: #FED136;
-}
-#main .main-team img {
-	position: absolute;
-	top: -245px;
-	left: 5px;
-  border-radius: 113px;
-}
-#main .main-team {
-  text-align: center;
-}
-#main .main-team .main-co{
-	margin-bottom: 300px;
 }
 #main .main-team .team-intro {
   width: 600px;
