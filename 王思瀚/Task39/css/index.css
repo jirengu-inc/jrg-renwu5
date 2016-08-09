@@ -1,0 +1,155 @@
+html,body,h1,h2,h3,ul,li,p,div{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+
+#header{
+  height: 70px;
+  position: fixed;;
+  top:0;
+  z-index: 2;
+  width: 100%;
+}
+.container{
+  width: 1150px;
+  margin: 0 auto;
+}
+#header .logo{
+  float: left;
+}
+#header .logo a{
+  line-height: 70px;
+  color:#FED136;
+  font-size: 25px;
+  font-weight: bolder;
+}
+#header .nav{
+  float: right;
+}
+#header .nav ul>li{
+  float: left;
+  margin: 0 10px;
+}
+#header .nav ul>li>a{
+  color:#fff;
+  font: 14px montserrat-regular-webfont,Microsoft YaHei,scans-serif;
+  line-height: 70px;
+}
+#header::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+.container:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+html,body,.carousel{
+  width: 100%;
+  height: 100%;
+}
+.carousel{
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.carousel .content{
+  height: 100%;
+  position: absolute;
+}
+.carousel .content li{
+  height: 100%;
+  position: relative;
+  float: left;
+  background-size: cover;
+}
+.carousel .content .cover{
+  position: absolute;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.content::after{
+  content: '';
+  display:block;
+  clear: both;
+}
+.main{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-40%,-50%);
+}
+.main h2{
+	font:40px montserrat-bold-webfont,Microsoft YaHei,scans-serif;
+	color: #ccc;
+	margin-bottom: 0;
+  transform: translateX(60px);
+}
+.main h1{
+	font:75px montserrat-bold-webfont,Microsoft YaHei,scans-serif;
+	color: #fff;
+	margin-top: 20px;
+  margin-left: -150px;
+}
+.main .btn{
+  display: inline-block;
+  background-color: #FED136;
+  padding: 20px 40px;
+  border-radius: 4px;
+  color: #fff;
+  font:18px montserrat-bold-webfont,Microsoft YaHei,scans-serif;
+  margin-top: 20px;
+  transform: translateX(160px);
+}
+.mian .btn:hover{
+  background: #D1A522;
+}
+.tab{
+     position: absolute;
+     bottom: 20px;
+     left: 50%;
+     transform: translateX(-110px);
+ }
+.tab>li{
+     display: inline-block;
+     width:35px;
+     height: 10px;
+     background-color: #fff;
+     border-radius: 4px;
+     cursor: pointer;
+ }
+.tab li.active{
+     background-color: #ccc;
+ }
+ .arrow{
+    width: 40px;
+    height: 80px;
+    line-height: 80px;
+    background-color: #4B4848;
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    margin-top: -30px;
+    opacity: 0.2;
+ }
+ .arrow:hover{
+   background-color: #ccc;
+   color:#000;
+ }
+ .next{
+     right: 10px;
+ }
+ .pre{
+     left: 10px;
+ }

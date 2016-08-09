@@ -1,0 +1,402 @@
+<!--
+demo说明 ：
+使用 requirejs 完善任务15，包括如下功能：
+1. 首屏大图为全屏轮播
+2. 有回到顶部功能
+3. PORTFOLIO 使用瀑布流布局（图片高度不一），下部有加载更多按钮，点击加载更多会加载更多数据(数据在后端 mock)
+4. About 每个时间区块默认隐藏，曝光渐变展示
+5. 使用 r.js 打包应用
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="requireJS应用">
+	<title>requireJS应用</title>
+	<link rel="stylesheet" href="../css/new.css">
+	<link rel="stylesheet" href="src/css/font-awesome.min.css">
+	<link rel="stylesheet" href="src/css/myfonts.css">
+	<link rel="stylesheet" href="src/css/backTop.css">
+</head>
+<body>
+	<div id="header">
+		<div class="container clear-float">
+			<div class="logo">
+				<a href="http://licao404.com" target="">Go To Gardon Lee's Blog</a>
+			</div>
+			<div class="choice">
+				<ul>
+					<li><a href="#service">SERVICES</a></li>
+					<li><a href="#portfolio">PORTFOLIO</a></li>
+					<li><a href="#about">ABOUT</a></li>
+					<li><a href="#team">TEAM</a></li>
+					<li><a href="#contact">CONTACT</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="main_carousel">
+	    <ul class="item-ct clear-float">
+	    	<li class="item">
+	    		<div class="bgimg" bgimg-url="imgs/header-bg.jpg"></div>
+	    		<div class="container">
+					<h2>Welcome To My Studio!</h2>
+					<h1>IT'S NICE TO MEET YOU</h1>
+					<a class="btn" href="http://licao404.com/about/">MORE ABOUT ME</a>
+	    		</div>
+	    	</li>
+	    	<li class="item">
+	    		<div class="bgimg" bgimg-url="imgs/carousel-2.jpg"></div>
+	    		<div class="container">
+					<h2>A Nice Carousel!</h2>
+					<h1>HERE IS A DEMO FOR YOU</h1>
+					<a class="btn" href="http://licao404.com/about/">MORE ABOUT ME</a>
+	    		</div>
+	    	</li>
+	    	<li class="item">
+	    		<div class="bgimg" bgimg-url="imgs/carousel-3.jpg"></div>
+	    		<div class="container">
+					<h2>You Can Config It!</h2>
+					<h1>YOU CAN CALL IT ANYWHERE</h1>
+					<a class="btn" href="http://licao404.com/about/">MORE ABOUT ME</a>
+	    		</div>
+	    	</li>
+	    	<li class="item">
+	    		<div class="bgimg" bgimg-url="imgs/carousel-4.jpg"></div>
+	    		<div class="container">
+					<h2>Ha Ha!</h2>
+					<h1>I WANT TO BE A GEEK</h1>
+					<a class="btn" href="http://licao404.com/about/">MORE ABOUT ME</a>
+	    		</div>
+	    	</li>
+	    	<li class="item">
+	    		<div class="bgimg" bgimg-url="imgs/carousel-5.jpg"></div>
+	    		<div class="container">
+					<h2>Let`s Begin</h2>
+					<h1>IT'S NICE TO MEET YOU</h1>
+					<a class="btn" href="http://licao404.com/about/">MORE ABOUT ME</a>
+	    		</div>
+	    	</li>
+	    </ul>
+	    <a href="#" class="pre arrow"><</a>
+	    <a href="#" class="next arrow">></a>
+	    <ul class="bullet clear-float">
+	    	<li class="active">1</li>
+	    	<li>2</li>
+	    	<li>3</li>
+	    	<li>4</li>
+	    	<li>5</li>
+	    </ul>
+	</div>
+	<a id="service" name="service"> </a>
+	<div id="service">
+		<div class="container clear-float">
+			<h2>SERVICES</h2>
+			<p class="h2-description">Lorem ipsum dolor sit amet consectetur.</p>
+			<div class="row clear-float">
+				<div class="row-item">
+					<span class="fa-stack fa-lg">
+  						<i class="fa fa-circle fa-stack-2x"></i>
+  						<i class="fa fa-shopping-cart fa-stack-1x"></i>
+					</span>
+					<h3>E-Commerce</h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing<br/>
+						elit. Minima maxime quam architecto quo inventore<br/>
+						harum ex magni, dicta impedit.
+					</p>
+				</div>
+				<div class="row-item">
+					<span class="fa-stack fa-lg">
+  						<i class="fa fa-circle fa-stack-2x"></i>
+  						<i class="fa fa-laptop fa-stack-1x"></i>
+					</span>
+					<h3>Responsive Design</h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing<br/>
+						elit. Minima maxime quam architecto quo inventore<br/>
+						harum ex magni, dicta impedit.
+					</p>
+				</div>
+				<div class="row-item">
+					<span class="fa-stack fa-lg">
+  						<i class="fa fa-circle fa-stack-2x"></i>
+  						<i class="fa fa-lock fa-stack-1x"></i>
+					</span>
+					<h3>Web Security</h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing<br/>
+						elit. Minima maxime quam architecto quo inventore<br/>
+						harum ex magni, dicta impedit.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a id="portfolio" name="portfolio"> </a>
+	<div id="portfolio">
+		<div class="container clear-float">
+			<h2>PORTFOLIO</h2>
+			<p class="h2-description">Lorem ipsum dolor sit amet consectetur.</p>
+			<ul class="row waterfall-ct clear-float">
+<!-- 				<li class="row-item">
+					<a href="#">
+						<div class="img-hover">
+							<span class="fa fa-plus fa-4x"></span>
+						</div>
+						<img class="img1" src="imgs/roundicons.png" alt="roundicons">
+					</a>
+					<h3>Round Icons</h3>
+					<p class="h2-description">Graphic Design AAAAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+				</li>
+-->
+
+<!-- 				<li class="row-item">
+					<a href="#">
+						<div class="img-hover">
+							<span class="fa fa-plus fa-4x"></span>
+						</div>
+						<img class="img2" src="imgs/startup-framework.png" alt="startup-framework">
+					</a>
+					<h3>Startup Framework</h3>
+					<p class="h2-description">Website Design BBBBBBBBBBBBBBBBBBBBBBBBBB
+					BBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+					BBBBBBBBBBBBBBBBB</p>
+				</li>
+				<li class="row-item">
+					<a href="#">
+						<div class="img-hover">
+							<span class="fa fa-plus fa-4x"></span>
+						</div>
+						<img class="img3" src="imgs/treehouse.png" alt="treehouse">
+					</a>
+					<h3>Treehouse</h3>
+					<p class="h2-description">Website Design
+						CCCCCCCCCCCCCCCCCCCCC
+					CCCCCCCCCCCCCCCCCCCCCC</p>
+				</li>
+				<li class="row-item">
+					<a href="#">
+						<div class="img-hover">
+							<span class="fa fa-plus fa-4x"></span>
+						</div>
+						<img class="img4" src="imgs/golden.png" alt="golden">
+					</a>
+					<h3>Golden</h3>
+					<p class="h2-description">Website Design</p>
+				</li>
+				<li class="row-item">
+					<a href="#">
+						<div class="img-hover">
+							<span class="fa fa-plus fa-4x"></span>
+						</div>
+						<img class="img5" src="imgs/escape.png" alt="escape">
+					</a>
+					<h3>Escape</h3>
+					<p class="h2-description">Website Design</p>
+				</li>
+				<li class="row-item">
+					<a href="#">
+						<div class="img-hover">
+							<span class="fa fa-plus fa-4x"></span>
+						</div>
+						<img class="img6" src="imgs/dreams.png" alt="dreams-preview">
+					</a>
+					<h3>Dreams</h3>
+					<p class="h2-description">Website Design DDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+					DDDDDDDDDDDDDDDDDDDDDDDDDD
+					DDDDDDDDDDDDDDDDDDDDDD</p>
+				</li> -->
+			</ul>
+			<span class="btn load-more" href="#">Load More</span>
+		</div>
+	</div>
+	<a id="about" name="about"> </a>
+	<div id="about">
+		<div class="container">
+			<h2>ABOUT</h2>
+			<p class="h2-description">Lorem ipsum dolor sit amet consectetur.</p>
+			<div class="border">
+				<div class="timeline">
+					<div class="event left clear-float">
+						<div class="event-img">
+							<img src="imgs/1.jpg" alt="2009">
+						</div>
+						<div class="event-description">
+							<h3>2009-2011</h3>
+							<h3>Our Humble Beginnings</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing<br/>elit. Sunt ut voluptatum eius sapiente, totam<br/>reiciendis temporibus qui quibusdam, recusandae<br/>sit vero unde, sed, incidunt et ea quo dolore<br/>laudantium consectetur!
+							</p>
+						</div>
+					</div>
+					<div class="event right  clear-float">
+						<div class="event-img">
+							<img src="imgs/2.jpg" alt="MARCH 2011">
+						</div>
+						<div class="event-description">
+							<h3>MARCH 2011</h3>
+							<h3>An Agency is Born</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing<br/>elit. Sunt ut voluptatum eius sapiente, totam<br/>reiciendis temporibus qui quibusdam, recusandae<br/>sit vero unde, sed, incidunt et ea quo dolore<br/>laudantium consectetur!
+							</p>
+						</div>
+					</div>
+					<div class="event left clear-float">
+						<div class="event-img">
+							<img src="imgs/3.jpg" alt="DECEMBER 2012">
+						</div>
+						<div class="event-description">
+							<h3>DECEMBER 2012</h3>
+							<h3>Transition to Full Service</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing<br/>elit. Sunt ut voluptatum eius sapiente, totam<br/>reiciendis temporibus qui quibusdam, recusandae<br/>sit vero unde, sed, incidunt et ea quo dolore<br/>laudantium consectetur!
+							</p>
+						</div>
+					</div>
+					<div class="event right clear-float">
+						<div class="event-img">
+							<img src="imgs/4.jpg" alt="JULY 2014">
+						</div>
+						<div class="event-description">
+							<h3>JULY 2014</h3>
+							<h3>Phase Two Expansion</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing<br/>elit. Sunt ut voluptatum eius sapiente, totam<br/>reiciendis temporibus qui quibusdam, recusandae<br/>sit vero unde, sed, incidunt et ea quo dolore<br/>laudantium consectetur!
+							</p>
+						</div>
+					</div>
+					<div class="event right clear-float">
+						<div class="event-img circle">
+							<div class="join">
+								<h3>BE PART<br/>OF OUR<br/>STORY!</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a id="team" name="team"> </a>
+	<div id="team">
+		<div class="container">
+			<h2>OUR AMAZING TEAM</h2>
+			<p class="h2-description">Lorem ipsum dolor sit amet consectetur.</p>
+			<div class="clear-float">
+				<div class="row clear-float">
+					<div class="row-item">
+						<img src="imgs/11.jpg" alt="roundicons">
+						<h3>Kay Garland</h3>
+						<p>Lead Designer</p>
+						<a href="#" class="fa-stack fa-lg">
+							<span class="fa fa-circle fa-stack-2x"></span>
+							<span class="fa fa-twitter fa-stack-1x"></span>
+						</a>
+						<a href="#" class="fa-stack fa-lg">
+							<span class="fa fa-circle fa-stack-2x"></span>
+							<span class="fa fa-facebook fa-stack-1x"></span>
+						</a>
+						<a href="#" class="fa-stack fa-lg">
+							<span class="fa fa-circle fa-stack-2x"></span>
+							<span class="fa fa-linkedin fa-stack-1x"></span>
+						</a>
+					</div>
+					<div class="row-item">
+						<img src="imgs/22.jpg" alt="startup-framework">
+						<h3>Larry Parker</h3>
+						<p>Lead Marketer</p>
+						<a href="#" class="fa-stack fa-lg">
+							<span class="fa fa-circle fa-stack-2x"></span>
+							<span class="fa fa-twitter fa-stack-1x"></span>
+						</a>
+						<a href="#" class="fa-stack fa-lg">
+							<span class="fa fa-circle fa-stack-2x"></span>
+							<span class="fa fa-facebook fa-stack-1x"></span>
+						</a>
+						<a href="#" class="fa-stack fa-lg">
+							<span class="fa fa-circle fa-stack-2x"></span>
+							<span class="fa fa-linkedin fa-stack-1x"></span>
+						</a>
+					</div>
+					<div class="row-item">
+						<img src="imgs/33.jpg" alt="treehouse">
+						<h3>Diana Pertersen</h3>
+						<p>Lead Marketer</p>
+						<a href="#" class="fa-stack fa-lg">
+							<span class="fa fa-circle fa-stack-2x"></span>
+							<span class="fa fa-twitter fa-stack-1x"></span>
+						</a>
+						<a href="#" class="fa-stack fa-lg">
+							<span class="fa fa-circle fa-stack-2x"></span>
+							<span class="fa fa-facebook fa-stack-1x"></span>
+						</a>
+						<a href="#" class="fa-stack fa-lg">
+							<span class="fa fa-circle fa-stack-2x"></span>
+							<span class="fa fa-linkedin fa-stack-1x"></span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<p class="row-description">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non <br/>quis ad perspiciatis, totam corporis ea, alias ut unde.
+			</p>
+		</div>
+	</div>
+	<div id="cooperrator">
+		<div class="container">
+			<ul>
+				<li><a href="#"><img src="imgs/envato.jpg" alt="envato"></a></li>
+				<li><a href="#"><img src="imgs/designmodo.jpg" alt="designmodo"></a></li>
+				<li><a href="#"><img src="imgs/themeforest.jpg" alt="themeforest"></a></li>
+				<li><a href="#"><img src="imgs/creative-market.jpg" alt="creative-market"></a></li>
+			</ul>
+		</div>
+	</div>
+	<a id="contact" name="contact"> </a>
+	<div id="contact">
+		<div class="container">
+			<h2>CONTACT US</h2>
+			<p class="h2-description">Lorem ipsum dolor sit amet consectetur.</p>
+			<form name="myForm" action="test.php" method="get">
+				<div class="table clear-float">
+					<div class="table-left">
+						<input type="text" name="name" placeholder="YOUR NAME*" value="">
+						<input type="text" name="email" placeholder="YOUR EMAIL*" value="">
+						<input type="text" name="phone" placeholder="YOUR PHONE*" value="">
+					</div>
+					<div class="table-right">
+						<textarea name="message" placeholder="YOUR MESSAGE*"></textarea>
+					</div>
+				</div>
+				<button class="btn" type="submit">SEND MESSAGE</button>
+			</form>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="container">
+			<div class="copyright">
+				<span>Copyright © licao404.com 2015</span>
+			</div>
+			<div class="icon">
+					<a href="#" class="fa-stack fa-lg">
+						<span class="fa fa-circle fa-stack-2x"></span>
+						<span class="fa fa-twitter fa-stack-1x"></span>
+					</a>
+					<a href="#" class="fa-stack fa-lg">
+						<span class="fa fa-circle fa-stack-2x"></span>
+						<span class="fa fa-facebook fa-stack-1x"></span>
+					</a>
+					<a href="#" class="fa-stack fa-lg">
+						<span class="fa fa-circle fa-stack-2x"></span>
+						<span class="fa fa-linkedin fa-stack-1x"></span>
+					</a>
+			</div>
+			<div>
+				<span class="policy"><a href="#">Privacy Policy</a>&nbsp &nbsp &nbsp &nbsp<a href="#">Terms of Use</a></span>
+			</div>
+		</div>
+	</div>
+<!-- data-main属性的作用是，指定网页程序的主模块。就是src/js/app目录下面的index.js，这个文件会第一个被require.js加载。由于require.js默认的文件后缀名是js，所以可以把index.js简写成index。 -->
+<script data-main="dist/js/index.merge.min" src="src/js/lib/require.js"></script>
+<!-- <script data-main="src/js/app/index" src="src/js/lib/require.js"></script>	 -->
+</body>
+</html>

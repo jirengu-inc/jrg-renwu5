@@ -1,0 +1,61 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+.ct{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.content{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.content>li{
+    width: 100%;
+    height: 100%;
+   position: relative;
+    background-size: cover;
+    float: left;
+}
+ .content:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.content .cover{
+    position: absolute;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.main{
+    position: absolute;
+    top:50%;
+   left:50%;
+    color: #fff;
+    font-size: 24px;
+    transform: translate(-50%,-70%);
+}
+.tab{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-100px);
+}
+.tab>li{
+    display: inline-block;
+    width:35px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.tab li.active{
+    background-color: #ccc;
+}
