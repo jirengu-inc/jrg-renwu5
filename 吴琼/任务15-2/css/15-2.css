@@ -253,7 +253,7 @@ a {
 }
 #main .about-images img,#main .about-images div {
   border: 5px solid #F7F7F7;
-  border-radius: 105px;
+  border-radius: 110px;
 }
 #about-story div{
   width: 210px;
@@ -287,7 +287,7 @@ a {
 }
 #main .team-images img {
   border: 5px solid white;
-  border-radius: 113px;
+  border-radius: 118px;
 }
 #main .main-team {
   text-align: center;
