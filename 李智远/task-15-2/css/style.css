@@ -152,10 +152,11 @@ h1, h2, h3, h4, h5, h6{
   background:rgba(254,209,54,.9);
   position: absolute;
   top: 0;
-  display: none;
+  opacity :0;
+  transition:all ease .5s;
 }
 .portfolio-bac:hover .portfolio-bac-hover{
-  display: block;
+  opacity:1;
 }
 .portfolio-bac img{
   width: 360px;
