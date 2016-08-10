@@ -1,5 +1,5 @@
 var header = $('#header');
-console.log(header);
+
 
 $(window).on('scroll',function(){
   var bodyS = $('body').scrollTop(),

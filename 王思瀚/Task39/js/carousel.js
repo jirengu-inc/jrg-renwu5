@@ -87,7 +87,7 @@ function loadImg(idx){
     if($node.data('isSet')){
         return;
     }
-    console.log(imgUrl);
+  
     $img.css('background-image','url('+imgUrl+')');
     $node.data('isSet',true);
 }

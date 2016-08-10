@@ -5,7 +5,7 @@ var $target = $('.load'),
     clock;
 
 $target.on('click',function(){
-  console.log(1111);
+
       if (clock) {
         clearTimeout(clock);
       }
@@ -28,7 +28,7 @@ function isShow(e){
       top = e.offset().top;
 
   if (winH + scrollTop > 500) {
-    console.log(2222);
+    
     return true;
   }else{
     return false;
