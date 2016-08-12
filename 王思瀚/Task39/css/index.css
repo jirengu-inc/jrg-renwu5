@@ -37,6 +37,7 @@ a{
   top:0;
   z-index: 2;
   width: 100%;
+  transition: 1.5s;
 }
 .container{
   width: 1200px;
@@ -258,11 +259,11 @@ html,body,.carousel{
  .ul-list{
    position: relative;
  }
- /*.ul-list:after{
+ .ul-list:after{
    content: '';
    display: block;
    clear: both;
- }*/
+ }
  .ul-list .item{
    position:absolute;
    width: 278px;
