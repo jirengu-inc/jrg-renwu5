@@ -10,87 +10,112 @@
 	html,body {
 		height: 100%;
 	}
-	.btn {
-		box-shadow: 0 10px 14px -7px #276873;
-		background-color: #599bb3;
-		border-radius: 8px;
-		cursor: pointer;
-		padding: 13px 32px;
-		outline: none;
-	}
-	.btn:hover {
-		background-color:#408c99;
+	h3 {
+		margin: 0;
+		padding: 0;
 	}
 	.dialog {
-		background-color: #eee;
-		box-shadow: 0 10px 14px -7px;
-		border-radius: 10px;
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		width: 300px;
+		background-color: #eee;
+		box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+		border-radius: 5px;
+        padding-bottom: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+		z-index: 9;
+        -ms-user-select: none;  /*禁止选择*/
+        -webkit-user-select: none;
+        -moz-user-select: none;  
 	}
-	.dialog-btn {
+    .dialog .dialog-header {
+        padding: 10px 19px;
+        color: #fff;
+        background: #676666;
+    }
+    .dialog .dialog-header .close {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+		font-size: 20px;
+    }
+    .dialog .dialog-content {
+        padding: 10px;
+        margin: 13px;
+        font-size: 11px;
+    }
+    .dialog .dialog-footer {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+	.btn {
 		text-decoration: none;
 		color: #fff;
-		font-size: 12px;
 		background-color: #e33100;
-		padding: 10px 30px;
+		font-size: 14px;
+		padding: 10px 20px;
 		margin-right: 10px;
 		border-radius: 5px;
-	}
-	.dialog-foot {
-		padding: 20px 80px;
-	}
-	.dialog-head {
-		background-color: #676666;
-		padding: 10px 10px;
-		color: #fff;
-		border-radius: 10px;
 	}
 </style>
 </head>
 <body>
-    <button id="open1" class="btn">ONE</button>
-    <button id="open2" class="btn">TWO</button>
-    <button id="open3" class="btn">THREE</button>
-    <button id="open4" class="btn">FOUR</button>
+    <button id="open1">ONE</button>
+    <button id="open2">TWO</button>
+    <button id="open3">THREE</button>
+    <button id="open4">FOUR</button>
+    <button id="open5">FIVE</button>
 <!-- 	<div class="dialog">
-		<div class="dialog-head">欢迎来到饥人谷</div>
-		<div class="dialog-main">
+		<div class="dialog-header">
+			<h3>欢迎来到饥人谷</h3>
+			<span class="close">x</span>
+		</div>
+		<div class="dialog-content">
 			<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>
 		</div>
-		<div class="dialog-foot">
-			<a href="#" class="dialog-btn confirm">取消</a>
-			<a href="#" class="dialog-btn close">确定</a>
+		<div class="dialog-footer">
+			<a href="#" class="btn close">取消</a>
+			<a href="#" class="btn confirm">确定</a>
 		</div>
 	</div> -->
 
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
+
+var Dialog = (function(){
+
 	function Dialog() {}
+	
 	Dialog.prototype = {
-		// 默认数据
+		// 默认设置
 		defaultData: {
 		    title: '',
 		    message: '',
 		    isShowCloseBtn: true,
-		    isShowConfirmBtn: true,
+		    isShowConfirmBtn: false,
 		    onClose: function() {},
 		    onConfirm: function() {}
 		},
 		// 用户设置
 		setData: function(data){
-			this.data = $.extend({}, this.defaultData, data)
+			if(typeof data === 'string'){
+				this.data = $.extend({}, this.defaultData, {message: data})
+			}
+			if(typeof data === 'object'){
+				this.data = $.extend({}, this.defaultData, data)
+			}
 		},
 		// 创建模板
 		create: function(){
 			var tpl = 	'<div class="dialog">'
-					+		'<div class="dialog-head"></div>'
-					+		'<div class="dialog-main"></div>'
-					+		'<div class="dialog-foot">'
-					+			'<a href="#" class="dialog-btn confirm">取消</a>'
-					+			'<a href="#" class="dialog-btn close">确定</a>'
+					+		'<div class="dialog-header"><h3></h3><span class="close">x</span></div>'
+					+		'<div class="dialog-content"></div>'
+					+		'<div class="dialog-footer">'
+					+			'<a href="#" class="btn confirm">取消</a>'
+					+			'<a href="#" class="btn close">确定</a>'
 					+		'</div>'
 					+	'</div>'
 			this.tpl = $(tpl)
@@ -99,14 +124,17 @@
 		setTpl: function(){
 			var data = this.data
 			var tpl = this.tpl
-			tpl.find('.dialog-head').text(data.title)
-			tpl.find('.dialog-main').html(data.message)
+			if(!data.title){
+				tpl.find('.dialog-header').hide()
+			}
 			if(!data.isShowCloseBtn){
-				tpl.find('.close').hide()
+				tpl.find('.dialog-footer .close').hide()
 			}
 			if(!data.isShowConfirmBtn){
-				tpl.find('.confirm').hide()
+				tpl.find('.dialog-footer .confirm').hide()
 			}
+			tpl.find('.dialog-header h3').text(data.title)
+			tpl.find('.dialog-content').html(data.message)
 			$('body').append(tpl)  
 		},
 		// 绑定事件
@@ -150,64 +178,67 @@
 		}
 	}	
 
-// 使用
-	var tpl = '<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>'
 
-	$('#open1').on('click',function(){
-	  var dialog1 = new Dialog()
-	  dialog1.open({
-	    title: 'hello,这里是饥人谷',
-	    message: '',
-	    isShowCloseBtn: true,
-	    isShowConfirmBtn: false,
-	    onClose: function() {},
-	    onConfirm: function() {}
-	  })
-	})
+	return Dialog
 
-	$('#open2').on('click',function(){
-	  var dialog2 = new Dialog()
-	  dialog2.open({
-	    title: '',
-	    message: '<a>饥人谷</a>',
-	    isShowCloseBtn: true,
-	    isShowConfirmBtn: false,
-	    onClose: function() {},
-	    onConfirm: function() {}
-	  })
-	})
+})()
 
-	$('#open3').on('click',function(){
-	  var dialog3 = new Dialog()
-	  dialog3.open({
-	    title: '欢迎来到饥人谷',
-	    message: 'hello',
-	    isShowCloseBtn: true,
-	    isShowConfirmBtn: true,
-	    onClose: function(){
-	      alert('close')
-	    },
-	    onConfirm: function(){
-	      alert('确定');
-	    }
-	  })
-	})
 
-	$('#open4').on('click',function(){
-	  var dialog4 = new Dialog()
-	  dialog4.open({
-	    title: '欢迎来到饥人谷',
-	    message: tpl,
-	    isShowCloseBtn: true,
-	    isShowConfirmBtn: true,
-	    onClose: function(){
-	      alert('close')
-	    },
-	    onConfirm: function(){
-	      alert('确定');
-	    }
-	  })
-	})
+// 调用
+
+$('#open1').on('click', function() {
+    var dialog1 = new Dialog()
+    dialog1.open('hello, 这里是饥人谷')
+})
+
+$('#open2').on('click', function() {
+    var dialog2 = new Dialog()
+    dialog2.open('<a href="http://jirengu.com">饥人谷</a>')
+})
+
+$('#open3').on('click', function() {
+    var dialog3 = new Dialog()
+    dialog3.open({
+        title: '欢迎来到饥人谷',
+        message: 'hello',
+        isShowCloseBtn: true,
+        isShowConfirmBtn: true,
+        onClose: function() {
+            console.log('close')
+        },
+        onConfirm: function() {
+            console.log('confirm')
+        }
+    })
+})
+
+var tpl = '<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>'
+$('#open4').on('click', function() {
+    var dialog4 = new Dialog()
+    dialog4.open({
+        title: '欢迎来到饥人谷',
+        message: tpl,
+        isShowCloseBtn: true,
+        isShowConfirmBtn: true,
+        onClose: function() {
+            console.log('close')
+        },
+        onConfirm: function() {
+            console.log('confirm')
+        }
+    })
+})
+
+$('#open5').on('click', function() {
+    var dialog5 = new Dialog();
+    dialog5.open({
+        title: '欢迎来到饥人谷',
+        message: 'hello',
+        isShowCloseBtn: false,
+        isShowConfirmBtn: false
+    })
+})
+
 </script>
 </body>
 </html>
