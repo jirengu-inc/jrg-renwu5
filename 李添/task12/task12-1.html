@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动－负边距</title>
+    <style media="screen">
+        html, body, ul, li{
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            width: 898px; /* (286 * 3) + (20 * 2) */
+            background-color: #ccc;
+            margin: 30px auto;
+        }
+        ul {
+            list-style: none;
+            padding-top: 20px;
+            margin-right: -20px;
+            /*
+            一个 li 的长度 ＝ 286px + 20px(因为 margin-right: 20px;) = 306px
+             ul 强行加宽 20px 让 li 可以上去
+
+             就是因为 “负边距” 可以加宽元素，后面的元素才可以 "上移"!!!
+            */
+        }
+        li {
+            width: 286px;
+            height: 80px;
+            background-color: #004210;
+            margin-right: 20px;
+            margin-bottom: 10px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <div style="clear: both;"></div>
+        </ul>
+    </div>
+</body>
+</html>

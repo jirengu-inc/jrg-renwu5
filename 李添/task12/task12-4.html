@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双飞翼实现三栏布局</title>
+    <style media="screen">
+        #header, #footer {
+            height: 50px;
+            background-color: grey;
+        }
+        #content::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        #content .main {
+            width: 100%;
+            height: 500px;
+            float: left;
+        }
+        #content .main .wrap {
+            height: 100%;
+            background-color: green;
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+        #content .aside {
+            width: 100px;
+            height: 500px;
+            background-color: red;
+            float: left;
+            margin-left: -100%;
+        }
+        #content .extra {
+            width: 100px;
+            height: 500px;
+            background-color: yellow;
+            float: left;
+            margin-left: -100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">头部</div>
+    <div id="content">
+        <div class="main">
+            <div class="wrap">双飞翼布局指两边顶宽，中间自适应的三栏布局，中间拦要放在文档流前面优先渲染</div>
+        </div>
+        <div class="aside">左侧边栏，固定宽度</div>
+        <div class="extra">右侧边栏，固定宽度</div>
+    </div>
+    <div id="footer">尾部</div>
+</body>
+</html>
