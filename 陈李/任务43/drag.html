@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>drag</title>
+</head>
+<style>
+	ul,li {
+		list-style: none;
+		border: 1px solid #ccc;
+		min-height: 40px;
+	}
+	li {
+		display: inline-block;
+		width: 60px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		margin: 5px;
+	}
+</style>
+<body>
+	<h3>全部</h3>
+	<ul id="all">
+		<li class="tech">科技</li>
+		<li class="phone">手机</li>
+		<li class="com">电脑</li>
+		<li class="car">汽车</li>
+		<li class="news">新闻</li>
+	</ul>
+	<h3>订阅</h3>
+	<ul id="subscription">
+		
+	</ul>
+
+<script>
+	var item = document.querySelectorAll('#all li')
+	Array.prototype.forEach.call(item, function(value, index){
+		value.setAttribute('draggable',true)
+		value.ondragstart = function(e){
+			e.dataTransfer.setData("text",e.target.className)
+		}
+	})
+
+	var sub = document.querySelector('#subscription')
+	var all = document.querySelector('#all')
+	function ondragover(e){
+		e.preventDefault()
+	}
+
+	function ondrop(e){
+		e.preventDefault()
+		var data = '.' + e.dataTransfer.getData('text')
+		e.target.appendChild(document.querySelectorAll(data)[0])
+	}
+
+    sub.ondragover = ondragover
+    all.ondragover = ondragover
+    
+    sub.ondrop = ondrop
+    all.ondrop = ondrop
+</script>
+</body>
+</html>
