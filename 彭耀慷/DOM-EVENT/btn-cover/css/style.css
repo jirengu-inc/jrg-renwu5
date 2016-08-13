@@ -1,0 +1,76 @@
+.text-border{
+	border: 1px solid gold;
+}
+*{
+		text-decoration: none;
+}
+#btn-modal{
+	display: inline-block;
+	padding: 3px 6px;
+	border: 1px solid red;
+	border-radius: 5px;
+	font-size: 50px;
+	font-weight: 100;
+	cursor: pointer;
+}
+.modal-dialog{
+	display: none;
+}
+.modal-dialog .cover{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: #000;
+	opacity: 0.1;
+	z-index: 10;
+}
+.modal-ct{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 400px;
+	border-radius: 10px;
+	background: white;
+	z-index: 20;
+	padding: 10px;
+}
+.modal-ct .header{
+	height: 36px;
+	line-height: 36px;
+	border-bottom: 1px solid #ccc;
+}
+.modal-ct .header h3{
+	margin: 0;
+	padding-left: 10px;
+	font-size: 16px;
+}
+.modal-ct .header a{
+	position: absolute;
+	right: 20px;
+	top: 18px;
+	line-height: 1;
+	transition: all .3s;
+}
+.modal-ct .header a:hover{
+	color: #fdd247;
+}
+.footer{
+	float: right;
+}
+.footer a{
+	margin-right: 10px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	transition: all .3s;
+}
+.footer a:hover{
+	color: #fdd247;
+}
+.modal-ct .content{
+	padding-left: 8px;
+	line-height: 25px;
+}

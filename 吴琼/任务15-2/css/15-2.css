@@ -1,0 +1,401 @@
+/*总体*/
+html,body,ul,li,h1,h3,p {
+  margin: 0;
+  padding: 0;
+}
+html,body {
+  height: 100%;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.layout {
+  width: 1000px;
+  margin: 0 auto;
+}
+.clear:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+/*导航标题*/
+#title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;/*为什么要加宽度？*/
+  padding: 10px;
+  background: #222;
+}
+#title p {
+  float: left;
+  font: 20px/50px "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+ 
+}
+#title p a {
+   color: #fec503;
+   text-decoration: none;
+}
+#title ul {
+  float: right; 
+}
+#title li {
+  float: left;
+  height: 50px;
+  font: 14px/50px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin-left: 20px;
+  text-align: center;
+}
+#title li a {
+  color: white;
+  text-decoration: none;
+}
+#title li a:hover {
+  color: #fec503;
+}
+
+/*头部*/
+#header {
+  height: 100%;
+  background: url(../images/header-bg.jpg);
+  background: cover;
+}
+#header .header-content {
+  display: table;
+  height: 100%;
+  width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+#header .header-lists {
+  display: table-cell;
+  vertical-align: middle;
+  color: white;
+}
+#header .header-lists h1 {
+  font: 40px  "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-style: italic;
+}
+#header .header-lists p{
+  font:75px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+}
+#header .header-lists a {
+  display: block;
+  width: 182px;
+  margin: 0 auto;
+  padding: 20px;
+  font: 18px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  background: #fed136;
+  border-radius: 3px;
+}
+#header .header-lists a:hover {
+  background: #fec503;
+}
+/*main*/
+/*字体*/
+#main .main-title {
+  text-align: center;
+  font: 40px/44px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  color: #333;
+}
+#main .main-intro {
+  text-align: center;
+  font: 16px/28px "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-style: italic;
+  color: #777;
+}
+#main .main-name {
+  font: 18px/30px  Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  color: #333;
+}
+#main .main-description {
+  font: 14px/30px "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #777;
+}
+/*services*/
+#main .main-services {
+  padding: 150px 0;
+}
+#main .main-services .main-name {
+	text-align: center;
+}
+#main .main-services i{
+  display: block;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  margin: 10px auto;
+  background: #fed136;
+  border-radius: 50px;
+}
+#main .main-services ul {
+  margin-left: -41px;
+  padding: 50px 0;
+}
+#main .main-services li {
+  float: left;
+  margin-left: 41px;
+  width: 286px;
+  padding: 10px;
+  text-align: center;
+}
+
+/*portfolio*/
+#main .main-portfolio .main-name {
+	text-align: center;
+}
+#main .main-portfolio {
+  padding: 100px 0 150px 0;
+  background: #F7F7F7;
+}
+#main .main-portfolio ul {
+  margin-left: -32px;
+  margin-top: 80px;
+}
+#main .main-list a {
+  display: block;
+}
+#main .main-list img {
+  width: 312px;
+}
+#main .main-list {
+  position: relative;
+  float: left;
+  width: 312px;
+  padding-bottom: 35px;
+  margin-left: 32px;
+  margin-bottom: 30px;
+  background: white;
+}
+#main .main-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 312px;
+  height: 225px;
+  background: #EAC135;
+  opacity: 0.9;
+}
+#main .main-bg .bg-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 16px;
+  margin-left: -25px;
+  margin-top: -8px;
+  border-radius: 3px;
+  background: white;
+}
+#main .main-bg .bg-vline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 50px;
+  margin-left: -8px;
+  margin-top: -25px;
+  border-radius: 3px;
+  background: white;
+}
+#main .main-portfolio a:hover .main-bg{
+  display: block;
+}
+/*about*/
+#main .main-about {
+  margin-top: 50px;
+  padding-bottom: 130px;
+}
+
+#main .main-about .about-nav {
+  margin-top: 120px;
+}
+#main .about-lists {
+	position: relative;
+}
+#main .about-lists>span {
+	position: absolute;
+	top: 0;
+	left: 50%;
+  z-index: -1;
+	width: 2px;
+	height: 1400px;
+	background: #F7F7F7; 
+}
+#main .about-lists li:nth-child(2n) li {
+  float: left;
+  text-align: right;
+}
+#main .about-lists li:nth-child(2n+1) li {
+  float: right;
+  text-align: left;
+
+}
+#main .about-lists li:nth-child(2n) li:last-child {
+  margin-left: 50px;
+}
+#main .about-lists li:nth-child(2n+1) li:last-child {
+  margin-right: 50px;
+}
+#main .about-nav li:first-child {
+  width: 350px;
+}
+#main .about-images img,#main .about-images div {
+  border: 5px solid #F7F7F7;
+  border-radius: 110px;
+}
+#about-story div{
+  width: 210px;
+  height: 210px;
+  font: 18px/26px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 105px;
+  background: #FED136;
+  color: white;
+}
+#about-story  p{
+  width: 105px;
+  padding-top: 10px;
+  margin: 53px auto 0 auto;
+  text-align: center;
+}
+/*team*/
+#main .main-team {
+  padding-top: 155px;
+  background: #F7F7F7;
+}
+#main .main-team ul {
+  margin-left: -152px;
+  margin-top: 70px;
+}
+#main .team-images {
+  float: left;
+  width: 232px;
+  margin-left: 152px;
+}
+#main .team-images img {
+  border: 5px solid white;
+  border-radius: 118px;
+}
+#main .main-team {
+  text-align: center;
+}
+.icons {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  line-height: 55px;
+  text-decoration: none;
+  text-align: center;
+  background: black;
+  border-radius: 22px;
+}
+.icons:hover {
+  background: #FED136;
+}
+#main .main-team .team-intro {
+  width: 600px;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+/*图标*/
+#main .main-icons {
+  padding: 50px 0;
+}
+#main .main-icons a {
+	margin: 0 20px;
+}
+/*联系我*/
+#main .main-contact {
+  background: black url(../images/map-image.png);
+  background-size: cover;
+  padding: 150px 0;
+ }
+#main .contact {
+  width: 1140px;
+	margin: 0 auto;
+}
+#main .main-contact h1 {
+	color: white;
+}
+#main .main-contact p {
+	color: #777;
+}
+#main .main-contact .clear {
+	margin-left: -30px;
+	margin-top: 70px;
+}
+#main .contact-nav {
+	float: left;
+	margin-left: 30px;
+}
+#main .contact-nav input {
+	margin-bottom: 25px;
+	width: 540px;
+	height: 65px;
+	padding-left: 10px;
+  font: 14px/20px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+	color: #555;
+	border: 2px solid white;
+	border-radius: 5px;
+}
+#main .contact-nav input:focus,#main .contact-nav textarea:focus {
+	outline: none;
+	border: 2px solid #FED136;
+}
+#main .contact-nav textarea {
+	width: 540px;
+	height: 253px;
+	padding-top: 10px;
+	padding-left: 10px;
+	font: 14px/20px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: bold;
+	color: #555;
+	border: 2px solid white;
+	border-radius: 5px;
+}
+#main .submit {
+	display: block;
+	width: 230px;
+	margin: 0 auto;
+	padding: 25px 10px;
+	font: 16px/20px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: bold;
+	color: white;
+	background: #FED136;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+#main .submit:hover {
+	background: #fec503;
+}
+/*尾部*/
+#footer {
+	font: 14px/40px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	margin:30px auto;
+}
+#footer div {
+	display: inline-block;
+	margin: 0 220px;
+}
+#footer .links {
+	color: #FED136;
+}
+#footer .links:hover {
+	text-decoration: underline;
+	color: #FEC503;
+}

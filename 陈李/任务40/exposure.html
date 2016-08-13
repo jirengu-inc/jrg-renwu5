@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>exposure</title>
+</head>
+<style>
+	div {
+		margin-top: 1000px;
+		width: 200px;
+		height: 200px;
+		background-color: blue;
+	}
+</style>
+<body>
+<div></div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+	var Exposure = (function(){
+
+		return {
+
+			init: function($target){
+				return $target.offset().top< $(window).height()+ $(window).scrollTop()
+			},
+
+			bind: function($target, callback){
+				var _this = this
+				$(window).on('scroll', function(){
+					if(_this.init($target)){
+						callback.call($target)
+					}
+				})
+			},
+
+			one: function($target, callback){
+				var _this = this
+				$(window).on('scroll', function(){
+					if(_this.init($target) && !$target.data('flag')){
+						callback.call($target)
+						$target.data('flag', true)
+					}
+				})
+			}
+		}
+
+})()
+
+
+
+
+
+
+
+
+var $target = $('div')
+//$target 是 jquery 对象
+// 当窗口滚动时，如果$target 出现在可见区域，执行回调函数里面的代码，且在回调函数内，$(this)代表$target
+// Exposure.bind($target, function(){
+//     console.log($(this));    // $target
+// });
+
+//当窗口滚动时，如果$target 出现在可见区域，执行回调函数里面的代码，且在回调函数内，$(this)代表$target。 仅执行一次回调函数，下次$target 曝光不再执行
+Exposure.one($target, function(){
+    console.log($(this));    // $target
+})
+
+</script>
+</body>
+</html>

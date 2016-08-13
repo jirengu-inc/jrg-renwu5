@@ -1,0 +1,31 @@
+html,body,ul,li {
+  margin: 0;
+  padding: 0;
+}
+li{
+  list-style-type: none;
+}
+.main {
+  width:900px;
+  margin: 0 auto;
+  background: #ccc;
+  margin-left: 30px;
+  margin-top: 30px;
+  padding: 10px 0;
+}
+.blocks {
+  margin-left: -15px;
+}
+.blocks:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.blocks>li {
+  float:left;
+  width: 290px;
+  height: 80px;
+  background: #004210;
+  margin-top: 10px;
+  margin-left: 15px;
+}

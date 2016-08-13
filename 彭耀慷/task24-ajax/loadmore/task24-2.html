@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>点击获取更多</title>
+		<style>
+			ul,
+			li {
+				margin: 0;
+				padding: 0
+			}
+			
+			.ct li {
+				list-style: none;
+				border: 1px solid #ccc;
+				padding: 10px;
+				margin-top: 10px;
+				cursor: pointer;
+			}
+			
+			.btn {
+				text-decoration: none;
+				color: #e27272;
+				border: 1px solid #e27272;
+				border-radius: 5px;
+				display: block;
+				width: 80px;
+				height: 40px;
+				margin: 10px auto;
+				text-align: center;
+				line-height: 40px;
+			}
+			
+			.ct li:hover {
+				background-color: #e27272;
+			}
+			
+			img {
+				width: 40px;
+				height: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<ul class="ct">
+			<li>内容1</li>
+			<li>内容2</li>
+		</ul>
+		<a class="btn" href="#">加载更多</a>
+
+
+
+		<div id="">
+			<p>在本地服务器测试通过了</p>
+		</div>
+		<script src="util.js"></script>
+		<script type="text/javascript">
+			setTimeout(function() {
+				//do            
+			}, 0)
+		</script>
+		<script>
+			var ct = document.querySelector('.ct'),
+				btn = document.querySelector('.btn');
+
+			btn.addEventListener('click', function() {
+				btn.innerHTML = '<img src="018c4a9a578231eee516e24671966420.gif" style="height: 200px; width: 200px;">';
+				ajax({
+					url: '/load',
+					type: 'get',
+					data: {
+						start: ct.children.length + 1,
+						len: 3
+					},
+					success: function(ret) {
+						setTimeout(function() {
+						for(var i = 0; i < ret.msg.length; i++) {
+							var li = document.createElement("li");
+							li.innerText = ret.msg[i];
+							ct.appendChild(li);
+						}
+						btn.innerHTML = '加载更多';
+						}, 500)
+						
+					},
+					error: function() {
+						console.log('出错了');
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

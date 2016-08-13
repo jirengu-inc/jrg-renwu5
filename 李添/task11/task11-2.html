@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>利用 BFC 的原理实现两栏布局</title>
+    <style media="screen">
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        #header, #footer {
+            height: 50px;
+            background-color: red;
+        }
+        #content>.aside {
+            width: 100px;
+            background-color: #ccccfc;
+            float: left;
+            /*opacity: 0.1;*/
+        }
+        #content>.main {
+            background-color: #ffbfca;
+            padding-left: 10px;
+
+            margin-left: 100px;
+            /*overflow: hidden;*/
+        }
+        #content:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">header</div>
+    <div id="content">
+        <div class="aside">aside</div>
+        <div class="main">
+            我是main
+            我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main...
+            我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+            我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+            我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+            我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+            我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+            我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+            我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+            我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+            我是main 我是main 我是main 我是main
+        </div>
+    </div>
+    <div id="footer"></div>
+</body>
+</html>
