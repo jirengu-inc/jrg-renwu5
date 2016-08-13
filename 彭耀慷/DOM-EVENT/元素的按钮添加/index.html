@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+
+	<body>
+		<ul class="ct">
+			<li>这里是</li>
+			<li>饥人谷</li>
+			<li>前端6班</li>
+		</ul>
+		<input class="ipt-add-content" placeholder="添加内容" />
+		<button id="btn-add-start">开头添加</button>
+		<button id="btn-add-end">结尾添加</button>
+		<script>
+			var ct = document.getElementsByClassName('ct')[0];
+			var content = document.getElementsByClassName('ipt-add-content')[0];
+			var btnStart = document.getElementById('btn-add-start');
+			var btnEnd = document.getElementById('btn-add-end');
+			btnStart.addEventListener('click', handler);
+			btnEnd.addEventListener('click', handler);
+
+			function handler(e) {
+				var newE = document.createElement('li');
+				var newContent = document.createTextNode(content.value);
+				newE.appendChild(newContent);
+				if(e.target.id === 'btn-add-start') {
+					ct.insertBefore(newE, ct.firstChild)
+				} else {
+					ct.appendChild(newE);
+				}
+
+			}
+			ct.addEventListener('click', function(e) {
+					console.log(e.target.innerText)
+				}, false)
+				//在父元素添加事件监听
+
+			//注释为笔记
+			//这是每个元素都添加监听    
+			//            var listArr = document.getElementsByClassName('ct')[0].getElementsByTagName('li');
+			//            for(var i =0; i< listArr.length; i++){
+			//                listArr[i].addEventListener('click',function(){
+			//                    console.log(this.innerText);
+			//                })
+			//            }
+
+			//这是直接给父元素添加
+			//            var bttttttnnn = document.querySelector('.ct');
+			//            bttttttnnn.addEventListener('click', function(e) {
+			//                    console.log(e.target.innerText);
+			//                })
+		</script>
+	</body>
+
+</html>
