@@ -1,0 +1,165 @@
+html,body,ul{
+  margin: 0px;
+  padding:0px;
+}
+html,body{
+  height: 100%;
+  width: 100%;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+h4,h3,h2,h1,p,a{
+  text-align: center;
+}
+#header{
+  height: 100%;
+  background:url(../img/bg.jpg);
+  background-size: cover;
+}
+.container{
+  width: 960px;
+  margin: 0 auto;
+}
+.text-center{
+  text-align: center;
+}
+.table{
+  display: table;
+  height: 100%;
+}
+#header .header-wrap{
+  display: table-cell;
+  vertical-align: middle;
+}
+#header h3{
+  font-size: 24px;
+}
+.btn{
+  background-color:rgba(0, 0, 0,0.4);
+  padding: 15px 30px;
+  color: #fff;
+  line-height: 50px;
+}
+a{
+  text-decoration: none;
+}
+.btn:hover{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.about{
+  padding: 50px 0;
+}
+h2{
+  font-size: 30px;
+}
+.about p{
+  font-size: 21px;
+}
+.about a{
+  color: #337ab7;
+}
+.column{
+  padding: 50px 0;
+  background: #337ab7;
+  color: #fff;
+}
+hr{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-top: 1px solid #fff;
+  width: 100px;
+}
+ul{
+  list-style: none;
+}
+.column i{
+  font-size: 112px;
+}
+.column li{
+  float: left;
+  width: 25%;
+}
+.column li a{
+  background: #fff;
+  padding: 8px 20px;
+  line-height: 30px;
+}
+.column li a:hover{
+  background: #eee;
+}
+.clearfix:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+.callout{
+  padding: 250px 0;
+  background: url(../img/callout.jpg);
+  background-size: cover;
+}
+.callout h1{
+  margin: 0px;
+  font-size: 4.5em;
+  color: #fff;
+}
+.Portfolio{
+  padding: 50px 0;
+}
+.Portfolio li img{
+  width: 465px;
+  height: 305px;
+}
+.Portfolio li{
+  float: left;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+.Portfolio ul{
+  margin-right: -30px;
+}
+.btn1{
+  background:rgba(0, 0, 0, 0.4);
+  padding: 6px 45px;
+  color: #fff;
+}
+.btn1:hover{
+  background:rgba(0, 0, 0, 0.7);
+}
+.Concern{
+  background: #337ab7;
+  padding:50px ;
+  color: #fff;
+}
+.btn2{
+  background:#fff;
+  padding: 15px 30px;
+  color: #000;
+  line-height: 50px;
+}
+.btn2:hover{
+  background: #eee;
+}
+#footer{
+  padding: 100px 0;
+}
+#footer a{
+  color: #337ab7;
+}
+#footer a:hover{
+  color: #23527c;
+}
+#footer .wrap a:hover{
+  text-decoration: underline;
+}
+#footer .wrap i{
+  font-size: 10px;
+}
+#footer .wrap{
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+#footer .wrap2 a{
+  display: inline-block;
+  font-size: 45px;
+  margin:10px;
+}
