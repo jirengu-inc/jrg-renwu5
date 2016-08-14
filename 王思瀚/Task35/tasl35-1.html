@@ -4,23 +4,33 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <style>
-    div{
-      height: 100px;
-      width: 100px;
+    .top{
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      border: 1px solid #000;
+      border-radius: 4px;
+      font-size: 20px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <div class="ct"></div>
+  <ul>
+    <li><img src="1.jpg" alt=""></li>
+    <li><img src="1.jpg" alt=""></li>
+    <li><img src="1.jpg" alt=""></li>
+    <li><img src="1.jpg" alt=""></li>
+  </ul>
   <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
   <script>
 function hehe(ct){
      this.ct=ct;
-     this.target= $('<div>top</div>');
-  this.createNode = function (){
+     this.target= $('<div class="top">top</div>');
+     this.createNode = function (){
       this.ct.append(this.target);
     }
-  this.bindEvent = function (){
+    this.bindEvent = function (){
       this.target.on('click',function(){
         $(window).scrollTop(0);
       })
@@ -29,7 +39,7 @@ function hehe(ct){
     this.bindEvent();
   }
 
-var heheda = new hehe($('.ct'))
+var heheda = new hehe($('body'))
 //这里遇到了一个史前巨坑，跟别人几乎一模一样的代码，到我这里就不好使了，原因是我使用了变量 var top =$('.ct')，这里的top是系统内部的已经存在的变量所以不可以使用
   </script>
 </body>
