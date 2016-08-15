@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>gradient</title>
+<style>
+	html,body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	#ct {
+		height: 100%;
+		background: url(wlop.jpg) no-repeat;
+		background-size: cover;
+	}
+	#ct:before {
+		content: '';
+		display: block;
+		width: 50%;
+		height: 100%;
+		position: absolute;
+		background: linear-gradient(to bottom left, rgba(255,0,0,0), rgba(255,0,0,.5));
+	}
+	#ct:after {
+		content: '';
+		display: block;
+		width: 50%;
+		height: 100%;
+		position: absolute;
+		right: 0;
+		background: linear-gradient(to bottom right, rgba(255,0,0,0), rgba(255,0,0,.5));
+	}
+</style>
+</head>
+<body>
+	<div id="ct"></div>
+</body>
+</html>

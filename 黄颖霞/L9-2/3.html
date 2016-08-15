@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>三角</title>
+    <style>
+        .mt50{
+            margin-top:50px;
+        }
+        .arrow-all:after{
+            content:'';
+            display:inline-block;
+            width:0;
+            height:0;
+            border-top:20px solid blue;
+            border-right:20px solid yellow;
+            border-bottom:20px solid green;
+            border-left:20px solid red;
+        }
+        .arrow-up-blue:after{
+            content:'';
+            display:inline-block;
+            width:0;
+            height:0;
+            border:20px solid transparent;
+            border-top:20px solid blue;
+        }
+        .arrow-left-red:after{
+            content:'';
+            display:inline-block;
+            width:0;
+            height:0;
+            border:20px solid transparent;
+            border-left:20px solid red;
+        }
+        .arrow-right-yellow:after{
+            content:'';
+            display:inline-block;
+            width:0;
+            height:0;
+            border:20px solid transparent;
+            border-right:20px solid yellow;
+        }
+        .arrow-bottom-green:after{
+            content:'';
+            display:inline-block;
+            width:0;
+            height:0;
+            border:20px solid transparent;
+            border-bottom:20px solid green;
+        }
+        .arrow-left-bottom-red:after{
+            content:'';
+            display:inline-block;
+            width:0;
+            height:0;
+            border:10px solid transparent;
+            border-bottom:10px solid red;
+            border-left:10px solid red;
+        }
+        .arrow-right-bottom-green:after{
+            content:'';
+            display:inline-block;
+            width:0;
+            height:0;
+            border:10px solid transparent;
+            border-right:10px solid green;
+            border-bottom:10px solid green;
+        }
+    </style>
+</head>
+<body>
+    <div class="arrow-all"></div>
+    <div class="mt50 arrow-up-blue"></div>
+    <div class="mt50 arrow-left-red"></div>
+    <div class="mt50 arrow-right-yellow"></div>
+    <div class="mt50 arrow-bottom-green"></div>
+    <div class="mt50 arrow-left-bottom-red"></div>
+    <div class="mt50 arrow-right-bottom-green"></div>
+
+</body>
+</html>
