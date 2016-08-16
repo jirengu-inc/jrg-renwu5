@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务15</title>
+	<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+		box-sizing:border-box;
+	}
+	ul,li{
+		list-style: none;
+	}
+
+	.ct{
+		width: 1000px;
+		margin: 0 auto;
+	}
+	#header{
+		border: 1px solid #ccc;
+	}
+	.nav>li{
+		float: left;
+		width: 48px;
+		height: 50px;
+		line-height: 50px;
+
+	}
+	.sub-nav-more{
+		display: none;
+		background-color: #fff;
+	}
+	.sub-nav-more>li{
+		border-bottom: 1px dashed #ccc;
+		height: 40px;
+		line-height: 40px;
+
+	}
+	.sub-nav-more>li:hover{
+		background-color: #eee;
+	}
+	.sub-nav-more>li:last-of-type{
+		border-bottom: 0px;
+	}
+	a{
+		text-decoration: none;
+		color: #666;
+	}
+	.nav-more:hover .sub-nav-more{
+		display: block;
+		border: 1px solid #eee;
+		width: 60px;
+		text-align: center;
+
+	}
+	ul.nav:after{
+		content: "";
+		display: block;
+		clear: both;
+
+	}
+	.introduction{
+		background-color: #b84d45;
+		padding: 30px 0px;
+		color: #fff;
+
+	}
+	.ct-introduction>h1{
+		margin-bottom: 10px;
+	}
+	.ct-breadcrumb{
+		background-color: #eee;
+		margin-top: 40px;
+		padding: 10px;
+	}
+	.ct-breadcrumb>a{
+		color: #b84d45;
+	}
+
+	ul.works>li{
+		float: left;
+		width: 300px;
+		margin-left: 50px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		border: 1px solid #ccc;
+	}
+	ul.works{
+		margin-left: -50px;
+		text-align: center;
+
+	}
+	ul.works:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	ul.works>li>h3{
+		margin: 15px 0px;
+	}
+	ul.works>li>p{
+		margin: 10px 0px;
+	}
+	ul.works>li>a:nth-of-type(2){
+		display: inline-block;
+		vertical-align: middle;
+		padding: 5px;
+		border: 1px solid #ccc;
+		border-radius: 2px;
+		margin-bottom: 10px;
+	}
+
+	.works-pic>img{
+		width: 298px;
+
+	}
+	.download{
+		background-color: #b84d45;
+		padding: 20px 0px;
+		color: #fff;
+	}
+	.ct-download{
+		text-align: center;
+	}
+	.ct-download>p{
+		margin: 10px 0px;
+	}
+	.ct-download>a{
+		display: inline-block;
+		vertical-align: middle;
+		border: 1px solid #ccc;
+		width: 40px;
+		height: 30px;
+		line-height: 30px;
+		border-radius: 3px;
+		color: #fff;
+
+	}
+	.ct-copyright{
+		text-align: center;
+		margin: 30px 0px;
+		padding-top: 30px;
+		border: 1px solid #eee;
+	}
+
+
+
+	
+
+
+	</style>
+	<link rel="stylesheet" href="./font-awesome/css/font-awesome.css">
+</head>
+<body>
+	<div id="header">
+		<div class="ct ct-nav">
+			<ul class="nav">
+				<li><a href="#"><i class="fa fa-rocket fa-2x" aria-hidden="true"></i></a></li>
+				<li><a href="#">博客</a></li>
+				<li><a href="#">项目</a></li>
+				<li><a href="#">简历</a></li>
+				<li class="nav-more"><a href="#"><span>更多<i class="fa fa-caret-down" aria-hidden="true"></i></span></a>
+				 <ul class="sub-nav-more">
+					<li><a href="#">GitHub</a></li>
+					<li><a href="#">知乎</a></li>
+					<li><a href="#">微博</a></li>
+				 </ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="content">
+	<div class="introduction">
+			<div class="ct ct-introduction">
+				<h1>我的简介</h1>
+				<p>这是我的简介</p>
+				<p>我的简介</p>
+			</div>
+	</div>
+	<div class="ct ct-breadcrumb"><a href="#">首页</a>/我的作品</div>
+	<div class="ct ct-works">
+		<ul class="works">
+			<li>
+				<a class="works-pic" href="#"><img src="./img/1.jpg" alt="works"></a>
+				<h3>作品标题</h3>
+				<p>作品介绍</p>
+				<a href="#">查看</a>
+			</li>
+			<li>
+				<a class="works-pic" href="#"><img src="./img/1.jpg" alt="works"></a>
+				<h3>作品标题</h3>
+				<p>作品介绍</p>
+				<a href="#">查看</a>
+			</li>
+			<li>
+				<a class="works-pic" href="#"><img src="./img/1.jpg" alt="works"></a>
+				<h3>作品标题</h3>
+				<p>作品介绍</p>
+				<a href="#">查看</a>
+			</li>
+			<li>
+				<a class="works-pic" href="#"><img src="./img/1.jpg" alt="works"></a>
+				<h3>作品标题</h3>
+				<p>作品介绍</p>
+				<a href="#">查看</a>
+			</li>
+			<li>
+				<a class="works-pic" href="#"><img src="./img/1.jpg" alt="works"></a>
+				<h3>作品标题</h3>
+				<p>作品介绍</p>
+				<a href="#">查看</a>
+			</li>
+			<li>
+				<a class="works-pic" href="#"><img src="./img/1.jpg" alt="works"></a>
+				<h3>作品标题</h3>
+				<p>作品介绍</p>
+				<a href="#">查看</a>
+			</li>
+		</ul>		
+	</div>
+
+    </div>
+	<div id="footer">
+		<div class="download">
+			<div class="ct ct-download">
+				<h1>想更详细了解我？</h1>
+				<p>下载我的简历吧</p>
+				<a href="#">下载</a>
+			</div>
+		</div>
+		<div class="ct">
+		<p class="ct ct-copyright">来自@该帐号已被查封</p>
+		</div>
+	</div>
+</body>
+</html>

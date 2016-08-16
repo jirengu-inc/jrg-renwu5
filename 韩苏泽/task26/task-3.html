@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task26</title>
+    <style>
+    ul,li{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .pannel{
+      padding-left: 10px;
+      text-align: center;
+    }
+    .pannel>li{
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-bottom: 10px;
+      padding: 5px;
+      text-align: left;
+    }
+    .pannel>li.hover{
+      color: white;
+      background-color: green;
+    }
+    a.btn{
+      display: inline-block;
+      border: 1px solid red;
+      border-radius: 3px;
+      width: 80px;
+      line-height: 40px;
+      height: 40px;
+      color: red;
+      text-decoration: none;
+    }
+    #add-more{
+      display: block;
+      margin: 10px auto;
+      text-align: center;
+    }
+    #add-more img{
+      height: 100%;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <ul class="pannel">
+        <li>内容1</li>
+        <li>内容2</li>
+        <li>内容3</li>
+      </ul>
+      <a href="" class="btn" id="add-more">加载更多</a>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+    $(function(){
+      $(".pannel").on("mouseenter","li",function(){
+        $(this).addClass("hover");
+      });
+      $(".pannel").on("mouseleave","li",function(){
+        $(this).removeClass("hover");
+      });
+    })
+
+    function appendHTML(el,data){
+      if(!el.append) return;
+      for(var key=0;key<data.length;key++){
+        el.append('<li>' + data[key] + '</li>');
+      }
+    }
+    $("#add-more").on("click",function(e){
+      e.preventDefault();
+      var $cur=$(this);
+      if($cur.data("isLoading")==true){
+        return;
+      }
+      $cur.data("isLoading",true).html('<img src="img/loading.gif" />');
+      $pannel=$cur.prev(".pannel");
+
+      $.ajax({
+        url:"1.php",
+        method:"get",
+        dataType:"json",
+        data:{
+          start:$pannel.find("li").length,
+          len:6
+        },
+        success:function(result){
+          if(result.status==1){
+            var data=result.data||[];
+            appendHTML($pannel,data);
+          }
+        },
+        error:function(jqXHR,textStatus){
+          console.log(textStatus);
+        },
+        complete:function(){
+          $cur.data("isLoading",false).html('加载更多');
+        },
+        cache:false
+      })
+    })
+    </script>
+  </body>
+</html>

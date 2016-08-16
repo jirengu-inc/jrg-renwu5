@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div></div>
+	<script>
+      var a=2,
+          b="jirengu",
+          c=false;
+      function isNumber (el) {
+      	return typeof el=="number";
+      }
+      function isString (el) {
+      	return typeof el=="string";
+      }
+
+      function isBoolean(el){
+        return typeof el =="boolean";
+      }   
+      function isFunction (el) {
+      	return typeof el=="function";
+      }
+      alert(isNumber(a));
+      alert(isString(a));        
+      alert(isString(b)); 
+      alert(isBoolean(c));      
+      alert(isFunction(a)); 
+      alert(isFunction(isNumber)); 
+
+	</script>
+</body>
+</html>

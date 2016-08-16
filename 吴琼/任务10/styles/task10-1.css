@@ -1,0 +1,55 @@
+html,body {
+	margin: 0;
+	padding: 0;
+}
+.content {
+	width: 900px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+li {
+	list-style: none;
+}
+#header {
+	height: 50px;
+	background: #323232;
+	margin-bottom: 10px;
+}
+.image {
+	float: left;
+}
+.nav{
+	float: right;
+}
+#header .nav li {
+	float: left;
+	color: #fff;
+	margin-right: 30px;
+	font-family: "黑体";
+	font-size: 18px;
+}
+/*内容区*/
+.aside {
+	width: 200px;
+	height: 538px;
+	background: #eee;
+	float: left;
+}
+.main {
+	float: right;
+	width: 690px;
+	background: #eee;
+	margin-left: 10px;
+}
+/*页脚*/
+#footer {
+	background: #333;
+	height: 45px;
+}
+#footer li{
+	float: left;
+	margin-left: 15px;
+	color: #fff;
+	font-family: "黑体",sans-serif;
+	font-size: 18px;
+}

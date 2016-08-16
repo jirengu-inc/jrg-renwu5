@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-1</title>
+  </head>
+    <style>
+      ul,li{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .ct{
+        position: relative;
+      }
+      .ct>.item{
+        position: absolute;
+        width:260px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 7px;
+        visibility:hidden;
+      }
+      .ct>.item img{
+        width: 100%;
+      }
+      .ct .news-intro{
+        color: #464442;
+      }
+      .ct .news-date,.ct .news-sour{
+        color: #464442;
+        text-align: right;
+      }
+      #load{
+        visibility: hidden;
+      }
+    </style>
+  <body>
+    <div class="wrap">
+      <ul class="ct">
+      </ul>
+      <div id="load">load</div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+    /*
+      瀑布流+懒加载+jsonp
+      waterfloor
+      lazyload
+      jsonp
+    */
+    /*===========================================================
+       waterfloor 瀑布流实现
+         外部调用方法：
+                 init ($ct)初始化 $ct代表父元素
+                 append($nodes) 添加元素
+         内部调用方法:
+                isload($nodes) 判断元素的img是否已经加载，加载后再计算位置
+                bind ()绑定监听屏幕大小改变
+                resize() 判断是否需要重绘如果需要 执行init+render
+                render($nodes)有参数代表添加新元素，无参数代表重绘
+                getMinHeight(arr)判断最小高度 返回最小高度所在列标和最小高度的{idx:idx,min:minHeight}
+        内部属性: isbind 区别事件是否绑定
+      ============================================================*/
+    var waterfloor={
+      isbind:false,
+      init:function($ct){
+        this.colHeight=[];
+        this.$ct=$ct;
+        var items=$ct.find('.item');
+        this.itemWidth=items.outerWidth(true),
+        this.itemHeight=items.outerHeight(true);
+        var ctWidth=$ct.width(),
+            size=Math.floor(ctWidth/this.itemWidth);
+        for(var i=0;i<size;i++){
+          this.colHeight.push(0);
+        }
+        return this;
+      },
+      append:function($nodes){
+        this.isload($nodes);
+        return this;
+      },
+      isload:function($nodes){
+        var num=0,
+            nodeSize=$nodes.size(),
+            me=this;
+        $nodes.find("img").on("load",function(){
+          num++;
+          if(nodeSize==num){
+            me.render($nodes);
+            if(!me.isbind){
+              me.bind();
+            }
+          }
+        });
+      },
+      bind:function(){
+        var me=this;
+        $(window).on("resize",function(){
+          me.resize();
+        });
+        this.isbind=true;
+        return this;
+      },
+      resize:function(){
+        var ctWidth=$ct.width(),
+            newSize=Math.floor(ctWidth/this.itemWidth);
+            //这里先尝试计算一下新的列数如果新的列数和原有一致则不需要改变
+        if(this.colHeight.length!==newSize){
+          this.init(this.$ct).render();
+        }
+        return this;
+      },
+      render:function($nodes){
+        var $nodes=$nodes||this.$ct.find(".item"),
+            me=this;
+        $nodes.each(function(){
+          var $cur=$(this),
+          ret=me.getMinHeight(me.colHeight),
+          idx=ret.idx,
+          min=ret.min;
+          $cur.css({
+            left:idx*me.itemWidth,
+            top:min,
+            visibility:'visible'
+          })
+          me.colHeight[idx]+=$cur.outerHeight(true);
+        });
+        this.$ct.height(Math.max.apply(null,this.colHeight));
+        return this;
+      },
+      getMinHeight:function(arr){
+        var minHeight=arr[0],
+            idx=0;
+        for(var i=0;i<arr.length;i++){
+          if(minHeight>arr[i]){
+            idx=i;
+            minHeight=arr[i];
+          }
+        }
+        return {idx:idx,min:minHeight};
+      }
+    }
+
+    // 插入节点
+    function appendNodes(data){
+      if(Object.prototype.toString.call(data).toLowerCase()==="[object array]"&&data.length>0){
+        var html="";
+        for(var i=0;i<data.length;i++){
+          var child=data[i];
+          html+='<li class="item"';
+          html+='<a href="'+child.url+'">';
+          html+='<img src="' + child.img_url + '" />';
+          html+='<div class="news-word">';
+          html+='<h3 class="news-short">' + child.short_name + '</h3>';
+          html+='<hr>';
+          html+='<p class="news-intro">' +  child.short_intro + '</p>';
+          html+='<p class="news-date">' + child.createtime + '</p>';
+          html+='<p class="news-sour">来源:' + child.source + '</p>'
+          html+='</div>';
+          html+= '</a>';
+          html+='</li>';
+        }
+        var $nodes=$(html);
+        $ct.append($nodes);
+        return $nodes;
+      }
+    }
+    //jsonp 成功执行函数
+    function onSuccess($ct,data){
+      var $nodes=appendNodes(data);
+      if(water){
+        water.append($nodes);
+      }else{
+        water=waterfloor.init($ct).append($nodes);
+      }
+    }
+    //jsonp
+    function loadData($ct,handler){
+      var curPage=1,
+          num=20;
+          return function(){
+            var context=this;
+            $.ajax({
+              url: "http://platform.sina.com.cn/slide/album_tech",
+              method:"get",
+              dataType:"jsonp",
+              jsonp:"jsoncallback",
+              data:{
+               app_key:1271687855,
+               page:1,
+               num:20
+              },
+              cache:false
+              }).done(function(ret){
+                if(ret&&ret.status&&ret.status.code==="0"){
+                  var data=ret.data||[];
+                  handler&&handler.call(context,$ct,data);
+                }else {
+                  console.error("error:"+ret);
+                }
+            });
+            curPage++;
+        }
+    }
+    //判断标志dom是否可见
+    function isShow($el){
+      var winH=$(window).height(),
+          scrollH=$(window).scrollTop(),
+          offsetTop=$el.offset().top;
+          if(offsetTop<winH+scrollH){
+            return true;
+          }
+          return false;
+    }
+    //懒加载 监听scroll函数
+    function lazyload(){
+      if(isShow($load)){
+        fnLoadData();
+      }
+    }
+    //定时器延时
+    function troggleClock (method,delay){
+      var timer=null,
+          method=method||function(){},
+          delay=delay||0;
+      return function(){
+        var context=this,
+            args=arguments;
+        if(timer){
+          clearTimeout(timer);
+        }
+        timer=setTimeout(function(){
+          method.apply(context,args);
+        },delay);
+      }
+    }
+    var $load=$("#load"),  //加载标志dom
+        $ct=$(".ct"),      //父容器
+        water,            //waterfloor
+        fnLoadData=loadData($ct,onSuccess);
+    fnLoadData();
+    $(window).on("scroll",troggleClock(lazyload,500))
+    </script>
+  </body>
+</html>

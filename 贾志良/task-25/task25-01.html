@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task2501列表选项</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<style>
+		ul,li{
+			margin: 0;
+			padding:0;
+		}
+		div#wraper>ul{
+			margin:0;
+			padding:0;
+		}	
+		div#wraper>ul.outer>li{
+			list-style-type: none;
+			width:200px;
+			box-sizing: border-box;
+			line-height: 35px;
+			border-bottom: 1px solid #81c2d6;
+			padding:0 15px;
+			background-color: #3AB2A6;
+			position: relative;
+		}
+		ul.outer>li>a{
+			text-decoration: none;
+			color:#fff;
+			font-size: 15px;
+			display: inline-block;
+			width:160px;
+		}
+		span{
+			float:right;
+			font-size: 15px;
+			color:#fff;
+		}
+		ul.inner{
+			position: absolute;
+			top:0;
+			left:100%;
+			width:320px;
+			border:1px solid #ccc;
+			display:none;
+		}
+		ul.inner>li{
+			list-style-type: none;
+			float:left;
+			width:160px;
+			line-height: 35px;
+			text-align: left;
+			padding:0 20px;
+			box-sizing: border-box;
+		}
+		ul.inner>li>a{
+			text-decoration: none;
+			color:#000;
+			font-size: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wraper">
+		<ul class="outer">
+			<li class="outLi">
+				<a href="#" class="enter">苹果</a>
+				<span>></span>
+				<ul class="inner">
+					<li><a href="#">iPhone 4</a></li>
+					<li><a href="#">iPhone 4s</a></li>
+					<li><a href="#">iPhone 5</a></li>
+					<li><a href="#">iPhone 5s</a></li>
+					<li><a href="#">iPhone 6</a></li>
+					<li><a href="#">iPhone 6 Plus</a></li>
+					<li><a href="#">iPhone 6s</a></li>
+					<li><a href="#">iPhone 6s Plus</a></li>
+				</ul>
+			</li>
+			<li class="outLi">
+				<a href="#" class="enter">三星</a>
+				<span>></span>
+				<ul class="inner">
+					<li><a href="#">Galaxy S2</a></li>
+					<li><a href="#">Galaxy S3</a></li>
+					<li><a href="#">Galaxy S4</a></li>
+					<li><a href="#">Galaxy S5</a></li>
+					<li><a href="#">Galaxy S6</a></li>
+					<li><a href="#">Galaxy S6 Edge</a></li>
+					<li><a href="#">Galaxy S7</a></li>
+					<li><a href="#">Galaxy S7 Edge</a></li>
+				</ul>
+			</li>
+			<li class="outLi">
+				<a href="#" class="enter">小米</a>
+				<span>></span>
+				<ul class="inner">
+					<li><a href="#">Xiaomi 2</a></li>
+					<li><a href="#">Xiaomi 2s</a></li>
+					<li><a href="#">Xiaomi 3</a></li>
+					<li><a href="#">Xiaomi 4</a></li>
+					<li><a href="#">Xiaomi 5</a></li>
+					<li><a href="#">Xiaomi Note</a></li>
+				</ul>
+			</li>
+			<li class="outLi">
+				<a href="#" class="enter">华为</a>
+				<span>></span>
+				<ul class="inner">
+					<li><a href="#">Huawei P6</a></li>
+					<li><a href="#">Huawei P7</a></li>
+					<li><a href="#">Huawei P8</a></li>
+					<li><a href="#">Huawei P8 Max</a></li>
+					<li><a href="#">Huawei P9</a></li>
+					<li><a href="#">Huawei Mate7</a></li>
+					<li><a href="#">Huawei Mate 8</a></li>
+					<li><a href="#">Huawei Mate S</a></li>
+				</ul>
+			</li>
+			<li class="outLi">
+				<a href="#" class="enter">OPPO</a>
+				<span>></span>
+				<ul class="inner">
+					<li><a href="#">Find 5</a></li>
+					<li><a href="#">Find 7</a></li>
+					<li><a href="#">Find 9</a></li>
+					<li><a href="#">R7</a></li>
+					<li><a href="#">R7 Plus</a></li>
+					<li><a href="#">R9</a></li>
+					<li><a href="#">R9 Plus</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<script>
+		$(function(){
+			$(".outLi").on("mouseenter",function(){
+				$(this).find(".inner").css("display","block");
+			})
+			$(".outLi").on("mouseleave",function(){
+				$(this).find(".inner").css("display","none");
+			})
+		})
+	</script>
+</body>
+</html>

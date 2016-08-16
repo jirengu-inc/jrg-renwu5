@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>25-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+    ul,li,p {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+        color: #ccc;
+    }
+    .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .nav {
+        width: 224px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .nav li {
+        float: left;
+        padding: 8px;
+    }
+    .container {
+        width: 700px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+    }
+    .menu {
+        margin-right: -60px;
+        margin-bottom: -20px;
+        text-align: center;
+    }
+    .item {
+        width: 200px;
+        margin-right: 50px;
+        margin-bottom: 20px;
+        float: left;
+        border: 1px solid #ccc;
+        position: relative;
+    }
+    .item>p>span {
+        color: red;
+    }
+    .cover {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #000;
+        opacity:  0.3;
+    }
+    .mod a {
+        padding: 8px;
+        position: absolute;
+        top: 60px;
+        left: 60px;
+        color: red;
+        border: 1px solid red;
+        background-color: #fff;
+
+    }
+    .mod,.container {
+        display: none;
+    }
+    .active {
+        display: block;
+    }
+    .click {
+        background-color: #ccc;
+    }
+    .nav li.click a {
+        color: red;
+    }
+</style>
+</head>
+<body>
+    <div class="fied">
+    <ul class="nav clearfix">
+        <li class="click"><a href="">热门 |</a></li>
+        <li><a href="">珠宝首饰 |</a></li>
+        <li><a href="">奢侈品</a></li>
+    </ul>
+    <div class="container active">
+        <ul class="menu clearfix">
+            <li class="item">
+                <img src="2016041815583464369_360_360.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="2016041815583464369_360_360.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="2016041815583464369_360_360.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="2016041815583464369_360_360.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="2016041815583464369_360_360.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="2016041815583464369_360_360.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <ul class="menu clearfix">
+            <li class="item">
+                <img src="32269.png" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <ul class="menu clearfix">
+            <li class="item">
+                <img src="dasdasda.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="dasdasda.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="dasdasda.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="dasdasda.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="dasdasda.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="dasdasda.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    </div>
+    <br>
+    <div class="fied">
+    <ul>
+        <ul class="nav clearfix">
+        <li class="click"><a href="">热门 |</a></li>
+        <li><a href="">珠宝首饰 |</a></li>
+        <li><a href="">奢侈品</a></li>
+    </ul>
+    <div class="container active">
+        <ul class="menu clearfix">
+            <li class="item">
+                <img src="2016041815583464369_360_360.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="2016041815583464369_360_360.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="2016041815583464369_360_360.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="2016041815583464369_360_360.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="2016041815583464369_360_360.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="2016041815583464369_360_360.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <ul class="menu clearfix">
+            <li class="item">
+                <img src="32269.png" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="32269.png" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <ul class="menu clearfix">
+            <li class="item">
+                <img src="dasdasda.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="dasdasda.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="dasdasda.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="dasdasda.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="dasdasda.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+            <li class="item">
+                <img src="dasdasda.jpg" alt="展示图" width="150px" height="150px">
+                <p>blablablablabla</p>
+                <p><span>$123456</span></p>
+                <div class="mod">
+                    <div class="cover"></div>
+                    <a href="">立即抢购</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    </div>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    var $nav = $('.nav li'),
+        $item = $('.item');
+
+    $nav.on('click',function(e){
+        var cur = $(this),
+            index = $(this).index();
+
+        e.preventDefault();         //阻止默认事件
+        cur.siblings().removeClass('click');
+        cur.addClass('click');
+
+        cur.parents('.fied').find('.container').removeClass('active');
+        cur.parents('.fied').find('.container').eq(index).addClass('active');
+    });
+
+    $item.on('mouseenter', function() {
+        $(this).find('.mod').addClass('active');
+    });
+    $item.on('mouseleave', function() {
+        $(this).find('.mod').removeClass('active');
+    });
+    </script>
+</body>
+</html>

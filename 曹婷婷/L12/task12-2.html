@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+	<title>使用圣杯布局实现三栏布局</title>
+	<style>
+		html,body,div{
+			margin: 0px;
+			padding: 0px;
+		}
+		.header,.footer{
+			height: 40px;
+			background: rgb(204,204,204);
+		}
+		.wrapper{
+			padding: 0 200px;
+		}
+		.wrapper:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.wrapper>.main{
+			width: 100%;
+			height: 100px;
+			background: green;
+			float: left;
+		}
+		.wrapper>.aside{
+			width: 200px;
+			height: 150px;
+			background: red;
+			float: left;
+			margin-left: -100%;    /*默认盒模型，这里的100%是父容器内容的100%。所以设置内外边距要加到包裹容器的上面*/
+			position: relative;
+			left: -200px;
+		}
+		.wrapper>.extra{
+			width: 200px;
+			height: 150px;
+			background: yellow;
+			float: left;
+			margin-left: -200px;
+			position: relative;
+			left: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">header</div>
+	<div class="wrapper">
+		<div class="main">main</div>
+		<div class="aside">aside</div>
+		<div class="extra">extra</div>
+	</div>
+	<div class="footer">footer</div>
+</body>
+</html>

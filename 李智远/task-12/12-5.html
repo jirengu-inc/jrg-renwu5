@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    #header,#footer{
+      height:40px;
+      background: #ccc;
+    }
+    #content{
+      /*padding:0 200px;*/
+    }
+    #content:after{
+      content:'';
+      display: block;
+      clear: both;
+    }
+    .main{
+      width:100%;
+      height:100px;
+      float:left;
+    }/*不设置背景，类似于一个空壳*/
+    .wrap{
+      height:100px;
+      background: green;
+      margin-left: 200px;
+    }
+    .aside{
+      width:200px;
+      height:150px;
+      background: red;
+      float:left;
+      margin-left:-100%;
+    }
+    .extra{
+      width:200px;
+      height:150px;
+      background: yellow;
+      float:left;
+      margin-left:-200px;
+    }
+  </style>
+</head>
+<body>
+    <div id="header">
+      头部
+    </div>
+    <div id="content">
+        <div class="main">
+          <div class="wrap">主要内容</div>
+        </div>
+        <div class="aside"></div>
+
+    </div>
+    <div id="footer"></div>
+</body>
+</html>

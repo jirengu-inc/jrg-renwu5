@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task11-1</title>
+    <style>
+      html,body,ul,li{
+        margin: 0px;
+        padding: 0px;
+        font-family:"微软雅黑"
+      }
+      .wrap{
+       background:#ccc;
+       width:500px;
+     }
+      .wrap:after{
+        content:"";
+        display:block;
+        clear:both;
+      }
+      .wrap>li{
+        float: left;
+        list-style:none;
+        padding: 0px 10px;
+        font-size: 14px;
+        line-height:35px;
+        position:relative;
+      }
+      .wrap a{
+       text-decoration:none;
+       color:#000;
+      }
+      .pull-down{
+        position:absolute;
+        left:0px;
+        top:100%;
+        display:none;
+        list-style:none;
+        border:1px solid #ccc;
+      }
+      .wrap>li:hover .pull-down{
+        display:block;
+      }
+      .wrap>li:hover{
+        background: #aaa;
+      }
+      .pull-down>li{
+        padding:5px;
+      }
+      .pull-down>li:hover{
+        background: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nav">
+      <ul class="wrap">
+        <li>
+          <a href="#">前端</a>
+          <ul class="pull-down">
+            <li>javascript</li>
+            <li>css</li>
+            <li>html</li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">服务端</a>
+          <ul class="pull-down">
+            <li><a href="">node</a></li>
+            <li><a href="">php</a></li>
+            <li><a href="">java</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">前端工具</a>
+          <ul class="pull-down">
+            <li>sublime</li>
+            <li>webstrom</li>
+            <li>git</li>
+          </ul>
+        </li>
+        <li><a href="#">HTML</a></li>
+        <li><a href="#">NODE</a></li>
+      </ul>
+    </div>
+  </body>
+</html>

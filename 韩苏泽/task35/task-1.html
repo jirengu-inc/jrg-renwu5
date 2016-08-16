@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-1</title>
+    <style>
+      ul,li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .carousel a{
+        text-decoration: none;
+      }
+      .carousel {
+        position: relative;
+        height: 206px;
+        width: 310px;
+        overflow: hidden;
+      }
+      .carousel .img-ct{
+        position: absolute;
+        left:0;
+        top:0;
+        width: 1500px;
+      }
+      .clear:after{
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+      }
+      .carousel .img-ct li{
+        float: left;
+      }
+      .carousel .arrow{
+        position: absolute;
+        top:50%;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        transform:translateY(-50%);
+        border-radius: 50%;
+        color: white;
+        background-color: #5a5757;
+        box-shadow: 0 0 2px #999;
+        opacity: 0.8;
+      }
+      .carousel a.prev{
+        left:10px;
+      }
+      .carousel a.next{
+        right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="carousel">
+      <ul class="img-ct .clear">
+        <li><a href=""><img src="img/1.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/2.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/3.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/4.jpg" alt=""></a></li>
+      </ul>
+      <a class="arrow prev" href="">&lt</a>
+      <a class="arrow next" href="">&gt</a>
+    </div>
+    <div class="carousel">
+      <ul class="img-ct .clear">
+        <li><a href=""><img src="img/1.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/2.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/3.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/4.jpg" alt=""></a></li>
+      </ul>
+      <a class="arrow prev" href="">&lt</a>
+      <a class="arrow next" href="">&gt</a>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+      $(function(){
+        function Carousel($node){
+          this.$node=$node;
+          this.$ct=$node.find(".img-ct");
+          this.$pre=$node.find(".prev");
+          this.$next=$node.find(".next");
+          this.imgCount=this.$ct.children().size();
+          this.imgWidth=this.$ct.children().outerWidth(true);
+          this.init();
+        }
+        Carousel.prototype={
+          constructor:Carousel,
+          bind:function(){
+            var cur=this;
+            this.$pre.on("click",function(e){
+              e.preventDefault();
+              cur.playPre();
+            });
+            this.$next.on("click",function(e){
+              e.preventDefault();
+              cur.playNext();
+            })
+
+          },
+          //先拿再滚
+          playPre:function(){
+            var $ct=this.$ct;
+            if($ct.data("playing")) return;
+            $ct.data("playing",true);
+            $ct.prepend($ct.children().last());
+            $ct.css("left",0-this.imgWidth);
+            $ct.animate({
+              left:0
+            },"fast",function(){
+              $ct.data("playing",false);
+            });
+          },
+          //先滚后拿
+          playNext:function(){
+            var $ct=this.$ct;
+            if($ct.data("playing")) return;
+            $ct.data("playing",true);
+            $ct.animate({
+              left:0-this.imgWidth
+            },"fast",function(){
+              $ct.append($ct.children().first());
+              $ct.css("left",0);
+              $ct.data("playing",false);
+            });
+          },
+          init:function(){
+            this.$ct.css("width",this.imgCount*this.imgWidth);
+            this.bind();
+          }
+        };
+        $(".carousel").each(function(){
+          new Carousel($(this));
+        })
+      });
+    </script>
+  </body>
+</html>

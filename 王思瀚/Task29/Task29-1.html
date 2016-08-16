@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ENVY</title>
+     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+     <style>
+         html,body,p,div{
+             margin: 0;
+             padding: 0;
+         }
+         p{
+             height: 40px;
+             margin: 20px;
+         }
+         .top{
+             position: fixed;
+             right: 10px;
+             bottom: 10px;
+             cursor: pointer;
+             border: 1px solid #333;
+             border-radius: 4px;
+             padding: 7px 10px;
+/*             display: none;*/
+         }
+    </style>
+</head>
+<body>
+    <p>内容1</p>
+    <p>内容12</p>
+    <p>内容13</p>
+    <p>内容14</p>
+    <p>内容15</p>
+    <p>内容16</p>
+    <p>内容17</p>
+    <p>内容81</p>
+    <p>内容19</p>
+    <p>内容12</p>
+    <p>内容15</p>
+    <p>内容16</p>
+    <p>内容17</p>
+    <p>内容81</p>
+    <p>内容19</p>
+    <p>内容12</p>
+    <p>内容11</p>
+    <p>内容15</p>
+    <p>内容16</p>
+    <p>内容17</p>
+    <p>内容81</p>
+    <p>内容19</p>
+    <p>内容12</p>
+    <p>内容11</p>
+    <p>内容11</p>
+    <p>内容15</p>
+    <p>内容16</p>
+    <p>内容17</p>
+    <p>内容81</p>
+    <p>内容19</p>
+    <p>内容12</p>
+    <p>内容11</p>
+    <p>内容11</p>
+    <script>
+
+                var $top = $('<div class="top">TOP</div>');
+                $('body').append($top);
+
+                $(window).on('scroll',function(){
+                    var scrolltop = $('body').scrollTop();
+                //    console.log(scrolltop)
+                    if(scrolltop >500){
+                        $top.show();
+                    }else{
+                        $top.hide();
+                    }
+
+                 })
+
+               $top.on('click',function(){
+                   $(window).scrollTop(0);
+               })
+
+//
+//       var GoTop = {
+//           init:function(){
+//              if($('.top').length>0){
+//                  return;
+//              }
+//                var $top = $('<div class="top">TOP</div>');
+//                $('body').append($top);
+//
+//               this.$top = $top;
+//               this.bind();
+//           },
+//           bind:function(){
+//               var me = this;
+//               $(window).on('scroll',function(){
+//                    var scrolltop = $('body').scrollTop();
+//                    console.log(scrolltop)
+//                    if(scrolltop >500){
+//                        me.$top.show();
+//                    }else{
+//                        me.$top.hide();
+//                    }
+//
+//                 })
+//
+//               me.$top.on('click',function(){
+//                   $(window).scrollTop(0);
+//               })
+//           }
+//       }
+
+
+//       var GoTop = (function(){
+//            var $top = $('<div class="top">TOP</div>');
+//                $('body').append($top);
+//
+//           function init(){
+//                $(window).on('scroll',function(){
+//                    var scrolltop = $('body').scrollTop();
+//                    console.log(scrolltop)
+//                    if(scrolltop >500){
+//                        $top.show();
+//                    }else{
+//                        $top.hide();
+//                    }
+//
+//                 })
+//
+//               $top.on('click',function(){
+//                   $(window).scrollTop(0);
+//               })
+//           }
+//           return{
+//               init:init
+//           }
+//       })()
+//       GoTop.init();
+
+    </script>
+</body>
+</html>

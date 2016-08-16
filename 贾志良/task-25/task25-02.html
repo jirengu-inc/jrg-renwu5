@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task2502tabs</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<style>
+	body{
+		font-size: 14px;
+		font-family: "微软雅黑";
+		margin:0 auto;
+		width:800px;
+	}
+		div,ul,li{
+			margin:0;
+			padding:0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		div.content{
+			position: relative;
+		}
+		ul.outer>li{
+			display: inline-block;
+			padding:10px 0;
+			border-top:1px solid #ccc;
+			border-bottom: none;
+			border-right: none;
+			float: left;
+		}
+		ul.outer>li:nth-child(1){
+			border-left: 1px solid #ccc;
+		}
+		ul.outer>li:nth-child(3){
+			border-right: 1px solid #ccc;
+		}
+		ul.outer>li>a{
+			color:#000;
+			padding:0 10px;
+			border-right:1px solid #ccc;
+			display: inline-block
+		}
+		ul.outer>li:nth-child(3)>a{
+			border:none;
+		}
+		li.click{
+			background-color: #aaa;
+		}
+
+		ul.outer>li.click>a{
+			color:#fff;
+		}
+		.visible>li{
+			width:200px;
+			padding:20px;
+			height:250px;
+			float:left;
+		}
+		.visible:after,ul.outer:after{
+			content:"";
+			display: block;
+			clear:both;
+		}
+		.inner{
+			display: none;
+		}
+		.inner span{
+			display: block;
+			margin:10px 0;
+		}
+		.inner .price{
+			color:red;
+		}
+		li.mouse{
+			position: relative;
+		}
+		div.hover{
+			width:240px;
+			height:290px;
+			background-color: rgba(255,255,255,0.5);
+			position: absolute;
+			top:0;
+			left:0;
+			display: table;
+			text-align: center;
+		}
+		div.hover>span{	
+			display: table-cell;
+			vertical-align: middle;
+			color:#fff;
+		}
+		div.hover>span>a{
+			display: inline-block;
+			width:70px;
+			line-height:30px;
+			border-radius: 3px;
+			background-color: #000;
+			color:#fff;
+		}
+		.visible{
+			border:1px solid #ccc;
+			padding:10px;
+			position: absolute;
+			top:0;
+			display: block;
+		}
+		div.content{
+			width:750px;
+			height:610px;
+		}
+	</style>
+</head>
+<body>
+	<div class="tabs">
+		<ul class="outer">
+			<li class="click">
+				<a href="#">非主流</a>
+			</li>
+			<li >
+				<a href="#">搞笑</a>
+			</li>
+			<li >
+				<a href="#">风景</a>
+			</li>
+		</ul>
+		<div class="content">
+			<ul class="inner visible">
+					<li class="mouse">
+						<img src="img/1.jpg" alt="非主流">
+						<span>微微一笑很倾城</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/2.jpg" alt="非主流">
+						<span>没有啥名字</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/3.jpg" alt="非主流">
+						<span>萌妹纸</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/4.jpg" alt="非主流">
+						<span>气球</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/5.jpg" alt="非主流">
+						<span>香气诱人</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/6.jpg" alt="非主流">
+						<span>微笑是最好的调味料</span>
+						<span class="price">￥699.00</span>
+					</li>
+				</ul>
+				
+				<ul class="inner">
+					<li class="mouse">
+						<img src="img/7.jpg" alt="非主流">
+						<span>微微一笑很倾城</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/8.jpg" alt="非主流">
+						<span>没有啥名字</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/9.jpg" alt="非主流">
+						<span>萌妹纸</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/10.jpg" alt="非主流">
+						<span>气球</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/11.jpg" alt="非主流">
+						<span>香气诱人</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/12.jpg" alt="非主流">
+						<span>微笑是最好的调味料</span>
+						<span class="price">￥699.00</span>
+					</li>
+				</ul>
+				
+				<ul class="inner">
+					<li class="mouse">
+						<img src="img/13.jpg" alt="非主流">
+						<span>微微一笑很倾城</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/14.jpg" alt="非主流">
+						<span>没有啥名字</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/15.jpg" alt="非主流">
+						<span>萌妹纸</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/16.jpg" alt="非主流">
+						<span>气球</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/17.jpg" alt="非主流">
+						<span>香气诱人</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/18.jpg" alt="非主流">
+						<span>微笑是最好的调味料</span>
+						<span class="price">￥699.00</span>
+					</li>
+				</ul>
+		</div>
+	</div>
+	<div class="tabs">
+		<ul class="outer">
+			<li class="click">
+				<a href="#">非主流</a>
+			</li>
+			<li >
+				<a href="#">搞笑</a>
+			</li>
+			<li >
+				<a href="#">风景</a>
+			</li>
+		</ul>
+		<div class="content">
+			<ul class="inner visible">
+					<li class="mouse">
+						<img src="img/1.jpg" alt="非主流">
+						<span>微微一笑很倾城</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/2.jpg" alt="非主流">
+						<span>没有啥名字</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/3.jpg" alt="非主流">
+						<span>萌妹纸</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/4.jpg" alt="非主流">
+						<span>气球</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/5.jpg" alt="非主流">
+						<span>香气诱人</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/6.jpg" alt="非主流">
+						<span>微笑是最好的调味料</span>
+						<span class="price">￥699.00</span>
+					</li>
+				</ul>
+				
+				<ul class="inner">
+					<li class="mouse">
+						<img src="img/7.jpg" alt="非主流">
+						<span>微微一笑很倾城</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/8.jpg" alt="非主流">
+						<span>没有啥名字</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/9.jpg" alt="非主流">
+						<span>萌妹纸</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/10.jpg" alt="非主流">
+						<span>气球</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/11.jpg" alt="非主流">
+						<span>香气诱人</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/12.jpg" alt="非主流">
+						<span>微笑是最好的调味料</span>
+						<span class="price">￥699.00</span>
+					</li>
+				</ul>
+				
+				<ul class="inner">
+					<li class="mouse">
+						<img src="img/13.jpg" alt="非主流">
+						<span>微微一笑很倾城</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/14.jpg" alt="非主流">
+						<span>没有啥名字</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/15.jpg" alt="非主流">
+						<span>萌妹纸</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/16.jpg" alt="非主流">
+						<span>气球</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/17.jpg" alt="非主流">
+						<span>香气诱人</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/18.jpg" alt="非主流">
+						<span>微笑是最好的调味料</span>
+						<span class="price">￥699.00</span>
+					</li>
+				</ul>
+		</div>
+	</div>
+	 <p>之前点“风景”的时候页面跳到了顶部，可能是什么原因？如何解决</p>
+	由于为风景等设置了锚链接，而且设置了值为"#"，因此点击的时候会返回到页面顶部，这个时候利用preventDefaul()取消这个默认操作就可以了。
+
+	<script>
+		$(function(){
+			$(".mouse").on("mouseenter",function(){
+				$(this).prepend('<div class="hover"><span><a href="#">立即使用</a></span></div>');
+			})
+			$(".mouse").on("mouseleave",function(){
+				$(this).find("div.hover").remove();
+			})
+			$("ul.outer li").on("click",function(e){
+			    var idx=$(this).index();
+				$(this).siblings("li").removeClass("click");
+				$(this).addClass("click");
+				e.preventDefault();
+				$(this).parents("div.tabs").find("ul.inner").removeClass("visible");
+				$(this).parents("div.tabs").find("ul.inner").eq(idx).addClass("visible");
+			})
+		})
+	</script>
+</body>
+</html>

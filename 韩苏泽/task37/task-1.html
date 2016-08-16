@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-1</title>
+    <style>
+      html{
+        height: 100%;
+      }
+      body{
+        position: relative;
+        height: 100%;
+      }
+      h3{
+        margin: 0;
+        padding: 0;
+      }
+      .button-wrap button{
+        font-size: 1em;
+      }
+      .dialog-box{
+        position: absolute;
+        left:50%;
+        top:30%;
+        width: 400px;
+        transform: translateX(-50%);
+        background-color: #eee;
+        box-shadow: 0 0 2px #aaa;
+        border-radius: 0 0 3px 3px;
+        padding-bottom: 10px;
+      }
+      .dialog-header{
+        position: relative;
+        padding: 10px 20px;
+        color: white;
+        background-color: grey;
+      }
+      .dialog-header .btn-close{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+      }
+      .dialog-content{
+        padding: 20px;
+      }
+      .dialog-footer{
+        text-align: center;
+      }
+      a.btn{
+        display: inline-block;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 3px;
+        padding: 5px 15px;
+        background-color: #FF5722;
+        color: white;
+        text-decoration: none;
+      }
+      .dialog-box.troggle{
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="button-wrap">
+      <button id="open1">打开1</button>
+      <button id="open2">打开2</button>
+      <button id="open3">打开3</button>
+      <button id="open4">打开4</button>
+      <button id="open5">打开5</button>
+      <p>鼠标在 dialog 上左键按下可拖动 dialog</p>
+      <p>可创建多个 dialog</p>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+    //功能描述：
+    // 1. 可使用 dialog.open() 去打开弹窗
+    // 2. 当点击确定、取消时可使用用户自定义事件
+    // 3. dialog 可拖动
+    // 4. 允许页面展示多个 dialog
+
+
+    function Dialog(){
+        this.creatDialog();
+        this.bindEvent();
+    }
+    Dialog.prototype={
+      constructor:Dialog,
+      defaultOpts:{
+        title:'',
+        message:'',
+        isShowCloseBtn: true,
+        isShowConfirmBtn:false,
+        onClose:function(){},
+        onConfirm:function(){}
+      },
+      creatDialog:function(){
+        var html='';
+        html+='<div class="dialog-box">';
+        html+='<div class="dialog-header">';
+        html+='<h3 class="dialog-title"></h3>';
+        html+='<span class="btn-close">X</span>';
+        html+='</div>';
+        html+='<div class="dialog-content"></div>';
+        html+='<div class="dialog-footer">';
+        html+='<a href="" class="btn btn-confirm">确定</a>';
+        html+='<a href="" class="btn btn-close">取消</a>';
+        html+='</div>';
+        html+='</div>';
+        this.$dialog=$(html).hide();
+        $("body").append(this.$dialog);
+      },
+      bindEvent:function(){
+        var _this=this;
+        _this.$dialog.find(".btn-confirm").on("click",function(e){
+          e.preventDefault();
+          _this.opts.onConfirm.call(_this);
+          _this.$dialog.hide();
+        })
+        _this.$dialog.find(".btn-close").on("click",function(e){
+          e.preventDefault();
+          _this.opts.onClose.call(_this);
+          _this.$dialog.hide();
+        })
+        _this.$dialog.on("mousedown",function(e){
+          var $dialog=$(this),
+              evtX=e.pageX-$dialog.offset().left;
+              evtY=e.pageY-$dialog.offset().top;
+          $dialog.addClass("troggle").data("evtPos",
+          {
+            evtX:evtX,
+            evtY:evtY
+          });
+        });
+        $("body").on("mousemove",function(e){
+            if($(".troggle").length){
+              var $troggle=$(".troggle"),
+                  offsetLeft=e.pageX-$troggle.data("evtPos").evtX,
+                  offsetTop=e.pageY-$troggle.data("evtPos").evtY;
+                  console.log("=",e.pageX,e.pageY)
+                  console.log("==",$troggle.data("evtPos").evtX,$troggle.data("evtPos").evtY)
+                  console.log("===",$troggle.offset().left,$troggle.offset().top);
+                  console.log(offsetLeft,offsetTop);
+              $troggle.offset({
+                left:offsetLeft,
+                top:offsetTop
+              });
+            }
+        });
+        $("body").on("mouseup",function(){
+          if($(".troggle").length){
+            var $troggle=$(".troggle");
+            $troggle.removeClass("troggle").removeData("evtPos");
+          }
+        });
+      },
+      open:function(opts){
+        this.setOpts(opts);
+        this.setDialog();
+        this.$dialog.show();
+      },
+      setOpts:function(opts){
+        if(typeof opts==="string"){
+          this.opts=$.extend({},this.defaultOpts,{message:opts});
+        }else if(typeof opts==="object"){
+          this.opts=$.extend({},this.defaultOpts,opts);
+        }
+      },
+      setDialog:function(){
+        var opts=this.opts;
+            $dialog=this.$dialog;
+        if(!opts.title){
+          $dialog.find(".dialog-header").hide();
+        }else{
+          $dialog.find(".dialog-header .dialog-title").text(opts.title).show();
+        }
+        if(!opts.message){
+          $dialog.find(".dialog-content").hide();
+        }else{
+          $dialog.find(".dialog-content").html(opts.message).show();
+        }
+        if(!opts.isShowCloseBtn){
+            $dialog.find(".dialog-footer .btn-close").hide();
+        }else{
+          $dialog.find(".dialog-footer .btn-close").show();
+        }
+        if(!opts.isShowConfirmBtn){
+          $dialog.find(".dialog-footer .btn-confirm").hide();
+        }else{
+            $dialog.find(".dialog-footer .btn-confirm").show();
+        }
+      }
+    }
+    var dialog1,dialog2,dialog3,dialog4,dialog5;
+    $('#open1').on('click',function(){
+      dialog1 = dialog1||new Dialog();
+      dialog1.open({
+        message: "hello,这里是饥人谷",
+        isShowCloseBtn: true,
+      });
+    });
+    $('#open2').on('click',function(){
+      dialog2 = dialog2||new Dialog();
+      dialog2.open({
+        message: '<a href="www.jirengu.com">饥人谷</a>',
+        isShowCloseBtn: true
+      });
+    });
+    $('#open3').on('click',function(){
+      dialog3 = dialog3||new Dialog();
+      dialog3.open({
+        title: '欢迎来到饥人谷',
+        message: 'hello',
+        isShowCloseBtn: true,
+        isShowConfirmBtn: true,
+        onClose: function(){
+          alert('close');
+        },
+        onConfirm: function(){
+          alert('确定');
+        }
+      });
+    });
+    var tpl = '<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>';
+    $('#open4').on('click',function(){
+      dialog4 = dialog4||new Dialog();
+      dialog4.open({
+        title: '欢迎来到饥人谷',
+        message: tpl,
+        isShowCloseBtn: true,
+        isShowConfirmBtn: true,
+        onClose: function(){
+          alert('close');
+        },
+        onConfirm: function(){
+          alert('确定');
+        }
+      });
+    });
+    $('#open5').on('click',function(){
+      dialog5 = dialog5||new Dialog();
+      dialog5.open({
+        title: '欢迎来到饥人谷',
+        message: 'hello',
+        isShowCloseBtn: false,
+        isShowConfirmBtn: false,
+      });
+    });
+    </script>
+  </body>
+</html>

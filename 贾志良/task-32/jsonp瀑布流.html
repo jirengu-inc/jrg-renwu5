@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp瀑布流</title>
+	<style>
+		div,ul,ul,h4,p,li{
+			padding:0;
+			margin:0;
+			font-family: "微软雅黑";
+		}
+		li{
+			list-style-type: none;
+			
+		}
+		body{
+			background: #eee;
+		}
+		div.wraper{
+			position: relative;
+			width:89%;
+			margin:0 auto;
+		}
+	
+		ul.waterFall:after{
+			content:"";
+			display: block;
+			clear:both;
+		}
+		li.item{
+			float:left;
+			width:195px;
+			border:1px solid #ccc;
+			box-shadow: 1px 1px 10px #555;
+			background: #fff;
+			position: absolute;
+			border-radius: 1px;
+			margin:10px;
+			padding:10px;
+			transition: all .8s;
+		}
+		li.hide{
+			margin:0 10px;
+			padding:0 10px;
+			border:none;
+		}
+		li img{
+			width:100%;
+		}
+		h4{
+			margin: 10px 0;
+			padding-bottom: 4px;
+			border-bottom: 1px solid #777;
+		}
+		p{
+			color:#444;
+			font-size: 12px;
+			
+			line-height: 1.5;
+			margin-bottom: 10px;
+		}
+	
+		li.hide{
+			display: none;
+		}
+		
+		.load {
+		  width: 50px;
+		  height: 50px;
+		  background-color: #3E4663;
+		  -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+		  animation: rotateplane 1.2s infinite ease-in-out;
+		  margin-left: 50%;
+		  transform: translateX(-50%);
+		}
+		 
+		@-webkit-keyframes rotateplane {
+		  0% { -webkit-transform: perspective(120px) }
+		  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+		  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+		}
+		 
+		@keyframes rotateplane {
+		  0% {
+		    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+		    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+		  } 50% {
+		    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+		    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+		  } 100% {
+		    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+		    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+		  }
+		}
+	</style>
+</head>
+<body>
+	<div class="wraper">
+		<ul class="waterFall">
+
+			<li class="item hide"></li>
+		</ul>
+
+		<div class="load"></div>
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+
+	</script>
+	
+	<script>
+		$(function(){
+			checkShow();
+			render();
+			var clock;
+			var curPage=1;
+			var pageCount=10;
+
+			function render(){
+				var $wraperWidth=$(".wraper").width(),
+				 	$itemWidth=$(".item").outerWidth(true),
+				 	$colNum=Math.floor($wraperWidth/$itemWidth),
+				 	$colHeight=[];
+				 	
+				for(var i=0;i<$colNum;i++){
+					$colHeight.push(0);
+				}
+					console.log("啊哈哈我试试");
+					$(".item").each(function(){
+					var $cur=$(this);
+					var $idx=0;
+					var $minHeight=$colHeight[0];
+					for(var i=0;i<$colHeight.length;i++){
+						if($colHeight[i]<$minHeight){
+							$minHeight=$colHeight[i];
+							$idx=i;
+						}
+					}
+					$cur.css({
+						left:$idx*$itemWidth,
+						top:$minHeight
+					})
+					$colHeight[$idx]+=$cur.outerHeight(true);
+
+					$(".waterFall").css({
+						height:Math.max.apply(null,$colHeight)
+					})
+				})
+				
+			}
+			$(window).on("resize",function(){
+	
+					render();
+			
+				
+			})
+
+			$(window).on("scroll",function(){
+
+				if(clock){
+					clearTimeout(clock);
+				}
+				clock=setTimeout(function(){
+					checkShow();
+				},100)
+			})
+
+			function checkShow(){
+				if(isShow($(".load"))){
+					$.ajax({
+						url:"http://platform.sina.com.cn/slide/album_tech",
+						dataType:"jsonp",
+						jsonp:"jsoncallback",
+						data:{
+							app_key:"1271687855",
+							num:pageCount,
+							page:curPage
+						}
+					}).done(function(ret){						
+						if(ret && ret.status && ret.status.code==="0"){
+							place(ret.data);
+							curPage++;
+						}else{
+							console.log("an error");
+						}
+					})
+				}
+			}	
+
+			function isShow($el){
+				var $scroll=$(window).scrollTop();
+				var $height=$(window).height();
+				var $top=$el.offset().top;
+				if($top<$scroll+$height){
+					return true;
+				}else{
+					return false;
+				}
+			}
+			function place(nodeList){
+				var nodes=renderData(nodeList);
+				$(nodes).find("img").each(function(){
+					$(this).load(function(){
+						render();
+					})
+				})
+			}
+
+			function renderData(items){
+				var tpl="";
+				var $nodes;
+				for(var i=0;i <items.length;i++){
+					tpl += '<li class="item">';
+					tpl += ' <a href="'+ items[i].url +'" class="link"><img src="' + items[i].img_url + '" alt=""></a>';
+					tpl += ' <h4 class="header">'+ items[i].short_name +'</h4>';
+					tpl += '<p class="desp">'+items[i].short_intro+'</p>';
+					tpl += '</li>';
+				}
+
+				$nodes=$(tpl);
+				$(".waterFall").append($nodes).animate(100);
+				$(".item").find("img").on("load",function(){
+					render();
+				})
+				return $nodes;
+
+			}
+
+		})
+	</script>
+</body>
+</html>
+

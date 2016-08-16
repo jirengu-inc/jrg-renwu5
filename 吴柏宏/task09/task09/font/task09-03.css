@@ -1,0 +1,60 @@
+
+div{
+  margin: 20px;
+}
+.square{
+  width: 0px;
+  height: 0px;
+  border-top:50px solid blue;
+  border-right:50px solid yellow;
+  border-left:50px solid red;
+  border-bottom:50px solid #008b00;
+}
+.triangle-t{
+  width: 0px;
+  height: 0px;
+  border-top:50px solid blue;
+  border-right:50px solid transparent;
+  border-left:50px solid transparent;
+  border-bottom:50px solid transparent;
+}
+.triangle-r{
+  width: 0px;
+  height: 0px;
+  border-top:50px solid transparent;
+  border-right:50px solid yellow;
+  border-left:50px solid transparent;
+  border-bottom:50px solid transparent;
+}
+.triangle-b{
+    width: 0px;
+    height: 0px;
+    border-top:50px solid transparent;
+    border-right:50px solid transparent;
+    border-left:50px solid transparent;
+    border-bottom:50px solid #008b00;
+}
+.triangle-l{
+    width: 0px;
+    height: 0px;
+    border-top:50px solid transparent;
+    border-right:50px solid transparent;
+    border-left:50px solid red;
+    border-bottom:50px solid transparent;
+}
+.triangle-lb{
+  width: 0px;
+  height: 0px;
+  border-top:50px solid transparent;
+  border-right:50px solid transparent;
+  border-left:50px solid red;
+  border-bottom:50px solid red;
+}
+.triangle-rb{
+  width: 0px;
+  height: 0px;
+  border-top:50px solid transparent;
+  border-right:50px solid #008b00;
+  border-left:50px solid transparent;
+  border-bottom:50px solid #008b00;
+}

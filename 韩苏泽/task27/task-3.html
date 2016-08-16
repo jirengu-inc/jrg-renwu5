@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-3</title>
+    <style>
+      html,body,ul,li{
+        margin: 0;
+        padding: 0;
+      }
+      ul,li{
+        list-style: none;
+      }
+      a{
+        text-decoration: none;
+      }
+       .carousel{
+         position: relative;
+         width: 310px;
+         height: 206px;
+         overflow: hidden;
+       }
+       .carousel .img-list{
+         position: absolute;
+         height: 100%;
+       }
+       .carousel .img-list>li{
+         float: left;
+       }
+       .carousel .img-list img{
+         width: 310px;
+         height: 206px;
+       }
+       a.arrow{
+         position: absolute;
+         top: 50%;
+         width: 40px;
+         height: 40px;
+         margin-top: -20px;
+         border-radius: 20px;
+         box-shadow:0 0 2px #666;
+         color: #fff;
+         background-color: #676666;
+         text-align: center;
+         line-height: 40px;
+         opacity: 0.8
+       }
+       a.arrow.prev{
+         left: 20px;
+       }
+       a.arrow.next{
+         right: 20px;
+       }
+       .carousel .bullet{
+         position: absolute;
+         left: 50%;
+         bottom: 20px;
+         transform: translateX(-50%);
+       }
+       .carousel .bullet>li{
+         display: inline-block;
+         height: 5px;
+         width: 20px;
+         border-radius: 2px;
+         background-color: white;
+         cursor: pointer;
+       }
+       .bullet>li.active{
+         background-color: #666;
+       }
+     </style>
+  </head>
+  <body>
+    <div class="carousel" id="ct1">
+      <ul class="img-list">
+        <li><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></a></li>
+        <li><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></a></li>
+        <li><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg"></a></li>
+        <li><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg"></a></li>
+      </ul>
+      <a href="" class="arrow prev"><</a>
+      <a href="" class="arrow next">></a>
+      <ul class="bullet">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="carousel" id="ct2">
+      <ul class="img-list">
+        <li id="0"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></a></li>
+        <li id="1"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></a></li>
+        <li id="2"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg"></a></li>
+        <li id="3"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg"></a></li>
+      </ul>
+      <a href="" class="arrow prev"><</a>
+      <a href="" class="arrow next">></a>
+      <ul class="bullet">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+       $(function(){
+        //1. 不改变 DOM 顺序
+        var carouselModel=function($carousel){
+          var $lists=$carousel.find(".img-list");
+          var $listChild=$lists.find("li");
+          var $prev=$carousel.find(".prev");
+          var $next=$carousel.find(".next");
+          var $bullets=$carousel.find(".bullet");
+          var $bulletChild= $bullets.find("li");
+          var imgCount=$listChild.length;
+          var curIdx=0;
+          var nextIdx=0;
+          var $first=$listChild.first();
+          var $last=$listChild.last();
+          var imgWidth=$first.width();
+          $lists.prepend($last.clone());
+          $lists.append($first.clone());
+          var realCount=$lists.find("li").length;
+          function playPre(num){
+            var num=num||1;
+            nextIdx=(curIdx-num)%imgCount;
+            play(0-num);
+          }
+          function playNext(num){
+            var num=num||1;
+            nextIdx=(curIdx+num)%imgCount;
+            play(num);
+          }
+          function showBullet(){
+            $bulletChild.removeAttr("style");
+            $bulletChild.eq(curIdx).css("background-color","#666");
+          }
+          function play(num){
+            if(num==0||$lists.data("playing")) return;
+            $lists.data("playing",true);
+            $lists.animate({
+              left:'-='+(imgWidth*num)
+            },"fast",function(){
+              if(nextIdx==-1){
+                $lists.css("left",0-imgWidth*imgCount);
+                curIdx=imgCount-1;
+              }else if(nextIdx==0){
+                $lists.css("left",0-imgWidth);
+                curIdx=0;
+              }else {
+                curIdx=nextIdx;
+              }
+              showBullet();
+              $lists.data("playing",false);
+            })
+          }
+          function autoPlay(){
+            var clock=setInterval(function(){
+              playNext();
+            },3000)
+          }
+          $prev.on("click",function(e){
+            e.preventDefault();
+            playPre();
+          });
+          $next.on("click",function(e){
+            e.preventDefault();
+            playNext();
+          });
+          $bulletChild.on("click",function(){
+            var idx=$(this).index();
+            var num=idx-curIdx;
+            nextIdx=idx;
+            play(num);
+          });
+          return (function(){
+              $lists.css({
+                width:realCount*imgWidth,
+                left:0-imgWidth
+              });
+              showBullet();
+              autoPlay();
+            }())
+        }
+        //第二种实现方式:移动元素
+        var carouselModel2=function($carousel){
+          var $lists=$carousel.find(".img-list");
+          var $listChild=$lists.find("li");
+          var $prev=$carousel.find(".prev");
+          var $next=$carousel.find(".next");
+          var $bullets=$carousel.find(".bullet");
+          var $bulletChild= $bullets.find("li");
+          var imgCount=$listChild.length;
+          var curIdx=0;
+          var nextIdx=0;
+          var imgWidth=$listChild.first().width();
+          $lists.css("width",imgCount*imgWidth);
+          function showBullet(){
+            $bulletChild.removeAttr("style");
+            $bulletChild.eq(curIdx).css("background-color","#666");
+          }
+          function play(num){
+            if(num==0||$lists.data("playing")==true) return;
+            $lists.data("playing",true);
+            nextIdx=(curIdx+num)%imgCount;
+            if(num>0){
+              //右滚动先滚后拿 最后还原
+              var $removeChild=$($lists.find("li").splice(0,num)); //获取移动元素
+              $lists.animate({
+                left:'-='+(num*imgWidth)
+              },"fast",function(){
+                  $lists.append($removeChild.remove());
+                  $lists.css("left",0);
+                  curIdx=nextIdx;
+                  showBullet();
+                  $lists.data("playing",false);
+              })
+            }else{
+                //左滚动先拿再滚 最后还原
+                //获取移动元素 这里是num是负数相当于
+                //var num=Math.abs(num)
+                //var $removeChild=$($lists.find("li").splice(imgCount-num,num));
+                var $removeChild=$($lists.find("li").splice(imgCount+num,-num));
+                $lists.prepend($removeChild.remove());
+              // $lists.append($lists.find("li").first().remove());
+              $lists.animate({
+                left:'-='+(num*imgWidth)
+              },"fast",function(){
+                  $lists.css("left",0);
+                  curIdx=nextIdx;
+                  showBullet();
+                  $lists.data("playing",false);
+              })
+            }
+          }
+          $prev.on("click",function(e){
+            e.preventDefault();
+            play(-1);
+          });
+          $next.on("click",function(e){
+            e.preventDefault();
+            play(1);
+          });
+          $bulletChild.on("click",function(){
+            nextIdx=$(this).index();
+            var num=nextIdx-curIdx;
+            play(num);
+          })
+          function autoPlay(){
+            var clock=setInterval(function(){
+              play(1);
+            },3000);
+          }
+          return (function(){
+            showBullet();
+            autoPlay();
+          })()
+        }
+        carouselModel($("#ct1"));
+        carouselModel2($("#ct2"));
+     })
+
+    </script>
+  </body>
+</html>

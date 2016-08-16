@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+      html,body,div,p,ul,li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      a{
+        text-decoration: none;
+      }
+      .list li.active{
+        background-color: #333;
+        color: #fff;
+      }
+      .ct{
+        border: 1px solid #ccc;
+        width: 636px;
+      }
+      .list>li{
+        float: left;
+        border: 1px solid #ccc;
+        padding: 5px;
+        width: 200px;
+        cursor: pointer;
+      }
+      .list:after{
+        content: '';
+        display: block;
+        clear: both;
+      }
+      .content .hide{
+        display: none;
+      }
+      .content>li{
+        height: 250px;
+        display: none;
+      }
+      .content li.active{
+        display: block;
+      }
+  </style>
+</head>
+<body>
+  <div class="ct">
+      <ul class="list">
+        <li class="active">tab1</li>
+          <li>tab2</li>
+            <li>tab3</li>
+      </ul>
+      <ul class="content">
+        <li class="active">内容1</li>
+        <li >内容2</li>
+        <li >内容3</li>
+      </ul>
+  </div>
+  <div class="ct">
+      <ul class="list">
+        <li class="active">tab1</li>
+          <li>tab2</li>
+            <li>tab3</li>
+      </ul>
+      <ul class="content">
+        <li class="active">内容1</li>
+        <li >内容2</li>
+        <li >内容3</li>
+      </ul>
+  </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+  <script>
+        function tab($node){
+          this.$ct = $node;
+          this.bind();
+        }
+
+        tab.prototype = {
+          bind: function(){
+            var me = this;
+            this.$ct.on('click','li',function(){
+              var $cur=$(this),
+                  idx = $cur.index();
+              $cur.siblings().removeClass('active');
+              $cur.addClass('active');
+              $cur.parents('.ct').find('.content').children().removeClass('active');
+              $cur.parents('.ct').find('.content').children().eq(idx).addClass('active');
+            })
+            }
+          }
+
+          var $node1 = $('.ct').eq(0);
+          var $node2 = $('.ct').eq(1);
+          var tap = new tab($node1);
+          var tap2 = new tab($node2);
+
+  </script>
+</body>
+</html>

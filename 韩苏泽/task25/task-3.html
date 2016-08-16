@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-3</title>
+    <style>
+      body{
+        color: #666;
+      }
+      ul,li{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      a{
+        text-decoration: none;
+        color: #666;
+      }
+      a.btn{
+        display: inline-block;
+        border: 1px solid #E91E63;
+        border-radius: 3px;
+        padding: 10px 15px;
+        color: #E91E63;
+        background-color: white;
+
+      }
+      .pannel{
+        width:900px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      .products{
+        margin-left: -20px;
+        margin-bottom: -20px;
+      }
+      .prod{
+        position: relative;
+        box-sizing: border-box;
+        width:286.6px;
+        height: 280px;            /*最好能够固定高度*/
+        overflow: hidden;
+        float:left;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .cover{
+        position: absolute;
+        left:0;
+        top:0;
+        display: none;
+        height: 100%;
+        width:100%;
+      }
+      .cover:before{
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 100%;
+        vertical-align:middle;
+      }
+      .cover.active{
+        display: block;
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+      .clear:after{
+        content: "";
+        height: 0;
+        display: block;
+        clear: both;
+      }
+      .prod .prod-name,.prod .prod-price{
+        margin-top: 20px;
+        text-align: left;
+      }
+      .prod-price{
+        font-weight: bold;
+        color: #E91E63;
+      }
+    </style>
+
+  </head>
+  <body>
+    <h1>珠宝首饰</h1>
+    <div class="pannel">
+      <ul class="products clear">
+        <li class="prod">
+          <div class="cover">
+            <a href="" class="btn">立即抢购</a>
+          </div>
+          <a href="">
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <div class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+            <div class="prod-price">￥1699.00</div>
+          </a>
+        </li>
+        <li class="prod">
+          <div class="cover">
+            <a href="" class="btn">立即抢购</a>
+          </div>
+          <a href="">
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <div class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+            <div class="prod-price">￥1699.00</div>
+          </a>
+        </li>
+        <li class="prod">
+          <div class="cover">
+            <a href="" class="btn">立即抢购</a>
+          </div>
+          <a href="">
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <div class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+            <div class="prod-price">￥1699.00</div>
+          </a>
+        </li>
+     </ul>
+     <a href="" class="btn">添加</a>
+    </div>
+    <script  src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+      $(function(){
+        var products = [
+            {
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金手 猴哥款',
+                price: '￥405.00'
+            },{
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金转运珠 猴哥款',
+                price: '￥100.00'
+            },{
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金手链 3D猴哥款',
+                price: '￥45.00'
+            }
+        ];
+        function appendHtml(obj){
+          if(typeof obj!=="object") return "";
+          var html=""
+          html+='<li class="prod">';
+          html+='<div class="cover">';
+          html+='<a href="" class="btn">立即抢购</a>';
+          html+='</div>';
+          html+='<a href="">';
+          html+=(obj.img==null?'':'<img src="' + obj.img + ' "alt="">');
+          html+=(obj.name==null?'':'<div class="prod-name">' + obj.name + '</div>');
+          html+=(obj.price==null?'':'<div class="prod-price">' + obj.price + '</div>');
+          html+='</li>';
+          return html;
+        }
+        $(".products").on("mouseenter",".prod",function(){
+          $cur=$(this);
+          $cur.find(".cover").addClass("active");
+        })
+        $(".products").on("mouseleave",".prod",function(){
+          $cur=$(this);
+          $cur.find(".cover").removeClass("active");
+        })
+        $(".pannel>.btn").on("click",function(e){
+          e.preventDefault();
+          var $cur=$(this);
+          $.each(products,function(idx,val){
+            var html=appendHtml(val);
+            $cur.parents(".pannel").find(".products").append(html);
+
+          })
+        });
+      })
+
+    </script>
+  </body>
+</html>

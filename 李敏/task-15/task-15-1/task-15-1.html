@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>实战</title>
+  <style type="text/css">
+html,head,body,a,ul,li,p,h1,h2{
+            margin:0;
+            padding:0;
+          }
+a{text-decoration: none;font-size:26px;}
+li{
+  list-style: none;
+  display:inline-block;
+  margin-left: 10px;
+  }
+ .daohang .zuopin li:hover{background: #ddd;}
+#header{
+  width:100%;
+  height:300px;
+        }
+  .daohang{
+    width:1000px;
+    height:60px;
+    line-height: 60px; 
+    margin:0 auto;
+          }
+    .daohang img{width:80px;}
+    .zuopin{ display: none;}
+      .zuopin li{display: block;
+                width:90px;
+                margin:0;
+                text-align: center;
+                line-height: 30px;}
+   .daohang li:nth-child(3):hover .zuopin{display: block;
+                                         position: absolute;
+                                         border:1px solid #ccc;
+                                         top:50px;
+                                         }
+  .bg{width:100%;
+    background: #80c0f0;
+    text-align: left;
+    height:200px; 
+    } 
+    .wrapper{
+            padding-top:50px;
+            width:1000px;
+            margin:0 auto;
+    }     
+#content{
+  width:1000px;
+  margin:0 auto;
+}
+  .adress{
+     background:rgba(200,200,200,0.3);
+     font-size: 24px;
+  }
+  .main{
+     width:1000px;
+     clear: both;
+  }
+     .layout{
+      float:left;
+       width:310px;
+       height:360px;
+       border:1px solid #ddd;
+       margin-bottom: 10px;
+     }
+     .layout img{width:310px;}
+     .layout img:hover{
+                      src:"images/huise.jpg";
+                      opacity:0.3; 
+     }
+     .wrapper-zuopin{text-align: center;}
+     .btn{display: inline-block;
+          width:70px;
+          height: 40px;
+          border:1px solid #ccc;
+          border-radius: 5px;
+          text-align: center;
+          line-height:40px;
+          font-size: 18px;
+          margin:0 auto;
+          }
+#footer{clear:both;
+       margin:0 auto;}   
+       .common-wrapper{
+            padding-top:50px;
+            text-align: center;
+           
+    }            
+  </style>
+
+
+</head>
+<body>
+<div id="header">
+  <ul class="daohang">
+    <li><a href=""><img src="images/logo-tiny.png"></a></li>
+    <li><a href="">饥人谷</a></li>
+    <li><a href="">我的作品</a>
+       <ul class="zuopin">
+         <li><a href="">实战1</a></li>
+         <li><a href="">实战2</a></li>
+         <li><a href="">实战3</a></li>
+       </ul>
+    </li>
+    <li><a href="">博客</a></li>
+    <li><a href="">项目</a></li>
+    <li><a href="">关于我</a></li>
+  </ul> 
+
+ <div class="bg">
+   <div class="wrapper">
+     <h1>这是我的简介</h1>
+     <h2>这是我的作品</h2>
+     <h2>这是我的博客</h2>
+   </div>
+ </div>
+</div>
+
+<div id="content">
+ <div class="adress">
+   <p><a href="">首页</a>/我的作品</p>
+ </div> 
+   <ul class="main">
+     <li class="layout">
+      <a href=""><img src="images/agency.jpg">
+       <div class="wrapper-zuopin" >
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+         <div class="btn"><a href="">查看</a> </div>
+        </div>
+        </a>
+     
+     </li>
+     <li class="layout">
+      <a href=""><img src="images/agency.jpg">
+       <div class="wrapper-zuopin" >
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+         <div class="btn"><a href="">查看</a> </div>
+        </div>
+        </a>
+     
+     </li>
+     <li class="layout">
+      <a href=""><img src="images/creative.jpg">
+       <div class="wrapper-zuopin" >
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+         <div class="btn"><a href="">查看</a> </div>
+        </div>
+        </a>
+     
+     </li>
+     <li class="layout">
+      <a href=""><img src="images/freelancer.jpg">
+       <div class="wrapper-zuopin" >
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+         <div class="btn"><a href="">查看</a> </div>
+        </div>
+        </a>
+     
+     </li>
+     <li class="layout">
+      <a href=""><img src="images/full-slider.jpg">
+       <div class="wrapper-zuopin" >
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+        <div class="btn"><a href="">查看</a> </div>
+        </div>
+        </a>
+      
+     </li>
+     <li class="layout">
+      <a href=""><img src="images/full-width-pics.jpg">
+       <div class="wrapper-zuopin" >
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+        <div class="btn"><a href="">查看</a> </div>
+        </div>
+        </a>
+      
+     </li>
+     <li class="layout">
+      <a href=""><img src="images/grayscale.jpg">
+       <div class="wrapper-zuopin" >
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+         <div class="btn"><a href="">查看</a> </div>
+        </div>
+        </a>
+     
+     </li>
+     <li class="layout">
+      <a href=""><img src="images/half-slider.jpg">
+       <div class="wrapper-zuopin" >
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+        <div class="btn"><a href="">查看</a> </div>
+        </div>
+        </a>
+      
+     </li>
+     <li class="layout">
+      <a href=""><img src="images/one-page-wonder.jpg">
+       <div class="wrapper-zuopin" >
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+         <div class="btn"><a href="">查看</a> </div>
+        </div>
+        </a>
+     
+     </li>
+     <li class="layout">
+      <a href=""><img src="images/stylish-portfolio.jpg">
+       <div class="wrapper-zuopin" >
+        <h2>作品标题</h2>
+        <p>作品描述</p>
+        <div class="btn"><a href="">查看</a> </div>
+        </div>
+        </a>
+      
+     </li>
+   </ul>
+  
+</div>
+<div id="footer">
+   <div class="bg">
+   <div class="common-wrapper">
+     <h1>想要更详细的了解我？</h1>
+     <h2>请查看我的博客</h2>
+     <div class="btn"><a href="http://www.jianshu.com/users/39c3caf4040d/latest_articles">简书</a> </div>
+   </div>  
+ </div>  
+</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>26-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+    body {
+        height: 2000px;
+    }
+    .btn1 {
+        width: 200px;
+        height: 100px;
+    }
+    .fix {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    .div1 {
+        height: 100px;
+    }
+    .active {
+        background-color: red;
+    }
+    .focus {
+        border: 1px solid blue;
+        outline: none;
+    }
+</style>
+</head>
+<body>
+    <fieldset>
+        <legend>当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色</legend>
+        <button class="btn1">点击变色</button>
+    </fieldset>
+
+    <fieldset class="fix">
+        <legend>当窗口滚动时，获取垂直滚动距离</legend>
+        <input type="text" class="ipt1">
+    </fieldset>
+
+    <fieldset>
+        <legend>当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色</legend>
+        <div class="div1"></div>
+    </fieldset>
+
+    <fieldset>
+        <legend>当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字</legend>
+        <input type="text" class="ipt2">
+    </fieldset>
+
+    <fieldset>
+        <legend>当选择 select 后，获取用户选择的内容</legend>
+        <input type="text" class="ipt3">
+        <select name="" class="opt">
+            <option>苹果</option>
+            <option>香蕉</option>
+            <option>菠萝</option>
+            <option>草莓</option>
+            <option>李子</option>
+        </select>
+    </fieldset>
+
+
+
+
+
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script>
+    //animate 需加载ui库
+    $('.btn1').on('click',function(){
+        $(this).stop(true,false).animate({'backgroundColor':'red'},300)
+                                .animate({'backgroundColor':'blue'},300);
+    });
+
+    $(window).on('scroll',function(){
+        $('.ipt1').val( $(window).scrollTop() );
+    });
+
+    $('.div1').on('mouseenter',function(){
+        $(this).addClass('active');
+    })
+    .on('mouseleave',function(){
+        $(this).removeClass('active');
+    });
+
+    $('.ipt2').on('change',function(){
+        $(this).val( $(this).val().toUpperCase() );
+    })
+    .on('focus',function(){
+        $(this).addClass('focus');
+    })
+    .on('blur',function(){
+        $(this).removeClass('focus');
+        console.log( $(this).val() );
+    });
+
+    $('.opt').on('change',function(){
+        $('.ipt3').val( $(this).val() );
+    });
+</script>
+</body>
+</html>

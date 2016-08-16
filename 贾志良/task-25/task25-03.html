@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task2503代理</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<style>
+		body{
+			font-family: "微软雅黑";
+		}
+		div,ul,li,h3{
+			margin:0;
+			padding:0;
+		}
+		div.layout{
+			width:700px;;
+			margin:0 auto;
+		}
+		.inner>li{
+			width:191px;
+			padding:20px;
+			height:250px;
+			float:left;
+			list-style-type: none;
+		}
+		.inner span{
+			display: block;
+			margin:10px 0;
+		}
+		.inner:after{
+			content:"";
+			display:block;
+			clear: both;
+		}
+		.mouse{
+			position: relative;
+		}
+		div.hover{
+			width:231px;
+			height:290px;
+			background-color: rgba(255,255,255,0.5);
+			position: absolute;
+			top:0;
+			left:0;
+			display: table;
+			text-align: center;
+		}
+		div.hover>span{	
+			display: table-cell;
+			vertical-align: middle;
+			color:#fff;
+		}
+		div.hover>span>a{
+			display: inline-block;
+			width:70px;
+			line-height:30px;
+			border-radius: 3px;
+			background-color: #000;
+			color:#fff;
+			text-decoration: none;
+		}
+		a.more{
+			display: inline-block;
+			text-align: center;
+			width:50px;
+			line-height:30px;
+			border:1px solid;
+			text-decoration: none;
+			background-color: #495A80;
+			color:#fff;
+			border-radius: 3px;
+			margin-top: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div class="layout">
+			<h3>一些头像</h3>
+		</div>
+	</div>
+
+	<div id="content">
+		<div class="layout">
+				<ul class="inner">
+					<li class="mouse">
+						<img src="img/4.jpg" alt="非主流">
+						<span>微微一笑很倾城</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/8.jpg" alt="非主流">
+						<span>没有啥名字</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/13.jpg" alt="非主流">
+						<span>萌妹纸</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/18.jpg" alt="非主流">
+						<span>气球</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/14.jpg" alt="非主流">
+						<span>香气诱人</span>
+						<span class="price">￥699.00</span>
+					</li>
+					<li class="mouse">
+						<img src="img/12.jpg" alt="非主流">
+						<span>微笑是最好的调味料</span>
+						<span class="price">￥699.00</span>
+					</li>
+				</ul>
+
+				<a href="#" class="more">添加</a>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			$("ul.inner").on("mouseenter","li.mouse",function(){
+				$(this).prepend('<div class="hover"><span><a href="#">立即使用</a></span></div>');
+			})
+			$("ul.inner").on("mouseleave","li.mouse",function(){
+				$(this).find("div.hover").remove();
+			})
+			var newPro=[
+				{
+					img:"img/7.jpg",
+					title:"微微一笑很倾城",
+					price:"￥699"
+				},
+				{
+					img:"img/9.jpg",
+					title:"没有啥名字",
+					price:"￥699"
+				},
+				{
+					img:"img/10.jpg",
+					title:"微微一笑很倾城",
+					price:"萌妹纸"
+				}
+			];
+			var getHtml='';
+			for(var i=0;i<newPro.length;i++){
+				getHtml+='<li class="mouse"><img src='+'"'+newPro[i].img+'"'+' '+'alt="非主流" /><span>'+newPro[i].title+'</span><span class="price">'+newPro[i].price+'</span></li>'
+			}
+			$("a.more").on("click",function(e){
+				e.preventDefault();
+				$(this).parents("div.layout").find("ul.inner").append(getHtml);
+			})
+		})
+	</script>
+</body>
+</html>

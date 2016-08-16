@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  hello.world
+  <iframe src="//b.com/1.html" width="" height=""></iframe>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+    <script>
+      // document.domain = 'b.com';
+      // window.name = location.href;
+      // var iframe = window.frames[0]
+
+      $.get('//b.com/data',function(response){
+        console.log(response);
+      })
+
+  //    var script = document.createElement('script');
+      // window.xxx = function(){
+      //   alert(xxx)
+      // }
+//      script.src = '//b.com/main.js?callback=xxx';
+//      document.body.appendChild(script)
+      //  window.onGet = function(userData){
+      //    alert(userData.name)
+      //  }
+      //  function Get(){
+      //    var script = document.createElement('script');
+      //    script.src ='//b.com/main.js?callback=onGet';
+      //    document.body.appendChild(script)
+      //  }
+      //  Get();
+    </script>
+    <!-- <script src='//b.com/main.js?callback=xxx'></script> -->
+</body>
+</html>

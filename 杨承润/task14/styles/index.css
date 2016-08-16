@@ -1,0 +1,181 @@
+/*====================reset============================*/
+html,body,ul,li,h3,h1{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "SketchFlow Print","华文新魏";
+}
+html,body{
+	height: 100%;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.layout{
+	width: 960px;
+	margin: 0 auto;
+}
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.btn{
+	border: 1px solid transparent;
+	line-height: 20px;
+	padding: 10px;
+}
+/*==================header=============================*/
+#header{
+	background: url(../src/bg.jpg) 0 0 no-repeat;
+	background-size: cover;
+	width:100%;
+	height: 100%;
+	display: table;
+	font-size: 20px;
+}
+#header .center{
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+#header .center>a{
+	display: inline-block;
+	background-color: rgba(53,62,65,0.6);
+	color:white;
+	width: 100px;
+}
+#header .center>a:hover{
+	background-color: rgb(53,62,65);
+}
+/*=================introduction============================*/
+#introduction{
+	text-align: center;
+	font-size: 18px;
+}
+#introduction .summary{
+	padding: 50px;
+}
+#introduction .skill{
+	background-color: rgb(51,122,183);
+	padding: 50px;
+}
+#introduction .skill h1{
+	border-bottom: 2px solid white;
+	padding: 20px;
+	color: white;
+	width: 114px;
+	margin: 0 auto;
+}
+#introduction .skill .nav{
+	padding: 50px;
+	color: white;
+	margin-left: 60px;
+}
+#introduction .skill .nav>li{
+	float: left;
+	margin-right: 80px;
+}
+/*#introduction .skill .nav>li~li{
+	margin-left: 0px; 
+}*/
+#introduction .skill .name-btn{
+	display: block;
+	background-color: white;
+	color: black;
+	width: 80px;
+	padding: 5px;
+	margin-left:15px; 
+}
+#introduction .skill .name-btn:hover{
+	background-color: rgb(238,238,238);
+}
+#introduction .passage{
+	background: url(../src/callout.jpg) 0 0 no-repeat;
+	background-size:cover; 
+	padding:200px;
+	font-size: 50px;
+	color: white;
+}
+#introduction .work{
+	padding: 50px;
+}
+#introduction .work>h1{
+	padding: 20px 0;
+	border-bottom: 2px solid lightgray;
+	width: 150px;
+	margin: 0 auto 20px auto;
+}
+#introduction .work li img{
+	width: 465px;
+	height: 302px;
+}
+#introduction .work>.nav>li{
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 14px;
+}
+#introduction .work-btn{
+	display: inline-block;
+	background-color:rgba(76,76,76,0.6); 
+	width: 150px;
+	color: white;
+}
+#introduction .work-btn:hover{
+	background-color:rgb(76,76,76); 
+}
+#introduction .readme{
+	padding: 50px;
+	background-color: rgb(51,122,183);
+	color: white;
+	font-size: 20px;
+}
+#introduction .clickme-btn{
+	display: inline-block;
+	color: white;
+	background-color: white;
+	color: black;
+	font-size: 16px;
+	width: 120px;
+}
+#introduction .clickme-btn:hover{
+	background-color: rgb(238,238,238);
+}
+#introduction .lookme-btn{
+	display: inline-block;
+	color: white;
+	background-color: rgba(76,76,76,0.6);
+	color: white;
+	font-size: 16px;
+	width: 120px;
+}
+#introduction .lookme-btn:hover{
+	background-color: rgb(76,76,76);
+}
+/*================footer===========================*/
+#footer{
+	text-align: center;
+	padding: 50px;
+}
+#footer>h3{
+	margin-bottom:20px; 
+}
+#footer .nav{
+	margin: 30px;
+}
+#footer .nav>li{
+	display: inline-block;
+}
+#footer .nav>li>a{
+	color: rgb(51,122,183);
+}
+#footer .nav>li>a:hover{
+	color: rgb(35,82,124);
+}
+#footer .layout>hr{
+	width: 100px;
+	color: lightgray;
+}

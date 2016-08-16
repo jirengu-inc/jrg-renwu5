@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	div{
+	   position: relative;
+    	   width: 200px;
+           height: 100px;
+    	   border: 1px solid #ccc;
+    	   margin-top: 20px;
+    	   margin-left: 20px;
+	}
+	.box:nth-child(1):before{
+		content: "";
+		border-top: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-bottom: 10px solid #ccc;
+		border-left: 10px solid transparent;
+		position: absolute;
+		top: -20px;
+    	        left: 10px;
+	}
+	.box:nth-child(2):before{
+		content: "";
+		border-right: 20px solid red;
+		border-bottom: 20px solid transparent;
+		position: absolute;
+		left: 181px;
+    	        top: -1px;
+	}
+	/*.box:nth-child(3){
+		position: relative;
+	}*/
+	.box:nth-child(3):before{
+		content: "";
+		border-top: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-bottom: 10px solid #ccc;
+		border-left: 10px solid transparent;
+		position: absolute;
+		top: -20px;
+    	        left: 10px;
+	}
+	.box:nth-child(3):after{
+		content: "";
+		border-top: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-bottom: 10px solid #fff;
+		border-left: 10px solid transparent;
+		position: absolute;
+    	        top: -18px;
+    	        left: 10px;
+	}
+</style>
+</head>
+<body>
+   <div class="box"></div>
+   <div class="box"></div>
+   <div class="box"></div>
+</body>
+</html>

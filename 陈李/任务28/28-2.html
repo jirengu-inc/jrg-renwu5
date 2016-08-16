@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>28-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+    #header {
+        height: 50px;
+        background-color: red;
+    }
+    .content {
+        padding-top: 30px;
+    }
+    .nav {
+        height: 40px;
+        background-color: yellow;
+        border: 1px solid #ccc;
+    }
+    .aside {
+        float: left;
+        background-color: pink;
+        width: 300px;
+        height: 600px;
+    }
+    .main {
+        float: left;
+        background-color: blue;
+        width: 500px;
+        height: 600px;
+    }
+    .layout {
+        width: 800px;
+        margin: 0 auto;
+    }
+    .content:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+</style>
+</head>
+<body>
+
+   <header id="header" class="layout">header</header>
+   <div class="content layout">
+       <div class="nav">nav1</div>
+       <div class="aside">aside1</div>
+       <div class="main">main1</div>
+   </div>
+   <div class="content layout">
+       <div class="nav">nav2</div>
+       <div class="aside">aside2</div>
+       <div class="main">main2</div>
+   </div>
+   <div class="content layout">
+       <div class="nav">nav3</div>
+       <div class="aside">aside3</div>
+       <div class="main">main3</div>
+   </div>
+   <div class="content layout">
+       <div class="nav">nav4</div>
+       <div class="aside">aside4</div>
+       <div class="main">main4</div>
+   </div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="stickup.js"></script>
+<script>
+
+    $('.nav').stickUp();
+
+</script>
+</body>
+</html>

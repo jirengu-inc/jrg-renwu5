@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ENVY</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+    <style>
+        html,body,div,h1,h2,h3,p{
+            margin: 0;
+            padding: 0;
+        }
+        .header{
+            height: 80px;
+            background-color: red;
+            text-align: center;
+            line-height: 80px;
+            margin: 10px;
+        }
+        .nav{
+            height: 50px;
+            background-color: blue;
+            margin: 0 10px;
+        }
+        .content{
+           overflow: auto;
+            margin: 0 10px;
+            background-color: #ccc;
+            padding: 10px;
+        }
+        .aside{
+            float: left;
+            background-color: green;
+            width: 100px;
+            height: 400px;
+        }
+        .main{
+            background-color: #fff;
+             height: 800px;
+            overflow: auto;
+        }
+        .footer{
+            margin: 0 10px;
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">header</div>
+    <div class="nav">nav</div>
+    <div class="content">
+        <div class="aside">aside</div>
+        <div class="main">main</div>
+    </div>
+    <div class="footer">footer</div>
+    <script>
+    $(function(){
+
+        $.fn.stick = function(handler){
+            var $cur = $(this),
+                curW = $cur.width(),
+                curH = $cur.height(),
+                offsetTop=$cur.offset().top,
+                offsetLeft=$cur.offset().left;
+
+            var $div = $cur.clone()
+                            .css('opacity',0)
+                            .insertBefore($cur)
+                            .hide();
+
+    $(window).on('scroll',function(){
+        var scrollTop = $(this).scrollTop();
+        if(scrollTop >= offsetTop){
+            setFixed();
+        }else{
+            if(isFixed()){
+            unsetFixed();
+            }
+        }
+    })
+
+    function isFixed(){
+        return !!$cur.attr('data-fixed');
+    }
+
+    function setFixed(){
+        $cur.attr('data-fixed',true)
+            .css({
+                  position:'fixed',
+                  width:curW,
+                  height:curH,
+                  left:offsetLeft,
+                  top:0,
+                  'z-index':9999,
+                  margin:0
+        })
+        $div.show();
+    }
+       function unsetFixed(){
+           $cur.removeAttr('data-fixed')
+               .removeAttr('style');
+           $div.hide();
+       }
+
+
+ };
+
+        $('.nav').stick();
+
+
+    })
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>伪类选择器</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	a{
+		color:#fff;
+		text-decoration: none;
+	}
+	a:link{
+		background-color: blue;
+	}
+	a:visited{
+		background-color: gray;
+	}
+	a:hover{
+		background-color: red;
+	}
+	a:active{
+		background-color: yellow;
+	}
+	q:lang(no){
+		quotes: "~" "~";
+	}
+	input[type=text]:focus{
+		background-color:#ccc;
+	}
+
+	.content h3:first-child{
+		font-size: 40px;
+	}
+	.content p:first-child{
+		font-size: 40px;
+	}
+	.content h3:first-of-type{
+		color:red;
+	}
+	.content p:first-of-type{
+		color:red;
+	}
+
+	.content>h3:nth-child(5){
+		background-color: green;
+	}
+	.content>p:nth-child(2){
+		background-color: green;
+	}
+
+	.content>h3:nth-of-type(3){
+		color: yellow;
+	}
+	.content>p:nth-of-type(2){
+		color:yellow;
+	}
+</style>
+</head>
+<body>
+	<a href="http://book.jirengu.com">饥人谷</a>
+    <a href="https://www.baidu.com/">百度</a>
+    <p>这里是<q lang(no)>饥人谷</q></p>
+    <form name="myform" action="/.php" method="post">
+    	<div>姓名:<input name="username" type="text" placeholder="用户名"/></div>
+    	<div>密码:<input name="pwd" type="password" maxlength="8"/></div>
+    </form>
+    <p class="color">颜色</p>
+    <div class="content">
+    	<h3>标题</h3>
+    	<p>这是用于测试1</p>
+    	<p>这是用于测试2</p>
+    	<div class="test">
+    		<p>这是用于测试3</p>
+    		<p>这是用于测试4</p>
+    		<h3>标题4</h3>
+    		<h3>标题5</h3>
+    	</div>
+    	<h3>标题1</h3>
+    	<h3>标题2</h3>
+    </div>
+</body>
+</html>

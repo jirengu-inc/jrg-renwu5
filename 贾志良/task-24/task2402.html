@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style>
+        ul{
+            margin:0;
+            padding:0;
+        }
+        ul>li{
+            padding:0 5px;
+            list-style-type: none;
+            margin:10px 0;
+            border:1px solid #3E4663;
+            line-height: 40px;
+            font-size: 18px;
+            font-family: "微软雅黑";
+            box-sizing: border-box;
+        }
+      li:hover{
+        background-color: #495a80;
+        color:#fff;
+      }
+    a{
+        display:block;
+        text-align: center;
+        text-decoration: none;
+        width:80px;
+        line-height:40px;
+        color:#000;
+        border-radius: 3px;
+        border:1px solid #3E4663;
+        color:#3E4663;
+        margin:0 auto;
+        font-family: "微软雅黑";
+    }
+    </style>
+</head>
+<body>
+    <ul class="ct">
+        <li>内容一</li>
+        <li>内容二</li>
+    </ul>
+    <a href="#" id="btn">加载更多</a>
+    
+    <script>
+        function ajax(opts){
+            var xtp=new XMLHttpRequest();
+            var dataStr="";
+            for(var key in opts.data){
+                dataStr+=key+"="+opts.data[key]+"&";
+            }
+            dataStr=dataStr.substr(0,dataStr.length-1);
+            if(opts.type.toLowerCase()==="get"){
+                xtp.open(opts.type,opts.url+"?"+dataStr,true);
+                xtp.send();
+            }
+            if(opts.type.toLowerCase()==="post"){
+                xtp.open(opts.type,opts.url,true);
+                xtp.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                xtp.send(dataStr);
+            }
+            xtp.onreadystatechange=function(){
+                if(xtp.readyState==4 && xtp.status==200){
+                   var json=JSON.parse(xtp.responseText);
+                   opts.success(json);
+                }
+                if(xtp.status==404){
+                    opts.error();
+                }
+            }
+        }
+        var index=2;
+        var btn=document.querySelector("#btn");
+        var ulCt=document.querySelector(".ct");
+        var locked=false;
+        btn.addEventListener("click",function(e){
+            if(locked === true) return ;
+            locked=true;
+            btn.style.border="none";     
+            btn.innerHTML='<img src="img/loading.gif" />';
+            e.preventDefault();
+            ajax({
+                type:"get",
+                url:"task2402.php",
+                data:{
+                    pageStart:index,
+                    len:5
+                },
+                success:function(res){
+                    success(res)
+                },
+                error:function(){
+                    error()
+                }
+            })
+        })
+        function success(res){
+            for(var j=0;j<res.length;j++){
+                var newLi=document.createElement("li");
+                newLi.innerText=res[j];
+                ulCt.appendChild(newLi);
+            }
+            btn.innerHTML="加载更多";
+            btn.style.border="1px solid #3E4663";
+            locked=false;
+            index+=5;
+        }
+        function error(){
+            cmsole.log("出错了")
+        }
+    </script>  
+</body>
+</html>

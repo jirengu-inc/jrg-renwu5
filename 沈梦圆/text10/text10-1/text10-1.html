@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>浮动与定位 </title>
+    <meta charset="UTF-8">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        body,ul,li,p,h1 {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        ul,li {
+            list-style: none;
+        }
+        
+        body {
+            font-size: 15px;
+            font-family: 微软雅黑;
+            color: gray;
+        }
+        
+        .text {
+            width: 900px;
+            margin: 0 auto;
+        }
+        
+        #header {
+            height: 50px;
+            background-color: rgb(51, 51, 51);
+        }
+        
+        #header .logo img {
+            height: 40px;
+        }
+        
+        #header .name {
+            float: right;
+        }
+        
+        #header .name> li {
+            float: left;
+            margin-right: 10px;
+        }
+        
+        #header .name a {
+            display: block;
+            font-size: 16px;
+            padding: 0 10px;
+            line-height: 50px;
+        }
+        
+        #header .name a:hover {
+            background-color: white;
+            color: black;
+        }
+        
+        #content {
+            margin-top: 20px;
+        }
+        #content:after{
+            content: '';
+            display: table;
+            clear: both;
+        }
+        #content .left {
+            width: 200px;
+            height: 500px;
+            float: left;
+            background-color: #eee;
+        }
+        
+        #content .right {
+            margin-left: 210px;
+            background-color: #eee;
+            padding: 20px 10px;
+        }
+        #content .right h1{
+            
+            margin: 20px 0;
+        }
+        #content .right p{
+            margin: 5px 0;
+        }
+        #footer{
+            height: 20px;
+            background-color: rgb(51, 51, 51);
+            padding: 15px 0;
+            clear: both;
+        }
+        #footer li{
+            float: left;
+            margin-left: 18px;
+        }
+        #footer a{
+            font-size: 18px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div class="text">
+            <a class="logo" href="#">
+                <img src="logo-tiny.png" alt="饥人谷">
+            </a>
+            <ul class="name">
+                <li><a href="#">技能</a></li>
+                <li><a href="#">经历</a></li>
+                <li><a href="#">作品</a></li>
+                <li><a href="#">关于</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div class="text">
+            <div class="left"></div>
+            <div class="right">
+                <h1>我的作品</h1>
+                <p>生活很美好</p>
+                <p>心情不错</p>
+                <p>代码写的很漂亮</p>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="text">
+            <ul>
+                <li><a href="http://jirengu.com/">饥人谷</a></li>
+                <li><a href="http://jscode.me/">JSCODE</a></li>
+                <li><a href="http://js.jirengu.com/">JSBIN</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

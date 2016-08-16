@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-1</title>
+    <style>
+      p{
+        line-height: 20px;
+      }
+      #go-top{
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        width: 80px;
+        display: none;
+        border: 1px solid red;
+        border-radius: 3px;
+        padding: 5px 10px;
+        color: red;
+        line-height: 20px;
+        text-align: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+      var goTop=(function(){
+        var $goTop=$('<div id="go-top">回到顶部</div>');
+        $("body").append($goTop);
+        function init(){
+          $(window).on("scroll",function(){
+            var scrollTop=$(this).scrollTop();
+            if(scrollTop>100){
+              $goTop.show();
+            }else{
+              $goTop.hide();
+            }
+          });
+            $goTop.on("click",function(){
+              $(window).scrollTop(0)
+            })
+        }
+        return {
+          init:init
+        }
+      })()
+      goTop.init();
+    </script>
+  </body>
+</html>

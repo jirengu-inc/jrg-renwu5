@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ENVY</title>
+  <style>
+    html,body,h1,h2,h3,p,div,ul,li{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    a{
+      text-decoration: none;
+    }
+    .tab li.active{
+      background-color: #444;
+    }
+    img{
+      width: 800px;
+      height: 300px;
+    }
+    .ct{
+      width: 800px;
+      height: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+    .content>li{
+      float: left;
+    }
+    .content:after{
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .arrow{
+      width: 30px;
+      height: 30px;
+      color: #fff;
+      background-color: #4e443c;
+      line-height: 30px;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      margin-top: -15px;
+      opacity: 0.8;
+      border-radius: 50%;
+      font-weight: bolder;
+    }
+    .next{
+      right: 10px;
+    }
+    .pre{
+      left: 10px;
+    }
+    .tab{
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .tab>li{
+      display: inline-block;
+      width: 20px;
+      height: 5px;
+      border-radius: 2px;
+      background-color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="ct">
+      <ul class="content">
+          <li><a href=""><img src="1.jpg" alt=""></a></li>
+          <li><a href=""><img src="2.jpg" alt=""></a></li>
+          <li><a href=""><img src="3.jpg" alt=""></a></li>
+          <li><a href=""><img src="4.jpg" alt=""></a></li>
+      </ul>
+      <a href="" class="pre arrow"><</a>
+      <a href="" class="next arrow">></a>
+      <ul class="tab">
+          <li class="active"></li>
+          <li></li>
+          <li></li>
+          <li></li>
+      </ul>
+  </div>
+  <div class="ct">
+      <ul class="content">
+          <li><a href=""><img src="1.jpg" alt=""></a></li>
+          <li><a href=""><img src="2.jpg" alt=""></a></li>
+          <li><a href=""><img src="3.jpg" alt=""></a></li>
+          <li><a href=""><img src="4.jpg" alt=""></a></li>
+      </ul>
+      <a href="" class="pre arrow"><</a>
+      <a href="" class="next arrow">></a>
+      <ul class="tab">
+          <li class="active"></li>
+          <li></li>
+          <li></li>
+          <li></li>
+      </ul>
+  </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+    <script>
+          function carousel($node){
+                var $pt = $node,
+                    $ct = $pt.find('.content'),
+                     $pre = $pt.find('.pre'),
+                     $next = $pt.find('.next'),
+                     $tab = $pt.find('.tab'),
+                     imgWidth = $ct.children().width(),
+                     imgCount = $ct.children().size();
+
+
+                var curIdx = 0,
+                    isAnimate = false;
+
+
+          function setActive(){
+            $tab.children().removeClass('active').eq(curIdx).addClass('active')
+          }
+
+          function autoPlay(){
+            clock = setInterval(function(){
+              playNext()
+            },3000)
+          }
+          function stopAuto(){
+            clearInterval(clock);
+          }
+          $next.on('click',function(e){
+            e.preventDefault();
+              playNext();
+          })
+          $pre.on('click',function(e){
+            e.preventDefault();
+              playPre();
+          })
+          $tab.on('click','li',function(){
+              play($(this).index())
+          })
+          function playNext(){
+              play((curIdx+1)%imgCount)
+          }
+          function playPre(){
+              play((curIdx+imgCount-1)%imgCount)
+          }
+
+
+         function play(idx){
+            if(!isAnimate){
+                isAnimate = true;
+
+                $ct.find('li').eq(curIdx).fadeOut(300);
+                $ct.find('li').eq(idx).fadeIn(300,function(){
+                    isAnimate = false;
+                });
+
+                curIdx = idx;
+                setActive();
+            }
+
+         }
+
+         play(0);
+      autoPlay();
+
+          }
+
+      var $node1 = $('.ct').eq(0);
+      var $node2 = $('.ct').eq(1);
+      var carousel1 = new carousel($node1);
+      var carousel2 = new carousel($node2);
+    </script>
+</body>
+</html>

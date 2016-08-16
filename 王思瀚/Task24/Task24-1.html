@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ENVY</title>
+
+</head>
+<body>
+  <input type="text" id="username" placeholder="username">
+  <button type="button" id="btn" >获取信息</button>
+
+    <dl id="ct">
+      <dt>性别：</dt>
+      <dd>男</dd>
+      <dt>年龄：</dt>
+      <dd>24</dd>
+    </dl>
+
+
+  <script>
+  function ajax(opts){
+      var xmlhttp =new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function(){
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+              var json = JSON.parse(xmlhttp.responseText);
+              opts.success(json);
+        }
+        if (xmlhttp.readyState ==4 && xmlhttp.status == 404) {
+              opts.error();
+        }
+      }
+
+      var dataStr = '';
+      for(var key in opts.data){
+        dataStr += key + '=' + opts.data[key] + '&';
+      }
+      dataStr = dataStr.substr(0,dataStr.length - 1);
+        if (opts.type.toLowerCase() == 'post') {
+              xmlhttp.open(opts.type,opts.url,true);
+              xmlhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+              xmlhttp.send(dataStr);
+      }
+       if (opts.type.toLowerCase() == 'get') {
+            xmlhttp.open(opts.type,opts.url + '?' +dataStr,true);
+            xmlhttp.send();
+    }
+
+  }
+  document.querySelector('#btn').addEventListener('click', function(){
+      ajax({
+          url: 'use_ajax.php',   //接口地址
+          type: 'get',               // 类型， post 或者 get,
+          data: {
+              username: document.querySelector('#username').value
+          },
+          success: function(data){
+              dealWith(data);       // {status: 0}
+          },
+          error: function(){
+             console.log('出错了')
+          }
+      });
+    });
+
+      function dealWith(userInfo){
+        // var userInfo = JSON.parse(str)
+        var userInfo;
+        var str = '<dt>';
+            str += '性别:' + '</dt>'
+            str += "<dd>" + userInfo.sex +"</dd>";
+            str += "<dt>" +'年龄:' + '</dt>';
+            str += '<dd>' + userInfo.age +'</dd>';
+        document.querySelector('#ct').innerHTML = str;
+      }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ENVY</title>
+</head>
+<body>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+  <script>
+  //instanceOf用于判断一个对象是否是一个类型的实例
+  //如果一个对象的__proto__等于另一个类型的原型，那么这个对象就是此类型的一个实例
+    function instanceOf(obj,fun){
+       var __proto__ = obj.__proto__;
+      do{
+
+        if (__proto__ === fun.prototype) {
+          return true;
+        }
+        if (!__proto__) {
+          return false;
+        }
+      }while (__proto__ = __proto__.__proto__)
+      return false;
+    }
+  </script>
+</body>
+</html>

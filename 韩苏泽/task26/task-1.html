@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>task-1</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <style>
+        fieldset {
+            color: #312d2d;
+        }
+
+        .news.active {
+            color: #ccc;
+        }
+
+        .box {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        #ct3 {
+            background-color: yellow;
+        }
+
+        #ct4 {
+            height: 60px;
+            background-color: #ccc;
+        }
+
+        div.btn {
+            display: inline-block;
+            border: 1px solid red;
+            margin: 10px;
+            padding: 10px 15px;
+            color: red;
+            background-color: white;
+        }
+
+        #ct5 {
+            height: 200px;
+            width: 200px;
+            margin: 20px;
+            border: 5px solid #ccc;
+            padding: 10px;
+        }
+
+        #ct6 {
+            height: 60px;
+            background-color: #ccc;
+        }
+
+        #ct7 {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+
+        th,
+        tr,
+        td {
+            border: 1px solid #ccc;
+        }
+
+        #ct9 {
+            border: 1px solid #ccc;
+        }
+
+        .pannel>li {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <fieldset>
+        <legend>给元素 $node 添加 class active，给元素 $node 删除 class active</legend>
+        <a href="" class="news" id="box1">印度飞饼有望替代汽车成为新的出行工具</a>
+        <button id="add-class">添加 class</button>
+        <button id="remove-class">删除 class</button>
+        <script>
+            $("#add-class").on("click", function() {
+                $("#box1").addClass("active");
+            })
+            $("#remove-class").on("click", function() {
+                $("#box1").removeClass("active")
+            })
+        </script>
+    </fieldset>
+    <fieldset>
+        <legend>展示元素$node, 隐藏元素$node</legend>
+        <div class="box" id="box2">展示元素show,隐藏元素hide</div>
+        <button id="show">show</button>
+        <button id="hide">hide</button>
+        <script>
+            $("#show").on("click", function() {
+                $("#box2").show("fast");
+            });
+            $("#hide").on("click", function() {
+                $("#box2").hide("slow");
+            });
+        </script>
+    </fieldset>
+    <fieldset>
+        <legend>获取元素$node 的 属性: id、src、title， 修改以上属性</legend>
+        <img id="img1" src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" title="戒指">
+        <div data="id"></div>
+        <div data="src"></div>
+        <div data="title"></div>
+        <button id="find-attr">查看属性</button>
+        <button id="update-attr">修改属性</button>
+        <script>
+            $("#find-attr").on("click", function() {
+                var $par = $(this).parents("fieldset")
+                console.log($par.find("img")[0])
+                $("div[data=id]").text("id=" + $par.find("img").attr("id"));
+                $("div[data=src]").text("src=" + $par.find("img").attr("src"));
+                $("div[data=title]").text("title=" + $par.find("img").attr("title"))
+            });
+            $("#update-attr").on("click", function() {
+                var $par = $(this).parents("fieldset")
+                $par.find("img").attr("id", "img2");
+                $par.find("img").attr("src", "http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg");
+                $par.find("img").attr("title", "金猴")
+            })
+        </script>
+    </fieldset>
+    <fieldset>
+        <legend>
+            在$ct 内部最开头添加元素$node在$ct 内部最末尾添加元素$node
+        </legend>
+        <ul id="ct">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <input type="text">
+        <button id="prepend">prepend</button>
+        <button id="append">append</button>
+        <script>
+            $("#prepend").on("click", function() {
+                var text = $("input").val();
+                if (text == null || (text = text.trim()).length == 0) return;
+                $("#ct").prepend('<li>' + text + '</li>');
+            });
+            $("#append").on("click", function() {
+                var text = $("input").val();
+                if (text == null || (text = text.trim()).length == 0) return;
+                $("#ct").append('<li>' + text + '</li>');
+
+            })
+        </script>
+    </fieldset>
+    <fieldset>
+        <legend> 删除$node</legend>
+        <ul id="ct2">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <button id="remove">remove</button>
+    </fieldset>
+    <script>
+        $("#remove").on("click", function() {
+            $("#ct2").find("li").last().remove();
+        });
+    </script>
+    <fieldset>
+        <legend>把$ct里内容清空</legend>
+        <p>
+            empty这个方法不仅移除子元素（和其他后代元素），同样移除元素里的文本。因为，根据说明，元素里任何文本字符串都被看做是该元素的子节点。请看下面的HTML：
+        </p>
+        <p id="ct3">hello world! <a href="">know more!</a></p>
+        <button id="empty">empty</button>
+    </fieldset>
+    <script>
+        $("#empty").on("click", function() {
+            $("#ct3").empty();
+        })
+    </script>
+    <fieldset>
+        <legend>在$ct 里设置 html &ltdiv class="btn"&gt&lt/div&gt</legend>
+        <div id="ct4"></div>
+        <button id="set-html">html</button>
+    </fieldset>
+    <script>
+        $("#set-html").on("click", function() {
+            $("#ct4").html('<div class="btn">按钮</div>');
+        })
+    </script>
+    <fieldset>
+        <legend> 获取、设置$node 的宽度、高度(分别不包括内边距、包括内边距、包括边框、包括外边距)</legend>
+        <div id="ct5">
+        </div>
+        <button id="get-size">获取宽高</button>
+        <button id="set-size">修改宽高</button>
+        <div id="box-size"></div>
+        <script>
+            function resize() {
+                var $box = $("#ct5");
+                var str = "";
+                str += 'height:' + $box.css("height") + ';<br>';
+                str += 'width:' + $box.css("width") + ';<br>';
+                str += 'margin:' + $box.css("margin") + ';<br>';
+                str += 'border:' + $box.css("border") + ';<br>';
+                str += 'padding:' + $box.css("padding") + ';<br>';
+                return str;
+            }
+            $("#get-size").on("click", function() {
+                var str = "";
+                var $box = $("#ct5");
+                str += '不包含内边距高度:' + $box.height() + '<br>';
+                str += '不包含内边距宽度：' + $box.width() + '<br>';
+                str += '包括内边距高度:' + $box.innerHeight() + '<br>';
+                str += '包括内边距宽度:' + $box.innerWidth() + '<br>';
+                str += '包括边框高度' + $box.outerHeight() + '<br>';
+                str += '包括边框宽度' + $box.outerWidth() + '<br>';
+                str += '包括外边距高度' + $box.outerHeight(true) + '<br>';
+                str += '包括外边距宽度' + $box.outerWidth(true) + '<br>';
+                $("#box-size").html(str);
+                $("#ct5").html(resize());
+            });
+            $("#set-size").on("click", function() {
+                var $box = $("#ct5");
+                $box.height($box.height() * 2);
+                $box.width($box.width() * 2);
+                $box.innerHeight($box.innerHeight() * 2);
+                $box.innerWidth($box.innerWidth() * 2);
+                $box.outerHeight($box.outerHeight() * 2);
+                $box.outerWidth($box.outerWidth() * 2);
+                $box.outerHeight(true, $box.outerHeight(true) * 2);
+                $box.outerWidth(true, $box.outerWidth(true) * 2);
+
+            })
+        </script>
+    </fieldset>
+    <fieldset>
+        <legend>获取窗口滚动条垂直滚动距离</legend>
+        <div id="ct6"></div>
+    </fieldset>
+    <script>
+        $(window).on("scroll", function() {
+            $("#ct6").text('滚动条垂直滚动距离' + $(this).scrollTop());
+        })
+    </script>
+    <fieldset>
+        <legend>获取$node 到根节点水平、垂直偏移距离</legend>
+        <span></span>
+        <button id="get-offset">offset</button>
+        <script>
+            $("#get-offset").on("click", function() {
+                var $prev = $(this).prev();
+                var offset = $prev.offset();
+                $prev.html('水平距离:' + offset.left + ';<br>' + '垂直距离:' + offset.top + ';<br>');
+            })
+        </script>
+    </fieldset>
+    <fieldset>
+        <legend>修改$node 的样式，字体颜色设置红色，字体大小设置14px</legend>
+        <a href="">hello</a>
+        <button id="change-css">css</button>
+    </fieldset>
+    <script>
+        $("#change-css").on("click", function() {
+            $(this).prev().css("color", "red").css("font-size", "14px");
+        })
+    </script>
+    <fieldset>
+        <legend>遍历节点，把每个节点里面的文本内容重复一遍</legend>
+        <table id="ct7">
+            <tr>
+                <th>身高</th>
+                <th>体重</th>
+                <th>年龄</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+        </table>
+        <button id="repeat">重复</button>
+    </fieldset>
+    <script>
+        $("#repeat").on("click", function() {
+            var $table = $(this).prev();
+            $table.find("tr td").each(function(idx, el) {
+                var $cur = $(this)
+                $cur.text($cur.text() + $cur.text());
+            })
+        })
+    </script>
+    <fieldset>
+        <legend>从$ct 里查找 class 为 .item的子元素</legend>
+        <div id="ct8">
+            <span class="item">hello</span>
+            <div><span class="item">我是div中的span.item</span></div><span class='item'>world</span>
+        </div>
+        <button id="find-item">查找item</button>
+    </fieldset>
+
+    <script>
+        $("#find-item").on("click", function() {
+            var $pre = $(this).prev();
+            $pre.children(".item").css("border", "1px solid red");
+        })
+    </script>
+    <fieldset>
+        <legend>获取$ct 里面的所有孩子</legend>
+        <div id="ct9">
+            <span>good</span> morning! 点击有变化
+            <div>韩梅梅</div>
+        </div>
+        <span></span>
+    </fieldset>
+    <script>
+        $("#ct9").on("click", function(e) {
+            var $cur = $(e.target);
+            var num = 0;
+            $cur.children().each(function(idx, el) {
+                $(el).css('border', '1px solid red')
+                num++;
+            })
+            $cur.next("span").text('有' + num + '个元素在' + e.target.tagName + '中')
+        })
+    </script>
+    <fieldset>
+        <legend>对于$node，向上找到 class 为’.ct’的父亲，在从该父亲找到’.panel’的孩子</legend>
+        <div class="ct">
+            <ul class="pannel">
+                <li>a</li>
+                <li>b</li>
+                <li>c</li>
+            </ul>
+            <button id="find-child">找孩子</button>
+        </div>
+
+    </fieldset>
+    <script>
+        $("#find-child").on("click", function() {
+            $(this).parents(".ct").find(".pannel").children().each(function(idx, el) {
+                $(el).text("恭喜你,找到孩子了!")
+            })
+        })
+    </script>
+    <fieldset>
+        <legend>获取选择元素的数量</legend>
+        <div id="count-selected">
+            <input type="checkbox" name="love[]" value="吃饭">吃饭
+            <input type="checkbox" name="love[]" value="睡觉">睡觉
+            <input type="checkbox" name="love[]" value="玩电脑">玩电脑
+            <span></span>
+        </div>
+
+    </fieldset>
+    <script>
+        var num = 0;
+        $("#count-selected").on("click", "input[type=checkbox]", function(e) {
+            if (this.checked == true) {
+                num++;
+            } else {
+                num--;
+            }
+            $("#count-selected").children().last().text('选中了' + num + '个')
+        });
+    </script>
+    <fieldset>
+        <legend>获取当前元素在兄弟中的排行</legend>
+        <ul id="ct10">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <span>当前点击的元素的索引是:</span>
+    </fieldset>
+    <script>
+        $("#ct10").on("click", "li", function() {
+            var idx = $(this).index();
+            $("#ct10").next("span").text('当前点击的元素的索引是:' + idx);
+        })
+    </script>
+
+</body>
+
+</html>
