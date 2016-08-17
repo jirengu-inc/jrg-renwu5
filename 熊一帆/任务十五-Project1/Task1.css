@@ -1,0 +1,169 @@
+*{
+  margin:0 auto;
+  padding: 0 auto;
+}
+body{
+  margin:0;
+  font-family:"微软雅黑"；
+}
+.layout{
+  width:1000px;
+  margin:0 auto;
+}
+.clearfix:after{
+  content:'';
+  display: block;
+  clear: both;
+}
+a{
+  text-decoration:none;
+}
+li{
+  margin:0;
+  list-style-type: none;
+}
+ul{
+  padding:0px;
+}
+#header{
+  border:1px solid #ccc;
+}
+#header .logo i{
+  float:left;
+  line-height:50px;
+  font-size:30px;
+  color:#666666;
+}
+#header .navbar>li{
+  float:left;
+  list-style-type: none;
+  padding:15px;
+}
+#header .navbar>li a{
+  text-decoration: none;
+  color:#666666;
+}
+#header .navbar li i{
+  font-size:10px;
+  margin-left:10px;
+}
+#header .navbar .droplist {
+    position: absolute;
+    background: #fff;
+    display: none;
+    border: 1px solid #ccc;
+}
+.droplist li {
+  position:relative;
+  top:50%;
+  line-height: 1;
+  padding:6px;
+  border-bottom: 1px dashed #ccc;
+}
+.droplist li:last-child{
+  border: none;
+}
+#header .navbar>li:hover .droplist{
+  display: block;
+}
+.droplist li:hover{
+  background: #eee;
+}
+/*CONTENT*/
+.intro{
+  background-color: #b84d45;
+  color: #fff;
+  padding: 30px 0;
+}
+.intro h1 p{
+  color:#fff;
+  font-family:"微软雅黑"；
+}
+.intro p{
+  margin-top:10px;
+}
+.breadcrumb{
+  margin-top:40px;
+  background:#eee;
+  border-radius:3px;
+}
+.breadcrumb>ul{
+  padding:10px;
+}
+.breadcrumb li{
+  float:left;
+  padding:5px;
+  font-size:16px;
+}
+.breadcrumb li a {
+  color:#B84D45;
+}
+.clearfix:after{
+  content:'';
+  display: block;
+  clear: both;
+}
+.work{
+  margin-top:10px;
+}
+.clearfix:after{
+  content:'';
+  display: block;
+  clear: both;
+}
+.work>ul{
+  margin-left:45px;
+}
+.works>ul>li{
+  float:left;
+  margin:20px 15px;
+  padding-bottom: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+.works>ul>li img{
+  width: 300px;
+  height: 200px;
+}
+.works ul li h1 {
+  font-size:16px;
+  margin:10px;
+  text-align: left;
+}
+.works ul li p{
+  font-size:16px;
+  text-align: left;
+  margin:15px;
+  color:#525C5E;
+}
+.btn{
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size:14px;
+  text-align: center;
+  color:#6F6F6F;
+}
+.btn:hover{
+  color:#000;
+}
+.aboutme{
+  background-color: #b84d45;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+.aboutme p{
+  margin:10px;
+}
+.aboutme .btn{
+  color:#fff;
+}
+/*footer*/
+#footer p{
+  text-align: center;
+  margin:30px;
+  padding:30px;
+  border-top:1px solid #eee;
+}
