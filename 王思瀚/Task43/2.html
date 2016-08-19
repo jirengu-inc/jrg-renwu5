@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+.category{
+  border: 1px solid #000;
+  min-height: 50px;
+}
+.category::after{
+  content:'';
+  display: block;
+  clear: both;
+}
+.category>li{
+  float: left;
+  padding: 10px;
+  background-color: #ccc;
+  list-style: none;
+  margin: 5px;
+  cursor: move;
+}
+</style>
+</head>
+<body>
+
+
+     <h3>全部</h3>
+     <ul class="all category">
+       <li class="tag-car" draggable="true">汽车</li>
+       <li class="tag-military" draggable="true">军事</li>
+       <li class="tag-zhejiang" draggable="true">浙江</li>
+       <li class="tag-tech" draggable="true">科技</li>
+       <li class="tag-phone" draggable="true">手机</li>
+       <li class="tag-space" draggable="true">宇宙</li>
+       <li class="tag-joy" draggable="true">娱乐</li>
+       <li class="tag-beauty" draggable="true">美妆</li>
+     </ul>
+
+    <h3>订阅</h3>
+    <ul class="rss category"></ul>
+
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.map" ></script>
+<script>
+    var all = document.querySelector('.category'),
+            rss = document.querySelector('.rss'),
+            tags = document.querySelectorAll('.category li');
+
+    for(var i=0; i<tags.length; i++){
+        tags[i].ondragstart=function(e){
+            e.dataTransfer.setData("class",e.target.className);
+        }
+    }
+
+
+  rss.ondragover = ondragover;
+  all.ondragover = ondragover;
+
+  rss.ondrop = ondrop;
+  all.ondrop = ondrop;
+
+  function ondragover(e){
+    e.preventDefault();
+  }
+
+  function ondrop(e){
+      e.preventDefault();
+      var cls=e.dataTransfer.getData("class");
+      e.target.appendChild(document.getElementsByClassName(cls)[0]);
+  }
+
+
+</script>
+</html>
