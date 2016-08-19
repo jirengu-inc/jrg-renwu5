@@ -25,7 +25,7 @@
 			var day= parseInt(timedif/msD);
 			var hours= parseInt((timedif%msD)/msH);
 			var min=parseInt((timedif%msD%msH)/msM);
-			var sec=parseInt((timedif&msD%msH%msM)/msS);
+			var sec=parseInt((timedif%msD%msH%msM)/msS);
 			return "距离现在时间为"+day+'天'+hours+'小时'+min+'分'+sec+'秒';
 		}
 		/*
