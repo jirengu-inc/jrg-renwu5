@@ -1,0 +1,38 @@
+<head>
+	<meta charset="utf-8">
+	<title>JS Bin</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<style>
+		#box {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="box"></div>
+	<button class="get">变变变</button>
+
+	<script>
+		var $box = $('#box'),
+			$get = $('.get');
+		$get.on('click', function() {
+			$box.animate({
+					width: '200px',
+					opacity: 0.25,
+				},
+				500,
+				function() {
+					$box.animate({
+						width: '100px',
+						height: '100 px',
+						backgroundColor: 'red',
+						opacity: 1,
+					}, 500)
+				}
+			)
+		})
+	</script>
+</body>

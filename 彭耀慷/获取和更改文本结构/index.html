@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>JS Bin</title>
+		<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	</head>
+
+	<body>
+		<div class="main">
+			<p>现在是P标签状态</p>
+		</div>
+		<button class="btn">点击显示p的状态</button>
+		<button class="btn2">点击转变标签哦</button>
+		<button class="getText">获取文本内容</button>
+		<button class="getText2">更改文本内容</button>
+		<script>
+			var $main = $('.main p'),
+				$getText = $('.getText'),
+				$getText2 = $('.getText2'),
+				$btn = $('.btn'),
+				$btn2 = $('.btn2');
+			$getText.on('click', function() {
+				alert($main.text())
+			})
+			$getText2.on('click', function() {
+				$main.text('文本内容已变')
+			})
+			$btn.on('click', function() {
+				alert($main.html())
+			});
+			$btn2.on('click', function() {
+				$main.html('<span>现在是span标签状态</span>')
+			});
+		</script>
+	</body>
+
+</html>
