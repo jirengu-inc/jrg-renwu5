@@ -36,8 +36,9 @@ p{
   line-height: 1.75;
 }
 #header{
-  background:url(img/header-bg.jpg) 50% 50% no-repeat;
+  background:url(img/header-bg.jpg) 0 0 no-repeat;
   background-size: cover;
+  background-position: center center;
   color: #fff;
 }
 .header-nav{
@@ -46,6 +47,7 @@ p{
   left: 0;
   width: 100%;
   background: rgb(34, 34, 34);
+  opacity:0.8;
   padding: 25px;
   z-index: 2;
 }
