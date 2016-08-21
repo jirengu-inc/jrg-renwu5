@@ -1,0 +1,36 @@
+.borderRed{
+	border: 1px solid red;
+	width: 300px;
+	padding: 10px;
+	margin-top: 20px;
+}
+.btn1{
+	padding: 10px;
+	border-radius: 10px;
+	background-color: white;
+}
+
+.divScroll{
+	
+}
+.fill{
+	height: 1000px;
+	border: 1px solid blue;
+	padding: 50px;
+}
+.btn1Add{
+	background-color: blue;
+	color: white;
+}
+.backgroundColor{
+	background-color: red;
+}
+.divHover{
+	
+}
+.inputbox{
+	font-size: 20px;
+}
+.select1{
+	
+}
