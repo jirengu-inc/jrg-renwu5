@@ -1,0 +1,31 @@
+html,
+body,
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+#swap>li {
+	list-style: none;
+	margin: 20px;
+	padding: 10px;
+	border: 1px solid #ccd;
+	border-radius: 5px;
+}
+
+#swap>li:hover {
+	background-color: green;
+}
+
+#btn {
+	display: block;
+	margin: 0 auto;
+	padding: 10px 5px;
+	width: 100px;
+	border: 1px solid red;
+	border-radius: 5px;
+	font-size: 20px;
+	color: red;
+	text-decoration: none;
+	text-align: center;
+}
