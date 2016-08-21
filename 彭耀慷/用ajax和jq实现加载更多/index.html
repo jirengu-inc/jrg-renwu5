@@ -5,39 +5,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatibale" content="IE=edge,chrome=1">
 		<title>jQuery-ajax-loadmore</title>
-		<style type="text/css">
-			html,
-			body,
-			ul {
-				margin: 0;
-				padding: 0;
-			}
-			
-			#swap>li {
-				list-style: none;
-				margin: 20px;
-				padding: 10px;
-				border: 1px solid #ccd;
-				border-radius: 5px;
-			}
-			
-			#swap>li:hover {
-				background-color: green;
-			}
-			
-			#btn {
-				display: block;
-				margin: 0 auto;
-				padding: 10px 5px;
-				width: 100px;
-				border: 1px solid red;
-				border-radius: 5px;
-				font-size: 20px;
-				color: red;
-				text-decoration: none;
-				text-align: center;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="css/new_file.css" />
 	</head>
 
 	<body>
@@ -52,42 +20,42 @@
 			 * 2、后台返回的数据：请求的数据内容；
 			 */
 			var flag = false;
-			$("#btn").on("click", function() {
+			$('#btn').on('click', function() {
 				if(flag === true) return;
 				flag = true;
-				var start = $("#swap>li").length;
+				var start = $('#swap>li').length;
 				var len = 6;
-				$("#btn").text("loading...");
+				$('#btn').text('loading...');
 				$.ajax({
-					url: "/new_file.php",
+					url: '/new_file.php',
 					type: 'GET',
-					dataType: "json",
+					dataType: 'json',
 					data: {
 						start: start,
 						len: len
 					},
 					success: function(json) {
-						dealWith(json);
-						flag = false;
-						$("#btn").text("加载更多");
+						$('#btn').text('加载更多'),
+							flag = false,
+							dealWith(json)
 					},
-					error: onerror
+					error: onError
 				});
 			});
 
 			function dealWith(json) {
 				if(json.status === 1) {
 					for(var i = 0; i < json.data.length; i++) {
-						$("#swap").append("<li>" + json.data[i] + "</li>");
+						$('#swap').append('<li>' + json.data[i] + '</li>');
 					}
 				} else {
-					console.log('数据请求失败');
+					console.log('请求任务失败...');
 				}
-			}
+			};
 
-			function onerror() {
-				console.log("error...");
-			}
+			function onError() {
+				console.log('error...');
+			};
 		</script>
 	</body>
 
