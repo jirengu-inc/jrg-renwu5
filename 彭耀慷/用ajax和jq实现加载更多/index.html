@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatibale" content="IE=edge,chrome=1">
+		<title>jQuery-ajax-loadmore</title>
+		<style type="text/css">
+			html,
+			body,
+			ul {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#swap>li {
+				list-style: none;
+				margin: 20px;
+				padding: 10px;
+				border: 1px solid #ccd;
+				border-radius: 5px;
+			}
+			
+			#swap>li:hover {
+				background-color: green;
+			}
+			
+			#btn {
+				display: block;
+				margin: 0 auto;
+				padding: 10px 5px;
+				width: 100px;
+				border: 1px solid red;
+				border-radius: 5px;
+				font-size: 20px;
+				color: red;
+				text-decoration: none;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul id="swap">
+			<li>内容1</li>
+			<li>内容2</li>
+		</ul>
+		<a id="btn" href="#">加载更多</a>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+		<script type="text/javascript">
+			/* 1、传给后台的数据：start-表示当前显示的数据内容个数；len-表示请求的数据内容条数；
+			 * 2、后台返回的数据：请求的数据内容；
+			 */
+			var flag = false;
+			$("#btn").on("click", function() {
+				if(flag === true) return;
+				flag = true;
+				var start = $("#swap>li").length;
+				var len = 6;
+				$("#btn").text("loading...");
+				$.ajax({
+					url: "/new_file.php",
+					type: 'GET',
+					dataType: "json",
+					data: {
+						start: start,
+						len: len
+					},
+					success: function(json) {
+						dealWith(json);
+						flag = false;
+						$("#btn").text("加载更多");
+					},
+					error: onerror
+				});
+			});
+
+			function dealWith(json) {
+				if(json.status === 1) {
+					for(var i = 0; i < json.data.length; i++) {
+						$("#swap").append("<li>" + json.data[i] + "</li>");
+					}
+				} else {
+					console.log('数据请求失败');
+				}
+			}
+
+			function onerror() {
+				console.log("error...");
+			}
+		</script>
+	</body>
+
+</html>
