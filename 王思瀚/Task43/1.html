@@ -3,10 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <style>
+  label,input{
+    display: block;
+    margin: 10px;
+  }
+  </style>
 </head>
 <body>
-<form action="">
-  
+<form>
+  <label for="color">color:</label>
+  <input id="color" type="color">
+  <label for="date">date\month\hours:</label>
+  <input id="date" type="date">
+  <input type="datetime-local">
+  <input type="month">
+  <input type="time">
+  <label for="mail">email:</label>
+  <input type="email" name="name" value="" id="mail">
+  <label for="number">number:</label>
+  <input type="number" id="number">
+  <label for="tel">tel:</label>
+  <input type="tel" id="tel">
+  <label for="url">url:</label>
+  <input type="url" id="url">
+  <input type="submit">
 </form>
 </body>
 </html>
