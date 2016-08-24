@@ -4,10 +4,14 @@ var $ct = $('.img-Ct'),
 	$next = $('.next'),
 	$bullet = $('.bullet'),
 	imgWidth = $items.width(),
-	imgCount = $ct.children().length;
+	imgCount = $ct.children().length,
+	$btnStart = $('.btnStart'),
+	$btnEnd = $('.btnEnd');
 
 var curIdx = 0;
 var isAnimate = false;
+
+
 
 $next.on('click', function() {
 	playNext();
@@ -19,6 +23,14 @@ $bullet.find('li').on('click', function() {
 	var idx = $(this).index();
 	play(idx);
 });
+
+$btnEnd.on('click',function(){
+	stopAuto()
+});
+$btnStart.on('click',function(){
+	autoPlay()
+});
+
 play(0);
 autoPlay();
 
@@ -53,5 +65,5 @@ function stopAuto() {
 function autoPlay() {
 	clock = setInterval(function() {
 		playNext();
-	}, 2000);
+	}, 1000);
 };
