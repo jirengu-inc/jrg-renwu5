@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ENVY</title>
+    <style>
+        div{
+            margin:10px;
+        }
+        .one{
+            border:3px solid #ccc ;
+            height: 100px;
+            width:100px;
+            border-radius: 50%;
+        }
+        .two{
+            border:3px solid #ccc ;
+            height: 100px;
+            width:100px;
+            border-radius: 5px;
+        }
+        .three{
+            box-shadow:  30px 44px 84px 16px #000;;
+            border:3px solid #ccc ;
+            height: 100px;
+            width:100px;
+            border-radius: 5px;
+        }
+        .four{
+            border:3px solid #ccc ;
+            height: 100px;
+            width:100px;
+            border-radius: 5px;
+            transform: translate(50%,50%) rotate(45deg) scale(2,2) skew(45deg);
+        }
+        .five{
+            border:3px solid #ccc ;
+            height: 100px;
+            width:100px;
+            border-radius: 5px;
+            transform: rotateX(25deg) rotateY(25deg);
+        }
+        .six{
+            border:3px solid #ccc ;
+            height: 100px;
+            width:100px;
+            border-radius: 5px;
+            background:linear-gradient(to right,#000, #fff)
+        }
+        .seven{
+            border:3px solid #ccc ;
+            height: 100px;
+            width:100px;
+            border-radius: 5px;
+            background-color: #ccc;
+            transition: 1s;
+        }
+        .seven:hover{
+            background-color: #691bbb;
+        }
+        .eight{
+            position: relative;
+            border:3px solid #ccc ;
+            height: 100px;
+            width:100px;
+            border-radius: 5px;
+            background-color: #ccc;
+            animation: mymove 5s infinite;
+        }
+        @keyframes mymove
+        {
+            from {left:0px;}
+            to {left:200px;}
+        }
+    </style>
+</head>
+<body>
+<div class="one"></div>
+<div class="two"></div>
+<div class="three"></div>
+<div class="four"></div>
+<div class="five"></div>
+<div class="six"></div>
+<div class="seven"></div>
+<div class="eight"></div>
+</body>
+</html>

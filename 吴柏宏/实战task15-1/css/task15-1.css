@@ -1,0 +1,131 @@
+*{
+  box-sizing: border-box;
+}
+html,body,ul,h1,p,h4{
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 14px/1.5 normal;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: #666;
+}
+a:hover{
+  color: #333;
+}
+.layout{
+  width: 1000px;
+  margin: 0 auto;
+}
+#header .logo i{
+  font-size: 35px;
+}
+#header .navbar>li{
+  float: left;
+  margin-left: 20px;
+  line-height: 50px;
+  height: 50px;
+  position: relative;
+}
+#header>.layout>ul{
+  margin-left: -25px;
+}
+#header .droplist li{
+  background: #fff;
+  border-bottom: 1px dashed #ccc;
+  padding: 10px;
+  line-height: 14px;
+}
+#header .droplist{
+  position: absolute;
+  top: 100%;
+  left:0px;
+  display: none;
+  border: 1px solid #ccc;
+}
+#header .droplist li:hover{
+  background: #eee;
+}
+#header .navbar>li:hover .droplist{
+  display: block;
+}
+.intor{
+  background: rgb(184,77,69);
+  padding: 30px 0;
+  color: #fff;
+}
+.clearfix:after{
+  content:'';
+  display: block;
+  clear: both;
+}
+.breadcrumb li{
+  color: #666;
+  display: inline-block;
+}
+.breadcrumb a{
+  color: #b84d45;
+}
+.breadcrumb ul{
+  background: #eee;
+  padding: 10px;
+  border-radius: 3px;
+  margin-top: 40px;
+}
+.works ul{
+  margin-left: -43px;
+  margin-top: 30px;
+}
+.works ul li{
+  border: 1px solid #ccc;
+  float: left;
+  margin-left: 45px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+.btn{
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 5px 8px;
+}
+.works ul li img{
+  width: 300px;
+  height: 200px;
+}
+.works ul li h4{
+  font-size: 16px;
+  padding: 5px 10px;
+  text-align: left;
+}
+.works ul li p{
+  padding: 5px 10px;
+  text-align: left;
+}
+.aboutme{
+  background: rgb(184,77,69);
+  text-align: center;
+  color: #fff;
+  padding: 20px 0;
+  margin-top: 10px;
+}
+.aboutme .btn{
+  color: #fff;
+  margin-top: 10px;
+}
+#footer{
+  text-align: center;
+}
+#footer p{
+  border-top: 1px solid #eee;
+  margin: 30px;
+  padding-top: 30px;
+
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+    <style>
+      .square{
+        height: 100px;
+        width: 100px;
+        background-color: red;
+        position: absolute;
+        top: 1500px;
+      }
+    </style>
+</head>
+<body>
+
+  <div class="square">
+
+  </div>
+<script>
+var Expourse = function(){
+  function bind($target,callback){
+      $(window).on('scroll',function(){
+        if ($(window).scrollTop() + $(window).height() > $target.offset().top) {
+              callback.call($target);
+        }
+      })
+  }
+
+  function one($target,callback){
+    var state = false;
+    $(window).on('scroll',function(){
+      if ($(window).scrollTop() + $(window).height() > $target.offset().top && state == false) {
+                callback.call($target);
+                state = true;
+      }
+    })
+  }
+
+  return{
+    bind: bind,
+    one: one
+  }
+}();
+
+
+
+
+var $target = $('.square');
+
+
+
+//$target 是 jquery 对象
+// 当窗口滚动时，如果$target 出现在可见区域，执行回调函数里面的代码，且在回调函数内，$(this)代表$target
+// Expourse.bind($target, function(){
+//     console.log($(this));    // $target
+// });
+
+// 当窗口滚动时，如果$target 出现在可见区域，执行回调函数里面的代码，且在回调函数内，$(this)代表$target。 仅执行一次回调函数，下次$target 曝光不再执行
+Expourse.one($target, function(){
+    console.log($(this));    // $target
+})
+</script>
+</body>
+</html>

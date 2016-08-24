@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>css sprite</title>
+    <style>
+        li{
+            display:inline-block;
+            padding-left:35px;
+            line-height:35px;
+            background:url(images/result.png) no-repeat 0 0 ;
+        }
+        li:nth-child(2){
+            background-position:0 -45px;
+        }
+        li:nth-child(3){
+            background-position:0 -88px;
+        }
+        li:hover{
+            background-position:0 -134px;
+        }
+        li:nth-of-type(2):hover{
+            background-position:0 -183px;
+        }
+        li:nth-of-type(3):hover{
+            background-position:0 -230px;
+        }
+        a{
+            display:block;
+            color:#000;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a href="#">前进</a></li>
+    <li><a href="#">开始</a></li>
+    <li><a href="#">停止</a></li>
+</ul>
+</body>
+</html>
