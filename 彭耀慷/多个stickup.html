@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>多个stickup</title>
+		<style>
+			#header,
+			.ct-c,
+			#footer {
+				width: 1000px;
+				margin: 0 auto 20px;
+				color: white;
+				text-shadow: 2px 2px 2px #ccc;
+			}
+			
+			#header {
+				height: 50px;
+				background: red;
+			}
+			
+			.ct-c .nav {
+				height: 30px;
+				background: blue;
+				
+			}
+			
+			.ct-c:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+			
+			.ct-c .aside {
+				width: 300px;
+				height: 800px;
+				float: left;
+				background: #00FFFF;
+			}
+			
+			.ct-c .main {
+				width: 680px;
+				height: 800px;
+				float: left;
+				margin-left: 20px;
+				background: #7FFF00;
+			}
+			
+			#footer {
+				height: 30px;
+				background: #556B2F;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="header">header</div>
+		<div id="ct">
+			<div class="ct-c">
+
+				<div class="nav">nav1</div>
+				<div class="aside">aside1</div>
+				<div class="main">main1</div>
+			</div>
+			<div class="ct-c">
+
+				<div class="nav">nav2</div>
+				<div class="aside">aside2</div>
+				<div class="main">main2</div>
+			</div>
+			<div class="ct-c">
+
+				<div class="nav">nav3</div>
+				<div class="aside">aside3</div>
+				<div class="main">main3</div>
+			</div>
+			<div class="ct-c">
+
+				<div class="nav">nav4</div>
+				<div class="aside">aside4</div>
+				<div class="main">main4</div>
+			</div>
+			<div class="ct-c">
+
+				<div class="nav">nav5</div>
+				<div class="aside">aside5</div>
+				<div class="main">main5</div>
+			</div>
+		</div>
+		<div id="footer">footer</div>
+
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+		<script>
+			$.fn.stickup = function() {
+				var $el = this,
+					$elW = $el.width(),
+					$elH = $el.height(),
+					$elTop = $el.offset().top,
+					$elLeft = $el.offset().left;
+
+				var $cloneDIV = $el.clone()
+					.css('opacity', 0)
+					.insertBefore($el)
+					.hide();
+
+				$(window).on('scroll', function() {
+					var $scrollTop = $(this).scrollTop();
+					if($scrollTop >= $elTop) {
+						if(!isFixed()) {
+							setFixed();
+							console.log(!isFixed());
+						}
+					} else {
+						if(isFixed()) {
+							unsetFixed();
+							console.log(isFixed());
+						}
+					}
+				});
+
+				function isFixed() {
+					return !!$el.data('data-fixed');
+				}
+
+				function setFixed() {
+					$el.data('data-fixed', true)
+						.css({
+							'position': 'fixed',
+							'top': 0,
+							'left': $elLeft,
+							'background': 'pink',
+							'width': $elW,
+							'z-index': 9999
+						});
+					$cloneDIV.show();
+				}
+
+				function unsetFixed() {
+					$el.data('data-fixed', false)
+						.removeAttr('style');
+					$cloneDIV.hide();
+				}
+			};
+			
+			
+			$('.nav').each(function() {
+				$(this).stickup();
+			})
+		</script>
+
+	</body>
+
+</html>
