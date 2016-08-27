@@ -1,0 +1,139 @@
+html, body, ul, li, h1, h2, h3, h4, h5, p {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #FFF;
+    font-size: 14px;
+    line-height: 1.5;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #666666;
+}
+a:hover {
+    color: #333;
+}
+.layout {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn {
+    line-height: 40px;
+    padding: 5px;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+}
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+
+/*****************************/
+
+#header {
+    height: 50px;
+}
+#header .nav>li {
+    float: left;
+    padding: 0 10px;
+    line-height: 50px;
+    position: relative;
+}
+#header .information {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 0 2px;
+    background-color: #FFF;
+}
+#header .nav>li:hover .information {
+    display: block;
+}
+#header .information li {
+    line-height: 30px;
+    border-bottom: 1px dashed #CCC;
+}
+#header .information>li:last-child {
+    border: none;
+}
+#header .information>li:hover {
+    background-color: #EEE;
+}
+
+
+#introduction {
+    background-color: #B84D45;
+    color: white;
+    padding: 40px 0;
+}
+
+
+#content .breadcrumb {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    background-color: #EEE;
+}
+#content .breadcrumb a {
+    color: #B84D45;
+}
+#content .breadcrumb ul {
+    padding: 10px;
+}
+#content .breadcrumb li {
+    float: left;
+}
+
+#content .projects ul {
+    margin-left: -50px;
+}
+#content .projects li {
+    float: left;
+    text-align: center;
+    margin-left: 50px;
+    margin-bottom: 30px;
+    border: 1px solid #CCC;
+}
+#content .projects img {
+    width: 298px;
+}
+#content .projects>ul>li h3, 
+#content .projects>ul>li p {
+    text-align: left;
+    padding: 0 5px;
+}
+
+
+#resume {
+    background-color: #B84D45;
+    padding: 30px;
+}
+#resume .layout {
+    text-align: center;
+    color: white;
+}
+#resume .layout h2 {
+    font-size: 30px;
+}
+#resume .layout p:nth-child(3) {
+   margin-top: 10px;
+}
+#resume .layout .btn {
+    color: white;
+    padding: 8px 10px;
+}
+
+
+#footer {
+    text-align: center;
+    padding: 50px;
+}
