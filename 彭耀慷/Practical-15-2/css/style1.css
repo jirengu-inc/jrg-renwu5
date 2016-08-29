@@ -20,7 +20,9 @@
 	clear: both;
 }
 
-.the-head-ul {}
+.the-head-ul {
+	position: relative;
+}
 
 .the-head-ul>li>a {
 	float: left;
@@ -57,7 +59,7 @@
 	display: none;
 	position: absolute;
 	top: 43px;
-	left: 550px;
+	left: 88px;;
 	color: black;
 }
 
