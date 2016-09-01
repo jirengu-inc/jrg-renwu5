@@ -96,13 +96,20 @@
 		}
 		function addClass(obj,str){
 			var arr=obj.className.split(' ');
+            var flag=0;
 			for(var i=0;i<arr.length;i++){
+                console.log(flag);
 				if (arr[i]!==str) {
-					obj.className+=' '+str;
-					break;
+					flag+=1;
+                    console.log(flag);
 				}
-				return;
 			}
+            console.log(flag);
+            console.log(arr.length);
+            if(flag===arr.length){
+              obj.className+=' '+str;
+            }
+            return;
 		}
 		addClass(obj, 'new');
 		addClass(obj, 'open')
