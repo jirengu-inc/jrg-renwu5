@@ -1,0 +1,160 @@
+html,body,p,ul,li,h1,h2,h3,h4,div{
+	margin:0px;
+	padding: 0px;
+	box-sizing:border-box;
+}
+body{
+	font:14px/1.5 normal;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color:#666;
+}
+a:hover{
+	color: #333;
+}
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.container{
+	width: 1000px;
+	margin:0 auto;
+}
+.btn{
+	display: inline-block;
+	padding: 5px 8px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+/*上面是页面共有的*/
+#header{
+	border: 1px solid #ccc;
+}
+#header .logo{
+	float: left;
+	line-height: 45px;
+}
+#header .rocket:before{
+	content: "\e61d";
+	font-size: 30px;
+}
+#header .navbar{
+	float: left;
+	margin-left: 20px;
+}
+.navbar>li{
+	float: left;
+	height: 50px;
+	line-height: 50px;
+	padding: 0 10px;
+	font-size: 16px;
+	position: relative;
+}
+.navbar>li .triangular:before{
+	content: "\e635";
+}
+.navbar .child{
+	border: 1px solid #ccc;
+	background: #fff;
+	position: absolute;
+    left: 0;
+    top: 100%;
+    display: none;
+}
+.navbar .child>li{
+	border-bottom:1px dashed #ccc;
+	line-height:30px;
+	padding: 8px;
+}
+.navbar>li:hover .child{
+	display: block;
+}
+.child>li:hover{
+	background:#eee;
+}
+/*header部分结束*/
+#content .intro{
+	padding:30px 0;
+	background:#b84d45;
+	color: #fff;
+}
+.intro h1{
+	margin-bottom: 10px;
+}
+/*content部分的intro结束*/
+#content .service{
+	padding: 30px 0px;
+}
+.service ul{
+	background:#EEE;
+	padding: 10px;
+	border-radius: 3px;
+}
+.service ul>li:first-child a{
+	color: #b84d45; 
+}
+.service ul li{
+	float: left;
+	padding: 0 3px;
+	color: #666;
+}
+/*content部分的service结束*/
+#content .work ul{
+	margin-left: -45px;
+}
+#content .work li{
+	text-align: center;
+	border:1px solid #AAA;
+	float: left;
+	margin-left: 45px;
+	margin-bottom: 25px;
+	padding-bottom: 15px;
+}
+.work li img{
+	width: 300px;
+	height: 200px;
+}
+.work li h3{
+	font-size: 18px;
+    font-family: "Microsoft Yahei";
+    padding: 10px 14px;
+    text-align: left;
+}
+.work li p{
+	text-align: left;
+    font-size: 14px;
+    padding:0 0 14px 14px;
+}
+/*content部分的work结束*/
+#content .more{
+	background-color: #b84d45;
+	text-align: center;
+	padding: 20px 0;
+    color: #fff;
+}
+.more .btn{
+	color: #fff;
+}
+.more .btn:hover{
+	color: red;
+}
+.more h1{
+	margin-bottom:10px; 
+}
+.more p{
+	margin-bottom:10px;
+}
+/*content部分的more结束*/
+#footer p{
+	text-align: center;
+	border-top: 1px solid #DDD;
+	padding: 30px;
+	margin-top: 30px;
+	font-size: 16px;
+	color: #555;
+}

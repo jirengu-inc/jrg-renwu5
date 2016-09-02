@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用数组拼接出如下字符串 （***）</title>
+</head>
+<body>
+	<script>
+		var prod = {
+    	name: '女装',
+    	styles: ['短款', '冬季', '春装']
+    };
+		function getTpl(data){
+		//todo...
+			var arr=new Array;
+			 arr[0]='<dl class="product">';
+			 arr[1]='<dt>'+data.name+'</dt>';
+			 arr[2]='<dd>'+data.styles[0]+'</dd>';
+			 arr[3]='<dd>'+data.styles[1]+'</dd>';
+			 arr[4]='<dd>'+data.styles[2]+'</dd>';
+			 arr[5]='</dl>';
+			 alert(arr.join(''));
+		}
+	 getTpl(prod);  //result为下面的字符串
+		/*<dl class="product">
+    <dt>女装</dt>
+    <dd>短款</dd>
+    <dd>冬季</dd>
+    <dd>春装</dd>
+    </dl>*/
+	
+
+	</script>
+</body>
+</html>

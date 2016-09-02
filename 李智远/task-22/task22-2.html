@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    .ct{
+      background: pink;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+  </ul>
+  <input class="ipt-add-content" placeholder="添加内容"/>
+  <button id="btn-add-start">开头添加</button>
+  <button id="btn-add-end">结尾添加</button>
+  <script>
+    var ct = document.querySelector('.ct')
+    var start = document.querySelector('#btn-add-start')
+    var end = document.querySelector('#btn-add-end')
+    var ipt = document.querySelector('.ipt-add-content')
+    ct.addEventListener('click',function(e){
+      if(e.target.tagName.toLowerCase() === 'li'){
+        console.log(e.target.innerText)
+      }//注意tagName默认为大写字母
+    })
+    start.addEventListener('click',function(){
+      var li = document.createElement('li');
+      li.innerText = ipt.value;
+      ct.insertBefore(li,ct.firstChild);//注意数字大小写
+    });
+    var end = document.querySelector('#btn-add-end')
+    end.addEventListener('click',function(){
+      var li = document.createElement('li');
+      li.innerText = ipt.value;
+      ct.appendChild(li)
+    })
+  </script>
+</body>
+</html>

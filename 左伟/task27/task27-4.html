@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatibale" content="IE=edge,chrome=1">
+	<title>全屏轮播效果--不修改DOM</title>
+	<meta name="discription" value="">
+	<meta name="keyword" value="">
+	<style type="text/css">
+	html,body,ul,li,div{
+		padding:0;
+		margin:0;
+	}
+	li{
+		list-style: none;
+	}
+	html,body,.swap,.pic-list{
+		width:100%;
+		height:100%;
+	}
+	.swap{
+		position:relative;
+		overflow: hidden;
+	}
+	.pic-list{
+		position:absolute;
+	}
+	.pic-list:after{
+		content:'';
+		display:block;
+		clear:both;
+	}
+	.pic-list>li{
+		position:relative;
+		float:left;
+		height:100%;
+	}
+	.cover{
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+		opacity: 0.8;
+		}
+	.list{
+		position:absolute;
+		left:50%;
+		bottom:10px;
+		transform:translateX(-50%);
+	}
+	.list:after{
+		content:'';
+		display: block;
+		clear:both;
+	}
+	.list>li{
+		float:left;
+		width:20px;
+		height:10px;
+		margin:0 5px;
+		border-radius:10px;
+		background-color: #eee;
+	}
+	.list>.active{background-color: gray;}
+	</style>
+</head>	
+<body>
+	<div class="swap">
+		<ul class="pic-list">
+			<li><div class="cover" data-bg-img="img/bg_1.jpg"></div></li>
+			<li><div class="cover" data-bg-img="img/bg_2.jpg"></div></li>
+			<li><div class="cover" data-bg-img="img/bg_3.jpg"></div></li>
+			<li><div class="cover" data-bg-img="img/bg_4.jpg"></div></li>
+		</ul>
+		<ul class="list">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		var $pic=$(".pic-list"),
+		    $list=$(".list"),
+		    $items=$pic.children(),
+		    picCount=$items.length,
+		    picWidth=$(window).width();
+		var isAnimate=false;
+		var curIdx=0;
+
+		$pic.append($items.first().clone());
+		$pic.prepend($items.last().clone());
+		var realLen=$pic.children().length;
+		$pic.find("li").css({width:picWidth});
+		$pic.find(".cover").css({width:picWidth});
+		$pic.css({left:-picWidth,width:picWidth*realLen});
+
+		$list.find("li").on("click",function(){
+			var idx=$(this).index();
+			if(idx>curIdx){
+				playNext(idx-curIdx);
+			}
+			if(idx<curIdx){
+				playPre(curIdx-idx);
+			}
+		});
+
+		setBg(1);
+		playAuto();
+
+		function playPre(idx){
+			var idx = idx || 1 ;
+			if(!isAnimate){
+				isAnimate=true;
+				stopAuto();
+				setBg(curIdx);
+				$pic.animate({left:"+="+picWidth*idx},function(){
+					curIdx=(picCount+curIdx-idx)%picCount;
+					if(curIdx===(picCount-1)){
+						$pic.css({left:-picWidth*picCount});
+					}
+					setList();
+					isAnimate=false;
+					playAuto();
+				});
+			}
+		}
+
+		function playNext(idx){
+			var idx = idx || 1 ;
+			if(!isAnimate){
+				isAnimate=true;
+				stopAuto();
+				setBg(curIdx+2);
+				$pic.animate({left:"-="+picWidth*idx},function(){
+					curIdx=(curIdx+idx)%picCount;
+					if(curIdx===0){
+						$pic.css({left:-picWidth});
+					}
+					setList();
+					isAnimate=false;
+					playAuto();
+				});
+			}
+		}
+
+		function setList(){
+			$list.children().removeClass("active")
+			     .eq(curIdx).addClass("active");
+		}
+		function playAuto(){
+			clock=setInterval(function(){
+					playNext();
+				},2000);
+		}
+		function stopAuto(){
+				clearInterval(clock);
+		}
+
+		function setBg(idx){
+			var idx=idx || 0;
+			var $node=$pic.children().eq(idx);
+			var $cover=$node.find(".cover");
+			var picurl=$cover.attr("data-bg-img");
+			if($node.data('isBgset')) return;
+			 $cover.css('background-image','url('+picurl+')');
+			 $node.data('isBgset',true);
+		}
+	</script>
+</body>
+</html>

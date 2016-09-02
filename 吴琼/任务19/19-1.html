@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>写一个函数getIntv，获取从当前时间到指定日期的间隔时间</title>
+</head>
+<body>
+  <script>
+    function getIntv(time){
+      var nowDay=Date.now();
+      var laterDay=Date.parse(time);
+      var s=laterDay-nowDay;
+      var str=Math.floor(s/(1000*60*60*24))+'天'+Math.floor(s%(1000*60*60*24)/(1000*60*60))+'时'+Math.floor(s%(1000*60*60*24)%(1000*60*60)/(1000*60))+'分'+Math.floor(s%(1000*60*60*24)%(1000*60*60)%(1000*60)/1000)+'秒';
+      return str;
+    }
+    var str = getIntv("2017-01-27");
+    console.log(str);  // 距除夕还有 20 天 15 小时 20 分 10 秒
+  </script>
+</body>
+</html>

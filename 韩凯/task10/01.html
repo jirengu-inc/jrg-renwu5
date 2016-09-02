@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task10</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+/*css样式重置*/
+ *{
+ 	margin:0;
+ 	padding:0;
+ }
+ li{
+ 	list-style:none;
+ }
+ a{
+ 	text-decoration:none;
+ 	color:black;
+ }
+ /*写当前页面公共样式*/
+ body{
+ 	font:14px/1.5 "Microsoft YaHi","微软雅黑",sans-serif;
+ 	color: #656565;
+ }
+
+ 
+ /*页面整体居中展示，宽度固定900内*/
+ .container{
+ 	width:900px;
+ 	margin:0 auto;
+ }
+ /*页面功能模块*/
+ #header{
+ 	height:50px;
+ 	background:#333;
+ }
+ #header .logo img{
+		height: 40px;
+	}
+#header .nav{
+		float: right;
+	}
+#header .nav>li{
+	float:left;
+	margin-right:15px;
+}
+#header .nav a{
+	display:block;
+	height:50px;
+	line-height:50px;
+	padding:0 10px;
+	color:#fff;
+}
+
+#header .nav a:hover{
+	background:-color:#fff;
+	color:#333;
+}
+/*侧边栏*/
+	
+	#content{
+		margin-top: 10px;
+	}
+	#content:after{
+		content: '';
+		display: table;
+		clear: both;
+	}
+
+	#content .aside{
+		float: left;
+		width: 220px;
+		min-height: 500px;
+		background-color: #eee;
+	}
+
+
+
+	/*主区块*/
+	#content .main{
+		margin-left:230px;/*大于aside的width便可*/
+		padding: 20px 10px;
+		background-color: #eee;
+
+	}
+	#content .main h1{
+		margin: 20px 0;
+	}	
+	/*#content .main p{
+		margin: 10px 0;
+	}body设置了p值行高1.5这里可以不写*/	
+
+   /*尾部*/
+
+   #footer{
+		background-color: #333;
+		padding:10px 0;
+		overflow:hidden;
+	}
+	/*子集浮动父级塌陷，有浮动就注意塌陷*/
+	#footer li{
+		float:left;
+		margin-left:10px;
+	}
+    
+  #footer a{
+  	color:white;
+  }
+ 
+</style>
+</head>
+<body>
+<div id="header">
+	<div id="container">
+		<a class="logo"><img src="http://cdn.jirengu.com/public/logo-tiny.png" alt=""></a>
+		<ul class="nav">
+			<li><a href="">技能</a></li>
+			<li><a href="">经历</a></li>
+			<li><a href="">作品</a></li>
+			<li><a href="">关于</a></li>
+		</ul>
+	</div>
+</div>
+<div id="content">
+	<div class="container">
+		<div class="aside"></div>
+		<div class="main">
+			<h1>我的作品</h1>
+			<p>生活很美好</p>
+			<p>心情不错</p>
+			<p>代码写的很漂亮</p>
+		</div>
+	</div>
+</div>
+<div id="footer">
+	<div class="container">
+		<ul>
+			<li><a href="http://jirengu.com">饥人谷</a></li>
+			<li><a href="http://jscode.me">JSCODE</a></li>
+			<li><a href="http://js.jirengu.com">JSBIN</a></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

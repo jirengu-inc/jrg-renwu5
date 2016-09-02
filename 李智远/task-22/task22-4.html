@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    ul,li{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .tabs::after{
+      content: '';
+      clear:both;
+      display: block;
+    }
+
+    .mod-tab{
+      border: 1px solid #ccc;
+      width: 602px;
+    }
+    .tabs >li{
+      float: left;
+      width: 200px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-right: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+    }
+    .tabs .active{
+      background: #eee;
+    }
+    .tabs >li:last-child{
+      border-right: 0;
+    }
+    .mod-tab > .panel{
+      display: none;
+      height: 180px;
+      padding: 20px;
+    }
+    .mod-tab .active{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<div class="mod-tab">
+  <ul class="tabs">
+    <li class="active">tab1</li>
+    <li>tab2</li>
+    <li>tab3</li>
+  </ul>
+  <div class="panel active">内容1</div>
+  <div class="panel">内容2</div>
+  <div class="panel">内容3</div>
+</div>
+<script>
+var Utils = {
+  hasClass: function (ele,cls) {
+    // return ele.className.match(new RegExp('\\s|^' + cls + '\\s|$'));
+    var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+    // var reg = new RegExp('\\b'+cls+'\\b');
+    return reg.test(ele.className);
+    // return !!ele.className.match(new RegExp('\\b'+cls+'\\b'));
+  },
+  addClass: function (ele,cls) {
+    if(!Utils.hasClass(ele,cls)){//hasClass前面需要加Utils
+      ele.className += ' '+ cls;
+    }
+  },
+  removeClass:function(ele, cls) {
+    if(Utils.hasClass(ele,cls)){
+      ele.className = ele.className.replace(cls,"").replace(/\s{2,}/g, ' ').replace(/^\s+|\s+$/g,"");
+
+      ele.className = ele.className.replace(new RegExp('\\b'+cls+'\\b', 'g'), '');
+    }
+  },
+
+  removeClass:function(ele, cls){
+     if(ele.length && ele.length > 0){//此处panels的数据类型为数组，所以需要二次处理
+        for(var i=0; i<ele.length; i++){
+            Utils.singleRemoveClass(ele[i], cls);
+        }
+    }else{
+        Utils.singleRemoveClass(ele, cls);
+    }
+  },
+  singleRemoveClass: function(ele, cls){
+      ele.className = ele.className.replace(cls,"").replace(/\s{2,}/g, ' ').replace(/^\s+|\s+$/g,"");
+  },
+  indexOf: function(ele){
+    var parent = ele.parentElement,
+        child = parent.children;
+    for (var i =0;i<child.length;i++){
+      if(ele === child[i]){
+        return i;
+      }
+    }
+    return -1;
+  }
+};
+
+  var tabCt = document.querySelector('.tabs')
+  tabCt.addEventListener('click',function(e){
+    var target = e.target,
+        tabs = tabCt.children,
+        index = Utils.indexOf(target),
+        panels = document.querySelectorAll('.panel');//选择所有的
+    if(index > -1){
+      Utils.removeClass(tabs,'active');
+      Utils.addClass(target,'active');
+      Utils.removeClass(panels,'active');
+      Utils.addClass(panels[index],'active');
+    }
+  })
+</script>
+</body>
+</html>

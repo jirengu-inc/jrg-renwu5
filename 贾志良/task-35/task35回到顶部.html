@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task35(Go-top)</title>
+	<style>
+		body{
+			text-align:center;
+		}
+		div{
+			height:500px;
+			margin:20px 0;
+		}
+		div.d1{
+			background-color: yellow;
+		}
+		div.d2{
+			background-color: red;
+		}
+		div.d3{
+			background-color: blue;
+		}
+		button{
+			width:100px;
+			height:30px;
+			margin:0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1"></div>
+	<div class="d2"></div>
+	<div class="d3"></div>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+	<script>
+	function GoTop(ct,target){
+		this.ct=ct;
+		this.target=target
+		this.init();
+	}
+
+	GoTop.prototype.bindEvent=function(){
+		this.target.on("click",function(){
+			$("body").animate({"scrollTop":0},200)
+		})
+	}
+	GoTop.prototype.createNode=function(){
+		this.ct.append(this.target);
+	}
+	GoTop.prototype.init=function(){
+		this.bindEvent();
+		this.createNode();
+	}
+	var target=$("<button>回到顶部</button>")
+	var goTop1=new GoTop($("body"),target)
+	</script>
+</body>
+</html>
