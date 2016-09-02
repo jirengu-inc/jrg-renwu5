@@ -1,0 +1,11 @@
+" ============================================================================
+" Netrw Directory Listing                                        (netrw v140)
+"   /Users/hankai/projects/jrg-renwu5/韩凯/.gitignore
+"   Sorted by      name
+"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$
+"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:exec
+" ============================================================================
+../
+.gitignore/
+fdf/
+

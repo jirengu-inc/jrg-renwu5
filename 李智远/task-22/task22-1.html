@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+  <ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+  </ul>
+  <script>
+    var liArr = document.getElementsByClassName('ct')[0].getElementsByTagName('li');
+    for (var i =0;i<liArr.length;i++){
+      liArr[i].addEventListener('click',function(){
+        console.log(this.innerText);
+      })
+    }
+    //方法2
+    // var liArr = document.querySelector('.ct')
+    // liArr.addEventListener('click',function(e){
+    //   console.log(e.target.innerText)
+    // })
+
+
+  </script>
+</body>
+</html>

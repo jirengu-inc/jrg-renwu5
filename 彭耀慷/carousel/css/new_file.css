@@ -1,0 +1,86 @@
+html,
+body,
+ul,
+li,
+p {
+	margin: 0px;
+	padding: 0px;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.carousel {
+	position: relative;
+	width: 480px;
+	height: 360px;
+	overflow: hidden;
+}
+
+.img-Ct {
+	position: absolute;
+}
+
+.img-Ct img {
+	width: 480px;
+	height: 360px;
+}
+
+.img-Ct:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.img-Ct li {
+	position: absolute;
+	display: none;
+}
+
+.arrows {
+	position: absolute;
+	top: 50%;
+	width: 30px;
+	height: 30px;
+	margin-top: -15px;
+	line-height: 30px;
+	text-align: center;
+	background: #ccc;
+	color: white;
+	border-radius: 30px;
+	box-shadow: 0 0 2px #999;
+	opacity: .8;
+}
+
+.arrows:hover{
+	opacity: 1;
+} 
+.pre {
+	left: 10px;
+}
+
+.next {
+	right: 10px;
+}
+ul.bullet{
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+ul.bullet li{
+	width: 16px;
+	height: 4px;
+	border-radius: 2px;
+	background: #b9b9b9;
+	display: inline-block;
+	cursor: pointer;
+}
+ul.bullet li.active{
+	background: #666;
+}

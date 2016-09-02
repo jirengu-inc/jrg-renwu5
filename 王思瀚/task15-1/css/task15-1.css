@@ -54,13 +54,14 @@ a{
 }
 
 #header .tri{
+  display: inline-block;
   width:0;
   height:0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 5px solid #ccc;
   position: relative;
-  top:15px;
+  /*top:15px;*/
 }
 
 #header .container>ul>li{

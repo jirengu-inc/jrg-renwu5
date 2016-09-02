@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task_10_01</title>
+    <style>
+        /*重置默认样式*/
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        body {
+            font: 16px/1.5 "微软雅黑";
+        }
+        /*设置页面的大小及样式*/
+
+        .container {
+            width: 900px;
+            margin: 0 auto;
+            color: #656565;
+        }
+        /*设置header*/
+
+        #header {
+            height: 50px;
+            background: #333333;
+        }
+
+        #logo {
+            float: left;
+        }
+
+        .nav {
+            float: right;
+        }
+
+        .nav li {
+            float: left;
+        }
+
+        .nav li a {
+            display: block;
+            padding: 0 10px;
+            margin: 0 10px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .nav li a:hover {
+            color: #000;
+            background: #fff;
+        }
+        /*设置content*/
+
+        .aside {
+            width: 200px;
+            height: 500px;
+            background: #eee;
+            float: left;
+            margin-top: 10px;
+        }
+
+        .main {
+            width: 640px;
+            height: 200px;
+            background: #eee;
+            float: left;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        .main {
+            padding: 0 20px;
+        }
+
+        .main h1 {
+            margin: 20px 0;
+        }
+        /*设置footer*/
+
+        #footer {
+            clear: left;
+            height: 50px;
+            background: #333333;
+        }
+
+        #footer li {
+            float: left;
+            padding: 0 5px;
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <a id="logo" href="#"><img height="40px" src="http://cdn.jirengu.com/public/logo-tiny.png" alt=""></a>
+            <ul class="nav">
+                <li><a href="#">技能</a></li>
+                <li><a href="#">经历</a></li>
+                <li><a href="#">作品</a></li>
+                <li><a href="#">关于</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div class="container">
+            <div class="aside"></div>
+            <div class="main">
+                <h1>我的作品</h1>
+                <p>生活很美好</p>
+                <p>心情不错</p>
+                <p>代码写得很漂亮</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="footer">
+        <div class="container">
+            <ul>
+                <li><a href="http://jirengu.com/">饥人谷</a></li>
+                <li><a href="http://jscode.me/">JSCODE</a></li>
+                <li><a href="http://js.jirengu.com/">JSBIN</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

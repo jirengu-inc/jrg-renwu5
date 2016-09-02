@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>envy</title>
+    <style>
+        .one{
+            background-image: url("2.jpg");
+            background-size: cover;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            position:absolute;
+        }
+        .one:before{
+            position: absolute;
+            content: '';
+            width:50%;
+            top:0;
+            left:0;
+            bottom:0;
+            background:linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,1));
+        }
+        .one:after{
+            position: absolute;
+            content: '';
+            width:50%;
+            top:0;
+            right:0;
+            bottom:0;
+            background:linear-gradient(to right,rgba(0,0,0,1),rgba(0,0,0,0));
+        }
+    </style>
+</head>
+<body>
+<div class="one"></div>
+</body>
+</html>
