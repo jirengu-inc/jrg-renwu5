@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/new_file.css" />
+	</head>
+
+	<body>
+		<!--开始-->
+		<div class="borderRed">
+			<button class="btn1">点击变换颜色再变回去</button>
+		</div>
+		<!--结束-->
+
+		<!--开始-->
+		<div class="borderRed divHover">
+			<p>鼠标放上去会改变div的颜色</p>
+		</div>
+		<!--结束-->
+
+		<div class="borderRed">
+			<p>输入内容变大写，而且输入框变色</p>
+			<input type="text" name="focous" id="focous" value="" class="inputbox" />
+		</div>
+		<!--开始-->
+
+		<div class="borderRed">
+			<p class="thisIsP">获取用户选择的内容: </p>
+			<select name="skill" class="select1">
+				<option value="一套带走">一套带走</option>
+				<option value="组合">组合</option>
+				<option value="miss">miss</option>
+				<option value="暴击">暴击</option>
+			</select>
+		</div>
+		<!--开始-->
+		<div class="borderRed">
+			<h4>获取窗口滚动条垂直滚动距离</h4>
+			<div class="scrollEl">
+				滚动距离:
+				<h2>0</h2>
+			</div>
+
+		</div>
+		<!--结束-->
+		<div class="fill">
+			<!--这里是用来填充增加windows高度用的-->
+			fill
+		</div>
+		<!--结束-->
+
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+		<script type="text/javascript">
+			$('.select1').on('change', function() {
+				$('.thisIsP').text('我知道你点了:' + $(this).val())
+			});
+			//这是按钮来回变色的
+			$('.btn1').on('click', function() {
+				var $this = $(this);
+				$this.addClass('backgroundColor')
+				setTimeout(function() {
+					$this.removeClass('backgroundColor')
+					$this.addClass('btn1Add')
+				}, 1000)
+			});
+
+			//这是滚动显示距离的
+			$(window).on("scroll", function() {
+				var $scrollLength = $(window).scrollTop();
+				$(".scrollEl>h2").html($scrollLength);
+			});
+
+			$('.divHover').on('mouseover', function() {
+				$(this).css('background-color', 'red')
+			});
+			$('.divHover').on('mouseout', function() {
+				$(this).css('background-color', 'white')
+			});
+			//			div悬浮结束
+			$('.inputbox').on('focusin', function() {
+				$(this).css('border-color', 'blue')
+			});
+			$('.inputbox').on('focusout', function() {
+				$(this).css('border-color', 'white')
+			});
+			$('.inputbox').on('keyup', function() {
+				$(this).val($(this).val().toUpperCase())
+			});
+		</script>
+	</body>
+
+</html>

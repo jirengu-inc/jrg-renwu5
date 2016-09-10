@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tab切换</title>
+	<style>
+		html,body,div,ul,li{
+			margin:0;
+			padding:0;
+		}
+		div.wraper{
+			width:700px;
+			height:500px;
+			border:1px solid;
+			position: relative;
+			margin:20px;
+		}
+		div.wraper ul{
+			margin-left: -2px;
+		}
+		div.wraper ul:after{
+			content:"";
+			display: block;
+			clear: both;
+		}
+		div.wraper li.item{
+			list-style-type: none;
+			float:left;
+			width:233px;
+			line-height: 50px;
+			text-align:center;
+			border-right: 1px solid;
+			cursor: pointer;
+		}
+		div.wraper li:nth-child(3){
+			
+			border-right:none;
+		}
+		div.content{
+			width:700px;
+			height:450px;
+			position: absolute;
+			top:50px;
+			border-top:1px solid;
+		}
+		.hide{
+			display: none;
+		}
+		.active{
+			background-color: #bbb;
+			color:#fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="wraper">
+		<div class="nav">
+			<ul>
+				<li class="item active">tab1</li>
+				<li class="item">tab2</li>
+				<li class="item">tab3</li>
+			</ul>
+		</div>
+		<div class="content">
+			内容一
+		</div>
+		<div class="content hide">
+			内容二
+		</div>
+		<div class="content hide">
+			内容三
+		</div>
+	</div>
+	<br>
+	<div class="wraper">
+		<div class="nav">
+			<ul>
+				<li class="item active">tab1</li>
+				<li class="item">tab2</li>
+				<li class="item">tab3</li>
+			</ul>
+		</div>
+		<div class="content">
+			内容一
+		</div>
+		<div class="content hide">
+			内容二
+		</div>
+		<div class="content hide">
+			内容三
+		</div>
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<script>
+		function TabChange($node){
+			this.$node=$node;
+			this.$item=this.$node.find("li");
+			this.$content=this.$node.find(".content");
+			this.bind();
+		}
+
+		TabChange.prototype={
+			bind:function(){
+				var $item=this.$item;
+				$item.on("click",function(){
+					var $index=$(this).index();
+					$item.removeClass("active");
+					$item.eq($index).addClass("active");
+					$item.parents(".wraper").find($("div.content")).addClass("hide")
+					$item.parents(".wraper").find($("div.content")).eq($index).removeClass("hide")
+				})
+			}
+		}
+		
+		$("div.wraper").each(function(){
+			new TabChange($(this));
+		})
+	</script>
+</body>
+</html>

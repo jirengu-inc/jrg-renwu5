@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    html,body,ul,li,a {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+    li {
+      list-style-type: none;
+      /*width: 100%;*/
+      padding: 10px;
+      margin: 10px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    .nav li:hover {
+      background-color: green;
+      color: #fff;
+      cursor:pointer;
+    }
+    a {
+      display: block;
+      text-decoration: none;
+      color: #faa;
+      width: 100px;
+      margin: 20px auto;
+      border: 1px solid #faa;
+      text-align: center;
+      padding: 10px 0;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <ul class="nav">
+    <li>内容1</li>
+    <li>内容2</li>
+  </ul>
+  <a href="#" class="more-btn">加载更多</a>
+  <script>
+
+  /*定义接口
+    1)、数据请求的服务器地址：url:loadMore.php
+    2)、请求发送的数据：{ (当前最后内容序号数)start:2 , (每次请求怎增加的个数)len:6 }
+    3)、请求回来的参数；{ (状态stu:0表示成功，1表示失败;) 内容con:['内容3','内容4','内容5','内容6','内容7','内容8']}
+  */
+    var nav=document.querySelector(".nav");
+    var btn=document.querySelector(".more-btn");
+    var lock=false;
+    function onerror(){
+      console.log("出错了...");
+    }
+
+    function dealWith(str){
+      if(str.stu==1){
+        onerror()
+      }
+      if(str.stu==0){
+        for (var i=0;i<6;i++){
+          var li = document.createElement('li');
+          li.innerHTML = str.con[i];
+          nav.appendChild(li);
+        }
+      }
+    }
+//ajax封装
+    function ajax(opt){
+      var xml=new XMLHttpRequest();
+      xml.onreadystatechange=function(){
+        if(xml.readyState===4 && xml.status===200){
+          var json=JSON.parse(xml.responseText);
+          opt.success(json);
+        }
+        if(xml.status===404){
+          opt.error();
+        }
+      }
+      var optstr='';
+      for(k in opt.data){
+        optstr += k+"="+opt.data[k]+"&";
+      }
+      optstr=optstr.substr(0,optstr.length-1);
+      if(opt.type==='POST'){
+        xml.open(opt.type,opt.url,true);
+        xml.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xml.send(optstr);
+      }
+      if(opt.type==='GET'){
+        xml.open(opt.type,opt.url+"?"+optstr,true);
+        xml.send();
+      }
+    }
+
+
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      // e.stopPropagation();
+      if(lock) return;
+      btn.innerHTML='loading';
+      lock = true;
+      var start = nav.children.length;
+      ajax({
+        url:'loadMore.php',
+        data: {
+          start: start,
+          len: 6
+        },
+        type: "GET",
+        success: function(str){
+          dealWith(str);
+          lock = false;
+          btn.innerHTML ='加载更多';
+        },
+        onerror: onerror
+      })
+    })
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>

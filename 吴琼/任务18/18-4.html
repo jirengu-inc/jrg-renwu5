@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>写一个函数filterNumeric，把数组 arr 中的数字过滤出来赋值给新数组newarr， 原数组arr不变 （****）</title>
+</head>
+<body>
+<script>
+  function filterNumeric(arr){
+    var s='';
+    for(var i=0;i<arr.length;i++){
+      if(typeof arr[i]=='number')
+     s=s+arr[i]+',';
+  }
+  var newarr=s.split(',');
+    newarr.pop();
+    console.log(newarr);
+}
+  arr = ["a", "b", 1, 3, 5, "b", 2];
+  filterNumeric(arr);
+</script>
+</body>
+</html>

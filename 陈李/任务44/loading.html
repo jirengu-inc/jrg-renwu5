@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>loading</title>
+<style>
+	html,body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		background-color: rgb(13,206,203);
+	}
+	.demo {
+		width: 200px;
+		margin: 50px auto;
+		position: relative;
+	}
+	.line-loading,
+	.line-loading:before,
+	.line-loading:after {
+		height: 90px;
+		width: 12px;
+		background-color: #fff;
+		display: block;
+		animation:  line 1s infinite ease-in-out;
+	}
+	.line-loading:before {
+		content: '';
+		position: absolute;
+		left: -30px;
+	}
+	.line-loading:after {
+		content: '';
+		position: absolute;
+		left: 30px;
+		animation-delay: 0.4s;
+	}
+	.line-loading {
+		animation-delay: 0.2s;
+	}
+	@keyframes line
+	{
+		0% {
+			transform: scaleY(0.6);
+		}
+		20% {
+			transform: scaleY(1);
+		}
+		100% {
+			transform: scaleY(0.6);
+		}
+	}
+
+
+	.cir-loading {
+		margin-top: 100px;
+		width: 150px;
+		height: 150px;
+		border: 20px solid rgba(0,0,0,0.2);
+		border-radius: 50%;
+		border-top-color: #fff;
+		animation: cir 1s infinite linear;
+	}
+	@keyframes cir 
+	{
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+</style>
+</head>
+<body>
+	<div class="demo">
+		<div class="line-loading"></div>
+		<div class="cir-loading"></div>	
+	</div>
+
+</body>
+</html>

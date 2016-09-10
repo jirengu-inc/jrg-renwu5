@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sign</title>
+	<style>
+		.ct{
+			margin:0 auto;
+			background-color: lightgray;
+			border: 1px solid lightgray;
+			border-radius: 5px;
+			width: 400px;
+			height: 300px;
+			box-shadow:10px 10px 5px #888888;
+		}
+		.ct h3{
+			text-align: center;
+		}
+		.form dt{
+			float: left;
+			height:30px;
+			line-height: 30px;
+		}
+		.form dd{
+			padding-left: 70px; 
+			height:30px;
+			line-height: 30px;
+		}
+		.form input{
+			padding: 5px;
+			border-radius: 5px;
+		}
+		.note{
+			opacity: 0.4;
+			font-size: 12px;
+		}
+		.button{
+			text-align: center;
+			margin-top: 20px;
+		}
+		.btn{
+			padding: 5px;
+			border-radius: 5px;
+		}
+		.error{
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div class="ct">
+		<h3>注册</h3>
+		<form action="">
+			<dl class="form">
+				<dt>用户名：</dt>
+				<dd>
+					<input type="text" class="user" placeholder="hunger被注册过">
+				</dd>
+				<dd class="note user-note">只能是字母、数字、下划线，3-10个字符</dd>
+				<dt>密码：</dt>
+				<dd>
+					<input type="password" class='pw1'>
+				</dd>
+				<dd class="note pw1-note">大写字母、小写、数字、下划线最少两种，6-15个字符</dd>
+				<dt>再输入一次：</dt>
+				<dd>
+					<input type="password" class="pw2" placeholder="请再输入一次">
+				</dd>
+				<dd class="note pw2-note"></dd>
+			</dt>
+		</form>
+		<div class="button">
+			<button class="btn">注册</button>
+		</div>
+	</div>
+	<script src='util.js'></script>
+	<script>
+		function $(str){
+			return document.querySelector(str);
+		}
+		var user=$('.user');
+		var userNote=$('.user-note');
+		var pw1=$('.pw1');
+		var pw1Note=$('.pw1-note');
+		var pw2=$('.pw2');
+		var pw2Note=$('.pw2-note');
+		var btn=$('.btn');
+		user.addEventListener('change',function(){
+			console.log(user.value)
+			if (isValidUsername(user.value)) {
+				userNote.innerText='用户名可用';
+				removeClass(user,'error');
+			}else{
+				userNote.innerText="用户名格式错误";
+				addClass(user,'error');
+			}
+			if(user.value==='hunger'){
+				userNote.innerText="用户名已存在";
+				addClass(user,'error');
+			}
+		})
+		pw1.addEventListener('change',function(){
+			console.log(pw1.value)
+			if (isValidPassword(pw1.value)) {
+				pw1Note.innerText='密码格式正确';
+				removeClass(pw1,'error');
+			}else{
+				pw1Note.innerText="密码格式错误";
+				addClass(pw1,'error');
+			}
+		})
+		pw2.addEventListener('change',function(){
+			console.log(pw2.value);
+			if(isValidPassword(pw2.value)&&pw2.value===pw1.value){
+				removeClass(pw2,'error');
+                pw2Note.innerText = '';
+			}else{
+				pw2Note.innerText = '请再输一遍';
+                addClass(pw2,'error');
+			}
+		})
+		btn.addEventListener('click',function(e){
+            e.preventDefault();
+            //防止无视错误提示 直接提交
+            if(!pw1.value || !pw2.value || !user.value){
+                return alert('请输入信息');
+            }
+            if(hasClass(user, 'error') || hasClass(pw1, 'error') || hasClass(pw2, 'error')){
+                return alert('请重新输入');
+            }
+            ajax({
+                url: '/check',
+                type: 'post',
+                data: {
+                    username: user.value,
+                    password: pw2
+                },
+                success: function(ret){
+                    if(ret.status == 0){
+                        alert('注册成功');
+                        return;
+                    }
+                    else{
+                        userNote.innerText = '用户名已存在';
+                        addClass(user,'error');
+                    }
+                },
+                error: function(){
+                    console.log('出错了');
+                }
+            });
+        });
+	</script>
+</body>
+</html>

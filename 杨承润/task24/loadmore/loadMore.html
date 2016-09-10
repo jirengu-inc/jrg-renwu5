@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task24-2</title>
+	<style>
+		ul,li{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.nav li{
+			border:1px solid lightgray;
+			padding: 10px;
+			margin-bottom: 10px;
+			border-radius: 5px;
+		}
+		.nav li:hover{
+			background-color: red;
+		}
+		.do{
+			text-align: center;
+		}
+		.btn{
+			padding: 5px;
+			border-radius: 5px;
+			background-color: white;
+			color: red;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<ul class="nav">
+		<li>1</li>
+		<li>2</li>
+	</ul>
+	<div class="do">
+		<button class="btn">加载更多</button>
+	</div>
+	<script>
+		var nav=document.querySelector('.nav');
+		var btn=document.querySelector('.btn');
+		var flag=false;
+		var num=2;
+		btn.addEventListener('click',function(){
+			btn.innerText='正在加载';
+			flag=true;
+			ajax({
+				url:'getMore.php',
+				data:{
+					start:num,
+					len:6
+				},
+				success:function(json){
+					btn.innerText='加载更多';
+					flag=false;
+					if(json.status==1){
+						for(var i=0;i<json.data.length;i++){
+							var li=document.createElement('li')
+							li.innerText=json.data[i];
+							nav.appendChild(li);
+						}
+					}else{
+						alert('获取数据失败');
+					}
+				},
+				error:function(){
+					flag=false;
+					btn.innerText='加载更多';
+					alert('系统异常')
+				}
+			})
+		})
+		function ajax(opts){
+			  var xmlhttp = new XMLHttpRequest();
+			  xmlhttp.onreadystatechange = function(){
+			    if(xmlhttp.readyState === 4){
+			      if(xmlhttp.status === 200){
+			        opts.success( JSON.parse(xmlhttp.responseText) );
+			      }else{
+			        opts.error();
+			      }
+			    }
+			  };
+			  xmlhttp.open('get', opts.url + '?' + deal(opts.data), true);
+			  xmlhttp.send();
+		}
+
+	 	function deal(data){
+		 	var str = '';
+		 	for(var key in data){
+		    	str += key + '=' + data[key] + '&';
+		  	}
+		  	str = str.slice(0, str.length-1);
+		  	return str;
+		}
+	</script>
+</body>
+</html>
+
+
+
+

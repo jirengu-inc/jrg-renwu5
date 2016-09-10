@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>点击加载更多jq</title>
+		<link rel="stylesheet" type="text/css" href="css/new_file.css" />
+	</head>
+
+	<body>
+		<div id="con">
+			<ul id="list">
+				<li>
+					<a href="#"><img src="https://img.alicdn.com/imgextra/i2/773811758/TB2gkl9XWnyQeBjSsplXXaLWVXa_!!773811758.jpg" alt=""></a>
+					<div class="discrible">藏美千足金和田玉金镶玉路路通吊坠</div>
+					<div class="price">￥1699.00</div>
+					<div class="cover">
+						<a href="#">立即抢购</a>
+					</div>
+				</li>
+				<li>
+					<a href="#"><img src="https://img.alicdn.com/imgextra/i4/773811758/TB22kmXX8TxQeBjSspoXXcP7XXa_!!773811758.jpg" alt=""></a>
+					<div class="discrible">藏美千足金和田玉金镶玉路路通吊坠</div>
+					<div class="price">￥1699.00</div>
+					<div class="cover">
+						<a href="#">立即抢购</a>
+					</div>
+				</li>
+				<li>
+					<a href="#"><img src="https://img.alicdn.com/imgextra/i1/773811758/TB2TaR.X6nyQeBjSszbXXbCxVXa_!!773811758.jpg" alt=""></a>
+					<div class="discrible">藏美千足金和田玉金镶玉路路通吊坠</div>
+					<div class="price">￥1699.00</div>
+					<div class="cover">
+						<a href="#">立即抢购</a>
+					</div>
+				</li>
+				<li>
+					<a href="#"><img src="https://img.alicdn.com/imgextra/i4/773811758/TB22XMHtVXXXXa7XXXXXXXXXXXX_!!773811758.jpg" alt=""></a>
+					<div class="discrible">藏美千足金和田玉金镶玉路路通吊坠</div>
+					<div class="price">￥1699.00</div>
+					<div class="cover">
+						<a href="#">立即抢购</a>
+					</div>
+				</li>
+				<li>
+					<a href="#"><img src="https://img.alicdn.com/imgextra/i3/773811758/TB2cL7JtVXXXXaMXXXXXXXXXXXX_!!773811758.jpg" alt=""></a>
+					<div class="discrible">藏美千足金和田玉金镶玉路路通吊坠</div>
+					<div class="price">￥1699.00</div>
+					<div class="cover">
+						<a href="#">立即抢购</a>
+					</div>
+				</li>
+				<li>
+					<a href="#"><img src="https://img.alicdn.com/imgextra/i1/773811758/TB2VrAHtVXXXXbfXXXXXXXXXXXX_!!773811758.jpg" alt=""></a>
+					<div class="discrible">藏美千足金和田玉金镶玉路路通吊坠</div>
+					<div class="price">￥1699.00</div>
+					<div class="cover">
+						<a href="#">立即抢购</a>
+					</div>
+				</li>
+			</ul>
+			<button id="btn">添加</button>
+  </div>
+  
+  
+  
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script>
+var products = [
+    {
+        img: 'https://img.alicdn.com/imgextra/i3/773811758/TB288qzXxvzQeBjSZPfXXbWGFXa_!!773811758.png',
+        name: '珂兰 黄金手 猴哥款',
+        price: '￥405.00'
+    },{
+        img: 'https://img.alicdn.com/imgextra/i4/773811758/TB2UayBXpHzQeBjSZFzXXa__FXa_!!773811758.png',
+        name: '珂兰 黄金转运珠 猴哥款',
+        price: '￥100.00'
+    },{
+        img: 'https://img.alicdn.com/imgextra/i4/773811758/TB2pFOfX16yQeBjy0FfXXcWvXXa_!!773811758.png',
+        name: '珂兰 黄金手链 3D猴哥款',
+        price: '￥45.00'
+    }
+];
+    function getmodule(data){
+      var str='';
+      str+='<li><img src='+data.img+'>';
+      str+='<div class="discrible">'+data.name+'</div>';
+      str+='<div class="price">'+data.price+'</div>';
+      str+='<div class="cover"><a href="#">立即抢购</a></div>';
+      str+='</li>';
+      return str;
+      
+    }
+    $("#btn").on("click",function(){
+		var productlen=products.length;
+		for(var i=0; i<productlen;i++){
+			var str=''	;
+			str=getmodule(products[i]);
+			$("#list").append(str);
+}
+});
+$('#list').on('mouseover', 'li', function() {
+	$(this).find('.cover').addClass("hover")
+})
+$("#list").on("mouseout","li",function(){
+      $(this).find(".cover").removeClass("hover");
+    });
+  </script>
+</body>
+</html>

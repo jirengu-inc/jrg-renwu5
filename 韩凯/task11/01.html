@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+    /*css reset*/
+    *{
+        margin:0;
+        padding:0;
+    }
+    ul,li{
+        list-style:none;
+    }
+    a{
+        text-decoration:none;
+        color:#333;
+    }
+    /*写公共样式*/
+body{
+    font:14px/1.5 "Microsoft YaHi","微软雅黑",sans-serif;
+    color:#656565;
+}
+   /*页面功能模块*/
+   #header{
+    background:#ccc;
+    height:50px;
+   }
+   #header:after{
+    content:'';
+    display:block;
+    height:0;
+    clear:both;
+   }
+   #header .nav>li{
+    float:left;
+    margin-right:60px;/*在子集未隐藏情况下设置父级宽度可以让子集跟着撑开*/
+    line-height:50px;
+    font-size:16px;
+    /*text-align:center;子脱离了所无用*/
+    padding:0 10px;
+    position:relative;
+   }
+   /*设置图片*/
+    #header .nav>a{
+    float:left;
+    height:50px;
+    line-height:50px;
+    padding:0 10px;
+    color:#fff;
+
+      如果有图片可在此设置浮动
+    }
+    #header .logo img{
+        height: 40px;
+        width:100px;
+        position:relative;
+        top:4px;
+    }
+   /*背景色作用在padding身上，由于左右hover不出效果所以就加上了padding*/
+   /*text-align作用在line上这样会美观一些，但都不如加padding加padding不需设置高度了可参照师的*/
+    #header .nav >li:hover{
+    background: #aaa;
+  }
+  #header .child{
+    position:absolute;
+    background:#eee;
+    text-align:center;
+    top:100%;
+    left:0;
+    display: none;
+  } 
+   #header .nav >li:hover .child{
+    display: block;
+  }
+   #header .child >li{
+    padding:2px;
+    line-height:38px;  /*默认设置了行高1.5但这里也可以自己设置行高*/
+    padding:2px 12px;/*针对child和父级元素宽度不匹配所设置的*/
+   }
+   #header .child>li:hover{
+   background: #ccc;
+   }
+</style>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <ul class="nav">
+              <a class="logo"><img src="http://cdn.jirengu.com/public/logo-tiny.png" alt=""></a>
+                <li >
+                 <a href="#">前端</a>
+                    <ul class="child">
+                        <li><a href="">JavaScript</a></li>
+                        <li><a href="">Css</a></li>
+                        <li><a href="">Html</a></li>
+                    </ul>
+                </li>
+                <li>
+                <a href="#">服务端</a>
+                    <ul class="child">
+                        <li><a href="">Node</a></li>
+                        <li><a href="">PHP</a></li>
+                        <li><a href="">Java</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">前端工具</a>
+                    <ul class="child">
+                        <li><a href="">Subline</a></li>
+                        <li><a href="">WebStorm</a></li>
+                        <li><a href="">Git</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">HTML</a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

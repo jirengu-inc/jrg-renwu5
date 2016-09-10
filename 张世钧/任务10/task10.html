@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height: 100px;
+            width: 200px;
+            border: 1px solid #ccc;
+            margin: 20px;
+        }
+        .div1{
+            position: relative;
+        }
+        .div1::before{
+            content: "";
+            height: 0;
+            width: 0;
+            border-top: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom:10px solid #333;
+            border-left: 10px solid transparent;
+            position:absolute;
+            top: -20px;
+            left: 10px;
+        }
+        .div2{
+            position: relative;
+        }
+        .div2::before{
+            content: "";
+            height: 0;
+            width: 0;
+            border-top: 10px solid red;
+            border-right: 10px solid red;
+            border-bottom:10px solid transparent;
+            border-left: 10px solid transparent;
+            position:absolute;
+            left: 180px;
+            top:-1px;
+        }
+        .div3{
+            position: relative;
+        }
+        .div3::before{
+            content: "";
+            height: 0;
+            width: 0;
+            border-top: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom:10px solid #ccc;
+            border-left: 10px solid transparent;
+            position:absolute;
+            top: -20px;
+            left: 10px;
+        }
+        .div3::after{
+            content: "";
+            height: 0;
+            width: 0;
+            border-top: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom:10px solid #fff;
+            border-left: 10px solid transparent;
+            position:absolute;
+            top: -19px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="div1"></div>
+<div class="div2"></div>
+<div class="div3"></div>
+</body>
+</html>
