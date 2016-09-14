@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+      ul,li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      a{
+        text-decoration: none;
+      }
+      .carousel{
+        position: relative;
+        width: 480px;
+        height: 360px;
+        overflow: hidden;
+      }
+      .carousel img{
+        width: 480px;
+        height: 360px;
+      }
+      .arrow{
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        /*display: inline-block;*/ /*使用了相对定位后就不需要inline-block*/
+        border-radius: 50px;
+        background: #4E443C;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        margin-top: -15px;
+        color: #fff;
+        box-shadow: 0 0 2px #999;
+        opacity: 0.8;
+      }
+      .arrow:hover {
+        opacity: 1;
+      }
+      .ct{
+        position: relative;
+      }
+      .ct:after{
+        content: '';
+        display: block;
+        clear: both;
+      }
+      .ct li{
+        float: left;
+      }
+      .carousel .pre{
+        left: 15px;
+      }
+      .carousel .next{
+        right: 15px;
+      }
+      .bullet{
+        position: absolute;
+        bottom: 10px;
+        transform: translateX(-50%);
+        left: 50%;
+      }
+      .bullet li{
+       width: 16px;
+       height: 4px;
+       border-radius: 2px;
+       background: #fff;
+       display: inline-block;/*每个之间的空隙由空格产生*/
+       cursor: pointer;
+      }
+      .bullet li.active{
+        background: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="carousel">
+      <ul class="ct">
+        <li><a href="javascript:void[0]"><img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"></a></li>
+        <li><a href="javascript:void[0]"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></a></li>
+        <li><a href="javascript:void[0]"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></a></li>
+        <li><a href="javascript:void[0]"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg"></a></li>
+      </ul>
+      <a href="javascript:void[0]" class="pre arrow"><</a>
+      <a href="javascript:void[0]" class="next arrow">></a>
+      <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script>
+    var $ct = $('.ct'),
+        $items = $ct.children(),
+        $pre = $('.pre'),
+        $next = $('.next'),
+        $bullet = $('.bullet')
+        imgWidth = $items.width(),
+        imgCount = $ct.children().size();
+
+    $ct.prepend($items.last().clone());
+    $ct.append($items.first().clone());
+    var imgRealCount = $ct.children().length;
+    $ct.css({left:0-imgWidth,width:imgRealCount*imgWidth});
+
+    var curIdx =0;
+    var lock = false;
+
+    $next.on('click',function(){
+      playNext();
+    })
+    $pre.on('click',function(){
+      playPre();
+    })
+    $bullet.find('li').on('click',function(){
+      var idx = $(this).index();
+      if(curIdx > idx){
+        playPre(curIdx-idx);
+      }else if(curIdx<idx){
+        playNext(idx-curIdx);
+      }
+    })
+    // play(0);
+    autoPlay();
+    function stopAuto(){
+      clearInterval(clock);
+    }
+    function autoPlay(){
+      clock = setInterval(function(){
+        playNext();
+      },3000)
+    }
+    function playNext(idx){
+      var idx = idx || 1;
+      if(!lock){
+        lock = true;
+        $ct.animate({left:'-='+(imgWidth*idx)},function(){
+          curIdx = (curIdx+idx)%imgCount;
+          if(curIdx === 0){
+            $ct.css({left:0-imgWidth});
+          }
+          lock = false;
+          setBullet();
+        });
+      }
+    }
+    function playPre(idx){
+      var idx = idx || 1;
+      if(!lock){
+          lock = true;
+          $ct.animate({left:'+='+(imgWidth*idx)},function(){
+          var curIdx = (imgCount+curIdx-idx)%imgCount;
+          if(curIdx === imgCount -1){
+            $ct.css({left:0-imgWidth*imgCount})
+          }
+          lock = false;
+          setBullet();
+        });
+      }
+    }
+    function setBullet(){
+      $bullet.find('li').removeClass('active')
+                        .eq(curIdx).addClass('active');
+    }
+
+
+    </script>
+  </body>
+</html>
