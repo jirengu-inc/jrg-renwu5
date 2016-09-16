@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task_15_02</title>
+    <style>
+        /* 修改浏览器默认设置 */
+
+        html,
+        body,
+        ul,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        a {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        /* 定义字体图标 */
+
+        @font-face {
+            font-family: 'iconfont';
+            src: url('http://at.alicdn.com/t/font_1473992784_5883355.eot');
+            /* IE9*/
+            src: url('http://at.alicdn.com/t/font_1473992784_5883355.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('http://at.alicdn.com/t/font_1473992784_5883355.woff') format('woff'), /* chrome、firefox */
+            url('http://at.alicdn.com/t/font_1473992784_5883355.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+            url('http://at.alicdn.com/t/font_1473992784_5883355.svg#iconfont') format('svg');
+            /* iOS 4.1- */
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* 设置居中排列 */
+
+        .layout {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .layout-v-h-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 1200px;
+            transform: translate(-50%, -50%);
+        }
+
+        .layout-text-center {
+            text-align: center;
+        }
+        /* 设置body,html */
+
+        body,
+        html {
+            position: relative;
+            height: 100%;
+            font: 16px/1.5 Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        /* 设置btn */
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            color: #fff;
+            background: #FED136;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #FEC503;
+        }
+        /* 设置清除浮动 */
+
+        .clearfix {
+            clear: both;
+        }
+        /* 设置nav */
+
+        nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 1;
+            width: 100%;
+            line-height: 45px;
+            background: #2D2D2F;
+        }
+
+        nav h3 {
+            float: left;
+            font-size: 20px;
+        }
+
+        nav h3 a {
+            color: #FEC503;
+        }
+
+        nav ul {
+            float: right;
+            font-size: 14px;
+        }
+
+        nav ul>li {
+            float: left;
+            margin-right: 20px;
+        }
+
+        nav ul>li a {
+            color: #fff;
+        }
+
+        nav ul>li a:hover {
+            color: #FED136;
+        }
+        /* 设置header */
+
+        header {
+            position: relative;
+            height: 100%;
+            color: #fff;
+            font-size: 30px;
+            background: url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/header-bg.jpg) no-repeat 30% 30% / cover;
+        }
+
+        header a {
+            font-size: 16px;
+            ;
+        }
+        /* 设置services */
+
+        #services {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        #services h1 {
+            font-size: 3em;
+        }
+
+        #services h4 {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        #services p {
+            color: #555;
+        }
+
+        #services .services-list {
+            margin-top: 30px;
+        }
+
+        #services .services-list>li {
+            float: left;
+            width: 33.3%;
+            padding: 20px;
+        }
+
+        #services .circle {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: #FED136;
+        }
+
+        #services .services-icon {
+            font-size: 60px;
+            line-height: 100px;
+            color: #fff;
+            cursor: default;
+        }
+
+        #services .services-list>li:nth-last-child(2) .services-icon {
+            position: relative;
+            top: -8px;
+        }
+        /* 设置portfolio */
+
+        #portfolio {
+            padding-top: 150px;
+            padding-bottom: 150px;
+            background: #eee;
+        }
+
+        #portfolio .portfolio-list>li {
+            float: left;
+            width: 380px;
+            margin-left: 30px;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+
+        #portfolio .portfolio-list>li a {
+            position: relative;
+            display: block;
+            vertical-align: top;
+        }
+
+        #portfolio .portfolio-list>li a img {
+            vertical-align: top;
+        }
+
+        #portfolio .portfolio-list-hover {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transition: background .5s ease-out;
+        }
+
+        #portfolio .hover-vertical-line {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -30px;
+            margin-top: -5px;
+            width: 60px;
+            border-top: 10px solid transparent;
+            border-radius: 5px;
+            transition: border .5s ease-out;
+        }
+
+        #portfolio .hover-horizonal-line {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -5px;
+            margin-top: -30px;
+            height: 60px;
+            border-left: 10px solid transparent;
+            border-radius: 5px;
+            transition: border .5s ease-out;
+        }
+
+        #portfolio .portfolio-list-hover:hover {
+            background: rgba(254, 209, 54, .9);
+        }
+
+        #portfolio .portfolio-list-hover:hover .hover-vertical-line {
+            border-top: 10px solid #fff;
+        }
+
+        #portfolio .portfolio-list-hover:hover .hover-horizonal-line {
+            border-left: 10px solid #fff;
+        }
+
+        #portfolio .portfolio-list {
+            margin-left: -30px;
+            margin-top: 50px;
+        }
+
+        #portfolio h1 {
+            font-size: 3em;
+        }
+
+        #portfolio h4 {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        #portfolio p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+        /* 设置ABOUT */
+
+        #about {
+            padding-top: 150px;
+            padding-bottom: 150px;
+        }
+
+        #about h1 {
+            font-size: 3em;
+        }
+
+        #about p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        #about .about-list>li {
+            position: relative;
+            margin: 0 auto;
+            padding-bottom: 120px;
+        }
+
+        #about .about-list>li:nth-child(2n+1) {
+            text-align: right;
+        }
+
+        #about .about-list>li:nth-child(2n) {
+            text-align: left;
+        }
+
+        #about .about-list {
+            position: relative;
+            margin-top: 50px;
+        }
+
+        #about .about-list-items {
+            width: 350px;
+        }
+
+        #about .circle {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            overflow: hidden;
+            margin-left: -85px;
+            width: 170px;
+            height: 170px;
+            border: 7px solid #f1f1f1;
+            border-radius: 50%;
+        }
+
+        #about .about-list>li:nth-child(5) .circle {
+            text-align: center;
+            background: #FED136;
+        }
+
+        #about .circle-text {
+            color: #fff;
+        }
+
+        #about .about-list>li:nth-child(2n+1) .about-list-items {
+            position: relative;
+            left: 130px;
+        }
+
+        #about .about-list>li:nth-child(2n) .about-list-items {
+            position: relative;
+            left: 730px;
+        }
+
+        #about .vertical-line {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            height: 1200px;
+            border: 4px solid #f1f1f1;
+            margin-left: -2px;
+            z-index: -1;
+        }
+        /* 设置TEAM */
+
+        #team {
+            padding-top: 150px;
+            padding-bottom: 150px;
+            background: #f1f1f1;
+        }
+
+        #team h1 {
+            font-size: 3em;
+        }
+
+        #team .team-list {
+            margin-top: 50px;
+        }
+
+        #team .team-list>li {
+            float: left;
+            padding-left: 50px;
+            padding-right: 50px;
+            width: 33.3%;
+        }
+
+        #team .team-list>li .circle {
+            overflow: hidden;
+            width: 225px;
+            height: 225px;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+
+        #team p {
+            color: #333;
+            font-size: 14px;
+        }
+
+        #team .team-contact>li {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            margin: 5px 15px;
+            line-height: 45px;
+            border-radius: 50%;
+            background: #222;
+        }
+
+        #team .team-contact {
+            margin-left: -20px;
+        }
+
+        #team .team-contact>li a {
+            color: #fff;
+            display: inline-block;
+            vertical-align: center;
+        }
+
+        #team .team-contact>li:hover {
+            background: #FED136;
+        }
+
+        #team .team-contact {
+            margin: 0 auto;
+        }
+
+        #team .iconfont {
+            font-size: 25px;
+        }
+
+        #team .wrap {
+            width: 800px;
+            margin: 0 auto;
+            line-height: 20px;
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        /* 设置link */
+
+        #link {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        #link .link-list>li {
+            float: left;
+            width: 250px;
+            margin-left: 66.6px;
+        }
+
+        #link .link-list {
+            margin-left: -66.6px;
+        }
+
+        #contact {
+            padding-top: 150px;
+            padding-bottom: 150px;
+            background: url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/header-bg.jpg) no-repeat center center / cover;
+        }
+
+        #contact h1 {
+            font-size: 3em;
+            color: #fff;
+        }
+
+        #contact p {
+            color: #ccc;
+        }
+
+        #contact .contact-form-list>li {
+            width: 48%;
+        }
+
+        #contact .contact-form-list>li:nth-child(1) {
+            float: left;
+        }
+
+        #contact .contact-form-list>li:nth-child(2) {
+            float: right;
+        }
+
+        #contact .left-input {
+            width: 100%;
+            margin-bottom: 20px;
+            line-height: 60px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #contact .right-textarea {
+            width: 100%;
+            height: 230px;
+            line-height: 60px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #contact .contact-form-list {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        /* 设置footer */
+
+        footer {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        footer .footer-list>li {
+            float: left;
+            width: 33.33%;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+        }
+
+        footer .footer-list-contact>li {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 30px;
+            line-height: 45px;
+            text-align: center;
+            border-radius: 50%;
+            background: #222;
+        }
+
+        footer .footer-list-contact>li a {
+            color: #fff;
+        }
+
+        footer .footer-list-contact>li:hover {
+            background: #FED136;
+        }
+
+        footer .footer-list>li:nth-child(3) a{
+            color: #FED136;
+        }
+
+        footer .footer-list>li:nth-child(3) a:hover {
+            text-decoration: underline;
+        }
+        footer .footer-link {
+          padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="layout">
+            <h3><a href="#">Start Bootstrap
+</a></h3>
+            <ul>
+                <li><a href="#">SERVICES</a></li>
+                <li><a href="#">PORTFOLIO</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">TEAM</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </nav>
+    <header>
+        <div class="layout-v-h-center layout-text-center">
+            <h2><i>Welcome To Our Studio!</i></h2>
+            <h1>IT'S NICE TO MEET YOU</h1>
+            <a href="#" class="btn">TELL ME MORE</a>
+        </div>
+    </header>
+    <section id="services">
+        <div class="layout layout-text-center">
+            <h1>SERVICES</h1>
+            <p><i>Lorem ipsum dolor sit amet consectetur.</i></p>
+            <ul class="services-list layout-text-center">
+                <li>
+                    <div class="circle">
+                        <span class="iconfont services-icon">&#xe603;</span>
+                    </div>
+                    <h4>E-Commerce</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                </li>
+                <li>
+                    <div class="circle">
+                        <div class="circle">
+                            <span class="iconfont services-icon">&#xe600;</span>
+                        </div>
+                    </div>
+                    <h4>E-Commerce</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                </li>
+                <li>
+                    <div class="circle">
+                        <div class="circle">
+                            <span class="iconfont services-icon">&#xe602;</span>
+                        </div>
+                    </div>
+                    <h4>E-Commerce</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                </li>
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+    </section>
+    <section id="portfolio">
+        <div class="layout layout-text-center">
+            <h1>PORTFOLIO</h1>
+            <p><i>Lorem ipsum dolor sit amet consectetur.</i></p>
+            <ul class="portfolio-list">
+                <li>
+                    <a href="#">
+                        <img src="http://ocpxqfoch.bkt.clouddn.com/1cf97a3e08c385da1782a3a5cd4a8ed4.png" width=100% alt="">
+                        <div class="portfolio-list-hover">
+                            <div class="hover-vertical-line"></div>
+                            <div class="hover-horizonal-line"></div>
+                        </div>
+                    </a>
+                    <h4>Round Icons</h4>
+                    <p><i>Graphic Design</i></p>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="http://ocpxqfoch.bkt.clouddn.com/e9502305d2d2a3ebb8e7f6f942bffa77.png" width=100% alt="">
+                        <div class="portfolio-list-hover">
+                            <div class="hover-vertical-line"></div>
+                            <div class="hover-horizonal-line"></div>
+                        </div>
+                    </a>
+                    <h4>Startup Framework</h4>
+                    <p><i>Graphic Design</i></p>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="http://ocpxqfoch.bkt.clouddn.com/3c8d06749e787ec8db58d34e09795e13.png" width=100% alt="">
+                        <div class="portfolio-list-hover">
+                            <div class="hover-vertical-line"></div>
+                            <div class="hover-horizonal-line"></div>
+                        </div>
+                    </a>
+                    <h4>Treehouse</h4>
+                    <p><i>Website Design</i></p>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="http://ocpxqfoch.bkt.clouddn.com/25ad932fbf423675bdee486108c48de7.png" width=100% alt="">
+                        <div class="portfolio-list-hover">
+                            <div class="hover-vertical-line"></div>
+                            <div class="hover-horizonal-line"></div>
+                        </div>
+                    </a>
+                    <h4>Golden</h4>
+                    <p><i>Website Design</i></p>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="http://ocpxqfoch.bkt.clouddn.com/3cece3cb6757ee4028430d32440e3e6f.png" width=100% alt="">
+                        <div class="portfolio-list-hover">
+                            <div class="hover-vertical-line"></div>
+                            <div class="hover-horizonal-line"></div>
+                        </div>
+                    </a>
+                    <h4>Escape</h4>
+                    <p><i>Website Design</i></p>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="http://ocpxqfoch.bkt.clouddn.com/7695758c876330e72c4cab11ded2ad0e.png" width=100% alt="">
+                        <div class="portfolio-list-hover">
+                            <div class="hover-vertical-line"></div>
+                            <div class="hover-horizonal-line"></div>
+                        </div>
+                    </a>
+                    <h4>Dreams</h4>
+                    <p><i>Website Design</i></p>
+                </li>
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+    </section>
+    <section id="about">
+        <div class="layout layout-text-center">
+            <h1>ABOUT</h1>
+            <p><i>Lorem ipsum dolor sit amet consectetur.</i></p>
+            <ul class="about-list">
+                <li>
+                    <div class="about-list-items">
+                        <h4>2009-2011</h4>
+                        <h4>Our Humble Beginnings</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur</p>
+                    </div>
+                    <div class="circle">
+                        <img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/about/1.jpg" width=100% alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="about-list-items">
+                        <h4>2009-2011</h4>
+                        <h4>Our Humble Beginnings</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur</p>
+                    </div>
+                    <div class="circle">
+                        <img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/about/2.jpg" width=100% alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="about-list-items">
+                        <h4>2009-2011</h4>
+                        <h4>Our Humble Beginnings</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur</p>
+                    </div>
+                    <div class="circle">
+                        <img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/about/3.jpg" width=100% alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="about-list-items">
+                        <h4>2009-2011</h4>
+                        <h4>Our Humble Beginnings</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur</p>
+                    </div>
+                    <div class="circle">
+                        <img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/about/4.jpg" width=100% alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="circle">
+                        <h4 class="circle-text layout-v-h-center">BE PART<br/>OF OUR<br/>STORY!</h4>
+                    </div>
+                </li>
+                <div class="vertical-line"></div>
+            </ul>
+        </div>
+    </section>
+    <section id="team">
+        <div class="layout layout-text-center">
+            <h1>OUR AMAZING TEAM</h1>
+            <p><i>Lorem ipsum dolor sit amet consectetur.</i></p>
+            <ul class="team-list">
+                <li>
+                    <div class="circle">
+                        <img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/team/5.jpg" alt="">
+                    </div>
+                    <h4>Kay Garland</h4>
+                    <p>Lead Designe</p>
+                    <ul class="team-contact">
+                        <li class="small-circle iconfont"><a href="#">&#xe605;</a></li>
+                        <li class="small-circle iconfont"><a href="#">&#xe601;</a></li>
+                        <li class="small-circle iconfont"><a href="#">&#xe604;</a></li>
+                        <div class="clearfix"></div>
+                    </ul>
+                </li>
+                <li>
+                    <div class="circle">
+                        <img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/team/6.jpg" alt="">
+                    </div>
+                    <h4>Larry Parker</h4>
+                    <p>Lead Marketer</p>
+                    <ul class="team-contact">
+                        <li class="small-circle iconfont"><a href="#">&#xe605;</a></li>
+                        <li class="small-circle iconfont"><a href="#">&#xe601;</a></li>
+                        <li class="small-circle iconfont"><a href="#">&#xe604;</a></li>
+                        <div class="clearfix"></div>
+                    </ul>
+                </li>
+                <li>
+                    <div class="circle">
+                        <img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/team/7.jpg" alt="">
+                    </div>
+                    <h4>Diana Pertersen</h4>
+                    <p>Lead Developer</p>
+                    <ul class="team-contact">
+                        <li class="small-circle iconfont"><a href="#">&#xe605;</a></li>
+                        <li class="small-circle iconfont"><a href="#">&#xe601;</a></li>
+                        <li class="small-circle iconfont"><a href="#">&#xe604;</a></li>
+                        <div class="clearfix"></div>
+                    </ul>
+                </li>
+                <div class="clearfix"></div>
+            </ul>
+            <div class="wrap">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+            </div>
+        </div>
+    </section>
+    <section id="link">
+        <div class="layout">
+            <ul class="link-list">
+                <li>
+                    <a href="#"><img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/logos/envato.jpg" width=100% alt=""></a>
+                </li>
+                <li>
+                    <a href="#"><img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/logos/designmodo.jpg" width=100% alt=""></a>
+                </li>
+                <li>
+                    <a href="#"><img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/logos/themeforest.jpg" width=100% alt=""></a>
+                </li>
+                <li>
+                    <a href="#"><img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/logos/creative-market.jpg" width=100% alt=""></a>
+                </li>
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="layout-text-center">
+        <div class="layout">
+            <h1>CONTACT US</h1>
+            <p><i>Lorem ipsum dolor sit amet consectetur.</i></p>
+            <form action="">
+                <ul class="contact-form-list">
+                    <li>
+                        <ul class="sub-contact-list">
+                            <li>
+                                <input name="username" type="text" class="left-input" placeholder="YOUR NAME*">
+                            </li>
+                            <li>
+                                <input name="useremail" type="text" class="left-input" placeholder="YOUR EMAIL*">
+                            </li>
+                            <li>
+                                <input name="userphone" type="text" class="left-input" placeholder="YOUR PHONE*">
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <textarea name="uesemessage" class="right-textarea" placeholder="YOUR MESSAGE*"></textarea>
+                    </li>
+                    <div class="clearfix"></div>
+                </ul>
+                <botton type="submit" class="btn">SENDMESSAGE</botton>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="layout">
+            <ul class="footer-list">
+                <li>
+                    Copyright © Your Website 2014
+                </li>
+                <li>
+                    <ul class="footer-list-contact">
+                        <li class="small-circle iconfont"><a href="#">&#xe605;</a></li>
+                        <li class="small-circle iconfont"><a href="#">&#xe601;</a></li>
+                        <li class="small-circle iconfont"><a href="#">&#xe604;</a></li>
+                        <div class="clearfix"></div>
+                    </ul>
+                </li>
+                <li>
+                    <span class="footer-link"><a href="#">Privacy Policy</a></span>
+                    <span class="footer-link"><a href="#">Terms of Use</a></span>
+                </li>
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>
