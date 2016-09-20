@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>实现下图的模态框功能</title>
+	 <link rel="stylesheet" href="demo.css">
+  <link rel="stylesheet" href="iconfont.css">
+	<style>
+		html,body{
+		height: 100%
+		}
+		body {
+			margin:0;
+		}
+		body {
+		position: relative;
+		}
+		button {
+		  border: 1px solid #ccc;
+		  border-radius: 5px;
+			background: white;
+		}
+		#container {
+		  position: absolute;
+			left: 50%;
+		  top: 50%;
+			margin-top: -85px;
+			margin-left:-200px;
+		  width:400px;
+			height: 200px;
+			border: 1px solid #ccc;
+			background: white;
+			display: none;
+		}
+		#container #cross {
+			position:absolute;
+				top: 0;
+			right: 0;
+			<!-- outline: 1px solid red; -->
+			display: inline-block;
+			text-align: left;
+			width: 20px;
+			height: 60px;
+			line-height: 60px;
+			font-size: 1.17em;
+			cursor: pointer;
+		}
+		#container h3 {
+		border-bottom: 1px solid #ccc;
+		height: 40px;
+		}
+		#container .content {
+		border-bottom:1px solid #ccc;
+		}
+		#container span{
+		  cursor: pointer;
+			display: inline-block;
+			height: 40px;
+			line-height: 50px;
+		}
+		#container #cancel {
+			margin-left: 280px; 
+		}
+		#container #enter {
+			margin-left: 50px; 
+		}
+	</style>
+</head>
+<body>
+	<button>点我1</button>
+	<div id="container">
+	  <h3>我是标题1</h3><i id= "cross" class="icon iconfont">&#xe62c;</i>
+		<div class="content">
+		<p>我是内容1</p>
+		<p>我是内容2</p>
+		</div>
+		<span id="cancel">取消</span><span id="enter">确定</span>
+	</div>
+	<script>
+		var buttons=document.getElementsByTagName("button");
+		var containers=document.getElementById("container");
+		var crosses=document.getElementById("cross");
+		var cancels=document.getElementById("cancel");
+		buttons[0].addEventListener('click',function(event){
+		if(containers.style.display=="none"){
+			document.body.style.backgroundColor="#aaa";
+			console.log(document.body.style.backgroundColor)
+			containers.style.display="block";
+			event.stopPropagation();
+		}
+		else {
+		document.body.style.backgroundColor="#fff";
+		containers.style.display="none";
+		event.stopPropagation();
+		}
+		});
+		
+			/*container.addEventListener('click',function(event){
+			containers.style.display="none";
+			document.body.style.backgroundColor="#fff";
+			event.stopPropagation();
+		}); */
+		
+		crosses.addEventListener('click',function(){
+			containers.style.display="none";
+			document.body.style.backgroundColor="#fff";
+			 event.stopPropagation();
+		});
+		cancels.addEventListener('click',function(){
+			containers.style.display="none";
+			document.body.style.backgroundColor="#fff";
+			 event.stopPropagation();
+		});
+	
+	</script>
+</body>
+</html>
