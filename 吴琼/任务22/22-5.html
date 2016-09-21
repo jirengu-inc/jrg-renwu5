@@ -2,116 +2,130 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>实现下图的模态框功能</title>
-	 <link rel="stylesheet" href="demo.css">
-  <link rel="stylesheet" href="iconfont.css">
+  <title>点击模态框</title>
+	<link rel="stylesheet" href="iconfont.css">
 	<style>
-		html,body{
-		height: 100%
+		html,body,h3{
+			margin: 0;
+			padding: 0;
+		}
+		html {
+		height: 100%;
 		}
 		body {
-			margin:0;
+		  width: 100%;
+			height: 100%;
+			display: table;
 		}
-		body {
-		position: relative;
-		}
-		button {
-		  border: 1px solid #ccc;
-		  border-radius: 5px;
-			background: white;
+		#header {
+			position: absolute;
+			top: 0;
+			left: 0;
+      display: inline-block;
+			margin-left: 10px;
+			margin-top: 10px;
+      width: 50px;
+			border: 1px solid #aaa;
+			outline: none;
+			background: #fff;
+      text-align: center;
+			border-radius: 2px;
 		}
 		#container {
-		  position: absolute;
-			left: 50%;
-		  top: 50%;
-			margin-top: -85px;
-			margin-left:-200px;
-		  width:400px;
-			height: 200px;
-			border: 1px solid #ccc;
-			background: white;
+			position: relative;
+		  display: table-cell;
+			vertical-align: middle;
+		}
+		#container .cover {
+			position: absolute;
+			top: 0;
+			left: 0;
 			display: none;
+			width: 100%;
+			height: 100%;
+			background-color: #ccc;
+      opacity: 0.4;
 		}
-		#container #cross {
-			position:absolute;
-				top: 0;
+		.modal {
+		  position: relative;
+			z-index: 9;
+			display: none;
+			width: 400px;
+			margin: auto;
+			border: 1px solid #ccc;
+			background-color: #fff;
+		}
+		.modal h3 {
+		  border-bottom: 1px solid #ccc;
+			padding: 10px 0;
+		}
+		.modal #cross{
+			position: absolute;
+			top: 0;
 			right: 0;
-			<!-- outline: 1px solid red; -->
-			display: inline-block;
-			text-align: left;
-			width: 20px;
-			height: 60px;
-			line-height: 60px;
-			font-size: 1.17em;
-			cursor: pointer;
+			font-size: 20px;
 		}
-		#container h3 {
-		border-bottom: 1px solid #ccc;
-		height: 40px;
+		.modal .content {
+			border-bottom: 1px solid #ccc;
 		}
-		#container .content {
-		border-bottom:1px solid #ccc;
+		.modal #footer {
+			padding: 10px 0 10px 260px;
 		}
-		#container span{
-		  cursor: pointer;
-			display: inline-block;
-			height: 40px;
-			line-height: 50px;
-		}
-		#container #cancel {
-			margin-left: 280px; 
-		}
-		#container #enter {
-			margin-left: 50px; 
+    #footer span,#container #cross{
+      cursor: pointer;
+    }
+		#footer .enter {
+			margin-left: 50px;
 		}
 	</style>
 </head>
 <body>
-	<button>点我1</button>
 	<div id="container">
-	  <h3>我是标题1</h3><i id= "cross" class="icon iconfont">&#xe62c;</i>
+		<button id="header">点我1</button>
+		<div class="cover"></div>
+		<div class="modal">
+		<h3>我是标题</h3><i id= "cross" class="icon iconfont">&#xe62c;</i>
 		<div class="content">
 		<p>我是内容1</p>
 		<p>我是内容2</p>
+		</div>	
+		<div id="footer">
+		<span class="cancel">取消</span><span class="enter">确定</span>
 		</div>
-		<span id="cancel">取消</span><span id="enter">确定</span>
-	</div>
+		</div>
+		</div>
 	<script>
-		var buttons=document.getElementsByTagName("button");
-		var containers=document.getElementById("container");
-		var crosses=document.getElementById("cross");
-		var cancels=document.getElementById("cancel");
-		buttons[0].addEventListener('click',function(event){
-		if(containers.style.display=="none"){
-			document.body.style.backgroundColor="#aaa";
-			console.log(document.body.style.backgroundColor)
-			containers.style.display="block";
-			event.stopPropagation();
-		}
-		else {
-		document.body.style.backgroundColor="#fff";
-		containers.style.display="none";
-		event.stopPropagation();
-		}
-		});
-		
-			/*container.addEventListener('click',function(event){
-			containers.style.display="none";
-			document.body.style.backgroundColor="#fff";
-			event.stopPropagation();
-		}); */
-		
-		crosses.addEventListener('click',function(){
-			containers.style.display="none";
-			document.body.style.backgroundColor="#fff";
-			 event.stopPropagation();
+		var group={
+			show: function(){
+			    covers.style.display="block";
+					modals.style.display="block";
+				},
+			hide: function() {
+				modals.style.display="none";
+				covers.style.display="none";
+			}
+		};
+		var headers=document.querySelector("#header");
+		var modals=document.querySelector(".modal");
+		var covers=document.querySelector(".cover");
+		var cancels=document.querySelector(".cancel");
+		var crosses=document.querySelector("#cross");
+		headers.addEventListener('click',function(){
+        group.show();
+        headers.style.backgroundColor="#EBEBEB";
 		});
 		cancels.addEventListener('click',function(){
-			containers.style.display="none";
-			document.body.style.backgroundColor="#fff";
-			 event.stopPropagation();
+			group.hide();
+      headers.style.backgroundColor="#fff";
 		});
-	
+    crosses.addEventListener('click',function(){
+      group.hide();
+      headers.style.backgroundColor="#fff";
+    });
+    covers.addEventListener('click',function(){
+      group.hide();
+      headers.style.backgroundColor="#fff";
+    })
 	</script>
 </body>
 </html>
