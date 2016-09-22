@@ -10,7 +10,7 @@
     </style>
 </head>
 <body>
-    <form action="renwu24_3.php">
+    <form action="renwu24_3.php" class="form1">
         <h3>注册</h3>
         用户名 <input type="text" placeholder="用户名（hunger被注册过）" name="usename" id="usename">
         <h5 class="usename">只能是字母、数字、下划线，3-10个字符</h5>
@@ -78,7 +78,7 @@
                         document.getElementsByClassName("password_agin")[0].innerText="您两次输入的密码不一致！"
 
                     }
-                    else document.getElementsByClassName("password_agin")[0].innerText="密码正确"
+                    else document.getElementsByClassName("password_agin")[0].innerText="两次输入的密码一致"
                 }
             };
 
@@ -87,8 +87,13 @@
 
         });
         document.getElementById("submit").addEventListener("click",function () {
-
-            alert("正在注册，请稍等...")
+            if (document.getElementsByClassName("usename")[0].innerText!=="该用户名可用"||
+                document.getElementsByClassName("password")[0].innerText!=="你输入的密码可用"||
+                document.getElementsByClassName("password_agin")[0].innerText!=="两次输入的密码一致") 
+                {                    
+                    alert("请输入正确且完整的信息！")
+                    document.getElementsByClassName("form1")[0].setAttribute("action","#");
+                };
 
         });
 
