@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task28-2</title>
+	<style>
+		.clearfix{
+			content: '';
+			display: block;;
+			clear: both;
+		}
+		#header{
+			background-color: red;
+			height: 80px;
+		}
+		#content{
+			background-color: gray;
+			margin: 0 100px;
+		}
+		#content .nav{
+			background-color: blue;
+			height: 50px;
+		}
+		#content .aside{
+			width: 80px;
+			height: 400px;
+			background-color: green;
+			float: left;
+		}
+		#content .main{
+			background-color: white;
+			height: 800px;
+			margin-left: 90px;
+		}
+		#footer{
+			height: 20px;
+			background-color: black;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">header</div>
+	<div id="content" class="clearfix">
+		<div class="nav">nav1</div>
+		<div class="aside">aside1</div>
+		<div class="main">main1</div>
+		<div class="nav">nav2</div>
+		<div class="aside">aside2</div>
+		<div class="main">main2</div>
+		<div class="nav">nav3</div>
+		<div class="aside">aside3</div>
+		<div class="main">main3</div>
+	</div>
+	<div id="footer">footer</div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		$.fn.stick=function(){
+			var $cur=$(this),
+				curW=$cur.width(),
+				offsetTop=$cur.offset().top,
+				offsetLeft=$cur.offset().left,
+				curH=$cur.height();
+			//clone一个元素顶替this位置
+			var $div=$cur.clone()
+				 	 .css('opacity',0)
+				 	 .insertBefore($cur)
+				 	.hide();
+			$(window).on('scroll',function(){
+				var scrollTop=$(this).scrollTop();
+				if(scrollTop>=offsetTop){
+					if(!isFixed()){
+						setFixed();
+					}
+				}else{
+					if (isFixed()){
+						unsetFixed();
+					}
+				}
+			})
+			function isFixed(){
+				return !!$cur.data('data-fixed');
+			}
+			function setFixed(){
+				$cur.data('data-fixed',true);
+				$cur.css({
+					'position':'fixed',
+					'top':0,
+					'width':curW,
+					'left':offsetLeft,
+					'margin':0,
+					'z-index':99999
+				})
+				$div.show();
+			}
+			function unsetFixed(){
+				$cur.data('data-fixed',false)
+					.removeAttr('style');
+				$div.hide();
+			}
+		}
+		//对上例stickup-jquery.html 做个 each 遍历循环即可实现对多个 nav 应用 stickup 效果
+		$('.nav').each(function () {
+		       $(this).stick();
+		   })
+	</script>
+</body>
+</html>
