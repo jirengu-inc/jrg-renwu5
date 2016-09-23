@@ -4,6 +4,47 @@
     <meta charset="UTF-8">
     <title>tag-Page</title>
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <style type="text/css">
+        ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .tab-c{
+            border: 1px solid #ccc;
+            width: 484px;
+            height: 239px;
+            margin-bottom: 20px;
+        }
+        .tab-c>.tabS>.tab{
+            width: 120px;
+            border-left: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            float: left;
+            text-align: center;
+            padding: 10px 0;
+            cursor: pointer;
+        }
+        .tabS:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .tab-c>.ct{
+            width: 326px;
+            height: 200px;
+            padding: 20px;
+            display: none;
+        }
+        .tab-c .block{
+            display: block;
+        }
+        .color{
+            background: #ccc;
+        }
+    </style>
 </head>
 <body>
 <div class="tab-c">
