@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tag-Page</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+<div class="tab-c">
+    <ul class="tabS">
+        <li class="tab color">tab1</li>
+        <li class="tab">tab2</li>
+        <li class="tab">tab3</li>
+        <li class="tab">tab4</li>
+    </ul>
+    <div class="ct block">内容1</div>
+    <div class="ct">内容2</div>
+    <div class="ct">内容3</div>
+    <div class="ct">内容4</div>
+</div>
+
+<div class="tab-c">
+    <ul class="tabS">
+        <li class="tab color">tab1</li>
+        <li class="tab">tab2</li>
+        <li class="tab">tab3</li>
+        <li class="tab">tab4</li>
+    </ul>
+    <div class="ct block">内容1</div>
+    <div class="ct">内容2</div>
+    <div class="ct">内容3</div>
+    <div class="ct">内容4</div>
+</div>
+
+<script>
+    function tabSwitch($node){
+        this.$tab = $node.find('.tab');//each tag
+        this.ctS = $node.find('.ct');//each content
+        this.bind();
+    }
+    tabSwitch.prototype = {
+        bind: function(){
+            var me = this;
+            me.$tab.on('click',function(){
+                var idx = $(this).index(),
+                        $this = $(this);
+                $this.siblings().removeClass('color');//sibling
+                $this.addClass('color');
+                me.ctS.removeClass('block');
+                me.ctS.eq(idx).addClass('block');//按照下标找到cts
+            })
+        }
+    }
+    $('.tab-c').each(function(){
+        new tabSwitch($(this))//传入 $('.tab-c')
+    })
+</script>
+</body>
+</html>
