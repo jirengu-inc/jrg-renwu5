@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+      #header{
+        height: 80px;
+        text-align: center;
+        background: red;
+        line-height: 80px;
+      }
+      #nav{
+        margin-top: 20px;
+        height: 40px;
+        background: blue;
+      }
+      #content{
+        padding: 10px;
+        background: #ccc;
+        min-height: 800px;
+        overflow: auto;
+      }
+      #content .aside{
+        background: green;
+        min-height: 400px;
+        width: 100px;
+        float: left;
+      }
+      #content .main{
+        background: #fff;
+        min-height: 800px;
+        padding-left: 20px;
+        overflow: auto;
+      }
+      #footer{
+        background: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">header</div>
+    <div id="nav">nav</div>
+    <div id="content">
+      <div class="aside">aside</div>
+      <div class="main">main</div>
+    </div>
+    <div id="footer">footer</div>
+    <script>
+      $.fn.stick = function(){
+        var $cur = $(this),
+            $curH = $cur.height(),
+            $curW = $cur.width(),
+            offsetTop = $cur.offset().top,
+            offsetLeft = $cur.offset().left;
+
+        var $curClone = $cur.clone()
+                                    .css({visibility: 'hidden',display:'none'})
+                                    .insertBefore($cur);
+
+        $(window).on('scroll',function(){
+          var scrollTop = $(this).scrollTop();//
+          if(scrollTop >= offsetTop){
+            if(isFixed()==undefined||'false'){//此处为重点
+              setFixed();
+            }
+          }else{
+            if(isFixed()){
+              unsetFixed();
+            }
+          }
+        });
+
+        function isFixed(){
+          return $cur.attr('data-fixed');
+        }
+
+        function setFixed(){
+          $cur.css({position:'fixed',
+                    top:0,//
+                    left:offsetLeft,
+                    width: $curW,//fixed会导致元素收缩
+                    margin: 0,//
+                    'z-index': 99//
+                  })
+              .attr('data-fixed','true');
+
+          $curClone.show();
+        }
+
+        function unsetFixed(){
+          $cur.removeAttr('style')
+              .attr('data-fixed','false');
+          $curClone.hide();
+        }
+
+      };
+      $('#nav').stick();
+    </script>
+  </body>
+</html>

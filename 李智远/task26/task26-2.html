@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <style>
+      ul,li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .ct li{
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 15px 0;
+      }
+      .ct li:hover{
+        background: green;
+        cursor: pointer;
+      }
+      .load-more{
+        text-decoration: none;
+        display: block;
+        margin: 0 auto;
+        border: 1px solid #E27272;
+        text-align: center;
+        color: #E27272;
+        border-radius: 3px;
+        width: 80px;
+        height: 40px;
+        line-height: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul class="ct">
+      <li>内容1</li>
+      <li>内容2</li>
+    </ul>
+    <a href="#" class="load-more">加载更多</a>
+    <script>
+      /*
+        url
+        入参:{start:2,len:6}
+        回参:{status:1代表正常;
+              data:[内容3,内容4,内容5,内容6,内容7，内容8]
+      }
+      */
+
+      var lock = false;
+      // var cur = $('.ct').children().length;
+      var cur = 2;
+      // var len = 6;
+      $('.load-more').on('click',function(e){
+        e.preventDefault();
+        if(lock == true){return} ;
+        lock = true;
+        $('.load-more').text('loading');
+        $.ajax({
+          url: 'task.php',
+          dataType: "json",
+          data:{start: cur,
+            len: 6
+          },
+          type: "get",
+          success: function(json){
+            dealWith(json);
+            lock = false;
+            $(".load-more").text("加载更多");
+          },
+          error:function(){
+            lock = false;
+            alert('出错了');
+          }
+        });
+      });
+
+        function dealWith(json){
+          if(json.status == 1){
+            for(var i =0;i<json.data.length;i++){
+              $('.ct').append('<li>'+json.data[i]+'</li>')
+            }
+            cur +=6;
+          }else{
+            alert('获取数据失败');
+          }
+        }
+    </script>
+
+
+
+
+  </body>
+</html>

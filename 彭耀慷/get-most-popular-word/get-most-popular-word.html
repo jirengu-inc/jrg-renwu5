@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prototype chain</title>
+</head>
+<body>
+<script>
+//    给函数String加prototype
+    String.prototype.getMostOften=function(){
+        var str=this;
+        console.log(this);
+        var times={};
+        for(var i=0;i<str.length;i++){
+            //有值的时候转为true，undefined的时候为true
+            if(!times[str.charAt(i)]){
+                times[str.charAt(i)]=1;
+            }else{
+                times[str.charAt(i)]+=1;
+            }
+        }
+        var word;
+        var num=0;
+        for(var key in times){
+            if(times[key]>num){
+                num = times[key];
+                word = key;
+            }
+        }
+        return word;
+    }
+    var str = 'ahbbccdeddddfg';
+    var ch = str.getMostOften();
+    console.log(ch); // d
+</script>
+</body>
+</html>

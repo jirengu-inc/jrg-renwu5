@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task_15_01</title>
+    <style type="text/css">
+        /* 修改默认边距及盒模型 */
+
+        html,
+        body,
+        ul,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        /* 设置内容布局 */
+
+        .layout {
+            width: 1000px;
+            margin: 0 auto;
+        }
+        /* 设置居中样式 */
+
+        .container {
+            text-align: center;
+        }
+        /* 设置默认字体 */
+
+        html,
+        body {
+            font: 16px/1.5 "微软雅黑";
+        }
+        /* 消除列表默认样式 */
+
+        ul,
+        li {
+            list-style: none;
+        }
+        /* 消除a链接默认样式 */
+
+        a {
+            text-decoration: none;
+            color: #555;
+        }
+        /* 设置btn按钮样式 */
+
+        .btn {
+            display: inline-block;
+            padding-left: 10px;
+            padding-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        /* 设置导航条 */
+
+        #header .logo {
+            float: left;
+            font-size: 30px;
+        }
+
+        #header .logo:hover {
+            color: #000;
+        }
+
+        #header .navbar>li {
+            float: left;
+            position: relative;
+            margin-left: 20px;
+            line-height: 3;
+        }
+
+        #header .navbar:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        #header .triangle {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 7px;
+            border-top: 5px solid #555;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid transparent;
+        }
+
+        #header .subnavbar>li {
+            padding-left: 5px;
+            padding-right: 5px;
+            line-height: 2;
+            border-bottom: 1px dashed #ccc;
+            background: #fff;
+        }
+
+        #header .subnavbar>li:nth-last-child(1) {
+            border-bottom: none;
+        }
+
+        #header .subnavbar {
+            position: absolute;
+            top: 100%;
+            left: -5px;
+            display: none;
+            border: 1px solid #ccc;
+        }
+
+        #header .navbar>li:nth-last-child(1):hover .subnavbar {
+            display: block;
+        }
+        /* 设置简介样式 */
+
+        #main .intro {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background: #B84D45;
+        }
+
+        #main .intro .layout {
+            color: #fff;
+        }
+        /* 设置.breadcrumb的框架及样式 */
+
+        #main .breadcrumb {
+            margin-top: 30px;
+            background: #eee;
+        }
+
+        #main .breadcrumb ul>li {
+            display: inline-block;
+            padding-left: 5px;
+            line-height: 2;
+        }
+
+        #main .breadcrumb ul>li a {
+            color: #B84D45
+        }
+        /* 设置.production的框架及样式 */
+
+        #main .production-list>li {
+            float: left;
+            margin-left: 50px;
+            width: 300px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            line-height: 2;
+            border: 1px solid #ccc;
+        }
+
+        #main .production-list {
+            margin-left: -50px;
+            margin-top: 20px;
+        }
+
+        #main .production-list:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        #main .production-list h4 {
+            margin: 0;
+        }
+
+        #main .production-txt {
+            margin-left: 20px;
+        }
+        /* 设置.download的框架及样式 */
+
+        #main .download {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-top: 20px;
+            color: #fff;
+            line-height: 2;
+            background: #B84D45;
+        }
+
+        #main .download a {
+            color: #fff;
+        }
+        /* 设置#footer */
+
+        #footer {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        #footer p {
+            font-size: 14px;
+        }
+    </style>
+    <script src="https://use.fontawesome.com/2f2b92fddc.js"></script>
+</head>
+
+<body>
+    <div id="header">
+        <div class="layout">
+            <a href="#" class="logo">
+                <i class="fa fa-th-large" aria-hidden="true"></i>
+            </a>
+            <ul class="navbar">
+                <li><a href="#">博客</a></li>
+                <li><a href="#">项目</a></li>
+                <li><a href="#">奖励</a></li>
+                <li><a href="#">更多<div class="triangle"></div></a>
+                    <ul class="subnavbar">
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">V2EX</a></li>
+                        <li><a href="#">简书</a></li>
+                        <li><a href="#">知乎</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="main">
+        <div class="intro">
+            <div class="layout">
+                <h1>江君</h1>
+                <p>刘江君</p>
+                <p>江君同学</p>
+            </div>
+        </div>
+        <div class="breadcrumb layout">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li>/</li>
+                <li>我的作品</li>
+            </ul>
+        </div>
+        <div class="production layout">
+            <ul class="production-list">
+                <li>
+                    <ul>
+                        <li>
+                            <a href="#"><img src="http://ocpxqfoch.bkt.clouddn.com/d59466e7a5f948d0ac551b08efed94a4.png" alt="" width=298px></a>
+                        </li>
+                        <li class="production-txt">
+                            <h4>作品标题</h4></li>
+                        <li class="production-txt">作品介绍</li>
+                        <li class="container"><a href="#" class="btn">查看</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul>
+                        <li>
+                            <a href="#"><img src="http://ocpxqfoch.bkt.clouddn.com/d59466e7a5f948d0ac551b08efed94a4.png" alt="" width=298px></a>
+                        </li>
+                        <li class="production-txt">
+                            <h4>作品标题</h4></li>
+                        <li class="production-txt">作品介绍</li>
+                        <li class="container"><a href="#" class="btn">查看</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul>
+                        <li>
+                            <a href="#"><img src="http://ocpxqfoch.bkt.clouddn.com/d59466e7a5f948d0ac551b08efed94a4.png" alt="" width=298px></a>
+                        </li>
+                        <li class="production-txt">
+                            <h4>作品标题</h4></li>
+                        <li class="production-txt">作品介绍</li>
+                        <li class="container"><a href="#" class="btn">查看</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul>
+                        <li>
+                            <a href="#"><img src="http://ocpxqfoch.bkt.clouddn.com/d59466e7a5f948d0ac551b08efed94a4.png" alt="" width=298px></a>
+                        </li>
+                        <li class="production-txt">
+                            <h4>作品标题</h4></li>
+                        <li class="production-txt">作品介绍</li>
+                        <li class="container"><a href="#" class="btn">查看</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul>
+                        <li>
+                            <a href="#"><img src="http://ocpxqfoch.bkt.clouddn.com/d59466e7a5f948d0ac551b08efed94a4.png" alt="" width=298px></a>
+                        </li>
+                        <li class="production-txt">
+                            <h4>作品标题</h4></li>
+                        <li class="production-txt">作品介绍</li>
+                        <li class="container"><a href="#" class="btn">查看</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul>
+                        <li>
+                            <a href="#"><img src="http://ocpxqfoch.bkt.clouddn.com/d59466e7a5f948d0ac551b08efed94a4.png" alt="" width=298px></a>
+                        </li>
+                        <li class="production-txt">
+                            <h4>作品标题</h4></li>
+                        <li class="production-txt">作品介绍</li>
+                        <li class="container"><a href="#" class="btn">查看</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="download">
+            <div class="layout container">
+                <ul>
+                    <li>
+                        <h2>想更详细了解我?</h2></li>
+                    <li>
+                        <p>下载我的简历吧</p>
+                    </li>
+                    <li><a href="#" class="btn">下载</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="container">
+        <p>来自@江君</p>
+    </div>
+</body>
+
+</html>

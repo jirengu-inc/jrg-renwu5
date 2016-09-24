@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>实现如下图Tab切换的功能</title>
+	<style>
+		#title{
+			font-size:0;
+		}
+		span {
+				display:inline-block;
+				font-size: 16px;
+				width: 200px;
+				height: 30px;
+				border: 1px solid #CBCBCB;
+				text-align: center;
+				line-height: 30px;
+			}
+			.table1,.table2 {
+				border-right: 0px;
+			}
+			#content {
+			width: 602px;
+			height: 180px;
+			border: 1px solid #CBCBCB;
+			border-top: 0px;
+			}
+	</style>
+</head>
+<body>
+<div id="title">
+	<span class="table1">tab1</span>
+	<span class="table2">tab2</span>
+	<span class="table3">tab3</span>
+</div>
+<div id="content"></div>
+	<script>
+		<!-- var tableOne=document.getElementsByClassName("table1"); -->
+		<!-- var tableTwo=document.getElementsByClassName("table2"); -->
+		<!-- var tableThree=document.getElementsByClassName("table3"); -->
+		var titles=document.getElementsByTagName("span");
+		var Content=document.getElementById("content");
+		console.log(Content.innerText);
+		titles[0].addEventListener('click',function(){
+		    titles[0].style.backgroundColor="#ccc";
+				titles[1].style.backgroundColor="#fff";
+				titles[2].style.backgroundColor="#fff";
+				Content.innerText="内容"+1;
+			});
+		titles[1].addEventListener('click',function(){
+				titles[1].style.backgroundColor="#ccc";
+				 titles[0].style.backgroundColor="#fff";
+				 titles[2].style.backgroundColor="#fff";
+			   Content.innerText="内容"+2;
+			});
+		titles[2].addEventListener('click',function(){
+				titles[2].style.backgroundColor="#ccc";
+				titles[0].style.backgroundColor="#fff";
+				titles[1].style.backgroundColor="#fff";
+				Content.innerText="内容"+3;
+			});
+	</script>
+</body>
+</html>
