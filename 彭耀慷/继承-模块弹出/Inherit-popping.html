@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <style>
+        body {
+            background-color: #fff;
+            color: #143A41;
+        }
+
+        h2, hr {
+            padding: 0;
+            margin: 0;
+        }
+
+        .cover {
+            position: fixed;
+            background: black;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.2;
+        }
+
+        .modal-content {
+            min-width: 400px;
+            border: 1px solid #1E5666;
+            position: absolute;
+            z-index: 5000;
+            left: 50%;
+            top: 50%;
+            margin-left: -200px;
+            background: #fff;
+
+        }
+
+        .modal-body {
+            padding: 20px 10px;
+        }
+
+        .modal-title {
+            padding: 10px;
+            background-color: #388598;
+            color: #fff;
+        }
+
+        .modal-title .close {
+            position: absolute;
+            right: 20px;
+            top: 14px;
+            cursor: pointer;
+        }
+
+        .btns {
+            text-align: right;
+            padding: 10px;
+        }
+
+        #modal {
+            display: none;
+        }
+
+        .btn {
+            background-color: white;
+            border: 1px solid #1E5666;
+            outline: none;
+
+            padding: 5px 10px;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background-color: green;
+        }
+
+        .btnCt {
+            width: 100%;
+            padding: 10px;
+        }
+
+
+        .dragAble {
+            opacity: 0.8;
+            cursor: move;
+        }
+
+        .modalCt {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -200px;
+        }
+    </style>
+</head>
+<body>
+<div class="btnCt">
+    <button class="btn" id="modal1">modal1</button>
+    <button class="btn" id="modal2">modal2</button>
+    <button class="btn" id="modal3">modal3</button>
+    <button class="btn" id="modal4">modal4</button>
+    <button class="btn" id="modal5">modal5</button>
+</div>
+<script>
+    /*
+     做一个modal组件，引入这个组件的js和css后，使用它固定的方法和标签，就可以在一个页面多次使用拖拽功能modal框；
+     1.定义颖函数生成modal的相关html标签，定义好css
+     2.定义要在modal内传入的参数，可以随主观意愿随意添加删除修改title，内容，关闭确认按钮，点击关闭确认按钮后的回调函数
+     3.需要的那些功能？（打开modal，关闭modal，modal内如何加入参数，如何处理参数，如何根据参数设置样式和内容，为modal绑定一些关闭.拖拽事件）
+     */
+
+    function Modal() {
+        this.createModal();
+        this.bindEvent();
+    }
+    Modal.prototype = {
+        defaultConfig: {
+            title: '',
+            content: '',
+            confirmBtn: false,
+            closeBtn: true,
+            onClose: function () {
+            },
+            onConfirm: function () {
+            }
+        },
+        open: function (obj) {
+            this.setObj(obj);
+            console.log(this.obj);
+            this.setModal();
+//            open的时候直接绑定一个show出来也是合情合理
+            this.showModal();
+
+        },
+        close: function () {
+            this.hideModal();
+        },
+        createModal: function () {
+            var tpl = '<div class="modalCt" id="modal"> <div class="cover"></div>' +
+                    '<div class="modal-content"> <div class="modal-title">' +
+                    '<h2></h2><a class="close">×</a></div> <div class="modal-body">' +
+                    '</div><div class="btns"><button class="cancel btn">取消</button>' +
+                    '<button class="confirm btn">确定</button></div></div></div>';
+            this.$dialog = $(tpl);
+            $("body").append(this.$dialog);
+        },
+        setObj: function (obj) {
+            if (typeof obj === "string") {
+                this.obj = $.extend({}, this.defaultConfig, {content: obj});
+            } else if (typeof obj === "object") {
+                this.obj = $.extend({}, this.defaultConfig, obj);
+            }
+        },
+//        判断输入的内容是否存在,并且设置内容
+        setModal: function () {
+            var $dialog = this.$dialog;
+            if (!this.obj.title) {
+                $dialog.find(".modal-title").hide();
+            } else {
+                $dialog.find("h2").text(this.obj.title);
+            }
+            if (!this.obj.content) {
+                $dialog.find(".modal-body").hide();
+            } else {
+                $dialog.find(".modal-body").html(this.obj.content);
+            }
+            if (!this.obj.confirmBtn) {
+                $dialog.find(".confirm.btn").hide();
+            }
+            if (!this.obj.closeBtn) {
+                $dialog.find(".cancel.btn").hide();
+            }
+        },
+        bindEvent: function () {
+            var me = this;
+            me.$dialog.find(".cancel,.close").on("click", function (e) {
+                e.preventDefault();
+                me.hideModal();
+              me.obj.onClose();
+            });
+            me.$dialog.find(".cancel,.cover").on("click", function (e) {
+                e.preventDefault();
+                me.hideModal();
+                me.obj.onClose();
+            });
+            me.$dialog.find(".confirm").on("click", function (e) {
+                e.preventDefault();
+                me.hideModal();
+              me.obj.onConfirm();
+            });
+//            鼠标拖动事件
+            me.$dialog.on("mousedown", function (e) {
+                //e.pageX;事件在页面中的绝对位置
+                // $dialog.offset(): dialog的左上角到页面左上边缘的绝对位置
+//                绑定当前要操作的就是当前对象的$dialog
+                //$dialog.offset().left是从 中间计算，$dialog.offset().top是从 顶部计算
+                var $dialog = $(this),
+                        evtX = e.pageX - $dialog.offset().left,
+                        evtY = e.pageY - $dialog.offset().top;////evtX.evtY 计算事件的触发点在 dialog内部到 dialog 的左和上边缘的距离
+//                e.pageY是即时变化的，但是当前的$dialog.offset().top是从第一次进来就暂时不动，来获取evtY的偏移
+                $dialog.addClass("dragAble").data("evtPos", {posx: evtX, posy: evtY});
+            }).on("mouseup", function () {
+                $(this).removeClass('dragAble').removeData('evtPos');
+            })
+
+            $('body').on('mousemove', function (e) {
+                console.log("body-mousemove")
+                // 当用户鼠标移动时，根据鼠标的位置和前面保存的距离，计算 dialog 的绝对位置
+                $('.dragAble').length && $('.dragAble').offset({
+                    left: e.pageX - $('.dragAble').data('evtPos').posx,
+                    top: e.pageY - $('.dragAble').data('evtPos').posy
+                });
+            });
+        },
+        showModal: function () {
+            this.$dialog.show();
+        },
+//        hide当然要放到bindEvent里面还有打开的时候的
+        hideModal: function () {
+            this.$dialog.hide();
+        }
+    };
+
+
+    $('#modal1').on("click", function () {
+        var dialog1 = new Modal();
+        dialog1.open({
+            content: 'hello',
+            closeBtn: true
+        })
+    });
+    $('#modal2').on("click", function () {
+        var dialog1 = new Modal();
+        dialog1.open({
+            title: 'Title',
+            content: 'wbydsdaxzczx',
+            closeBtn: true,
+            confirmBtn: true
+        })
+    });
+    $('#modal3').on("click", function () {
+        var dialog1 = new Modal();
+        dialog1.open({
+            title: 'Title',
+            content: 'pyk',
+            closeBtn: true,
+            onClose: function () {
+                alert("onClose被新绑定函数")
+            },
+        })
+    });
+    //    这个tpl是专门给modal4准备的
+    var tpl2 = '<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>';
+    $('#modal4').on('click', function () {
+        var dialog4 = new Modal();
+        dialog4.open({
+            title: '标题',
+            content: tpl2,
+            closeBtn: true,
+            confirmBtn: true,
+            onClose: function () {
+                alert("onClose随时被指定成函数&内容")
+            },
+            onConfirm: function () {
+                alert("confirmed");
+            }
+        });
+    });
+    $('#modal5').on("click", function () {
+        var dialog1 = new Modal();
+        dialog1.open({
+            title: 'brainHole',
+            content: '<img src="https://img.alicdn.com/imgextra/i3/773811758/TB2536upXXXXXaGXFXXXXXXXXXX_!!773811758.jpg"/>',
+            closeBtn: true,
+            confirmBtn: true,
+            onClose: function () {
+                alert("2333")
+            },
+            onConfirm: function () {
+                alert("zxc");
+            }
+        })
+    });
+</script>
+</body>
+</html>
