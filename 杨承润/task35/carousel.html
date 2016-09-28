@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无缝轮播</title>
+	<style>
+		html,body,ul,li{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.carousel{
+			width: 400px;
+			height: 300px;
+			overflow: hidden;
+			position: relative;
+			margin: 0 auto;
+		}
+		.carousel .img-ct{
+			position: absolute;
+		}
+		.carousel .img-ct:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.img-ct li{
+			float: left;
+		}
+		.img-ct li img{
+			width: 400px;
+			height: 300px;
+		}
+		.carousel .arrow{
+			position: absolute;
+			background-color: #4E443C;
+			width: 30px;
+			line-height: 30px;
+			border-radius: 50%;
+			opacity: 0.6;
+			color: white;
+			text-align: center;	
+			top: 50%;
+			margin-top: -15px;
+		}
+		.carousel .next{
+			right: 20px;
+		}
+		.carousel .pre{
+			left: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="carousel carousel1">
+		<ul class="img-ct">
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a></li>
+		</ul>
+		<a href="#" class="pre arrow"><</a>
+		<a href="#" class="next arrow">></a>
+	</div>
+	<div class="carousel carousel2">
+		<ul class="img-ct">
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a></li>
+		</ul>
+		<a href="#" class="pre arrow"><</a>
+		<a href="#" class="next arrow">></a>
+	</div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		function Carousel($carousel){
+					this.$carousel=$carousel;
+					var $ct=this.$ct=$carousel.find('.img-ct');
+					this.$pre=$carousel.find('.pre');
+					this.$next=$carousel.find('.next');
+					this.imgWidth=$ct.find('li').width();
+					this.imgSize=$ct.find('li').size();
+
+					$ct.css('width',this.imgWidth*this.imgSize);
+					this.bind();
+				}
+
+		Carousel.prototype = {
+
+			bind: function(){
+				var _this = this;
+				this.$pre.on('click', function(){
+					_this.showPre();
+				});
+				this.$next.on('click', function(){
+					_this.showNext();
+				});
+			},
+
+			showPre: function(){
+				this.$ct.prepend(this.$ct.children().last());
+				this.$ct.css('left', 0-this.imgWidth);
+				this.$ct.animate({'left': 0});
+			},
+
+			showNext: function(){
+				var $ct = this.$ct;
+				$ct.animate({'left': 0-this.imgWidth},function(){
+					$ct.append($ct.children().first());
+					$ct.css('left', 0);
+				});
+			}
+		};
+
+		var c1 = new Carousel($('.carousel1'));
+		var c2 = new Carousel($('.carousel2'));
+		
+	</script>
+</body>
+</html>
