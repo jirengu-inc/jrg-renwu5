@@ -1,0 +1,26 @@
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title></title>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	</head>
+
+	<body>
+		<p>好棒的感觉，又吃成长快乐了!!!!!</p>
+		<button class="btn1">hide</button>
+		<button class="btn2">show</button>
+		<button class="btn3">toggle</button>
+		<script>
+			$('.btn1').on('click', function() {
+				$('p').hide(300);
+			});
+			$('.btn2').on('click', function() {
+				$('p').show(300);
+			});
+			$('.btn3').on('click', function() {
+				$('p').toggle(300);
+			});
+		</script>
+
+</html>

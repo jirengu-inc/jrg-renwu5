@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>写一个find函数，实现下面的功能 （***）</title>
+</head>
+<body>
+  <script>
+    function find(data) {
+      var arr = ["test", 2, 1.5, false];
+      for (var i = 0; i < arr.length; i++) {
+          if (data == arr[i]) return data;
+
+      }
+      return -1;
+   }
+   alert(find(2));
+  </script>
+</body>
+</html>

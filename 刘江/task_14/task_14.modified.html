@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task_14</title>
+    <style>
+        /* 修改浏览器默认样式 */
+
+        html,
+        body,
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        /* 设置默认字体 */
+
+        html,
+        body {
+            font: 16px/1.2 "微软雅黑";
+        }
+        /* 使用font-face声明字体 */
+
+        @font-face {
+            font-family: 'iconfont';
+            src: url('iconfont.eot');
+            /* IE9*/
+            src: url('iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('./iconfont/ux_1473598722_1831996/iconfont.woff') format('woff'), /* chrome、firefox */
+            url('./iconfont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+            url('./iconfont/iconfont.svg#iconfont') format('svg');
+            /* iOS 4.1- */
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* 设定垂直水平居中布局为960px */
+
+        .layout {
+            width: 960px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+/* 设置.container的上下内边距,文字居中 */
+        .container {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            text-align: center;
+        }
+
+/* 设置.wrap的宽度,居中,文字居中 */
+
+        .wrap {
+            width: 960px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        /* 设置.btn按钮的样式 */
+
+        .btn1 {
+            display: inline-block;
+            background: rgba(50, 50, 50, 0.7);
+            color: white;
+            font-size: 14px;
+            padding: 15px 30px;
+            margin: 0 auto;
+        }
+
+        .btn1:hover {
+            background: rgba(50, 50, 50, 0.9);
+        }
+
+        .btn2 {
+            display: inline-block;
+            background: white;
+            color: #000;
+            font-size: 14px;
+            padding: 5px 10px;
+        }
+
+        .btn2:hover {
+            background: rgba(50, 50, 50, 0.9);
+            color: white;
+        }
+
+        .btn3 {
+            display: inline-block;
+            background: white;
+            color: black;
+            font-size: 14px;
+            padding: 15px 30px;
+            margin: 0 auto;
+        }
+
+        .btn3:hover {
+            background: rgba(50, 50, 50, 0.9);
+            color: white;
+        }
+        /* 设置父元素的高度为100%以保证首页大图全屏能设置成功 */
+
+        body,
+        html {
+            height: 100%;
+        }
+        /* 设置首页大图为全屏 */
+
+        #header {
+            height: 100%;
+            position: relative;
+            background: url(http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg) no-repeat 0% 0% / 100% 100%;
+        }
+        /* 设置.skills的整体框架*/
+
+        #main .skills {
+            background: #337AB7;
+            color: white;
+            font-size: 14px;
+        }
+
+        #main .skills ul>li {
+            width: 195px;
+            height: 230px;
+            float: left;
+            margin-left: 60px;
+        }
+
+        #main .skills ul {
+            margin-left: -60px;
+        }
+
+        #main .skills ul:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        #main .skills hr {
+            width: 150px;
+        }
+
+        #main .skills .iconfont {
+            font-size: 100px;
+        }
+        /* 设置.change-profession的背景图片及文字样式 */
+
+        #main .change-profession {
+            height: 550px;
+            position: relative;
+            background: url(http://pic1.win4000.com/wallpaper/8/5260cea4880ca.jpg) no-repeat;
+            background-size: 100% 100%;
+            color: white;
+        }
+        /* 设置.production的框架及样式 */
+
+        #main .production hr {
+            width: 150px;
+        }
+
+        #main .production ul>li {
+            width: 450px;
+            height: 300px;
+            float: left;
+            margin-left: 60px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        #main .production ul {
+            margin-left: -60px;
+        }
+
+        #main .production ul:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        /* 设置.about-me的框架和样式 */
+
+        #main .about-me {
+            background: #337AB7;
+            color: white;
+        }
+
+        #about-me a {
+            display: inline-block;
+        }
+        /* 设置#footer */
+
+        #footer {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            font-size: 14px;
+        }
+
+        #footer .contact {
+            display: inline-block;
+            margin: 0 auto;
+        }
+
+        #footer .contact {
+            padding: 40px;
+        }
+
+        #footer .contact>li {
+            float: left;
+            font-size: 50px;
+            color: #337AB7;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <ul class="layout">
+            <li>
+                <h2>Mr.jiang</h2></li>
+            <li>
+                <p>他希望转行至Web前端</p>
+            </li>
+            <li><a href="#" class="btn1">查看更多</a></li>
+        </ul>
+    </div>
+    <div id="main">
+        <div class="desp container">
+            <h2>过去的七年,他一直在学习石油地质</h2>
+            <p>特别是过去三年,很刻苦 <a href="#">作品</a></p>
+        </div>
+        <div class="skills container">
+            <div class="wrap">
+                <h2>技能</h2>
+                <hr>
+                <ul>
+                    <li>
+                        <span class="iconfont">&#xe60c;</span>
+                        <p><strong>野外考察</strong></p>
+                        <p>地质现象的记录与研究</p>
+                        <a href="#" class="btn2">相关作品</a>
+                    </li>
+                    <li>
+                        <span class="iconfont">&#xe600;</span>
+                        <p><strong>演讲</strong></p>
+                        <p>全国地质会议青年学者演讲</p>
+                        <a href="#" class="btn2">相关作品</a>
+                    </li>
+                    <li>
+                        <span class="iconfont">&#xe6f8;</span>
+                        <p><strong>文献阅读</strong></p>
+                        <p>石油地质断层封闭性方面</p>
+                        <a href="#" class="btn2">相关作品</a>
+                    </li>
+                    <li>
+                        <span class="iconfont">&#xe604;</span>
+                        <p><strong>一点点前端</strong></p>
+                        <p>现在,滚去学前端!</p>
+                        <a href="#" class="btn2">相关作品</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="change-profession">
+            <div class="layout">
+                <h1>现在 任重而道远</h1>
+            </div>
+        </div>
+        <div class="production container">
+            <div class="wrap">
+                <h2>我的作品</h2>
+                <hr>
+                <ul>
+                    <li><img src="http://ocpxqfoch.bkt.clouddn.com/7d85e6cd69752af199be560ef745e529.png" alt=""></li>
+                    <li><img src="http://ocpxqfoch.bkt.clouddn.com/7d85e6cd69752af199be560ef745e529.png" alt=""></li>
+                    <li><img src="http://ocpxqfoch.bkt.clouddn.com/7d85e6cd69752af199be560ef745e529.png" alt=""></li>
+                    <li><img src="http://ocpxqfoch.bkt.clouddn.com/7d85e6cd69752af199be560ef745e529.png" alt=""></li>
+                </ul>
+                <a href="#" class="btn1">更多作品</a>
+            </div>
+        </div>
+        <div class="about-me container">
+            <div class="wrap">
+                <p>我是一个无聊又严谨的人</p>
+                <a href="#" class="btn3">Click Me</a>
+                <a href="#" class="btn1">Look at Me</a>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="wrap">
+            <h4>我的信息</h4>
+            <p>刘江</br>
+                江君,刘江君,江君同学,Mr.jiang,Mrjiang1990
+            </p>
+            <ul class="contact-information">
+                <li><span class="iconfont">&#xe603;</span>这个...额</li>
+                <li><span class="iconfont">&#xe665;</span><a href="#">liujiangjun2014@163.com</a></li>
+                <li>
+                    <ul class="iconfont contact">
+                        <li class="iconfont">&#xe69f;</li>
+                        <li class="iconfont">&#xe673;</li>
+                        <li class="iconfont">&#xe637;</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Copyright @ hunger 2016</p>
+        </div>
+    </div>
+</body>
+
+</html>

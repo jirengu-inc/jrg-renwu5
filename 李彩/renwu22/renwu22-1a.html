@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<body>
+<ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+</ul>
+
+<script>
+    var ct=document.getElementsByClassName("ct")[0];
+    var li0=ct.children[0];
+    var li1=ct.children[1];
+    var li2=ct.children[2];
+    li0.addEventListener("click",function () {
+        console.log(li0.innerText)
+
+    });
+    li1.addEventListener("click",function () {
+        console.log(li1.innerText)
+
+    });
+    li2.addEventListener("click",function () {
+        console.log(li2.innerText)
+
+    });
+
+</script>
+</body>
+</html>

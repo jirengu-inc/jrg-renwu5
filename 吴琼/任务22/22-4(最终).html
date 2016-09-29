@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>实现如下图Tab切换的功能</title>
+  <style>
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      float: left;
+      list-style: none;
+      text-align: center;
+      width: 200px;
+      height: 35px;
+      line-height: 35px;
+      border:1px solid #ccc;
+    }
+    li:nth-child(2),li:nth-child(3) {
+      border-left: 0;
+    }
+    ul:after {
+      content: ' ';
+      display: block;
+      clear: both;
+    }
+    .list .active{
+      cursor:pointer;
+      background: #ccc;
+    }
+    .content {
+      display: none;
+      width: 602px;
+      height: 180px;
+      border: 1px solid #ccc;
+      border-top: 0;
+    }
+    #container .active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <ul class="list">
+      <li class="active">tab1</li>
+      <li>tab2</li>
+      <li>tab3</li>
+    </ul>
+    <div class="content active">内容1</div>
+    <div class="content">内容2</div>
+    <div class="content">内容3</div>
+  </div>
+<script>
+  var group={
+    hasClass: function(element, classname){
+      return !!element.className.match(new RegExp('\\b'+classname+'\\b'));
+    },
+    singleAddClass: function(element, classname){
+      if(group.hasClass(element,classname)) return;
+      element.className += ' ' + classname;
+    },
+    singleRemoveClass:function removeClass(element,classname){
+      element.className = element.className.replace(new RegExp('\\b'+classname+'\\b', 'g'), '');
+  },
+    removeClass:function(element, classname){
+      if(element.length && element.length > 0){
+        for(var i=0; i<element.length; i++){
+          group.singleRemoveClass(element[i], classname);
+        }
+      }else{
+        group.singleRemoveClass(element, classname);
+      }
+    },
+    addClass:function addClass(element,classname){
+      if(element.length && element.length > 0){
+        for(var i=0; i<element.length; i++){
+          group.singleAddClass(element[i], classname);
+        }
+      }else{
+        group.singleAddClass(element, classname);
+      }
+    },
+    indexOf: function(element){
+      var parent = element.parentElement,
+        siblings = parent.children;
+      for(var i=0; i<siblings.length; i++){
+        if(element === siblings[i]) return i;
+      }
+      return -1;
+    }
+  };
+  var lists=document.querySelector(".list");
+  lists.addEventListener('click',function(event){
+    var target=event.target;
+    var listsChildren=lists.children;
+    var index = group.indexOf(target);
+    var contents = document.querySelectorAll('.content');
+    if(index > -1) {
+      group.removeClass(listsChildren, 'active');
+      group.addClass(target, 'active');
+      group.removeClass(contents, 'active');
+      group.addClass(contents[index], 'active');
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+
+<body>
+
+    <button id="btn">看我不爽就猛戳此处~ 哈哈</button>
+    <h1 id="content"></h1>
+
+    <script>
+        function ajax(opts){
+            var xhr=new XMLHttpRequest();
+            xhr.onreadystatechange=function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    opts.success(xhr.responseText);
+                    document.getElementById("content").innerText=xhr.responseText;
+                }
+                if (xhr.readyState == 4 && xhr.status == 404) {
+                    opts.error();
+                }
+            };
+                var dataStr="";
+                for (var key in opts.data){
+                    dataStr+=key+"="+opts.data[key]+"&";
+                }
+                dataStr=dataStr.substr(0,dataStr.length-1);
+                if (opts.type.toLowerCase()=="get"){
+                    xhr.open("get",opts.url+"?"+dataStr,true);
+                    xhr.send(null);
+
+                }
+                if (opts.type.toLowerCase()=="post"){
+                    xhr.open("post",opts.url,true);
+                    xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                    xhr.send(dataStr);
+                }
+
+
+        }
+        document.querySelector('#btn').addEventListener('click', function(){
+            ajax({
+                url: 'renwu24_1.php',   //接口地址
+                type: 'get',               // 类型， post 或者 get,
+                data: {
+                    username: 'xiaoming',
+                    password: 'abcd1234'
+                },
+                success: function(ret){
+                    console.log(ret);       // {status: 0}
+                },
+                error: function(){
+                    console.log('出错了')
+                }
+            })
+        });
+    </script>
+
+
+
+</body>
+</html>

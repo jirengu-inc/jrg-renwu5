@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task29-1</title>
+	<style>
+		.content p{
+			line-height: 100px;
+		}
+		.go-top{
+			text-align: center;
+			line-height: 30px;
+			height: 30px;
+			background-color: red;
+			display: none;
+			position: fixed;
+			width: 100px;
+			bottom: 0;
+			right: 0;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+		<p>内容</p>
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		// var $goTop=$('<div class="go-top">回到顶部</div>');
+		// var clock;
+		// $('body').append($goTop);
+		// $(window).on('scroll',function(){
+		// 	var offsetTop=$('body').scrollTop();
+		// 	if(clock){
+		// 		clearTimeout(clock);
+		// 	}
+		// 	clock=setTimeout(function(){
+		// 		if (offsetTop>300) {
+		// 			$goTop.show();
+		// 		}else{
+		// 			$goTop.hide();
+		// 		}
+		// 		console.log(1)
+		// 	},300)	
+		// })
+		// $goTop.on('click',function(){
+		// 	$(window).scrollTop(0);
+		// })
+		var GoTop={
+			init:function(){
+				if($('.go-top').length>0){
+					return;
+				}
+				var $goTop=$('<div class="go-top">回到顶部</div>');
+				$('body').append($goTop);
+
+				this.$goTop=$goTop;
+				this.bind();
+			},
+			bind:function(){
+				var clock;
+				var self=this;
+				$(window).on('scroll',function(){
+					var offsetTop=$('body').scrollTop();
+					if(clock){
+						clearTimeout(clock);
+					}
+					clock=setTimeout(function(){
+						if (offsetTop>300) {
+							self.$goTop.show();
+						}else{
+							self.$goTop.hide();
+						}
+						console.log(1)
+					},300)	
+				})
+				this.$goTop.on('click',function(){
+					$(window).scrollTop(0);
+				})
+			}
+		}
+		GoTop.init();
+	</script>
+</body>
+</html>

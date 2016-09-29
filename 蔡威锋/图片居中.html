@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+    .item{
+      width: 400px;
+      height: 300px;
+      border: 1px solid red;
+      margin: 0 auto;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .item2{
+      width: 400px;
+      height: 300px;
+      border: 1px solid red;
+      text-align: center;
+    }
+    .item2:before{
+      content: '';
+      display:inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+    .item2 img{
+      vertical-align: middle;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="item">
+    <a href="#" title="图像">
+      <img src="http://s7.mogucdn.com/pic/141028/19m4he_ieydgzbuhfstcyzsmqytambqhayde_220x135.jpg" alt="图像">
+    </a>
+  </div>
+
+    <div class="item2">
+    <a href="#" title="图像">
+      <img src="http://s7.mogucdn.com/pic/141028/19m4he_ieydgzbuhfstcyzsmqytambqhayde_220x135.jpg" alt="图像">
+    </a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>回到顶部</title>
+	<style>
+		.content{
+			background-color: lightgray;
+			height: 3000px;
+		}
+		#goTop{
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			border: 1px solid red;
+			border-radius: 5px;
+			display: none;
+		}
+		a{
+			color: red;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<div class='content'>
+		
+	</div>
+	<div class="footer"></div>
+	<!-- <div id="goTop">回到顶部</div> -->
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		// var $goTop=$('<div id="goTop"><a href="#">回到顶部</a></div>');
+		// $('body').append($goTop);
+		// $(window).on('scroll',function(){
+		// 	var offset=$('body').scrollTop();
+		// 	if(offset>400){
+		// 		$goTop.show()
+		// 	}else{
+		// 		$goTop.hide()
+		// 	}
+		// })
+		// $goTop.on('click',function(){
+		// 	$(window).scrollTop(0);
+		// })
+		function goTop($node){
+			this.ct=$node;
+			this.target=$('<div id="goTop"><a href="#">回到顶部</a></div>');
+			this.init();
+		}
+		goTop.prototype={
+			init:function(){
+				this.createEvent()
+				this.bindEvent();
+			},
+			createEvent:function(){
+				this.ct.append(this.target);
+			},
+			bindEvent:function(){
+				var _this=this;
+				$(window).on('scroll',function(){
+					if($(window).scrollTop()>400){
+						_this.target.show();
+					}else{
+						_this.target.hide();
+					}
+				})
+				_this.target.on('click',function(){
+					$(window).scrollTop(0);
+				})
+			}
+		}
+		var scroll=new goTop($('.footer'))
+	</script>
+</body>
+</html>

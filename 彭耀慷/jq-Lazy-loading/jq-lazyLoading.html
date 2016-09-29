@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jq-lazyLoading</title>
+    <style>
+        .container {
+            list-style: none;
+            width: 800px;
+            margin: 0px auto;
+        }
+
+        .container li {
+            float: left;
+            margin: 10px 10px;
+            border: 1px solid red;
+        }
+
+        .container li img {
+            width: 220px;
+            height: 400px;
+        }
+
+        p {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+
+<ul class="container">
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+
+    <p id="hello">hello </p>
+
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+    <li><a href="#"><img
+            src="https://img.alicdn.com/imgextra/i2/773811758/TB2k_XyXam5V1BjSsziXXaZMpXa_!!773811758.jpg"
+            data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg"></a>
+    </li>
+
+</ul>
+
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+    var clock;
+    $(window).on('scroll', function () {
+        if (clock) {
+            clearTimeout(clock)
+        }
+        clock = setTimeout(function () {
+            checkShow();
+        }, 300)
+    })
+    checkShow();
+
+    function checkShow() {
+        $('.container img').each(function () {
+            var $cur = $(this);
+            if ($cur.attr('isLoaded')) {
+                return;
+            }
+
+            if (isShow($cur)) {
+                showIMG($cur)
+            }
+        })
+    }
+
+    function isShow($el) {
+        var $scrollH = $(window).scrollTop(),
+                $winH = $(window).height(),
+                $top = $el.offset().top;
+
+        if ($top < $scrollH + $winH) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    function showIMG($el) {
+        $el.attr('isLoaded', true);
+        $el.attr('src', $el.attr('data-src'));
+    }
+    
+</script>
+</body>
+</html>
