@@ -202,8 +202,8 @@
             return newli;
         }
         $(".add").on("click",function () {
-            $.each(products,function (index,products) {
-               var more=getProductsInfo(products);
+            $.each(products,function (index,value) {
+               var more=getProductsInfo(value);
                 $(".content").append(more);
             })
         })
