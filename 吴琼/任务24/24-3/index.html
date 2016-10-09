@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册表单</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "微软雅黑";
+        }
+        html,body,dl,dd,dt {
+            margin: 0;
+            padding: 0;
+
+        }
+       #container {
+           margin-top: 20px;
+           margin-left: 20px;
+           font-size: 16px;
+       }
+        #container dl:after {
+            content:' ';
+            display: block;
+            clear: both;
+        }
+        #container .form-name {
+            float: left;
+            width: 100px;
+        }
+        #container .form-text {
+            margin-bottom: 5px;
+        }
+        #container .message {
+            margin-bottom: 5px;
+            margin-left: 100px;
+            font-size: 12px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <h3>注册</h3>
+    <form id="form-register" name="form">
+        <dl>
+            <dt class="form-name">用户名:</dt>
+            <dd class="form-text">
+                <input type="text" placeholder="用户名(hunger被注册过)" id="user-name" name="username">
+            </dd>
+            <dd class="message message-uername">只能是字母、数字、下划线，3-10个字符</dd>
+            <dt class="form-name">密码:</dt>
+            <dd class="form-text">
+                <input type="password" id="user-key" name="key">
+            </dd>
+            <dd class="message message-password">
+                 大写字母、小写、数字、下划线最少两种，6-15个字符
+            </dd>
+            <dt class="form-name">再输一次：</dt>
+            <dd class="form-text">
+                <input type="password" id="user-key2" name="key2" placeholder="再输一次密码">
+            </dd>
+            <dd class="message message-password2">重新输一次密码</dd>
+            <dd class="message"><button id="register" >注册</button></dd>
+        </dl>
+    </form>
+</div>
+<script src="ajax.js"></script>
+<script src="checkInput.js"></script>
+<script src="class.js"></script>
+<script>
+    var  usernameInput=document.querySelector("#user-name"),
+         password1Input=document.querySelector("#user-key"),            
+           password2Input=document.querySelector("#user-key2"), 
+           msgUn=document.querySelector(".message-uername"),
+           msgPwd1=document.querySelector(".message-password"),
+           msgPwd2=document.querySelector(".message-password2"),
+            registerButton=document.querySelector("#register");
+     registerButton.onclick=function(){
+  if(msgUn.innerText === "用户名可用"&&testPasswordIpt()&&testPasswordRpt()){
+    alert("注册成功！");
+  }else{
+     alert("请检查用户名和密码，再注册");
+  }
+}
+usernameInput.onchange=function(){
+  testUsername();
+}
+password1Input.onchange=function(){
+  testPasswordIpt();
+}
+password2Input.onchange=function(){
+  testPasswordRpt();
+}
+
+
+
+</script>
+</body>
+</html>
