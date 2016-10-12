@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠宝首饰</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <style>
+        .layout {
+            width: 700px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 35px;
+            color: #666;
+        }
+        .list {
+            margin-left: -20px;
+            /*outline: 1px solid red;*/
+        }
+        #content:after {
+            content:'';
+            display: block;
+            clear: both;
+        }
+        #content li {
+            position: relative;
+            float: left;
+            width: 218px;
+            height: 200px;
+            border: 1px solid #ccc;
+            margin: 10px 0 10px 20px;
+            text-align: center;
+        }
+        #content li p {
+            text-align: left;
+        }
+        #content li p:nth-of-type(3) {
+            color: red;
+        }
+        #cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 218px;
+            height: 200px;
+            background: #333;
+            opacity: 0.8;
+            display: none;
+        }
+        #shop {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -40px;
+            margin-top: -20px;
+            display: block;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid red;
+            border-radius: 2px;
+            text-align: center;
+            background: white;
+            text-decoration: none;
+            color: red;
+            opacity: 0;
+        }
+        #content li:hover #cover {
+            display: block;
+        }
+        #content li:hover #shop {
+            opacity: 1;
+        }
+        #add {
+            cursor: pointer;
+            width: 55px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            text-align: center;
+            color: red;
+            border: 1px solid red;
+            border-radius: 2px;
+        }
+        #content .inactive {
+            display: none;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/1.7.1/jquery.js"></script>
+</head>
+<body>
+<div class="layout">
+    <h1>珠宝首饰</h1>
+    <div class="list">
+    <ul id="content">
+        <ul id="origin">
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+            <p>藏美千足金和田玉金镶玉路路通</p>
+            <p>吊坠</p>
+            <p>￥1699.00</p>
+            <div id="cover"></div>
+            <a href="25-3.html" id="shop">立即抢购</a>
+        </li>
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+            <p>藏美千足金和田玉金镶玉路路通</p>
+            <p>吊坠</p>
+            <p>￥1699.00</p>
+            <div id="cover"></div>
+            <a href="25-3.html" id="shop">立即抢购</a>
+        </li>
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+            <p>藏美千足金和田玉金镶玉路路通</p>
+            <p>吊坠</p>
+            <p>￥1699.00</p>
+            <div id="cover"></div>
+            <a href="25-3.html" id="shop">立即抢购</a>
+        </li>
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+            <p>藏美千足金和田玉金镶玉路路通</p>
+            <p>吊坠</p>
+            <p>￥1699.00</p>
+            <div id="cover"></div>
+            <a href="25-3.html" id="shop">立即抢购</a>
+        </li>
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+            <p>藏美千足金和田玉金镶玉路路通</p>
+            <p>吊坠</p>
+            <p>￥1699.00</p>
+            <div id="cover"></div>
+            <a href="25-3.html" id="shop">立即抢购</a>
+        </li>
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+            <p>藏美千足金和田玉金镶玉路路通</p>
+            <p>吊坠</p>
+            <p>￥1699.00</p>
+            <div id="cover"></div>
+            <a href="25-3.html" id="shop">立即抢购</a>
+        </li>
+            </ul>
+        <ul class="inactive">
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg">
+            <p>珂兰 黄金手 猴哥款</p>
+            <p>&nbsp</p>
+            <p>￥405.00</p>
+            <div id="cover"></div>
+            <a href="25-3.html" id="shop">立即抢购</a>
+        </li>
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg">
+            <p>珂兰 黄金转运珠 猴哥款</p>
+            <p>&nbsp</p>
+            <p>￥100.00</p>
+            <div id="cover"></div>
+            <a href="25-3.html" id="shop">立即抢购</a>
+        </li>
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg">
+            <p>珂兰 黄金手链 3D猴哥款</p>
+            <p>&nbsp</p>
+            <p>￥45.00</p>
+            <div id="cover"></div>
+            <a href="25-3.html" id="shop">立即抢购</a>
+        </li>
+            </ul>
+    </ul>
+        </div>
+<div id="add">添加</div>
+    </div>
+<script>
+    $("#add").on('click',function(){
+        $("#content").append($(".inactive").html());
+    })
+</script>
+</body>
+</html>
