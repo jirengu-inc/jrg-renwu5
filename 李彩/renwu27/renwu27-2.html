@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>27-1无限轮播</title>
+    <style>
+        ul,li{
+            list-style: none;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .ct-img>li{
+            float: left;
+            width: 310px;
+            height: 210px;
+            display: none;
+        }
+        li img{
+            width: 310px;
+            height: 210px;
+        }
+
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .ct-bottom>li{
+            border-bottom: 5px solid #555;
+            float: left;
+            cursor: pointer;
+            width: 20px;
+            margin: 0 5px;
+            border-radius: 2px;
+        }
+        .ct-bottom{
+            position: absolute;
+            top: 180px;
+            left: 95px;
+        }
+        .ct{
+            position: relative;
+        }
+        a.change{
+            text-decoration: none;
+            font-size: larger;
+            font-weight: 900;
+            background-color: #666;
+            color: #fff;
+            display: inline-block;
+            vertical-align: middle;
+            padding: 15px;
+            width: 10px;
+            height: 10px;
+            line-height: 10px;
+            border-radius: 25px;
+            opacity: 0.7;
+        }
+        a.pre{
+            position: absolute;
+            left: 10px;
+            top: 80px;
+        }
+        a.next{
+            position: absolute;
+            left: 250px;
+            top: 80px;
+        }
+        a.change:hover{
+            background-color: #444;
+        }
+
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="ct">
+        <ul class="clearfix ct-img">
+            <li data-nub="0"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
+            <li data-nub="1"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
+            <li data-nub="2"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a></li>
+            <li data-nub="3"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a></li>
+        </ul>
+        <ul class="ct-bottom clearfix">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <a href="####" class="pre change"> < </a>
+        <a href="####" class="next change"> > </a>
+
+    </div>
+    <div class="ct">
+        <ul class="clearfix ct-img">
+            <li data-nub="0"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a></li>
+            <li data-nub="1"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
+            <li data-nub="2"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
+            <li data-nub="3"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a></li>
+        </ul>
+        <ul class="ct-bottom clearfix">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <a href="####" class="pre change"> < </a>
+        <a href="####" class="next change"> > </a>
+
+    </div>
+    <div class="ct">
+        <ul class="clearfix ct-img">
+            <li data-nub="0"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
+            <li data-nub="1"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
+            <li data-nub="2"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a></li>
+            <li data-nub="3"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a></li>
+        </ul>
+        <ul class="ct-bottom clearfix">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <a href="####" class="pre change"> < </a>
+        <a href="####" class="next change"> > </a>
+
+    </div>
+</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+
+
+/* 自定义jQuery方法(开发jQuery插件常用此方法) 其实 $.fn === $.prototype */
+    $.fn.allGo = function() {
+        var $me=$(this),
+            $ctImg=$me.find(".ct-img"),
+            $ctBottom=$me.find(".ct-bottom"),
+            $next=$me.find(".next"),
+            $pre=$me.find(".pre"),
+            $ctBottomLi=$me.find(".ct-bottom>li"),
+            clock=false,
+            cur=0;
+        show(0);
+        setInterval(function () {
+            playNext()
+        }, 2000);
+
+        function show(num) {
+            if (clock) {
+                return;
+            }
+            clock = true;
+            $ctBottom.children().eq(num).css("border-bottom-color", "white");
+            $ctBottom.children().eq(num).siblings().css("border-bottom-color", "#555");
+            $ctImg.children().eq(num).siblings().css("display", "none");
+            $ctImg.children().eq(num).fadeOut(500);
+            $ctImg.children().eq(num).fadeIn(500, function () {
+                clock = false
+            });
+            cur = num;
+            return cur;
+        }
+
+        function playNext() {
+            var nextNum = cur + 1;
+            if (nextNum === 4) {
+                show(0)
+            }
+            else show(nextNum)
+        }
+
+        $next.on("click", function () {
+            playNext();
+        });
+
+        $pre.on("click", function () {
+            playPre();
+        });
+
+        function playPre() {
+            var preNum = cur - 1;
+            if (preNum === -1) {
+                show(3)
+            }
+            else show(preNum)
+        }
+
+        $ctBottomLi.on("click", function () {
+            var $cur = $(this),
+                indexNum = $cur.index();
+                show(indexNum);
+        });
+
+    };
+
+    $(".ct").each(function () {
+        $(this).allGo();
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
