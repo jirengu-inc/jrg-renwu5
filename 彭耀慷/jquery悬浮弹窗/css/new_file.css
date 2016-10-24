@@ -1,0 +1,44 @@
+li{
+  list-style:none;
+}
+a{
+  text-decoration:none;
+}
+#ct{display:inline-block}
+#ct>li{
+  position:relative;
+  border-bottom:1px solid gray;
+  width: 200px;
+  background: darkred;
+}
+#ct>li>a{
+  display:block;
+  background-color:darkred;
+  width:150px;
+  padding: 10px 20px;
+}
+#ct>li>a,.icon{
+  color:white;
+  font-size:20px;
+}
+.icon{
+	position: absolute;
+	top: 10px;
+	right: 0px;
+}
+.con{
+  position:absolute;
+  left: 200px;
+  top:0;
+  width:150px;
+  border:1px solid gray;
+  display:none;
+}
+.con>li{
+  float:left;
+  padding-bottom:10px;
+  padding-right:20px;
+}
+.con>li>a{
+  color:black;
+}

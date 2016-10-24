@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>导航条</title>
+    <style media="screen">
+        body {
+            font: 14px/1.2 "微软雅黑";
+        }
+        html, body, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+
+        .item1:after{
+          content: ' ';
+          display: block;
+          clear: both;
+        }
+        .item1{
+          box-shadow: 5px 2px 10px;
+        }
+
+        /*.item1 {
+            overflow: hidden;
+            border-bottom: 1px solid #ccc;
+            ?????
+        }*/
+
+        .item1 > li {
+            float: left;
+            padding: 0 10px;
+            line-height: 40px;
+            position: relative;
+        }
+        .item2 {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+        }
+        .item2 > li {
+            padding: 0 5px;
+        }
+        .item1 > li:hover {
+            background-color: #aaa;
+        }
+        .item1 > li:hover .item2 {
+            display: block;
+        }
+        .item2 > li:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <ul class="item1">
+        <li>
+            <a href="#">前端</a>
+            <ul class="item2">
+                <li><a href="#">JavaScript</a></li>
+                <li><a href="#">CSS</a></li>
+                <li><a href="#">HTML</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">服务端</a>
+            <ul class="item2">
+                <li><a href="#">PHP</a></li>
+                <li><a href="#">Node</a></li>
+                <li><a href="#">Java</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">前端工具</a>
+            <ul class="item2">
+                <li><a href="#">Git</a></li>
+                <li><a href="#">Sublime</a></li>
+                <li><a href="#">Webstorm</a></li>
+            </ul>
+        </li>
+        <li><a href="#">HTML</a></li>
+        <li><a href="#">Node</a></li>
+    </ul>
+</body>
+</html>

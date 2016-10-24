@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3 demo</title>
+<style>
+	html,body {
+		height: 100%;
+		background-color: #0dcecb;
+	}
+	#ct {
+		width: 980px;
+		margin: 30px auto;
+		text-align: center;
+		color: #ccc;
+	}
+	#ct div {
+		height: 180px;
+		width: 180px;
+		background-color: #fff;
+		display: inline-block;
+		transition: all 1s;
+	}
+	.cir {
+		border-radius: 25%;
+	}
+	.cir:nth-child(3) {
+		border-radius: 50%;
+	}
+	.shadow {
+		box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+	}
+	.twod:nth-child(2):hover {
+		transform: scale(2);
+	}
+	.twod:nth-child(3):hover {
+		transform: scale(0.5);
+	}
+	.twod:nth-child(4):hover {
+		transform: translate(20%,20%);
+	}
+	.twod:nth-child(5):hover {
+		transform: skew(30deg,20deg);
+	}
+	.threed:nth-child(2):hover {
+		transform: rotateX(180deg);
+	}
+	.threed:nth-child(3):hover {
+		transform: rotateY(180deg);
+	}
+	.gradient {
+		background: linear-gradient(to right,white , #0dcecb);
+	}
+	.animate {
+		position: relative;
+		animation: roll 5s infinite;
+		animation-direction: alternate;
+	}
+	@keyframes roll
+	{
+		0% {
+		    transform: rotate(360deg);
+		    right: 500px;
+		}
+		25% {
+		    transform: rotate(-360deg);
+		    right: 200px;
+		}
+		50% {
+		    transform: rotate(360deg);
+		    right: 0;
+		}
+		75% {
+		    transform: rotate(-360deg);
+		    right: -200px;
+		}
+		100% {
+		    transform: rotate(360deg);
+		    right: -500px;
+		}	
+	} 
+
+</style>
+</head>
+<body>
+	<div id="ct">
+		<section>
+			<h2>圆角 圆形</h3>
+			<div class="cir"></div>
+			<div class="cir"></div>
+		</section>
+		<section>
+			<h2>div 阴影</h3>
+			<div class="shadow"></div>
+		</section>
+		<section>
+			<h2>2D 转换：放大、缩小、偏移、旋转</h3>
+			<div class="twod"></div>
+			<div class="twod"></div>
+			<div class="twod"></div>
+			<div class="twod"></div>
+		</section>
+		<section>
+			<h2>3D 转换：移动、旋转</h3>
+			<div class="threed">这是正面</div>
+			<div class="threed">这是正面</div>
+		</section>
+		<section>
+			<h2>背景色渐变</h3>
+			<div class="gradient"></div>
+		</section>
+		<section>
+			<h2>过渡效果</h3>
+			<h3>此页面大部分均使用了过渡效果</h3>
+		</section>
+		<section>
+			<h2>动画</h3>
+			<div class="animate"></div>
+		</section>
+	</div>
+
+</body>
+</html>

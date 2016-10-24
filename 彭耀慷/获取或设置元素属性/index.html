@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	</head>
+
+	<body>
+		<button class="show1">变成1</button>
+		<button class="show2">变成2</button>
+		<img class="img" src="img/Ammi2.jpg" data-img="./img/Ammi.jpg">
+		
+		<script>
+			var $show = $('.show1'),
+				$show2 = $('.show2'),
+				$img = $('.img');
+			$show.on('click', function() {
+				$img.attr('src', $img.attr('data-img'));
+			});
+			$show2.on('click', function() {
+				$img.attr('src', 'img/Ammi2.jpg');
+			});
+		</script>
+	</body>
+
+</html>

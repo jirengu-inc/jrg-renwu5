@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+        }
+        li{
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: rgb(98,98,98);
+        }
+        .nav{
+            background: rgb(203,203,203);
+        }
+        .nav:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .nav>ul>li{
+            line-height: 30px;
+            padding: 0 10px;
+            float: left;
+            position: relative;
+        }
+        .nav>ul>li:hover{
+            background: rgb(170,170,170);
+        }
+        .child{
+            display: none;
+        }
+        .child li:hover{
+            background: rgb(170,170,170);
+        }
+        .nav>ul>li:hover .child{
+        border: 1px solid;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <ul>
+        <li><a href="#">前端</a>
+            <ul class="child">
+                <li><a href="#">JavaScript</a></li>
+                <li><a href="#">CSS</a></li>
+                <li><a href="#">HTML</a></li>
+            </ul>
+        </li>
+        <li><a href="#">服务端</a>
+            <ul class="child">
+                <li><a href="#">Node</a></li>
+                <li><a href="#">PHP</a></li>
+                <li><a href="#">JAVA</a></li>
+            </ul>
+        <li>
+        <li><a href="#">前端工具</a>
+            <ul class="child">
+                <li><a href="#">sublime</a></li>
+                <li><a href="#">WebStrom</a></li>
+                <li><a href="#">Git</a></li>
+            </ul>
+        </li>
+        <li><a href="#">HTML</a></li>
+        <li><a href="#">NODE</a></li>
+    </ul>
+</div>
+</body>
+</html>

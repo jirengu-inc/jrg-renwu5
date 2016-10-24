@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>dialog</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+	html,body {
+		height: 100%;
+	}
+	h3 {
+		margin: 0;
+		padding: 0;
+	}
+	.dialog {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 300px;
+		background-color: #eee;
+		box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+		border-radius: 5px;
+        padding-bottom: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+		z-index: 9;
+        -ms-user-select: none;  /*禁止选择*/
+        -webkit-user-select: none;
+        -moz-user-select: none;  
+	}
+    .dialog .dialog-header {
+        padding: 10px 19px;
+        color: #fff;
+        background: #676666;
+    }
+    .dialog .dialog-header .close {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+		font-size: 20px;
+    }
+    .dialog .dialog-content {
+        padding: 10px;
+        margin: 13px;
+        font-size: 11px;
+    }
+    .dialog .dialog-footer {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+	.btn {
+		text-decoration: none;
+		color: #fff;
+		background-color: #e33100;
+		font-size: 14px;
+		padding: 10px 20px;
+		margin-right: 10px;
+		border-radius: 5px;
+	}
+</style>
+</head>
+<body>
+    <button id="open1">ONE</button>
+    <button id="open2">TWO</button>
+    <button id="open3">THREE</button>
+    <button id="open4">FOUR</button>
+    <button id="open5">FIVE</button>
+<!-- 	<div class="dialog">
+		<div class="dialog-header">
+			<h3>欢迎来到饥人谷</h3>
+			<span class="close">x</span>
+		</div>
+		<div class="dialog-content">
+			<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>
+		</div>
+		<div class="dialog-footer">
+			<a href="#" class="btn close">取消</a>
+			<a href="#" class="btn confirm">确定</a>
+		</div>
+	</div> -->
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+var Dialog = (function(){
+
+	function Dialog() {}
+	
+	Dialog.prototype = {
+		// 默认设置
+		defaultData: {
+		    title: '',
+		    message: '',
+		    isShowCloseBtn: true,
+		    isShowConfirmBtn: false,
+		    onClose: function() {},
+		    onConfirm: function() {}
+		},
+		// 用户设置
+		setData: function(data){
+			if(typeof data === 'string'){
+				this.data = $.extend({}, this.defaultData, {message: data})
+			}
+			if(typeof data === 'object'){
+				this.data = $.extend({}, this.defaultData, data)
+			}
+		},
+		// 创建模板
+		create: function(){
+			var tpl = 	'<div class="dialog">'
+					+		'<div class="dialog-header"><h3></h3><span class="close">x</span></div>'
+					+		'<div class="dialog-content"></div>'
+					+		'<div class="dialog-footer">'
+					+			'<a href="#" class="btn confirm">取消</a>'
+					+			'<a href="#" class="btn close">确定</a>'
+					+		'</div>'
+					+	'</div>'
+			this.tpl = $(tpl)
+		},
+		// 插入模板
+		setTpl: function(){
+			var data = this.data
+			var tpl = this.tpl
+			if(!data.title){
+				tpl.find('.dialog-header').hide()
+			}
+			if(!data.isShowCloseBtn){
+				tpl.find('.dialog-footer .close').hide()
+			}
+			if(!data.isShowConfirmBtn){
+				tpl.find('.dialog-footer .confirm').hide()
+			}
+			tpl.find('.dialog-header h3').text(data.title)
+			tpl.find('.dialog-content').html(data.message)
+			$('body').append(tpl)  
+		},
+		// 绑定事件
+		bind: function(){
+			var _this = this
+			_this.tpl.find('.confirm').on('click', function(e){
+				e.preventDefault()
+				_this.data.onConfirm()
+				_this.tpl.hide()
+			})
+			_this.tpl.find('.close').on('click', function(e){
+				e.preventDefault()
+				_this.data.onClose()
+				_this.tpl.hide()
+			})
+			
+            _this.tpl.on('mousedown', function(e){
+            	var drag = $(this)
+            	_this.flag = true
+            	_this.x = e.pageX - drag.offset().left
+            	_this.y = e.pageY - drag.offset().top
+            })
+            $('body').on('mousemove',function(e){
+            	if(_this.flag){
+            		_this.tpl.offset({
+	            		left: e.pageX - _this.x,
+	            		top: e.pageY - _this.y
+            		})
+            	}
+            })
+            $('body').on('mouseup', function(){
+            	_this.flag = false
+            })
+		},
+		// 执行
+		open: function(data){
+			this.setData(data)
+			this.create()
+			this.setTpl()
+			this.bind()
+		}
+	}	
+
+
+	return Dialog
+
+})()
+
+
+// 调用
+
+$('#open1').on('click', function() {
+    var dialog1 = new Dialog()
+    dialog1.open('hello, 这里是饥人谷')
+})
+
+$('#open2').on('click', function() {
+    var dialog2 = new Dialog()
+    dialog2.open('<a href="http://jirengu.com">饥人谷</a>')
+})
+
+$('#open3').on('click', function() {
+    var dialog3 = new Dialog()
+    dialog3.open({
+        title: '欢迎来到饥人谷',
+        message: 'hello',
+        isShowCloseBtn: true,
+        isShowConfirmBtn: true,
+        onClose: function() {
+            console.log('close')
+        },
+        onConfirm: function() {
+            console.log('confirm')
+        }
+    })
+})
+
+var tpl = '<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>'
+$('#open4').on('click', function() {
+    var dialog4 = new Dialog()
+    dialog4.open({
+        title: '欢迎来到饥人谷',
+        message: tpl,
+        isShowCloseBtn: true,
+        isShowConfirmBtn: true,
+        onClose: function() {
+            console.log('close')
+        },
+        onConfirm: function() {
+            console.log('confirm')
+        }
+    })
+})
+
+$('#open5').on('click', function() {
+    var dialog5 = new Dialog();
+    dialog5.open({
+        title: '欢迎来到饥人谷',
+        message: 'hello',
+        isShowCloseBtn: false,
+        isShowConfirmBtn: false
+    })
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+  /*公共部分*/
+  body,html,h1,p,ul,li，a{
+    margin: 0;
+    padding: 0;
+  }
+  ul,li{
+    list-style: none;
+  }
+  .layout{
+    width:960px;
+    margin: 0 auto;
+  }
+  a{
+    text-decoration: none;
+  }
+  body,html{
+    height: 100%;
+  }
+  /*header部分*/
+  #header{
+    background-image: url(http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/06/ChMkJ1bKys6IMgi2AAicNLGZB18AALIhQOtTNIACJxM153.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
+    height: 100%;
+    width:100%;
+    display: table;
+    text-align: center;
+  }
+  .intro{
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .intro h1{
+    font-family: 华文行楷;
+  }
+  .intro p{
+    font-family: 黑体;
+    font-size:20px;
+  }
+  .intro a{
+    font-family: 微软雅黑;
+  }
+  h1,p{
+    margin:20px 0;
+  }
+  .intro a{
+    color: white;
+    background: rgba(0,0,0,0.4);
+    line-height: 50px;
+    padding:10px;
+  }
+  .intro a:hover{
+    background: rgba(0,0,0,0.7);
+  }
+  /*content部分*/
+  .quotations{
+    text-align: center;
+    margin:80px;
+  }
+  .skill{
+    background:rgb(246,183,86);
+    padding:60px 0;
+    text-align: center;
+  }
+  .skill hr{
+    max-width: 50px;
+    border-style: inset;
+  }
+  .child .iconfont{
+    font-size: 100px;
+  }
+  .father:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .father{
+    padding: 20px 0;
+  }
+  .father > li{
+    float: left;
+  }
+  .child{
+    margin:0 50px;
+    font-size: 18px;
+  }
+  .child li{
+    padding:10px 0;
+    font-family: 微软雅黑 ;
+  }
+  .child li > a{
+    background: rgba(0,0,0,0.4);
+    padding:10px;
+    color:white;
+  }  /*之前用的用 li的属性，使用margin属性发现背景颜色的大小没法变小。原因:li为块级别元素，如果想改的话，改width*/
+  .child li > a:hover{
+    background: rgba(0,0,0,0.7);
+  }
+  .picture{
+    background-image: url(../image/QQ截图20160802164507.png);
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: table;
+  }
+  .picture p{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    font-size:100px;
+    font-family: '隶书' ;
+  }
+  .work{
+    text-align: center;
+    padding: 50px;
+  }
+  .work hr{
+    max-width: 100px;
+  }
+  .work-picture:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .work-picture li{
+    width: 465px;
+    height:300px;
+    float:right;
+    margin-bottom: 30px;
+  }
+  .work-picture li:nth-child(2n+1){
+    float:left;
+  }
+  .work-picture li:first-child{
+    background:url(http://www.manonggu.com/UploadFile/UeImg/ArticleImg/20151110/6358279367228223401834136.jpg);
+  }
+  .work-picture li:nth-child(2){
+    background:url(http://www.manonggu.com/UploadFile/UeImg/ArticleImg/20151110/6358279619479456407772852.jpg);
+  }
+  .work-picture li:nth-child(3){
+    background: url(http://www.itnose.net/img/20141205/10168012.png);
+  }
+  .work-picture li:last-child{
+    background: url(http://upload.news.cecb2b.com/2014/0219/1392794084207.jpg);
+  }
+  .work a{
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    padding:8px;
+  }
+  .work a:hover{
+    background: rgba(0,0,0,0.7);
+  }
+  /*footer部分*/
+  .below p{
+    margin:0;
+    padding:0;
+  }
+  .below{
+    text-align: center;
+    background:rgb(246,183,86);
+    padding:60px 0 ;
+  }
+  .below-content p{
+    color: #fff;
+    font-family: '微软雅黑';
+    font-size: 25px;
+    margin-bottom: 35px;
+  }
+  .below-content a{
+    padding:15px;
+    margin: 0 10px;
+    font-family: 微软雅黑;
+  }
+  .below-content a:first-of-type{
+    background-color: #fff;
+    color:#000;
+  }
+  .below-content a:first-of-type:hover{
+    background-color: #eee;
+  }
+  .below-content a:last-of-type{
+    background-color: rgba(0, 0, 0,0.4);;
+    color:#fff;
+  }
+  .below-content a:last-of-type:hover{
+    background-color: rgba(0, 0, 0,0.7);
+  }
+  .contect{
+    margin:110px auto;
+    text-align: center;
+  }
+  .contect p{
+    margin:5px 0;
+    font-size: 14px;
+  }
+  .contect p:first-of-type{
+    margin:30px;
+  }
+  .contect p:nth-of-type(2){
+    margin:20px;
+  }
+  .contect hr{
+    margin:20px auto;
+    max-width: 100px;
+  }
+  .contect p:nth-of-type(5) .iconfont{
+    font-size: 40px;
+  }
+  .contect a{
+    color:blue;
+  }
+  .contect p:last-of-type{
+    font-family: Arial, sans-serif;
+  }

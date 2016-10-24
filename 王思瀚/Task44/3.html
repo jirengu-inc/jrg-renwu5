@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>envy</title>
+    <style>
+        html,body,div{
+            margin:0;
+            padding:0;
+        }
+        html,body{
+            background-color: rgb(13, 206, 203);
+        }
+        .one,
+        .one:before,
+        .one:after{
+            background: #ffffff;
+            width:10px;
+            height:40px;
+            animation: mymove 1s infinite ease-in-out;
+        }
+        .one{
+            position: relative;
+            animation-delay: 0.16s;
+            margin:100px auto;
+        }
+        .one:before{
+            position: absolute;
+            left:-15px;
+            content: '';
+            /*这里设置了宽度和高度为什么还要content呢*/
+        }
+        .one:after{
+            position: absolute;
+            left: 15px;
+            content: '';
+            animation-delay: 0.32s;
+        }
+        @keyframes mymove{
+            0%,
+            80%,
+            100%{
+                box-shadow: 0 0 #fff;
+                height: 40px;
+            }
+            10%{
+                box-shadow:0 -10px #fff;
+                /*这个阴影666*/
+                height:50px;
+            }
+        }
+
+        .two{
+            position: relative;
+            margin: 100px auto;
+            border-right: 15px solid rgba(255,255,255,0.2);
+            border-top: 15px solid rgba(255,255,255,0.2);
+            border-bottom:15px solid rgba(255,255,255,0.2);
+            border-left: 15px solid #fff;
+            animation: mymove2 1s infinite linear;
+        }
+        .two{
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+        @keyframes mymove2 {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="one"></div>
+<div class="two"></div>
+</body>
+</html>

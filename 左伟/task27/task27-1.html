@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatibale" content="IE=edge,chrome=1">
+	<title>渐隐轮播效果</title>
+	<meta name="discription" value="">
+	<meta name="keyword" value="">
+	<style type="text/css">
+	*{
+		padding:0;
+		margin:0;
+	}
+	a{
+		text-decoration:none;
+	}
+	li{
+		list-style: none;
+	}
+	.swap{
+		position:relative;
+		width:400px;
+		height:250px;
+		overflow: hidden;
+	}
+	.pic-list>li>a>img{
+		width:400px;
+		height:250px;
+	}
+	.btn{
+		position:absolute;
+		top:110px;
+		display: block;
+		padding:5px 12px;
+		border:1px solid gray;
+		border-radius:20px;
+		background-color:#ccc;
+		font-size:25px;
+		color:white;
+		opacity:0.7;
+	}
+	.btn:hover{opacity:1;font-weight:bold;}
+	.pre{left:10px;}
+	.next{right:10px;}
+	.list{
+		position:absolute;
+		left:50%;
+		bottom:10px;
+		transform:translateX(-50%);
+	}
+	.list:after{
+		content:'';
+		display: block;
+		clear:both;
+	}
+	.list>li{
+		float:left;
+		width:20px;
+		height:10px;
+		margin:0 5px;
+		border-radius:10px;
+		background-color: white;
+	}
+	.list>.active{background-color: gray;}
+    </style>
+</head>
+<body>
+	<div class="swap">
+		<ul class="pic-list">
+			<li><a href="#"><img src="img/task27-1.jpg"></a></li>
+			<li><a href="#"><img src="img/task27-2.jpg"></a></li>
+			<li><a href="#"><img src="img/task27-3.jpg"></a></li>
+			<li><a href="#"><img src="img/task27-4.jpg"></a></li>
+		</ul>
+		<a href="#" class="btn pre"> < </a>
+		<a href="#" class="btn next"> > </a>
+		<ul class="list">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		var $pre=$(".pre"),
+		    $next=$(".next"),
+		    $pic=$(".pic-list"),
+		    $items=$pic.children(),
+		    $list=$(".list"),
+		    picWidth=$items.width(),
+		    picCount=$items.size();
+
+		var curIdx=0;
+		var isAnimate=false;
+
+		$next.on("click",function(){
+			stopAuto();
+			PlayNext();
+			autoPlay();
+		});
+		$pre.on("click",function(){
+			stopAuto();
+			PlayPre();
+			autoPlay();
+		});
+		$list.find("li").on("click",function(){
+			var idx=$(this).index();
+			play(idx);
+		});
+		play(0);
+		autoPlay();
+
+		function play(idx){
+			if(isAnimate==true) return;
+			isAnimate=true;
+			$items.eq(curIdx).fadeOut(500);
+			$items.eq(idx).fadeIn(500,function(){
+				isAnimate=false;
+			});
+			curIdx=idx;
+			setList();
+		}
+		function PlayNext(){
+			play((curIdx+1)%picCount);
+		}
+		function PlayPre(){
+			play((picCount+curIdx-1)%picCount);
+		}
+		function setList(){
+			$list.children().removeClass("active")
+				 .eq(curIdx).addClass("active");
+		}
+		function autoPlay(){
+			clock=setInterval(function(){
+				PlayNext();
+			},2000);
+		}
+		function stopAuto(){
+			clearInterval(clock);
+		}
+
+	</script>
+</body>
+</html>

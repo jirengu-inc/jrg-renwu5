@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		fieldset{
+			padding: 20px;
+			font-size: 20px;
+		}
+
+		button{
+			font-size: 16px;
+			padding:5px;
+		}
+		div{
+			margin: 10px 0;
+		}
+		img{
+			width: 300px;
+			height: 500px;
+		}
+		input{
+			padding: 5px;
+			font-size: 16px;
+			display: block;
+			margin: 10px 0;
+		}
+		.active{
+			background-color: red;
+		}
+		.detach-el{
+			background-color: orange;
+		}
+		.ct-hw{
+			padding: 10px;
+			border: 5px solid black;
+			margin: 10px;
+		}
+		.ct-scroll{
+			width: 150px;
+			height: 150px;
+			overflow: scroll;
+		}
+		.offset{
+			margin-left: 200px;
+		}
+		.scroll{
+			position: fixed;
+			width: 200px;
+			padding: 20px 0;
+			top: 0;
+			right: 0;
+			font-size: 20px;
+			background-color: orange;
+		}
+		.mouseChange{
+			width: 150px;
+			height: 150px;
+			background-color: lightgray;
+		}
+		.ajax-nav li{
+			border:1px solid lightgray;
+			padding: 10px;
+			margin-bottom: 10px;
+			border-radius: 5px;
+			list-style: none;
+		}
+		.ajax-nav li:hover{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+  	<div class="scroll">
+  		滚动条距离顶端的距离为：
+  	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		$(this).scroll(function(){
+			$('.scroll').text('滚动条距离顶端的距离为：'+$(this).scrollTop())
+		})
+	</script>
+	<fieldset>
+		<legend>给元素添加class</legend>
+		<div id="addClass">元素class操作</div>
+		<button class="add-btn">添加class</button>
+		<button class="remove-btn">移除class</button>
+		<script>
+			$('.add-btn').on('click',function(){
+				$('#addClass').addClass('active');
+			})
+			$('.remove-btn').on('click',function(){
+				$('#addClass').removeClass('active');
+			})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>元素的隐藏和显示</legend>
+		<div id="hide-show">元素的隐藏和显示</div>
+		<button class="show-btn">显示元素</button>
+		<button class="hide-btn">隐藏元素</button>
+		<script>
+			$('.show-btn').on('click',function(){
+				$('#hide-show').show();
+			})
+			$('.hide-btn').on('click',function(){
+				$('#hide-show').hide();
+			})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>获取元素属性</legend>
+		<div>
+			<img id="img-attr" src="http://img4q.duitang.com/uploads/item/201504/10/20150410H0337_3KteR.jpeg" title="图片">
+		</div>
+		<p class="id-val">id：</p>
+		<p class="src-val">src：</p>
+		<p class="title-val">title：</p>
+		<button class="getAttr">获得属性</button>
+		<form>
+			<input type="text" class="id-set" placeholder="要修改的id">
+			<input type="text" class="src-set" placeholder="要修改的src">
+			<input type="text" class="title-set" placeholder="要修改的tilte">
+		</form>
+		<button class="setAttr">设置属性</button>
+		<script>
+			$('.getAttr').on('click',function(){
+				$('.id-val').text('id：'+$('img').attr('id'));
+				$('.src-val').text('src：'+$('img').attr('src'));
+				$('.title-val').text('title：'+$('img').attr('title'));
+			})
+			$('.setAttr').on('click',function(){
+				$('img').attr('id',$('.id-set').val());
+				$('img').attr('src',$('.src-set').val());
+				$('img').attr('title',$('.title-set').val());
+			})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>添加自定义属性</legend>
+		<input type="text" class="add-myAttr" placeholder="添加的自定义属性值为：">
+		<button class="add-myAttr-btn">直接点击</button>
+		<script>
+			$('.add-myAttr-btn').on('click',function(){
+				$('.add-myAttr').attr('data-src','myAttr');
+				$('.add-myAttr').val('添加的自定义属性值为：myAttr');
+			})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>添加自定义属性</legend>
+		<div class="add-head">
+			<p>在头部添加元素</p>
+			<button class="add-head-btn">头部添加</button>
+		</div>
+		<script>
+			$('.add-head-btn').on('click',function(){
+				$('.add-head').prepend('<h3>我添加到这了</h3>');
+			})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>添加自定义属性</legend>
+		<div class="add-last">
+			<p>在尾部添加元素</p>
+			<button class="add-last-btn">尾部添加</button>
+		</div>
+		<script>
+
+			$('.add-last-btn').on('click',function(){
+				$('.add-last').append('<h3>我添加到这了</h3>');
+			})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>删除元素</legend>
+		<div class="remove-el">
+			哎呀我要呗被删除了
+		</div>
+		<div class="detach-el">
+			我要被添加到这了
+		</div>
+		<button class="remove-btn">remove删除</button>
+		<button class="empty-btn">清空元素</button>
+		<button class="detach-btn">detach删除</button>
+		<script>
+			$('.remove-btn').on('click',function(){
+				$('.remove-el').remove();
+			})
+			$('.empty-btn').on('click',function(){
+				$('.remove-el').empty();
+			})
+			var div;
+			$('.detach-btn').on('click',function(){
+				if (div) {
+					console.log(div);
+					$('.detach-el').append(div);
+					div=null;
+				}else{
+					div=$('.remove-el').detach();
+					console.log(div);
+				}
+			})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>设置html</legend>
+		<div class="ct">
+		</div>
+		<button class="html-set-btn">设置html</button>
+		<script>
+		$('.html-set-btn').on('click',function(){
+			$('.ct').html('<div class="btn">button</div>')
+		})
+		</script>
+	</fieldset>
+	<fieldset class="hw">
+		<legend>获取、设置$node 的宽度、高度</legend>
+		<div class="ct-hw">
+			获取高度和宽度:
+		</div>
+		<input type="text" class="set-height" placeholder="请输入想要设置的高度">
+		<input type="text" class="set-width" placeholder="请输入想要设置的宽度">
+		<button class="hw-btn">获取设置宽高</button>	
+		<button class="padding-btn">宽高包括内边距</button>
+		<button class="border-btn">宽高包括边框</button>
+		<button class="margin-btn">获取宽高包括外边距</button>
+		<script>
+		var myWidth;
+		var myHeight;
+		$('.hw button').on('click',function(){
+			myWidth=parseInt($('.set-width').val());
+			myHeight=parseInt($('.set-height').val());
+		})
+		$('.hw-btn').on('click',function(){
+			if(myWidth){
+				$('.ct-hw').width(myWidth);
+			}
+			if(myHeight){
+				$('.ct-hw').height(myHeight);
+			}
+			$('.ct-hw').text('获取高度和宽度: 高度：'+$('.ct-hw').height()+' 宽度：'+$('.ct-hw').width());
+		})
+		$('.padding-btn').on('click',function(){
+			if(myWidth){
+				$('.ct-hw').innerWidth(myWidth);
+			}
+			if(myHeight){
+				$('.ct-hw').innerHeight(myHeight);
+			}
+			$('.ct-hw').text('获取高度和宽度: 高度：'+$('.ct-hw').innerHeight()+' 宽度：'+$('.ct-hw').innerWidth());
+		})
+		$('.border-btn').on('click',function(){
+			if(myWidth){
+				$('.ct-hw').outerWidth(myWidth);
+			}
+			if(myHeight){
+				$('.ct-hw').outerHeight(myHeight);
+			}
+			$('.ct-hw').text('获取高度和宽度: 高度：'+$('.ct-hw').outerHeight()+' 宽度：'+$('.ct-hw').outerWidth());
+		})
+		$('.margin-btn').on('click',function(){
+			$('.ct-hw').text('获取高度和宽度: 高度：'+$('.ct-hw').outerHeight(true)+' 宽度：'+$('.ct-hw').outerWidth(true));
+		})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>获取窗口滚动条垂直滚动距离</legend>
+		<div class="ct-scroll">
+		asdadqwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwoiwjdoqiwjdqoiwjdqowijdqoiwj
+		askdjqwoidjqowdijqwodjqowidjqoiwdjqowijdqwoijdqowijdqiowjdoqiwjdaskldjqowidjqowidjqw
+		odijqowidjqowidjqoiwjdqiowdjqowidjjasldkjwqkljdqowidjqowuhqwefuhwefuhwefojqwoeifjqw
+		ofijasijaoxcdjzocijqwoiwjoiqjwdoaushdfouqehwfqowihdjreoisajdoqiwjdqdasdadqwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwoiwjdoqiwjdqoiwjdqowijdqoiwj
+		askdjqwoidjqowdijqwodjqowidjqoiwdjqowijdqwoijdqowijdqiowjdoqiwjdaskldjqowidjqowidjqw
+		odijqowidjqowidjqoiwjdqiowdjqowidjjasldkjwqkljdqowidjqowuhqwefuhwefuhwefojqwoeifjqw
+		ofijasijaoxcdjzocijqwoiwjoiqjwdoaushdfouqehwfqowihdjreoisajdoqiwjdqdasdadqwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwoiwjdoqiwjdqoiwjdqowijdqoiwj
+		askdjqwoidjqowdijqwodjqowidjqoiwdjqowijdqwoijdqowijdqiowjdoqiwjdaskldjqowidjqowidjqw
+		odijqowidjqowidjqoiwjdqiowdjqowidjjasldkjwqkljdqowidjqowuhqwefuhwefuhwefojqwoeifjqw
+		ofijasijaoxcdjzocijqwoiwjoiqjwdoaushdfouqehwfqowihdjreoisajdoqiwjdqdasdadqwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwoiwjdoqiwjdqoiwjdqowijdqoiwj
+		askdjqwoidjqowdijqwodjqowidjqoiwdjqowijdqwoijdqowijdqiowjdoqiwjdaskldjqowidjqowidjqw
+		odijqowidjqowidjqoiwjdqiowdjqowidjjasldkjwqkljdqowidjqowuhqwefuhwefuhwefojqwoeifjqw
+		ofijasijaoxcdjzocijqwoiwjoiqjwdoaushdfouqehwfqowihdjreoisajdoqiwjdqdasdadqwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwoiwjdoqiwjdqoiwjdqowijdqoiwj
+		askdjqwoidjqowdijqwodjqowidjqoiwdjqowijdqwoijdqowijdqiowjdoqiwjdaskldjqowidjqowidjqw
+		odijqowidjqowidjqoiwjdqiowdjqowidjjasldkjwqkljdqowidjqowuhqwefuhwefuhwefojqwoeifjqw
+		ofijasijaoxcdjzocijqwoiwjoiqjwdoaushdfouqehwfqowihdjreoisajdoqiwjdqdasdadqwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwoiwjdoqiwjdqoiwjdqowijdqoiwj
+		askdjqwoidjqowdijqwodjqowidjqoiwdjqowijdqwoijdqowijdqiowjdoqiwjdaskldjqowidjqowidjqw
+		odijqowidjqowidjqoiwjdqiowdjqowidjjasldkjwqkljdqowidjqowuhqwefuhwefuhwefojqwoeifjqw
+		ofijasijaoxcdjzocijqwoiwjoiqjwdoaushdfouqehwfqowihdjreoisajdoqiwjdqd
+		</div>
+		<div class="scroll-show">
+			滚动条竖直位置为：
+			<br/>
+			滚动条水平位置为：
+		</div>
+		<button class="scroll-btn">获取位置</button>
+		<script>
+		$('.scroll-btn').on('click',function(){
+			$('.scroll-show').html('滚动条竖直位置为：'+$('.ct-scroll').scrollTop()+'px'+'<br/>'+'滚动条水平位置为：'+$('.ct-scroll').scrollLeft()+'px')
+		})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>获取$node 到根节点水平、垂直偏移距离</legend>
+		<div class="offset">
+			我的距离
+		</div>
+		<div class="offset-show">
+			竖直距离为：
+			<br/>
+			水平位置为：
+		</div>
+		<button class="offset-btn">获得距离</button>
+		<script>
+		$('.offset-btn').on('click',function(){
+			$('.offset-show').html('竖直距离为：'+$('.offset').offset().top+'px'+'<br/>'+'水平位置为：'+$('.offset').offset().left+'px')
+		})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>修改$node 的样式</legend>
+		<div class="style">
+			修改我的样式
+		</div>
+		<button class="style-btn">修改样式</button>
+		<script>
+		$('.style-btn').on('click',function(){
+			$('.style').css({
+				'font-size':'14px',
+				'color':'red'
+			})
+		})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>遍历节点，把每个节点里面的文本内容重复一遍</legend>
+		<ul class="each">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<ul class="each2"></ul>
+		<button class="each-btn">遍历节点</button>
+		<script>
+		$('.each-btn').on('click',function(){
+			$('.each li').each(function(idx,el){
+				$('.each2').append($(this).clone());
+			})
+		})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>从$ct 里查找 class 为 .item的子元素</legend>
+		<ul class="find">
+			<li class="item">1</li>
+			<li class="item2">2</li>
+			<li class="item3">3</li>
+		</ul>
+		<p class="item-val">item的值为：</p>
+		<button class="find-btn">遍历节点</button>
+		<script>
+		$('.find-btn').on('click',function(){
+			$('.item-val').text('item的值为：'+$('.find').find('.item').text());
+		})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>获取$ct 里面的所有孩子</legend>
+		<ul class="child">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<p class="child-val">child的值为：</p>
+		<button class="child-btn">查找孩子</button>
+		<script>
+		$('.child-btn').on('click',function(){
+			$('.child-val').text('child的值为：'+$('.child').children().text())
+		})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>对于$node，向上找到 class 为’.ct’的父亲，在从该父亲找到’.panel’的孩子</legend>
+		<div class="parent">
+			<ul class="nav">
+				<li>1</li>
+				<li class="nav-item">2</li>
+				<li class="panel">3</li>
+			</ul>
+			<p class="panel">4</p>
+		</div>
+		<button class="parent-btn">查找孩子</button>
+		<script>
+		$('.parent-btn').on('click',function(){
+			$('.nav-item').parents('div.parent').find('.panel').css({
+				'background-color':'orange',
+				'border':'1px solid red'
+			})
+		})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>获取选择元素的数量</legend>
+		<ul class="length">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<p class="length-val">元素数量为：</p>
+		<button class="length-btn">查找孩子</button>
+		<script>
+		$('.length-btn').on('click',function(){
+			$('.length-val').text('元素数量为：'+$('.length').children().length)
+		})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>获取当前元素在兄弟中的排行</legend>
+		<ul class="sibling">
+			<li>点击元素查看排行0</li>
+			<li>点击元素查看排行1</li>
+			<li>点击元素查看排行2</li>
+			<li>点击元素查看排行3</li>
+			<li>点击元素查看排行4</li>
+		</ul>
+		<p class="sibling-val">元素排行为：</p>
+		<script>
+		$('.sibling').on('click','li',function(){
+			console.log(1)
+			$('.sibling-val').text('元素排行为：'+$(this).index())
+		})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色</legend>
+		<button class="changeColor">点击变色</button>
+		<script>
+		$('.changeColor').on('click',function(){
+			$(this).css({'background-color':'red'});
+			var $cur=$(this);
+			setTimeout(function(){
+				$cur.css({'background-color':'blue'});
+			},1000)
+		})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色</legend>
+		<div class="mouseChange">
+			
+		</div>
+		<script>
+		$('.mouseChange').on('mouseenter',function(){
+			$(this).css({'background-color':'red'});
+		})
+		$('.mouseChange').on('mouseleave',function(){
+			$(this).css({'background-color':'blue'});
+		})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字</legend>
+		<input type="text" class="inputCt">
+		<script>
+		$('.inputCt').on('focus',function(){
+			$(this).css({'border':'1px solid blue'});
+		})
+		$('.inputCt').on('keydown',function(){
+			$(this).val($(this).val().toUpperCase());
+		})
+		$('.inputCt').on('keyup',function(){
+			$(this).val($(this).val().toUpperCase());
+		})
+		$('.inputCt').on('blur',function(){
+			$(this).css('border','1px solid black');
+			console.log($(this).val());
+		})
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>当选择 select 后，获取用户选择的内容</legend>
+		<p class="selVal">值为：</p>
+		<select class="hobby">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+		</select>
+		<script>
+		$('.hobby').on('change',function(){
+			$('.selVal').text('值为：'+$('.hobby option:selected').val())
+		})
+		</script>
+	</fieldset>
+</body>
+</html>

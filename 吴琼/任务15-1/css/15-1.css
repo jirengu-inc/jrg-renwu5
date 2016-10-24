@@ -1,0 +1,139 @@
+/*整体*/
+html,body,ul,li,h1 {
+	margin: 0;
+	padding: 0;
+}
+html {
+	font-size: 14px;
+}
+.layout {
+	width: 1000px;
+	margin: 0 auto;
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: #666;
+}
+a:hover {
+	color: #333;
+}
+/*头部*/
+#header {
+	height: 50px;
+	line-height: 50px;
+}
+#header .header-lists:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+#header .header-lists>li {
+	float: left;
+	margin-right: 30px;
+}
+#header  .lists {
+	width: 60px;
+	height: 105px;
+	line-height: 35px;
+	border: 1px solid #ccc;
+	text-align: center;
+	display: none;
+}
+#header  .lists li {
+	background: white;
+}
+#header  .lists li:hover {
+	background: #eee;
+	color: #666;
+	cursor: pointer;
+}
+#header  .lists li:nth-child(2) {
+	border-bottom:1px dashed #ccc;
+	border-top:1px dashed #ccc;
+}
+#header .header-works {
+	position: relative;
+}
+#header .header-works:hover .lists{
+	display: block;
+	position: absolute;
+	top: 50px;
+	left: 0;
+}
+/*内容*/
+/*内容主题*/
+#main .main-title {
+	background: #B84D45;
+	color: white;
+	padding: 70px;
+
+}
+#main .main-title .layout {
+text-align: left;
+}
+/*主要内容*/
+#main .layout {
+	text-align: center;
+}
+#main  .layout-title {
+	text-align: left;
+	background: #eee;
+	line-height: 30px;
+	padding-left: 10px;
+}
+#main .layout-title a {
+	color: #B84D45;
+}
+#main .layout ul:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+#main .layout li {
+	width: 298px;
+	border: 1px solid #E2E2E2;
+	float: left;
+	padding-bottom: 10px;
+	margin-left: 50px;
+	margin-bottom: 20px;
+}
+#main .main-image:hover {
+	opacity: 0.8;
+}
+#main .main-look {
+	display: inline-block;
+	border: 1px solid #E2E2E2;
+	padding: 5px;
+	border-radius: 3px;
+}
+#main .layout ul {
+	margin-left: -50px;
+}
+
+#main .layout li img {
+	width: 296px;
+}
+/*更多内容*/
+#main .main-more {
+	padding: 50px;
+	background: #B84D45;
+	color: white;
+}
+#main .main-more a {
+	display: inline-block;
+	border: 1px solid white;
+	color: white;
+	padding: 5px;
+	border-radius: 3px;
+}
+/*尾部*/
+#footer {
+	padding: 50px;
+	text-align: center;
+}
+#footer a {
+	color: #B84D45;
+}

@@ -1,0 +1,400 @@
+           /* 重置默认样式*/
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+body{
+	font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+} 
+                /* 通用样式*/
+.clearfix:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.layout{
+	width: 1170px;
+	margin: 0 auto; 
+}
+.btn{
+	background: rgb(254,209,54);
+	color: #fff;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 18px;
+	padding: 20px 40px;
+	border-radius: 5px;	
+}
+.btn:hover{
+	background: rgb(254,197,3);
+}
+.more-information a{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 50%;
+	font-size: 25px;
+	background: #000;
+	color: #fff;
+	text-align: center;
+}
+.more-information a:hover{
+	background: rgb(254,209,54);
+	transition: .5s;
+}
+
+           /* header */
+#header .home-page{
+	background: url(../img/background/home-page-bg.jpg) 0 0 no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+#header .home-page{
+	padding-top: 300px;
+	padding-bottom: 250px;
+	text-align: center;
+	color: #fff;
+}
+#header .home-page h2{
+	font-size: 45px;
+	font-style: italic;
+	line-height: 45px;
+	margin-bottom: 30px;
+}
+#header .home-page h1{
+	font-weight: 700;
+	font-size: 75px;
+	line-height: 75px;
+	margin-bottom: 50px;
+}
+                  /*导航栏*/
+#header>.nav-bar{
+	width: 100%;
+	background-color: rgb(34,34,34);
+	position: fixed;
+	top: 0px;
+	height: 70px;
+	line-height: 70px;
+	z-index: 999;
+}
+#header .navigation{
+	float: right;
+}
+#header .logo{
+	font-weight: bold;
+	font-size: 30px;
+	font-style: italic;
+	color: rgb(254,209,54);
+}
+#header .navigation>li{
+	float: left;
+	font-weight: 400;
+	margin-left: 15px;
+}
+#header .navigation a{
+	color: white;
+}
+#header .nav-bar a:hover{
+	color: rgb(254,197,3);
+}
+
+           		 /*content*/
+            /*content第一版块service，也是页面页面许多部分的共同样式。*/
+#content{
+	text-align: center;
+}
+.content-block-gap{
+	padding: 150px 0;
+}
+#content h2{
+	margin-bottom: 15px;
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: 700px;
+	font-size: 40px;
+}
+#content h3{
+	font-size: 16px;
+	font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-style: italic;
+	font-weight: 400;
+	margin-bottom: 75px;
+}
+#content .service-list, #content .portfolio-list, #content .team-member-list, #footer>.layout>.clearfix{
+	margin-left: -30px;
+}
+#content .service-list li, #content .portfolio-list li, #content .team li, #footer>.layout>.clearfix>li{
+	float: left;
+	width: 370px;
+	margin-left: 30px;	
+}
+#content .font-circle{
+	display: inline-block;
+	height: 112px;
+	width: 112px;
+	line-height: 112px;
+	border-radius: 56px;
+	background: rgb(254,209,54);
+	font-size: 60px;
+	color: #fff;
+}
+#content .service-list h4{
+	margin: 15px 0;
+}
+#content .service-list p{
+	color: #777;
+	font-size: 14px;
+	line-height: 1.75;
+}
+			/*content第二版块portfolio*/
+#content .portfolio, #content .team{
+	background: rgb(247,247,247);
+}
+#content .portfolio-list>li{
+	position: relative;
+}
+#content .portfolio li{
+	margin-bottom: 30px;
+	background: #fff;
+}
+#content .portfolio img{
+	width: 370px;
+	height: 270px;
+}
+#content .portfolio h4, #content .team-member-list h4{
+	padding-top: 25px;
+	font-size: 18px;
+	font-weight: 700;
+}
+#content .portfolio p{
+	padding-bottom: 25px;
+    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #777;
+}
+
+ @-webkit-keyframes fadeIn {
+    from { opacity: 0; }                    /*主要是为了实现鼠标放置上去背景渐变的效果。*/
+      to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+#content .portfolio-list i{
+	display: none;	
+}
+#content .portfolio-list a:hover i{
+	display: inline-block;
+	width: 370px;
+	height: 270px;
+	padding-top: 100px;
+	background: rgba(254,209,54,.9);
+	font-size: 60px;
+	color: #fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s; 	
+}
+                     /*下面注释的这一部分是上面鼠标放置上去实现效果的第二种方法，主要是为了实现渐变。第二种方法更简单。*/
+/*#content .portfolio-list i{
+	display: block;
+	width: 370px;
+	height: 270px;
+	padding-top: 100px;
+	background: rgb(254,209,54);
+	font-size: 60px;
+	color: #fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+#content .portfolio-list i:hover{
+	opacity: .9;
+	transition: .5s;	
+}
+*/
+             /* content第三版块about*/
+#content .about .about-pic, .about-summary{
+	border-radius: 50%;
+	border: 10px solid #eee;
+}
+#content li:nth-child(2n+1) .about-pic{
+	float: right;
+	margin-right: 476px;
+	margin-left: 40px;
+}
+#content li:nth-child(2n+1) .about-text{
+	float: right;
+	width: 400px;
+	text-align: right;
+	margin-top: 25px;
+}
+#content li:nth-child(2n) .about-pic{
+	float: left;
+	margin-left: 476px;
+	margin-right: 40px;
+}
+#content li:nth-child(2n) .about-text{
+	float: left;
+	width: 400px;
+	text-align: left;
+	margin-top: 25px;
+}
+#content .about h4{
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 18px;
+	line-height: 1.1;
+	margin-bottom: 15px;
+}
+#content .about p{
+	color: #777;
+	font-size: 14px;
+	line-height: 1.75;
+} 
+           /* about部分的时间分割线*/
+#content li:nth-child(2n+1) .about-text:after{
+	content: '';
+	display: block;
+	height: 150px;
+	border-left: 2px solid #eee;
+	margin-top: 30px;
+    margin-left: 548px;
+}
+#content li:nth-child(2n) .about-text:after{
+	content: '';
+	display: block;
+	height: 150px;
+	border-left: 2px solid #eee;
+	margin-top: 30px;
+    margin-left: -155px;
+}
+#content .about-summary{
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+	background: rgb(254,209,54);
+	color: #fff;
+}
+#content .about-summary h4{
+	padding-top: 60px;
+	line-height: 26px;	
+}
+              /* content第四版块team*/
+#content .team img{
+	border-radius: 50%;
+	border: 8px solid #fff;
+}
+#content .team-member-list p{
+	margin-bottom: 10px;
+	font-size: 14px;
+	line-height: 1.75;
+	color: #777;
+}
+#content>.team>.layout>p{
+	width: 750px;
+	margin: 50px auto 0 auto;
+	font-size: 16px;
+	line-height: 1.75;
+	color: #777;
+}
+				/*content第五版块client*/
+#content .clients-list{
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: -30px;
+}
+#content .clients li{
+	float: left;
+	width: 270px;
+	margin-left: 30px;
+}
+				/*content第六板块contact*/
+#content>.contact{
+	background: url(../img/background/map-img-bg.png) 0 0 no-repeat;
+	background-position: center center;
+	background-size: cover;
+	background-color: #222;
+}
+#content .contact h2{
+	color: #fff;
+}
+#content .contact h3{
+	color: #777;
+}
+#content .contact .table-list{
+	font-size: 14px;
+	line-height: 1.4;
+	color: #555;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	outline: none;
+}
+#content .contact input{
+	width: 555px;
+	padding: 20px;
+	margin: 0 15px 25px 0;
+}
+#content .contact textarea{
+	float: right;
+	width: 550px;
+	height: 230px;
+	padding: 20px;
+	margin: 0 25px 25px 25px;
+}
+#content .contact .btn{
+	border-color: rgb(254,197,3);
+}
+
+               /*footer*/
+#footer{
+	padding: 25px 0;
+	text-align: center;
+}
+#footer .copyright, #footer .extra{
+	line-height: 40px;
+}
+#footer .copyright, #footer .extra a{
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+}
+#footer .copyright{
+	color: #333;
+}
+#footer .extra a{
+	color: rgb(254,209,54);
+}
+#footer .extra a:hover{
+	color: rgb(254,197,3);
+	text-decoration: underline;
+}
+#footer .extra{
+	padding: 0 75px;
+}
+#footer .extra li:first-child{
+	padding-right: 20px;
+}
+#footer .more-information li, #footer .extra li{
+	float: left;
+}
+#footer .social-button{
+	padding: 0 105px;
+}
+#footer .more-information li:nth-child(2){
+	padding: 0 20px;
+}
+

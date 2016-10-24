@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.wrap{
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+.nav:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.nav>ul{
+    margin-left: -20px;
+}
+.nav>ul>li{
+    line-height: 50px;
+    float: left;
+    margin-left: 20px;
+    position: relative;
+}
+.nav>ul>li a{
+    color: rgb(102,102,102);
+}
+.nav>ul>li a:hover{
+    color: rgb(51,51,51);
+}
+.child{
+    display: none;
+}
+.child>li{
+    padding: 0 5px;
+    border-bottom: 1px dotted rgb(204,204,204);
+    background: #fff;
+}
+.child>li:nth-child(3){
+    border: none;
+}
+.nav>ul>li:hover .child{
+    border: 1px solid rgb(204,204,204);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: block;
+}
+.header-abstract{
+    padding: 35px 0;
+    color: #fff;
+    background: rgb(184,77,69);
+}
+.header-abstract>.wrap>h1{
+    padding-bottom: 10px;
+}
+.bar{
+    padding: 10px 0 10px 10px;
+    margin: 40px 0;
+    background: rgb(238,238,238);
+}
+.bar:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.bar>ul{
+    color: rgb(102,102,102);
+}
+.bar>ul>li{
+    float: left;
+}
+.bar>ul>li>a{
+    color: rgb(184,77,69);
+}
+.works img{
+    height: 200px;
+    width: 304px;
+}
+.works:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.works>ul{
+    margin-left: -40px;
+}
+.works>ul>li{
+    margin-left: 40px;
+    margin-bottom: 20px;
+    float: left;
+    border: 1px solid rgb(204,204,204);
+}
+.works>ul>li>h4{
+    text-align: left;
+    margin: 10px 0 10px 10px;
+}
+.works>ul>li>p{
+    text-align: left;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.works>ul>li{
+    padding-bottom: 10px;
+    text-align: center;
+}
+.btn{
+    display: inline-block;
+    border: 1px solid rgb(204,204,204);
+    border-radius: 5px;
+    padding: 5px;
+    color: rgb(102,102,102);
+}
+.footer-abstract{
+    padding: 15px 0;
+    color: #fff;
+    text-align: center;
+    background: rgb(184,77,69);
+}
+.footer-abstract>.wrap>h1{
+    padding: 10px 0;
+}
+.footer-abstract>.wrap>a{
+    color: #fff;
+    display: inline-block;
+    border: 1px solid rgb(204,204,204);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px 0;
+}
+.underline{
+    margin:30px 0 ;
+    border: 1px solid rgb(238,238,238);
+}
+#footer>.wrap>p{
+    padding-bottom: 30px;
+    text-align: center;
+}

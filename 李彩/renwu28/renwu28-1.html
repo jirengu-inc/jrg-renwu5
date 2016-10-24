@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #header{
+            background-color: red;
+            text-align: center;
+            height: 80px ;
+            line-height: 80px;
+            margin-bottom: 20px;
+        }
+        #nav{
+            background-color: blue;
+            height: 50px;
+        }
+        #aside{
+            float: left;
+            width: 100px;
+            height: 400px;
+            background-color: green;
+        }
+        .clearfix:after{
+            content: "";
+            clear: both;
+            display: block;
+
+        }
+        #content{
+            background-color: #ccc;
+            height: 800px;
+            padding: 10px;
+        }
+        #main{
+            height: 800px;
+            margin-left: 100px;
+            background-color: yellow;
+        }
+        #footer{
+            background-color: #666;
+
+        }
+    </style>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="header">header</div>
+    <div id="nav">nav</div>
+    <div id="content" class="clearfix">
+        <div id="aside">aside</div>
+        <div id="main">main</div>
+    </div>
+    <div id="footer">
+        footer
+    </div>
+
+    <script>
+        var eleOffsetH=$("#nav").offset().top ,
+            eleOffsetW=$("#nav").offset().left,
+            eleHeight=$("#nav").height(),
+            eleWidth=$("#nav").width();
+                
+        eleClone=$("#nav").clone();
+        $("#nav").before(eleClone);
+        eleClone.hide();
+
+        $(window).on("scroll",function () {
+            var scrollH=$(window).scrollTop();
+            if (scrollH >= eleOffsetH) {
+                $("#nav").css({
+                    "position":"fixed",
+                    "left":eleOffsetW,
+                    "top":0,
+                    "width":eleWidth,
+                    "height":eleHeight,
+                    "z-index":999
+                })  ;
+                eleClone.show();
+            }
+            else {
+                eleClone.show();
+                $("#nav").hide();
+            }
+        })
+
+    </script>
+
+
+
+</body>
+</html>

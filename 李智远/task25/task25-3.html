@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <style>
+      ul,li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      a{
+        text-decoration: none;
+        color: black;
+      }
+      h2{
+        margin: 10px 0;
+      }
+      .clearfix:after{
+        content: '';
+        display: block;
+        clear: both;
+      }
+      .ct-content{
+        width: 700px;
+        border: 1px solid #ccc;
+      }
+      .layout{
+        width:700px;
+        margin: 0 auto;
+      }
+      .content{
+        margin-right: -20px;
+        margin-bottom: -20px;
+        /*display: none;*/
+      }
+      /*.content.active{
+        display: block;
+      }*/
+      .content li{
+        width: 220px;
+        /*height: 210px;*/
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 13px;
+        padding: 10px 30px;
+        position: relative;
+      }
+      .content li img{
+        text-align: center;
+      }
+      .content li .discribe{
+        text-align: left;
+      }
+      .content li .money{
+        text-align: left;
+        color: red;
+      }
+      .cover{
+        background: #666;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0,0,0, 0.3);
+        transition: all 0.3s;
+        opacity: 0;
+      }
+      /*.content > li:hover .cover{
+        opacity:1;
+      }*/
+      .content > .hover .cover{
+        opacity:1;
+      }
+      .cover a{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: #fff;
+        border: 1px solid red;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .btn{
+        display: inline-block;
+        border: 1px solid #c81623;
+        color: #c81623;
+        padding: 10px 15px;
+        border-radius: 3px;
+        text-align: center;
+        background: #fff;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <h2>珠宝首饰</h2>
+      <ul class="content clearfix active">
+        <li>
+          <div class="cover">
+            <a class="btn" href="">立即抢购</a>
+          </div>
+          <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+          <div class="discribe">藏美千足金和田玉金镶玉路路通吊坠</div>
+          <div class="money">￥1699.00</div>
+        </li>
+        <li>
+          <div class="cover">
+            <a class="btn" href="">立即抢购</a>
+          </div>
+          <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+          <div class="discribe">藏美千足金和田玉金镶玉路路通吊坠</div>
+          <div class="money">￥1699.00</div>
+        </li>
+        <li>
+          <div class="cover">
+            <a class="btn" href="">立即抢购</a>
+          </div>
+          <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+          <div class="discribe">藏美千足金和田玉金镶玉路路通吊坠</div>
+          <div class="money">￥1699.00</div>
+        </li>
+        <li>
+          <div class="cover">
+            <a class="btn" href="">立即抢购</a>
+          </div>
+          <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+          <div class="discribe">藏美千足金和田玉金镶玉路路通吊坠</div>
+          <div class="money">￥1699.00</div>
+        </li>
+        <li>
+          <div class="cover">
+            <a class="btn" href="">立即抢购</a>
+          </div>
+          <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+          <div class="discribe">藏美千足金和田玉金镶玉路路通吊坠</div>
+          <div class="money">￥1699.00</div>
+        </li>
+        <li>
+          <div class="cover">
+            <a class="btn" href="">立即抢购</a>
+          </div>
+          <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+          <div class="discribe">藏美千足金和田玉金镶玉路路通吊坠</div>
+          <div class="money">￥1699.00</div>
+        </li>
+      </ul>
+      <a href="javascript:void[0]" class="btn btn-add">添加</a>
+    </div>
+
+    <script>
+      var products = [
+          {
+              img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+              name: '珂兰 黄金手 猴哥款',
+              price: '￥405.00'
+          },{
+              img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+              name: '珂兰 黄金转运珠 猴哥款',
+              price: '￥100.00'
+          },{
+              img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+              name: '珂兰 黄金手链 3D猴哥款',
+              price: '￥45.00'
+          }
+      ];
+      //不能写成'.content li',这样就不算事件代理
+      $('.content').on('mouseenter','li',function(){
+        $(this).addClass('hover');
+      })
+      $('.content').on('mouseleave','li',function(){
+        $(this).removeClass('hover');
+      })
+      function getHtml(opts){
+        var html ='';
+        html += '<li>';
+        html +=   '<div class="cover">';
+        html +=      '<a class="btn" href="">立即抢购</a>';
+        html +=  '</div>';
+        html +=  '<img src="' + opts.img + '" alt="">';
+        html +=  '<div class="discribe">' + opts.name + '</div>';
+        html +=  '<div class="money">' + opts.price + '</div>';
+        html +=  '</li>'
+        return html;
+      }
+      //each() 与$.each()不同
+//       //$.each(Object, function(p1, p2) {
+//
+//     //  this;       这里的this指向每次遍历中Object的当前属性值
+//      //
+//     //  p1; p2;     访问附加参数
+//
+// }, ['参数1', '参数2']);
+      $('.btn-add').on('click',function(e){
+        // e.preventDefault();
+        $.each(products,function(idx,opts){
+          var html = getHtml(opts);
+          $('.content').append(html);
+        })
+      })
+
+    </script>
+  </body>
+</html>

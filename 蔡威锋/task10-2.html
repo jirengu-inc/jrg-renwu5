@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <title>定位</title>
+  <style>
+    .main{
+      width:300px;
+      height:120px;
+      margin:50px;
+      border:1px black solid;
+      padding:20px
+    }
+    .main div{
+      height: 0px;
+      width: 0px;
+    }
+    .test1{
+      border: 20px solid transparent;
+      border-bottom-color: #bbb;
+      margin-top:-60px;
+    }
+    .test2{
+      float:right;
+      border: 20px solid transparent;
+      border-width: 15px;
+      border-color: red red transparent transparent;
+      margin-right:-20px;
+      margin-top:-20px;
+    }
+     .test3{
+      border: 20px solid transparent;
+      border-bottom-color: #000;
+      margin-top:-60px;
+       z-index:5;
+   }
+     .test4{
+      border: 20px solid transparent;
+      border-bottom-color: #fff;
+      margin-top:-39px;
+      z-index:1;
+   }
+  </style>
+</head>
+<body>
+
+    <div class="main">
+      <div class="test1"></div>
+    </div>
+    <div class="main">
+      <div class="test2"></div>
+    </div>
+    <div class="main">
+      <div class="test3"></div>
+      <div class="test4"></div>
+    </div>
+
+
+</body>
+</html>

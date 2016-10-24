@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #ct{
+            width: 800px;
+            margin: 0 auto;
+        }
+        #header{
+            background-color: red;
+            text-align: center;
+            height: 80px ;
+            line-height: 80px;
+            margin-bottom: 20px;
+        }
+        .nav{
+            background-color: blue;
+            height: 50px;
+        }
+        .aside{
+            float: left;
+            width: 200px;
+            height: 400px;
+            background-color: green;
+        }
+        .clearfix:after{
+            content: "";
+            clear: both;
+            display: block;
+
+        }
+        .content{
+            height: 400px;
+            margin-bottom:20px ;
+        }
+        .main{
+            height: 400px;
+            margin-left: 210px;
+            background-color: yellow;
+        }
+        #footer{
+            background-color: #666;
+
+        }
+    </style>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="ct">
+        <div id="header">header1</div>
+        <div class="part">
+        <div class="nav">nav1</div>
+        <div class="content clearfix">
+            <div class="aside">aside1</div>
+            <div class="main">main1</div>
+        </div>
+        </div>
+        <div class="part">
+        <div class="nav">nav2</div>
+        <div class="content,clearfix">
+            <div class="aside">aside2</div>
+            <div class="main">main2</div>
+        </div>
+        </div>
+        <div class="part">
+        <div class="nav">nav3</div>
+        <div class="content clearfix">
+            <div class="aside">aside3</div>
+            <div class="main">main3</div>
+        </div>
+        </div>
+        <div class="part">
+        <div class="nav">nav4</div>
+        <div class="content,clearfix">
+            <div class="aside">aside4</div>
+            <div class="main">main4</div>
+        </div>
+        </div>
+
+        <div id="footer">
+            footer
+        </div>
+    </div>
+
+<script>
+    $(".nav").each(function () {
+        var     $cur=$(this),
+                eleOffsetH=$cur.offset().top ,
+                eleOffsetW=$cur.offset().left,
+                eleHeight=$cur.height(),
+                eleWidth=$cur.width();
+
+        eleClone=$cur.clone();
+        $cur.before(eleClone);
+        eleClone.hide();
+
+        $(window).on("scroll",function () {
+            var scrollH=$(this).scrollTop();
+            if (scrollH >= eleOffsetH) {
+                if ($cur.data("isFixed")){return}
+
+                $cur.css({
+                    "position":"fixed",
+                    "left":eleOffsetW,
+                    "top":0,
+                    "width":eleWidth,
+                    "height":eleHeight,
+                    "z-index":999
+                });
+                $cur.data("isFixed",true);
+                eleClone.show();
+
+            }
+            else {
+                eleClone.hide();
+                $cur.removeAttr('style');
+                $cur.data("isFixed",false);
+            }
+
+        })
+
+    })
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

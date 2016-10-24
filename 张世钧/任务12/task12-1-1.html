@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .wrap{
+            width: 900px;
+            margin: 0 auto;
+            background:rgb(204,204,204);
+            padding: 10px 0;
+        }
+        .wrap:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+       *.wrap ul{
+            margin-left: -20px;
+        }
+        .wrap ul li{
+            height: 80px;
+            width: 286px;
+            background: rgb(0,66,16);
+            float: left;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+</div>
+</body>
+</html>

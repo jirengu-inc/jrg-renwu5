@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>珠宝玉器</title>
+	<style>
+		html,body,ul,li {
+			margin: 0;
+			padding: 0;
+		}
+        html,body {
+            height: 100%;
+            position: relative;
+        }
+		li {
+		 list-style: none;
+		}
+		a {
+			text-decoration: none;
+			color: #333;
+		}
+		.inactive {
+			display: none;
+		}
+		#list>li {
+			position: relative;
+			top: 10px;
+			left: 10px;
+		}
+		.main li {
+		    position: relative;
+            z-index: 9;
+			cursor: pointer;
+			padding: 10px;
+			width: 180px;
+			height: 15px;
+			line-height: 15px;
+			background: red;
+			color: white;
+			border-bottom: 1px white dotted;
+		}
+		.main li .arrow {
+			 position: absolute;
+			 display: inline-block;
+			 right: 10px;
+			 top: 10px;
+		}
+		.main #list5 {
+			border-bottom: none;
+		}
+		 .side {
+		    position: absolute;
+             z-index: 99;
+			top: 0;
+			left: 200px;
+		    padding: 10px ;
+		    width: 210px;
+			border: 1px solid #ccc;
+			font-size: 14px;
+		}
+		 .side a {
+			display: inline-block;
+			margin: 3px 0;
+			width: 105px;
+			text-align: left;
+		}
+		.inactive {
+			display: none;
+		}
+		.active {
+			display: block;
+		}
+        #cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            /*border: 1px solid red;*/
+        }
+	</style>
+<script src="http://apps.bdimg.com/libs/jquery/1.7.1/jquery.js"></script>
+</head>
+<body>
+<!--<div id="container">-->
+<ul id="list">
+	<li>
+	<ul id="main1" class="main">
+		<li id="list1">
+		珠宝玉器<span class="arrow">></span>
+		</li>
+	</ul>
+	<ul id="side1" class="side inactive">
+		<li><a href="#">翡翠</a><a href="#">玉石</a></li>
+		<li><a href="#">宝石</a><a href="#">水晶</a></li>
+		<li><a href="#">玛瑙</a><a href="#">珍珠</a></li>
+		<li><a href="#">钻石</a><a href="#">琥珀</a></li>
+		<li><a href="#">和田</a><a href="#">琥珀</a></li>
+		</ul>
+	</li>
+	<li>
+		<ul id="main2" class="main">
+			<li id="list2">
+		      珠宝玉器<span class="arrow">></span>
+			</li>
+	    </ul>
+		<ul id="side2" class="side inactive">
+			<li><a href="#">翡翠</a><a href="#">玉石</a></li>
+			<li><a href="#">宝石</a><a href="#">水晶</a></li>
+			<li><a href="#">玛瑙</a><a href="#">珍珠</a></li>
+		</ul>
+	</li>
+	<li>
+		<ul id="main3" class="main">
+			<li id="list3">
+		      珠宝玉器<span class="arrow">></span>
+			</li>
+	    </ul>
+		<ul id="side3" class="side inactive">
+			<li><a href="#">翡翠</a><a href="#">玉石</a></li>
+			<li><a href="#">宝石</a><a href="#">水晶</a></li>
+		</ul>
+	</li>
+	<li>
+		<ul id="main4" class="main">
+			<li id="list4">
+		      珠宝玉器<span class="arrow">></span>
+			</li>
+	    </ul>
+		<ul id="side4" class="side inactive">
+			<li><a href="#">翡翠</a><a href="#">玉石</a></li>
+			<li><a href="#">宝石</a><a href="#">水晶</a></li>
+			<li><a href="#">玛瑙</a><a href="#">珍珠</a></li>
+		</ul>
+	</li>
+	<li>
+		<ul id="main5" class="main">
+			<li id="list5">
+		      珠宝玉器<span class="arrow">></span>
+			</li>
+	    </ul>
+		<ul id="side5" class="side inactive">
+			<li><a href="#">翡翠</a><a href="#">玉石</a></li>
+			<li><a href="#">宝石</a><a href="#">水晶</a></li>
+		</ul>
+	</li>
+</ul>
+<div id="cover"></div>
+<!--</div>-->
+<script>
+		$("#list1").on('mouseover',function(){
+		  $(".side").removeClass("active");
+			$("#side1").addClass("active");
+		})
+		$("#list2").on('mouseover',function(){
+			$(".side").removeClass("active");
+			$("#side2").addClass("active");
+			
+		})
+		$("#list3").on('mouseover',function(){
+			$(".side").removeClass("active");
+			$("#side3").addClass("active");
+			
+		})
+		$("#list4").on('mouseover',function(){
+			$(".side").removeClass("active");
+			$("#side4").addClass("active");
+			
+		})
+		$("#list5").on('mouseover',function(){
+			$(".side").removeClass("active");
+			$("#side5").addClass("active");	
+		})
+		$("a").on('click',function(){
+			$(".side").removeClass("active");
+//			$(".side").addClass("inactive");
+		})
+        $("#cover").on('mouseover',function(){
+            $(".side").removeClass("active");
+            //$(".side").addClass("inactive");
+        })
+	</script>
+</body>
+</html>

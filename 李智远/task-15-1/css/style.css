@@ -1,0 +1,150 @@
+  /*公共部分*/
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  a{
+    text-decoration: none;
+  }
+  ul,li{
+    list-style: none;
+  }
+  .center{
+    text-align: center;
+  }
+  .layout{
+    width: 1000px;
+    margin: 0 auto;
+  }
+  .clearfix:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+  /*#nav*/
+  #nav .icon{
+    color: black;
+  }
+  .child > li,.logo{
+    float:left;
+  }
+  .child a{
+    color: black;
+  }
+  .logo{
+    line-height: 50px;
+    margin-right: 20px;
+    font-size: 30px;
+  }
+  .child > li{
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+    font-size: 14px;
+  }
+  .child > li:last-child{
+    position: relative;
+  }
+  .child > li:last-child:hover .more{
+    display: block;
+  }
+  .more{
+    display: none;
+    background: white;
+    position: absolute;
+    left: 0;
+    border:1px solid #ccc;
+    /*之前设置的是.chili >li的margin为10px，导致left为0时，不可以做到向左对齐*/
+  }
+  .more li{
+    line-height: 1;
+    padding:10px;
+    border-bottom: 1px dashed #ccc;
+  }
+  .more li:last-child{
+    border-bottom: none;
+  }
+  /*#intro*/
+  #intro{
+    background:rgb(184,77,69);
+    color: white;
+  }
+  #intro .layout{
+    padding: 30px 0;
+  }
+  #intro h2,p{
+    padding-bottom: 5px;
+  }
+  /*#mywork*/
+  #mywork{
+    padding-top: 40px;
+  }
+  #mywork .layout li{
+    padding: 10px;
+    background: #ddd;
+    font-size: 14px;
+  }
+  #mywork a{
+    color:rgb(184,77,69);
+  }
+  /*#work*/
+  .main{
+    padding: 30px 0;
+  }
+  .work-main{
+    margin-right: -45px;
+  }
+  .work-main >li {
+    border: 1px solid #ccc;
+    width: 300px;
+    float:left;
+    margin-right: 45px;
+    margin-bottom: 10px;
+  }
+  .work-main .pic{
+    width:300px;
+    height: 200px;
+    background: url(http://img.taopic.com/uploads/allimg/140520/240414-1405200U30479.jpg);
+    background-size: contain;
+    /*background-image: 要写在前面，否则size 无效*/
+    margin-bottom: 5px;
+  }
+  .work-main .pic:hover{
+    cursor: pointer;
+  }
+  .work-main h3,.work-main p{
+    margin: 10px 0;
+  }
+  .work-main a{
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 5px 8px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    color: black;
+  }
+  /*#footer*/
+  #footer{
+    background: rgb(184, 77, 69);
+    padding:20px 0;
+    color: white;
+  }
+  #footer h1,#footer p{
+    margin:5px;
+  }
+  #footer a{
+    display: inline-block;
+    color: white;
+    margin-top:5px;
+    padding: 5px 8px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+  }
+  .link{
+    padding:30px;
+    font-size: 14px;
+  }
+  .link hr{
+    margin:10px 0 20px 0;
+    border-top: 1px;
+  }

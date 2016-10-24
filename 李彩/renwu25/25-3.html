@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        a{
+            text-decoration: none;
+            color: #333;
+        }
+        ul,li{
+            list-style: none;
+
+        }
+
+        .nav1>li{
+            padding: 5px 10px;
+            border-right: dotted 1px #ddd ;
+            display: inline-block;
+            vertical-align: middle;
+
+
+        }
+
+        .content{
+
+            width: 726px;
+            height: 464px;
+            margin-right: -20px;
+
+
+
+        }
+        .content>li{
+            border: 1px solid #ccc;
+            text-align: center;
+            float: left;
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            position: relative;
+
+        }
+        .price{
+            color: #c81623;
+            font-size: 16px;
+        }
+        .name{
+            font-size: 16px;
+            color: #333;
+        }
+        .clearfix:after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+         a.shoppingNow{
+            text-decoration: none;
+            color: #c81623;
+            padding: 10px;
+            border: 1px solid #c81623;
+            border-radius: 3px;
+            position: absolute;
+            top: 80px;
+            left: 65px;
+            background-color: #fff;
+        }
+        div.cover{
+            background-color: #666;
+            width: 220px;
+            height: 220px;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .front{
+            display: none;
+        }
+        .nav1>.active{
+            background-color: #bbb;
+            color:#c81623;
+        }
+        .content{
+            display: none;
+        }
+        .content.active{
+            display: block;
+
+        }
+        .active>li:hover .front{
+            display: block;
+        }
+        #ct{
+            margin: 0 auto;
+            width: 726px;
+        }
+        a.add{
+            text-decoration: none;
+            color: #c81623;
+            padding: 10px;
+            border: 1px solid #c81623;
+            border-radius: 3px;
+            background-color: #fff;
+        }
+
+
+
+
+
+    </style>
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+    <div id="ct">
+        <h1>珠宝首饰</h1>
+        <ul class="content  clearfix active" >
+            <li>
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="手链">
+                <p class="name">珂兰 黄金手链 3D猴哥款</p>
+                <p class="price">￥45.00</p>
+                <div class="cover front"></div>
+                <a class="shoppingNow front" href="#">立即抢购</a>
+
+            </li>
+            <li>
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="手链">
+                <p class="name">珂兰 黄金手链 3D猴哥款</p>
+                <p class="price">￥45.00</p>
+                <div class="cover front"></div>
+                <a class="shoppingNow front" href="#">立即抢购</a>
+            </li>
+            <li>
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="手链">
+                <p class="name">珂兰 黄金手链 3D猴哥款</p>
+                <p class="price">￥45.00</p>
+                <div class="cover front"></div>
+                <a class="shoppingNow front" href="#">立即抢购</a>
+            </li>
+            <li>
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="手链">
+                <p class="name">珂兰 黄金手链 3D猴哥款</p>
+                <p class="price">￥45.00</p>
+                <div class="cover front"></div>
+                <a class="shoppingNow front" href="#">立即抢购</a>
+            </li>
+            <li>
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="手链">
+                <p class="name">珂兰 黄金手链 3D猴哥款</p>
+                <p class="price">￥45.00</p>
+                <div class="cover front"></div>
+                <a class="shoppingNow front" href="#">立即抢购</a>
+            </li>
+            <li>
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="手链">
+                <p class="name">珂兰 黄金手链 3D猴哥款</p>
+                <p class="price">￥45.00</p>
+                <div class="cover front"></div>
+                <a class="shoppingNow front" href="#">立即抢购</a>
+            </li>
+        </ul>
+        <a href="javascript:" class="add">添加</a>
+
+    </div>
+    <script>
+
+//        方法一、
+//
+//        $(".add").on("click",function () {
+//            $(".content").append('<li><img src="http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg" alt="手链"><p class="name">珂兰 黄金手 猴哥款</p><p class="price">￥405.00</p><div class="cover front"></div> <a class="shoppingNow front" href="#">立即抢购</a></li>' +
+//                                 '<li><img src="http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg" alt="手链"><p class="name">珂兰 黄金转运珠 猴哥款</p><p class="price">￥100.00</p><div class="cover front"></div> <a class="shoppingNow front" href="#">立即抢购</a></li>'+
+//                                '<li><img src="http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg" alt="手链"><p class="name">珂兰 黄金手链 3D猴哥款</p><p class="price">￥45.00</p><div class="cover front"></div> <a class="shoppingNow front" href="#">立即抢购</a></li>'
+//            );
+//
+//
+//        })
+//        方法二、
+        var products = [
+            {
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金手 猴哥款',
+                price: '￥405.00'
+            },{
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金转运珠 猴哥款',
+                price: '￥100.00'
+            },{
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金手链 3D猴哥款',
+                price: '￥45.00'
+            }
+        ];
+
+        function getProductsInfo(elem) {
+            var newli = '';
+            newli='<li>'+'<img src="'+elem.img+'" alt="" >'+'<p class="name">'+elem.name+'</p>'+'<p class="price">'+elem.price+'</p>'+'<div class="cover front"></div><a class="shoppingNow front" href="#">立即抢购</a></li>';
+            return newli;
+        }
+        $(".add").on("click",function () {
+            $.each(products,function (index,value) {
+               var more=getProductsInfo(value);
+                $(".content").append(more);
+            })
+        })
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

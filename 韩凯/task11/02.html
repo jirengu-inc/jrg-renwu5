@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+*{
+  margin:0;
+  padding:0;
+}
+body{
+  font:14px/1.5 "Microsoft YaHai","微软雅黑",sans-serif;
+  color:black;
+}
+
+   #header,#footer{
+    background:red;
+    height:50px;
+    line-height:50px;
+    color:white;
+    font-size:16px;
+  }
+  #content .container .aside{
+    float:left;
+    /*min-height:100px;*/
+    width:210px;
+    color:#fff;
+    background-color:blue;
+    opacity:0.2;
+  }
+  #content .main{
+    padding:10px 10px;
+    color:black;
+    overflow:hidden;
+    background-color:#FFBFCB;
+    font-size:16px;
+  }
+ /* .container{
+    overflow:hidden;
+  }*/
+  /*这个也可以*/
+  .container:after{
+    content:"";
+    display:block;
+    clear:both;
+  }
+</style>
+</head>
+<body>
+<div id="header">
+  <div class="container"></div>
+</div>
+ <div id="content">
+   <div class="container">
+     <div class="aside">ddd</div>
+      <div class="main">重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域重要的区域</div>
+   </div>
+ </div>
+ <div id="footer">
+   <div class="container"></div>
+ </div>
+</body>
+</html>

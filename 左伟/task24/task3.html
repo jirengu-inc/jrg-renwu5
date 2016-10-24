@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatibale" content="IE=edge,chrome=1">
+		<title>task24-3注册表单验证</title>
+		<meta name="discription" value="">
+		<meta name="keyword" value="">
+		<style type="text/css">
+		#form{
+			width:400px;
+			margin:100px auto;
+			padding:20px 10px;
+			line-height:25px;
+			border:1px solid #ccd;
+			border-radius:7px;
+			text-align: center;
+		}
+		.pass{
+			padding:3px;
+			border:1px solid gray;
+			border-radius:3px;
+		}
+		.prompt{
+			font-size:12px;
+			color:gray;
+		}
+		#div input{
+			display:inline-block;
+			text-align: center;
+			margin-top:10px;
+		}
+		table tr th{
+			vertical-align: top;
+		}
+		table tr td{
+			text-align: left;
+		}
+
+		</style>
+	</head>
+	<body>
+		<div id="form">
+			<h2>注册表</h2>
+			<table>
+				<tr>
+					<th>用户名：</th>
+					<td>
+						<input id="username" class="pass" type="text" placeholder="用户名(hunger被注册过)">
+						<br>
+						<span id="user_prompt" class="prompt">只能是字母、数字、下划线，3-10个字符</span>
+					</td>
+				</tr>
+				<tr>
+					<th>密码：</th>
+					<td>
+						<input id="pw1" class="pass" type="password">
+						<br>
+						<span id="pw_prompt" class="prompt">大写字母、小写、数字、下划线最少两种，6-15个字符</span>
+					</td>
+				</tr>
+				<tr>
+					<th>再输一次 ：</th>
+					<td>
+						<input id="pw2" class="pass" type="password">
+						<br>
+						<span id="pw_again" class="prompt">请再次确认密码</span>
+					</td>
+				</tr>
+			</table>
+			<button id="btn">注册</button>
+		</div>
+		<script type="text/javascript" src="./ajax.js"></script>
+		<script type="text/javascript" src="./validate.js"></script>
+		<script type="text/javascript">
+			var username=document.querySelector("#username");
+			var user_prompt=document.querySelector("#user_prompt");
+			var pw1=document.querySelector("#pw1");
+			var pw2=document.querySelector("#pw2");
+			var pw1_pro=document.querySelector("#pw_prompt");
+			var pw2_pro=document.querySelector("#pw_again");
+			var btn=document.querySelector("#btn");
+
+			function onerror(){
+				console.log("出错了...");
+			}
+	//username输入框的事件绑定
+			username.addEventListener("change",function(){
+				var user=username.value;
+				if(isValidUsername(user)){
+					ajax({
+						url:"task3.php",
+						type:"GET",
+						data:{user:user},
+						success:function(json){
+							if(json==0){
+								user_prompt.innerHTML="该用户名已存在";
+								username.style.borderColor="red";
+							}else{
+								user_prompt.innerHTML="该用户名可用";
+								username.style.borderColor="gray";
+							}
+						},
+						error:onerror
+					});
+				}else{
+					username.style.borderColor="red";
+					user_prompt.innerHTML="用户名格式不正确";
+				}
+			})
+
+	//password输入框的事件绑定
+			pw1.addEventListener("change",function(){
+				var pw1_val=pw1.value;
+				if(isValidPassword(pw1_val)){
+					pw1_pro.innerHTML="密码格式正确";
+					pw1.style.borderColor="gray";
+				}else{
+					pw1_pro.innerHTML="密码格式不正确";
+					pw1.style.borderColor="red";
+					pw1.value="";
+				}
+			})
+
+	//密码确认输入框的事件绑定
+			pw2.addEventListener("change",function(){
+				var pw2_val=pw2.value;
+				var pw1_val=pw1.value;
+				if(pw2_val===pw1_val){
+					pw2_pro.innerHTML="两次密码输入一致";
+					pw2.style.borderColor="gray";
+				}else{
+					pw2_pro.innerHTML="两次密码输入不一致";
+					pw2.style.borderColor="red";
+				}
+			})
+	//提交按钮绑定事件，提交数据到后台
+			btn.addEventListener("click",function(){
+				var user=username.value;
+				var pw=pw1.value;
+				ajax({
+					url:"task3_prompt.php",
+					type:"GET",
+					data:{user:user,pw:pw},
+					success:function(json){
+						if(json==0){
+							alert("注册成功...");
+							document.location.reload(true);
+						}else{
+							alert("出错了...");
+						}
+					},
+					error:onerror
+				});
+			})
+		</script>
+	</body>
+	</html

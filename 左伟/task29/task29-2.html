@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatibale" content="IE=edge,chrome=1">
+	<title>task29-2</title>
+	<meta name="discription" value="">
+	<meta name="keyword" value="">
+	<style type="text/css">
+		body,ul.li{
+			margin:0;
+			padding:0;
+		}
+		#swap{
+			width:800px;
+			margin:0 auto;
+		}
+		li{
+			float:left;
+			list-style:none;
+			margin:10px 10px;
+		}
+		#swap>li>a>img{
+			width:220px;
+			height:400px;
+		}
+
+	</style>
+</head>	
+<body>
+	<ul id="swap">
+		<li><a href="#"><img src="" data-src="loaded_1.jpg"></a></li>
+		<li><a href="#"><img src="" data-src="loaded_1.jpg"></a></li>
+		<li><a href="#"><img src="" data-src="loaded_1.jpg"></a></li>
+		<li><a href="#"><img src="" data-src="loaded_1.jpg"></a></li>
+		<li><a href="#"><img src="" data-src="loaded_1.jpg"></a></li>
+		<li><a href="#"><img src="" data-src="loaded_1.jpg"></a></li>
+		<li><a href="#"><img src="" data-src="loaded_1.jpg"></a></li>
+		<li><a href="#"><img src="" data-src="loaded_1.jpg"></a></li>
+		<li><a href="#"><img src="" data-src="loaded_1.jpg"></a></li>
+		<li><a href="#"><img src="" data-src="loaded_1.jpg"></a></li>
+		<li><a href="#"><img src="" data-src="loaded_1.jpg"></a></li>
+		<li><a href="#"><img src="" data-src="loaded_1.jpg"></a></li>
+	</ul>
+
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+	<script type="text/javascript" src="jquery-1.8.3.min.js"></script> 
+	<script>
+		var clock;
+		//当刚载入页面时，需要把在窗口内的图片都加载出来，所以需要执行一次checkShow()函数
+		checkShow();
+		$(window).on("scroll",function(){
+			if(clock){
+				clearTimeout(clock);
+			}
+			clock=setTimeout(function(){
+				checkShow();
+			},300)
+		})
+
+		function checkShow(){
+			var $img=$("#swap img");
+			$img.each(function(){
+				var $cur=$(this);
+				if($cur.attr('isloaded')) return;
+				if(isShow($cur)){
+					showImg($cur);
+				}
+			});
+		}
+		//判断页面中$e1是否在页面可视范围
+		function isShow($e1){
+			var scrollTop=$(window).scrollTop(),
+				winH=$(window).height(),
+				offsettop=$e1.offset().top;
+			if(offsettop<winH+scrollTop){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		function showImg($e1){
+			$e1.attr('src',$e1.attr('data-src'));
+			$e1.attr('isloaded',true);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>任务16-1</title>
+</head>
+<body>
+  <script>
+    function isNumber(el){
+    return (typeof el == 'number');// todo ...
+    }
+    function isString(el){
+        return (typeof el == 'string');//todo ...
+    }
+    function isBoolean(el){
+         return (typeof el == 'boolean');//todo ...
+    }
+    function isFunction(el){
+       return (typeof el == 'function'); //todo ...
+    }
+
+    var a = 2,
+        b = "jirengu",
+        c = false;
+    alert( isNumber(a) );  //true
+    alert( isString(a) );  //false
+    alert( isString(b) );  //true
+    alert( isBoolean(c) ); //true
+    alert( isFunction(a)); //false
+    alert( isFunction( isNumber ) ); //true
+  </script>
+</body>
+</html>

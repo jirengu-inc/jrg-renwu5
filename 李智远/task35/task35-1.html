@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+      function getCar(name,color,status) {
+          this.name = name;
+          this.color = color;
+          this.status = status;
+      }
+      getCar.prototype = {
+          run : function () {
+          console.log('run')
+          },
+          stop : function(){
+              console.log('stop')
+          },
+          getStatus : function () {
+              console.log('getStatus')
+          }
+      }
+      var car = new getCar('BMW','white','on');
+
+    </script>
+</body>
+</html>

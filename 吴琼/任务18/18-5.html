@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>对象obj有个className属性，里面的值为的是空格分割的字符串(和html元素的class特性类似)，写addClass、removeClass函数，有如下功能：(****)</title>
+</head>
+<body>
+<script>
+  function addClass(obj,data) {
+    var s=obj.className;
+    var arr= s.split(' ');
+    if (arr.indexOf(data) == -1)
+    obj.className=s+' '+data;
+   console.log(obj.className);
+      }
+  function removeClass(obj,data){
+    var s=obj.className;
+    var arr= s.split(' ');
+    if(arr.indexOf(data)>-1)
+      var m=arr.indexOf(data);
+      arr.splice(m,m+1);
+      obj.className=arr.join(' ');
+      console.log(obj.className);
+  }
+  
+  var obj = {
+    className: 'open menu'
+      }
+  addClass(obj, 'new'); // obj.className='open menu new'
+  addClass(obj, 'open');  // 因为open已经存在，所以不会再次添加open
+  addClass(obj, 'me'); // me不存在，所以 obj.className变为'open menu new me'
+  console.log(obj.className);  // "open menu new me"
+  removeClass(obj,'open');
+  removeClass(obj,'blabla');
+</script>
+</body>
+</html>

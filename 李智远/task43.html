@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+    <!--<style type="text/css">-->
+        <!--#div1, #div2{-->
+            <!--float:left;-->
+            <!--width:100px;-->
+            <!--height:35px;-->
+            <!--margin:10px;-->
+            <!--padding:10px;-->
+            <!--border:1px solid #aaaaaa;-->
+        <!--}-->
+    <!--</style>-->
+    <style>
+        .ct{
+            border: 1px solid #ccc;
+            min-height: 40px;
+            padding:0;
+        }
+        .ct:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .ct > li{
+            float: left;
+            border:1px dashed #ccc;
+            list-style: none;
+            background: #eee;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h3>全部</h3>
+    <ul class="top ct">
+        <li class="tag-car" draggable="true">汽车</li>
+        <li class="tag-military" draggable="true">军事</li>
+        <li class="tag-zhejiang" draggable="true">浙江</li>
+        <li class="tag-tech" draggable="true">科技</li>
+        <li class="tag-phone" draggable="true">手机</li>
+        <li class="tag-space" draggable="true">宇宙</li>
+        <li class="tag-joy" draggable="true">娱乐</li>
+        <li class="tag-beauty" draggable="true">美妆</li>
+    </ul>
+    <h3>订阅</h3>
+    <ul class="bottom ct"></ul>
+    <script>
+        var top = document.querySelector('.ct'),
+            bottom = document.querySelector('.bottom'),
+            items = document.querySelectorAll('.ct li');
+
+        for(var i = 0;i<items.length;i++){
+            items[i].ondragstart= function (e) {
+                e.dataTransfer.setData("data",e.target.className);
+            }
+        }
+
+        top.ondragover = ondragover;
+        bottom.ondragover = ondragover;
+
+        top.ondrop= ondrop;
+        bottom.ondrop = ondrop;
+
+        function ondragover(e) {
+            e.preventDefault()
+        }
+
+        function ondrop(e) {
+            e.preventDefault();
+            if(e.target.tagName.toLowerCase() === 'li')return;
+            var dataid = e.dataTransfer.getData('data');
+            e.target.appendChild(document.querySelector('.' +dataid))//使用getElementsByClassName则直接为dataid不需要加.,但后面要跟[0]
+        }
+
+    </script>
+
+
+</body>
+</html>
