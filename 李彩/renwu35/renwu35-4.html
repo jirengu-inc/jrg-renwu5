@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul,li{
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 0;
+
+        }
+        li{
+            list-style: none;
+            border: 1px solid #1a1a1a;
+            font-size: 20px;
+            padding: 10px 10px;
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .down{
+            border: 1px solid #1a1a1a;
+            width: 600px;
+            height: 200px;
+        }
+        .content{
+            display: none;
+        }
+        .down>.active{
+            display: block;
+        }
+        .ctTab>.active{
+            background-color: #ccc;
+        }
+
+    </style>
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap1">
+        <ul class="ctTab">
+            <li class="tab active">tab1</li>
+            <li class="tab">tab2</li>
+            <li class="tab">tab3</li>
+        </ul>
+        <div class="down">
+            <div class="content active">内容1</div>
+            <div class="content">内容2</div>
+            <div class="content">内容3</div>
+        </div>
+    </div>
+    <div id="wrap2">
+        <ul class="ctTab">
+            <li class="tab active">tab1</li>
+            <li class="tab">tab2</li>
+            <li class="tab">tab3</li>
+        </ul>
+        <div class="down">
+            <div class="content active">内容1</div>
+            <div class="content">内容2</div>
+            <div class="content">内容3</div>
+        </div>
+    </div>
+
+    <script>
+        // 总体思路:点击处 获取index  邻居删除active 自己加上active
+
+        //      详细思路
+        //            $(".ctTab li").on("click",function () {
+        //                var $this=$(this);
+        //                var i=$(".ctTab li").index($this);
+        //                $(".ctTab").children().eq(i).siblings().removeClass("active");
+        //                $(".ctTab").children().eq(i).addClass("active");
+        //                $(".down").children().eq(i).siblings().removeClass("active");
+        //                $(".down").children().eq(i).addClass("active");
+        //        })
+
+        function changTab($node) {
+            this.$node=$($node);
+            this.$navLi=$($node).find(".ctTab li");
+            this.$ctTab=$($node).find(".ctTab");
+            this.$down=$($node).find(".down");
+            this.bind();
+        }
+        // 下面这样也可以
+        //        function changTab($node) {
+        //            this.$node=$($node);
+        //            this.$navLi=this.$node.find(".ctTab li");
+        //            this.$ctTab=this.$node.find(".ctTab");
+        //            this.$down=this.$node.find(".down");
+        //            this.bind();
+        //        }
+
+        changTab.prototype={
+            bind:function () {
+                var _this=this;
+                this.$navLi.on("click",function () {
+                    var $this=$(this);
+                    var i=_this.$navLi.index($this);
+                    _this.$ctTab.children().eq(i).siblings().removeClass("active");
+                    _this.$ctTab.children().eq(i).addClass("active");
+                    _this.$down.children().eq(i).siblings().removeClass("active");
+                    _this.$down.children().eq(i).addClass("active");
+                })
+            }
+
+        };
+        var changtab1=new changTab("#wrap1");
+        var changtab2=new changTab("#wrap2");
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
