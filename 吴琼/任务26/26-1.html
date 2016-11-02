@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>功能</title>
+	<style>
+		.example {
+			width:400px;
+			/*height: 150px;*/
+			border: 1px solid #ccc;
+            padding: 4px;
+            margin-bottom: 10px;
+		}
+		#example1 .active {
+			color: red;
+		}
+        #example10 p {
+            border: 1px solid red;
+            padding: 10px;
+            margin: 10px;
+        }
+	</style>
+</head>
+<body>
+	<div id="example1" class="example">
+        <h1>标题</h1>
+		<p id="content1" class="paragraph1" src="" title="hello">你好</p>
+		<button id="addactive">添加active</button>
+		<button id="removeactive">删除active</button>
+        </div>
+    <div id="example2" class="example">
+        <h1>标题</h1>
+        <p id="content2" class="paragraph2" src="" title="hello">你好</p>
+		<button id="show">添加元素</button>
+		<button id="hide">删除元素</button>
+        </div>
+    <div id="example3" class="example">
+        <h1>标题</h1>
+        <p id="content3" class="paragraph3" src="" title="hello">你好</p>
+		<button id="getid">获取id属性</button>
+		<button id="setid">修改id属性</button>
+		<button id="getsrc">获取src属性</button>
+		<button id="setsrc">修改src属性</button>
+		<button id="gettitle">获取title属性</button>
+		<button id="settitle">修改title属性</button>
+        </div>
+    <div id="example4" class="example">
+        <h1>标题</h1>
+        <p id="content4" class="paragraph4" src="" title="hello">你好</p>
+		<button id="addattribute">添加属性</button>
+        </div>
+    <div id="example5" class="example">
+        <h1>标题</h1>
+        <p id="content5" class="paragraph5" src="" title="hello">你好</p>
+        <button id="addtop">添加到开头</button>
+        <button id="addbottom">添加到结尾</button>
+    </div>
+    <div id="example7" class="example">
+        <h1>标题</h1>
+        <p id="content7" class="paragraph7" src="" title="hello">你好</p>
+        <button id="delete">删除段落</button>
+    </div>
+    <div id="example8" class="example">
+        <h1>标题</h1>
+        <p id="content8" class="paragraph8" src="" title="hello">你好</p>
+        <button id="deleteall">删除所有</button>
+    </div>
+    <div id="example9" class="example">
+        <h1>标题</h1>
+        <p id="content9" class="paragraph9" src="" title="hello">你好</p>
+        <button id="sethtml">设置html</button>
+    </div>
+    <div id="example10" class="example">
+        <h1>标题</h1>
+        <p id="content10" class="paragraph10" src="" title="hello">你好</p>
+        <button id="getwidth1">获取宽度（不包括内边距）</button>
+        <button id="getheight1">获取高度（不包括内边距）</button>
+        <button id="setwidth1">设置宽度（不包括内边距）</button>
+        <button id="setheight1">设置高度（不包括内边距）</button>
+        <button id="getwidth2">获取宽度（包括内边距）</button>
+        <button id="getheight2">获取高度（包括内边距）</button>
+        <button id="setwidth2">设置宽度（包括内边距）</button>
+        <button id="setheight2">设置高度（包括内边距）</button>
+        <button id="getwidth3">获取宽度（包括边框）</button>
+        <button id="getheight3">获取高度（包括边框）</button>
+        <button id="setwidth3">设置宽度（包括边框）</button>
+        <button id="setheight3">设置高度（包括边框）</button>
+        <button id="getwidth4">获取宽度（包括外边距）</button>
+        <button id="getheight4">获取高度（包括外边距）</button>
+        <!--<button id="setwidth4">设置宽度（包括外边距）</button>-->
+        <!--<button id="setheight4">设置高度（包括外边距）</button>-->
+    </div>
+    <div id="example11" class="example">
+        <h1>标题</h1>
+        <p id="content11" class="paragraph11" src="" title="hello">你好</p>
+        <button id="getscroll">获取窗口滚动条垂直滚动距离</button>
+    </div>
+    <div id="example12" class="example">
+        <h1>标题</h1>
+        <p id="content12" class="paragraph12" src="" title="hello">你好</p>
+        <button id="towidth">段落到根节点的水平距离</button>
+        <button id="toheight">段落到根节点的垂直距离</button>
+    </div>
+    <div id="example13" class="example">
+        <h1>标题</h1>
+        <p id="content13" class="paragraph13" src="" title="hello">你好</p>
+        <button id="setstyle">更改样式</button>
+    </div>
+    <div id="example14" class="example">
+        <h1>标题</h1>
+        <p id="content14" class="paragraph14" src="" title="hello">你好</p>
+        <button id="clone">重复内容</button>
+    </div>
+    <div id="example15" class="example">
+        <h1>标题</h1>
+        <p id="content15" class="paragraph15" src="" title="hello">你好</p>
+        <p class="item"><b>这是</b>段落二</p>
+        <button id="find">查找子元素</button>
+    </div>
+    <div id="example16" class="example">
+        <h1>标题</h1>
+        <p id="content16" class="paragraph16" src="" title="hello">你好<b>段落一</b></p>
+        <p class="item"><b>这是</b>段落二</p>
+        <button id="getchildren">查找所有子元素</button>
+    </div>
+    <div id="example17" class="example">
+        <h1>标题</h1>
+        <p id="content17" class="paragraph17" src="" title="hello">你好<b>段落一</b></p>
+        <p class="item"><b>这是</b>段落二</p>
+        <button id="getparents">查找父元素</button>
+    </div>
+    <div id="example18" class="example">
+        <h1>标题</h1>
+        <p id="content18" class="paragraph18" src="" title="hello">你好<b>段落一</b></p>
+        <p class="item"><b>这是</b>段落二</p>
+        <button id="getnumbers">获取元素数量</button>
+    </div>
+    <div id="example19" class="example">
+        <h1>标题</h1>
+        <p id="content19" class="paragraph19" src="" title="hello">你好<b>段落一</b></p>
+        <p class="item"><b>这是</b>段落二</p>
+        <ul id="lists" >
+            <li id="foo">列表一<button id="getindex1">获取元素排行</button></li>
+            <li id="bar">列表二<button id="getindex2">获取元素排行</button></li>
+            <li id="baz">列表三<button id="getindex3">获取元素排行</button></li>
+        </ul>
+
+    </div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		$("#addactive").on('click',function(){
+			$("#content1").addClass("active");
+		})
+		$("#removeactive").on('click',function(){
+			$("#content1").removeClass("active");
+		})
+		$("#show").on('click',function(){
+			$("#content2").show();
+		})
+		$("#hide").on('click',function(){
+			$("#content2").hide();
+		})
+		$("#getid").on('click',function(){
+			alert($(".paragraph3").attr("id"));
+		})
+		$("#setid").on('click',function(){
+			$(".paragraph3").attr("id","co");
+		})
+		$("#getsrc").on('click',function(){
+			alert($(".paragraph3").attr("src"));
+		})
+		$("#setsrc").on('click',function(){
+			$(".paragraph3").attr("src","ww");
+		})
+		$("#gettitle").on('click',function(){
+			alert($(".paragraph3").attr("title"));
+		})
+		$("#settitle").on('click',function(){
+			$(".paragraph3").attr("title","hi");
+		})
+		$("#addattribute").on('click',function(){
+			$(".paragraph4").attr("data-src","haha");
+		})
+        $("#addtop").on('click',function(){
+            $("#example5").prepend($(".paragraph5"));
+        })
+        $("#addbottom").on('click',function(){
+            $("#example5").append($(".paragraph5"));
+        })
+        $("#delete").on('click',function(){
+            $("#content7").empty();
+        })
+        $("#deleteall").on('click',function(){
+            $("#example8").empty();
+        })
+        $("#sethtml").on('click',function(){
+            $("#example9").html('<div class="btn"></div>');
+        })
+        $("#getwidth1").on('click',function(){
+            alert("宽度（不包括内边距）："+$("#content10").width()+"px");
+        })
+        $("#getheight1").on('click',function(){
+            alert("高度（不包括内边距）："+$("#content10").height()+"px");
+        })
+        $("#setwidth1").on('click',function(){
+            $("#content10").width(100);
+        })
+        $("#setheight1").on('click',function(){
+            $("#content10").height(100);
+        })
+        $("#getwidth2").on('click',function(){
+            alert("宽度（包括内边距）："+$("#content10").innerWidth()+"px");
+        })
+        $("#getheight2").on('click',function(){
+            alert("高度（包括内边距）："+$("#content10").innerHeight()+"px");
+        })
+        $("#setwidth2").on('click',function(){
+            $("#content10").innerWidth(100);
+        })
+        $("#setheight2").on('click',function(){
+            $("#content10").innerHeight(100);
+        })
+        $("#getwidth3").on('click',function(){
+            alert("宽度（包括边框）："+$("#content10").outerWidth()+"px");
+        })
+        $("#getheight3").on('click',function(){
+            alert("高度（包括边框）："+$("#content10").outerHeight()+"px");
+        })
+        $("#setwidth3").on('click',function(){
+            $("#content10").outerWidth(100);
+        })
+        $("#setheight3").on('click',function(){
+            $("#content10").outerHeight(100);
+        })
+        $("#getwidth4").on('click',function(){
+            alert("宽度（包括外边距）："+$("#content10").outerWidth(true)+"px");
+        })
+        $("#getheight4").on('click',function(){
+            alert("高度（包括外边距）："+$("#content10").outerHeight(true)+"px");
+        })
+//        $("#setwidth4").on('click',function(){
+//            $("#content10").outerWidth(true,100);
+//        })
+//        $("#setheight4").on('click',function(){
+//            $("#content10").outerHeight(true,100);
+//        })
+        $("#getscroll").on('click',function(){
+            alert("窗口滚动条垂直滚动距离："+$(window).scrollTop()+"px");
+        })
+        $("#towidth").on('click',function(){
+            alert("段落距根节点的水平距离距离："+$("#content12").offset().left+"px");
+        })
+        $("#toheight").on('click',function(){
+            alert("段落距根节点的垂直距离："+$("#content12").offset().top+"px");
+        })
+        $("#setstyle").on('click',function(){
+            $("#content13").css({"color":"red","font-size":"14px"});
+        })
+        $("#clone").on('click',function(){
+            $("#example14").append($("#example14").clone());
+        })
+        $("#find").on('click',function(){
+            alert($("#example15").find(".item").html());
+        })
+        $("#getchildren").on('click',function(){
+            $("#content16").children().css("color","red");
+        })
+        $("#getparents").on('click',function(){
+            $("#content17").parents(".example").children(".paragraph17").css("color","red");
+        })
+        $("#getnumbers").on('click',function(){
+            alert($("#content18").parents(".example").children("p").length);
+        })
+        $("#getindex1").on("click",function(){
+            alert("元素排行"+($("#foo").index()+1));
+        })
+        $("#getindex2").on("click",function(){
+            alert("元素排行"+($("#bar").index()+1));
+        })
+        $("#getindex3").on("click",function(){
+            alert("元素排行"+($("#baz").index()+1));
+        })
+	</script>
+</body>
+</html>

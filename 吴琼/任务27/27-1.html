@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>渐隐渐现</title>
+	<style>
+	html,body,ul,li {
+		margin: 0;
+		padding: 0;
+	}
+	li {
+		list-style: none;
+	}
+	a {
+		text-decoration: none;
+	}
+	#carousel{ 
+	    position: relative; 
+	    width: 310px; 
+		height: 232px;
+		overflow: hidden;
+   } 
+	.ct {
+		position: relative;		
+	}
+	ul.ct:after {
+		content: " ";
+		clear: both;
+		display: block;	
+	}
+	.ct li {
+		position: absolute;
+		display: none;
+		}
+	.ct li a {
+	  display: block;
+	}
+	.ct li img {
+		display: block;
+		width: 310px;
+		height: 232px;
+	}
+	.cover {
+		position: absolute;
+		top: 50%;
+		margin-top: -15px;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		border-radius: 30px;
+		background: #555;
+		opacity: 0.8;
+		text-align: center;
+		color: white;
+		}
+		.cover:hover {
+			opacity: 1;
+		}
+	#carousel .next {
+		right: 0;
+	}
+	#carousel .pre {
+		left: 0;
+	}
+	ul.bullet {
+		position: absolute;
+		bottom: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	ul.bullet li {
+		float: left;
+		margin-left: 10px;
+		width: 20px;
+		height: 5px;
+		background: white;
+		border-radius: 2px;
+        cursor: pointer;
+	}
+	ul.bullet .active {
+		background: #000;
+	}
+	</style>
+</head>
+<body>
+<div id="carousel">
+	<ul class="ct">
+		<li data-id="1"><a href="#"><img src="23.jpg"></a></li>
+		<li data-id="2"><a href="#"><img src="24.jpg"></a></li>
+		<li data-id="3"><a href="#"><img src="25.jpg"></a></li>
+		<li data-id="4"><a href="#"><img src="26.jpg"></a></li>
+	</ul>
+<a href="#" class="cover pre"><</a>
+<a href="#" class="cover next">></a>
+<ul class="bullet">
+<li class="active"></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</div>
+ <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+ <script>
+	var $ct=$(".ct"),
+			$pre=$(".pre"),
+			$next=$(".next"),
+			$bullet=$(".bullet"),
+			$items=$ct.children(),
+			imgWidth=$items.width(),
+			imgCount=$ct.children().length;
+	var curIdx=0;
+	var isAnimate=false;
+	$pre.on('click',function(){
+	playPre();
+	})
+	$next.on('click',function(){
+		playNext();
+	})
+	$bullet.find('li').on('click',function(){
+		var idx = $(this).index();
+				play(idx);
+		
+	});
+	play(0);
+	function playNext(){
+				play((curIdx+1)%imgCount)
+			}
+
+			function playPre(){
+				play((imgCount+curIdx-1)%imgCount)
+			}
+			function play(idx){
+				if(isAnimate) return;
+				isAnimate = true;
+				$items.eq(curIdx).fadeOut(400);
+				$items.eq(idx).fadeIn(400, function(){
+					isAnimate = false;
+				});
+				
+				curIdx = idx;
+				findBullet();
+			}
+	
+	function findBullet(){
+		$bullet.find('li').removeClass('active').
+						eq(curIdx).addClass('active');
+	}
+	function autoPlay(){
+        clock=setInterval(function(){
+            playNext();
+        },2000)
+    }
+    function stopPlay(){
+        clearInterval(clock);
+    }
+    autoPlay();
+
+ </script>
+</body>
+</html>
