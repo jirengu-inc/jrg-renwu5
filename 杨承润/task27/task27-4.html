@@ -19,7 +19,7 @@
 			height: 100%
 		}
 		.carousel{
-			overflow: hidden;
+			/*overflow: hidden;*/
 			position: relative;
 		}
 		.carousel .img-ct{
@@ -132,7 +132,7 @@
 			$ct.prepend($imgs.last().clone());
 			var realCount=$ct.children().length;
 			$ct.find('li').css('width', $imgWidth);
-			$ct.find('cover').css('width', $imgWidth);
+			//$ct.find('cover').css('width', $imgWidth);
 			$ct.css({left: 0-$imgWidth, width: realCount*$imgWidth})
 
 
@@ -198,7 +198,7 @@
 								  .eq(curIdx).addClass('active');
 			}
 		}
-		gun('.carousel1');
+		//gun('.carousel1');
 	</script>
 </body>
 </html>
