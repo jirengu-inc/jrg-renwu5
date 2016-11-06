@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Js定时事件</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<form id="form1" runat="server">
+    <div>
+        <input type="button" value="点下我" id="btn" onclick="show()" />
+    </div>
+    <script type="text/javascript">
+        /*
+         timeId=window.setTimeout("method()",1000); window.clearTimeout(timeId);定时执行
+         timeId=window.setInterval("method()",1000); window.clearInterval(timeId);循环执行
+         */
+
+        var nn = 30;
+        var tipId;
+        function show() {
+            tipId = window.setInterval("start()", 1000); //每隔1秒调用一次start()方法
+        }
+
+        function start() {
+            if (nn > 0) {
+                var vv = "点下我(" + nn + ")";
+                $("#btn").attr("disabled", "disabled"); //使按钮不能被点击
+                $("#btn").attr("value", vv); //更改按钮上的文字
+                nn--;
+            } else {
+                nn = 30;
+                $("#btn").removeAttr("disabled"); //使按钮能够被点击
+                $("#btn").attr("value", "点下我"); //更改按钮上的文字
+                window.clearInterval(tipId); //清除循环事件
+            }
+        }
+    </script>
+</form>
+</body>
+</html>

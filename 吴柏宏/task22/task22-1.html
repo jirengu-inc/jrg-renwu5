@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task22-1</title>
+  </head>
+  <body>
+    <ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+</ul>
+<script>
+  var ct = document.querySelector('.ct');
+
+  ct.addEventListener('click',function(e){
+    console.log(e.target.innerText)
+  });
+
+  //老师写的方法
+  //直接给元素绑定事件
+  // var liArr = document.getElementsByClassName('ct')[0].getElementsByTagName('li');    //这样更安全一些
+  // for(var i=0;i<liArr.length;i++){    //利用for循环 和 this
+    // liArr[i].addEventListener('click', function(){
+      // console.log(this.innerText);
+    // })
+  // }
+</script>
+  </body>
+</html>

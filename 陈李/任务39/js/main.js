@@ -17,7 +17,6 @@ require(['jquery', 'com/goTop', 'com/fullCarousel', 'com/waterfall', 'com/addmor
 	$(window).on('resize',function(){
 		Carousel.init()                      //窗口变化重新计算图片宽度 其他解决方案？todo
 	})
-
 	//waterfall
 	var $ct = $('.waterfall')
 	var $node = $ct.find('li')

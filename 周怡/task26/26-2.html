@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task26-2</title>
+    <style>
+        .content {
+            height: 1500px;
+        }
+
+        .change-color {
+            height: 100px;
+            line-height: 100px;
+            width: 100px;
+            border: 1px solid;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .red {
+            background: red;
+        }
+
+        .green {
+            background: green;
+        }
+
+        .scroll {
+            position: fixed;
+            top: 0;
+            right: 100px;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            border: 1px solid;
+            background: #eee;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .mouse-color {
+            height: 100px;
+            line-height: 100px;
+            width: 100px;
+            border: 1px solid;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .ipt {
+            height: 20px;
+            line-height: 20px;
+            width: 400px;
+            border: 1px solid;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .border-change {
+            border: 2px solid blue;
+        }
+
+        .choose {
+            display: block;
+            margin: 20px 0px 0px 20px;
+        }
+
+        .result {
+            height: 20px;
+            line-height: 20px;
+            width: 100px;
+            border: 1px solid;
+            text-align: center;
+            margin: 0px 0px 0px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="change-color">点击变色 </div>
+        <div class="scroll">0px</div>
+        <div class="mouse-color">鼠标变色</div>
+        <input class="ipt" type="text" placeholder="边框颜色改变，小写变大写">
+        <select class="choose" name="">
+            <option value="包拯">包拯</option>
+            <option value="展昭">展昭</option>
+            <option value="王朝">王朝</option>
+            <option value="马汉">马汉</option>
+        </select>
+        <div class="result"></div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        //点击变色
+        //  var $change1 = $('.change-color');
+        $('.change-color').on('click', function() {
+            if ($(this).hasClass('red')) {
+                $(this).removeClass('red');
+                $(this).addClass('green');
+            } else if ($(this).hasClass('green')) {
+                $(this).removeClass('green');
+                $(this).addClass('red');
+            } else {
+                $(this).addClass('red');
+            }
+        });
+        //窗口滚动垂直距离
+        $(window).on('scroll', function() {
+            $('.scroll').text(scrollY + 'px');
+        })
+
+        //点我变红色
+        $('.mouse-color').on('mouseenter', function() {
+            $(this).css('background', 'yellow');
+        });
+        $('.mouse-color').on('mouseleave', function() {
+            $(this).css('background', 'white');
+        })
+
+        //边框颜色改变，小写变大写
+        $('.ipt').on('focus', function() {
+            $(this).addClass('border-change');
+        });
+        $('.ipt').on('blur', function() {
+            $(this).removeClass('border-change');
+            console.log($(this).val());
+        });
+        $('.ipt').on('keyup', function() {
+            $(this).val($(this).val().toUpperCase());
+        });
+
+        //获取用户选择的内容
+        $('.choose').on('change', function() {
+            $('.result').text($(this).val());
+        });
+    </script>
+</body>
+
+</html>
