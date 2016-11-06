@@ -1,4 +1,4 @@
-# 使用步骤
+## 使用步骤
 
 
 1. 获取本 repo 读写权限
@@ -8,7 +8,7 @@
 5. `git config --global user.email 你的邮箱`
 6. 开始写代码！
 
-# 在线预览
+## 在线预览
 
 这个 repo 里的代码可以在 http://book.jirengu.com/jirengu-inc/jrg-renwu5/
 预览。
