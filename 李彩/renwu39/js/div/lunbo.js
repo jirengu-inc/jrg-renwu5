@@ -96,16 +96,11 @@ define(["../lib/jquery.min"],function () {
 
         });
 
-        var bgPic=new Image(); 
-        bgPic.src="./img/lunbo4.jpg"; 
-        if((!bgPic.width==0) && (!bgPic.height==0) ){
-         showMe(0);          
+        showMe(0); 
+
+        setTimeout(function(){        
          circulate();
-        }
-
-
-
-
+         },2000);
 
 
         function circulate() {
