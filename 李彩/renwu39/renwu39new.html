@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>15-2</title>
+    <title>我的网页</title>
     <link rel="stylesheet" href="./css/font-awesome/css/font-awesome.css">
     <style>
         html,body,h2,ul,li{
@@ -52,7 +52,7 @@
             float: left;
             width: 220px;
             padding-left: 100px;
-            padding-right: 420px;
+
 
         }
         .ct-nav>.nav>li{
@@ -845,21 +845,16 @@
     </div>
 </div>
 
+    <script  src="./js/lib/requirejs.js"></script>
+    <!-- <script defer src="./js/lib/requirejs.js" data-main="indexjs.js"></script>-->
+
+     <script>
+           requirejs.config({
+                baseUrl:"./js"
+           });
+           requirejs(["../main"])
+    </script>
 
 
-
-    <script defer src="./js/lib/requirejs.js" data-main="indexjs.js" ></script>
-
-
-
-
-
-    <!--<script>-->
-        <!--requirejs.config({-->
-            <!--baseUrl:"./js"-->
-        <!--});-->
-        <!--requirejs(["../main"])-->
-
-    <!--</script>-->
 </body>
 </html>

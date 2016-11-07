@@ -2,6 +2,7 @@
  * Created by lxzd1 on 2016/11/5.
  */
 define(["../lib/jquery.min"],function () {
+
     var Carousel=(function () {
         var bgLiWidth=$(".ct-bg").children().width(),
             clock=false,
@@ -95,9 +96,17 @@ define(["../lib/jquery.min"],function () {
 
         });
 
-        showMe(0);
+        var bgPic=new Image(); 
+        bgPic.src="./img/lunbo4.jpg"; 
+        if((!bgPic.width==0) && (!bgPic.height==0) ){
+         showMe(0);          
+         circulate();
+        }
 
-        circulate();
+
+
+
+
 
         function circulate() {
             timing=setTimeout(function () {
@@ -119,9 +128,8 @@ define(["../lib/jquery.min"],function () {
         });
 
 
-    }())
+    }());
 
+    return {Carousel}
 
-
-    return {Carousel};
 });
