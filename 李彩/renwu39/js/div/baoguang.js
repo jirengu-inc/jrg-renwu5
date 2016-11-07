@@ -56,7 +56,7 @@ define(["../lib/jquery.min"],function () {
                 }
                 if (isVisible($cur1)){
                   $(".nav li").eq(num).siblings().find("a").removeAttr("style");
-                  $(".nav li").eq(num).find("a").css("color", "#fed136");
+                  $(".nav li").eq(num).find("a").css("background-color", "#fed136");
                 }
 
 

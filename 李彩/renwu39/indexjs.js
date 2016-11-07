@@ -158,7 +158,7 @@ define('js/div/lunbo',["../lib/jquery.min"],function () {
             timing=setTimeout(function () {
                 playNext();
                 circulate();
-            },3000);
+            },4000);
         }
 
 
@@ -349,7 +349,7 @@ define('js/div/baoguang',["../lib/jquery.min"],function () {
                 }
                 if (isVisible($cur1)){
                   $(".nav li").eq(num).siblings().find("a").removeAttr("style");
-                  $(".nav li").eq(num).find("a").css("color", "#fed136");
+                  $(".nav li").eq(num).find("a").css("background-color", "#fed136");
                 }
 
 

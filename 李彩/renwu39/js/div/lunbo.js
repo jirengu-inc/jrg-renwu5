@@ -103,7 +103,7 @@ define(["../lib/jquery.min"],function () {
             timing=setTimeout(function () {
                 playNext();
                 circulate();
-            },3000);
+            },4000);
         }
 
 
