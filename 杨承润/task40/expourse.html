@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Expourse</title>
+	<style>
+		.div1,.div2,.div3{
+			height: 2000px;
+		}
+		.yellow{
+			height: 100px;
+			background-color: yellow
+		}
+		.red{
+			height: 100px;
+			background-color: red
+		}
+	</style>
+</head>
+<body>
+	<div class='div1'></div>
+	<div class='yellow'></div>
+	<div class="div2"></div>
+	<div class="red"></div>
+	<div class="div3"></div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		var Expourse=(function(){
+			var show=false;
+			function bind($el,fn){
+				$(window).on('scroll',function(){
+					if (!isShow($el)) {
+						return;
+					}
+					if (isShow($el)) {
+						fn.call($el)
+					}
+				})
+			}
+			function one($el,fn){
+				$(window).on('scroll',function(){
+					if (!show) {
+						if (isShow($el)) {
+							fn.call($el)
+							show=true;
+						}else{
+							return;
+						}
+					}
+				})
+			}
+			function isShow($el){
+				var offsettop=$el.offset().top,
+					scrolltop=$(window).scrollTop(),
+					winH=$(window).height();
+				if(offsettop<scrolltop+winH&&offsettop>scrolltop){
+					return true;
+				}else{
+					return false;
+				}
+			}
+			return{
+				bind:bind,
+				one:one
+			}
+		})()
+		//$target 是 jquery 对象
+		// 当窗口滚动时，如果$target 出现在可见区域，执行回调函数里面的代码，且在回调函数内，$(this)代表$target
+		Expourse.bind($('.yellow'), function(){
+		    console.log($(this));    // $target
+		});
+
+		// 当窗口滚动时，如果$target 出现在可见区域，执行回调函数里面的代码，且在回调函数内，$(this)代表$target。 仅执行一次回调函数，下次$target 曝光不再执行
+		Expourse.one($('.red'), function(){
+		    console.log($(this));    // $target
+		})
+	</script>
+</body>
+</html>
