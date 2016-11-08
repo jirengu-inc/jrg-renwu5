@@ -96,11 +96,8 @@ define(["../lib/jquery.min"],function () {
 
         });
 
-        showMe(0); 
-
-        $(".bg").eq(0).load(function(){
-         circulate();
-         });
+        showMe(0);
+        circulate();
 
 
         function circulate() {
