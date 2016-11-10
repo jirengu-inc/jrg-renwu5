@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  ul,li{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+  }
+  #tanContainer{
+    border:1px solid #000;
+  }
+  #tab:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+  #tab li{
+    float: left;
+    height:50px;
+    width: 33.22%;
+    line-height: 50px;
+    text-align: center;
+    border-right:1px solid;
+    border-bottom:1px solid;
+  }
+  #tab li:last-child{
+    border-right:none;
+  }
+  .fli{
+    background-color: #ccc;
+  }
+  .fdiv{
+    padding: 20px;
+    height: 200px;
+  }
+  #tabCon div{
+    display: none;
+  }
+  #tabCon .fdiv{
+    display: block;
+  }
+</style>
+</head>
+<body>
+<div id="tanContainer">
+   <div id="tab">
+     <ul>
+      <li class="fli">tab1</li>
+      <li>tab2</li>
+      <li>tab3</li>
+
+     </ul>
+     </div>
+     <div id="tabCon">
+     <div class=" fdiv">内容一</div>
+     <div >内容二</div>
+     <div >内容三</div>
+
+    </div>
+  </div>
+</body>
+<script>
+  var tabs = document.querySelector('#tab').querySelectorAll('li'),
+      divs = document.querySelector('#tabCon').querySelectorAll('div');
+
+      for(var i=0; i<tabs.length; i++){
+        tabs[i].onclick = function(){change(this)}
+      }
+
+      function change(obj){
+        for(var i=0; i<tabs.length; i++){
+          if(tabs[i]==obj){
+            tabs[i].className = 'fli';
+            divs[i].className = 'fdiv';
+          }else{
+            tabs[i].className = '';
+            divs[i].className = '';
+          }
+        }
+      }
+</script>
+</html>

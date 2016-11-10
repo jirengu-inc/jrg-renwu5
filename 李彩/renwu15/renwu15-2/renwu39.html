@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>15-2</title>
+    <link rel="stylesheet" href="./css/font-awesome/css/font-awesome.css">
+    <style>
+        html,body,h2,ul,li{
+            margin: 0px;
+            padding: 0px;
+            box-sizing:border-box;
+
+        }
+
+        body{
+            height: 100%;
+            position: relative;
+        }
+        a{
+            text-decoration: none;
+        }
+        .ct{
+            margin: 0px auto;
+            width: 1140px;
+
+        }
+        h1,h2,h3,h4,h5,h6{
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-weight: 700;
+            color: #333;
+        }
+        #header>.first-page{
+            height: 100%;
+            background: url(./img/header-bg.jpg) no-repeat 0 0;
+            background-size: cover;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #fff;
+            padding-bottom: 200px;
+            background-position: center;
+
+        }
+
+        .ct-first-page>h2{
+            font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 40px;
+            font-style: italic;
+            padding-top: 300px;
+            color: #fff;
+
+        }
+        .ct-first-page>h1{
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 75px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .ct-first-page>a{
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            display: inline-block;
+            vertical-align: middle;
+            border-radius: 3px;
+            background-color: #fed136;
+            color: #fff;
+            border-color:#fed136;
+            padding:  20px 40px;
+
+        }
+        .ct-first-page>a:hover{
+            background-color: #fec503;
+        }
+        ul,li{
+            list-style: none;
+        }
+
+        .ct-nav{
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            border-bottom: 2px solid #000;
+            height: 70px;
+            line-height: 70px;
+            background-color: #333;
+            width: 100%;
+            z-index: 99;
+
+
+
+
+        }
+        .ct-nav>a{
+
+            color: #fed136;
+            font-family:"Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+            font-size: 2em;
+            float: left;
+            width: 220px;
+            padding-left: 100px;
+            padding-right: 420px;
+
+        }
+        .ct-nav>.nav>li{
+            display: inline-block;
+            vertical-align: middle;
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-weight: 400;
+            padding-right: 20px;
+            padding-left: 10px;
+
+
+        }
+        .nav>li>a{
+            color: #fff;
+
+        }
+        .nav>li>a:hover{
+            color: #fed136;
+
+
+        }
+
+        .ct-nav>ul.nav{
+            display: inline-block;
+            vertical-align: middle;
+            float: right;
+            width: 600px;
+
+        }
+
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .ct-services{
+            margin-top: 150px;
+            margin-bottom: 150px;
+            text-align: center;
+        }
+
+        .services>li{
+            display: inline-block;
+            vertical-align: middle;
+            width: 350px;
+            margin: 50px 10px;
+        }
+        .fa-shopping-cart,
+        .fa-laptop,
+        .fa-lock{
+            color: #fff;
+
+        }
+        .fa-circle{
+            color: #fed136;
+
+        }
+        .ct-services>h1{
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-weight: 700;
+            font-size: 40px;
+        }
+
+        .services>li>h3{
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-weight: 700;
+            line-height:1.1;
+
+        }
+        .services>li>p{
+            color: #777;
+            font-size: 14px;
+            line-height: 1.75;
+            font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+        }
+        .ct-portfolio{
+            padding-top: 150px;
+            padding-bottom: 150px;
+            text-align: center;
+
+        }
+
+        .portfolio>li{
+            display: inline-block;
+            vertical-align: middle;
+            margin: 20px 10px;
+            width: 350px;
+            position: relative;
+
+        }
+        .portfolio-pic{
+            width: 350px;
+            height: 250px;
+
+        }
+        .cover-pic{
+            position: absolute;
+            background-color: rgba(254,209,54,.9);
+            width: 350px;
+            height: 250px;
+            opacity: 0;
+        }
+        .fa-plus{
+            position: absolute;
+            color: #fff;
+            top: 104px;
+            left: 156px;
+
+        }
+        .cover-pic:hover{
+            opacity: 1;
+        }
+        .portfolio>li>h1{
+            font-size: 18px;
+        }
+        .portfolio>li>h3{
+            color: #777;
+            font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-style: italic;
+            font-size: 16px;
+
+        }
+        .ct-about{
+            padding: 150px 0px;
+            text-align: center;
+
+        }
+
+
+
+        .wrap-about1{
+            margin-right: 750px;
+            text-align: right;
+            position: relative;
+            height: 200px;
+            margin-top: 50px;
+            margin-bottom: 150px;
+
+        }
+        .wrap-about1>img{
+            position: absolute;
+            border-radius:50%;
+            border: 10px solid #eee;
+            left: 460px;
+            top: 50%;
+            margin-top: -100px;
+
+        }
+        .wrap-about2{
+            margin-left: 750px;
+            text-align: left;
+            position: relative;
+            height: 200px;
+            margin-top: 50px;
+            margin-bottom: 150px;
+
+        }
+        .wrap-about2>img{
+            position: absolute;
+            border-radius:50%;
+            border: 10px solid #eee;
+            top: 50%;
+            left: -50%;
+            margin-top: -100px;
+            margin-left: -95px;
+
+
+        }
+        .about-over{
+            position: absolute;
+            border-radius:50%;
+            border: 10px solid #eee;
+            left: 460px;
+            top: 50%;
+            margin-top: -100px;
+            background-color: #fed136;
+            width: 220px;
+            height: 220px;
+
+
+
+
+        }
+        .about-over>h2{
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            padding: 70px 40px;
+            line-height: 100%;
+            color: #fff;
+            font-size: 25px;
+
+
+
+        }
+        .center-line{
+            position: absolute;
+            width: 50%;
+            height: 1400px;
+            top: 3200px;
+            left: 50%;
+            border-left: 2px solid #eee;
+            z-index: -1;
+            margin-left: -2px;
+        }
+        .ct-about p{
+            font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+            color: #777;
+            font-size: 14px;
+            line-height: 1.75;
+        }
+        .ct-team{
+            padding-top: 100px;
+            padding-bottom: 150px;
+            text-align: center;
+        }
+        .team>li{
+            float: left;
+            width: 380px;
+        }
+        .team>li>img{
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+        }
+
+        .team>li .fa{
+            color: #fff;
+        }
+
+        .team>li .fa-circle{
+            color: #222;
+        }
+        .team{
+            margin: 50px 0px;
+        }
+
+        .ct-team,.ct-contact p{
+            font-size: 14px;
+            line-height: 1.75;
+            font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+            color: #777;
+        }
+        .ct-team>p{
+            font-size: 16px;
+            width: 750px;
+            margin: 0 auto;
+
+        }
+        .ct-friendly-link>a{
+            float: left;
+            width: 285px;
+        }
+        .ct-friendly-link>a>img{
+            margin-top: 50px;
+        }
+        .contact-bg{
+            margin:50px 0px;
+            background: url(./img/map-image.png) center center no-repeat;
+            background-size: cover;
+            background-color: #222;
+            padding: 150px 0px;
+        }
+        .ct-contact{
+            text-align: center;
+        }
+        .ct-contact>h1{
+            color: #fff;
+
+        }
+        .contact-input{
+            display: block;
+            width: 513px;
+            padding: 20px;
+            border-radius: 4px;
+            color: #555;
+            margin: 20px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+        .contact-textarea{
+            float: right;
+            width: 513px;
+            padding: 20px;
+            height: 174px;
+            border: 1px solid #ccc;
+            color: #555;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+        .contact-submit{
+            background-color: #fed136;
+            color: #fff;
+            font-size: 18px;
+            padding: 20px 40px;
+            border-radius: 4px;
+            font-style: 700;
+            border-color: #fed136;
+            cursor: pointer;
+
+        }
+        .contact-submit:hover{
+            background-color: #fec503;
+        }
+
+        .ct-footer{
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+
+        }
+        .footer>li{
+            width: 380px;
+            float: left;
+
+        }
+        .footer>li .fa{
+            color: #fff;
+        }
+
+        .footer>li .fa-circle{
+            color: #222;
+        }
+        .footer>li>span{
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            color: #333;
+            line-height: 40px;
+        }
+        li.more-about>a{
+            color: #fed136;
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            line-height: 40px;
+
+        }
+        li.more-about>a:hover{
+            color: #fec503;
+        }
+        .ct>h3{
+            font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 16px;
+            font-style: italic;
+            font-weight: 400;
+            color: #777;
+
+        }
+        .portfolio-bg,
+        .team-bg{
+            background-color: #f7f7f7;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="header">
+    <div class="first-page">
+        <div class="ct ct-first-page">
+            <h2>Welcome To Our Studio!</h2>
+            <h1>IT'S NICE TO MEET YOU</h1>
+            <a href="#">TELL ME MORE</a>
+        </div>
+    </div>
+    <div class="ct-nav clearfix">
+        <ul class="nav">
+            <li> <a href="#">SERVICES</a> </li>
+            <li> <a href="#">PORTFOLIO</a></li>
+            <li> <a href="#">ABOUT</a></li>
+            <li> <a href="#">TEAM</a></li>
+            <li> <a href="#">CONTACT</a></li>
+        </ul>
+        <a href="#" class="logo">Start Bootstrap</a>
+    </div>
+</div>
+<div id="content">
+    <div class="ct ct-services">
+        <h1>SERVICES</h1>
+        <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+        <ul class="services">
+            <li>
+					<span class="fa-stack fa-4x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-shopping-cart fa-stack-1x"></i>
+					</span>
+                <h3>E-Commerce</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </li>
+            <li>
+					<span class="fa-stack fa-4x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-laptop fa-stack-1x"></i>
+					</span>
+                <h3>Responsive Design</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </li>
+            <li>
+					<span class="fa-stack fa-4x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-lock fa-stack-1x"></i>
+					</span>
+                <h3>Web Security</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </li>
+        </ul>
+    </div>
+    <div class="portfolio-bg">
+        <div class="ct ct-portfolio">
+            <h1>PORTFOLIO</h1>
+            <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+            <ul class="portfolio">
+                <li>
+                    <a href="#">
+                        <div class="cover-pic"><i class="fa fa-plus fa-3x"></i></div>
+                        <img class="portfolio-pic" src="./img/RoundIcons.png" alt="RoundIcons">
+                    </a>
+                    <h1>RoundIcons</h1>
+                    <h3>Graphic Design</h3>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="cover-pic"><i class="fa fa-plus fa-3x"></i></div>
+                        <img class="portfolio-pic" src="./img/startup-framework.png" alt="startup-framework">
+                    </a>
+                    <h1>Startup Framework</h1>
+                    <h3>Website Design</h3>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="cover-pic"><i class="fa fa-plus fa-3x"></i></div>
+                        <img class="portfolio-pic" src="./img/treehouse.png" alt="treehouse">
+                    </a>
+                    <h1>Treehouse</h1>
+                    <h3>Website Design</h3>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="cover-pic"><i class="fa fa-plus fa-3x"></i></div>
+                        <img class="portfolio-pic" src="./img/golden.png" alt="golden">
+                    </a>
+                    <h1>Golden</h1>
+                    <h3>Website Design</h3>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="cover-pic"><i class="fa fa-plus fa-3x"></i></div>
+                        <img class="portfolio-pic" src="./img/escape.png" alt="escape">
+                    </a>
+                    <h1>Escape</h1>
+                    <h3>Website Design</h3>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="cover-pic"><i class="fa fa-plus fa-3x"></i></div>
+                        <img class="portfolio-pic" src="./img/dreams.png" alt="dreams">
+                    </a>
+                    <h1>Dreams</h1>
+                    <h3>Website Design</h3>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="ct ct-about">
+        <h1>ABOUT</h1>
+        <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+
+        <div class="wrap-about1">
+            <h3>2009-2011</h3>
+                <h3>Our Humble Beginnings</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+
+                <img src="./img/1.jpg" alt="1">
+        </div>
+        <div class="wrap-about2">
+            <h3>MARCH 2011</h3>
+                <h3>An Agency is Born</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                <img src="./img/2.jpg" alt="1">
+        </div>
+        <div class="wrap-about1">
+            <h3>DECEMBER 2012</h3>
+                <h3>Transition to Full Service</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                <img src="./img/3.jpg" alt="1">
+        </div>
+        <div class="wrap-about2">
+            <h3>JULY 2014</h3>
+                <h3>Phase Two Expansion</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                <img src="./img/4.jpg" alt="1">
+        </div>
+        <div class="wrap-about1">
+            <div class="about-over">
+                <h2>
+                    BE PART
+                    OF OUR
+                    STORY!
+                </h2>
+            </div>
+        </div>
+
+    </div>
+    <div class="team-bg">
+        <div class="ct ct-team">
+            <h1>OUR AMAZING TEAM</h1>
+            <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+            <ul class="team clearfix">
+                <li>
+                    <img src="./img/5.jpg" alt="5">
+                    <h3>Kay Garland</h3>
+                    <p>Lead Designer</p>
+                    <a href="#">
+					 <span class="fa-stack fa-2x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-twitter fa-stack-1x"></i>
+					 </span>
+                    </a>
+                    <a href="#">
+					 <span class="fa-stack fa-2x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-facebook fa-stack-1x"></i>
+					 </span>
+                    </a>
+                    <a href="#">
+					 <span class="fa-stack fa-2x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-linkedin fa-stack-1x"></i>
+					 </span>
+                    </a>
+                </li>
+                <li>
+                    <img src="./img/6.jpg" alt="6">
+                    <h3>Larry Parker</h3>
+                    <p>Lead Marketer</p>
+                    <a href="#">
+					 <span class="fa-stack fa-2x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-twitter fa-stack-1x"></i>
+					 </span>
+                    </a>
+                    <a href="#">
+					 <span class="fa-stack fa-2x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-facebook fa-stack-1x"></i>
+					 </span>
+                    </a>
+                    <a href="#">
+					 <span class="fa-stack fa-2x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-linkedin fa-stack-1x"></i>
+					 </span>
+                    </a>
+                </li>
+                <li>
+                    <img src="./img/7.jpg" alt="7">
+                    <h3>Diana Pertersen</h3>
+                    <p>Lead Developer</p>
+                    <a href="#">
+					 <span class="fa-stack fa-2x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-twitter fa-stack-1x"></i>
+					 </span>
+                    </a>
+                    <a href="#">
+					 <span class="fa-stack fa-2x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-facebook fa-stack-1x"></i>
+					 </span>
+                    </a>
+                    <a href="#">
+					 <span class="fa-stack fa-2x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-linkedin fa-stack-1x"></i>
+					 </span>
+                    </a>
+                </li>
+            </ul>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+        </div>
+    </div>
+    <div class="ct ct-friendly-link clearfix">
+        <a href="#"><img src="./img/envato.jpg" alt="envato"></a>
+        <a href="#"><img src="./img/designmodo.jpg" alt="designmodo"></a>
+        <a href="#"><img src="./img/themeforest.jpg" alt="themeforest"></a>
+        <a href="#"><img src="./img/creative-market.jpg" alt="creative-market"></a>
+    </div>
+    <div class="contact-bg">
+        <div class="ct ct-contact">
+            <h1>CONTACT US</h1>
+            <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+            <form class="contact-form" action="./renwu15-2.html" method="get">
+                <textarea class="contact-textarea clearfix" name="user-message" id="what-is-id" cols="30" rows="10" placeholder="YOUR MESSAGE *"></textarea>
+                <input class="contact-input" type="text" name="user-name" placeholder="YOUR NAME *">
+                <input class="contact-input" type="text" name="user-email" placeholder="YOUR EMAIL *">
+                <input class="contact-input" type="text" name="user-phone" placeholder="YOUR PHONE *">
+
+                <input class="contact-submit" name="name-submit" type="submit" value="SEND MESSAGE" >
+            </form>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="ct ct-footer">
+        <ul class="footer clearfix">
+            <li>
+                <span>Copyright © Your Website 2014</span>
+
+            </li>
+            <li>
+                <a href="#">
+					 <span class="fa-stack fa-2x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-twitter fa-stack-1x"></i>
+					 </span>
+                </a>
+                <a href="#">
+					 <span class="fa-stack fa-2x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-facebook fa-stack-1x"></i>
+					 </span>
+                </a>
+                <a href="#">
+					 <span class="fa-stack fa-2x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-linkedin fa-stack-1x"></i>
+					 </span>
+                </a>
+            </li>
+            <li class="more-about">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+<div class="center-line"></div>
+</body>
+</html>

@@ -56,19 +56,24 @@
     </div>
 
     <script>
-        var eleOffsetH=$("#nav").offset().top ,
-            eleOffsetW=$("#nav").offset().left,
-            eleHeight=$("#nav").height(),
-            eleWidth=$("#nav").width();
+
+        var $cur=$("#nav"),
+            eleOffsetH=$cur.offset().top ,
+            eleOffsetW=$cur.offset().left,
+            eleHeight=$cur.height(),
+            eleWidth=$cur.width();
                 
-        eleClone=$("#nav").clone();
-        $("#nav").before(eleClone);
+        eleClone=$cur.clone();
+       $cur.before(eleClone);
         eleClone.hide();
+
+        //思路 当nav滑动到顶部时，克隆体显示，本体fixed
 
         $(window).on("scroll",function () {
             var scrollH=$(window).scrollTop();
             if (scrollH >= eleOffsetH) {
-                $("#nav").css({
+               eleClone.show();
+               $cur.css({
                     "position":"fixed",
                     "left":eleOffsetW,
                     "top":0,
@@ -76,11 +81,12 @@
                     "height":eleHeight,
                     "z-index":999
                 })  ;
-                eleClone.show();
+
             }
             else {
-                eleClone.show();
-                $("#nav").hide();
+
+                eleClone.hide();
+                $cur.removeAttr("style")
             }
         })
 

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            position: relative;
+        }
+        .dialog{
+            border-radius: 5px;
+            background-color:#eee ;
+            box-shadow:0 0 5px 2px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            width: 328px;
+        }
+        .title{
+            background-color: #676666;
+            padding: 8px 10px;
+            color: #fff;
+            font-weight: bolder;
+        }
+        .clearfix:after{
+            display: block;
+            clear: both;
+            content: "";
+        }
+
+        a{
+            text-align: center;
+            text-decoration: none;
+
+        }
+        .button a{
+            background-color: #e33100;
+            padding: 5px 8px;
+            border-radius: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+            color: #fff;
+        }
+        .button{
+            padding:  20px 0;
+            text-align: center;
+        }
+        .title a{
+            float: right;
+            width: 10px;
+            color: #fff;
+        }
+        .content{
+            color:#666 ;
+            padding: 10px;
+        }
+        .draggable{
+            cursor: move;
+            opacity: 0.8;
+        }
+
+
+
+    </style>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <button id="open1">打开1</button>
+    <button id="open2">打开2</button>
+    <button id="open3">打开3</button>
+    <button id="open4">打开4</button>
+    <button id="open5">打开5</button>
+    <p>鼠标在 dialog 上左键按下可拖动 dialog</p>
+
+    <p>可创建多个 dialog</p>
+
+    <script>
+
+
+
+
+
+        //功能描述：
+        // 1. 可使用 dialog.open() 去打开弹窗
+        // 2. 当点击确定、取消时可使用用户自定义事件
+        // 3. dialog 可拖动
+        // 4. 允许页面展示多个 dialog
+
+        function Dialog(){
+            this.createDialog();
+            this.bindEvent();
+        }
+        Dialog.prototype={
+            originOpts:{
+                title:"",
+                message:"",
+                isShowCancelBtn:true,
+                isShowConfirmBtn:false,
+                onCancel:function () {
+                    
+                },
+                onConfirm:function () {
+                    
+                }
+            },
+            open:function (opts) {
+                this.setOpts(opts);
+                this.setDialog();
+                this.showDialog();
+            },
+            setOpts:function (opts) {
+                if (typeof opts==="string"){
+                    this.opts=$.extend({},this.originOpts,{message:opts})
+                }else if (typeof opts==="object"){
+                    this.opts=$.extend({},this.originOpts,opts)
+                }
+
+            },
+
+            setDialog:function () {
+                var $dialog=this.$dialog;
+                console.log($dialog);
+                if (!this.opts.title){
+                    $dialog.find(".title").hide();
+                }else {
+                    $dialog.find(".title").show();
+                }
+                if (!this.opts.isShowCancelBtn){
+                    $dialog.find(".button .cancel").hide();
+                }else {
+                    $dialog.find(".button .cancel").show();
+                }
+                if (!this.opts.isShowConfirmBtn){
+                    $dialog.find(".confirm").hide();
+                }else {
+                    $dialog.find(".confirm").show();
+                }
+                $dialog.find(".title span").text(this.opts.title);
+                $dialog.find(".content").html(this.opts.message);
+
+            },
+            showDialog:function () {
+                this.$dialog.show();
+
+            },
+            hideDialog:function () {
+                this.$dialog.hide();
+
+            },
+            createDialog:function () {
+                var tp1='<div class="dialog">'+'<div class="title clearfix"><span></span><a class="cancel" href="####">X</a></div>'+'<h3 class="content"></h3>'+'<div class="button"><a class="cancel" href="####">取消</a><a class="confirm" href="####">确定</a></div>'+'</div>';
+                this.$dialog=$(tp1);
+                $("body").append(this.$dialog);
+            },
+            bindEvent:function () {
+                var _this=this;
+                _this.$dialog.find(".cancel").on("click",function () {
+                    _this.opts.onCancel();
+                    _this.hideDialog();
+                });
+                _this.$dialog.find(".confirm").on("click",function () {
+                    _this.opts.onConfirm();
+                    _this.hideDialog();
+                });
+                _this.$dialog.on("mousedown",function (e) {
+                    var $dialog=$(this),
+                            evtX=e.pageX-$dialog.offset().left,
+                            evtY=e.pageY-$dialog.offset().top;
+                    $dialog.addClass("draggable").data("evtPos",{
+                        x:evtX,
+                        y:evtY
+                    })
+
+
+                });
+                $("body").on("mousemove",function (e) {
+                    $(".draggable").length && $(".draggable").offset({
+                        top:e.pageY-$(".draggable").data("evtPos").y,
+                        left:e.pageX-$(".draggable").data("evtPos").x
+                    });
+                    $("body").on("mouseup",function () {
+                        $('.draggable').length && $('.draggable').removeClass('draggable').removeData('evtPos');
+
+
+                    })
+                })
+
+            }
+
+            
+        };
+
+        $('#open1').on('click', function() {
+            var dialog1 = new Dialog();
+            dialog1.open('hello, 这里是饥人谷');
+        });
+        $('#open2').on('click', function() {
+            var dialog2 = new Dialog();
+            dialog2.open('<a href="####">这里是链接</a>');
+        });
+        $('#open3').on('click',function(){
+            var dialog3 = new Dialog();
+            dialog3.open({
+                title: '欢迎来到饥人谷',
+                message: "hello",
+                isShowCancelBtn: true,
+                isShowConfirmBtn: true,
+                onCancel: function(){
+                    alert('cancel')
+                },
+                onConfirm: function(){
+                    alert('确定');
+                }
+            });
+        });
+
+
+        var tp1 = '<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>';
+
+        $('#open4').on('click',function(){
+            var dialog4 = new Dialog();
+            dialog4.open({
+                title: '欢迎来到饥人谷',
+                message: tp1,
+                isShowCancelBtn: true,
+                isShowConfirmBtn: true,
+                onCancel: function(){
+                    alert('cancel')
+                },
+                onConfirm: function(){
+                    alert('确定');
+                }
+            });
+        });
+
+        $('#open5').on('click',function(){
+            var dialog5 = new Dialog();
+            dialog5.open({
+                title: '欢迎来到饥人谷',
+                message: "hello",
+                isShowCancelBtn: false,
+                isShowConfirmBtn: false
+            });
+        });
+        
+
+
+    </script>
+
+
+
+</body>
+</html>

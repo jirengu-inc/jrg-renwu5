@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script  src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>全屏轮播</title>
+    <style>
+        html,body,ul,li,p{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        html, body, #header, #header .carousel, #header .img-ct{
+            height: 100%;
+            width: 100%;
+        }
+        .carousel{
+            position: relative;
+            width: 310px;
+            height: 206px;
+            overflow: hidden;
+        }
+        #header .img-ct{
+            position: absolute;
+        }
+        #header ul:after{
+            content: '';
+            display: table;
+            clear: both;
+        }
+        #header .item{
+            position: relative;
+            float: left;
+            width: 100%;
+            height: 100%;
+        }
+        #header .main{
+            position: absolute;
+            width: 600px;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            text-align: center;
+        }
+        #header .main h3{
+            font-size: 34px;
+        }
+        #header .main p{
+            font-size: 16px;
+            line-height: 2;
+        }
+
+        #header .cover{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            opacity: 0.8;
+        }
+        #header .cover1 {
+            background-image: url(1.jpg);
+        }
+        #header .cover2 {
+            background-image: url(2.jpg);
+        }
+        #header .cover3 {
+            background-image: url(3.jpg);
+        }
+        #header .cover4 {
+            background-image: url(4.jpg);
+        }
+        ul.bullet {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        ul.bullet li {
+            float: left;
+            margin-left: 10px;
+            width: 30px;
+            height: 5px;
+            border-radius: 2px;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        ul.bullet li.active {
+            background: #666;
+        }
+
+    </style>
+</head>
+<body>
+<div id="header">
+    <div class="carousel">
+        <ul class="img-ct">
+            <li class="item">
+                <div class="cover cover1"></div>
+                <div class="main">
+                    <h3>夜空中最亮的星</h3>
+                    <p>是否在意</p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="cover cover2"></div>
+                <div class="main">
+                    <h3>是等太阳升起</h3>
+                    <p>还是意外先来临</p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="cover cover3"></div>
+                <div class="main">
+                    <h3>夜空中最亮的星</h3>
+                    <p>能否听清</p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="cover cover4"></div>
+                <div class="main">
+                    <h3>那仰望的人</h3>
+                    <p>心底的孤独和叹息</p>
+                </div>
+            </li>
+        </ul>
+        <ul class="bullet">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+    var $ct=$(".img-ct"),
+            $bullet=$(".bullet"),
+            $items=$ct.children(),
+            imgCount=$ct.children().length,
+            imgWidth=$(window).width();
+
+    $ct.prepend($items.last().clone());
+    $ct.append($items.first().clone());
+    var imgRealcount=$ct.children().length;
+    // $ct.find(".item").width(imgWidth);
+    // $ct.find(".cover").width(imgWidth);
+    $ct.find('.item').css('width', imgWidth);
+    $ct.find('.cover').css('width', imgWidth);
+
+    $ct.css({left: 0-imgWidth,width: imgWidth*imgRealcount});
+
+    var curIdx=0;
+    var isAnimate=false;
+    $bullet.find('li').on('click',function(){
+        var idx=$(this).index();
+        if(idx>curIdx){
+            playNext(idx-curIdx);
+        }
+        else if(idx<curIdx){
+            playPre(curIdx-idx);
+        }
+    });
+
+    function playNext(idx){
+        idx=idx||1;
+        if(!isAnimate) {
+            isAnimate=true;
+            $ct.animate({left:'-='+imgWidth*idx},function(){
+                curIdx=(idx+curIdx)%imgCount;
+                if(curIdx===0){
+                    $ct.css({left:0-imgWidth});
+                }
+
+
+                isAnimate=false;
+                setBullet();
+            });
+        }
+    }
+
+    function playPre(idx){
+        idx=idx||1;
+        if(!isAnimate){
+            isAnimate=true;
+            $ct.animate({left:'+='+imgWidth*idx},function(){
+                curIdx=(imgCount+curIdx-idx)%imgCount;
+                if(curIdx===(imgCount-1)){
+                    $ct.css({left:0-imgWidth*imgCount});
+                }
+                isAnimate=false;
+                setBullet();
+            });
+        }
+    }
+
+    function setBullet(){
+        $bullet.children().removeClass('active').eq(curIdx).addClass('active');
+    }
+
+    function autoPlay(){
+        clock=setInterval(function(){
+            playNext();
+        },3000)
+    }
+    function stopPlay(){
+        clearInterval(clock);
+    }
+    autoPlay();
+</script>
+</body>
+</html>
