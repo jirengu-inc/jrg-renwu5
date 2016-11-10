@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>轮播三-滑动</title>
+    <style>
+        html,
+        body,
+        ul,
+        li,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .carousel {
+            position: relative;
+            width: 310px;
+            height: 206px;
+            overflow: hidden;
+        }
+
+        .carousel .imgs {
+            position: absolute;
+        }
+
+        .carousel .imgs img {
+            width: 310px;
+            height: 206px;
+        }
+
+        .carousel .imgs:after {
+            content: ' ';
+            display: block;
+            clear: both;
+        }
+
+        .carousel .imgs li {
+            float: left;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #4E443C;
+            color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 0 2px #999;
+            opacity: 0.8
+        }
+
+        .arrow:hover {
+            opacity: 1;
+        }
+
+        .pre {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        ul.choose {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        ul.choose li {
+            width: 16px;
+            height: 4px;
+            border-radius: 2px;
+            background: #fff;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        ul.choose li.active {
+            background: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+        <ul class="imgs">
+            <li data-id=0>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a>
+            </li>
+            <li data-id=1>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a>
+            </li>
+            <li data-id=2>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a>
+            </li>
+            <li data-id=3>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a>
+            </li>
+        </ul>
+        <a class="pre arrow" href="#">
+            <</a>
+                <a class="next arrow" href="#">></a>
+                <ul class="choose">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script type="text/javascript">
+        var $imgs = $('.imgs'),
+            $items = $imgs.children(),
+            $pre = $('.pre'),
+            $next = $('.next'),
+            $choose = $('.choose'),
+            imgWidth = $items.width(),
+            imgCount = $imgs.children().size();
+        $imgs.prepend($items.last().clone());
+        $imgs.append($items.last().clone());
+        imgRealCount = $imgs.children().length;
+        $imgs.css({
+            left: 0 - imgWidth,
+            width: imgRealCount * imgWidth
+        })
+
+        var curIdx = 0;
+        var isAnimate = false;
+
+        $next.on('click', function() {
+            playNext();
+        });
+        $pre.on('click', function() {
+            playPre();
+        });
+        $choose.find('li').on('click', function() {
+            var idx = $(this).index();
+            if (idx > curIdx) {
+                playNext(idx - curIdx);
+            } else if (idx < curIdx) {
+                playPre(curIdx - idx);
+            }
+        });
+
+        autoPlay();
+
+        function stopAuto() {
+            clearInterval(clock);
+        }
+
+        function autoPlay() {
+            clock = setInterval(function() {
+                playNext();
+            }, 3000);
+        }
+
+
+        function playNext(idx) {
+            var idx = idx || 1;
+            if (!isAnimate) {
+                isAnimate = true;
+                $imgs.animate({
+                    left: '-=' + (imgWidth * idx)
+                }, function() {
+                    curIdx = (curIdx + idx) % imgCount;
+                    if (curIdx === 0) {
+                        $imgs.css({
+                            left: 0 - imgWidth
+                        });;
+                    }
+                    isAnimate = false;
+                    rechoose();
+                });
+            }
+        }
+
+
+
+
+        function playPre(idx) {
+            var idx = idx || 1;
+            if (!isAnimate) {
+                isAnimate = true;
+                $imgs.animate({
+                    left: '+=' + (imgWidth * idx)
+                }, function() {
+                    curIdx = (imgCount + curIdx - idx) % imgCount;
+                    if (curIdx === (imgCount - 1)) {
+                        $imgs.css({
+                            left: 0 - imgWidth * imgCount
+                        });
+                    }
+                    isAnimate = false;
+                    rechoose();
+                });
+            }
+        }
+
+        function rechoose() {
+            $choose.find('li').removeClass('active')
+                .eq(curIdx).addClass('active');
+        }
+    </script>
+</body>
+
+</html>
