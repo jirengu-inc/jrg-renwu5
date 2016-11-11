@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <style>
+        li{
+            height: 30px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li class="target"> i am target</li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+
+
+
+
+
+
+
+
+<script>
+//    //$target 是 jquery 对象
+//    // 当窗口滚动时，如果$target 出现在可见区域，执行回调函数里面的代码，且在回调函数内，$(this)代表$target
+//    Expouse.bind($target, function(){
+//        console.log($(this));    // $target
+//    });
+    
+    $(window).on("scroll",function () {
+        var $target=$(".target");
+
+        if ($target.data("isrun")){
+            return
+        }
+
+        function isVisible($node) {
+            var scrollH=$(window).scrollTop(),
+                    $nodeOffsetH=$node.offset().top,
+                    $nodeHeight=$node.outerHeight(true),
+                    windowH=$(window).height();
+
+            if ((scrollH+windowH)>$nodeOffsetH &&(scrollH+windowH)<($nodeHeight+$nodeOffsetH) ){
+                return true
+            }else {return false}
+            
+        }
+        Expouse=(function(){
+            function bind(evt,callback) {
+                callback.call(evt)
+            }
+            return {
+                bind:bind
+            }
+
+        }());
+        if (isVisible($target)){
+            Expouse.bind($target, function(){
+                console.log($(this));    // $target
+            });
+            $target.data("isrun",true)
+
+        }
+        
+    });
+    
+    
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

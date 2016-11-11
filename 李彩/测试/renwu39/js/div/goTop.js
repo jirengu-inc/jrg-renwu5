@@ -24,7 +24,7 @@ define(["../lib/jquery.min"],function () {
                 }
                 if (canShow()){
                     goTopTr.show();
-                    $(".ct-nav").css({"background-color":"#333"})
+            
                 }
                 else {
                     goTopTr.hide();

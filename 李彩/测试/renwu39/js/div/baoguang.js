@@ -52,6 +52,7 @@ define(["../lib/jquery.min"],function () {
                     num=$cur1.index();
                 if (!isVisible($cur1)){
                     $(".nav li").eq(num).find("a").removeAttr("style");
+                    console.log("111")
                      return
                 }
                 if (isVisible($cur1)){
