@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>添加元素</title>
+    <style>
+        ul {
+            background-color: #ccc;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="ct">
+        <li>这里是</li>
+        <li>饥人谷</li>
+        <li>前端6班</li>
+    </ul>
+    <input class="add-content" placeholder="添加内容">
+    <button class="btn-add-start">开头添加</button>
+    <button class="btn-add-end">结尾添加</button>
+    <script>
+        var ul = document.querySelector('.ct'),
+          inputContent = document.querySelector('input'),
+          btnAddStart = document.querySelector('.btn-add-start'),
+          btnAddEnd = document.querySelector('.btn-add-end');
+
+        ul.addEventListener('click', function(e){
+          console.log(e.target.innerText);
+        });
+        btnAddStart.addEventListener('click', function(){
+          if( /\S/.test(inputContent.value) ){
+            var li = document.createElement('li');
+            li.innerText = inputContent.value;
+            ul.insertBefore(li, ul.firstChild);
+          }
+        });
+        btnAddEnd.addEventListener('click', function(){
+          if( /\S/.test(inputContent.value) ){
+            var li = document.createElement('li');
+            li.innerText = inputContent.value;
+            ul.appendChild(li);
+          }
+        });
+    </script>
+</body>
+</html>
