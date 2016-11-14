@@ -20,25 +20,30 @@
       front = document.querySelector('#btn-add-start'),
       rear = document.querySelector('#btn-add-end'),
       ipt = document.querySelector('.ipt-add-content');
-      // ipt = document.getElementsByName('input')
 
-  ct.addEventListener('click',function(e){
-    console.log(e.target.innerText)
-  });
+  function setValue(){
+    var newLi = document.createElement('li');
+    newLi.innerText = ipt.value;
+    return newLi;
+  }
 
-  // var textnode = document.createTextNode(ipt)
-  // newLi.appendChild(textnode)
 
   front.addEventListener('click',function(){
-    newLi = document.createElement('li'),
-    newLi.innerText = ipt.value
-    ct.insertBefore(newLi,ct.firstChild)
+    if(!ipt.value){
+      return -1;
+    }
+    ct.insertBefore(setValue(),ct.firstChild)
   });
 
   rear.addEventListener('click',function(){
-    newLi = document.createElement('li'),
-    newLi.innerText = ipt.value
-    ct.appendChild(newLi,ct.firstChild)
+    if(!ipt.value){
+      return -1;
+    }
+    ct.appendChild(setValue(),ct.firstChild)
+  });
+
+  ct.addEventListener('click',function(e){
+    console.log(e.target.innerText)
   });
 </script>
   </body>
