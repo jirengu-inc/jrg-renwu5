@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <button id="btn">点我</button>
+    <p id="content"></p>
+
+
+    <script>
+    	function ajax(opts){
+    		var xmlhttp=new XMLHttpRequest();
+    		xmlhttp.onreadystatechange=function(){
+    			if(xmlhttp.readyState===4 && xmlhttp.status===200){
+    				var json=JSON.parse(xmlhttp.responseText);
+    				opts.success(json);
+    			}
+    			if(xmlhttp.readyState===4 && xmlhttp===404){
+    				opts.error()
+    			}
+    		}
+
+    		var dataStr="";
+    		for(var key in opts.data){
+    			dataStr +=key + "=" + opts.data[key] + "&";
+    		}
+    		dataStr = dataStr.substr(0,dataStr.length-1);
+
+    		if(opts.type.toLowerCase()==="get"){
+    			xmlhttp.open("GET",opts.url+"?"+dataStr,true);
+    			xmlhttp.send();
+    		}
+
+    		if(opts.type.toLowerCase()==="post"){
+    			xmlhttp.open("POST",opts.url,true);
+    			xmlhttp.setRuquestHeader("Content-Type","application/x-www-form-urlencoded")
+    			xmlhttp.send(dataStr);
+    		}
+    	}
+
+        document.querySelector('#btn').addEventListener('click', function(){
+            ajax({
+                url: 'task24-1.php',   //接口地址
+                type: 'get',               // 类型， post 或者 get,
+                data: {
+                    username: 'xiaoming',
+                    password: 'abcd1234'
+                },
+                success: function(ret){
+                    console.log(ret);       // {status: 0}
+                    var content=document.querySelector("#content");
+                    content.innerText = '用户名:' + ret.username + ' 密码:' + ret.password
+                },
+                error: function(){
+                   console.log('出错了')
+                }
+            })
+        });
+    </script>
+</body>
+</html>
