@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	*{
+		box-sizing:border-box;
+		margin:0px;
+		padding: 0px;
+	}
+	h1{
+		margin-bottom: 20px;
+	}
+	#register{
+		/*border:1px solid;*/
+		margin:50px;
+	}
+	.regCt dt{
+		/*border: 1px solid;*/
+		float: left;
+		height: 25px;
+    	line-height: 25px;
+    	font-size: 14px;
+    	width:90px;
+	}
+	.regCt dd{
+		margin-left: 90px;
+	}
+	.regCt input{
+		height: 25px;
+	    line-height: 25px;
+	    padding-left: 10px;
+	    border-radius: 4px;
+	    border: 1px solid #ccc;
+	}
+	.regCt .error{
+		border-color: red;
+	}
+	.regCt .intro{
+		/*border: 1px solid;*/
+	    height: 10px;
+	    margin-top: 15px;
+	    margin-bottom: 15px;
+	    font-size: 12px;
+	    color: #aaa;
+	}
+</style>
+</head>
+<body1>
+	<div id="register">
+		<h1>注册</h1>
+		<form id="regForm" action>
+			<dl class="regCt">  <!--注意这里最好是用dl标签-->
+				<dt>用户名:</dt>
+				<dd><input id="username" type="text" placeholder="用户名hunger已注册"></dd>			
+				<dd class="intro intro_user">只能是字母、数值、下划线，3-10个字符</dd>
+
+				<dt>密码:</dt>	
+				<dd><input id="psdStart" type="password"></dd>
+				<dd class="intro intro_psd1">大写字母、小写、数字、下划线最少两种，6-15个字符</dd>
+
+				<dt>再输一次:</dt>
+				<dd><input id="psdAgain" type="password" placeholder="再输入一次密码"></dd>						
+				<dd class="intro intro_psd2"></dd>
+				<dd><button id="btn" type="button">注册</button></dd>			
+			</dl>
+		</form>
+	</div>
+    
+
+    <script>
+    	var username=document.querySelector("#username"),
+    		psdStart=document.querySelector("#psdStart"),
+    		psdAgain=document.querySelector("#psdAgain"),
+    		btn=document.querySelector("#btn"),
+    		intro_user=document.querySelector(".intro_user"),
+    		intro_psd1=document.querySelector(".intro_psd1"),
+    		intro_psd2=document.querySelector(".intro_psd2");
+
+    	username.addEventListener('change',function(){
+    		testName() && testUnValid(); //用户名要满足格式正确，不能重复注册
+    	});
+    	psdStart.addEventListener('change',function(){
+    		testPass1();  //密码1要满足格式正确，与密码2的输入相同
+    	});
+    	psdAgain.addEventListener('change',function(){
+    		testPass2(); //同理
+    	});
+    	btn.addEventListener('click',function(){ 
+    	//点击btn,执行函数时里面判断语句要用户名格式正确，两个密码格式也正确才会输出
+    		if(testName() && testPass1() && testPass2()){
+    			alert('registering....');
+    			console.log('registering.....')
+    		}
+    	});
+
+
+    	//检查用户名是否可用
+
+    	//解释：输入的用户名后，服务器接受用户名，然后判断是否重复用户名，如果是重复的话给浏览器一个数据，如果不重复给另外一个数据。浏览器通过给的数据进行判断，执行动作给出对应的提示
+    	function testUnValid(){
+    		ajax({   //立即执行函数ajax，参数是对象
+    			url:'task24-3.php',  //发送给服务器的地址
+    			type:'get',  //使用get方式发送，也就是地址后面加上数据的key=value的形式
+    			data:{  //发送的数据，值是对象
+    				username:username.value,
+    			},
+    			success:function(ret){  //服务器发送数据成功，ret就代表responseText
+    				if(ret=='1'){  //判断语句，如果后台发送的数据是1，证明用户名重复
+    					addClass(username,'error');  //添加error样式，框变红
+    					intro_user.innerText="用户名已经存在";  //框下面给出提示
+    				}else{
+    					removeClass(username,'error');  //否则证明用户名不重复
+    					intro_user.innerText="用户名可用";
+    				}
+    			},
+    			error:function(){  //这里是服务器发送数据失败
+    				console.log('出错了');
+    			}
+    		});
+    	}
+
+    	// 检查用户名格式是否正确
+    	function testName(){
+    		if(!isValidUn(username.value)){
+    			addClass(username,'error'); 
+    			intro_user.innerText='用户名格式不正确';
+    			return false;
+    		}else{
+    			removeClass(username,'error');
+    			intro_user.innerText='用户名可用';
+    			return true;
+    		}
+    	}
+
+    	//检查密码框1的格式是否正确，同理
+    	function testPass1(){
+    		if(!isValidPass(psdStart.value)){
+    			addClass(psdStart,'error');
+    			intro_psd1.innerText='密码格式不正确';
+    			return false;
+    		}else{
+    			removeClass(psdStart,'error');
+    			intro_psd1.innerText='';
+    			return true;
+    		}
+    	}
+
+    	//检查密码框2的密码是否与密码框1的密码相等
+    	function testPass2(){
+    		if(psdAgain.value !== psdStart.value){ //这里是不相等，怎样提示
+    			addClass(psdAgain,'error');  //添加error的样式，框变红
+    			intro_psd2.innerText='两次密码输入不一样'; //框下面的提示
+    			return false;  //返回false，使btn事件中的判断语句调用
+    		}else{
+    			removeClass(psdAgain,'error'); //否则删除error的样式
+    			intro_psd2.innerText='';  //框下面没有任何提示，表示值相等
+    			return true; //返回true，同上
+    		}
+    	}
+
+    	//这里检查用户名输入的是否满足要求
+    	function isValidUn(str){
+    		//合法的用户名, 3~10个字符，只能是字母，数字，下划线
+    		if(/^[A-Za-z_0-9]{3,10}$/.test(str)){
+    			return true;  //使用正则的test判断，满足要求就返回true
+    		}else{
+    			return false;
+    		}
+    	}
+
+		//这里检查密码输入是不是满足要求    	
+		function isValidPass(str){
+			//合法的密码, 6-15个字符，至少包括大写，小写，下划线，数字两种
+			if(str.length < 6 || str.length >15){
+				return false;
+			}
+			//如果包含上述四种以外的字符，false
+			if(/[^A-Za-z_0-9]/.test(str)){
+				return false;
+			}
+			//如果全为大写、小写、下划线、数字, false
+			if (/(^[a-z]+$)|(^[A-Z]+$)|(^_+$)|(^\d+$)/g.test(str)) {
+                return false;
+            }
+
+			return true;
+		}
+
+		//添加删除class
+		function addClass(ele,cls){
+			ele.className +=' '+cls;
+		}
+
+		function removeClass(ele,cls){
+			ele.className=ele.className.replace(new RegExp('\\b'+cls+'\\b','g'),'');
+		}
+
+
+		function ajax(opts){
+			var xhr;
+            if (window.XMLHttpRequest) { //IE7+,chrome,Safari,Opera,Firefox
+                xhr = new XMLHttpRequest();
+            } else {
+                xhr = new AcitveXObject("Microsoft.XMLHTTP"); //IE5,IE6
+            }
+			// var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState===4 && xhr.status===200){
+					var json=JSON.parse(xhr.responseText);
+					opts.success(json);
+				}
+				if(xhr.readState===4 && xhr.status===404){
+					opts.error();
+				}
+			}
+
+
+			var dataStr="";
+			for(var key in opts.data){
+				dataStr +=key + "=" + opts.data[key] + '&';
+			}
+			dataStr=dataStr.substr(0,dataStr.length-1);
+
+			if(opts.type.toLowerCase()==='get'){
+				xhr.open(opts.type,opts.url + "?" + dataStr,true);
+				xhr.send();
+			}
+			if(opts.type.toLowerCase()==='post'){
+				xhr.open(opts.type,opts.url,true);
+				xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+				xhr.send(dataStr);
+			}
+
+		}
+
+    </script>
+</body>
+</html>
