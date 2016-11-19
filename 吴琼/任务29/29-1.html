@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+	<style>
+		html,body,ul,li{
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			list-style: none;
+			margin: 30px 10px;
+		}
+		.go {
+			position: fixed;
+			right: 0;
+			bottom: 0;
+			display: none;
+			width: 84px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			border: 1px solid red;
+			border-radius: 2px;
+			cursor: pointer;
+		}
+		.inacive {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容3</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容4</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容6</li>
+	<li>内容7</li>	
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容3</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容4</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容1</li>
+	<li>内容6</li>
+	<li>内容7</li>	
+</ul>
+<div class="go">回到顶部</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+	var $go=$(".go");
+	$(window).on('scroll',function(){
+		var windowTop=$(window).scrollTop();
+		if(windowTop>100){
+			$go.show();
+		}else{
+			$go.hide();
+		}
+	})
+	$go.on('click',function(){
+		$(window).scrollTop(0);
+	})
+</script>
+</body>
+</html>

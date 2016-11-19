@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无缝轮播</title>
+	<style>
+		html,body,ul,li{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		html,body,.carousel,.img-ct{
+			width: 100%;
+			height: 100%
+		}
+		.carousel{
+			overflow: hidden;
+			position: relative;
+		}
+		.carousel .img-ct{
+			position: absolute;
+		}
+		.carousel .img-ct:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.img-ct li{
+			float: left;
+			position: relative;
+			height: 100%;
+		}
+		.cover{
+			position: absolute;
+			top:0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background-position: center center;
+			background-size: cover;
+		}
+		.carousel .arrow{
+			position: absolute;
+			background-color: #4E443C;
+			width: 30px;
+			line-height: 30px;
+			border-radius: 50%;
+			opacity: 0.6;
+			color: white;
+			text-align: center;	
+			top: 50%;
+			margin-top: -15px;
+		}
+		.carousel .next{
+			right: 20px;
+		}
+		.carousel .pre{
+			left: 20px;
+		}
+		.bullet{
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		.bullet li{
+			background-color: white;
+			width: 10px;
+			height: 10px;
+			display: inline-block;
+			cursor: pointer;
+		}
+		.bullet .active{
+			background: #4e443c;
+		}
+	</style>
+</head>
+<body>
+	<div class="carousel carousel1">
+		<ul class="img-ct">
+			<li><div class="cover" data-img="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></div></li>
+			<li><div class="cover" data-img="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></div></li>
+			<li><div class="cover" data-img="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></div></li>
+			<li><div class="cover" data-img="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></div></li>
+		</ul>
+		<a href="#" class="pre arrow"><</a>
+		<a href="#" class="next arrow">></a>
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		//function gun(carousel){
+			var $parent=$('.carousel');
+			var $ct=$parent.find('.img-ct');
+			var $imgs=$ct.children();
+			var $pre=$parent.find('.pre');
+			var $next=$parent.find('.next');
+			var $bullet=$parent.find('.bullet');
+			var $imgWidth=$(window).width();
+			var imgsCount=$imgs.length;
+			var curIdx=0;
+			var isCarousel=false;
+
+			$ct.append($imgs.first().clone());
+			$ct.prepend($imgs.last().clone());
+			var realCount=$ct.children().length;
+			$ct.find('li').css('width', $imgWidth);
+			$ct.find('cover').css('width', $imgWidth);
+			$ct.css({left: 0-$imgWidth, width: realCount*$imgWidth})
+
+
+			autoPlay();
+			setBg(1)
+			$ct.css({
+				'left':0-$imgWidth,
+				'width':realCount*$imgWidth
+			})
+
+			$next.on('click',function(){
+				playNext();
+			})
+			$pre.on('click',function(){
+				playPre();
+			})
+			$bullet.on('click','li',function(){
+				var idx=$(this).index();
+				console.log(idx-curIdx)
+				if(idx>curIdx){
+					playNext(idx-curIdx);
+				}else if(curIdx>idx){
+					playPre(curIdx-idx);
+				}
+			})
+			function playNext(idx){
+				var idx=idx||1;
+				if(!isCarousel){
+					isCarousel=true;
+					setBg(curIdx+2)
+					$ct.animate({left:'-='+($imgWidth*idx)},function(){
+						curIdx+=idx;
+						if(curIdx === imgsCount){
+							$ct.css({left: 0-$imgWidth});
+							curIdx = 0;
+						}
+						isCarousel=false;
+						setBullet()
+					})
+				}
+			}
+			function playPre(idx){
+				var idx=idx||1;
+				if(!isCarousel){
+					isCarousel=true;
+					setBg(curIdx);
+					$ct.animate({left:'+='+($imgWidth*idx)},function(){
+						curIdx-=idx;
+						if (curIdx===-1){
+							$ct.css({left:0-imgsCount*$imgWidth});
+							curIdx=3;
+						}
+						isCarousel=false;
+						setBullet();
+					})
+				}
+			}
+			function setBg(idx){
+					var idx = idx || 0,
+						$node = $ct.children().eq(idx)
+						$cover = $node.find('.cover'),
+						imgUrl = $cover.attr('data-img');
+					if($node.data('isBgSet')) return;
+					$cover.css('background-image', 'url('+imgUrl+')');
+					$node.data('isBgSet', true);
+					
+				}
+
+			function autoPlay(){
+				time=setInterval(function(){
+					playNext();
+				},1000)
+			}
+			function setBullet(){
+				$bullet.children().removeClass('active')
+								  .eq(curIdx).addClass('active');
+			}
+		//}
+		//gun('.carousel1');
+	</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>22-5</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .kuang{
+            width: 400px;
+            border: 1px solid #ccc;
+            margin: 100px 40%;
+            position: absolute;
+            z-index: 99;
+            background-color: #fff;
+            display: none;
+        }
+        .kuang-title{
+            font-size: 25px;
+            padding: 10px 5px 10px 20px;
+        }
+        .kuang-content{
+            font-size: 20px;
+            padding: 15px;
+
+        }
+        a{
+            text-decoration: none;
+            font-size: 20px;
+            color: #000;
+            font-weight: bolder;
+        }
+
+        .kuang>a{
+            display: inline-block;
+            vertical-align: middle;
+            float: right;
+            padding: 10px 20px 10px;
+
+
+        }
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear: both;
+
+        }
+        #zhezhao{
+            opacity: 0.5;
+            background-color: #777777;
+            height: 500px;
+            position: relative;
+            display: none;
+
+        }
+        .btn{
+            position: absolute;
+        }
+        #ct{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="ct">
+        <button class="btn">点我!</button>
+        <div class="kuang clearfix">
+            <h1 class="kuang-title">我是标题1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="close" href="#">X</a>  </h1>
+            <hr style="width:400px;" />
+            <h3 class="kuang-content">我是内容1</h3>
+            <h3 class="kuang-content">我是内容1</h3>
+            <hr style="width:400px;" />
+            <a class="close" href="#">确定</a> <a class="close" href="#">取消</a>
+        </div>
+        <div id="zhezhao"></div>
+    </div>
+
+    <script>
+        document.querySelector(".btn").addEventListener("click",function () {
+            document.querySelector("#zhezhao").style.display="block";
+            document.querySelector(".kuang").style.display="block";
+        });
+        document.querySelector("#zhezhao").addEventListener("click",function () {
+            document.querySelector("#zhezhao").style.display="none";
+            document.querySelector(".kuang").style.display="none";
+        });
+        document.querySelector(".kuang").addEventListener("click",function (event) {
+            if (hasClass (event.target, "close")){
+                document.querySelector("#zhezhao").style.display="none";
+                document.querySelector(".kuang").style.display="none";
+            }
+        });
+        function hasClass (ele, cls){
+            return !!ele.className.match(new RegExp('\\b'+cls+'\\b'));
+        }
+    </script>
+
+</body>
+</html>

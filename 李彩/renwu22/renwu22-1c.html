@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<body>
+<ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+</ul>
+<script>
+    var ulFather=document.getElementsByClassName("ct")[0];
+    ulFather.addEventListener("click",function (event) {
+        console.log(event.target.innerText);
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+/************** 通用样式 ****************/
+html, body, ul, li{
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #6CABDD;
+}
+hr {
+    width: 130px;
+}
+.layout {
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.btn-base {
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+    background-color: white;
+    color: black;
+}
+.btn1 {
+    width: 160px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #808184;
+    color: white;
+}
+.btn1:hover {
+    background-color: #6E7E85;
+}
+.btn2 {
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+}
+.btn2:hover {
+    background-color: lightgrey;
+}
+.btn3 {
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #999999;
+    color: white;
+}
+.btn3:hover {
+    background-color: #4C4C4C;
+}
+.btn4 {
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    background-color: white;
+    border: 1px solid transparent;
+}
+.btn4:hover {
+    background-color: #EEEEEE;
+}
+.btn5 {
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid transparent;
+    background-color: #1F496E;
+    color: white;
+}
+.btn5:hover {
+    background-color: #0F2436;
+}
+
+/****************header*******************/
+
+#header {
+    display: table;    
+    width: 100%;
+    height: 100%;
+    background: url('../img/bg.jpg') no-repeat;
+    background-size: cover;
+}
+#header .headline{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+#header h3 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+#header p {
+    font-size: 20px;
+}
+
+/**************intro*********************/
+
+#intro {
+    padding: 50px 0;
+}
+
+/***************skills*******************/
+
+#skills {
+    background-color: #337AB7;
+    color: white;
+    padding: 50px 0;
+}
+#skills h2 {
+    font-size: 30px;
+}
+#skills li {
+    float: left;
+    padding: 22px;
+}
+#skills span {
+    font-size: 100px;
+    line-height: 100px;
+}
+
+/*************description****************/
+
+#description {
+    padding: 200px 0;
+    background: url('../img/callout.jpg');
+    background-size: cover;
+}
+#description h2 {
+    font-size: 4rem;
+    color: white;
+}
+
+/*************projects*******************/
+
+#projects {
+    padding: 50px 0;
+}
+#projects ul {
+    margin-left: -40px;
+}
+#projects li {
+    float: left;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+#projects li img {
+    width: 460px;
+}
+#projects .layout a {
+    display: inline-block;
+    margin-top: 40px;
+}
+
+/***********self-evalution***************/
+
+#self-evaluation {
+    padding: 50px;
+    background-color: #337AB7;
+    color: white;
+}
+
+/*********personal-information***********/
+
+#personal-information {
+    padding: 70px 0;
+}
+#personal-information .icon ul {
+    float: left;
+    position: relative;
+    left: 50%;
+}
+#personal-information .icon li {
+    float: left;
+    /*display: inline-block;*/
+    /* 尝试不用 inline-block */
+    margin: 30px 5px;
+    display: block;
+    position: relative;
+    left: -50%;
+    /* 令浮动元素居中 */
+}
+#personal-information .icon span {
+    font-size: 50px;
+    color: #337AB7;
+}

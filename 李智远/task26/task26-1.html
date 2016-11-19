@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <title></title>
+    <style>
+      .btn{
+        width: 200px;
+        height: 50px;
+        margin-top: 50px;
+      }
+      .bac{
+        width: 300px;
+        height: 300px;
+        border: 1px solid;
+        margin: 40px 0;
+      }
+      .text{
+        outline: none;
+      }
+      .scroll{
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(255, 0, 0, 0.5);;
+        width: 100%;
+        text-align: center;
+        font-size: 20px;
+      }
+      .empty{
+        height: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroll">
+      滚动条距离顶部0像素
+    </div>
+    <button class="btn">
+      按钮
+    </button>
+    <div class="bac">
+      我是div
+    </div>
+    <input type="text" class="text" placeholder="输入"><br><br>
+    <select class="hobby" name="hobby">
+      <option value="swim">swim</option>
+      <option value="run">run</option>
+      <option value="computer">computer</option>
+    </select>
+    <input type="text" class="answer"><br><br>
+    <div class="empty">
+
+    </div>
+    <script>
+      $('.btn').on('click',function(){
+        $(this).css('background','red');
+        setTimeout(function(){
+          $('.btn').css('background','blue');//这里不鞥用this
+        },500);
+      })
+      $('.bac').on('mouseenter',function(){
+        $(this).css('background','red');
+      })
+      $('.bac').on('mouseleave',function(){
+        $(this).css('background','white');
+      })
+      $('.text').on('focus',function(){
+        $(this).css('border','1px solid blue')
+      })
+      $('.text').on('blur',function(){
+        $(this).css('border','1px solid #ccc')
+        console.log(this.value)
+      })
+      $('.text').on('keyup',function(){
+        $(this).val($(this).val().toUpperCase())
+      })
+      $('.hobby').on('change',function(){
+        $('.answer').val($(this).val())
+      })
+      $(window).scroll(function(){
+        $('.scroll').text('滚动条距离顶部'+ $(window).scrollTop() +'像素')
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <style>
+        ul,li,body,html{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .img-ct>li{
+            float: left;
+            width: 310px;
+
+        }
+        .img-ct{
+            position: absolute;
+        }
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .lunbo{
+            position: relative;
+            width: 310px;
+            height: 206px;
+            overflow: hidden;
+        }
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
+        .arrow{
+            width: 20px;
+            padding: 10px;
+            background-color: #4E443C;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: bolder;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .pre{
+            left: 10px;
+        }
+        .next{
+            right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="c1" class="lunbo">
+        <ul class="img-ct clearfix">
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/6.jpg" height="206" width="310"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/7.jpg" height="206" width="310"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/8.jpg" height="206" width="310"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/9.jpg" height="206" width="310"></a></li>
+        </ul>
+        <a class="pre arrow" href="#"><</a>
+        <a class="next arrow" href="#">></a>
+    </div>
+    <div id="c2" class="lunbo">
+        <ul class="img-ct">
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/6.jpg" height="206" width="310"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/7.jpg" height="206" width="310"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/8.jpg" height="206" width="310"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/9.jpg" height="206" width="310"></a></li>
+        </ul>
+        <a class="pre arrow" href="#"><</a>
+        <a class="next arrow" href="#">></a>
+    </div>
+
+    <script>
+
+        function Carousel($node){
+            this.$node=$node;
+            var $ct=this.$ct=$node.find(".img-ct");
+            var $liImg=$ct.children();
+            this.imgNum=$liImg.length;
+            this.imgWidth=$ct.children("li").width();
+            $ct.width(this.imgWidth*this.imgNum);
+            this.$next=$node.find(".next");
+            this.$pre=$node.find(".pre");
+            this.showMe();
+        }
+        Carousel.prototype={
+            showMe: function () {
+                var _this=this;
+                console.log(this);
+                this.$pre.on('click',function (e) {
+                    e.preventDefault();
+                    _this.playPre();
+                });
+
+                this.$next.on('click',function (e) {
+                    e.preventDefault();
+                    _this.playNext();
+                });
+            },
+            playNext: function (){
+                var $ct=this.$ct;
+                $ct.animate({"left":0-this.imgWidth},600,function () {
+                    $ct.append($ct.children().first());
+                    $ct.css("left",0);
+                });
+
+            },
+            playPre: function () {
+                var $ct=this.$ct;
+                $ct.prepend($ct.children().last());
+                $ct.css("left",0-this.imgWidth);
+                $ct.animate({"left":0},600);
+            }
+
+        };
+
+// 新建对象注意应该写在后面，不能提前写！
+    var c1 = new Carousel($('#c1'));
+    var c2 = new Carousel($('#c2'));
+
+// 或者使用遍历的方法
+//        $(".lunbo").each(function () {
+//            new Carousel($(this))
+//
+//        })
+
+    </script>
+
+
+
+    <!--<script>-->
+        <!--var $liImg=$('.img-ct').children(),-->
+                <!--imgNum=$liImg.length;-->
+        <!--$('.img-ct').append($liImg.first().clone());-->
+        <!--$('.img-ct').prepend($liImg.last().clone());-->
+        <!--var trueImgNum=$('.img-ct').children().size(),-->
+                <!--imgWidth=$('.img-ct li').width();-->
+        <!--$('.img-ct').width(imgWidth*trueImgNum);-->
+        <!--$('.img-ct').css({"left":0-imgWidth});-->
+        <!--var i=1,-->
+                <!--clock=false;-->
+
+        <!--$(".next").on('click',function () {-->
+            <!--if (clock){return}-->
+            <!--clock=true;-->
+            <!--playNext();-->
+            <!--setTimeout(function () {-->
+                <!--clock=false;-->
+            <!--},600)-->
+        <!--});-->
+
+        <!--function playNext() {-->
+            <!--if (i===imgNum+1){-->
+                <!--$('.img-ct').css("left",0-imgWidth);-->
+                <!--i=1;-->
+            <!--}-->
+            <!--$('.img-ct').animate({"left":0-imgWidth*(i+1)},600);-->
+            <!--i=i+1;-->
+            <!--console.log("我是playNext"+i);-->
+        <!--}-->
+        <!--function playPre() {-->
+            <!--i = i - 1;-->
+            <!--if (i === -1) {-->
+                <!--$('.img-ct').css("left", 0 - imgWidth * imgNum);-->
+                <!--i = imgNum - 1;-->
+            <!--}-->
+            <!--$('.img-ct').animate({"left":0-imgWidth*i},600);-->
+            <!--console.log("我是playPre"+i);-->
+        <!--}-->
+
+        <!--$(".pre").on('click',function () {-->
+            <!--if (clock){return}-->
+            <!--clock=true;-->
+            <!--playPre();-->
+            <!--setTimeout(function () {-->
+                <!--clock=false;-->
+            <!--},600)-->
+        <!--});-->
+
+    <!--</script>-->
+
+</body>
+</html>

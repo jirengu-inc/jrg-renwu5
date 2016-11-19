@@ -1,0 +1,36 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<ul class="ct">
+			<li data-img="http://photo.enterdesk.com/2011-9-27/enterdesk.com-EBB1CC064B1CC16FFAB5DA0C2B1F4A75.jpg">鼠标放置查看图片1</li>
+			<li data-img="http://www.rudn.cn/uploadfiles/201406/20140605175939615.jpg">鼠标放置查看图片2</li>
+			<li data-img="http://img1.imgtn.bdimg.com/it/u=1768238249,4006504938&fm=206&gp=0.jpg">鼠标放置查看图片3</li>
+		</ul>
+		<div class="img-preview"></div>
+		<script>
+	/*
+	var ct = document.querySelector('.ct'),
+	li = ct.querySelectorAll('li'),
+	preview = document.querySelector('.img-preview');
+	for(var i = 0;i < li.length;i++){
+		li[i].addEventListener('mouseover',function(e){
+			var imgAdress = e.target.getAttribute('data-img');
+			preview.innerHTML = '<img src = "'+imgAdress+'">'
+		});
+	}*/
+	var ct = document.querySelector('.ct'),
+	imgPreview = document.querySelector('.img-preview'),
+
+	Img = document.createElement('img');
+	ct.addEventListener('mouseover',function(e){
+		var imgAdress = e.target.getAttribute('data-img');
+		Img.setAttribute('src',imgAdress);
+		imgPreview.appendChild(Img);
+	})
+	</script>
+	</body>
+	</html>

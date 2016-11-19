@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>1</title>
+	<style>
+		html,body {
+			margin: 0;
+			padding: 0;
+		}
+		.cover {
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+<div class="cover">
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+	function isVisible($node){
+		var nodeLeft=$node.offset().left,
+		 nodeTop=$node.offset().top,
+		 height=$node.height(),
+		 windowHeight=$(window).height();
+		if(nodeTop>=0&&nodeTop+height<=windowHeight){
+			console.log('在可视范围内');
+		}else{
+			console.log('不在可视范围内')
+		}
+	}
+	var $node=$('.cover');
+	isVisible($node);
+</script>
+</body>
+</html>

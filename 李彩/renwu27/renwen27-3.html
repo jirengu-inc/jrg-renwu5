@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>27-3无限轮播</title>
+    <style>
+        ul,li{
+            list-style: none;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .ct-img>li{
+            float: left;
+            width: 310px;
+            height: 210px;
+
+
+        }
+        .ct-img{
+            position: absolute;
+
+        }
+        img{
+            width: 310px;
+            height: 210px;
+        }
+
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .ct-bottom>li{
+            border-bottom: 5px solid #555;
+            float: left;
+            cursor: pointer;
+            width: 20px;
+            margin: 0 5px;
+            border-radius: 2px;
+        }
+        .ct-bottom{
+            position: absolute;
+            top: 180px;
+            left: 95px;
+        }
+        .ct{
+            position: relative;
+            height: 210px;
+            width: 310px;
+            overflow: hidden;
+
+        }
+        a.change{
+            text-decoration: none;
+            font-size: larger;
+            font-weight: 900;
+            background-color: #666;
+            color: #fff;
+            display: inline-block;
+            vertical-align: middle;
+            padding: 15px;
+            width: 10px;
+            height: 10px;
+            line-height: 10px;
+            border-radius: 25px;
+            opacity: 0.7;
+        }
+        a.pre{
+            position: absolute;
+            left: 10px;
+            top: 80px;
+        }
+        a.next{
+            position: absolute;
+            left: 250px;
+            top: 80px;
+        }
+        a.change:hover{
+            background-color: #444;
+        }
+
+    </style>
+</head>
+<body>
+<div class="ct">
+    <ul class="clearfix ct-img">
+        <li data-nub="0"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></a></li>
+        <li data-nub="1"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></a></li>
+        <li data-nub="2"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg"></a></li>
+        <li data-nub="3"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg"></a></li>
+    </ul>
+    <ul class="ct-bottom clearfix">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <a href="####" class="pre change"> < </a>
+    <a href="####" class="next change"> > </a>
+
+</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    var imgWidth=$(".ct-img").children().width(),
+            clock=false,
+            nextClock=false,
+           $liImg=$(".ct-img").children(),
+           imgCount=$liImg.size();
+
+    $(".ct-img").append($liImg.first().clone());
+    $(".ct-img").prepend($liImg.last().clone());
+    imgTrueCount=$(".ct-img").children().length;
+    $(".ct-img").css({"left":0-imgWidth,"width":imgTrueCount*imgWidth});
+
+
+
+
+    function showMe(num) {
+        if (clock){return}
+        clock=true;
+        if (-1<num<imgCount){
+            $(".ct-bottom").children().eq(num).css("border-bottom-color","white");
+            $(".ct-bottom").children().eq(num).siblings().css("border-bottom-color","#555");
+            $(".ct-img").animate({left:"-"+imgWidth*(num+1)});
+        }
+        if (num===imgCount){
+            $(".ct-img").animate({"left":"-"+imgWidth*(imgCount+1)},function () {
+                $(".ct-img").css("left",0-imgWidth);
+            });
+            $(".ct-bottom").children().eq(0).css("border-bottom-color","white");
+            $(".ct-bottom").children().eq(0).siblings().css("border-bottom-color","#555");
+
+        }
+        if (num===-1){
+            $(".ct-img").animate({"left":"0"},function () {
+                $(".ct-img").css("left",0-imgWidth*imgCount);
+
+            });
+            $(".ct-bottom").children().eq(imgCount-1).css("border-bottom-color","white");
+            $(".ct-bottom").children().eq(imgCount-1).siblings().css("border-bottom-color","#555");
+
+        }
+
+        myIndex=num;
+        clock=false;
+        nextClock=false;
+        return myIndex;
+    }
+
+    function playNext() {
+        if (myIndex===imgCount){
+            myIndex=0;
+            showMe(myIndex+1);
+            return ;
+        }
+        showMe(myIndex+1);
+
+    }
+
+    function playPre() {
+
+        if (myIndex===-1){
+            myIndex=imgCount-2;
+            showMe(myIndex);
+            return ;
+        }
+        showMe(myIndex-1)
+    }
+
+
+    $(".next").on("click",function () {
+
+           clearTimeout(timing);
+            playNext();
+            circulate();
+    });
+
+    $(".pre").on("click",function () {
+        clearTimeout(timing);
+        playPre();
+        circulate();
+
+    });
+
+    showMe(0);
+
+    circulate();
+
+    function circulate() {
+        timing=setTimeout(function () {
+            playNext();
+            circulate();
+        },3000);
+    }
+
+
+    $(".ct-bottom").children().on("click", function () {
+        clearTimeout(timing);
+        var $cur = $(this),
+                indexNum = $cur.index();
+        if (indexNum===0){
+            showMe(imgCount);
+        }
+        else   showMe(indexNum);
+        circulate();
+    });
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #gotop{
+            border: 1px solid red;
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            padding: 10px;
+        }
+        #gotop:hover{
+            background: #ccc;
+            cursor: pointer;
+        }
+        .content{
+            margin: 0 auto;
+            height: 2000px;
+            width: 300px;
+            background-color: #ccc;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content">
+
+    </div>
+    <div class="footer"></div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        function GoTop($node) {
+            this.ct = $node;
+            this.target = $('<div id="gotop">回到顶部</div>')
+            this.init();
+        }
+        GoTop.prototype = {
+            init: function () {
+                this.create();
+                this.bind();
+            },
+            create: function () {
+                this.ct.append(this.target);
+            },
+            bind: function () {
+                var _this = this;
+                $(window).on('scroll',function () {
+                    if($(this).scrollTop()>400){
+                        _this.target.show();
+                    }else{
+                        _this.target.hide();
+                    }
+                });
+                this.target.on('click',function () {
+                    $(window).scrollTop(0);
+                })
+            }
+        }
+        var scroll  = new GoTop($('.footer'))
+    </script>
+</body>
+</html>

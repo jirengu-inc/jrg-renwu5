@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p{
+            line-height: 3;
+        }
+        div.ct{
+            position: relative;
+        }
+        div.goTop{
+            position: fixed;
+            top: 560px;
+            left: 1200px;
+            border: 1px solid red;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: none;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    <div class="ct">
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+        <p>内容1</p>
+        <p>内容2</p>
+        <p>内容3</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容2</p>
+        <p>内容3</p>
+        <p>内容1</p>
+        <p>内容2</p>
+        <p>内容3</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容1</p>
+        <p>内容2</p>
+        <p>内容3</p>
+        <p>内容1</p>
+        <p>内容2</p>
+        <p>内容3</p>
+    <div class="goTop">回到顶部</div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        $(window).on("scroll",function () {
+            if  (canShow()){
+                $(".goTop").css("display","block");
+
+            }
+            else {
+                $(".goTop").css("display","none");
+            }
+        });
+        $(".goTop").on("click",function () {
+            $(window).scrollTop(0);
+        });
+
+        function canShow() {
+            var winH=$(window).height(),
+                scrollH=$(window).scrollTop();
+
+            if ( scrollH > winH ){
+                return true;
+            }
+            else {
+                return false
+            }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>2</title>
+	<style>
+		html,body {
+			margin: 0;
+			padding: 0;
+		}
+		div {
+			width: 100px;
+			height: 500px;
+			background: red;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+<div class="cover">
+</div>
+<div class="nav">
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+function isVisible($node){
+var nodeLeft=$node.offset().left,
+		 nodeTop=$node.offset().top,
+		 height=$node.height(),
+		 windowHeight=$(window).height();
+		 console.log(nodeTop);
+		 console.log(windowHeight);
+$(window).on('scroll',function(){
+	var windowTop=$(window).scrollTop(),
+	nodeToTop=nodeTop-windowTop;
+	if(nodeToTop>=0&&nodeTop+height<=windowHeight){
+			console.log('true');
+		}else{
+			console.log('不在可视范围内')
+		}
+})
+}
+var $node=$('.cover');
+	isVisible($node);		
+</script>
+</body>
+</html>

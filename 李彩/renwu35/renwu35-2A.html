@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div.goToTop{
+            position: fixed;
+            top: 560px;
+            left: 1200px;
+            border: 1px solid red;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+</head>
+<body>
+<div class="ct">
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+    <p>内容1</p>
+    <p>内容2</p>
+    <p>内容3</p>
+</div>
+
+    <script>
+
+//        function goTop(ct) {
+//            this.ct=ct;
+//            this.target=$('<div class="goToTop">回到顶部</div>');
+//            var goTopCt=this.ct,
+//                goTopTr=this.target;
+//
+//            function canShow() {
+//                var windowH=$(window).height(),
+//                        scrollH=$(window).scrollTop();
+//                if (scrollH>windowH){
+//                    return true;
+//                }
+//                else {return false}
+//            }
+//            this.createNode=(function (){
+//                $(goTopCt).append(goTopTr)
+//            }());
+//            this.bindEvent=(function () {
+//                $(window).on("scroll",function () {
+//                    if (canShow()){
+//                        goTopTr.show()
+//                    }
+//                    else {goTopTr.hide()}
+//                }) ;
+//                goTopTr.on('click',function () {
+//                    $(window).scrollTop(0)
+//                });
+//            }());
+//        }
+        function goTop(ct) {
+            this.ct=ct;
+            this.target=$('<div class="goToTop">回到顶部</div>');
+            var goTopCt=this.ct,
+                    goTopTr=this.target;
+
+            function canShow() {
+                var windowH=$(window).height(),
+                        scrollH=$(window).scrollTop();
+                if (scrollH>windowH){
+                    return true;
+                }
+                else {return false}
+            }
+
+            this.createNode=function (){
+                $(goTopCt).append(goTopTr)
+            };
+            this.createNode();
+
+            this.bindEvent=function () {
+                $(window).on("scroll",function () {
+                    if (canShow()){
+                        goTopTr.show()
+                    }
+                    else {goTopTr.hide()}
+                }) ;
+                goTopTr.on('click',function () {
+                    $(window).scrollTop(0)
+                });
+            };
+            this.bindEvent();
+        }
+        var GoTop1= new goTop('.ct');
+
+
+
+    </script>
+
+</body>
+</html>

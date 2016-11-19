@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作</title>
+		<style>
+		button {
+			border: 1px solid #ccc;
+		}
+		button:focus {
+			outline: none;
+		}
+		input:focus {
+			border: 1px solid blue;
+		}
+		div {
+			width: 400px;
+			height: 100px;
+			border: 1px solid #ccc;
+			margin-bottom: 10px;
+			padding: 10px;
+		}
+		#question2 {
+			position: fixed;
+			top: 0px;
+			left: 50%;
+			width: 150px;
+			background: green;
+		}
+			</style>
+</head>
+<body>
+<div>
+    <p>操作数据</p>
+    <button id="button">按钮</button>
+</div>
+<div id="question2">
+    <p id="setdistance">垂直滚动距离0px</p>
+</div>
+<div id="question3">
+	<h3>标题</h3>
+    <p>操作数据</p>  
+</div>
+<div id="question4">
+    <p>操作数据</p>
+    <input type="text" id="select4">
+</div>
+<div id="question5">
+	<h3>操作数据</h3>
+   <select id="choose">
+		 <option value ="volvo">Volvo</option>
+		<option value ="saab">Saab</option>
+		<option value="opel">Opel</option>
+		<option value="audi">Audi</option>
+	 </select>
+	 <span id="show">显示</span>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script src="jquery-ui.min.js"></script>
+<script>
+    $("#button").on('click',function(){
+        $("#button").animate({backgroundColor:'red'},400,function(){
+				$("#button").css("background-color","red")
+					$("#button").css("background-color","blue")
+				});
+    });
+		$(window).scroll(function() {  
+       $("#setdistance").html("垂直滚动距离"+ $(window).scrollTop()+'px')
+    });  
+		$("#question3").on("mouseover",function(){
+			$("#question3").css("background-color","red");
+		})
+		$("#question3").on("mouseout",function(){
+			$("#question3").css("background-color","white");
+		})
+		$("#select4").on('keyup',function(){
+			$("#select4").val($("#select4").val().toUpperCase());
+		})
+		$("#choose").on('click',function(e){
+			$("#show").html($("#choose").val());
+		})
+	  
+    
+	
+	
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>-2</title>
+	<style>
+		html,body,ul,li {
+			margin: 0;
+			padding: 0;
+		}
+		a {
+			text-decoration: none;
+		}
+		a,img {
+			display: block;
+		}
+		li {
+			list-style: none;
+		}
+		#hello {
+			text-align: center;
+
+		}
+		ul.basic1,ul.basic {
+			width: 720px;
+			padding: 10px;
+			margin: 0px auto;
+		}
+		ul:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.basic li,.basic1 li,.last li{
+			float: left;
+			margin: 0 10px;
+		}
+		.inactive {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<ul class="basic1">
+	<li><a href="javascript:void(0)"><img src="girl.jpg" data-src="girl.jpg" alt="女孩1"></a></li>
+	<li><a href="javascript:void(0)"><img src="girl.jpg" data-src="girl.jpg" alt="女孩2"></a></li>
+	<li><a href="javascript:void(0)"><img src="girl.jpg" data-src="girl.jpg" alt="女孩3"></a></li>
+</ul>
+<ul class="basic">
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩4"></a></li>
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩5"></a></li>
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩6"></a></li>
+</ul>
+<ul class="basic">
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩7"></a></li>
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩8"></a></li>
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩9"></a></li>
+</ul>
+<ul class="basic">
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩10"></a></li>
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩11"></a></li>
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩12"></a></li>
+</ul>
+<ul class="basic">
+	<p id="hello">hello</p>
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩13"></a></li>
+	
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩14"></a></li>
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩15"></a></li>
+</ul>
+<ul class="basic">
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩16"></a></li>
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩17"></a></li>
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩18"></a></li>
+</ul>
+<ul class="basic">
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩19"></a></li>
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩20"></a></li>
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩21"></a></li>
+</ul>
+<ul class="basic">
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩22"></a></li>
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩23"></a></li>
+	<li><a href="javascript:void(0)"><img src="blank.jpg" data-src="girl.jpg" alt="女孩24"></a></li>
+</ul>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+	var $body=$('body'),$basic=$('.basic');
+	var windowHeight=$(window).outerHeight();
+	var basicHeight=$basic.height();
+	<!-- console.log(windowHeight); -->
+	var arr=new Array();
+		for(var i=0;i<$basic.length;i++){
+			arr[i]=$basic.eq(i).offset().top;
+		}
+			console.log(arr[0]);
+		$(window).on('scroll',function(){
+				function show(){
+					var windowTop=$(window).scrollTop();
+					console.log('和:'+(windowTop+windowHeight));
+					for(var i=0;i<$basic.length;i++){
+					if(arr[i]<(windowTop+windowHeight))
+			{
+					console.log('这是:'+$basic.eq(i).find('img').attr('src'));
+					console.log($basic.eq(i).html());
+					$basic.eq(i).find('img').attr('src',$basic.eq(i).find('img').attr('data-src'));
+					}
+				}
+				}
+			clock=setTimeout(show,300);
+		})
+</script>
+</body>
+</html>

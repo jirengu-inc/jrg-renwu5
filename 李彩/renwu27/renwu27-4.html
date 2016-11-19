@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>27-4无限轮播</title>
+    <style>
+        ul,li{
+            list-style: none;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body,html,.wrap,.ct-bg{
+            width: 100%;
+            height: 100%;
+        }
+        .wrap{
+            position: relative;
+            overflow: hidden;
+
+        }
+        .ct-bg{
+            position: absolute;
+
+        }
+
+        .ct-bg>li{
+            float: left;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+        .bg{
+            background-image:url("http://cdn.jirengu.com/book.jirengu.com/img/6.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+
+        }
+
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .ct-bg .ct-text{
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .ct-text>h1{
+            padding-bottom: 20px;
+        }
+
+        .ct-bottom{
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .ct-bottom>li{
+            border-bottom: 5px solid #555;
+            float: left;
+            cursor: pointer;
+            width: 20px;
+            margin: 0 5px;
+            border-radius: 2px;
+        }
+
+
+        a.change{
+            text-decoration: none;
+            font-size: larger;
+            font-weight: 900;
+            background-color: #666;
+            color: #fff;
+            display: inline-block;
+            vertical-align: middle;
+            padding: 15px;
+            width: 10px;
+            height: 10px;
+            line-height: 10px;
+            border-radius: 25px;
+            opacity: 0.7;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        a.pre{
+            left: 50px;
+        }
+        a.next{
+            right: 50px;
+        }
+        a.change:hover{
+            background-color: #444;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <ul class="clearfix ct-bg">
+        <li>
+            <div class="bg" data-bg="http://cdn.jirengu.com/book.jirengu.com/img/6.jpg"></div>
+            <div class="ct-text">
+            <h1>我是第一张</h1>
+            <h3>我是标题</h3>
+            </div>
+        </li>
+        <li>
+            <div class="bg" data-bg="http://cdn.jirengu.com/book.jirengu.com/img/7.jpg"></div>
+            <div class="ct-text">
+                <h1>我是第二张</h1>
+                <h3>我是标题</h3>
+            </div>
+        </li>
+        <li>
+            <div class="bg" data-bg="http://cdn.jirengu.com/book.jirengu.com/img/8.jpg"></div>
+            <div class="ct-text">
+                <h1>我是第三张</h1>
+                <h3>我是标题</h3>
+            </div>
+        </li>
+        <li>
+            <div class="bg" data-bg="http://cdn.jirengu.com/book.jirengu.com/img/9.jpg"></div>
+            <div class="ct-text">
+                <h1>我是第四张</h1>
+                <h3>我是标题</h3>
+            </div>
+        </li>
+
+    </ul>
+    <ul class="ct-bottom clearfix">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <a href="####" class="pre change"> < </a>
+    <a href="####" class="next change"> > </a>
+
+</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+
+    var bgLiWidth=$(".ct-bg").children().width(),
+            clock=false,
+            nextClock=false,
+            $bgLi=$(".ct-bg").children(),
+            bgCount=$bgLi.size();
+
+    $(".ct-bg").append($bgLi.first().clone());
+    $(".ct-bg").prepend($bgLi.last().clone());
+    bgTrueCount=$(".ct-bg").children().length;
+    $(".ct-bg").css({"left":0-bgLiWidth,"width":bgTrueCount*bgLiWidth});
+    $(".ct-bg").children().width(bgLiWidth);
+
+
+    function showMe(num) {
+        if (clock){return}
+        clock=true;
+        if (-1<num<bgCount){
+            $(".ct-bottom").children().eq(num).css("border-bottom-color","white");
+            $(".ct-bottom").children().eq(num).siblings().css("border-bottom-color","#555");
+            $(".ct-bg").animate({left:"-"+bgLiWidth*(num+1)});
+
+            isSetBgUrl();
+            function isSetBgUrl() {
+                if ($(".bg").eq(num+1).data("setBgUrl"))  {return;}
+                else {trueBgUrl=$(".ct-bg .bg").eq(num+1).attr("data-bg");
+                    $(".bg").eq(num+1).css("background-image",'url('+trueBgUrl+')');
+                    $(".bg").eq(num+1).data("setBgUrl",true) ;
+                }
+            }
+
+
+
+        }
+        if (num===bgCount){
+            $(".ct-bg").animate({"left":"-"+bgLiWidth*(bgCount+1)},function () {
+                $(".ct-bg").css("left",0-bgLiWidth);
+            });
+            $(".ct-bottom").children().eq(0).css("border-bottom-color","white");
+            $(".ct-bottom").children().eq(0).siblings().css("border-bottom-color","#555");
+
+        }
+        if (num===-1){
+            $(".ct-bg").animate({"left":"0"},function () {
+                $(".ct-bg").css("left",0-bgLiWidth*bgCount);
+
+            });
+            $(".ct-bottom").children().eq(bgCount-1).css("border-bottom-color","white");
+            $(".ct-bottom").children().eq(bgCount-1).siblings().css("border-bottom-color","#555");
+
+        }
+
+        myIndex=num;
+        clock=false;
+        nextClock=false;
+        return myIndex;
+    }
+
+    function playNext() {
+        if (myIndex===bgCount){
+            myIndex=0;
+            showMe(myIndex+1);
+            return ;
+        }
+        showMe(myIndex+1);
+
+    }
+
+    function playPre() {
+
+        if (myIndex===-1){
+            myIndex=bgCount-2;
+            showMe(myIndex);
+            return ;
+        }
+        showMe(myIndex-1)
+    }
+
+
+    $(".next").on("click",function () {
+
+        clearTimeout(timing);
+        playNext();
+        circulate();
+    });
+
+    $(".pre").on("click",function () {
+        clearTimeout(timing);
+        playPre();
+        circulate();
+
+    });
+
+    showMe(0);
+
+    circulate();
+
+    function circulate() {
+        timing=setTimeout(function () {
+            playNext();
+            circulate();
+        },3000);
+    }
+
+
+    $(".ct-bottom").children().on("click", function () {
+        clearTimeout(timing);
+        var $cur = $(this),
+                indexNum = $cur.index();
+        if (indexNum===0){
+            showMe(bgCount);
+        }
+        else   showMe(indexNum);
+        circulate();
+    });
+
+
+</script>
+
+</body>
+</html>

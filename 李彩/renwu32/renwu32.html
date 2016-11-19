@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>32</title>
+    <style>
+        html,body,ul,li,p,div{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #wrap{
+            width: 900px;
+            margin: 0 auto;
+        }
+        .content{
+            border: 1px solid #ccc;
+            width: 280px;
+            padding-bottom: 10px;
+            margin: 10px;
+            text-align: center;
+            position: absolute;
+
+        }
+        .ct{
+            position: relative;
+        }
+        h4{
+            border-bottom: 1px solid #ccc;
+            height: 25px;
+            margin: 0 12px;
+        }
+        p{
+            font-size: 12px;
+            line-height: 1.8;
+            color: #777371;
+            margin: 10px 10px 0 0;
+        }
+        img{
+            margin: 10px;
+        }
+
+        .clearfix:after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .hide{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="waterfall clearfix">
+            <ul class="ct clearfix">
+                <!--<li class="content">-->
+                    <!--<a href="http://www.sinaimg.cn/dy/slidenews/5_t160/2016_42/453_82059_144634.jpg"><img src="http://s.img.mix.sina.com.cn/auto/resize?img=http%3A%2F%2Fwww.sinaimg.cn%2Fdy%2Fslidenews%2F5_img%2F2016_09%2F453_75615_657883.jpg&size=250_0" alt="pic">-->
+                    <!--</a>-->
+                    <!--<h4>神舟十一号飞船发射圆满成功</h4>-->
+                    <!--<p>10月17日7时30分，搭载神舟十一号载人飞船的长征二号F 遥十一运载火箭点火发射。</p>-->
+                <!--</li>-->
+                <li class="content hide"></li>
+            </ul>
+            <div class="load">看见我了请马上加载数据</div>
+        </div>
+
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        // 1、判断。load是否出现在用户视线中
+        //2、出现了则利用ajax的方式从后台获取数据
+
+
+        function isVisible($node) {
+
+           var scrollH=$(window).scrollTop(),
+                   winH=$(window).height(),
+                   nodeOffset=$node.offset().top;
+
+            if ((scrollH+winH)>=nodeOffset){
+                return true
+            }
+            else {return false}
+        }
+
+        var perPageCount=9,
+                curPage=1;
+        function getAndPlaceData() {
+            if (isVisible($(".load"))){
+                $.ajax({
+                    url:"http://platform.sina.com.cn/slide/album_tech",
+                    dataType: 'jsonp',
+                    jsonp:"jsoncallback",
+                    data:{
+                        app_key:"1271687855",
+                        num: perPageCount,
+                        page:curPage
+                    }
+                }).done(function (ret) {
+                    if (ret && ret.status && ret.status.code === "0"){
+                        placeData(ret.data);
+                    }else{console.log("get ajax data error1")}
+                    
+                })
+                 .fail(function () {
+                            console.log("get ajax data error2")
+                 })
+            }
+        }
+
+        //3、将获取的数据append到ul中 待图片加载完成，使用瀑布流的方式放置元素
+
+        function placeData(nodelist) {
+            var $nodes=renderData(nodelist);
+            var arr=[];
+            $nodes.find("img").each(function () {
+                var defer = $.Deferred();
+                $(this).load(function () {
+                    defer.resolve()
+                });
+                arr.push(defer)
+            });
+
+            $.when.apply(null,arr).done(function () {
+                console.log("all pic loaded");
+                waterFall($nodes)
+            })
+
+        }
+
+        function renderData(data) {
+            var str="",
+                $nodes;
+            for (var i=0;i<data.length;i++){
+                str+='<li class="content">';
+                str+='<a href="'+data[i].url+'"><img src="'+data[i].img_url+'" alt=""></a>';
+                str+='<h4>'+data[i].short_name+'</h4>';
+                str+='<p>'+data[i].short_intro+'</p>';
+                str+='</li>';
+            }
+            $nodes=$(str);
+            $(".ct").append($nodes);
+            return $nodes;
+        }
+
+        var widthNum=parseInt($("#wrap").width()/$(".content").outerWidth(true)),
+                allHeight=[];
+
+        for (var i=0;i<widthNum;i++){
+            allHeight.push(0)
+        }
+
+
+        function waterFall($nodes) {
+
+            $($nodes).each(function () {
+                var $cur=$(this),
+                        indx=0,
+                        minAllHeight=allHeight[0];
+                for (var j=0;j<allHeight.length;j++){
+                    if (allHeight[j]<minAllHeight){
+                        minAllHeight=allHeight[j];
+                        indx=j;
+                    }
+                }
+
+                $cur.css({
+                    "left":indx*$cur.outerWidth(true),
+                    "top":minAllHeight
+                });
+                allHeight[indx]=minAllHeight+$cur.outerHeight(true);
+                $(".ct").height(Math.max.apply(null,allHeight));
+            })
+
+        }
+
+        getAndPlaceData();
+
+        $(window).on("scroll",function () {
+            getAndPlaceData();
+
+        })
+
+    </script>
+
+
+</body>
+</html>

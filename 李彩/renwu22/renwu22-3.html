@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<body>
+<ul class="ct">
+    <li data-img="http://upload.jianshu.io/users/upload_avatars/2166980/72fe41a69002.jpg?imageMogr/thumbnail/90x90/quality/100">鼠标放置查看图片1</li>
+    <li data-img="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png">鼠标放置查看图片2</li>
+    <li data-img="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1999384084,3417290255&fm=80">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+<img src="" alt="">
+<script>
+    document.querySelector(".ct").addEventListener("mouseover",function (event) {
+        var picUrl=event.target.getAttribute("data-img");
+        document.querySelector(".img-preview").innerHTML='<img src=" '+ picUrl + ' ">';
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>测试</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            ul,li{
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 0;
+
+            }
+            li{
+                list-style: none;
+                border: 1px solid #1a1a1a;
+                font-size: 20px;
+                padding: 10px 10px;
+                width: 200px;
+                text-align: center;
+                cursor: pointer;
+            }
+            .down{
+                border: 1px solid #1a1a1a;
+                width: 600px;
+                height: 200px;
+            }
+            .content{
+                display: none;
+            }
+            .down>.active{
+                display: block;
+            }
+            .ctTab>.active{
+                background-color: #ccc;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div id="wrap">
+            <ul class="ctTab">
+                <li class="tab active">tab1</li>
+                <li class="tab">tab2</li>
+                <li class="tab">tab3</li>
+            </ul>
+            <div class="down">
+                <div class="content active">内容1</div>
+                <div class="content">内容2</div>
+                <div class="content">内容3</div>
+            </div>
+        </div>
+
+        <script>
+            var Utils = {
+
+                hasClass: function(ele, cls){
+                    return !!ele.className.match(new RegExp('\\b'+cls+'\\b'));
+                },
+
+                addClass:function(ele, cls){
+                    if(ele.length && ele.length > 0){
+                        for(var i=0; i<ele.length; i++){
+                            Utils.singleAddClass(ele[i], cls);
+                        }
+                    }else{
+                        Utils.singleAddClass(ele, cls);
+                    }
+                },
+
+                removeClass:function(ele, cls){
+                    if(ele.length && ele.length > 0){
+                        for(var i=0; i<ele.length; i++){
+                            Utils.singleRemoveClass(ele[i], cls);
+                        }
+                    }else{
+                        Utils.singleRemoveClass(ele, cls);
+                    }
+                },
+
+                singleAddClass: function(ele, cls){
+                    if(Utils.hasClass(ele,cls)) return;
+                    ele.className += ' ' + cls;
+                },
+
+                singleRemoveClass: function(ele, cls){
+                    ele.className = ele.className.replace(new RegExp('\\b'+cls+'\\b', 'g'), '');
+                },
+
+                indexOf: function(ele){
+                    var parent = ele.parentElement,
+                            siblings = parent.children;
+                    for(var i=0; i<siblings.length; i++){
+                        if(ele === siblings[i]) return i;
+                    }
+                    return -1;
+                }
+            };
+            document.querySelector(".ctTab").addEventListener("click",function (event) {
+                Utils.removeClass(document.querySelector(".ctTab").children, 'active');
+                Utils.addClass(event.target, 'active');
+                Utils.removeClass(document.querySelectorAll(".content"), 'active');
+                var i=Utils.indexOf(event.target);
+//                Utils.addClass(document.querySelector(".down").children[i], 'active');//方法一
+                Utils.addClass(document.querySelectorAll(".content")[i], 'active');//方法二
+
+            });
+
+        </script>
+    </body>
+</html>

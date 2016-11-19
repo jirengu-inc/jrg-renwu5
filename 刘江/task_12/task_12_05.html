@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task_12_05</title>
+    <style>
+        /* 消除默认样式 */
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font: 16px/1.2 "微软雅黑";
+        }
+        /* 设置头部和尾部 */
+
+        #header,
+        #footer {
+            height: 40px;
+            background: #ccc;
+        }
+        /* 撑开父元素空间 */
+
+        #container:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .main {
+            float: left;
+        }
+        /* 设置中间内容区域的宽度 */
+
+        .wrap {
+            margin: 0 100px 0 0;
+            background: green;
+        }
+        /* 固定侧边栏位置 */
+
+        .right-aside {
+            width: 100px;
+            height: 300px;
+            float: left;
+            background: yellow;
+            margin-left: -100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">头部</div>
+    <div id="container">
+        <div class="main">
+            <div class="wrap">我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!我是wrap!</div>
+        </div>
+        <div class="right-aside">我是右侧边栏</div>
+    </div>
+    <div id="footer">尾部</div>
+</body>
+
+</html>

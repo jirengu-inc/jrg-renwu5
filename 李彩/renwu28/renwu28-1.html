@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #header{
+            background-color: red;
+            text-align: center;
+            height: 80px ;
+            line-height: 80px;
+            margin-bottom: 20px;
+        }
+        #nav{
+            background-color: blue;
+            height: 50px;
+        }
+        #aside{
+            float: left;
+            width: 100px;
+            height: 400px;
+            background-color: green;
+        }
+        .clearfix:after{
+            content: "";
+            clear: both;
+            display: block;
+
+        }
+        #content{
+            background-color: #ccc;
+            height: 800px;
+            padding: 10px;
+        }
+        #main{
+            height: 800px;
+            margin-left: 100px;
+            background-color: yellow;
+        }
+        #footer{
+            background-color: #666;
+
+        }
+    </style>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="header">header</div>
+    <div id="nav">nav</div>
+    <div id="content" class="clearfix">
+        <div id="aside">aside</div>
+        <div id="main">main</div>
+    </div>
+    <div id="footer">
+        footer
+    </div>
+
+    <script>
+
+        var $cur=$("#nav"),
+            eleOffsetH=$cur.offset().top ,
+            eleOffsetW=$cur.offset().left,
+            eleHeight=$cur.height(),
+            eleWidth=$cur.width();
+                
+        eleClone=$cur.clone();
+       $cur.before(eleClone);
+        eleClone.hide();
+
+        //思路 当nav滑动到顶部时，克隆体显示，本体fixed
+
+        $(window).on("scroll",function () {
+            var scrollH=$(window).scrollTop();
+            if (scrollH >= eleOffsetH) {
+               eleClone.show();
+               $cur.css({
+                    "position":"fixed",
+                    "left":eleOffsetW,
+                    "top":0,
+                    "width":eleWidth,
+                    "height":eleHeight,
+                    "z-index":999
+                })  ;
+
+            }
+            else {
+
+                eleClone.hide();
+                $cur.removeAttr("style")
+            }
+        })
+
+    </script>
+
+
+
+</body>
+</html>

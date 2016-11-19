@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task_12_03</title>
+    <style>
+        /* 消除默认样式 */
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font: 16px/1.2 "微软雅黑";
+        }
+        /* 设置头部和尾部 */
+
+        #header,
+        #footer {
+            height: 40px;
+            background: #ccc;
+        }
+        /* 预留侧边栏所占用的宽度 */
+
+        #container {
+            padding: 0 0 0 100px;
+        }
+        /* 撑开父元素空间 */
+
+        #container:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .main {
+            background: green;
+            float: left;
+        }
+        /* 固定侧边栏位置 */
+
+        .left-aside {
+            width: 100px;
+            height: 300px;
+            float: left;
+            background: red;
+            margin-left: -100%;
+            position: relative;
+            left: -100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">头部</div>
+    <div id="container">
+        <div class="main">我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!我是main!</div>
+        <div class="left-aside">我是左侧边栏</div>
+    </div>
+    <div id="footer">尾部</div>
+</body>
+
+</html>

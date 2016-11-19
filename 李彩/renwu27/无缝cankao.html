@@ -1,0 +1,543 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>无线轮播</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <script type="text/javascript" src="http://gc.kis.scr.kaspersky-labs.com/09DC0C47-7E28-5643-A354-E60E2E2E8CBA/main.js" charset="UTF-8"></script><script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <style type="text/css">
+
+
+        html,body,ul,li,p{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        .carousel{
+            position: relative;
+            width: 310px;
+            height: 206px;
+            overflow: hidden;
+        }
+        .carousel .img-ct{
+            position: absolute;
+        }
+        .carousel .img-ct img{
+            width: 310px;
+            height: 206px;
+        }
+        .carousel .img-ct:after{
+            content: ' ';
+            display: block;
+            clear: both;
+        }
+        .carousel .img-ct li{
+            float: left;
+        }
+
+        .arrow{
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #4E443C;
+            color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 0 2px #999;
+            opacity: 0.8
+        }
+        .arrow:hover {
+            opacity: 1;
+        }
+        .pre{
+            left: 10px;
+        }
+        .next{
+            right: 10px;
+        }
+        ul.bullet {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        ul.bullet li {
+            width: 16px;
+            height: 4px;
+            border-radius: 2px;
+            background: #fff;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        ul.bullet li.active {
+            background: #666;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<div class="carousel">
+    <ul class="img-ct">
+        <li data-id=0><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></a></li>
+        <li data-id=1><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></a></li>
+        <li data-id=2><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg"></a></li>
+        <li data-id=3><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg"></a></li>
+    </ul>
+    <a class="pre arrow" href="#"><</a>
+    <a class="next arrow" href="#">></a>
+    <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+
+
+<script type="text/javascript">
+    //$(function(){
+
+    var $ct = $('.img-ct'),
+            $items = $ct.children(),
+            $pre = $('.pre'),
+            $next = $('.next'),
+            $bullet = $('.bullet'),
+            imgWidth = $items.width(),
+            imgCount = $ct.children().size();
+
+    $ct.prepend($items.last().clone());
+    $ct.append($items.first().clone());
+    imgRealCount = $ct.children().length;
+    $ct.css({left: 0-imgWidth, width: imgRealCount*imgWidth})
+
+
+
+
+
+    var curIdx = 0;
+    var isAnimate = false;
+
+    $next.on('click', function(){
+        playNext();
+    });
+    $pre.on('click', function(){
+        playPre();
+    });
+    $bullet.find('li').on('click', function(){
+        var idx = $(this).index();
+        if(idx > curIdx){
+            playNext(idx - curIdx);
+        }else if(idx < curIdx){
+            playPre(curIdx - idx);
+        }
+    });
+
+    //autoPlay();
+
+    function stopAuto(){
+        clearInterval(clock);
+    }
+
+    function autoPlay(){
+        clock = setInterval(function(){
+            playPre();
+        }, 3000);
+    }
+
+
+    function playNext(idx){
+        var idx = idx || 1;
+        if(!isAnimate){
+            isAnimate = true;
+            $ct.animate({left: '-='+(imgWidth*idx)},function(){
+                // curIdx = (curIdx + idx)%imgCount;
+                // if(curIdx === 0){
+                // 	$ct.css({left: 0-imgWidth});;
+                // }
+                curIdx++;
+                if(curIdx === imgCount){
+                    $ct.css({left: 0-imgWidth});
+                    curIdx = 0;
+                }
+                isAnimate = false;
+                setBullet();
+            });
+        }
+    }
+
+
+
+
+    function playPre(idx){
+        var idx = idx || 1;
+        if(!isAnimate){
+            isAnimate = true;
+            $ct.animate({left: '+='+(imgWidth*idx)},function(){
+                curIdx = (imgCount + curIdx - idx)%imgCount;
+                if(curIdx === (imgCount - 1)){
+                    $ct.css({left: 0-imgWidth*imgCount});
+                }
+                isAnimate = false;
+                setBullet();
+            });
+        }
+    }
+
+    function setBullet(){
+        $bullet.find('li').removeClass('active')
+                .eq(curIdx).addClass('active');
+    }
+
+    /**
+     * 存在的问题：
+     * 1. 变量可能会重名
+     * 2. 无法复用（页面上有多个轮播）
+     */
+
+
+    //});
+
+
+    /*
+     杩欐槸涓€涓畝鍗曟棤闄愭粴鍔ㄧ殑杞挱鎻掍欢,璋冪敤鏂规硶濡備笅:
+     1. HTML缁撴瀯宸茬粡鍐欏ソ,鑷繁鍙渶瑕佸啓涓€涓猟iv.slide鐒跺悗鍑犱釜img灏卞彲浠�
+     3. 闇€瑕佺粰涓婁笅缈婚〉鎸夐挳鍜岀储寮曠炕椤垫寜閽啓鏍峰紡,杩樻湁绱㈠紩闇€瑕佸啓涓€涓猻elected鑳屾櫙鑹�
+     2. 闇€瑕佷紶鍏ュ弬鏁�,浼犲叆鐨勫弬鏁版槸涓€涓璞�,鍖呮嫭鍥剧墖鐨勫楂�,涓嶉渶瑕佸崟浣�
+     */
+
+
+    jQuery.fn.slide = function(o){
+        var $slide = this,
+                $img = $slide.children()
+        $img.first().clone().appendTo($slide)
+        $img.last().clone().prependTo($slide)
+        var imgNumber = $slide.children().length
+
+        if (o.fullScreen) {
+            $slide
+                    .css({
+                        'height': '100vh'
+                    })
+        } else {
+            $slide
+                    .css({
+                        'width': o.width,
+                        'height': o.height
+                    })
+        }
+
+        $slide
+                .css({
+                    'position': 'relative',
+                    'overflow': 'hidden'
+                })
+                .children().wrap('<a href="#!" />').end()
+                .children().css({
+            'text-decoration': 'none',
+            'display': 'block',
+            'float': 'left'
+        }).end()
+                .children().wrapAll('<div class="slide-img-wrap" />').end()
+                .children().css({
+            'position': 'absolute',
+            'left': -o.width,
+            'width': o.width*imgNumber
+        }).end()
+
+        $slide
+                .append('<ul class="slide-btn-dot"></ul>')
+                .children('ul').append(function(){
+            var listStr = ''
+            for (var i = 0; i < $img.length; i++) {
+                listStr += '<li class="btn-dot-item"></li>'
+            }
+            return listStr
+        }).end()
+                .append('<a href="#!" class="slide-btn-move move-pre">&lt;</a><a href="#!" class="slide-btn-move move-next">&gt;</a>')
+
+
+        var $imgWrap = $slide.children('.slide-img-wrap'),
+                $btnDot = $slide.children('.slide-btn-dot'),
+                $next = $slide.children('.move-next'),
+                $pre = $slide.children('.move-pre'),
+                index = -1,
+                lock =false
+        $btnDot.children().first().addClass('selected')
+        function selected(index) {
+            $btnDot.children().removeClass('selected').eq(index).addClass('selected')
+        }
+
+        function animate() {
+            $imgWrap.stop(true,true).animate({
+                left: -o.width*(index+1)
+            },150,animateCallback)
+        }
+
+        function animateCallback() {
+            if (index === $img.length) {
+                index = 0
+                $imgWrap.css('left',-o.width)
+            } else if (index === -1) {
+                index = $img.length-1
+                $imgWrap.css('left',-o.width*$img.length)
+            }
+            lock = false
+            selected(index)
+        }
+
+
+        function moveNext(dir) {
+            if (lock) return
+            lock = true
+            if (dir) {
+                index++
+                animate()
+            } else {
+                index--
+                animate()
+            }
+        }
+
+
+        $next.on('click',function(){
+            moveNext(true)
+        })
+
+        $pre.on('click',function(){
+            moveNext(false)
+        })
+
+        $btnDot.on('click','li',function(){
+            var index = $(this).index()
+            $imgWrap.stop(true,true).animate({
+                left: -o.width*(index+1)
+            },150)
+            selected(index)
+        })
+
+        function autoPlay() {
+            moveNext(true)
+            setTimeout(autoPlay,5000)
+        }
+
+        autoPlay()
+
+
+        $slide.on('mouseenter mouseleave',function(){
+            $(this).children('a').toggleClass('active')
+        })
+    }
+
+</script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>无线轮播</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <script type="text/javascript" src="http://gc.kis.scr.kaspersky-labs.com/09DC0C47-7E28-5643-A354-E60E2E2E8CBA/main.js" charset="UTF-8"></script><script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <style type="text/css">
+
+
+        html,body,ul,li,p{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        .carousel{
+            position: relative;
+            width: 310px;
+            height: 206px;
+            overflow: hidden;
+        }
+        .carousel .img-ct{
+            position: relative;
+        }
+        .carousel .img-ct img{
+            width: 310px;
+            height: 206px;
+        }
+        .carousel .img-ct:after{
+            content: ' ';
+            display: block;
+            clear: both;
+        }
+        .carousel .img-ct li{
+            position: absolute;
+            display: none;
+        }
+
+        .arrow{
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #4E443C;
+            color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 0 2px #999;
+            opacity: 0.8
+        }
+        .arrow:hover {
+            opacity: 1;
+        }
+        .pre{
+            left: 10px;
+        }
+        .next{
+            right: 10px;
+        }
+        ul.bullet {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        ul.bullet li {
+            width: 16px;
+            height: 4px;
+            border-radius: 2px;
+            background: #fff;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        ul.bullet li.active {
+            background: #666;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<div class="carousel">
+    <ul class="img-ct">
+        <li data-id=0><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
+        <li data-id=1><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
+        <li data-id=2><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a></li>
+        <li data-id=3><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a></li>
+    </ul>
+    <a class="pre arrow" href="#"><</a>
+    <a class="next arrow" href="#">></a>
+    <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+
+
+<script type="text/javascript">
+    //$(function(){
+
+    var $ct = $('.img-ct'),
+            $items = $ct.children(),
+            $pre = $('.pre'),
+            $next = $('.next'),
+            $bullet = $('.bullet'),
+            imgWidth = $items.width(),
+            imgCount = $ct.children().size();
+
+
+
+    var curIdx = 0;
+    var isAnimate = false;
+
+    $next.on('click', function(){
+        playNext();
+    });
+    $pre.on('click', function(){
+        playPre();
+    });
+    $bullet.find('li').on('click', function(){
+        var idx = $(this).index();
+        play(idx);
+    });
+
+    play(0);
+    autoPlay();
+
+
+
+
+    function playNext(){
+        play((curIdx+1)%imgCount)
+    }
+
+    function playPre(){
+        play((imgCount+curIdx-1)%imgCount)
+    }
+    function play(idx){
+        if(isAnimate) return;
+        isAnimate = true;
+        $items.eq(curIdx).fadeOut(500);
+        $items.eq(idx).fadeIn(500, function(){
+            isAnimate = false;
+        });
+
+        curIdx = idx;
+        setBullet();
+    }
+
+    function setBullet(){
+        $bullet.children().removeClass('active')
+                .eq(curIdx).addClass('active');
+    }
+    function stopAuto(){
+        clearInterval(clock);
+    }
+
+    function autoPlay(){
+        clock = setInterval(function(){
+            playNext();
+        }, 2000);
+    }
+
+
+    //});
+
+</script>
+</body>
+</html>
+
