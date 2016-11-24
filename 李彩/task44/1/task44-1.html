@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .circularA{
+            width: 100px;
+            height:100px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            background-color: #6633FF;
+            text-align: center;
+            line-height: 100px;
+            margin: 10px;
+        }
+        .circularB{
+            width: 100px;
+            height:100px;
+            border: 1px solid #000;
+            border-radius: 50%;
+            background-color: #FF6699;
+            text-align: center;
+            line-height: 100px;
+            margin: 10px;
+        }
+        .shadow{
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;
+            margin: 10px;
+            width: 50%;
+            height: 50%;
+            color: #666;
+            transform: rotate(-7deg);
+        }
+        .shadow>img{
+            width: 90%;
+            height: 90%;
+            margin-top: 20px;
+        }
+
+        .change2d{
+            /*margin: 100px;*/
+            color: #666;
+            text-align: center;
+            width: 300px;
+            margin: 150px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            transform: rotate(9deg);
+
+          }
+        .change2d>img{
+            margin-top: 20px;
+            width: 90%;
+            height: auto;
+            color: #666;
+            cursor: pointer;
+
+        }
+        .change2d:hover{
+            transform: matrix(1.5,0,0,1.5,50,50);
+            transition: all 1s;
+        }
+        .change3d{
+            /*margin: 100px;*/
+            color: #666;
+            text-align: center;
+            width: 300px;
+            margin: 150px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        }
+        .change3d>img{
+            margin-top: 20px;
+            width: 90%;
+            height: auto;
+            color: #666;
+            cursor: pointer;
+
+        }
+        .ct-3d{
+            /*transform-style:preserve-3d;*/
+            perspective: 160;
+            -webkit-perspective:160; /* Safari and Chrome */
+            perspective-origin:150% center;
+            -webkit-perspective-origin:150% center;/* Safari and Chrome */
+        }
+        .change3d:hover{
+            transform:rotateX(5deg) translate3d(250px,50px,10px);
+            transition: all 1s;
+        }
+        .bgGradient{
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: repeating-radial-gradient(red ,green,blue 10%);
+        }
+        .transitionEg{
+            width: 300px;
+            height: 500px;
+            margin: 50px 10px 10px 150px;
+            transform-style:preserve-3d;
+        }
+        .transitionEg img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 400px;
+
+        }
+        .transitionEg img:nth-child(1){
+            z-index: 1;
+            opacity: .6;
+
+        }
+        .transitionEg img:nth-child(2){
+            z-index: 2;
+            -webkit-transform: scaleZ(3) rotateX(45deg);
+            transform: scaleZ(3) rotateX(45deg);
+
+        }
+        .transitionEg h3{
+            position: absolute;
+            top: 80%;
+            left: 20%;
+
+        }
+        .transitionCt{
+            position: relative;
+            -webkit-perspective: 4200;
+            perspective: 4200;
+            cursor: pointer;
+
+        }
+        .transitionCt:hover{
+            -webkit-perspective: 2200;
+            perspective: 2200;
+            transition: all 2s;
+        }
+        .btn{
+            margin: 20px 10px 200px 10px;
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            font-weight: bolder;
+            cursor: not-allowed;
+            text-align: center;
+            color: #fff;
+            border-radius: 15px;
+            background-color: #4caf39;
+            box-shadow: 0 20px #999;
+        }
+        @keyframes myfirstAnimation {
+            from { }
+            to{
+                background-color: #0c8e35;
+                box-shadow: 0 2px #666;
+                transform: translateY(12px);
+            }
+        }
+        .btn{
+            -webkit-animation: myfirstAnimation 2s linear 1.5s infinite;
+            animation: myfirstAnimation 2s linear 1.5s infinite;
+            /*-webkit-animation-name:myfirst;*/
+            /*-webkit-animation-duration:5s; 完成时间 */
+            /*-webkit-animation-timing-function:linear;规定动画的速度曲线。默认是 "ease"。*/
+            /*-webkit-animation-delay:2s; 延迟时间*/
+            /*-webkit-animation-iteration-count:infinite; 循环次数 */
+            /*-webkit-animation-direction:alternate; 是否反过来运行*/
+            /*-webkit-animation-play-state:running;规定动画是否正在运行或暂停*/
+        }
+        .animateEg{
+            height: 100px;
+            width: 400px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="circularA">圆角</div>
+<div class="circularB">圆形</div>
+<div class="shadow"><img src="./lunbo2.jpg" alt="美图"><h3>美丽的风景</h3></div>
+<div class="change2d"><img src="./lunbo1.jpg" alt="美图1"><h3>鼠标放上去我会放大</h3></div>
+<div class="ct-3d">
+    <div class="change3d"><img src="./1.jpg" alt="美图2"><h3>鼠标放上去我会移动和旋转</h3></div>
+</div>
+<div class="bgGradient"></div>
+<div class="transitionCt">
+<div class="transitionEg">
+    <img src="./lunbo3.jpg" alt="美图3">
+    <img src="./lunbo3.jpg" alt="美图3">
+    <h3>鼠标放上来我会慢慢动</h3>
+</div>
+</div>
+
+<div class="animateEg">
+    <button class="btn">按钮正在被连续按下</button>
+</div>
+
+
+</body>
+</html>
