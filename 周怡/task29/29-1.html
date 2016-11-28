@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task29-1回到顶部</title>
+    <style>
+        .num1 {
+            width: 100px;
+            height: 500px;
+            border: 1px solid blue;
+        }
+        .num2 {
+            width: 100px;
+            height: 800px;
+            border: 1px solid blue;
+            background: green;
+        }
+        .go-top {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            border: 1px solid red;
+            padding: 10px;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="num1">
+    </div>
+    <div class="num2">
+    </div>
+    <div class="go-top">回到顶部</div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        $(window).on('scroll', function() {
+            var offsetTop = $(window).scrollTop();
+            if (offsetTop > 200) {
+                $('.go-top').show();
+            } else {
+                $('.go-top').hide();
+            }
+        });
+        $('.go-top').on('click', function() {
+            $(window).scrollTop(0);
+        });
+    </script>
+</body>
+
+</html>
