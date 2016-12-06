@@ -123,7 +123,7 @@ header #menu>li:hover .dropdown{
 
 .searchboxSubmit{
 	text-indent: -99em;
-	background: url('../img/search.png') no-repeat center;
+	background: url('../img/search.PNG') no-repeat center;
 	background-color: #09274b;
 	background-size: contain;
 	outline: none;
@@ -322,7 +322,7 @@ header .btn{
 }
 #node{
 	/*height: 80%;*/
-	background: url('../img/group.png') no-repeat center;
+	background: url('../img/group.PNG') no-repeat center;
 	/*padding-top: 46px;*/
 }
 #node .substance{
@@ -374,7 +374,7 @@ header .btn{
 	height: 293px;
 	width: 702px;
 	margin: 0 auto;
-	background-image: url('../img/play.png'),url('../img/photowall.png');
+	background-image: url('../img/play.PNG'),url('../img/photowall.png');
 	background-repeat: no-repeat; 
 	background-position: center; 
 	margin-top: 18px;
