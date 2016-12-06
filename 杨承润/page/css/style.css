@@ -305,7 +305,7 @@ header .btn{
 	padding: 28px 0;
 }
 #teacher .photo{
-	background: url('../img/photo.png') no-repeat;
+	background: url('../img/photo.PNG') no-repeat;
 	background-size: cover;
 	width: 150px;
 	height: 150px;
