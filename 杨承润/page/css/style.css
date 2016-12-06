@@ -12,7 +12,7 @@ header{
 	background:url('../img/universe.png') center;
 	background-repeat: no-repeat;
 	perspective: 1000px;
-	min-width: 1400px;
+	min-width: 1200px;
 }
 ul,li{
 	margin: 0;
@@ -199,6 +199,7 @@ header .content{
 	font-family: '微软雅黑',Regular;
 	font-size: 18px;
 	color: white;
+	position: relative;
 }
 .header-content img{
 	display: block;
@@ -215,10 +216,17 @@ header .content{
 .header-content>div{
 	width: 453px;
 	height: 463px;
-	background: url('../img/earth.png') center;
 	margin: 0 auto;
 	margin-top: -20px;
 	position: relative;
+}
+.earth{
+	background: url('../img/earth.png') center;
+	width: 453px;
+	height: 463px;
+	position: absolute;
+	top: 0;
+	border-radius: 100%;
 }
 .header-content .left-p{
 	position: absolute;
@@ -297,7 +305,7 @@ header .btn{
 	padding: 28px 0;
 }
 #teacher .photo{
-	background: url('../img/photo.PNG') no-repeat;
+	background: url('../img/photo.png') no-repeat;
 	background-size: cover;
 	width: 150px;
 	height: 150px;
@@ -608,4 +616,3 @@ footer p{
 	border-radius: 100%;
 	opacity: 0.6;
 }
-
