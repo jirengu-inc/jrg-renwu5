@@ -10,6 +10,7 @@ p,h1,h3,h4{
 }
 header{
 	background:url('../img/universe.png') center;
+	background-size: cover;
 	background-repeat: no-repeat;
 	perspective: 1000px;
 	min-width: 1200px;
@@ -26,6 +27,7 @@ a{
 	width: 1200px;
 	margin: 0 auto 20px auto;
 	height: 100%;
+	position: relative;
 }
 .clearfix{
 	content: '';
@@ -34,13 +36,12 @@ a{
 }
 .header-cover{
 	width: 1200px;
-
 	margin: 0 auto;
 	background:url('../img/stone.png') bottom no-repeat;
 	background-size:contain; 
 	height: 90%;
 	position: absolute;
-	left: 15%;
+
 	z-index: -1;
 	transform:translateZ(-1000px);
 }
@@ -246,13 +247,13 @@ header .btn{
 	font-family: '微软雅黑',Regular;
 	font-size: 30px;
 	display: inline-block;
-	border: 3px solid #7ccef3;
+	border: 1px solid #7ccef3;
 	box-shadow:0 0 5px rgba(24,207,254,1);
-	padding: 5px;
+	padding: 10px 20px;
 	border-radius: 5px;
 	position: absolute;
 	top: 249px;
-	left: 40%;
+	left: 32%;
 	/*transform: translateX(-50%);*/
 }
 .title{
@@ -284,8 +285,9 @@ header .btn{
 }
 .title p{
 	margin-top: 11px;
-	font-family: '微软雅黑',Regular;
+	font-family: Regular;
 	font-size: 18px;
+	font-weight: bold;
 }
 #teacher{
 	background-color: #041529;
@@ -305,7 +307,7 @@ header .btn{
 	padding: 28px 0;
 }
 #teacher .photo{
-	background: url('../img/photo.PNG') no-repeat;
+	background: url('../img/photo.png') no-repeat;
 	background-size: cover;
 	width: 150px;
 	height: 150px;
@@ -323,14 +325,15 @@ header .btn{
 	font-family: '微软雅黑',Regular;
 	font-size: 14px;
 	display: inline-block;
-	border: 3px solid #7ccef3;
-	box-shadow:0 0 5px rgba(24,207,254,1);
-	padding: 5px 15px;
+	border: 1px solid #7ccef3;
+	box-shadow:0 0 4px rgba(24,207,254,1);
+	padding: 8px 35px;
 	border-radius: 10px;
 }
 #node{
 	/*height: 80%;*/
-	background: url('../img/group.PNG') no-repeat center;
+	background: url('../img/group.PNG')  no-repeat  center;
+	background-size: cover;
 	/*padding-top: 46px;*/
 }
 #node .substance{
