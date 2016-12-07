@@ -46,7 +46,7 @@ a{
 }
 #menu{
 	position: relative;
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	font-size: 0px;
 }
 header #menu>li{
@@ -103,7 +103,7 @@ header #menu a:hover{
 	width: 14px;
 	display: inline-block;
 }
-header #menu>li:hover .dropdown{
+header #menu li:hover .dropdown{
 	display: block;
 }
 .dropdown>li{
@@ -146,7 +146,7 @@ header #menu>li:hover .dropdown{
 }
 #ubx{
 	float: right;
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	font-size: 0;
 }
 #ubx>li{
@@ -196,7 +196,7 @@ header .content{
 	margin: 0 auto;
 	margin-top: 107px;
 	position: relative;
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	font-size: 18px;
 	color: white;
 	position: relative;
@@ -243,16 +243,16 @@ header .content{
 }
 header .btn{
 	color: white;
-	font-family: '微软雅黑',Regular;
-	font-size: 30px;
+	font-family: '微软雅黑';
+	font-size: 25px;
 	display: inline-block;
 	border: 1px solid #7ccef3;
 	box-shadow:0 0 5px rgba(24,207,254,1);
-	padding: 10px 20px;
+	padding: 7px 20px;
 	border-radius: 5px;
 	position: absolute;
 	top: 249px;
-	left: 32%;
+	left: 34%;
 	/*transform: translateX(-50%);*/
 }
 .title{
@@ -260,6 +260,7 @@ header .btn{
 	margin: 69px auto 83px auto;
 	text-align:center;
 	position: relative;
+	color: #041428;
 }
 .title .left-line{
 	width:100px;
@@ -278,13 +279,13 @@ header .btn{
 	right: 0
 }
 .title h1{
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	font-size: 36px;
 	line-height: 36px;
 }
 .title p{
 	margin-top: 11px;
-	font-family: Regular;
+	font-family: '微软雅黑';
 	font-size: 18px;
 	font-weight: bold;
 }
@@ -301,7 +302,7 @@ header .btn{
 	color: white;
 }
 #teacher h3{
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	font-size: 30px;
 	line-height: 30px;
 	padding: 28px 0;
@@ -314,7 +315,7 @@ header .btn{
 	margin: 0 auto 47px auto;
 }
 #teacher p{
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	font-size: 24px;
 	/*line-height: 45px;*/
 	width: 80%;
@@ -322,12 +323,12 @@ header .btn{
 }
 #teacher a{
 	color: white;
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	font-size: 14px;
 	display: inline-block;
 	border: 1px solid #7ccef3;
 	box-shadow:0 0 4px rgba(24,207,254,1);
-	padding: 8px 35px;
+	padding: 8px 30px;
 	border-radius: 10px;
 }
 #node{
@@ -346,7 +347,7 @@ header .btn{
 	margin-top: 45px;
 }
 #node h3{
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	font-size: 24px;
 	padding-top: 24px;
 }
@@ -391,9 +392,13 @@ header .btn{
 	margin-top: 18px;
 	position: relative;
 }
+#node .nav-group{
+	width: 679px;
+	margin: 0 auto;
+}
 #node ul{
 	text-align: left;
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	font-size: 18px;
 	margin-top: 26px;
 	line-height: 18px;
@@ -419,7 +424,7 @@ header .btn{
 }
 #node .btn-group a{
 	padding: 5px 10px;
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	font-size: 12px;
 	color: white;
 }
@@ -450,7 +455,7 @@ header .btn{
 .mes{
 	padding-top: 15px;
 	width:104px;
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	font-size: 12px;
 	background-color: #9b2929;
 	position: absolute;
@@ -469,7 +474,7 @@ header .btn{
 }
 #learning ul>li{
 	display: inline-block;
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	border: 3px solid #206090;
 	border-radius: 10px;
 	box-shadow: 4px 4px 2px 2px rgba(209,209,209,1);
@@ -491,7 +496,7 @@ header .btn{
 #learning .second-nav>li{
 	text-align: justify;
 	display: inline-block;
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	font-size: 16px;
 	height: 130px;
 }
@@ -514,13 +519,13 @@ header .btn{
 	display: inline-block;
 }
 .last-line span:first-child{
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	font-size: 36px;
 	line-height: 36px;
 	margin-right: 50px;
 }
 .last-line span:last-child{
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	font-size: 30px;
 	line-height: 30px;
 	margin-left: 50px;
@@ -536,7 +541,7 @@ header .btn{
 }
 footer{
 	background: rgb(4,21,41);
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	color: white;
 	text-align: center;
 	padding: 20px;
@@ -555,7 +560,7 @@ footer p{
 #autual{
 	width: 1200px;
 	margin: 0 auto;
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑';
 	margin-bottom: 83px;
 }
 #autual ul{
@@ -565,32 +570,33 @@ footer p{
 	
 }
 #autual ul>li{
-	width: 540px;
-	border: 1px solid lightgray;
-	background: rgb(245,249,255);
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-
+	background: rgb(245,249,255);
+	width: 540px;
+	border: 1px solid lightgray;
 }
-#autual li:before{
+#autual ul:before{
 	content: '';
 	display: block;
-	width: 10px;
-	box-shadow: 1px 1px 16px 8px #aaa;
+	width: 60px;
+	box-shadow: 15px 1px 28px 13px #aaa;
 	position: absolute;
-	bottom: 0;
 	z-index: -100;
+	bottom: 52px;
+	transform: rotateZ(-6deg);
 }
-#autual li:after{
+#autual ul:after{
 	content: '';
 	display: block;
-	width: 10px;
-	box-shadow: 1px 1px 16px 8px #aaa;
+	width: 60px;
+	box-shadow: 15px 1px 28px 13px #aaa;
 	position: absolute;
-	bottom: 0;
+	bottom: 57px;
 	z-index: -100;
-	right: 0;
+	transform: rotateZ(10deg);
+	right: 25px;
 }
 #autual p{
 	font-size: 14px;
@@ -608,12 +614,41 @@ footer p{
 	line-height: 18px;
 	margin-top:23px;
 }
+
  .shadow{
-	height: 15px;
+	height: 1px;
 	background: #aaa;	
-	box-shadow: 0px 0px 18px 18px #aaa;
-	width: 264px;
+	box-shadow: 0px 0px 35px 17px #aaa;
+	width: 210px;
 	margin:0 auto;
 	border-radius: 100%;
 	opacity: 0.6;
+}
+.li-shadow{
+	width: 726px;
+	height: 376px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.li-shadow:before{
+	content: '';
+	display: block;
+	width: 60px;
+	box-shadow: 15px 1px 28px 13px #aaa;
+	position: absolute;
+	z-index: -100;
+	bottom:  0;
+	transform: rotateZ(-6deg);
+}
+.li-shadow:after{
+	content: '';
+	display: block;
+	width: 60px;
+	box-shadow: 15px 1px 28px 13px #aaa;
+	position: absolute;
+	bottom: 6px;
+	z-index: -100;
+	transform: rotateZ(7deg);
+	right: 28px;
 }
