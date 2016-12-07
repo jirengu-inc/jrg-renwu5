@@ -13,7 +13,6 @@ header{
 	background-size: cover;
 	background-repeat: no-repeat;
 	perspective: 1000px;
-	min-width: 1200px;
 }
 ul,li{
 	margin: 0;
@@ -24,7 +23,7 @@ a{
 	text-decoration: none;
 }
 .container{
-	width: 1200px;
+	width: 80%;
 	margin: 0 auto 20px auto;
 	height: 100%;
 	position: relative;
@@ -35,7 +34,7 @@ a{
 	clear: both;
 }
 .header-cover{
-	width: 1200px;
+	width: 100%;
 	margin: 0 auto;
 	background:url('../img/stone.png') bottom no-repeat;
 	background-size:contain; 
@@ -291,9 +290,10 @@ header .btn{
 }
 #teacher{
 	background-color: #041529;
+	width: 100%;
 }
 #teacher .content{
-	width: 1200px;
+	width: 80%;
 	margin: 0 auto;
 	background-color: #071b33;
 	text-align: center;
@@ -317,7 +317,7 @@ header .btn{
 	font-family: '微软雅黑',Regular;
 	font-size: 24px;
 	/*line-height: 45px;*/
-	width: 1100px;
+	width: 80%;
 	margin: 0 auto 21px auto;
 }
 #teacher a{
@@ -338,7 +338,7 @@ header .btn{
 }
 #node .substance{
 	margin: 46px auto 51px auto;
-	width: 900px;
+	width: 50%;
 	background-color: rgba(17,37,61,0.4);
 	color: white;
 	text-align: center;
@@ -383,7 +383,7 @@ header .btn{
 }
 #node .photowall{
 	height: 293px;
-	width: 702px;
+	width: 80%;
 	margin: 0 auto;
 	background-image: url('../img/play.PNG'),url('../img/photowall.png');
 	background-repeat: no-repeat; 
@@ -462,8 +462,7 @@ header .btn{
 	display: block;
 }
 #learning{
-	width: 1400px;
-	margin: 0 auto;
+	
 	text-align: center;
 	font-size: 40px;
 	margin-bottom: 83px;	
@@ -495,7 +494,6 @@ header .btn{
 	font-family: '微软雅黑',Regular;
 	font-size: 16px;
 	height: 130px;
-	width: 300px;
 }
 .second-nav p{
 	width: 240px;
