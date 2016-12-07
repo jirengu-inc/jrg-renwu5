@@ -1,4 +1,10 @@
-<?php echo "用户名：". $_GET["usename"]; ?>
-<?php echo "<br>" ;?>
-<?php echo "密码：". $_GET["password"]; ?>
-<?php echo "<br>" ;?>
+<?php
+  $name = $_GET["usename"];
+  if($name === 'hunger'){
+    $ret = 1;
+  }else{
+    $ret = 0;
+  }
+  echo json_encode($ret);
+  echo json_encode($name);
+?>

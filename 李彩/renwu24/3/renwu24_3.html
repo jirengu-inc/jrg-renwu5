@@ -24,13 +24,14 @@
 
         document.querySelector('#usename').addEventListener('change', function(){
             var xhr=new XMLHttpRequest();
-            xhr.onreadystatechange=function() {
+            xhr.onreadystatechange=function(ret) {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    if (document.getElementById("usename").value.toString()=="hunger"){
+                    if (ret===1){
                         document.getElementsByClassName("usename")[0].innerText="用户名已存在";
                     }
                     else if (2< document.getElementById("usename").value.toString().length && document.getElementById("usename").value.toString().length<11){
                         if (document.getElementById("usename").value.toString().match(/^\w{3,10}$/)) {
+                            console.log(ret);
                             document.getElementsByClassName("usename")[0].innerText="该用户名可用";
                         }
                         else document.getElementsByClassName("usename")[0].innerText="用户名格式不正确";
@@ -39,7 +40,7 @@
                 }
             };
 
-            xhr.open("get","renwu24_3.php",true);
+            xhr.open("get","renwu24_3.php?usename="+document,true);
             xhr.send(null);
 
         });
@@ -91,9 +92,9 @@
                 document.getElementsByClassName("password")[0].innerText!=="你输入的密码可用"||
                 document.getElementsByClassName("password_agin")[0].innerText!=="两次输入的密码一致") 
                 {                    
-                    alert("请输入正确且完整的信息！")
+                    alert("请输入正确且完整的信息！");
                     document.getElementsByClassName("form1")[0].setAttribute("action","#");
-                };
+                }
 
         });
 
