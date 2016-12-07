@@ -45,7 +45,7 @@ a{
 }
 #menu{
 	position: relative;
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 0px;
 }
 header #menu>li{
@@ -145,7 +145,7 @@ header #menu li:hover .dropdown{
 }
 #ubx{
 	float: right;
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 0;
 }
 #ubx>li{
@@ -173,11 +173,11 @@ header .content{
 	background: url('../img/earth.png');
 }
 .content p{
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑 Regular',Regular;
 	font-size: 18px;
 }
 .content span{
-	font-family: '微软雅黑',Regular;
+	font-family: '微软雅黑 Regular',Regular;
 	font-size: 30px;
 }
 /*.left-p{
@@ -195,7 +195,7 @@ header .content{
 	margin: 0 auto;
 	margin-top: 107px;
 	position: relative;
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 18px;
 	color: white;
 	position: relative;
@@ -242,7 +242,7 @@ header .content{
 }
 header .btn{
 	color: white;
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 25px;
 	display: inline-block;
 	border: 1px solid #7ccef3;
@@ -278,13 +278,13 @@ header .btn{
 	right: 0
 }
 .title h1{
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 36px;
 	line-height: 36px;
 }
 .title p{
 	margin-top: 11px;
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 18px;
 	font-weight: bold;
 }
@@ -301,7 +301,7 @@ header .btn{
 	color: white;
 }
 #teacher h3{
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 30px;
 	line-height: 30px;
 	padding: 28px 0;
@@ -314,7 +314,7 @@ header .btn{
 	margin: 0 auto 47px auto;
 }
 #teacher p{
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 24px;
 	/*line-height: 24px;*/
 	width: 80%;
@@ -322,7 +322,7 @@ header .btn{
 }
 #teacher a{
 	color: white;
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 14px;
 	display: inline-block;
 	border: 1px solid #7ccef3;
@@ -346,7 +346,7 @@ header .btn{
 	margin-top: 45px;
 }
 #node h3{
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 24px;
 	padding-top: 24px;
 }
@@ -360,7 +360,7 @@ header .btn{
 #node .line:before{
 	content: '';
 	display: inline-block;
-	/*background-color: rgba(24,207,254,0.6);*/
+	background-color: rgba(24,207,254,0.6);
 	border: 2px solid;
 	border-color: rgba(24,207,254,1);
 	position: absolute;
@@ -372,7 +372,7 @@ header .btn{
 #node .line:after{
 	content: '';
 	display: inline-block;
-	/*background-color: rgba(24,207,254,0.6);*/
+	background-color: rgba(24,207,254,0.6);
 	border: 2px solid;
 	border-color: rgba(24,207,254,1);
 	position: absolute;
@@ -397,7 +397,7 @@ header .btn{
 }
 #node ul{
 	text-align: left;
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 18px;
 	margin-top: 26px;
 	line-height: 18px;
@@ -423,7 +423,7 @@ header .btn{
 }
 #node .btn-group a{
 	padding: 5px 10px;
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 12px;
 	color: white;
 }
@@ -454,7 +454,7 @@ header .btn{
 .mes{
 	padding-top: 15px;
 	width:104px;
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 12px;
 	background-color: #9b2929;
 	position: absolute;
@@ -473,7 +473,7 @@ header .btn{
 }
 #learning ul>li{
 	display: inline-block;
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	border: 3px solid #206090;
 	border-radius: 10px;
 	box-shadow: 4px 4px 2px 2px rgba(209,209,209,1);
@@ -495,7 +495,7 @@ header .btn{
 #learning .second-nav>li{
 	text-align: justify;
 	display: inline-block;
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 16px;
 	height: 130px;
 }
@@ -518,13 +518,13 @@ header .btn{
 	display: inline-block;
 }
 .last-line span:first-child{
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 36px;
 	line-height: 36px;
 	margin-right: 50px;
 }
 .last-line span:last-child{
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	font-size: 30px;
 	line-height: 30px;
 	margin-left: 50px;
@@ -540,7 +540,7 @@ header .btn{
 }
 footer{
 	background: rgb(4,21,41);
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	color: white;
 	text-align: center;
 	padding: 20px;
@@ -559,7 +559,7 @@ footer p{
 #autual{
 	width: 1200px;
 	margin: 0 auto;
-	font-family: '微软雅黑';
+	font-family: '微软雅黑 Regular';
 	margin-bottom: 83px;
 }
 #autual ul{
@@ -585,6 +585,7 @@ footer p{
 	z-index: -100;
 	bottom: 52px;
 	transform: rotateZ(-6deg);
+	opacity: 0.4;
 }
 #autual ul:after{
 	content: '';
@@ -596,6 +597,7 @@ footer p{
 	z-index: -100;
 	transform: rotateZ(10deg);
 	right: 25px;
+	opacity: 0.4;
 }
 #autual p{
 	font-size: 14px;
@@ -621,7 +623,7 @@ footer p{
 	width: 210px;
 	margin:0 auto;
 	border-radius: 100%;
-	opacity: 0.6;
+	opacity: 0.4;
 }
 .li-shadow{
 	width: 726px;
@@ -639,6 +641,7 @@ footer p{
 	z-index: -100;
 	bottom:  0;
 	transform: rotateZ(-6deg);
+	opacity: 0.4;
 }
 .li-shadow:after{
 	content: '';
@@ -650,4 +653,5 @@ footer p{
 	z-index: -100;
 	transform: rotateZ(7deg);
 	right: 28px;
+	opacity: 0.4;
 }
