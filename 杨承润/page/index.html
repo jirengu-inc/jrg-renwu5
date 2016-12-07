@@ -9,8 +9,9 @@
 </head>
 <body>
 	<header>
-		<div class="header-cover"></div>
+	
 		<div class="container">
+			<div class="header-cover"></div>
 			<ul id="menu" class="clearfix">
 				<li class="li-img"><img src="./img/hungervalley.png"></li>
 				<li><a href="#">首页</a></li>
@@ -87,7 +88,7 @@
 			<div class="photo"></div>
 			<p>人称“芳姐”，毕业于华中科技大学，曾就职于腾讯、阿里巴巴。阿里巴巴B2B商家后台开发，</p>
 			<p>负责商家营销设置、客户管理等系统。精通Backbone(Marionete)、AngularJ..</p>
-			<a href="#">了解更多</a>
+			<a href="#" class="shake shake-vertical-slow">了解更多</a>
 		</div>
 	</div>
 	<div class="title">
@@ -191,7 +192,13 @@
 	</footer>
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script>
-
+		var scrollwidth=$(window).width();
+		$('header').css({
+			width:scrollwidth
+		})
+		$('node').css({
+			width:scrollwidth
+		})
 		$('.introduce').children().eq(0).css({
 			left:'0',
 			// 'z-index':'-1'
@@ -222,25 +229,29 @@
 			var index=$(this).index();
 			if (!index){
 				$(this).css({
-					transform:'translateZ(300px) translateX(100px)',
-					background:'white'
+					transform:'translateZ(200px) translateX(80px)',
+					background:'white',
+					'margin-bottom':'30px'
 				})
 			}else if(index===1){
 				$(this).css({
-					transform:'translateZ(300px)',
-					background:'white'
+					transform:'translateZ(200px)',
+					background:'white',
+					'margin-bottom':'30px'
 				})
 			}else if(index===2){
 				$(this).css({
-					transform:'translateZ(300px) translateX(-100px)',
-					background:'white'
+					transform:'translateZ(200px) translateX(-80px)',
+					background:'white',
+					'margin-bottom':'30px'
 				})
 			}
 		})
 		$('.second-nav').on('mouseleave','li',function(){
 			$(this).css({
 				transform:'none',
-				background:'white'
+				background:'white',
+				'margin-bottom':'15px'
 			})
 		})
 		var num=-1000;
