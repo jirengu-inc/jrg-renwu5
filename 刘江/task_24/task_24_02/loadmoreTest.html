@@ -1,0 +1,102 @@
+</html>
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>task24-2</title>
+        <style>
+            /* 初始化 */
+            html,
+            body,
+            ul,
+            li,
+            a {
+                margin: 0;
+                padding: 0;
+            }
+
+            /* 初始化 */
+            ul {
+                list-style:: none;
+            }
+
+            li {
+                list-style: none;
+                margin-top: 20px;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            #content li {
+                margin: 10px 20px 0 20px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            #content li:hover {
+                background-color: green;
+                color: #fff;
+            }
+
+            #btn {
+                width: 80px;
+                height: 40px;
+                margin: 10px auto;
+                line-height: 40px;
+                text-align: center;
+                color: #E27272;
+                border: 1px solid #E27272;
+                border-radius: 5px;
+                display: block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul id="content">
+            <li>内容1</li>
+            <li>内容2</li>
+        </ul>
+        <a href="#" id="btn">加载更多</a>
+        <script src="ajax.js"></script>
+        <script>
+            var ul = document.querySelector('#content')
+            var btn = document.querySelector('#btn')
+            var locked = false
+            var start = 2
+            btn.addEventListener('click', function(){
+                if (locked) {
+                    return
+                }
+                locked = true
+                ajax({
+                    url: 'loadmore.php',
+                    type: 'get',
+                    data: {
+                        start: ul.children.length,
+                        len: 5
+                    },
+                    success: function (ret) {
+                        for (var i = 0; i < ret.length; i++) {
+                            var newLi = document.createElement('li')
+                            newLi.innerHTML = ret[i]
+                            ul.appendChild(newLi)
+                        }
+                        start += this.data.len
+                        locked = false
+                    },
+                    error: function () {
+                        alert('sorry')
+                        locked = false
+                    }
+                })
+            })
+        </script>
+    </body>
+
+</html>
