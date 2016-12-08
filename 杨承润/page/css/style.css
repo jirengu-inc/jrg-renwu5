@@ -580,24 +580,25 @@ footer p{
 	content: '';
 	display: block;
 	width: 60px;
-	box-shadow: 15px 1px 28px 13px #aaa;
+	box-shadow: 1px 1px 30px 20px #aaa;
 	position: absolute;
 	z-index: -100;
-	bottom: 52px;
-	transform: rotateZ(-6deg);
-	opacity: 0.4;
+	bottom: 65px;
+	transform: rotateZ(-10deg);
+	opacity: 0.6;
+	left: 17px;
 }
 #autual ul:after{
 	content: '';
 	display: block;
 	width: 60px;
-	box-shadow: 15px 1px 28px 13px #aaa;
+	box-shadow: 1px 1px 30px 20px #aaa;
 	position: absolute;
-	bottom: 57px;
+	bottom: 65px;
 	z-index: -100;
 	transform: rotateZ(10deg);
-	right: 25px;
-	opacity: 0.4;
+	right: 15px;
+	opacity: 0.6;
 }
 #autual p{
 	font-size: 14px;
@@ -635,25 +636,26 @@ footer p{
 .li-shadow:before{
 	content: '';
 	display: block;
-	width: 60px;
-	box-shadow: 15px 1px 28px 13px #aaa;
+	width: 100px;
+	box-shadow: 1px 1px 30px 20px #aaa;
 	position: absolute;
 	z-index: -100;
-	bottom:  0;
-	transform: rotateZ(-6deg);
-	opacity: 0.4;
+	bottom:  5px;
+	left: 15px;
+	transform: rotateZ(-10deg);
+	opacity: 0.8;
 }
 .li-shadow:after{
 	content: '';
 	display: block;
-	width: 60px;
-	box-shadow: 15px 1px 28px 13px #aaa;
+	width: 100px;
+	box-shadow:  1px 1px 30px 20px #aaa;
 	position: absolute;
 	bottom: 6px;
 	z-index: -100;
-	transform: rotateZ(7deg);
-	right: 28px;
-	opacity: 0.4;
+	transform: rotateZ(10deg);
+	right: 15px;
+	opacity: 0.8;
 }
 .cover-l{
 	width: 237px;
