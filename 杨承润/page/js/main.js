@@ -87,6 +87,7 @@ Carousel.prototype.playRight=function(){
 	var left=0;
 	var _this=this;
 	$('.cover-r').on('click',function(){
+		$('.li-shadow').hide();
 		if (!_this.isCarousel) {
 			_this.isCarousel=true;
 			$('.introduce>li').css({
