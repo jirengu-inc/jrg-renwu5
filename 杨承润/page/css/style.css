@@ -9,7 +9,7 @@ p,h1,h3,h4{
 	padding: 0;
 }
 header{
-	background:url('../img/universe.png') center;
+	background:url('https://img.alicdn.com/imgextra/i2/879525075/TB2WwqOXHFlpuFjy0FgXXbRBVXa_!!879525075.jpg') center;
 	background-size: cover;
 	background-repeat: no-repeat;
 	perspective: 1000px;
@@ -36,7 +36,7 @@ a{
 .header-cover{
 	width: 100%;
 	margin: 0 auto;
-	background:url('../img/stone.png') bottom no-repeat;
+	background:url('https://img.alicdn.com/imgextra/i2/879525075/TB22V1SXMxlpuFjy0FoXXa.lXXa_!!879525075.png') bottom no-repeat;
 	background-size:contain; 
 	height: 90%;
 	position: absolute;
@@ -220,7 +220,7 @@ header .content{
 	position: relative;
 }
 .earth{
-	background: url('../img/earth.png') center;
+	background: url('https://img.alicdn.com/imgextra/i2/879525075/TB2DOSQXSJjpuFjy0FdXXXmoFXa_!!879525075.png') center;
 	width: 453px;
 	height: 463px;
 	position: absolute;
@@ -307,7 +307,7 @@ header .btn{
 	padding: 28px 0;
 }
 #teacher .photo{
-	background: url('../img/photo.PNG') no-repeat;
+	background: url('https://img.alicdn.com/imgextra/i1/879525075/TB2FfKOXR4lpuFjy1zjXXcAKpXa_!!879525075.png') no-repeat;
 	background-size: cover;
 	width: 150px;
 	height: 150px;
@@ -332,7 +332,7 @@ header .btn{
 }
 #node{
 	/*height: 80%;*/
-	background: url('../img/group.PNG')  no-repeat  center;
+	background: url('https://img.alicdn.com/imgextra/i3/879525075/TB26giQXR8kpuFjSspeXXc7IpXa_!!879525075.png')  no-repeat  center;
 	background-size: cover;
 	/*padding-top: 46px;*/
 }
@@ -385,7 +385,7 @@ header .btn{
 	height: 293px;
 	width: 80%;
 	margin: 0 auto;
-	background-image: url('../img/play.PNG'),url('../img/photowall.png');
+	background-image: url('https://img.alicdn.com/imgextra/i3/879525075/TB2RC5NXSBjpuFjy1XdXXaooVXa_!!879525075.png'),url('https://img.alicdn.com/imgextra/i3/879525075/TB2CnGMXM0kpuFjSspdXXX4YXXa_!!879525075.png');
 	background-repeat: no-repeat; 
 	background-position: center; 
 	margin-top: 18px;
@@ -654,4 +654,22 @@ footer p{
 	transform: rotateZ(7deg);
 	right: 28px;
 	opacity: 0.4;
+}
+.cover-l{
+	width: 237px;
+	height: 272px;
+	position: absolute;
+	top: 14%;
+	z-index: 999;
+}
+.carousel{
+	position: relative;
+}
+.cover-r{
+	width: 237px;
+	height: 272px;
+	position: absolute;
+	top: 14%;
+	right: 0;
+	z-index: 999;
 }
