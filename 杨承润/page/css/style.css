@@ -109,7 +109,7 @@ header #menu li:hover .dropdown{
 	margin-bottom: 11px;
 	width: 200px;
 }
-.search{
+/*.search{
 	border: 1px solid transparent;
 	height: 25px;
 	position: relative;
@@ -162,7 +162,7 @@ header #menu li:hover .dropdown{
 }
 #ubx .login>a:hover{
 	color: #aee0e1;
-}
+}*/
 /*
 header .content{
 	text-align: center;

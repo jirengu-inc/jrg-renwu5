@@ -1,7 +1,9 @@
 function Carousel(){
 	var li=this.li=$('.introduce>li');
+	var isCarousel=false;
+	var li_shadow=this.left_shadow=$('.li-shadow');
 	this.init();
-	this.bind();
+	this.play();
 }
 Carousel.prototype.init=function(){
 	this.li.eq(0).css({
@@ -10,76 +12,134 @@ Carousel.prototype.init=function(){
 	this.li.eq(1).css({
 		left:'236px',
 		width:'726px',
-		height:'376px',
+		height:'377px',
 		'z-index':'1',
 	})
 	this.li.eq(2).css({
 		left:'660px',
 	})
 }
-Carousel.prototype.bind=function(){
+Carousel.prototype.play=function(){
+	this.playLeft();
+	this.playRight();
+}
+Carousel.prototype.playLeft=function(){
 	var left=0;
+	var _this=this;
 	$('.cover-l').on('click',function(){
-		$('.introduce>li').css({
-			'z-index':0
-		})
-		$('.introduce>li').each(function(){
-			console.log(1)
-			left=parseInt($(this).css('left'));
-			switch(left){
-				case 0:
-					$(this).animate({
-						left:'236',
-						width:'726',
-						height:'346',
-						'z-index':'1'
-					},'fast')
-					break;
-				case 236:
-					$(this).animate({
-						left:'660',
-						width:'540',
-						height:'307'
-					},'fast')
-					break;
-				case 660:
-					$(this).animate({
-						left:'0',
-					},'fast')
-					break;
-			}
-		})
+		$('.li-shadow').hide();
+		if (!_this.isCarousel) {
+			_this.isCarousel=true;
+			$('.introduce>li').css({
+				'z-index':0
+			})
+			$('.introduce>li').each(function(){
+				console.log($(this).index())
+				console.log($(this).css('left'))
+				left=parseInt($(this).css('left'));
+				switch(left){
+					case 0:
+						$(this).animate({
+							left:'236',
+							width:'726',
+							height:'376',
+							'z-index':'1'
+						},'fast',function(){
+							if ($(this).index()===2) {
+								console.log(1231,$(this).index())
+								_this.isCarousel=false;
+								$('.li-shadow').show();
+							}
+						})
+						break;
+					case 236:
+						$(this).animate({
+							left:'660',
+							width:'540',
+							height:'272'
+						},'fast',function(){
+							if ($(this).index()===2) {
+								console.log(1231,$(this).index())
+								_this.isCarousel=false;
+								$('.li-shadow').show();
+							}
+						})
+						break;
+					case 660:
+						$(this).animate({
+							left:'0',
+							width:'540',
+							height:'272'
+						},'fast',function(){
+							if ($(this).index()===2) {
+								console.log(1231,$(this).index())
+								_this.isCarousel=false;
+								$('.li-shadow').show();
+							}
+						})
+						break;
+				}
+			})			
+		}	
 	})
+}
+Carousel.prototype.playRight=function(){
+	var left=0;
+	var _this=this;
 	$('.cover-r').on('click',function(){
-		$('.introduce>li').css({
-			'z-index':0
-		})
-		$('.introduce>li').each(function(){
-			console.log(1)
-			left=parseInt($(this).css('left'));
-			switch(left){
-				case 0:
-					$(this).animate({
-						left:'660'
-					},'fast')
-					break;
-				case 236:
-					$(this).animate({
-						left:'0',
-						width:'540',
-						height:'307'
-					},'fast')
-					break;
-				case 660:
-					$(this).animate({
-						left:'236',
-						width:'726',
-						height:'346',
-						'z-index':'1'
-					},'fast')
-					break;
-			}
-		})
+		if (!_this.isCarousel) {
+			_this.isCarousel=true;
+			$('.introduce>li').css({
+				'z-index':0
+			})
+			$('.introduce>li').each(function(){
+				console.log($(this).index())
+				console.log($(this).css('left'))
+				left=parseInt($(this).css('left'));
+				switch(left){
+					case 0:
+						$(this).animate({
+							left:'660',
+							width:'540',
+							height:'272'
+						},'fast',function(){
+								if ($(this).index()===2) {
+									console.log(1231,$(this).index())
+									_this.isCarousel=false;
+									$('.li-shadow').show();
+								}
+						})
+						break;
+					case 236:
+						$(this).animate({
+							left:'0',
+							width:'540',
+							height:'272'
+						},'fast',function(){
+								if ($(this).index()===2) {
+									console.log(1231,$(this).index())
+									_this.isCarousel=false;
+									$('.li-shadow').show();
+								}
+						})
+						break;
+					case 660:
+						$(this).animate({
+							left:'236',
+							width:'726',
+							height:'376',
+							'z-index':'1'
+						},'fast',function(){
+								if ($(this).index()===2) {
+									console.log(1231,$(this).index())
+									_this.isCarousel=false;
+									$('.li-shadow').show();
+								}
+						})
+						break;
+				}
+			})
+		}	
 	})
 }
 var carousel=new Carousel();
