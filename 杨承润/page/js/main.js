@@ -92,10 +92,7 @@ Carousel.prototype.playRight=function(){
 	var _this=this;
 	$('.cover-r').on('click',function(){
 		$('.li-shadow').hide();
-<<<<<<< HEAD
 		$('.ul-shadow').hide();
-=======
->>>>>>> e919ce139d123fa338d670c15c9e98635207a682
 		if (!_this.isCarousel) {
 			_this.isCarousel=true;
 			$('.introduce>li').css({
