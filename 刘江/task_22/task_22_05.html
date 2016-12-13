@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task_22_05</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        i {
+            font-style: normal;
+        }
+
+        .clearfix:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .btn {
+            position: absolute;
+            background: transparent;
+            z-index: 1;
+        }
+
+        .wrapper {
+            width: 0;
+            height: 0;
+            background: #ccc;
+            position: relative;
+            overflow: hidden;
+            transition: 0.8s;
+        }
+
+        .block {
+            width: 700px;
+            height: 500px;
+            transition: 0.8s;
+        }
+
+        .dialog-box {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 300px;
+            height: 200px;
+            background: white;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .dialog-box>h1 {
+            border-bottom: 1px solid #888;
+        }
+
+        .dialog-box>h1>i {
+            position: absolute;
+            right: 3%;
+            top: 0;
+            cursor: pointer;
+        }
+
+        .dialog-box>p {
+            height: 130px;
+            border-bottom: 1px solid #888;
+        }
+
+        .dialog-box>.option {
+            position: absolute;
+            right: 3%;
+            bottom: 3%;
+        }
+
+        .dialog-box>.option>span {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <button class='btn'>点我</button>
+    <div class="wrapper">
+        <div class="dialog-box">
+            <h1>我是标题1
+    <i class="iconfont">×</i>
+    </h1>
+            <p>我是内容1</p>
+            <div class="option">
+                <span class="option-cancel">取消</span>
+                <span>确定</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 选择元素
+        var btn = document.querySelector('.btn')
+        var wrapper = document.querySelector('.wrapper')
+
+        // 声明正则
+        var reg = /block/
+
+
+        // 设置btn的点击事件处理程序
+        var btnClick = function() {
+            if (reg.test(wrapper.className)) {
+                wrapper.className = 'wrapper'
+            } else {
+                wrapper.className += ' block'
+            }
+
+        }
+        btn.addEventListener('click', btnClick)
+
+        // 设置diaLog的点击事件处理程序
+
+        var closeDialog = function(e) {
+            if (e.target.className === 'option-cancel' || e.target.className === 'iconfont' || reg.test(e.target.className)) {
+                wrapper.className = 'wrapper'
+            }
+
+        }
+
+        wrapper.addEventListener('click', closeDialog)
+    </script>
+</body>
+
+</html>

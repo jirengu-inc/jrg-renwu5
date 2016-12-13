@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task24-3</title>
+    <style>
+
+      dt{
+        float: left;
+      }
+      dd{
+        margin-left: 100px;
+      }
+      .msg{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: #aaa;
+        height: 12px;
+        font-size: 12px;
+      }
+      .error{
+        border-color:red;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h3>注册</h3>
+    <dl>
+      <dt>用户名：</dt>
+      <dd>
+        <input id="username" type="text" placeholder="用户名（hunger被注册过）">
+      </dd>
+      <dd class="msg msg-un">只能是字母、数字、下划线，3-10个字符</dd>
+      <dt>密码：</dt>
+      <dd>
+        <input id="password1" type="password" placeholder="密码">
+      </dd>
+      <dd class="msg msg-pwd1">大写字母、小写、数字、下划线最少两种，6-15个字符</dd>
+      <dt>再输一次</dt>
+      <dd>
+        <input id="password2" type="password" placeholder="在输入一次密码">
+      </dd>
+      <dd class="msg msg-pwd2"></dd>
+      <dd>
+        <button id="btn">注册</button>
+      </dd>
+    </dl>
+
+
+    <script src="ajax.js"></script>
+    <script src="validate.js"></script>
+    <script src="class.js"></script>
+    <script>
+      var username = document.querySelector('#username'),
+          password1 = document.querySelector('#password1'),
+          password2 = document.querySelector('#password2'),
+          btn = document.querySelector('#btn'),
+          msg_un = document.querySelector('.msg-un'),
+          msg_pwd1 = document.querySelector('.msg-pwd1'),
+          msg_pwd2 = document.querySelector('.msg-pwd2');
+
+          username.addEventListener('change',function(){
+            testUn() && testUnValid();
+          });
+          password1.addEventListener('change',function(){
+            testPwd1();
+          });
+          password2.addEventListener('change',function(){
+            testPwd2();
+          });
+
+          btn.addEventListener('click',function(e){
+            if(testUn() && testPwd1() && testPwd2()){
+              testUnValid(function handle(a){
+                if(a){
+                  alert('注册成功！')
+                  console.log('注册成功！')
+                }
+              })
+
+            }
+          });
+
+          //检查用户名格式
+          function testUn(){
+            if(!isValidUsername(username.value)){
+              addClass(username,'error');
+              msg_un.innerText = '用户名格式不正确';
+              return false;
+            }else{
+              removeClass(username,'error');
+              msg_un.innerText = '';
+              return true;
+            }
+          }
+
+          //检查用户名是否重复
+          function testUnValid(handle){
+            ajax({
+              url:'task24-3.php',
+              type:'post',
+              data:{
+                username:username.value
+              },
+              async:false,
+              success:function(ret){
+                if(ret == 1){
+                  addClass(username,'error');
+                  msg_un.innerText = '用户名存在';
+                  handle&&handle(false);
+                }else{
+                  removeClass(username,'error');
+                  msg_un.innerText = '用户名可用';
+                  handle&&handle(true);
+                }
+              },
+              error:function(){
+                console.log('出错了');
+              }
+            });
+          }
+
+          //检查密码1格式
+          function testPwd1(){
+            if(!isValidPassword(password1.value)){
+              addClass(password1,'error');
+              msg_pwd1.innerText = '密码格式不正确';
+              return false;
+            }else{
+              removeClass(password1,'error');
+              msg_pwd1.innerText = '';
+              return true;
+            }
+          }
+
+          //检查密码1和密码2是否相等
+          function testPwd2(){
+            if(password1.value !== password2.value){
+              addClass(password2,'erro');
+              msg_pwd2.innerText = '两次密码不一致';
+              return false;
+            }else{
+              removeClass(password2,'error');
+              msg_pwd2.innerText = '';
+              return true;
+            }
+          }
+
+    </script>
+  </body>
+</html>

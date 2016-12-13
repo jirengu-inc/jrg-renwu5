@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task_22_03</title>
+</head>
+
+<body>
+    <ul class="ct">
+        <li data-img="http://jirengu.com/addons/theme/stv1/_static/app/index-new/imgs/1.gif">鼠标放置查看图片1</li>
+        <li data-img="http://jirengu.com/addons/theme/stv1/_static/app/index-new/imgs/gate.gif">鼠标放置查看图片2</li>
+        <li data-img="http://jirengu.com/addons/theme/stv1/_static/app/index-new/imgs/talk.png">鼠标放置查看图片3</li>
+    </ul>
+    <div class="img-preview"></div>
+    <script>
+        // 选择元素
+        var ul = document.querySelector('.ct')
+        var div = document.querySelector('.img-preview')
+
+        // 创建元素
+        var img = document.createElement('img')
+
+        // 设置鼠标悬停的事件处理程序
+        var addImg = function(e) {
+            if (e.target.tagName.toLowerCase() === 'li') {
+                console.log(e.target)
+                var imgLink = e.target.getAttribute('data-img')
+                img.src = imgLink
+                div.appendChild(img)
+            }
+        }
+        ul.addEventListener('mouseover', addImg)
+    </script>
+</body>
+
+</html>
