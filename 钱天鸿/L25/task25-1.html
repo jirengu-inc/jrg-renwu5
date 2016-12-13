@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.js"></script>
+<style>
+	ul,li{
+		margin:0px;
+		padding:0px;
+		list-style: none;
+	}
+	a{
+		color:#333;
+		text-decoration: none;
+	}
+	/*通用的*/
+	.nav{
+		background-color: #c7171e;
+    	width: 200px;
+	}
+	.nav .category{
+		position: relative;
+	}
+	/*这里是为absolute提供定位标准*/
+	.nav .ctg-title{
+		display: block;
+	    border-bottom: 1px dotted #de272e;
+	    color: #fff;
+	    margin: 0px 5px;
+	    padding: 15px;
+	    font-size: 14px;
+	}
+	.nav .icon-goto{
+		position: absolute;
+	    top: 15px;
+	    left: 184px;
+	    color: #fff;
+	    font-size: 14px;
+	}
+	.nav .child-panel{
+		position: absolute;
+	    top: 0px;
+	    left: 199px;
+	    border: 1px solid #ccc;
+	    width: 200px;
+	    display: none;
+	    /*首先内容全部隐藏*/
+	}
+	.child-panel li{
+		float: left;
+	    width: 50px;
+	    padding: 16px 20px;
+	}
+</style>
+</head>
+<body>
+	<div class="nav-area">
+	    <ul class="nav">
+	    	<li class="category">
+	    	<!--category是种类的意思-->
+	    		<a class="ctg-title" href="#">珠宝玉器</a>
+	    		<span class="icon-goto">></span>
+	    		<ul class="child-panel">
+	    			<li><a href="">翡翠</a></li>
+	    			<li><a href="">玉石</a></li>
+	    			<li><a href="">宝石</a></li>
+	    			<li><a href="">水晶</a></li>
+	    			<li><a href="">玛瑙</a></li>
+	    			<li><a href="">珍珠</a></li>
+	    			<li><a href="">钻石</a></li>
+	    			<li><a href="">琥珀</a></li>
+	    			<li><a href="">和田</a></li>
+	    			<li><a href="">琥珀</a></li>
+	    		</ul>
+	    	</li>
+
+	    	<li class="category">
+	    		<a class="ctg-title"  href="#">珠宝玉器</a>
+	    		<span class="icon-goto">></span>
+				<ul class="child-panel">
+					<li><a href="#">翡翠</a></li>
+					<li><a href="">玉石</a></li>
+					<li><a href="">宝石</a></li>
+					<li><a href="">水晶</a></li>
+					<li><a href="">玛瑙</a></li>
+					<li><a href="">珍珠</a></li>
+				</ul>
+	    	</li>
+
+	    	<li class="category">
+	    		<a class="ctg-title"  href="#">珠宝玉器</a>
+	    		<span class="icon-goto">></span>
+	    		<ul class="child-panel">
+	    			<li><a href="">翡翠</a></li>
+	    			<li><a href="">玉石</a></li>
+	    			<li><a href="">宝石</a></li>
+	    			<li><a href="">水晶</a></li>
+	    		</ul>
+	    	</li>
+
+	    	<li class="category">
+	    		<a class="ctg-title"  href="#">珠宝玉器</a>
+	    		<span class="icon-goto">></span>
+	    		<ul class="child-panel">
+	    			<li><a href="">翡翠</a></li>
+	    			<li><a href="">玉石</a></li>
+	    			<li><a href="">宝石</a></li>
+	    			<li><a href="">水晶</a></li>
+	    			<li><a href="">玛瑙</a></li>
+	    			<li><a href="">珍珠</a></li>
+	    		</ul>
+	    	</li>
+
+	    	<li class="category">
+	    		<a class="ctg-title"  href="#">珠宝玉器</a>
+	    		<span class="icon-goto">></span>
+	    		<ul class="child-panel">
+	    			<li><a href="">翡翠</a></li>
+	    			<li><a href="">玉石</a></li>
+	    			<li><a href="">宝石</a></li>
+	    			<li><a href="">水晶</a></li>
+	    		</ul>
+	    	</li>
+	    </ul>
+    </div>
+	<!--
+	//思路是由大到小:
+	1.首先是一个大的导航区用ul——>2.然后有5个小的导航——>3.每个小的导航里面有文字，图标，还有内容——>4.内容用ul——>
+	-->
+	<script>
+		$(function(){
+			$('.category').on('mouseenter',function(){
+				$(this).find('.child-panel').show();
+				//$(this).find('.child-pane').css('display','block');
+				//$(this).addClass('hover')
+			});
+			$('.category').on('mouseleave',function(){
+				$(this).find('.child-panel').hide();
+			});
+		});
+	</script>
+
+</body>
+</html>
