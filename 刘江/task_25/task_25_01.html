@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>verticalList</title>
+    <style>
+        body {
+            font-size: 14px;
+        }
+        ul, li, div {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        ul, li {
+            list-style: none;
+        }
+        .clearfix:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        ul.menu > li.categoryName {
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            background: #C91213;
+            border-bottom: 1px solid pink;
+            color: #fff;
+            position: relative;
+            cursor: pointer;
+        }
+        li.categoryName:nth-last-child(1) {
+            border-bottom: none;
+        }
+        ul.menu > li.categoryName > span.prefix {
+            position: absolute;
+            right: 10px;
+        }
+        .submenuWrapper {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            border: 1px solid #888;
+            display: none;
+        }
+        ul.menu > li.categoryName > div.show {
+            display: block;
+        }
+        ul.menu ul.submenu {
+            width: 160px;
+        }
+        ul.submenu > li.subCategoryName {
+            width: 80px;
+            float: left;
+            text-align: center;
+            color: #000;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="categoryListWrapper">
+        <ul class="menu">
+
+            <li class="categoryName">珠宝玉器
+            <span class="prefix">></span>
+            <div class="submenuWrapper">
+                <ul class="submenu clearfix">
+                    <li class="subCategoryName">翡翠</li>
+                    <li class="subCategoryName">玉石</li>
+                    <li class="subCategoryName">宝石</li>
+                    <li class="subCategoryName">水晶</li>
+                </ul>
+            </div>
+            </li>
+
+            <li class="categoryName">珠宝玉器
+            <span class="prefix">></span>
+            <div class="submenuWrapper">
+                <ul class="submenu clearfix">
+                    <li class="subCategoryName">翡翠</li>
+                    <li class="subCategoryName">玉石</li>
+                    <li class="subCategoryName">宝石</li>
+                    <li class="subCategoryName">水晶</li>
+                </ul>
+            </div>
+            </li>
+
+            <li class="categoryName">珠宝玉器
+            <span class="prefix">></span>
+            <div class="submenuWrapper">
+                <ul class="submenu clearfix">
+                    <li class="subCategoryName">翡翠</li>
+                    <li class="subCategoryName">玉石</li>
+                    <li class="subCategoryName">宝石</li>
+                    <li class="subCategoryName">水晶</li>
+                </ul>
+            </div>
+            </li>
+
+            <li class="categoryName">珠宝玉器
+            <span class="prefix">></span>
+            <div class="submenuWrapper">
+                <ul class="submenu clearfix">
+                    <li class="subCategoryName">翡翠</li>
+                    <li class="subCategoryName">玉石</li>
+                    <li class="subCategoryName">宝石</li>
+                    <li class="subCategoryName">水晶</li>
+                </ul>
+            </div>
+            </li>
+
+            <li class="categoryName">珠宝玉器
+            <span class="prefix">></span>
+            <div class="submenuWrapper">
+                <ul class="submenu clearfix">
+                    <li class="subCategoryName">翡翠</li>
+                    <li class="subCategoryName">玉石</li>
+                    <li class="subCategoryName">宝石</li>
+                    <li class="subCategoryName">水晶</li>
+                </ul>
+            </div>
+            </li>
+        </ul>
+    </div>
+<script src="http://og4h4hcqu.bkt.clouddn.com/jquery-3.1.1.js"></script>
+    <script>
+
+        var $categoryName = $('.menu').children('.categoryName')
+        var $submenu = $('.submenu')
+        var $menu = $('.menu')
+        var $submenuWrapper = $('.submenuWrapper')
+        for(var i = 0; i < $categoryName.length; i++) {
+            $categoryName.eq(i).data('data-index', i)
+        }
+        function addSubmenu (e) {
+            console.log(e.currentTarget === this)
+            var indexNumber = $(e.currentTarget).data('data-index')
+            console.log(indexNumber)
+            $submenuWrapper.eq(indexNumber).addClass('show').parents('.categoryName').siblings('.categoryName').children('.submenuWrapper').removeClass('show')
+        }
+        function removeSubmenu (e) {
+            $(this).find('.submenuWrapper').removeClass('show')
+        }
+        $categoryName.on('mouseenter', addSubmenu)
+        $categoryName.on('mouseleave', removeSubmenu)
+
+    </script>
+</body>
+</html>

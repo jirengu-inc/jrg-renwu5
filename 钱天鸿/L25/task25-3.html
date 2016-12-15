@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	*{
+		box-sizing:border-box;
+	}
+	body,ul,li,p{
+		margin:0px;
+		padding:0px;
+	}
+	ul,li{
+		list-style: none;
+	}
+	body{
+		color:#666;
+	}
+	a{
+		text-decoration: none;
+		color: #666;
+	}
+	.clearfix:after{
+		content: '';
+		display: block;
+		clear:both;
+	}
+	.layout{
+		width: 700px;
+		margin:10px auto;
+	}
+	.btn{
+		display: inline-block;
+		border:1px solid #c81623;
+		color: #c81623;
+		padding: 10px 15px;
+		text-align: center;
+		background:#fff;
+		cursor:pointer;
+	}
+	/*通用的*/
+	.layout .prod-ct{
+		width: 662px;
+		margin-left: -20px;
+    	margin-top: -20px;
+	}
+	.prod{
+		position: relative;
+		float: left;
+		width: 200px;
+		padding: 10px 20px;
+    	margin-left: 20px;
+    	margin-top: 20px;
+		border: 1px solid #eee;
+		text-align: center;
+		background:#fff;
+	}
+	.prod .prod-name{
+		text-align: left;
+		height: 40px;
+		font-size: 12px;
+		color:#666;
+	}
+	.prod .prod-price{
+		color:#c81623;
+		text-align: left;
+		font-size: 15px;
+	}
+	/*内容*/
+	.prod .cover{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom:0;
+		background:#333;
+		opacity: 0;
+		transition:all 0.5px;
+	}
+	.cover .btn{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform:translate(-50%,-50%);
+	}
+	.prod.hover .cover{
+		opacity: 0.8;
+	}
+	/*覆盖*/
+	.btn-add{
+		margin-top: 20px
+	}
+	/*按钮*/
+</style>
+</head>
+<body>
+	<div class="layout">
+		<h1>珠宝首饰</h1>
+	    <ul class="prod-ct clearfix">
+	    	<li class="prod">
+	    		<div class="cover">
+	    			<a class="btn">立即抢购</a>
+	    		</div>
+	    		<a>
+	    			<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+	    		</a>
+	    		<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+	    		<p class="prod-price">￥1699.00</p>
+	    	</li>
+	    	<li class="prod">
+	    		<div class="cover">
+	    			<a class="btn">立即抢购</a>
+	    		</div>
+	    		<a>
+	    			<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+	    		</a>
+	    		<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+	    		<p class="prod-price">￥1699.00</p>
+	    	</li>
+	    	<li class="prod">
+	    		<div class="cover">
+	    			<a class="btn">立即抢购</a>
+	    		</div>
+	    		<a>
+	    			<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+	    		</a>
+	    		<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+	    		<p class="prod-price">￥1699.00</p>
+	    	</li>
+	    	<li class="prod">
+	    		<div class="cover">
+	    			<a class="btn">立即抢购</a>
+	    		</div>
+	    		<a>
+	    			<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+	    		</a>
+	    		<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+	    		<p class="prod-price">￥1699.00</p>
+	    	</li>
+	    	<li class="prod">
+	    		<div class="cover">
+	    			<a class="btn">立即抢购</a>
+	    		</div>
+	    		<a>
+	    			<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+	    		</a>
+	    		<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+	    		<p class="prod-price">￥1699.00</p>
+	    	</li>
+	    	<li class="prod">
+	    		<div class="cover">
+	    			<a class="btn">立即抢购</a>
+	    		</div>
+	    		<a>
+	    			<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+	    		</a>
+	    		<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+	    		<p class="prod-price">￥1699.00</p>
+	    	</li>
+	    </ul>
+
+    	<a class="btn btn-add">添加</a>
+	</div>
+
+	<div class="test">
+		<a href="#">点击我会返回页面的顶部href="#"</a><br>
+		<a href="">点击我会刷新整个页面, href=""</a><br>
+		<a href="#!">点击我不会动,href="#!"</a><br>
+		<a href="javascript:void(0)">点击我不会动,href="javascript:void(0)"</a><br>
+		<a>点击我不会动</a>
+	</div>
+      
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+    $(document).ready(function(){
+    	/*事件代理*/
+    	$('.prod-ct').on('mouseenter','.prod',function(){
+    		$(this).addClass('hover')
+    		console.log(this);
+    		/*注意this指代的是当前元素,就是点击的prod*/
+    	});
+    	$('.prod-ct').on('mouseleave','.prod',function(){
+    		$(this).removeClass('hover')
+    	});
+    	/*
+    	//为什么这样有问题
+		$('.prod').on('mouseenter',function(){
+    		$(this).addClass('hover')
+    	});
+    	$('.prod').on('mouseleave',function(){
+    		$(this).removeClass('hover')
+    	});
+    	因为如果不用事件代理的话，这样写新增加的元素的css就没有作用。而使用绑定父元素的事件代理新增加的元素的css会起作用，因为事件会冒泡到绑定的父元素上会被父元素监听到
+    	*/
+    	
+    	var products = [
+		    {
+		        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		        name: '珂兰 黄金手 猴哥款',
+		        price: '￥405.00'
+		    },{
+		        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		        name: '珂兰 黄金转运珠 猴哥款',
+		        price: '￥100.00'
+		    },{
+		        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		        name: '珂兰 黄金手链 3D猴哥款',
+		        price: '￥45.00'
+		    }
+		];
+		//这里用$.each遍历json对象
+		function getProdHtml(prod){
+			var html="";
+				html +='<li class="prod">'
+				html +='<div class="cover"><a class="btn">立即抢购</a></div>'
+				html +='<a><img src="' + prod.img + '" alt="" /></a>'
+				html +='<p class="prod-name">' + prod.name + '</p>'
+				html +='<p class="prod-price">' +prod.price + '</p>'
+				html +="</li>"
+				return html;
+				/*注意这中写法最终是返回html*/
+		};
+		$('.btn-add').on('click',function(e){
+			$.each(products,function(idx,prod){
+				var html=getProdHtml(prod);
+				$('.prod-ct').append(html);
+			});
+		});
+ 		/*注意each的用法，index表示products数组中的索引，prod表示索引对应的值，这里就表示里面的对象
+ 		*/
+    });
+
+
+    </script>
+</body>
+</html>

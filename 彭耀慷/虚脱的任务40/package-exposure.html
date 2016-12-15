@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>f封装一个曝光加载组件，能实现如下方式调用</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+    <style type="text/css">
+        .header {
+            height: 1500px;
+        }
+
+        .heightMe {
+            height: 1500px;
+        }
+
+        .target1 {
+            background: orange;
+        }
+
+        .target2 {
+            background-color: gray;
+        }
+    </style>
+
+</head>
+<body>
+<div class="header"></div>
+<div class="target1">
+    log forever
+</div>
+<div class="heightMe"></div>
+<div class="target2">
+    log only once
+</div>
+<script>
+    var Exposure = (function(e){
+        var clock;
+        var flag = false;
+        function isShow($ele){
+            var distanceY = $ele.offset().top,
+                winH = $(window).height(),
+                scrollTop = $(window).scrollTop();
+
+            return (distanceY>scrollTop)&&(distanceY<winH+scrollTop)
+        }
+
+        function bind($ele,handle){
+            $(window).on('scroll',function(){
+                if(clock)clearTimeout(clock);
+                clock = setTimeout(function(){
+                    if(isShow($ele)){
+                        handle();
+                    }
+                },0)
+            });
+        }
+        function one($ele,handle){
+            $(window).on('scroll',function(){
+                if(flag)return;
+                if(isShow($ele)){
+                    handle();
+                    flag=true;
+                }
+            })
+        }
+        return{
+            bind:bind,
+            one:one
+        }
+    })()
+    Exposure.bind($(".target1"),function () {
+        console.log($(".exposure1"));
+    });
+    Exposure.one($(".target2"),function () {
+        console.log($(".exposure2"));
+    })
+</script>
+</body>
+</html>
