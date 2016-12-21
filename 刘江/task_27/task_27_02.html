@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>multi-gradientCarousel</title>
+        <style>
+
+            html,body,ul,li,p {
+                padding: 0;
+                margin: 0;
+            }
+            li {
+                list-style: none;
+            }
+            .clearfix {
+                content: "";
+                display: block;
+                clear: both;
+            }
+            .imgList {
+                list-style: none;
+                position: absolute;
+                display: none;
+            }
+            .slideWrapper {
+                position: relative;
+                width: 400px;
+                height: 200px;
+            }
+            .slideWrapper > ul.slideCt > li.imgList img {
+                width: 400px;
+                height: 200px;
+            }
+            .next {
+                position: absolute;
+                right: 5%;
+                top: 50%;
+                z-index: 10;
+                transform: translateY(-50%);
+                width: 30px;
+                height: 30px;
+                background: #000;
+                text-align: center;
+                line-height: 30px;
+                border-radius: 30px;
+                color: #fff;
+                cursor: pointer;
+            }
+            .prev {
+                position: absolute;
+                left: 5%;
+                top: 50%;
+                z-index: 10;
+                transform: translateY(-50%);
+                width: 30px;
+                height: 30px;
+                background: #000;
+                text-align: center;
+                line-height: 30px;
+                border-radius: 30px;
+                color: #fff;
+                cursor: pointer;
+            }
+            ul.slideCt > li.show {
+                opacity: 1;
+            }
+            ul.slideCt > li.hidden {
+                opacity: 0;
+                transition: 1s;
+            }
+            ul.numberIndex {
+                position: absolute;
+                bottom: 5px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100px;
+            }
+            ul.numberIndex > li {
+                display: inline-block;
+                width: 19px;
+                height: 4px;
+                border-radius: 3px;
+                background: #fff;
+                cursor: pointer;
+            }
+            ul.numberIndex > li.visible {
+                background: #555;
+                transition: 700ms;
+            }
+        </style>
+        <script src="http://og4h4hcqu.bkt.clouddn.com/jquery-3.1.1.js"></script>
+    </head>
+    <body>
+        <div class="slideWrapper">
+            <ul class="slideCt">
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""></a></li>
+            </ul>
+            <span class="prev"><</span>
+            <span class="next">></span>
+            <ul class="numberIndex clearfix">
+                <li class="visible"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="slideWrapper">
+            <ul class="slideCt">
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""></a></li>
+            </ul>
+            <span class="prev"><</span>
+            <span class="next">></span>
+            <ul class="numberIndex clearfix">
+                <li class="visible"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="slideWrapper">
+            <ul class="slideCt">
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""></a></li>
+            </ul>
+            <span class="prev"><</span>
+            <span class="next">></span>
+            <ul class="numberIndex clearfix">
+                <li class="visible"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+        <script>
+
+            $.fn.carousel = function () {
+            var $slideCt = $(this)
+            var imgCount = $slideCt.children().length
+            var $prev = $slideCt.siblings('.prev')
+            var $next = $slideCt.siblings('.next')
+            var timer
+            var current = 0
+            var locked = false
+
+            $slideCt.siblings('.numberIndex').find('li').on('click', function(){
+            var idx= $(this).index()
+            go(idx)
+            })
+
+            $next.on('click', function () {
+            playNext()
+            })
+
+            $prev.on('click', function () {
+            playPrev()
+            })
+
+            function playNext(){
+            go((current + 1) % imgCount)
+            }
+
+            function playPrev(){
+            go((imgCount + current - 1) % imgCount)
+            }
+
+            function go (index) {
+            if(timer) {
+            clearInterval (timer)
+            }
+
+            if (locked) {
+            return
+            }
+            locked = true
+
+            $slideCt.find('li').eq(current).fadeOut(700)
+            $slideCt.find('li').eq(index).fadeIn(700, function () {
+            autoPlay ()
+            locked = false
+            })
+            current = index
+            setBullet ()
+            }
+
+            function autoPlay(){
+            timer = setInterval(function(){
+            playNext();
+            },2000);
+            };
+
+            $slideCt.on('mouseenter', function () {
+            console.log('mouseenter')
+            clearInterval(timer)
+            locked = true
+            })
+
+            $slideCt.on('mouseleave', function () {
+            console.log('mouseleave')
+            autoPlay()
+            locked = false
+            })
+
+            function setBullet(){
+            $slideCt.siblings('.numberIndex').find('li').eq(current).addClass('visible').siblings().removeClass('visible')
+            }
+
+            go(0)
+
+
+
+            }
+
+            $('.slideCt').each(function () {
+            $(this).carousel()
+            })
+
+
+
+
+        </script>
+
+    </body>
+</html>
