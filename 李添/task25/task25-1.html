@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>导航</title>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+  <style>
+    ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+    .navgation .category {
+      position: relative;
+      width: 100px;
+      height: 20px;
+      padding: 10px;
+      line-height: 20px;
+      background-color: #C7171E;
+      border-bottom: 1px solid #ccc;
+    }
+    .navgation .category::last-of-type {
+      border: none;
+    }
+    .navgation .category-title {
+      border-bottom: 1px dotted #de272e;
+      font-size: 14px;
+      color: #fff;
+    }
+    .navgation .icon-goto {
+      position: absolute;
+      right: 5px;
+      color: #fff;
+    }
+    .second-menu {
+      display: none;
+      position: absolute;
+      left: 120px;
+      top: 1px;
+      width: 100px;
+      padding: 8px;
+      line-height: 20px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+    }
+    .second-menu li {
+      float: left;
+      padding: 5px 10px;
+    }
+    .clearfix:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .clearfix {
+      *zoom: 1;
+    }
+    /*.category:hover .second-menu {
+      display: block;
+    } */
+  </style>
+</head>
+<body>
+  <div class="navgation">
+    <ul class="frist-menu">
+      <li class="category">
+        <a class="category-title" href="#">珠宝玉器</a>
+        <span class="icon-goto">></span>
+        <ul class="second-menu clearfix">
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">玉石</a></li>
+          <li><a href="#">宝石</a></li>
+          <li><a href="#">水晶</a></li>
+          <li><a href="#">玛瑙</a></li>
+          <li><a href="#">珍珠</a></li>
+          <li><a href="#">钻石</a></li>
+          <li><a href="#">琥珀</a></li>
+          <li><a href="#">和田</a></li>
+          <li><a href="#">琥珀</a></li>
+        </ul>
+      </li>
+      <li class="category">
+        <a class="category-title" href="#">珠宝玉器</a>
+        <span class="icon-goto">></span>
+        <ul class="second-menu">
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">玉石</a></li>
+          <li><a href="#">宝石</a></li>
+          <li><a href="#">水晶</a></li>
+          <li><a href="#">玛瑙</a></li>
+          <li><a href="#">珍珠</a></li>
+        </ul>
+      </li>
+      <li class="category">
+        <a class="category-title" href="#">珠宝玉器</a>
+        <span class="icon-goto">></span>
+        <ul class="second-menu">
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">玉石</a></li>
+          <li><a href="#">宝石</a></li>
+          <li><a href="#">水晶</a></li>
+        </ul>
+      </li>
+      <li class="category">
+        <a class="category-title" href="#">珠宝玉器</a>
+        <span class="icon-goto">></span>
+        <ul class="second-menu">
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">玉石</a></li>
+          <li><a href="#">宝石</a></li>
+          <li><a href="#">水晶</a></li>
+          <li><a href="#">玛瑙</a></li>
+          <li><a href="#">珍珠</a></li>
+        </ul>
+      </li>
+      <li class="category">
+        <a class="category-title" href="#">珠宝玉器</a>
+        <span class="icon-goto">></span>
+        <ul class="second-menu">
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">玉石</a></li>
+          <li><a href="#">宝石</a></li>
+          <li><a href="#">水晶</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <script>
+    $('.category').on('mouseenter', function() {
+      $(this).find('.second-menu').show();
+      // $(this).find('.second-menu').addClass('hover');
+    });
+    $('.category').on('mouseleave', function() {
+      $(this).find('.second-menu').hide()
+      // $(this).find('.second-menu').removeClass('hover');
+    });
+  </script>
+</body>
+</html>
