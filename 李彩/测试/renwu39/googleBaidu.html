@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+    .searchBar{
+    	margin: 0 auto;
+        text-align: center;
+        background: #F8E2D5;
+        padding: 20px 0;
+        border-bottom:  1px solid #aaa;
+    }
+   #inputWord{
+    width:35%;
+    height: 32px;
+    line-height: 32px;
+    font-size: 18px;
+    background: #fff;
+
+   }
+    #submitBtn {
+    font-size: 18px;
+    background: #A982CE;
+    width: 100px;
+    height: 32px;
+    color: #fff;
+    --webkit-appearance: none;
+    -webkit-border-radius:0;
+     cursor: pointer;
+    outline:medium;
+    border-bottom:1px solid #2d78f4;
+    text-align: center;
+    letter-spacing:1px;
+
+    }
+    iframe{
+       width:49%;
+        height:2250px;
+        margin-top:18px;
+        border-width:0;
+    }
+    @media (max-width: 1024px) {
+        #inputWord{
+            width:70%;
+            height: 45px;
+            line-height: 45px;
+        }
+        #submitBtn{
+            height: 45px;
+            line-height: 45px;
+            width: 22%;
+        }
+        iframe{
+            height: 3800px;
+        }
+    }
+        @media (max-width: 375px){
+            #inputWord{
+                width:68%;
+                height: 45px;
+                line-height: 45px;
+            }
+            #submitBtn{
+                height: 45px;
+                line-height: 45px;
+                width: 25%;
+                font-size: 16px;
+            }
+            iframe{
+                width: 100%;
+            }
+            #iframeBaidu{
+                height: 2200px;
+            }
+            #iframeGoogle{
+                height: 3400px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <!--http://guge.suanfazu.com/search/?q=lxyxdylglc-->
+    <div class="searchBar">
+        <input id="inputWord" type="text" name="searchInput" placeholder="输入关键词按回车或点击搜索键即可搜索">
+        <input id="submitBtn" type="submit" name="searchBtn" value="一键双搜">
+    </div>
+    <iframe id="iframeBaidu" src="https://www.baidu.com/s?wd=%E7%99%BE%E5%BA%A6"  scrolling="no"></iframe>
+    <iframe id="iframeGoogle" src="https://g.zmirrordemo.com/search?newwindow=1&safe=strict&btnG=Google+%E6%90%9C%E7%B4%A2&q=%E7%99%BE%E5%BA%A6"  scrolling="no"></iframe>
+
+    <script type="text/javascript">
+    var submitBtn = document.getElementById("submitBtn");
+    function openSearch(){
+        var inputWord = document.getElementById("inputWord").value,
+                iframe = document.getElementsByTagName("iframe");
+        iframe[0].setAttribute("src","https://www.baidu.com/s?wd=" + inputWord );
+        iframe[1].setAttribute("src","https://g.zmirrordemo.com/search?newwindow=1&safe=strict&btnG=Google+%E6%90%9C%E7%B4%A2&q=" + inputWord );
+    }
+    submitBtn.addEventListener("click", function() {
+        openSearch();
+    });
+    document.addEventListener("keydown", function(e) {
+        if (e.keyCode===13){
+            openSearch();
+        }
+        else return;
+
+
+    })
+
+    </script>
+</body>
+
+</html>
