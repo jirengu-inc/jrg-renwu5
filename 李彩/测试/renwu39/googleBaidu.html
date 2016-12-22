@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
     <style>
-        html,body{
-            margin: 0;
-            padding: 0;
-        }
+    html,body{
+        margin: 0;
+        padding: 0;
+    }
     .searchBar{
     	margin: 0 auto;
         text-align: center;
@@ -21,12 +21,18 @@
     width:35%;
     height: 32px;
     line-height: 32px;
-    font-size: 18px;
+    font-size: 16px;
     background: #fff;
+   -webkit-box-sizing:border-box;
+   box-sizing: border-box;
+   margin: 0;
+   -webkit-border-radius:0;
+   border-radius:0;
 
    }
     #submitBtn {
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: bolder;
     background: #A982CE;
     width: 100px;
     height: 32px;
@@ -38,7 +44,6 @@
     border-bottom:1px solid #2d78f4;
     text-align: center;
     letter-spacing:1px;
-
     }
     iframe{
        width:49%;
@@ -61,17 +66,19 @@
             height: 3800px;
         }
     }
-        @media (max-width: 375px){
+    @media (max-width: 375px){
             #inputWord{
                 width:68%;
                 height: 45px;
                 line-height: 45px;
+                font-size: 14px;
             }
             #submitBtn{
                 height: 45px;
                 line-height: 45px;
                 width: 25%;
-                font-size: 16px;
+                font-size: 14px;
+                text-align: center;
             }
             iframe{
                 width: 100%;
@@ -88,7 +95,7 @@
 </head>
 
 <body>
-    <!--http://guge.suanfazu.com/search/?q=lxyxdylglc-->
+
     <div class="searchBar">
         <input id="inputWord" type="text" name="searchInput" placeholder="输入关键词按回车或点击搜索键即可搜索">
         <input id="submitBtn" type="submit" name="searchBtn" value="一键双搜">
