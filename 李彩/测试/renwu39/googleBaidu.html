@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>一键双搜</title>
+    <title>一键双搜1</title>
     <style>
     html,body{
         margin: 0;
         padding: 0;
         width: 100%;
-
     }
     .searchBar{
     	margin: 0 auto;
@@ -19,6 +18,7 @@
         padding: 20px 0;
         border-bottom:  1px solid #aaa;
         width: 100%;
+
     }
    #inputWord{
     width:35%;
@@ -44,19 +44,22 @@
     -webkit-border-radius:0;
      cursor: pointer;
     outline:medium;
-    border-bottom:1px solid #2d78f4;
     text-align: center;
     letter-spacing:1px;
     }
+    .iframeCt{
+        width:49%;
+        display: inline-block;
+    }
     iframe{
-       width:49%;
+       width:100%;
         height:2250px;
         margin-top:18px;
         border-width:0;
     }
     @media (max-width: 1024px) {
         #inputWord{
-            width:70%;
+            width:68%;
             height: 45px;
             line-height: 45px;
         }
@@ -77,11 +80,16 @@
                 font-size: 14px;
             }
             #submitBtn{
+                width:25%;
                 height: 45px;
                 line-height: 45px;
                 font-size: 14px;
                 text-align: center;
             }
+            .iframeCt{
+                width: 99%;
+            }
+
             iframe{
                 width: 99%;
             }
@@ -102,10 +110,10 @@
         <input id="inputWord" type="text" name="searchInput" placeholder="输入关键词按回车或点击搜索键即可搜索">
         <input id="submitBtn" type="submit" name="searchBtn" value="一键双搜">
     </div>
-    <div>
+    <div class="iframeCt">
         <iframe id="iframeBaidu" src="https://www.baidu.com/s?wd=%E7%99%BE%E5%BA%A6"  scrolling="no"></iframe>
     </div>
-    <div>
+    <div class="iframeCt">
         <iframe id="iframeGoogle" src="https://g.zmirrordemo.com/search?newwindow=1&safe=strict&btnG=Google+%E6%90%9C%E7%B4%A2&q=%E7%99%BE%E5%BA%A6"  scrolling="no"></iframe>
     </div>
 
