@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>一键双搜1</title>
+    <title>一键双搜3</title>
     <style>
     html,body{
         margin: 0;
@@ -103,6 +103,8 @@
         }
     </style>
 </head>
+<!--https://g.zmirrordemo.com/search?safe=strict&q=%E7%99%BE%E5%BA%A6-->
+<!--https://g.zmirrordemo.com/search?newwindow=1&safe=strict&btnG=Google+%E6%90%9C%E7%B4%A2&q=%E7%99%BE%E5%BA%A6-->
 
 <body>
 
@@ -114,7 +116,7 @@
         <iframe id="iframeBaidu" src="https://www.baidu.com/s?wd=%E7%99%BE%E5%BA%A6"  scrolling="no"></iframe>
     </div>
     <div class="iframeCt">
-        <iframe id="iframeGoogle" src="https://g.zmirrordemo.com/search?newwindow=1&safe=strict&btnG=Google+%E6%90%9C%E7%B4%A2&q=%E7%99%BE%E5%BA%A6"  scrolling="no"></iframe>
+        <iframe id="iframeGoogle" src="https://g.zmirrordemo.com/search?safe=strict&q=%E7%99%BE%E5%BA%A6"  scrolling="no"></iframe>
     </div>
 
 
@@ -125,7 +127,7 @@
         var inputWord = document.getElementById("inputWord").value,
                 iframe = document.getElementsByTagName("iframe");
         iframe[0].setAttribute("src","https://www.baidu.com/s?wd=" + inputWord );
-        iframe[1].setAttribute("src","https://g.zmirrordemo.com/search?newwindow=1&safe=strict&btnG=Google+%E6%90%9C%E7%B4%A2&q=" + inputWord );
+        iframe[1].setAttribute("src","https://g.zmirrordemo.com/search?safe=strict&q=" + inputWord );
     }
     submitBtn.addEventListener("click", function() {
         openSearch();
