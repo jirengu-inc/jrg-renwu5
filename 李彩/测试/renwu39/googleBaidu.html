@@ -66,7 +66,7 @@
             height: 3800px;
         }
     }
-    @media (max-width: 375px){
+    @media (max-width: 768px){
             #inputWord{
                 width:68%;
                 height: 45px;
@@ -81,7 +81,7 @@
                 text-align: center;
             }
             iframe{
-                width: 100%;
+                width: 99%;
             }
             #iframeBaidu{
                 height: 2200px;
@@ -100,8 +100,14 @@
         <input id="inputWord" type="text" name="searchInput" placeholder="输入关键词按回车或点击搜索键即可搜索">
         <input id="submitBtn" type="submit" name="searchBtn" value="一键双搜">
     </div>
-    <iframe id="iframeBaidu" src="https://www.baidu.com/s?wd=%E7%99%BE%E5%BA%A6"  scrolling="no"></iframe>
-    <iframe id="iframeGoogle" src="https://g.zmirrordemo.com/search?newwindow=1&safe=strict&btnG=Google+%E6%90%9C%E7%B4%A2&q=%E7%99%BE%E5%BA%A6"  scrolling="no"></iframe>
+    <div>
+        <iframe id="iframeBaidu" src="https://www.baidu.com/s?wd=%E7%99%BE%E5%BA%A6"  scrolling="no"></iframe>
+    </div>
+    <div>
+        <iframe id="iframeGoogle" src="https://g.zmirrordemo.com/search?newwindow=1&safe=strict&btnG=Google+%E6%90%9C%E7%B4%A2&q=%E7%99%BE%E5%BA%A6"  scrolling="no"></iframe>
+    </div>
+
+
 
     <script type="text/javascript">
     var submitBtn = document.getElementById("submitBtn");
