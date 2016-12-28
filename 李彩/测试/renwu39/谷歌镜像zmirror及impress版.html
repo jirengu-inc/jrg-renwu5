@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>一键双搜-zmirror及ojson版</title>
+    <title>一键双搜-zmirror及impress版</title>
     <style>
     html,
     body {
@@ -135,11 +135,11 @@
         google1Ok, google2Ok;
 
     function openSearch() {
-          t1 = new Date().getTime(); 
+         t1 = new Date().getTime(); 
         var inputWord = document.getElementById("inputWord").value;
         var leftIframeSrc = "https://www.baidu.com/s?cl=3&ct=2097152&si=&wd=" + inputWord,
-            rightIframeSrc1 ="https://g.zmirrordemo.com/search?safe=strict&q=" + inputWord,
-            rightIframeSrc2 = "https://g.ojson.com/#newwindow=1&safe=strict&q=" + inputWord;
+            rightIframeSrc1 = "https://g.zmirrordemo.com/search?safe=strict&q=" + inputWord,
+            rightIframeSrc2 = "https://g3.impress.pw/?gws_rd=ssl#newwindow=1&safe=strict&hl=zh-CN&sitesearch=&q=" + inputWord;
         iframe[0].setAttribute("src", leftIframeSrc);
         if (google2Ok) {
             iframe[1].setAttribute("src", rightIframeSrc2);
@@ -158,11 +158,11 @@
                     iframe[1].setAttribute("src", rightIframeSrc2);
                     google1Ok = false;
                     google2Ok = true;
-                    submitBtn.value = "切换中";
+                    console.log("g3.impress.pw当前不可用,正在切换其他可用地址");
                     return google2Ok;
                 }
 
-            }, 40000);
+            }, 3800);
 
         }
         return inputWord;
@@ -180,10 +180,12 @@
         if (iframe[1].getAttribute("src").substring(8, 14) == "g.zmir") {
             google1Ok = true;
         }
-          console.log("加载本页耗时---- "+ (new Date().getTime()-t1) +" 毫秒");
-        submitBtn.value = "搜索";
+        console.log("加载本页耗时---- "+ (new Date().getTime()-t1) +" 毫秒")
+        console.log(this,"加载完了！");
+
         return google1Ok;
     });
+
     </script>
 </body>
 <script charset="gbk" src="https://www.baidu.com/js/opensug.js"></script>
