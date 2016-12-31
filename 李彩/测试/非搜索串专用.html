@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="apple-touch-icon"  href="./114.jpg">
     <title>一键双搜-非搜索串专用</title>
     <style>
     html,
@@ -123,13 +126,12 @@
         <input id="submitBtn" type="submit" name="searchBtn" value="搜索">
     </div>
     <div class="iframeCt">
-        <iframe id="iframeBaidu" name="iframeBaidu" src="" scrolling="no"></iframe>
+        <iframe id="iframeBaidu" name="iframeBaidu"  scrolling="no"></iframe>
     </div>
     <div class="iframeCt">
-        <iframe id="iframeGoogle" name="iframeGoogle" src="" scrolling="no"></iframe>
+        <iframe id="iframeGoogle" name="iframeGoogle"  scrolling="no"></iframe>
     </div>
     <script type="text/javascript">
-    
     var submitBtn = document.getElementById("submitBtn"),
         iframe = document.getElementsByTagName("iframe"),
         google1Ok, google2Ok;
@@ -137,7 +139,7 @@
     function openSearch() {
         var inputWord = document.getElementById("inputWord").value;
         var leftIframeSrc = "https://www.baidu.com/s?cl=3&ct=2097152&si=&wd=" + inputWord,
-            rightIframeSrc1 = "https://g.ojson.com/#newwindow=1&safe=strict&q=" + inputWord,
+            rightIframeSrc1 = "https://g3.impress.pw/?gws_rd=ssl#newwindow=1&safe=strict&hl=zh-CN&sitesearch=&q=" + inputWord,
             rightIframeSrc2 = "https://g.zmirrordemo.com/search?#newwindow=1&safe=strict&q=" + inputWord;
         iframe[0].setAttribute("src", leftIframeSrc);
         if (google2Ok) {
@@ -157,13 +159,12 @@
                     iframe[1].setAttribute("src", rightIframeSrc2);
                     google1Ok = false;
                     google2Ok = true;
-                    submitBtn.value = "切换中";
                     return google2Ok;
                 }
 
-            }, 50000);
+            }, 45000);
 
-        }       
+        }
 
     }
     submitBtn.addEventListener("click", function() {
@@ -173,20 +174,19 @@
         if (e.keyCode === 13) {
             openSearch();
         }
-    });  
+    });
 
 
     function isGoogle1Ok() {
-        if (iframe[1].getAttribute("src").substring(8, 14) == "g.ojso") {
+        if (iframe[1].getAttribute("src").substring(8, 14) == "g3.imp") {
             google1Ok = true;
         }
-              
-        submitBtn.value = "搜索";
-     iframe[1].removeEventListener("load",isGoogle1Ok);   
-       
+
+        iframe[1].removeEventListener("load", isGoogle1Ok);
+
     }
 
-    iframe[1].addEventListener("load",isGoogle1Ok);
+    iframe[1].addEventListener("load", isGoogle1Ok);
     </script>
 </body>
 <script charset="gbk" src="https://www.baidu.com/js/opensug.js"></script>
