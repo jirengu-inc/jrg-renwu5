@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>一键双搜-zmirror及ojson版</title>
+    <title>一键双搜-搜索串专用</title>
     <style>
     html,
     body {
@@ -127,19 +127,26 @@
     </div>
     <div class="iframeCt">
         <iframe id="iframeGoogle" name="iframeGoogle" src="" scrolling="no"></iframe>
-        <!--https://g.zmirrordemo.com/search?safe=strict&q=%E7%99%BE%E5%BA%A6-->
     </div>
     <script type="text/javascript">
+        (function(){
+        var searchQuery=location.search,
+        searchWord=decodeURIComponent(searchQuery.substring(4)),
+        iframe = document.getElementsByTagName("iframe");
+         iframe[0].setAttribute("src", "https://www.baidu.com/s?cl=3&ct=2097152&si=&wd=" + searchWord);
+          iframe[1].setAttribute("src", "https://g.ojson.com/#newwindow=1&safe=strict&q=" + searchWord);
+          document.getElementById("inputWord").value=searchWord;
+
+    }())
     var submitBtn = document.getElementById("submitBtn"),
         iframe = document.getElementsByTagName("iframe"),
         google1Ok, google2Ok;
 
     function openSearch() {
-        // t1 = new Date().getTime();
         var inputWord = document.getElementById("inputWord").value;
         var leftIframeSrc = "https://www.baidu.com/s?cl=3&ct=2097152&si=&wd=" + inputWord,
-            rightIframeSrc1 = "https://g.zmirrordemo.com/search?safe=strict&q=" + inputWord,
-            rightIframeSrc2 = "https://g.ojson.com/#newwindow=1&safe=strict&q=" + inputWord;
+            rightIframeSrc1 = "https://g.ojson.com/#newwindow=1&safe=strict&q=" + inputWord,
+            rightIframeSrc2 = "https://g.zmirrordemo.com/search?#newwindow=1&safe=strict&q=" + inputWord;
         iframe[0].setAttribute("src", leftIframeSrc);
         if (google2Ok) {
             iframe[1].setAttribute("src", rightIframeSrc2);
@@ -162,13 +169,9 @@
                     return google2Ok;
                 }
 
-            }, 45000);
+            }, 50000);
 
-        }
-
-        // isGoogle1Ok();        
-        // console.log("你输入的是: "+inputWord);
-        // return inputWord;
+        }       
 
     }
     submitBtn.addEventListener("click", function() {
@@ -178,36 +181,20 @@
         if (e.keyCode === 13) {
             openSearch();
         }
-    });
+    });  
 
-    // function isGoogle1Ok() {
-    //     if (google1Ok) {
-    //         return 
-    //     } else {
-    //         iframe[1].addEventListener("load", function() {
-    //             if (iframe[1].getAttribute("src").substring(8, 14) == "g.zmir") {
-    //                 google1Ok = true;
-    //             }
-    //             submitBtn.value = "搜索";
-    //             console.log("加载完了！！！");
-    //             return google1Ok;
-    //         })
-
-    //     }
-    // }
 
     function isGoogle1Ok() {
-        if (iframe[1].getAttribute("src").substring(8, 14) == "g.zmir") {
+        if (iframe[1].getAttribute("src").substring(8, 14) == "g.ojso") {
             google1Ok = true;
         }
-        // console.log("加载本页耗时---- " + (new Date().getTime() - t1) + " 毫秒");
+              
         submitBtn.value = "搜索";
      iframe[1].removeEventListener("load",isGoogle1Ok);   
        
     }
 
     iframe[1].addEventListener("load",isGoogle1Ok);
-
     </script>
 </body>
 <script charset="gbk" src="https://www.baidu.com/js/opensug.js"></script>
