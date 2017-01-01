@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>代码题2</title>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+  <style>
+    body {
+      width: 2000px;
+      height: 2000px;
+    }
+    div {
+      margin: 10px;
+      background-color: #999;
+    }
+    .btn, .switch-color {
+      width: 100px;
+      height: 100px;
+      border: 2px solid cornflowerblue;
+    }
+    .show-scroll {
+      min-width: 140px;
+      min-height: 40px;
+      padding: 10px;
+      position: fixed;
+      top: 0;
+      left: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="btn"></div>
+  <div class="show-scroll"></div>
+  <div class="switch-color"></div>
+  <input type="text">
+  <br><br>
+  <select>
+    <option value="1111">1111</option>
+    <option value="2222">2222</option>
+    <option value="3333">3333</option>
+    <option value="4444">4444</option>
+  </select>
+  <p class="select"></p>
+  <script>
+    // 1. 当点击 $btn 时，让 $btn 的背景色变为红色再变为蓝色
+    $('.btn').on('click', function() {
+      $('.btn').css({
+        'background-color' : 'red'
+      });
+    });
+    // 2. 当窗口滚动时，获取垂直滚动距离
+    $(window).on('scroll', function() {
+      $('.show-scroll').html('距离顶部距离：' + $(window).scrollTop() + 'px' + '<br>'
+                           + '距离左边距离：' + $(window).scrollLeft() + 'px');
+    });
+    // 3. 当鼠标放置到 $div 上，把 $div 背景色改为红色，移出鼠标背景色变为白色
+    $('.switch-color').on('mouseenter', function() {
+      $(this).css({'background-color' : 'red'});
+    });
+    $('.switch-color').on('mouseleave', function() {
+      $(this).css({'background-color' : 'white'});
+    });
+    // 4. 当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字
+    $('input').on('focus', function() {
+      $(this).css({'outLineColor' : 'blue'});
+    });
+    $('input').on('blur', function() {
+      console.log($(this).val());
+    });
+    $('input').on('keyup', function() {
+      $(this).val($(this).val().toUpperCase());
+    });
+    // 5. 当选择 select 后，获取用户选择的内容
+    $('select').on('change', function() {
+      $('p.select').html('选择的是：' + $(this).val());
+    });
+  </script>
+</body>
+</html>
