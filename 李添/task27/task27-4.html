@@ -79,19 +79,19 @@
         </div>
       </li>
       <li>
-        <div class="cover" data-bg-img="http://cdn.jirengu.com/book.jirengu.com/img/22.jpg"></div>
+        <div class="cover" data-bg-img="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></div>
         <div class="wrap">
           <h3>第二页</h3>
         </div>
       </li>
       <li>
-        <div class="cover" data-bg-img="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></div>
+        <div class="cover" data-bg-img="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></div>
         <div class="wrap">
           <h3>第三页</h3>
         </div>
       </li>
       <li>
-        <div class="cover" data-bg-img="http://cdn.jirengu.com/book.jirengu.com/img/19.jpg"></div>
+        <div class="cover" data-bg-img="http://cdn.jirengu.com/book.jirengu.com/img/22.jpg"></div>
         <div class="wrap">
           <h3>第四页</h3>
         </div>
@@ -118,8 +118,9 @@
     imgRealCount = $slides.children().length;
     $slides.css({ left : -imgWidth, width : imgWidth * imgRealCount });
 
-    var currentIndex = 0;
-    var isAnimate = false;
+    var currentIndex = 0,
+        isAnimate = false,
+        clock;
 
     $bullet.find('li').on('click', function() {
       var index = $(this).index();
