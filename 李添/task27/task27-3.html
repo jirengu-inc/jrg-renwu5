@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>轮播图</title>
+  <style>
+    html, body, ul, li {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+    }
+    a {
+      text-decoration: none;
+    }
+
+    .carousel {
+      position: relative;
+      width: 500px;
+      height: 400px;
+      overflow: hidden;
+    }
+    .carousel ul.slides {
+      position: absolute;
+    }
+    .carousel ul.slides:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .carousel ul.slides li {
+      float: left;
+    }
+    .carousel ul.slides img {
+      width: 500px;
+      height: 400px;
+    }
+    .carousel .arrow {
+      position: absolute;
+      top: 50%;
+      margin-top: -20px;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 50%;
+      background-color: #333;
+      text-align: center;
+      color: #FFF;
+      opacity: 0.7;
+    }
+    .carousel .arrow:hover {
+      opacity: 1;
+    }
+    .carousel .arrow.next {
+      right: 10px;
+    }
+    .carousel .arrow.previous {
+      left: 10px;
+    }
+    .carousel ul.bullet {
+      position: absolute;
+      left: 50%;
+      bottom: 10px;
+      transform: translateX(-50%);
+    }
+    .carousel ul.bullet li {
+      display: inline-block;
+      width: 20px;
+      height: 5px;
+      border-radius: 3px;
+      background-color: #FFF;
+      cursor: pointer;
+    }
+    .carousel ul.bullet li.active {
+      background-color: #555;
+    }
+  </style>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="carousel">
+    <ul class="slides">
+      <li data-id="0"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""></a></li>
+      <li data-id="1"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""></a></li>
+      <li data-id="2"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""></a></li>
+      <li data-id="3"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""></a></li>
+      <li data-id="4"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/22.jpg" alt=""></a></li>
+    </ul>
+    <a class="next arrow" href="javascript:;">&gt;</a>
+    <a class="previous arrow" href="javascript:;">&lt;</a>
+    <ul class="bullet">
+      <li class="active"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <!-- <button onclick="window.close()">Close Window</button> -->
+  <script>
+    var $slides = $('.slides'),
+        $slide = $('.slides').children(),
+        $bullet = $('.bullet'),
+        $previous = $('.previous'),
+        $next = $('.next');
+
+    var imgWidth = $slides.children().width(),
+        imgCount = $slides.children().length,
+        imgRealCount = imgCount + 2,
+        frameTime= 3000,
+        clock;
+
+    $slides.prepend($slide.last().clone());
+    $slides.append($slide.first().clone());
+
+    $slides.css({
+      left : - imgWidth,
+      width : imgRealCount * imgWidth
+    });
+
+    $previous.on('click', function(e) {
+      e.preventDefault();
+      playPrevious();
+    });
+    $next.on('click', function(e) {
+      e.preventDefault();
+      playNext();
+    });
+    $slides.on('mouseover', function() {
+      stopPlay();
+    });
+    $slides.on('mouseleave', function() {
+      autoPlay();
+    });
+    $bullet.find('li').on('click', function() {
+      var index = $(this).index();
+      if(index > currentIndex){
+        playNext(index - currentIndex);
+      }else if(index < currentIndex){
+        playPrevious(currentIndex - index);
+      }
+    });
+
+    autoPlay();
+
+    var currentIndex = 0;
+    var isAnimate = false;
+
+
+    function playNext(plusIndex) {
+      var plusIndex = plusIndex || 1;
+      if(!isAnimate){
+        isAnimate = true;
+        $slides.animate( {left : '-=' + (imgWidth * plusIndex)}, function(){
+          currentIndex = (currentIndex + plusIndex) % imgCount;
+          if(currentIndex === 0){
+            $slides.css({ left : - imgWidth});
+          }
+          isAnimate = false;
+          setBullet();
+        });
+      }
+    }
+    function playPrevious(minusIndex) {
+      var minusIndex = minusIndex || 1;
+      if(!isAnimate){
+        isAnimate = true;
+        $slides.animate( {left : '+=' + (imgWidth * minusIndex)}, function() {
+          currentIndex = (currentIndex - minusIndex + imgCount) % imgCount;
+          if(currentIndex === (imgCount - 1)){
+            $slides.css({ left : - (imgWidth * imgCount)});
+          }
+          isAnimate = false;
+          setBullet();
+        });
+      }
+    }
+    function setBullet() {
+      $bullet.children().removeClass('active')
+                        .eq(currentIndex).addClass('active');
+    }
+    function autoPlay() {
+      clock = setInterval(function(){
+        playNext();
+      }, frameTime);
+    }
+    function stopPlay() {
+      clearInterval(clock);
+    }
+  </script>
+</body>
+</html>
