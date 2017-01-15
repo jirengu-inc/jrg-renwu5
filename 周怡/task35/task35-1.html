@@ -1,0 +1,263 @@
+		<!DOCTYPE html>
+		<html lang="en">
+
+		<head>
+			<meta charset="UTF-8">
+			<title>35-1</title>
+			<style>
+				html,
+				body,
+				ul,
+				li,
+				p {
+					margin: 0;
+					padding: 0;
+				}
+
+				li {
+					list-style: none;
+				}
+
+				a {
+					text-decoration: none;
+				}
+
+				.carousel {
+					position: relative;
+					width: 310px;
+					height: 206px;
+					overflow: hidden;
+				}
+
+				.carousel .imgs {
+					position: relative;
+				}
+
+				.carousel .imgs img {
+					width: 310px;
+					height: 206px;
+				}
+
+				.carousel .imgs:after {
+					content: ' ';
+					display: block;
+					clear: both;
+				}
+
+				.carousel .imgs li {
+					position: absolute;
+					display: none;
+				}
+
+				.arrow {
+					position: absolute;
+					top: 50%;
+					margin-top: -15px;
+					width: 30px;
+					height: 30px;
+					line-height: 30px;
+					text-align: center;
+					background: #4E443C;
+					color: #fff;
+					border-radius: 30px;
+					box-shadow: 0 0 2px #999;
+					opacity: 0.8
+				}
+
+				.arrow:hover {
+					opacity: 1;
+				}
+
+				.pre {
+					left: 10px;
+				}
+
+				.next {
+					right: 10px;
+				}
+
+				ul.choose {
+					position: absolute;
+					bottom: 10px;
+					left: 50%;
+					transform: translateX(-50%);
+				}
+
+				ul.choose li {
+					width: 16px;
+					height: 4px;
+					border-radius: 2px;
+					background: #fff;
+					display: inline-block;
+					cursor: pointer;
+				}
+
+				ul.choose li.active {
+					background: #666;
+				}
+			</style>
+		</head>
+
+		<body>
+			<div class="carousel carousel1">
+				<ul class="imgs">
+					<li data-id=0>
+						<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a>
+					</li>
+					<li data-id=1>
+						<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a>
+					</li>
+					<li data-id=2>
+						<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a>
+					</li>
+					<li data-id=3>
+						<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a>
+					</li>
+				</ul>
+				<a class="pre arrow" href="#">
+					<</a>
+					<a class="next arrow" href="#">></a>
+					<ul class="choose">
+						<li class="active"></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+				<div class="carousel carousel2">
+					<ul class="imgs">
+						<li data-id=0>
+							<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a>
+						</li>
+						<li data-id=1>
+							<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a>
+						</li>
+						<li data-id=2>
+							<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a>
+						</li>
+						<li data-id=3>
+							<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a>
+						</li>
+					</ul>
+					<a class="pre arrow" href="#">
+						<</a>
+						<a class="next arrow" href="#">></a>
+						<ul class="choose">
+							<li class="active"></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+					<div class="carousel carousel3">
+						<ul class="imgs">
+							<li data-id=0>
+								<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a>
+							</li>
+							<li data-id=1>
+								<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a>
+							</li>
+							<li data-id=2>
+								<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a>
+							</li>
+							<li data-id=3>
+								<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a>
+							</li>
+						</ul>
+						<a class="pre arrow" href="#">
+							<</a>
+							<a class="next arrow" href="#">></a>
+							<ul class="choose">
+								<li class="active"></li>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ul>
+						</div>
+						<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+						<script type="text/javascript">
+
+							function  Carousel($name) {								
+								this.carousel = $name;
+								this.imgs = $name.find('.imgs');
+								this.items = $name.find('.imgs').children();
+								this.pre = $name.find('.pre');
+								this.next = $name.find('.next');
+								this.choose = $name.find('.choose');
+								this.imgWidth = $name.find('.imgs').children().width();
+								this.imgCount = $name.find('.imgs').children().size();
+
+								this.curIdx = 0;
+								this.isAnimate = false;
+								this.bind();
+							}
+
+							Carousel.prototype = {
+								bind: function(){									
+										var _this = this;
+									this.play(this.curIdx);
+									this.autoPlay();
+									this.pre.on('click',function(){
+										_this.playPre();
+									});
+									this.next.on('click',function(){
+										_this.playNext();
+									});
+									this.choose.on('click','li',function(){
+										var idx = $(this).index();
+										_this.play(idx);
+									});
+									
+								},
+
+								playPre: function() {
+									
+									this.play((this.imgCount + this.curIdx - 1) % this.imgCount);
+
+								},
+
+								playNext: function() {
+									
+									this.play((this.curIdx + 1) % this.imgCount);
+
+								},
+
+								play: function(idx) {
+									var _this = this;
+									if (this.isAnimate) return;
+									this.isAnimate = true;
+									this.items.eq(this.curIdx).fadeOut(1000);
+									this.items.eq(idx).fadeIn(1000, function() {
+										_this.isAnimate = false;
+									});
+									this.curIdx = idx;
+									this.choose.children().removeClass('active')
+									.eq(idx).addClass('active');
+									
+								},
+
+								stopAuto: function() {
+									
+									clearInterval(clock);									
+								},
+
+								autoPlay: function() {
+									var _this = this;
+									clock = setInterval(function() {
+										_this.playNext();
+									}, 2000);
+								}
+
+							};
+
+							$('.carousel').each(function(){
+	                          new Carousel($(this));
+                            });
+
+							
+
+
+</script>
+</body>
+
+</html>
