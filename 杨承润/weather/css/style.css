@@ -1,0 +1,25 @@
+html,body{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 100%;
+	height: 100%;
+	background:rgb(1,54,122);
+	color: white;
+}
+.weather{
+	width: 200px;
+	border: 1px solid lightgray;
+	border-radius: 5px; 
+	text-align: center;
+	float: left;
+	height: 200px;
+	margin-top: 20px;
+	box-shadow: 1px 1px 1px 1px lightgray;
+}
+.content{
+	width: 806px;
+	margin:0px auto;
+	text-align: center;
+}
