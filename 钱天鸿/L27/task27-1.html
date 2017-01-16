@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>fadeIn和fadeOut方法</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+	html,body,ul,li,p{
+		margin:0px;
+		padding:0px;
+	}
+	ul,li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	.clearfix:after{
+		content:'';
+		display: block;
+		clear:both;
+	}
+
+	
+	.carousel{
+		/*border: 1px solid;*/
+		position: relative;
+		width: 450px;
+		height: 350px;
+		overflow: hidden;
+	}
+	.carousel .img-ct{
+		position: relative;
+	}
+	.carousel .img-ct img{
+		width: 450px;
+		height: 350px;
+	}
+	.carousel .img-ct li{
+		position: absolute;
+		display: none;
+		/*因为淡入淡出默认元素都是隐藏的，所以这样设置*/
+	}
+	.arrow{
+		position: absolute;
+	    /*border: 1px solid; */
+	    width: 30px;
+	    height: 30px;
+	    line-height: 30px;
+	    text-align: center;
+	    top: 50%;
+	    transform: translateY(-50%);
+	    color: #fff;
+	    background: #bbb;
+	    border-radius: 50%;
+	    opacity: 0.5;
+	    font-size: 20px;
+	}
+	.arrow:hover{
+		opacity: 1;
+	}
+	.next{
+		right: 20px;
+	}
+	.pre{
+		left: 20px;
+	}
+	.bullet{
+		position: absolute;
+		/*border:1px solid;*/
+		bottom:10px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.bullet li{
+		/*border:1px solid;*/
+		width:20px;
+		height: 8px;
+		display: inline-block;
+		cursor: pointer;
+		background:#888;
+		border-radius: 4px;
+		margin: 0 8px;
+	}
+	.bullet .active{
+		background:red;
+	}
+</style>
+</head>
+<body>
+	<!--carousel 旋转-->
+    <div class="carousel">
+    	<ul class="img-ct clearfix">
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/bfba8ee7-51eb-45f7-bd21-3fb9b0b9ecc4.jpg"></a></li>
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/611391ce-9ae4-4e1f-965e-6c8efc3201d1.jpg"></a></li>
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/c1e552ff-9d70-4ee6-82eb-6fd82fa2d4cf.jpg"></a></li>
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/093b29f4-3002-4aae-8e0e-0446e51eeeaf.jpg"></a></li>
+    	</ul>
+    	<a href="#" class="next arrow">></a>
+    	<a href="#" class="pre arrow"><</a>
+    	<ul class="bullet">
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+
+    <script>
+    	$(document).ready(function(){
+    		var $imgCt=$('.img-ct'), //展示窗口
+    			$items=$imgCt.children(), //所有装载图片的li
+    			$pre=$('.pre'), //上一个按钮
+    			$next=$('.next'),//下一个按钮
+    			$bullet=$('.bullet'), //控制条
+    			//imgWidth=$items.width(), 获取单个图片宽
+    			imgCount=$items.size(),//获取所有图片个数
+    			curIdx=0, //当前被选中的图片 从下标0开始
+    			isAnimate=false //给切换时上锁，当动画正在进行时多次点击无效
+
+    		$next.on('click',function(){
+    			playNext();  //点击下一个按钮时执行playNext()
+    		});
+    		$pre.on('click',function(){
+    			playPre();  //点击上一个按钮时执行playPre()
+    		});
+    		$bullet.find('li').on('click',function(){
+    			var idx=$(this).index(); //当控制条中某个li被点击时，获取控制条中它的位置序号
+    			// console.log(idx);
+    			play(idx); //已被点击元素的序号为参数执行play(idx)
+    		});
+
+    		play(0); //初始状态为0 第一张图片
+    		autoPlay(); //启动自动播放
+
+
+    		function playNext(){
+    			play( (curIdx+1)%imgCount );
+    			//关键处：使用%求余，获取下一图片
+    		};
+    		function playPre(){
+    			play( (imgCount+curIdx-1)%imgCount );
+    		};
+    		function play(idx){
+    			//关键处play播放
+    			if(isAnimate) return;
+    			isAnimate=true;
+    			$items.eq(curIdx).fadeOut(500); //让上一张图隐藏
+    			// console.log(curIdx);
+    			$items.eq(idx).fadeIn(500,function(){//让下一张图显示
+    				isAnimate=false;
+    			});
+    			curIdx=idx; //跟新curIdx
+    			setBullet(); //跟新控制条的颜色
+    		};
+    		function setBullet(){
+    			$bullet.children().removeClass('active')
+    					.eq(curIdx).addClass('active');
+    		};
+
+    		function autoPlay(){
+	    		var clock=setInterval(function(){
+	    				playNext();
+	    			},3000);//每个3s就就执行函数
+    		};
+
+    		function stopAuto(){
+    			clearInterval(clock);
+    		};
+    	});
+    		
+      //   知识点：fadeOut()方法使用淡出效果来隐藏被选元素,假如该元素是隐藏的。
+    		// 注意：如果元素已经隐藏，则该效果不产生任何变化，除非规定了 callback 函数
+    		// 也就是逐渐改变被选元素的不透明度，从可见到隐藏（褪色效果）
+    		// $(selector).fadeOut(speed,callback)
+
+    		// fadeIn()方法使用淡入效果来显示被选元素,假如该元素是隐藏的。 
+    		// 也就是逐渐改变被选元素的不透明度，从隐藏到可见（褪色效果）
+    		// $(selector).fadeIn(speed,callback)
+
+    </script>
+</body>
+</html>

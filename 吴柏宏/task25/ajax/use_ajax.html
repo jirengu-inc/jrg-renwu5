@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ajax封装</title>
+  </head>
+  <body>
+    <input id="username" type="text" placeholder="username">
+  	<button id="btn">获取信息</button>
+
+  	<dl id="ct">
+
+  	</dl>
+
+
+
+    <script>
+
+      function ajax(opts){
+
+        var xmlhttp = new XMLLHttpRequest();
+        xmlhttp.onreadystatechange = function(){
+          if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            var json = JSON.parse(xmlhttp.responseText);
+            opts.success(json);
+          }
+          if(xmlhttp.status == 404){
+            opts.error();
+          }
+        }
+        var dataStr = '';
+        for(var key in opts.data){
+          dataStr += key + '=' + opts.data[key] + '&';
+        }
+        dataStr = dataStr.substr(0, dataStr.length-1);
+
+        if(opts.type.toLowerCase() === 'post'){
+          xmlhttp.open(opts.type, opts.url, true);
+          xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+          xmlhttp.send(dataStr);
+        }
+        if(opts.type.toLowerCase() === 'get'){
+          xmlhttp.open(opts.type, opts.url + '?' + dataStr, true);
+          xmlhttp.send();
+        }
+      }
+
+
+      document.getElementById('btn').addEventListener('click',function(){
+        ajax({
+          url:'use_ajax.php',
+          type:'get',
+          data:{
+            username:document.getElementById('username').value
+          },
+          success:function(data){
+            dealWith(data);
+          },
+          error:function(){
+            onError();
+          }
+        });
+      });
+
+      function onError(){
+        document.getElementById('ct').innerHTML = 'oh 出错了...';
+      }
+
+      function dealWiht(userInfo){
+        var str = '<dt>性别：</dt>';
+        str +=    '<dd>'+userInfo.sex+'</dd>';
+        str +=    '<dd>年纪：</dd>';
+        str +=    '<dd>'+userInfo.age+'</dd>';
+
+        document.getElementById('ct').innerHTML = str;
+      }
+
+      // var flag = false;
+      // el.addEventListener("click",function(){
+      //   if(flag){
+      //     return;
+      //   }
+      //   onload = true;
+      //       ajax({
+      //           url:"",
+      //           type:"",
+      //           data:{},
+      //           success:function(ret){
+      //               onload = false;
+      //           },
+      //           error:function () {
+      //             flag = false;
+      //           }
+      // })
+    </script>
+  </body>
+</html>

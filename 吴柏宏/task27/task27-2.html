@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>三轮播</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      ul,li{
+        list-style: none;
+      }
+      a{
+        text-decoration: none;
+      }
+      .carousel .img-ct img{
+        width: 310px;
+        height: 206px;
+      }
+      .carousel{
+        position: relative;
+        width: 310px;
+        height: 206px;
+      }
+      .carousel .img-ct li{
+        position: absolute;
+        display: none;
+      }
+      .img-ct{
+        position: relative;
+      }
+      /*.img-ct:after{
+        content: '';
+        display: block;
+        clear: both;
+      }*/
+      .arrow{
+        position: absolute;
+        top: 50%;
+        margin-top: -15px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        background: #4e443c;
+        color: #fff;
+        border-radius: 30px;
+        opacity: 0.8;
+      }
+      .arrow:hover{
+        opacity: 1;
+      }
+      .pre{
+        left: 10px;
+      }
+      .next{
+        right: 10px;
+      }
+      .bullet{
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .bullet li{
+        display: inline-block;
+        width: 16px;
+        height: 4px;
+        border-radius: 2px;
+        background: #fff;
+        cursor: pointer;
+      }
+      .bullet li.active{
+        background: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 轮播1 -->
+    <div class="carousel" id="carousel1">
+      <ul class="img-ct">
+        <li data-id=0><img src='img/1.jpg'></li>
+        <li data-id=1><img src='img/2.jpg'></li>
+        <li data-id=2><img src='img/3.jpg'></li>
+        <li data-id=3><img src='img/4.jpg'></li>
+      </ul>
+      <a class="pre arrow" href="#"><</a>
+      <a class="next arrow" href="#">></a>
+      <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <!-- 轮播2 -->
+    <div class="carousel" id="carousel2">
+      <ul class="img-ct">
+        <li data-id=0><img src='img/1.jpg'></li>
+        <li data-id=1><img src='img/2.jpg'></li>
+        <li data-id=2><img src='img/3.jpg'></li>
+        <li data-id=3><img src='img/4.jpg'></li>
+      </ul>
+      <a class="pre arrow" href="#"><</a>
+      <a class="next arrow" href="#">></a>
+      <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <!-- 轮播3 -->
+    <div class="carousel" id="carousel3">
+      <ul class="img-ct">
+        <li data-id=0><img src='img/1.jpg'></li>
+        <li data-id=1><img src='img/2.jpg'></li>
+        <li data-id=2><img src='img/3.jpg'></li>
+        <li data-id=3><img src='img/4.jpg'></li>
+      </ul>
+      <a class="pre arrow" href="#"><</a>
+      <a class="next arrow" href="#">></a>
+      <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <script>
+        function action(carousel){
+          var $parent = $(carousel),
+              $ct = $parent.find('.img-ct'),
+              $items = $ct.children(),
+              $pre = $parent.find('.pre'),
+              $next = $parent.find('.next'),
+              $bullet = $parent.find('.bullet'),
+              imgCount = $ct.children().length;
+
+          var curIdx = 0;
+          var isAnimate = false;
+
+          $next.on('click',function(){
+            playNext();
+          });
+          $pre.on('click',function(){
+            playPre();
+          });
+          $bullet.find('li').on('click',function(){
+            var idx = $(this).index();
+            play(idx);
+          });
+
+          play(0);
+          autoPlay();
+          function autoPlay(){
+            clock = setInterval(function(){
+              playNext();
+            },2000)
+          }
+          // function stopAuto(){
+          //   clearInterval(clock);
+          // }
+
+          function playNext(){
+            play((curIdx+1)%imgCount);
+          }
+          function playPre(){
+            play((imgCount+curIdx-1)%imgCount)
+          }
+          function play(idx){
+            if(isAnimate) return;
+            isAnimate = true;
+
+            $items.fadeOut(500);
+            $items.eq(idx).fadeIn(500,function(){
+              isAnimate = false;
+            })
+
+            curIdx = idx;
+            setBullet();
+          }
+
+          function setBullet(){
+            $bullet.children().removeClass('active')
+                              .eq(curIdx).addClass('active');
+          }
+        }
+        action('#carousel1');
+        action('#carousel2');
+        action('#carousel3');
+    </script>
+
+
+    <!-- <script>
+        $.fn.carousel = function(){//自定义函数
+          var $cur = $(this),
+              $ct = $cur.find('.img-ct'),
+              $items = $ct.children(),
+              $pre = $cur.find('.pre'),
+              $next = $cur.find('.next'),
+              $bullet = $cur.find('.bullet'),
+              imgCount = $ct.children().length;
+
+          var curIdx = 0;
+          var isAnimate = false;
+
+          $next.on('click',function(){
+            playNext();
+          });
+          $pre.on('click',function(){
+            playPre();
+          });
+          $bullet.find('li').on('click',function(){
+            var idx = $(this).index();
+            play(idx);
+          });
+
+          play(0);
+          autoPlay();
+          function autoPlay(){
+            clock = setInterval(function(){
+              playNext();
+            },2000)
+          }
+          // function stopAuto(){
+          //   clearInterval(clock);
+          // }
+
+          function playNext(){
+            play((curIdx+1)%imgCount);
+          }
+          function playPre(){
+            play((imgCount+curIdx-1)%imgCount)
+          }
+          function play(idx){
+            if(isAnimate) return;
+            isAnimate = true;
+
+            $items.fadeOut(500);
+            $items.eq(idx).fadeIn(500,function(){
+              isAnimate = false;
+            })
+
+            curIdx = idx;
+            setBullet();
+          }
+
+          function setBullet(){
+            $bullet.children().removeClass('active')
+                              .eq(curIdx).addClass('active');
+          }
+        }
+
+        $('.carousel').each(function(){
+          $(this).carousel();
+        })
+
+
+    </script> -->
+  </body>
+</html>

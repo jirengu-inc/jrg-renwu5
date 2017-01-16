@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>多个淡入淡出</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+	html,body,ul,li,p{
+		margin:0px;
+		padding:0px;
+	}
+	ul,li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	.clearfix:after{
+		content:'';
+		display: block;
+		clear:both;
+	}
+	.carousel{
+		border: 1px solid;
+		position: relative;
+		width: 450px;
+		height: 350px;
+		overflow: hidden;
+	}
+	.carousel .img-ct{
+		position: relative;
+	}
+	.carousel .img-ct img{
+		width: 450px;
+		height: 350px;
+	}
+	.carousel .img-ct li{
+		position: absolute;
+		display: none;
+	}
+	.arrow{
+		position: absolute;
+	    width: 30px;
+	    height: 30px;
+	    line-height: 30px;
+	    text-align: center;
+	    top: 50%;
+	    transform: translateY(-50%);
+	    color: #fff;
+	    background: #bbb;
+	    border-radius: 50%;
+	    opacity: 0.5;
+	    font-size: 20px;
+	}
+	.arrow:hover{
+		opacity: 1;
+	}
+	.next{
+		right: 20px;
+	}
+	.pre{
+		left: 20px;
+	}
+	.bullet{
+		position: absolute;
+		bottom:10px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.bullet li{
+		width:20px;
+		height: 8px;
+		display: inline-block;
+		cursor: pointer;
+		background:#888;
+		border-radius: 4px;
+		margin: 0 8px;
+	}
+	.bullet .active{
+		background:red;
+	}
+</style>
+</head>
+<body>
+	<!--轮播1-->
+    <div class="carousel carousel1">
+    	<ul class="img-ct clearfix">
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/bfba8ee7-51eb-45f7-bd21-3fb9b0b9ecc4.jpg"></a></li>
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/611391ce-9ae4-4e1f-965e-6c8efc3201d1.jpg"></a></li>
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/c1e552ff-9d70-4ee6-82eb-6fd82fa2d4cf.jpg"></a></li>
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/093b29f4-3002-4aae-8e0e-0446e51eeeaf.jpg"></a></li>
+    	</ul>
+    	<a href="#" class="next arrow">></a>
+    	<a href="#" class="pre arrow"><</a>
+    	<ul class="bullet">
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+	<!--轮播2-->
+    <div class="carousel carousel2">
+    	<ul class="img-ct clearfix">
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/bfba8ee7-51eb-45f7-bd21-3fb9b0b9ecc4.jpg"></a></li>
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/611391ce-9ae4-4e1f-965e-6c8efc3201d1.jpg"></a></li>
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/c1e552ff-9d70-4ee6-82eb-6fd82fa2d4cf.jpg"></a></li>
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/093b29f4-3002-4aae-8e0e-0446e51eeeaf.jpg"></a></li>
+    	</ul>
+    	<a href="#" class="next arrow">></a>
+    	<a href="#" class="pre arrow"><</a>
+    	<ul class="bullet">
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+	<!--轮播3-->
+    <div class="carousel carousel3">
+    	<ul class="img-ct clearfix">
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/bfba8ee7-51eb-45f7-bd21-3fb9b0b9ecc4.jpg"></a></li>
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/611391ce-9ae4-4e1f-965e-6c8efc3201d1.jpg"></a></li>
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/c1e552ff-9d70-4ee6-82eb-6fd82fa2d4cf.jpg"></a></li>
+    		<li><a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/093b29f4-3002-4aae-8e0e-0446e51eeeaf.jpg"></a></li>
+    	</ul>
+    	<a href="#" class="next arrow">></a>
+    	<a href="#" class="pre arrow"><</a>
+    	<ul class="bullet">
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+
+     <script>
+     	function method(carousel){
+     		$(document).ready(function(){
+	    		var $parents=$(carousel),
+	    		    $imgCt=$parents.find('.img-ct'), 
+	    			$items=$imgCt.children(), 
+	    			$pre=$parents.find('.pre'), 
+	    			$next=$parents.find('.next'),
+	    			$bullet=$parents.find('.bullet'), 
+	    			//imgWidth=$items.width(), 
+	    			imgCount=$items.size(),
+	    			curIdx=0, 
+	    			isAnimate=false 	
+
+	    		$('a').on('click',function(event){
+	    			event.preventDefault(); //防止a链接跳转
+	    		});
+	    		$next.on('click',function(){
+	    			playNext(); 
+	    		});
+	    		$pre.on('click',function(){
+	    			playPre();  
+	    		});
+	    		$bullet.find('li').on('click',function(){
+	    			var idx=$(this).index(); 
+	    			play(idx); 
+	    		});
+
+	    		play(0); 
+	    		autoPlay(); 
+
+
+	    		function playNext(){
+	    			play( (curIdx+1)%imgCount );
+	    		};
+	    		function playPre(){
+	    			play( (imgCount+curIdx-1)%imgCount );
+	    		};
+	    		function play(idx){
+	    			if(isAnimate) return;
+	    			isAnimate=true;
+	    			$items.eq(curIdx).fadeOut(500);
+	    			$items.eq(idx).fadeIn(500,function(){
+	    				isAnimate=false;
+	    			});
+	    			curIdx=idx; 
+	    			setBullet();
+	    		};
+	    		function setBullet(){
+	    			$bullet.children().removeClass('active')
+	    					.eq(curIdx).addClass('active');
+	    		};
+
+	    		function autoPlay(){
+		    		var clock=setInterval(function(){
+		    				playNext();
+		    			},3000);
+	    		};
+
+	    		function stopAuto(){
+	    			clearInterval(clock);
+	    		};
+	    	});
+
+     	};
+    	method('.carousel1');
+    	method('.carousel2');
+    	method('.carousel3');
+    </script>
+</body>
+</html>

@@ -81,21 +81,27 @@
                         start: ul.children.length,
                         len: 5
                     },
-                    success: function (ret) {
-                        for (var i = 0; i < ret.length; i++) {
-                            var newLi = document.createElement('li')
-                            newLi.innerHTML = ret[i]
-                            ul.appendChild(newLi)
-                        }
-                        start += this.data.len
-                        locked = false
+                    success: function (json) {
+                        onSuccess(json)
                     },
-                    error: function () {
-                        alert('sorry')
-                        locked = false
-                    }
-                })
+                error: function () {
+                    onError()
+                }
             })
+        })
+        function onSuccess (json){
+            for (var i = 0; i < json.length; i++) {
+                var newLi = document.createElement('li')
+                newLi.innerHTML = json[i]
+                ul.appendChild(newLi)
+            }
+                start += this.data.len
+                locked = false
+            }
+            function onError () {
+                alert('sorry')
+                locked = false
+            }
         </script>
     </body>
 

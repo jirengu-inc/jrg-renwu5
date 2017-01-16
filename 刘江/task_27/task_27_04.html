@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>slideCarousel</title>
+        <style>
+            html,body,ul,li,p {
+                padding: 0;
+                margin: 0;
+            }
+            li {
+                list-style: none;
+            }
+            .clearfix:after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+            .slideWrapper {
+                position: relative;
+                overflow: hidden;
+              margin: 0 auto;
+            }
+            .slideCt {
+                position: relative;
+                left: 0;
+            }
+            .imgList {
+                list-style: none;
+                float: left;
+            }
+            .slideWrapper > ul.slideCt > li.imgList img {
+                width: 100vw;
+                height: 100vh;
+                vertical-align: top;
+            }
+            .next {
+                position: absolute;
+                right: 5%;
+                top: 50%;
+                z-index: 10;
+                transform: translateY(-50%);
+                width: 30px;
+                height: 30px;
+                background: #000;
+                text-align: center;
+                line-height: 30px;
+                border-radius: 30px;
+                color: #fff;
+                cursor: pointer;
+                opacity: 0.5;
+            }
+            .next:hover {
+                opacity: 1;
+            }
+            .prev {
+                position: absolute;
+                left: 5%;
+                top: 50%;
+                z-index: 10;
+                transform: translateY(-50%);
+                width: 30px;
+                height: 30px;
+                background: #000;
+                text-align: center;
+                line-height: 30px;
+                border-radius: 30px;
+                color: #fff;
+                cursor: pointer;
+                opacity: 0.5;
+            }
+            .prev:hover {
+                opacity: 1;
+            }
+            ul.numberIndex {
+                position: absolute;
+                bottom: 5px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100px;
+            }
+            ul.numberIndex > li {
+                display: inline-block;
+                width: 19px;
+                height: 4px;
+                border-radius: 3px;
+                background: #fff;
+                cursor: pointer;
+            }
+            ul.numberIndex > li.visible {
+                background: #555;
+            }
+        </style>
+        <script src="http://og4h4hcqu.bkt.clouddn.com/jquery-3.1.1.js"></script>
+    </head>
+    <body>
+        <div class="slideWrapper">
+            <ul class="slideCt clearfix">
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""></a></li>
+            </ul>
+            <span class="prev"><</span>
+            <span class="next">></span>
+            <ul class="numberIndex clearfix">
+                <li class="visible"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+        <script>
+            var imgWidth = $('.slideCt').children().width()
+            var imgCount = $('.slideCt').children().length
+            var $item = $('.slideCt').children()
+            var timer
+
+
+            $('.slideCt').prepend($item.last().clone())
+            $('.slideCt').append($item.first().clone())
+            var imgRealCount = $('.slideCt').children().length
+            $('.slideCt').css({
+            left: 0 - imgWidth,
+            width: imgRealCount * imgWidth
+            })
+
+            var current = 0
+            locked = false
+
+            $('.next').click(function(){
+            playNext(current + 1)
+            })
+
+            $('.prev').click(function(){
+            playPrev(current - 1)
+            })
+
+            $('.slideCt').siblings('.numberIndex').find('li').on('click',function(){
+            var idx= $(this).index();
+            console.log(idx)
+            go(idx)
+            })
+
+            function playPrev (){
+              go(current - 1)
+                }
+
+            function playNext (){
+            go(current + 1)
+            }
+
+            
+            function go (index) {
+            console.log(timer)
+            if (timer) {
+            clearInterval(timer)
+            }
+              if (locked) {
+                return
+              }
+              locked = true
+              var left = - (index + 1) * imgWidth
+              $('.slideCt').animate({left: left}, function () {
+                current = index
+                if (current === -1) {
+                  $('.slideCt').css({left: (-4) * imgWidth})
+                  current = 3
+                }
+                if (current === 4) {
+                  $('.slideCt').css({left: (-1) * imgWidth})
+                          current = 0
+                }
+                locked = false
+                setBullet()
+                autoPlay()
+              })
+            }
+
+            function setBullet(){
+            $('.slideCt').siblings('.numberIndex').find('li').eq(current).addClass('visible').siblings().removeClass('visible')
+            }
+
+            function autoPlay () {
+                timer = setInterval(playNext, 2000)
+            }
+
+            go(0)
+
+        </script>
+
+    </body>
+</html>

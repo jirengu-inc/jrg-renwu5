@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.js"></script>
+<style>
+	fieldset{
+		margin-top:30px;
+	}
+</style>
+</head>
+<body>
+    <fieldset>
+    	<legend>1.当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色</legend>
+    	<button class="btn">点击我变色</button>
+
+    	<script>
+    		$('.btn').on('click',function(){
+    			$(this).css('background-color','red');
+    			setTimeout(function(){
+    				$('.btn').css('background-color','blue');
+    				// console.log(this);这里不能用this，因为this指代window全局对象
+    			},1000);
+    		});
+    	</script>
+    </fieldset>
+
+    <fieldset>
+    	<style>
+			.scroll{
+				position: fixed;
+				width: 200px;
+				height: 200px;
+				background:yellow;
+				top: 0px;
+    			left: 80%;
+			}
+    	</style>
+    	<legend>2.当窗口滚动时，获取垂直滚动距离</legend>
+    	<div class="scroll"></div>
+    	
+    	<script>
+    		$(this).scroll(function(){
+    			$('div.scroll').text( '垂直滚动距离:'+$(this).scrollTop() )
+    			//console.log(this);this指代是window对象
+    		});
+    	</script>
+    </fieldset>
+
+    <fieldset>
+    	<style>
+			div.mouse{
+				width:100px;
+    			height:100px;
+    			border: 1px solid;
+			}
+    	</style>
+    	<legend>3.当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色</legend>
+    	<div class="mouse"></div>
+
+    	<script>
+    		$('div.mouse').on({
+    			mouseenter:function(){
+    				$(this).css({
+    					'background-color':'red'
+    				});
+    			},
+    			mouseleave:function(){
+    				$(this).css({
+    					'background-color':'white'
+    				});
+    			}
+    		});
+    	</script>
+    </fieldset>
+
+    <fieldset>
+    	<legend>4.当鼠标激活 input 输入框时让输入框边框变为蓝色;当输入框内容改变时把输入框里的文字小写变为大写;当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字</legend>
+		<input type="text" class="content">
+
+		<script>
+			$('.content').on('focus',function(){
+				$(this).css('border','1px solid blue');
+			});
+			$('.content').on('keyup',function(){
+				$(this).val( $(this).val().toUpperCase() );
+			});
+			$('.content').on('blur',function(){
+				$(this).css('border','1px solid red');
+				console.log( $(this).val() );
+			});
+		</script>
+    </fieldset>
+
+    <fieldset>
+    	<legend>5.当选择 select 后，获取用户选择的内容</legend>
+    	<form action="javascript:void(0)">
+    		<select name="fruit" multiple="multiple" class="choice">
+    			<option value="苹果">2个苹果</option>
+    			<option value="雪梨">2个雪梨</option>
+    			<option value="橙子">2个橙子</option>
+    		</select>
+    		<br>
+    		<br>
+    		<button class="delivery">提交</button>
+    	</form>
+		<div class="select"></div>
+	
+		<script>
+			$('.delivery').on('click',function(){
+				$('.select').text( '选择的是:'+$('.choice').val() )
+			});
+		</script>
+    </fieldset>
+</body>
+</html>

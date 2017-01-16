@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task25-2</title>
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+      ul,li{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+      }
+      a{
+        text-decoration: none;
+        color: #666;
+      }
+      .mod-tab{
+        width: 702px;
+        margin: 0 auto;
+      }
+
+      .clearfix:after{
+        content: '';
+        display:block;
+        clear: both;
+      }
+      .wrap{
+        text-align: left;
+      }
+      .tab-content{
+        width: 702px;
+        margin-left: -20px;
+      }
+
+      .mod-tab .tab{
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+        border:1px solid #eee;
+        position:relative;
+        width: 214px;
+        padding: 10px;
+      }
+      .mod-tab .tab-content.active{
+        display: block;
+      }
+      .gem-content{
+        padding: 10px;
+        text-align: center;
+      }
+      .mod-tab .cover{
+        display: none;
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0, 0.3);
+      }
+      .mod-tab .cover .btn{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%,-50%);/* Internet Explorer */
+        -moz-transform: translate(-50%,-50%);/* Firefox */
+        -o-transform: translate(-50%,-50%);/* Opera */
+        transform: translate(-50%, -50%); /*css3*/
+        border: 1px solid #c81623;
+        border-radius: 3px;
+        color: #c81623;
+        padding: 10px 15px;
+        background: #fff;
+      }
+      .gem-name{
+        text-align: left;
+        font-size: 12px;
+        color: #666;
+        height: 35px;
+      }
+      .gem-price{
+        text-align: left;
+        color: #c81623;
+        font-size: 12px;
+        font-weight: normal;
+        height: 0px;
+      }
+      .btn{
+        display: inline-block;
+        border-radius: 3px;
+        color: #c81623;
+        padding: 10px 15px;
+        background: #fff;
+        border: 1px solid #c81623;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mod-tab">
+        <h3>珠宝首饰</h3>
+      <ul class="tab-content active">
+          <li class="tab">
+            <div class="cover">
+              <a class="btn" href="#">立即抢购</a>
+            </div>
+            <div class="gem-content">
+              <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+              <div class="gem-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+              <div class="gem-price">￥1699.00</div>
+            </div>
+          </li>
+          <li class="tab">
+            <div class="cover">
+              <a class="btn" href="#">立即抢购</a>
+            </div>
+            <div class="gem-content">
+              <img src="http://img12.360buyimg.com/N3/jfs/t2302/181/1562193880/220016/88a978ef/56cbbc11Nd6d3b04b.jpg" alt="">
+              <div class="gem-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+              <div class="gem-price">￥1699.00</div>
+            </div>
+          </li>
+          <li class="tab">
+            <div class="cover">
+              <a class="btn" href="#">立即抢购</a>
+            </div>
+            <div class="gem-content">
+              <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+              <div class="gem-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+              <div class="gem-price">￥1699.00</div>
+            </div>
+          </li>
+          <li class="tab">
+            <div class="cover">
+              <a class="btn" href="#">立即抢购</a>
+            </div>
+            <div class="gem-content">
+              <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+              <div class="gem-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+              <div class="gem-price">￥1699.00</div>
+            </div>
+          </li>
+          <li class="tab">
+            <div class="cover">
+              <a class="btn" href="#">立即抢购</a>
+            </div>
+            <div class="gem-content">
+              <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+              <div class="gem-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+              <div class="gem-price">￥1699.00</div>
+            </div>
+          </li>
+          <li class="tab">
+            <div class="cover">
+              <a class="btn" href="#">立即抢购</a>
+            </div>
+            <div class="gem-content">
+              <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+              <div class="gem-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+              <div class="gem-price">￥1699.00</div>
+            </div>
+          </li>
+
+      </ul>
+      <a href="#" class="btn btn-add">添加</a>
+      <p class="p">这是一个段落</p>
+    </div>
+
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    //因为有新添加的li，所以需要事件代理
+      $('.tab-content').on('mouseenter','.tab',function(){
+        $(this).find('.cover').show();
+      });
+      $('.tab-content').on('mouseleave','.tab',function(){
+        $(this).find('.cover').hide();
+      });
+
+      var products = [
+        {
+        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+        name: '珂兰 黄金手 猴哥款',
+        price: '￥405.00'
+        },{
+        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+        name: '珂兰 黄金转运珠 猴哥款',
+        price: '￥100.00'
+        },{
+        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+        name: '珂兰 黄金手链 3D猴哥款',
+        price: '￥45.00'
+        }
+      ];
+
+      function getProdHtml(prod){
+        var html = '';
+        html += '<li class="tab">';
+        html +=   '<div class="cover"><a class="btn" href="javascript:void(0);">立即抢购</a></div>';
+        html +=   '<div class="gem-content">';
+        html +=     '<img src="'+prod.img+'" alt="">';
+        html +=     '<div class="gem-name">'+prod.name+'</div>';
+        html +=     '<div class="gem-price">'+prod.price+'</div>';
+        html +=   '</div>';
+        html += '</li>';
+        return html;
+      }
+
+
+      $('.btn-add').on('click',function(){
+        $.each(products,function(i,d){
+          var html = getProdHtml(d);
+          $('.tab-content').append(html);
+        });
+      });
+      //$.each遍历 i是索引值 d是当前的遍历对象.
+
+      // var d1 = {
+      //   1:a,
+      //   name:{height:10,width:20},
+      //   2:b
+      //
+      // };
+      // var d2 = {
+      //   name:{width:25},
+      //   3:c
+      // };
+      // $.extend(d1,d2); //{1:a,name:{width:25},2:b,3:c}
+      //
+      // //深拷贝
+      // $.extend(true,d1,d2); //{1:a,name:{height:10,width:25},2:b,3:c}
+      // $.extend({},d1,d2); //合并 d1 和 d2 对象，并且不修改 d1 对象。
+    </script>
+  </body>
+</html>

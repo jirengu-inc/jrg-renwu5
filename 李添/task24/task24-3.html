@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>注册</title>
+  <style>
+    #register label {
+      position: relative;
+      display: table;
+      width: 400px;
+      height: 40px;
+    }
+    #register input, #register span {
+      position: absolute;
+      left: 100px;
+    }
+    #register span {
+      top: 25px;
+      font-size: 5px;
+      color: #AEAEAE;
+    }
+  </style>
+</head>
+<body>
+  <div id="register">
+    <h3>注册</h3>
+    <form name="register">
+      <label for="register_username">用户名：
+        <input id="register_username" type="text" name="username" size="25" maxlength="10" required="required" placeholder=""><span>只能是字母、数值、下划线，3-10个字符</span>
+      </label><br />
+      <label for="register_password_front">密码：
+        <input id="register_password_front" type="password" name="password_front" size="25" maxlength="15" required="required"><span>大写字母、小写、数字、下划线最少两种，6-15个字符</span>
+      </label><br />
+      <label for="register_password_end">
+        再输入一次：<input id="register_password_end" type="password" name="password_end" size="25" maxlength="15" required="required" placeholder="再输入一次密码"><span></span>
+      </label><br />
+      <input id="submit" type="submit" value="注册">
+    </form>
+  </div>
+  <script>
+    var registerUsername = document.querySelector('#register_username'),
+        registerPasswordFront = document.querySelector('#register_password_front'),
+        registerPasswordEnd = document.querySelector('#register_password_end'),
+        submitBtn = document.querySelector('#submit');
+
+    registerUsername.addEventListener('change', function() {
+      detectingUsernameRule();
+      detectingUsernameRepetition();
+    });
+
+    registerPasswordFront.addEventListener('change', function() {
+      detectingPasswordRule();
+    });
+
+    registerPasswordEnd.addEventListener('change', function() {
+      detectingPasswordRepetition();
+    });
+
+    submitBtn.addEventListener('click', function(){
+      if ( detectingUsernameRule() && detectingPasswordRule() && detectingPasswordRepetition() ) {
+        ajax({
+          url : 'task24-3.php',
+          type : 'POST',
+          data : {
+            username : registerUsername.value,
+            password : registerPasswordEnd.value
+          },
+          success : function(result) {
+            alert('注册成功')
+          },
+          error : function() {
+            alert('出现了点问题，请稍后重试');
+          }
+        });
+      }else {
+        alert('请填写完整');
+      }
+    })
+
+    // 检测用户名是否重复
+    function detectingUsernameRepetition() {
+      ajax({
+        url : 'task24-3.php',
+        type : 'GET',
+        data : {
+          username : registerUsername.value
+        },
+        success : function(result) {
+          if (result === 1) {
+            registerUsername.nextSibling.innerText = '该用户名已被注册';
+            registerUsername.nextSibling.style.color = 'red';
+          } else {
+            registerUsername.nextSibling.innerText = '该用户名可用';
+            registerUsername.nextSibling.style.color = 'blue';
+          }
+          return true;
+        },
+        error : function() {
+          console.log('有点问题');
+          return false;
+        }
+      });
+    }
+
+    // 检测用户名规则
+    function detectingUsernameRule() {
+      var username = registerUsername.value;
+      if ( !/^[A-Za-z0-9_]{3,10}$/.test(username) ) {
+        registerUsername.nextSibling.innerText = '格式不正确';
+        registerUsername.nextSibling.style.color = 'red';
+        registerUsername.focus();
+        return false;
+      } else {
+        registerUsername.nextSibling.innerText = '格式正确';
+        registerUsername.nextSibling.style.color = 'blue';
+        return true;
+      }
+    }
+
+    // 检测密码规则
+    function detectingPasswordRule() {
+      var password = registerPasswordFront.value;
+      if ( password.match(/^(?!^\d+$)(?!^[A-Z]+$)(?!^[a-z]+$)(?!^[_]+$).{6,20}$/) && password.match(/^\w{6,20}$/) ) {
+        registerPasswordFront.nextSibling.innerText = '格式正确';
+        registerPasswordFront.nextSibling.style.color = 'blue';
+        return true;
+      } else {
+        registerPasswordFront.nextSibling.innerText = '格式不正确';
+        registerPasswordFront.nextSibling.style.color = 'red';
+        registerPasswordFront.focus();
+        return false;
+      }
+    }
+
+    // 检测密码是否重复
+    function detectingPasswordRepetition() {
+      if ( registerPasswordEnd.value !== registerPasswordFront.value ) {
+        registerPasswordEnd.nextSibling.innerText = '密码输入不一致';
+        registerPasswordEnd.nextSibling.style.color = 'red';
+        registerPasswordEnd.focus();
+        return false;
+      }else {
+        return true;
+      }
+    }
+
+
+    function ajax(options) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var responseData = JSON.parse(xhr.responseText);
+          options.success(responseData);
+        }
+        if (xhr.readyState === 4 && xhr.status === 404) {
+          options.error();
+        }
+      }
+
+      var dataStr = '';
+      for (var key in options.data) {
+        dataStr += key + '=' + options.data[key] + '&';
+      }
+      dataStr = dataStr.substr(0, dataStr.length - 1);
+
+      if (options.type.toLowerCase() === 'get') {
+        var url = options.url + '?' + dataStr;
+        xhr.open(options.type, url, true);
+        xhr.send();
+      }
+      if (options.type.toLowerCase() === 'post') {
+        xhr.open(options.type, options.url, true);
+        xhr.setRequestHeader("Content-type", "application/x-www/form-urlencoded");
+        xhr.send(dataStr);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一键双搜min</title>
+    <style>
+    html,body{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    .searchBar{
+    	margin: 0 auto;
+        text-align: center;
+        background: #F8E2D5;
+        padding: 12px 0;
+        border-bottom:  1px solid #aaa;
+        width: 100%;
+
+    }
+   #inputWord{
+    width:35%;
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px;
+    background: #fff;
+   -webkit-box-sizing:border-box;
+   box-sizing: border-box;
+   margin: 0;
+   -webkit-border-radius:0;
+   border-radius:0;
+
+   }
+    #submitBtn {
+    font-size: 16px;
+    font-weight: bolder;
+    background: #A982CE;
+    width: 100px;
+    height: 32px;
+    color: #fff;
+     cursor: pointer;
+    outline:medium;
+    text-align: center;
+    letter-spacing:1px;
+    }
+    .iframeCt{
+        width:49%;
+        display: inline-block;
+
+    }
+    iframe{
+       width:100%;
+        height:2250px;
+        margin-top:18px;
+        border-width:0;
+    }
+    @media (max-width: 1024px) {
+        #inputWord{
+            width:68%;
+            height: 45px;
+            line-height: 45px;
+        }
+        #submitBtn{
+            height: 45px;
+            line-height: 45px;
+            width: 22%;
+        }
+        iframe{
+            height: 3800px;
+        }
+    }
+    @media (max-width: 768px){
+            #inputWord{
+                width:55%;
+                height: 45px;
+                line-height: 45px;
+                font-size: 14px;
+            }
+            #submitBtn{
+                width:20%;
+                height: 45px;
+                line-height: 45px;
+                font-size: 14px;
+                text-align: center;
+            }
+            .iframeCt{
+                display: block;
+                width: 100%;
+
+            }
+
+            iframe{
+                width: 1px;
+                min-width: 100%;
+                *width: 100%;
+            }
+            #iframeBaidu{
+                height: 2200px;
+            }
+            #iframeGoogle{
+                height: 3400px;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="searchBar">
+        <input id="inputWord" type="text" name="searchInput" placeholder="输入关键词按回车或点击搜索键即可搜索">
+        <input id="submitBtn" type="submit" name="searchBtn" value="搜索">
+    </div>
+    <div class="iframeCt">
+        <iframe id="iframeBaidu" src="https://www.baidu.com/s?wd=%E7%99%BE%E5%BA%A6"  scrolling="no"></iframe>
+    </div>
+    <div class="iframeCt">
+        <iframe id="iframeGoogle" src="https://g.zmirrordemo.com/search?safe=strict&q=%E7%99%BE%E5%BA%A6"  scrolling="no"></iframe>
+    </div>
+
+
+
+    <script type="text/javascript">
+    var submitBtn = document.getElementById("submitBtn");
+    function openSearch(){
+        var inputWord = document.getElementById("inputWord").value,
+                iframe = document.getElementsByTagName("iframe");
+        iframe[0].setAttribute("src","https://www.baidu.com/s?wd=" + inputWord );
+        iframe[1].setAttribute("src","https://g.zmirrordemo.com/search?safe=strict&q=" + inputWord );
+    }
+    submitBtn.addEventListener("click", function() {
+        openSearch();
+    });
+    document.addEventListener("keydown", function(e) {
+        if (e.keyCode===13){
+            openSearch();
+        }
+        else return;
+
+
+    })
+
+
+    /**
+     * 使同域的iframe宽度撑满其所在容器，并且高度自适应其内容
+     *
+     * @param {Element} iframe .
+     */
+    function autoFitIframe(iframe) {
+        var doc = iframe.contentDocument || iframe.contentWindow.document;
+        // 设置iframe宽度
+        iframe.style.width = '100%';
+
+        function update() {
+            var containerWidth = iframe.parentNode.offsetWidth;
+            // 在iphone、ipad等移动浏览器中，为iframe设置width和height样式起不了作用
+            // iframe的高宽由其内容决定，故设置iframe中body的宽度来限制iframe高宽
+            doc.body.style.width =  + 'px';
+            doc.body.style.padding = '0';
+            doc.body.style.margin = '0';
+            doc.body.style.border = 'none';
+
+            // 自适应iframe高度，确保没有纵向滚动条
+            // iphone、ipad等移动浏览会器忽略width/height自适应高度
+            // NOTE: 没有支持Quirks mode
+
+            // 确保scrollHeight是iframe所需的最小高度
+            iframe.style.height = '0';
+            iframe.style.height = Math.max(
+                            // 其他浏览器
+                            doc.body.scrollHeight,
+                            // IE7
+                            doc.documentElement.scrollHeight
+                    ) + 'px';
+        }
+        if (doc.readyState === 'complete') {
+            update();
+        }
+
+        if (iframe.addEventListener) {
+            iframe.addEventListener('load', update, false);
+        }
+        else if (iframe.attachEvent) {
+            iframe.attachEvent('onload', update);
+        }
+    };
+
+    </script>
+</body>
+
+</html>
