@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+	ul,li{
+		margin:0;
+		padding:0;
+	}
+	.ct li{
+		list-style: none;
+		border:1px solid #ccc;
+		padding: 10px;
+		margin-top: 10px;
+		cursor: pointer;
+	}
+	a{
+		text-decoration: none;
+	}
+	#load-more{
+		display: block;
+		margin:10px auto;
+		/*border: 1px solid;*/
+		text-align: center;
+		cursor: pointer;
+	}
+    #load-more img{
+        width:40px;
+        height: 40px;
+    }
+	.btn{
+		height: 40px;
+		width: 80px;
+		line-height: 40px;
+		border: 1px solid #E27272;
+		border-radius: 3px;
+		color: #E27272;
+	}
+	.hover{
+		background:green;
+		color:#fff;
+	}
+</style>
+</head>
+<body>
+    <ul class="ct">
+    	<li>内容1</li>
+    	<li>内容2</li>
+    </ul>
+    <a id="load-more" class="btn" href="#"></a>
+
+    <script>
+    	var $ct=$('.ct'),
+    		$loadMore=$('#load-more');
+            img=$loadMore.html('<img src="http://jrgzuoye.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS9-jqueryajax/loading.gif" alt="" />')
+
+    	var cur=2;
+    	var clock;
+
+    	load(); //开始的时候先执行一次加载，否则用户在未滚动前获取不到数据
+
+        // 因为li是动态添加的,所以要使用事件代理
+    	$ct.on('mouseenter','li',function(){
+    		$(this).addClass('hover');
+    	}).on('mouseleave','li',function(){
+    		$(this).removeClass('hover')
+    	})
+
+
+    	$(window).on('scroll',function(){
+            //因为鼠标滚动一次触发很多事件，使用延迟函数这种方法能取消所有的定时器，直到鼠标滚动停止，等1s，才执行里面回调函数。所以最后让多次触发事件变为1次，load()函数只执行一次。
+            //这种写法也叫节流函数
+    		if(clock){
+    			clearTimeout(clock);
+    		}
+    		clock=setTimeout(function(){
+    			if( !isVisible($loadMore) ) return;
+    			load();
+                $loadMore.html('<img src="http://jrgzuoye.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS9-jqueryajax/loading.gif"/>')
+    		},3000);
+    	});
+
+    	function load(){
+    		$.ajax({
+    			url:'task29-3.php',
+    			dataType:'json',
+    			type:'get',
+    			data:{
+    				start:cur,
+    				len:10
+    			},
+    			success:function(json){
+    				onSuccess(json);
+                    $loadMore.html('加载更多');
+    			},
+    			error:function(){
+    				onError();
+                    $load.html('加载更多');
+    			}
+    		});
+    	}
+
+    	function onSuccess(json){
+    		console.log(json);
+    		if(json.status===1){
+    			append(json.data);
+    			cur +=6;     
+    		}else{
+    			console.log('获取数据失败');
+    		}
+    	}
+
+    	function onError(){
+    		console.log('系统异常');
+    	}
+
+    	function append(arr){
+    		for(var i=0;i<arr.length;i++){
+    			$ct.append('<li>'+arr[i]+'</li>');
+    		}
+    	}
+
+    	function isVisible($node){
+    		var winH=$(window).height(), //窗口高度
+    			scrollH=$(window).scrollTop(),  //滚动的垂直距离
+    			offsetH=$node.offset().top;  //元素到根节点顶部距离
+    		if( (offsetH>scrollH) && (offsetH<winH+scrollH) ){
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
+
+
+/*定义接口
+
+1) url:
+2) 入参: { start: 2, len: 6 }
+3) 回参: 
+{
+  status: 1, //1代表正常，0代表出错
+  data: [2,3,4,5,6,7]
+}
+*/
+    </script>
+</body>
+</html>
