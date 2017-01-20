@@ -1,4 +1,5 @@
-﻿ <!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -31,7 +32,7 @@
 			text-align: center;
 		}
 		.form {
-			width: 304px;
+			width: 302px;
 			height: 100px;
 			border: 1px solid #bbb;
 			border-top: none;
@@ -39,9 +40,10 @@
 		.active {
 			background: #ccc;
 		}
-                .lis {
-                       border: 1px 0;
-                }
+        .table .lis {
+           border-left: none;
+			border-right: none;
+       }
 	</style>
 </head>
 <body>
@@ -73,7 +75,6 @@
 			var _this=this;
 			this.$list.on('click',function(){
 				var $cur=$(this);
-				console.log($cur);
 				$cur.addClass('active').siblings().removeClass('active');
 				idx=$cur.index();
 				$form=$(form);
