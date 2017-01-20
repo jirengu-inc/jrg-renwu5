@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+	body{
+		box-sizing:border-box;
+	}
+	.content{
+		position: relative;
+	}
+	.content:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	.item{
+		position: absolute;
+		width: 200px;
+		margin:10px 10px 0 0;
+		transition:all 1s;
+		font-size: 20px;
+		line-height: 50px;
+		text-align: center;
+	}
+	.btn{
+		width: 200px;
+		height: 40px;
+		line-height: 40px;
+		margin:10px auto;
+		background:red;
+		position: absolute;
+		cursor: pointer;
+		text-align: center;
+	}
+	.h1{
+		background:blue;
+		height: 100px;
+	}
+	.h2{
+		background:orange;
+		height: 200px;
+	}
+	.h3{
+		background:purple;
+		height: 300px
+	}
+	.h4{
+		background:#ccc;
+		height: 400px;
+	}
+	.h5{
+		background:yellow;
+		height: 500px;
+	}
+</style>
+</head>
+<body>
+    <div class="content">
+    	<div class="item h1">内容1</div>
+    	<div class="item h2">内容2</div>
+    	<div class="item h3">内容3</div>
+    	<div class="item h4">内容4</div>
+    	<div class="item h5">内容5</div>
+    </div>
+    <div class="btn">点我加载更多</div>
+
+    <script>
+    	$('.btn').on('click',function(){
+    		var start=$('.item').length,
+    			leng=5;
+
+    		$.ajax({
+    			url:'huanzhongxian.php',
+    			type:'get',
+    			dataType:'json',
+    			data:{
+    				start:start,
+    				leng:leng
+    			},
+    			success:function(data){
+    				// console.log(data)//后台传过来的数据放在这里
+    				onSuccess(data);
+    			},
+    			error:function(){
+    				alert('ajax error')
+    			}
+    		});
+    		function onSuccess(ele){
+    			if(ele&&ele.status==1){
+    				for(var i=0;i<ele.data.length;i++){
+    					var j=i+1;
+    					$new=$('<div class=item>'+ele.data[i]+'</div>');
+    					$new.addClass('h'+j);
+    					$('.content').append($new);
+    				}
+    				render();
+    			}else{
+    				alert('server error!');
+    			}
+    		}
+    	});
+
+		function render(){
+			var itemsW=$('.item').outerWidth(true),
+				winW=$(window).width(),
+				colNum=Math.floor(winW/itemsW), //colNum=6
+				colH=[];
+
+			for(var i=0;i<colNum;i++){
+				colH.push(0);
+				// console.log(colH) //colH=[0,0,0,0,0,0]
+			}
+
+			$('.item').each(function(){
+				var $cur=$(this),
+					idx=0,
+					minH=colH[0], //minH=0
+					maxH=colH[0],  //maxH=0
+					$btn=$('.btn');
+				// console.log($cur);
+				console.log(1);
+				console.log('a');
+				for(var i=0;i<colNum;i++){
+					if(minH>colH[i]){
+						idx=i;
+						minH=colH[i];
+						// console.log(colH);
+						console.log('这是第几次')
+					}
+					if(maxH<colH[i]){
+						maxH=colH[i];
+						// console.log(maxH);
+					}
+				}
+				$cur.css({
+					left:idx*itemsW,
+					top:minH
+				});
+				colH[idx] +=$cur.outerHeight(true);
+				console.log(colH)
+
+				$btn.css({
+					top:maxH+20
+				})
+				console.log(maxH);
+			});
+		}
+
+		render();
+		$(window).on('resize',function(){
+			render();
+		});
+
+
+
+    	
+
+
+
+    </script>
+</body>
+</html>
