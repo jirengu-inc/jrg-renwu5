@@ -1,0 +1,88 @@
+
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>4</title>
+	<style>
+		html,body,ul,li {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			list-style: none;
+		}
+		a {
+			text-decoration: none;
+		}
+		.clearfix:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.container1,.container2 {
+			margin: 20px;
+		}
+		.table li {
+			float: left;
+			width: 100px;
+			height: 30px;
+			line-height: 30px;
+			border: 1px solid #ccc;
+			text-align: center;
+		}
+		.form {
+			width: 302px;
+			height: 100px;
+			border: 1px solid #bbb;
+			border-top: none;
+		}
+		.active {
+			background: #ccc;
+		}
+        .table .lis {
+           border-left: none;
+			border-right: none;
+       }
+	</style>
+</head>
+<body>
+<div class="container1">
+<ul class="table clearfix">
+	<li class="active">tab1</li>
+	<li class="lis">tab2</li>
+	<li>tab3</li>
+</ul>
+<div class="form form1">内容1</div>
+</div>
+<div class="container2">
+<ul class="table clearfix">
+	<li class="active">tab1</li>
+	<li class="lis">tab2</li>
+	<li>tab3</li>
+</ul>
+<div class="form form2">内容1</div>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+	function foo(node,form){
+		this.$node=$(node);
+		this.$table=this.$node.find('.table');
+		this.$list=this.$table.children();
+		this.bind(form);
+	}
+	foo.prototype.bind=function(form){
+			var _this=this;
+			this.$list.on('click',function(){
+				var $cur=$(this);
+				$cur.addClass('active').siblings().removeClass('active');
+				idx=$cur.index();
+				$form=$(form);
+			$form.text('内容'+(idx+1));
+			})
+		}
+	var p1=new foo('.container1','.form1');
+	var p2=new foo('.container2','.form2');
+</script>
+</body>
+</html>

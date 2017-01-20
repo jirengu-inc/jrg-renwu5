@@ -1,0 +1,126 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>3</title>
+	<style>
+		html,body,ul,li {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			list-style: none;
+		}
+		a {
+			text-decoration: none;
+		}
+		.clearfix:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.ct {
+			position: relative;
+			width: 310px;
+			height: 206px;
+			overflow: hidden;
+		}
+		.content {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.content li {
+			float :left;
+		}
+		.button {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			border-radius: 100%;
+			background: #423f3e;
+			color: white;
+			text-align: center;
+		}
+		.button:hover {
+			background: #4e443c;
+		}
+		.button-left {
+			left: 10px;
+		}
+		.button-right {
+			right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="ct">
+		<ul class="content clearfix">
+			<li><a href="###"><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/1.jpg" alt="图片1"></a></li>
+			<li><a href="###"><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/2.jpg" alt="图片1"></a></li>
+			<li><a href="###"><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/3.jpg" alt="图片1"></a></li>
+			<li><a href="###"><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/4.jpg" alt="图片1"></a></li>
+		</ul>
+		<a href="###" class="button button-left"><</a>
+		<a href="###" class="button button-right">></a>
+	</div>
+	<div class="ct">
+		<ul class="content clearfix">
+			<li><a href="###"><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/1.jpg" alt="图片1"></a></li>
+			<li><a href="###"><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/2.jpg" alt="图片1"></a></li>
+			<li><a href="###"><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/3.jpg" alt="图片1"></a></li>
+			<li><a href="###"><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/4.jpg" alt="图片1"></a></li>
+		</ul>
+		<a href="###" class="button button-left"><</a>
+		<a href="###" class="button button-right">></a>
+	</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+	function Carousel($node){
+	//todo...
+		this.$node= $node;
+		var $list=this.$list=this.$node.find('.content');
+		this.imgWidth=$list.children().width;
+		this.imgCount=$list.children().length;
+		this.$li=$list.children();
+		this.$buttonLeft=$node.find('.button-left');
+		this.$buttonRight=$node.find('.button-right');
+		this.bind();
+	}
+	Carousel.prototype = {
+	//todo ..
+
+	  bind: function(){
+			var _this=this;
+			this.$buttonLeft.on('click',function(){
+				_this.playPre();
+			});
+			this.$buttonRight.on('click',function(){
+				_this.playNext();
+			});
+			},
+			playPre:function(){
+				this.$list.prepend(this.$list.children().last());
+				this.$list.css({
+					left: -this.imgWidth
+				});
+				this.$list.animate({'left':0});
+					},
+		playNext: function() {
+			var $list=this.$list;
+			$list.animate({'left': -this.imgWidth},function(){
+				$list.append($list.children().first());
+				$list.css('left',0);
+			})
+		}
+	};
+	var $node1 = $('.ct').eq(0);
+	var $node2 = $('.ct').eq(1);
+	var carousel1 = new Carousel($node1);
+	var carousel2 = new Carousel($node2);
+</script>
+</body>
+</html>
