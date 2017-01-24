@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task24-2</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+      ul,li{
+        margin: 0;
+        padding: 0;
+      }
+      li{
+        list-style: none;
+        border:1px solid green;
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      #btn{
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        width: 100px;
+        text-align: center;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin: 20px auto;
+        color: #000;
+        text-decoration: none;
+      }
+      .hover{
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="ct">
+      <li>内容1</li>
+      <li>内容2</li>
+    </ul>
+    <a href="#" id="btn">更多</a>
+
+    <script>
+
+        var cur = 2,
+            lock = true,
+            $btn = $('#btn');
+
+        function append(arr){
+          for(var i=0; i<arr.length; i++){
+            $('#ct').append('<li>' + arr[i] + '</li>');
+          }
+        }
+        var clock;
+        ajax();
+        $(window).on('scroll',function(){
+          if(clock){
+            clearTimeout(clock);
+          }
+          clock = setTimeout(function(){
+            if(!isShow($btn)) return;//以按钮呃距离为准
+            ajax();
+            console.log(1);
+          },300)
+        })
+
+
+        // checkShow();
+        // function checkShow(){
+        //   $('#ct li').each(function(){
+        //     var $cur = $(this);
+        //     if($cur.attr('isLoaded')){
+        //       return;
+        //     }
+        //     if(isShow($cur)){
+        //       ajax();
+        //     }
+        //   })
+        // }
+
+
+        function isShow(e){
+          var scrollH = $(window).scrollTop(),
+              winH = $(window).height(),
+              top = e.offset().top;
+
+          if(top < winH + scrollH){
+            return true;
+          }else{
+            return false;
+          }
+        }
+
+        function ajax(){
+          if(!lock){
+            return;
+          }
+          lock = false;
+          $.ajax({
+            url:'task26-3.php',
+            dataType:'json',
+            type:'get',
+            data:{
+              start:cur,
+              len:15
+            },
+            success:function(json){
+              if(json.status == 1){
+                  append(json.data);
+                  cur ++;
+                }else{
+                  alert('获取数据失败')
+                }
+                lock = true;
+            },
+            error:function (){
+              alert('状态异常');
+              lock = true;
+            }
+          })
+        }
+
+        $('#ct').on('mouseenter','li',function(){
+          $(this).css('background','#0f0')
+        })
+
+        $('#ct').on('mouseleave','li',function(){
+          $(this).css('background','#fff')
+        })
+
+    </script>
+  </body>
+</html>
