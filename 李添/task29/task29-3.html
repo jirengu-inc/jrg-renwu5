@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>LazyLoad</title>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid #666;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    li:hover {
+      background-color: lightgreen;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px;
+      width: 90px;
+      text-align: center;
+      border: 1px solid #666;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #666;
+    }
+    .btn:hover {
+      background: #eee;
+    }
+    .load-more {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul>
+      <li>内容1</li>
+      <li>内容2</li>
+    </ul>
+    <a class="btn load-more" href="javascript:;">加载更多</a>
+  </div>
+  <script>
+  var $checkShowElement = $('.container ul'),
+      cur = 2,
+      clock;
+
+  checkShow($checkShowElement);
+
+  $(window).on('scroll', function() {
+    if(clock){
+      clearTimeout(clock);
+    }
+    clock = setTimeout(function() {
+      checkShow($checkShowElement);
+    }, 300);
+  });
+
+
+  function checkShow($el) {
+    if(beAbleToLoad($el)){
+      showElement($el);
+    }
+  }
+
+  function beAbleToLoad($el) {
+    var windowHeight = $(window).height(),
+        scrollDistance = $(window).scrollTop(),
+        element = $el.last(),
+        elementDistance = element.offset().top;
+    if((windowHeight + scrollDistance) > elementDistance){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  function showElement($el) {
+    $.ajax({
+      url : 'task29-3.php',
+      type : 'GET',
+      dataType : 'JSON',
+      data : {
+        start : cur,
+        len : 20
+      },
+      success : function(json) {
+        dealWith(json);
+      },
+      error : function() {
+        alert('出错了');
+      }
+    });
+
+    function dealWith(json) {
+      if(json.status === 1){
+        for(var i = 0; i < json.data.length; i++){
+          $el.append('<li>' + json.data[i] + '</li>')
+        }
+        cur += 20;
+      }else{
+        alert('数据获取失败');
+      }
+    }
+  }
+  </script>
+</body>
+</html>
