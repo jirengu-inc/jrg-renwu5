@@ -58,7 +58,7 @@
 </head>
 <body>
     <div class="wrap">
-    	<ul class="pic-ct clearfix">
+    	<ul class="pic-ct">
 	<!-- <li class="item">
 		<a href="#" class="link"><img src="http://s.img.mix.sina.com.cn/auto/resize?img=http%3A%2F%2Fwww.sinaimg.cn%2Fdy%2Fslidenews%2F5_img%2F2016_09%2F453_75615_657883.jpg&size=250_0" alt=""></a>
 		<h4 class="header">标题</h4>
@@ -154,20 +154,20 @@
     	     colSumHeight=[];
 
     	for(var i=0;i<colNum;i++){
-    		colSumHeight.push(0);
+    	     colSumHeight.push(0);
     	}
 
     	function waterFallPlace($nodes){
     		$nodes.each(function(){
     			var $cur=$(this);
-			console.log($cur);
+			//console.log($cur);
     			// colSumHeight=[100,200,30,50]
 
     			var idx=0,
     			    minSumHeight=colSumHeight[0];
 
     			for(var i=0;i<colSumHeight.length;i++){
-    				if(minSumHeight<colSumHeight[i]){
+    				if(minSumHeight>colSumHeight[i]){
     					minSumHeight=colSumHeight[i];
     					idx=i;
     				}
