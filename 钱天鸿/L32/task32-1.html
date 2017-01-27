@@ -112,8 +112,8 @@
     			jsonp:'jsoncallback',
     			data:{
     				app_key:'1271687855',
-    				num:perPageCount,
-    				curPage:1
+    				num:perPageCount, //每一页图片的数量
+    				curPage:1  //当前是第一页
     			}
     		}).done(function(ret){
     			if(ret.status.code==='0'){
@@ -160,6 +160,7 @@
     	function waterFallPlace($nodes){
     		$nodes.each(function(){
     			var $cur=$(this);
+			console.log($cur);
     			// colSumHeight=[100,200,30,50]
 
     			var idx=0,
@@ -185,7 +186,7 @@
 
     	function renderData(items){
     		var tpl='',
-    			$nodes;
+    		    $nodes;
     		for(var i=0;i<items.length;i++){
     			tpl +='<li class="item">'
     			tpl +='<a href="' + items[i].url + '" class="link"><img src="' + items[i].img_url + '" alt=""></a>';
