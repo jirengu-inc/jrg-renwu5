@@ -54,21 +54,16 @@
 		height: 20px;
 		border: 1px solid;
 	}
-	.hide{
-		display: none;
-	}
 </style>
 </head>
 <body>
     <div class="wrap">
     	<ul class="pic-ct clearfix">
-    		<!-- <li class="item">
-    			<a href="#" class="link"><img src="http://s.img.mix.sina.com.cn/auto/resize?img=http%3A%2F%2Fwww.sinaimg.cn%2Fdy%2Fslidenews%2F5_img%2F2016_09%2F453_75615_657883.jpg&size=250_0" alt=""></a>
-    			<h4 class="header">标题</h4>
-				<p class="descrip">dfasdfsdadsfasdfasdf</p>
-			</li> -->
-
-			<!-- <li class="item hide"></li> -->
+	<!-- <li class="item">
+		<a href="#" class="link"><img src="http://s.img.mix.sina.com.cn/auto/resize?img=http%3A%2F%2Fwww.sinaimg.cn%2Fdy%2Fslidenews%2F5_img%2F2016_09%2F453_75615_657883.jpg&size=250_0" alt=""></a>
+		<h4 class="header">标题</h4>
+		<p class="descrip">dfasdfsdadsfasdfasdf</p>
+	     </li> -->
     	</ul>
     	<div class="load">我是看不见的</div>
     </div>
@@ -144,7 +139,7 @@
     				defer.resolve();//改变Deferred对象的执行状态 变成已完成
     			});
     			arrDefer.push(defer);
-			console.log(arrDefer);
+			//console.log(arrDefer);
     		});
     		$.when.apply(null,arrDefer).done(function(){ //当所有的图片都执行 resolve 后，即全部图片加载后，执行下面的内容
     			console.log('new images all loaded...'); //当节点里的图片全部加载后再使用瀑布流计算，否则会因为图片未加载 item 高度计算错误导致瀑布流高度计算出问题
@@ -155,7 +150,7 @@
 	// 瀑布流
     	var  nodeWidth=$('.item').outerWidth(true),
     	     picWrapWidth=$('.pic-ct').width(),
-    	     colNum=parseInt(nodeWidth/picWrapWidth),
+    	     colNum=parseInt(picWrapWidth/nodeWidth),
     	     colSumHeight=[];
 
     	for(var i=0;i<colNum;i++){
@@ -168,7 +163,7 @@
     			// colSumHeight=[100,200,30,50]
 
     			var idx=0,
-    				minSumHeight=colSumHeight[0];
+    			    minSumHeight=colSumHeight[0];
 
     			for(var i=0;i<colSumHeight.length;i++){
     				if(minSumHeight<colSumHeight[i]){
