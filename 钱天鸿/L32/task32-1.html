@@ -98,7 +98,6 @@
     		var scrollH=$(window).scrollTop(),
     		    winH=$(window).height(),
     		    offsetTop=$el.offset().top;
-
     		if(offsetTop<winH+scrollH){
     			return true;
     		}else{
@@ -118,7 +117,7 @@
     			data:{
     				app_key:'1271687855',
     				num:perPageCount, //每一页图片的数量
-    				curPage:1  //当前是第一页
+    				page:curPage  //当前的页数
     			}
     		}).done(function(ret){
     			if(ret.status.code==='0'){
@@ -173,11 +172,9 @@
     	     picWrapWidth=$('.pic-ct').width(),
     	     colNum=parseInt(picWrapWidth/nodeWidth),
     	     colSumHeight=[];
-
     	for(var i=0;i<colNum;i++){
     	     colSumHeight.push(0);
     	}
-
     	function waterFallPlace($nodes){
     		$nodes.each(function(){
     			var $cur=$(this);
@@ -185,19 +182,16 @@
     			// colSumHeight=[100,200,30,50]
     			var idx=0,
     			    minSumHeight=colSumHeight[0];
-
     			for(var i=0;i<colSumHeight.length;i++){
     				if(minSumHeight>colSumHeight[i]){
     					minSumHeight=colSumHeight[i];
     					idx=i;
-    				}
-    			}
-
+    				};
+    			};
     			$cur.css({
     				left:nodeWidth*idx,
     				top:minSumHeight
     			});
-
     			colSumHeight[idx]=$cur.outerHeight(true)+colSumHeight[idx];
     			$('.pic-ct').height(Math.max.apply(null,colSumHeight));
     		});
