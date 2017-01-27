@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>懒加载</title>
+    <style>
+      ul,li{
+        list-style: none;
+      }
+      .u1 img{
+        width: 260px;
+        height: 350px;
+        border: 1px solid #ddd;
+      }
+      ul{
+        width: 1000px;
+        margin: 0 auto;
+      }
+      li{
+        float: left;
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="u1">
+      <li><a href="#"><img src='g.gif' data-img='k.jpg'></a></li>
+      <li><a href="#"><img src='g.gif' data-img='k.jpg'></a></li>
+      <li><a href="#"><img src='g.gif' data-img='k.jpg'></a></li>
+      <li><a href="#"><img src='g.gif' data-img='k.jpg'></a></li>
+      <li><a href="#"><img src='g.gif' data-img='k.jpg'></a></li>
+      <li><a href="#"><img src='g.gif' data-img='k.jpg'></a></li>
+
+      <li><a href="#"><img src='g.gif' data-img='k.jpg'></a></li>
+      <li><a href="#"><img src='g.gif' data-img='k.jpg'></a></li>
+      <li><a href="#"><img src='g.gif' data-img='k.jpg'></a></li>
+      <li><a href="#"><img src='g.gif' data-img='k.jpg'></a></li>
+      <li><a href="#"><img src='g.gif' data-img='k.jpg'></a></li>
+      <li><a href="#"><img src='g.gif' data-img='k.jpg'></a></li>
+    </ul>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+
+      
+      var clock;
+      $(window).on('scroll',function(){
+        if(clock){
+          clearTimeout(clock);
+        }
+        clock = setTimeout(function(){
+          checkShow();
+        },300)
+      })
+
+      checkShow();
+      function checkShow(){
+        $('.u1 img').each(function(){
+          var $cur = $(this);
+          if($cur.attr('isLoaded')){
+            return;
+          }
+
+          if(isShow($cur)){
+            showImg($cur);
+          }
+        })
+      }
+
+      function isShow(e){
+        var scrollH = $(window).scrollTop(),
+            winH = $(window).height(),
+            top = e.offset().top;
+
+        if(top < winH + scrollH){
+          return true;
+        }else{
+          return false;
+        }
+      }
+
+      function showImg(e){
+        e.attr('src',e.attr('data-img'));
+        e.attr('isLoaded',true);
+      }
+    </script>
+  </body>
+</html>
