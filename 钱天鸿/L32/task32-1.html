@@ -135,6 +135,7 @@
 
     		var arrDefer=[];
     		$nodes.find('img').each(function(){
+			console.log($.nodes.find('img'));
     			var defer=$.Deferred();
     			console.log(defer);
     			$(this).on('load',function(){
