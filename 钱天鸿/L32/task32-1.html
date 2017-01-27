@@ -23,7 +23,7 @@
 	}
 	.pic-ct{
 		position: relative;
-		border:1px solid blue;
+		/*border:1px solid blue;*/
 	}
 	.pic-ct .item{
 		position: absolute;
@@ -50,9 +50,11 @@
 		color: #777371;
 	}
 	.load{
-		/*visibility: hidden;*/
+		visibility: hidden;
 		height: 20px;
-		border: 1px solid;
+	}
+	.hide{
+		display:none;
 	}
 </style>
 </head>
@@ -64,6 +66,9 @@
 		<h4 class="header">标题</h4>
 		<p class="descrip">dfasdfsdadsfasdfasdf</p>
 	     </li> -->
+		
+	     <!-- 这个很重要，用于计算 item 宽度和列数，但不展示出来。弄了好长时间原来错误在这个地方-->
+	     <li class="item hide"></li>
     	</ul>
     	<div class="load">我是看不见的</div>
     </div>
@@ -77,7 +82,7 @@
     		}
     		clock=setTimeout(function(){
     			checkShow();
-    		},2000);
+    		},100);
     	});
 
 	// 用户第一次打开页面，还未滚动窗口的时候需要执行一次 checkShow    
@@ -147,6 +152,22 @@
     		});
     	}
 	    
+	
+	function renderData(items){
+		var tpl='',
+		    $nodes;
+		for(var i=0;i<items.length;i++){
+			tpl +='<li class="item">'
+			tpl +='<a href="' + items[i].url + '" class="link"><img src="' + items[i].img_url + '" alt=""></a>';
+			tpl +='<h4 class="header">' + items[i].short_name + '</h4>';
+			tpl +='<p class="descrip">' + items[i].short_intro + '</p>'
+			tpl +='</li>'
+		}
+		$nodes=$(tpl);
+		$('.pic-ct').append($nodes);
+		return $nodes;
+    	}    
+	    
 	// 瀑布流
     	var  nodeWidth=$('.item').outerWidth(true),
     	     picWrapWidth=$('.pic-ct').width(),
@@ -156,14 +177,12 @@
     	for(var i=0;i<colNum;i++){
     	     colSumHeight.push(0);
     	}
-	console.log(colSumHeight);
 
     	function waterFallPlace($nodes){
     		$nodes.each(function(){
     			var $cur=$(this);
 			//console.log($cur);
     			// colSumHeight=[100,200,30,50]
-
     			var idx=0,
     			    minSumHeight=colSumHeight[0];
 
@@ -182,22 +201,6 @@
     			colSumHeight[idx]=$cur.outerHeight(true)+colSumHeight[idx];
     			$('.pic-ct').height(Math.max.apply(null,colSumHeight));
     		});
-    	}
-
-
-    	function renderData(items){
-    		var tpl='',
-    		    $nodes;
-    		for(var i=0;i<items.length;i++){
-    			tpl +='<li class="item">'
-    			tpl +='<a href="' + items[i].url + '" class="link"><img src="' + items[i].img_url + '" alt=""></a>';
-    			tpl +='<h4 class="header">' + items[i].short_name + '</h4>';
-    			tpl +='<p class="descrip">' + items[i].short_intro + '</p>'
-    			tpl +='</li>'
-    		}
-    		$nodes=$(tpl);
-	    	$('.pic-ct').append($nodes);
-	    	return $nodes;
     	}
 
     </script>
