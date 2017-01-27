@@ -106,7 +106,7 @@
     	}
 
     	var curPage=1,
-    		perPageCount=10;
+    	    perPageCount=10;
 
     	function loadAndPlace(){
     		$.ajax({
@@ -131,6 +131,7 @@
     	function place(nodeList){
     		console.log(nodeList);
     		var $nodes=renderData(nodeList);
+		console.log($nodes);
 
     		var arrDefer=[];
     		$nodes.find('img').each(function(){
