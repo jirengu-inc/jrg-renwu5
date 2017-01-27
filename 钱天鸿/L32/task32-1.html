@@ -78,13 +78,14 @@
     	var clock;
     	$(window).on('scroll',function(){
     		if(clock){
-    			clearTimeout(clock);
+    			clearTimeout(clock); ////用户鼠标滚轮滚动一次，有多次事件响应。setTimeout 主要是为性能考虑，只在最后一次事件响应的时候执行 checkshow
     		}
     		clock=setTimeout(function(){
     			checkShow();
     		},2000);
     	});
 
+	// 用户第一次打开页面，还未滚动窗口的时候需要执行一次 checkShow    
     	checkShow();
 
     	function checkShow(){
@@ -95,8 +96,8 @@
 
     	function isShow($el){
     		var scrollH=$(window).scrollTop(),
-    			winH=$(window).height(),
-    			offsetTop=$el.offset().top;
+    		    winH=$(window).height(),
+    		    offsetTop=$el.offset().top;
 
     		if(offsetTop<winH+scrollH){
     			return true;
@@ -104,14 +105,15 @@
     			return false;
     		}
     	}
-
+	
+	// 获取数据，并且摆放位置    
     	var curPage=1,
     	    perPageCount=10;
 
     	function loadAndPlace(){
     		$.ajax({
     			url: 'http://platform.sina.com.cn/slide/album_tech',
-    			dataType:'jsonp',
+    			dataType:'jsonp', //这里使用了新浪新闻的 jsonp 接口，可以直接看后台数据。 如： http://platform.sina.com.cn/slide/album_tech?jsoncallback=func&app_key=1271687855&num=3&page=4
     			jsonp:'jsoncallback',
     			data:{
     				app_key:'1271687855',
@@ -120,42 +122,41 @@
     			}
     		}).done(function(ret){
     			if(ret.status.code==='0'){
-    				place(ret.data);
+    				place(ret.data); //如果数据没问题，那么生成节点并摆放好位置
     			}else{
     				console.log('get error data');
     			}
     		});
     	};
 
-
     	function place(nodeList){
-    		console.log(nodeList);
-    		var $nodes=renderData(nodeList);
-		console.log($nodes);
+    		//console.log(nodeList); //[Obj,Obj,....]
+    		var $nodes=renderData(nodeList); //节点生成后添加到页面上
+		//console.log($nodes); //[li.item,li.item,....]
 
-    		var arrDefer=[];
+    		var arrDefer=[]; //创建存储 defered 对象的数组
     		$nodes.find('img').each(function(){
-			var img=$nodes.find('img');
-			console.log(img);
-    			var defer=$.Deferred();
-    			console.log(defer);
+			//var img=$nodes.find('img');
+			//console.log(img); //[img,img,...]
+    			var defer=$.Deferred(); //创建defered对象
+    			//console.log(defer);
     			$(this).on('load',function(){
-    				defer.resolve();
+    				defer.resolve();//改变Deferred对象的执行状态 变成已完成
     			});
     			arrDefer.push(defer);
+			console.log(arrDefer);
     		});
-    		$.when.apply(null,arrDefer).done(function(){
-    			console.log('new images all loaded...');
+    		$.when.apply(null,arrDefer).done(function(){ //当所有的图片都执行 resolve 后，即全部图片加载后，执行下面的内容
+    			console.log('new images all loaded...'); //当节点里的图片全部加载后再使用瀑布流计算，否则会因为图片未加载 item 高度计算错误导致瀑布流高度计算出问题
     			waterFallPlace($nodes);
     		});
     	}
-
-
-    	 
-    	var	nodeWidth=$('.item').outerWidth(true),
-    		picWrapWidth=$('.pic-ct').width(),
-    		colNum=parseInt(nodeWidth/picWrapWidth),
-    		colSumHeight=[];
+	    
+	// 瀑布流
+    	var  nodeWidth=$('.item').outerWidth(true),
+    	     picWrapWidth=$('.pic-ct').width(),
+    	     colNum=parseInt(nodeWidth/picWrapWidth),
+    	     colSumHeight=[];
 
     	for(var i=0;i<colNum;i++){
     		colSumHeight.push(0);
