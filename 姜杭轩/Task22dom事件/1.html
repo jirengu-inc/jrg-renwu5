@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1</title>
+	<meta charset="utf-8">
+
+</head>
+<body>	
+	<div id="ct">
+		<a class="btn" href="#">点我</a>
+	</div>
+
+
+	<script>		
+		document.querySelector('#ct').onclick = function(){
+				console.log(this);
+				console.log('ctttttop');
+		}
+		document.querySelector('.btn').onclick = function(){
+				console.log(this.innerText);
+				console.log('click me');
+		}
+	</script>
+
+</body>
+</html>

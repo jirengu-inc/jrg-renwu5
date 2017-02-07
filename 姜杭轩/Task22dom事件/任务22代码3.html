@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务22代码3</title>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<ul class="ct">
+    <li data-img="http://a3.topitme.com/1/f4/62/1193601832e5462f41l.jpg">鼠标放置查看图片1</li>
+    <li data-img="http://a3.topitme.com/1/2b/72/1193601790a09722b1l.jpg">鼠标放置查看图片2</li>
+    <li data-img="http://a3.topitme.com/d/88/00/119360196343c0088dl.jpg">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+<script>
+
+//---------主要逻辑：图片位置先放一个图片，display：none隐藏，鼠标放置后 替换掉图片区的图片 ，display：block显示图片。---------
+	// var ct = document.querySelector('.ct'),
+	// 	imgp = document.querySelector('.img-preview');
+
+	// var parentImgp = imgp.parentNode;
+
+	// var img = document.createElement('img');
+	// img.src = "http://a3.topitme.com/5/b5/a0/1175988392e80a0b55l.jpg";
+	// imgp.appendChild(img);
+
+	// ct.addEventListener('mouseenter',function(e){
+	// 	var target = e.target;
+	// 	console.log(target.innerText);
+	// 	parentImgp.replaceChild(target.data-img,imgp.img);
+	// 	imgp.style.display = 'block';
+	// })
+
+var ct = document.querySelector('.ct'),
+    childs = ct.querySelectorAll('li'),
+    preview = document.querySelector('.img-preview');
+
+for(var i=0; i<childs.length; i++){
+    childs[i].addEventListener('mouseenter', function(){
+       var dataImg = this.getAttribute('data-img');
+       preview.innerHTML = '<img src="'+ dataImg+ '">'
+    });
+}
+
+
+</script>
+</body>
+</html>
