@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>2</title>
+	<style>
+		html,body {
+			margin: 0;
+			padding: 0;
+		}
+		#wrap {
+			position: relative;
+		}
+		.cover {
+			width: 900px;
+			margin: 12px auto;
+		}
+		#header {
+			height: 50px;
+			background: red;
+		}
+		.nav {
+			height: 30px;
+			line-height: 30px;
+			margin-bottom: 0px;
+			background: yellow;
+			border: 1px solid;
+			box-sizing: border-box;
+		}
+		.content:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.aside {
+			float: left;
+			width: 200px;
+			height: 400px;
+			background: #ccc;
+		}
+		.main{
+			float: right;
+			width: 680px;
+			height: 400px;
+			background: blue;
+		}
+		.active {
+			position: fixed;
+			top: 0px;
+		}
+	</style>
+</head>
+<body>
+<div class="cover">
+<div id="header">
+header
+</div>
+</div>
+<div class="content cover">
+<nav class="nav">
+	nav1
+</nav>
+<div class="aside">
+	aside1
+</div>
+<div class="main">
+	main1
+</div>
+</div>
+<div class="content cover">
+<nav class="nav">
+	nav2
+</nav>
+<div class="aside">
+	aside2
+</div>
+<div class="main">
+	main2
+</div>
+</div>
+<div class="content cover">
+<nav class="nav">
+	nav3
+</nav>
+<div class="aside">
+	aside3
+</div>
+<div class="main">
+	main3
+</div>
+</div>
+<div class="content cover">
+<nav class="nav">
+	nav4
+</nav>
+<div class="aside">
+	aside4
+</div>
+<div class="main">
+	main4
+</div>
+</div>
+<div id="footer">
+footer
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+$.fn.stick=function(){
+	var $nav=this,
+	 arr=new Array(),
+	 btn= new Array(),
+	navTop=$nav.eq(0).offset().top,
+	navLeft=$nav.offset().left,
+	navWidth=$nav.width();
+
+	for(var i=0;i<$nav.length;i++){
+		btn[i]=$nav.eq(i).clone().css({opacity:0}).insertAfter($nav.eq(i)).hide();
+		arr[i]=$nav.eq(i).offset().top;
+	}
+	
+	$(window).scroll(function(){
+	var windowTop=$(window).scrollTop();
+	 for (var i=0;i<$nav.length;i++){ 
+		if(windowTop>=arr[i]){
+			$nav.removeClass('active').eq(i).addClass('active');
+			$nav.width(navWidth);
+			$nav.css({left:navLeft});
+			for(var j=0;j<$nav.length;j++){
+				if(j===i){
+					btn[j].show();
+				}else{
+					btn[j].hide();
+				}
+			}
+			
+	}else if(windowTop<navTop){
+		$nav.removeClass('active');
+btn[0].hide();		
+	}
+	}	
+	})
+	}
+	$('.nav').stick();
+</script>
+</body>
+</html>

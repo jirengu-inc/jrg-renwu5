@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tab 切换</title>
+    <style>
+        #total-tab {
+            border: 1px solid #ccc;
+        }
+        #total-tab * {
+            box-sizing: border-box;
+        }
+        #total-tab ul, #total-tab li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #total-tab #tabs:after{
+            content: '';
+            height: 0;
+            display: table;
+            clear: both;
+        }
+        #total-tab #tabs li {
+            float: left;
+            width: 33.3%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+        #total-tab #tabs li:last-child {
+            border-right: none;
+        }
+        #total-tab #tabs .active {
+            background-color: #eee;
+        }
+        #total-tab .panel {
+            display: none;
+            height: 200px;
+            padding: 20px;
+        }
+        #total-tab .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="total-tab">
+        <ul id="tabs">
+            <li class="active">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+        </ul>
+        <div class="panel active">内容1</div>
+        <div class="panel">内容2</div>
+        <div class="panel">内容3</div>
+    </div>
+    <script>
+        // 方法 1
+        // var lis = document.getElementById('tabs').getElementsByTagName('li'),
+        //     divs = document.getElementById('total-tab').getElementsByTagName('div');
+        // for(var i = 0; i < lis.length; i++){
+        //     lis[i].id = i;
+        //     lis[i].onclick = function(){
+        //         for(var j = 0; j < lis.length; j++){
+        //             lis[j].className = '';
+        //             divs[j].className = 'panel';
+        //         }
+        //         this.className = 'active';
+        //         divs[this.id].className = 'panel active';
+        //     };
+        // }
+        
+        // 方法 2
+        var tabs = document.querySelector('#tabs'),
+            divs = document.querySelectorAll('.panel');
+        var lis = tabs.children;
+        var utils = {
+            index: function(e){
+                var allLists = e.parentElement.children;
+                for(var i = 0; i < allLists.length; i++){
+                    if(e === allLists[i]){
+                        return i;
+                    }
+                }
+            }
+        };
+        tabs.addEventListener('click', function(e){
+            var num = utils.index(e.target);
+            for(var i = 0; i < lis.length; i++){
+                lis[i].setAttribute('class', '');
+                divs[i].setAttribute('class', 'panel');
+            }
+            // e.target.setAttribute('class', 'active');
+            // divs[num].setAttribute('class', 'panel active');
+            e.target.className = 'active';
+            divs[num].className = 'panel active';
+            
+            // 这里用 this 不行？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+            // this.className = 'active';
+            // this.setAttribute('class', 'active');
+        });
+    </script>
+</body>
+</html>

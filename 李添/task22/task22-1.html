@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>代码题</title>
+</head>
+<body>
+    <ul class="ct">
+        <li>这里是</li>
+        <li>饥人谷</li>
+        <li>前端6班</li>
+    </ul>
+    <script>
+        // 重新做一遍
+        // 方法 1
+        // var ul = document.getElementsByClassName("ct")[0],
+        //     li = ul.getElementsByTagName("li");
+        // for(var i = 0; i < li.length; i++){
+        //     li[i].onclick = function(){
+        //         console.log(this.innerText);
+        //     }
+        // }
+
+        // 方法 2 - 绑定在父容器上
+        var ul = document.getElementsByClassName("ct")[0];
+        ul.onclick = function(e){
+            console.log(e.target.innerText);
+        }
+
+
+        // 我的版本
+        // document.querySelector('.ct').onclick = function(){
+        //     console.log(this.children);
+        //     // console.log(this.innerText);
+        // }
+        // console.log(document.querySelector('.ct'));
+
+        // 老师版本 1  直接给元素绑定事件
+        // console.log(document.getElementsByClassName('ct'));
+        // var liArr = document.getElementsByClassName('ct')[0].getElementsByTagName('li');  // 这样更安全
+        // // console.log(liArr);
+        // for(var i = 0; i < liArr.length; i++){
+        //     liArr[i].addEventListener('click', function(){
+        //         console.log(this.innerText);
+        //     })
+        // }
+    </script>
+</body>
+</html>

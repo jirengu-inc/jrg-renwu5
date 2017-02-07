@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式 草稿</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .log{
+            background: #000;
+            border-radius: 50%;
+            width: 140px;
+            height: 140px;
+            margin: 50px auto;
+        }
+
+        #head{
+            text-align: center;
+        }
+        #head li{
+            float: left;
+            width: 25%;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+        #head ul{
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        #head li p{
+            background-color: #ccc;
+            padding: 10px;
+        }
+        #nav{
+            text-align: center;
+            background-color: #666666;
+            padding-bottom: 25px;
+            padding-top: 25px;
+            margin: 25px auto;
+        }
+        ul li{
+            list-style: none;
+        }
+        .img{
+            height: 40px;
+            width: 100%;
+            background-color: #6633FF;
+        }
+        #card li{
+            float: left;
+            width: 33.333%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .clearfix:after{
+            display: block;
+            content: "";
+            clear: both;
+        }
+        #card {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .two-line{
+            display: none;
+
+        }
+        @media (max-width: 720px) {
+            #card li{
+                width: 50%;
+            }
+
+        }
+        @media (max-width: 360px) {
+            #card li{
+                width: 100%;
+            }
+            .two-line{
+                display: block;
+
+            }
+            .one-line{
+                display: none;
+
+            }
+            #head li {
+                width: 50%;
+            }
+
+        }
+        img{
+            max-width: 100%
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div id="head">
+    <div class="log"></div>
+    <ul class="clearfix">
+        <li>
+            <p>内容内容内容内容内容内容1</p>
+        </li>
+        <li>
+            <p>内容内容内容内容内容内容2</p>
+        </li>
+        <li>
+            <p>内容内容内容内容内容内容3</p>
+        </li>
+        <li>
+            <p>内容内容内容内容内容内容4</p>
+        </li>
+    </ul>
+</div>
+<div id="nav">
+    <h1 class="one-line">标题标题标题标题标题标题</h1>
+    <h1 class="two-line">标题标题标题 <br>
+        标题标题标题</h1>
+    <p>段落段落段落段落段落段落</p>
+    <p>段落段落段落段落段落段落</p>
+</div>
+<div id="card">
+    <ul class="clearfix">
+        <li>
+            <div class="img"></div>
+            <h3>标题1</h3>
+            <p>描述1</p>
+        </li>
+        <li>
+            <div class="img"></div>
+            <h3>标题2</h3>
+            <p>描述2</p>
+        </li>
+        <li>
+            <div class="img"></div>
+            <h3>标题3</h3>
+            <p>描述3</p>
+        </li>
+        <li>
+            <div class="img"></div>
+            <h3>标题4</h3>
+            <p>描述4</p>
+        </li>
+        <li>
+            <div class="img"></div>
+            <h3>标题5</h3>
+            <p>描述5</p>
+        </li>
+        <li>
+            <div class="img"></div>
+            <h3>标题6</h3>
+            <p>描述6</p>
+        </li>
+        <li>
+            <div class="img"></div>
+            <h3>标题7</h3>
+            <p>描述7</p>
+        </li>
+        <li>
+            <div class="img"></div>
+            <h3>标题8</h3>
+            <p>描述8</p>
+        </li>
+        <li>
+            <div class="img"></div>
+            <h3>标题9</h3>
+            <p>描述9</p>
+        </li>
+    </ul>
+
+</div>
+<img src="简单响应式页面 (1).png">
+
+</body>
+</html>

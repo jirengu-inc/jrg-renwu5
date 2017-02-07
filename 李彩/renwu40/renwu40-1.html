@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function createTimer(){
+        var startTime,
+                endTime,
+                difference;
+
+        var timer={
+            start: function () {
+                startTime=Date.now();
+                return  startTime
+            },
+            end: function () {
+                endTime=Date.now();
+                return endTime
+            },
+            get:function () {
+                difference=endTime-startTime;
+                return difference
+            }
+        };
+
+        return timer
+    }
+
+    var timer1 = createTimer();
+    var timer2 = createTimer();
+
+    timer1.start();
+    for(var i=0;i<100;i++){
+        console.log(i);
+    }
+
+    timer1.end();
+
+    alert("timer1的执行时间是"+timer1.get());
+
+    timer2.start();
+    for(var i=0;i<1000;i++){
+        console.log(i);
+    }
+    timer2.end();
+    alert("timer2的执行时间是"+timer2.get());
+
+</script>
+
+</body>
+</html>

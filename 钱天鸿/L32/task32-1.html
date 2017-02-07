@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+	html,body,ul,li,p,div{
+		margin:0;
+		padding:0;
+		box-sizing:border-box;
+	}
+	ul,li{
+		list-style: none;
+	}
+	.wrap{
+		width: 900px;
+		margin:0 auto;
+	}
+	.pic-ct{
+		position: relative;
+		/*border:1px solid blue;*/
+	}
+	.pic-ct .item{
+		position: absolute;
+		width: 250px;
+		border:1px solid red;
+		margin:10px;
+		padding-bottom: 10px;
+		transition:all 2s;
+		border-radius: 10px;
+	}
+	.pic-ct .item img{
+		width: 230px;
+		margin:10px;
+	}
+	.pic-ct .header{
+		height: 25px;
+		margin:0 10px;
+		border-bottom: 1px solid #ccc;
+	}
+	.pic-ct .descrip{
+		margin:10px 10px 0px;
+		font-size: 15px;
+		line-height: 1.5;
+		color: #777371;
+	}
+	.load{
+		visibility: hidden;
+		height: 20px;
+	}
+	.hide{
+		display:none;
+	}
+</style>
+</head>
+<body>
+    <div class="wrap">
+    	<ul class="pic-ct">
+	<!-- <li class="item">
+		<a href="#" class="link"><img src="http://s.img.mix.sina.com.cn/auto/resize?img=http%3A%2F%2Fwww.sinaimg.cn%2Fdy%2Fslidenews%2F5_img%2F2016_09%2F453_75615_657883.jpg&size=250_0" alt=""></a>
+		<h4 class="header">标题</h4>
+		<p class="descrip">dfasdfsdadsfasdfasdf</p>
+	     </li> -->
+		
+	     <!-- 这个很重要，用于计算 item 宽度和列数，但不展示出来。弄了好长时间原来错误在这个地方-->
+	     <li class="item hide"></li>
+    	</ul>
+    	<div class="load">我是看不见的</div>
+    </div>
+
+    <script>
+
+    	var clock;
+    	$(window).on('scroll',function(){
+    		if(clock){
+    			clearTimeout(clock); ////用户鼠标滚轮滚动一次，有多次事件响应。setTimeout 主要是为性能考虑，只在最后一次事件响应的时候执行 checkshow
+    		}
+    		clock=setTimeout(function(){
+    			checkShow();
+    		},100);
+    	});
+
+	// 用户第一次打开页面，还未滚动窗口的时候需要执行一次 checkShow    
+    	checkShow();
+
+    	function checkShow(){
+    		if( isShow($('.load')) ){
+    			loadAndPlace();
+    		}
+    	}
+
+    	function isShow($el){
+    		var scrollH=$(window).scrollTop(),
+    		    winH=$(window).height(),
+    		    offsetTop=$el.offset().top;
+    		if(offsetTop<winH+scrollH){
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
+	
+	// 获取数据，并且摆放位置    
+    	var curPage=1,
+    	    perPageCount=10;
+
+    	function loadAndPlace(){
+    		$.ajax({
+    			url: 'http://platform.sina.com.cn/slide/album_tech',
+    			dataType:'jsonp', //这里使用了新浪新闻的 jsonp 接口，可以直接看后台数据。 如： http://platform.sina.com.cn/slide/album_tech?jsoncallback=func&app_key=1271687855&num=3&page=4
+    			jsonp:'jsoncallback',
+    			data:{
+    				app_key:'1271687855',
+    				num:perPageCount, //每一页图片的数量
+    				page:curPage  //当前的页数
+    			}
+    		}).done(function(ret){
+    			if(ret.status.code==='0'){
+    				place(ret.data); //如果数据没问题，那么生成节点并摆放好位置
+    			}else{
+    				console.log('get error data');
+    			}
+    		});
+    	};
+
+    	function place(nodeList){
+    		//console.log(nodeList); //[Obj,Obj,....]
+    		var $nodes=renderData(nodeList); //节点生成后添加到页面上
+		//console.log($nodes); //[li.item,li.item,....]
+
+    		var arrDefer=[]; //创建存储 defered 对象的数组
+    		$nodes.find('img').each(function(){
+			//var img=$nodes.find('img');
+			//console.log(img); //[img,img,...]
+    			var defer=$.Deferred(); //创建defered对象
+    			//console.log(defer);
+    			$(this).on('load',function(){
+    				defer.resolve();//改变Deferred对象的执行状态 变成已完成
+    			});
+    			arrDefer.push(defer);
+			//console.log(arrDefer);
+    		});
+    		$.when.apply(null,arrDefer).done(function(){ //当所有的图片都执行 resolve 后，即全部图片加载后，执行下面的内容
+    			console.log('new images all loaded...'); //当节点里的图片全部加载后再使用瀑布流计算，否则会因为图片未加载 item 高度计算错误导致瀑布流高度计算出问题
+    			waterFallPlace($nodes);
+    		});
+    	}
+	    
+	
+	function renderData(items){
+		var tpl='',
+		    $nodes;
+		for(var i=0;i<items.length;i++){
+			tpl +='<li class="item">'
+			tpl +='<a href="' + items[i].url + '" class="link"><img src="' + items[i].img_url + '" alt=""></a>';
+			tpl +='<h4 class="header">' + items[i].short_name + '</h4>';
+			tpl +='<p class="descrip">' + items[i].short_intro + '</p>'
+			tpl +='</li>'
+		}
+		$nodes=$(tpl);
+		$('.pic-ct').append($nodes);
+		return $nodes;
+    	}    
+	    
+	// 瀑布流
+    	var  nodeWidth=$('.item').outerWidth(true),
+    	     picWrapWidth=$('.pic-ct').width(),
+    	     colNum=parseInt(picWrapWidth/nodeWidth),
+    	     colSumHeight=[];
+    	for(var i=0;i<colNum;i++){
+    	     colSumHeight.push(0);
+    	}
+    	function waterFallPlace($nodes){
+    		$nodes.each(function(){
+    			var $cur=$(this);
+			//console.log($cur);
+    			// colSumHeight=[100,200,30,50]
+    			var idx=0,
+    			    minSumHeight=colSumHeight[0];
+    			for(var i=0;i<colSumHeight.length;i++){
+    				if(minSumHeight>colSumHeight[i]){
+    					minSumHeight=colSumHeight[i];
+    					idx=i;
+    				};
+    			};
+    			$cur.css({
+    				left:nodeWidth*idx,
+    				top:minSumHeight
+    			});
+    			colSumHeight[idx]=$cur.outerHeight(true)+colSumHeight[idx];
+    			$('.pic-ct').height(Math.max.apply(null,colSumHeight));
+    		});
+    	}
+
+    </script>
+</body>
+</html>

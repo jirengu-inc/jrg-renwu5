@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>cakeList</title>
+        <style>
+            /* 初始化 */
+            * {
+                box-sizing: border-box;
+            }
+            li {
+                list-style: none;
+            }
+            ul, li, p ,div {
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                font: 12px/150% Arial,Verdana;
+                color: #666;
+            }
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+            .clearfix:after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+
+
+            /* categoryList样式 */
+            .categoryTitle {
+                width: 792px;
+                margin: 20px auto;
+            
+            }
+            
+            .categoryListWrapper {
+                width: 792px;
+                margin: 0 auto;
+            }
+            ul.categoryListCt {
+                width: 812px;
+                margin-left: -20px;
+                margin-top: -20px;
+            }
+            ul.categoryListCt > li.categoryList {
+                padding: 10px;
+                width: 250px;
+                margin-left: 20px;
+                margin-top: 20px;
+                border: 1px solid #ccc;
+                float: left;
+                position: relative;
+            }
+            li.categoryList > .shade {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                background: #666;
+                opacity: 0;
+                transition: 0.3s;
+            }
+            li.categoryList > .hover {
+                opacity: 0.3;
+                transition: 0.3s;
+            }
+            li.categoryList > a.buyNow {
+                display: inline-block;
+                width: 100px;
+                height: 50px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                border: 1px solid #c81623;
+                color: #c81623;
+                background: #fff;
+                text-align: center;
+                line-height: 50px;
+                border-radius: 3px;
+                opacity: 0;
+                transition: 0.3s;
+            }
+            li.categoryList > a.show {
+                opacity: 1;
+                transition: 0.3s;
+            }
+            li.categoryList > p.categoryIntro {
+                margin: 5px 0;
+            }
+            li.categoryList > span.categoryPrice {
+                color: #c81623;
+            }
+            .show {
+                display: block;
+            }
+
+            .categoryCt {
+                margin: 20px 0;
+            }
+            .loadmore {
+                width: 70px;
+                height: 40px;
+                display: inline-block;
+                border: 1px solid #c81623;
+                border-radius: 5px;
+                background: #fff;
+                color: #c81623;
+                cursor: pointer;
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="categoryWrapper">
+            <h1 class="categoryTitle">鲜花蛋糕</h1>
+                <div class="categoryListWrapper show">
+                    <ul class="categoryListCt clearfix">
+                        <li class="categoryList">
+                        <img src="http://ocpxqfoch.bkt.clouddn.com/f1132c342fd5e6ce357b30f2be209fb2.png" alt="" width=228px height=228px>
+                        <div class="shade"></div>
+                        <p class="categoryIntro">钢铁侠翻糖蛋糕 6寸</p>
+                        <span class="categoryPrice">￥368.00</span>
+                        <a class="buyNow" href="">立即抢购</a>
+                        </li>
+                        <li class="categoryList">
+                        <img src="http://ocpxqfoch.bkt.clouddn.com/60a6233b84dd33b2f44a3debeb2d203b.png" alt="" width=228px height=228px>
+                        <div class="shade"></div>
+                        <p class="categoryIntro">白色恋人 6寸</p>
+                        <span class="categoryPrice">￥218.00</span>
+                        <a class="buyNow" href="">立即抢购</a>
+                        </li>
+                        <li class="categoryList">
+                        <img src="http://ocpxqfoch.bkt.clouddn.com/12fbb51bae31a591c5270b35b038a094.png" alt="" width=228px height=228px>
+                        <div class="shade"></div>
+                        <p class="categoryIntro">巧克力淋酱 6寸</p>
+                        <span class="categoryPrice">￥268.00</span>
+                        <a class="buyNow" href="">立即抢购</a>
+                        </li>
+                        <li class="categoryList">
+                        <img src="http://ocpxqfoch.bkt.clouddn.com/141578208ec3939e641ba221feb9ddea.png" alt="" width=228px height=228px>
+                        <div class="shade"></div>
+                        <p class="categoryIntro">翻糖黄油饼干</p>
+                        <span class="categoryPrice">￥40.00</span>
+                        <a class="buyNow" href="">立即抢购</a>
+                        </li>
+                        <li class="categoryList">
+                        <img src="http://ocpxqfoch.bkt.clouddn.com/afacd23365ca5eb38b36a39c5a3bafe5.png" alt="" width=228px height=228px>
+                        <div class="shade"></div>
+                        <p class="categoryIntro">蛋糕盒子</p>
+                        <span class="categoryPrice">￥48.00</span>
+                        <a class="buyNow" href="">立即抢购</a>
+                        </li>
+                        <li class="categoryList">
+                        <img src="http://ocpxqfoch.bkt.clouddn.com/f56508f40cbbdafbd7b34738dcb79254.png" alt="" width=228px height=228px>
+                        <div class="shade"></div>
+                        <p class="categoryIntro">牛油果三明治</p>
+                        <span class="categoryPrice">￥28.00</span>
+                        <a class="buyNow" href="">立即抢购</a>
+                        </li>
+                    </ul>
+                <button class="loadmore">更多</button>
+                </div>
+
+            </div>
+            
+            
+        <script src="http://og4h4hcqu.bkt.clouddn.com/jquery-3.1.1.js"></script>
+        <script>
+
+            var products = [
+            {
+            img: 'http://ocpxqfoch.bkt.clouddn.com/6814f7e67e647fbb87f4adbf657f4d3f.png',
+            name: '水果双层',
+            price: '￥358.00'
+            },{
+            img: 'http://ocpxqfoch.bkt.clouddn.com/ede875e67636c918ee6472fa42cc381a.png',
+            name: '皇冠 6寸',
+            price: '￥258.00'
+            },{
+            img: 'http://ocpxqfoch.bkt.clouddn.com/a8faa3ae71b22031ef76c8b4d7a12225.png',
+            name: '鲜花 三层',
+            price: '￥666.00'
+            }
+            ]
+
+
+            // 绑定click事件
+            var appendProducts = function () {
+            for (var i = 0; i < products.length; i++) {
+                        var productsList = '<li class="categoryList"> <img src="' + products[i].img + '" alt="" width=228px height=228px> <div class="shade"></div> <p class="categoryIntro">' + products[i].name + '</p> <span class="categoryPrice">' + products[i].price + '</span> <a class="buyNow" href="">立即抢购</a> </li>'
+                        $('.categoryListCt').append(productsList)
+            }
+            }
+
+            $('.loadmore').on('click', appendProducts) 
+            
+
+            // 为何给li绑定事件不行？因为事件绑定已经在页面刷新完成前建立好了，添加的新元素需要重新绑定，否则不会有hover效果，所以需使用父元素事件代理。
+
+            $('ul.categoryListCt').on('mouseenter', 'li.categoryList', function () {
+            console.log(this)
+            $(this).children('.shade').addClass('hover')
+            $(this).children('.buyNow').addClass('show')
+            })
+            $('ul.categoryListCt').on('mouseleave', 'li.categoryList', function () {
+            $(this).children('.shade').removeClass('hover')
+            $(this).children('.buyNow').removeClass('show')
+            })
+
+        </script>
+    </body>
+</html>

@@ -40,9 +40,5 @@ define(["../lib/jquery.min"],function () {
         }
     };
     var GoTop1= new goTop('body');
-
-
-
-
     return { GoTop1 };
 });

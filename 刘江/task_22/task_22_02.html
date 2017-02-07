@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task_22_02</title>
+</head>
+
+<body>
+    <ul class="ct">
+        <li>这里是</li>
+        <li>饥人谷</li>
+        <li>前端6班</li>
+    </ul>
+    <input class="ipt-add-content" placeholder="添加内容" />
+    <button id="btn-add-start">开头添加</button>
+    <button id="btn-add-end">结尾添加</button>
+    <script>
+        // 选取元素
+        var ul = document.querySelector('.ct')
+        var input = document.querySelector('.ipt-add-content')
+        var btnAddStart = document.querySelector('#btn-add-start')
+        var btnAddEnd = document.querySelector('#btn-add-end')
+
+        // 设置'打印元素'监听
+        ul.addEventListener('click', function(e) {
+            console.log(e.target.textContent)
+        })
+
+
+        // 设置'开头添加'监听
+        var addStart = function() {
+            var li = document.createElement('li')
+            li.innerText = input.value
+            ul.insertBefore(li, ul.firstChild)
+        }
+        btnAddStart.addEventListener('click', addStart)
+
+        // 设置'结尾添加'监听
+        var addEnd = function() {
+            var li = document.createElement('li')
+            li.innerText = input.value
+            ul.appendChild(li)
+        }
+        btnAddEnd.addEventListener('click', addEnd)
+    </script>
+</body>
+
+</html>

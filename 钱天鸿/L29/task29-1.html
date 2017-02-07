@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+	p{
+		line-height: 3;
+	}
+	#go-top{
+		position: fixed;
+		bottom: 10px;
+		right: 10px;
+		border: 1px solid blue;
+		padding: 15px;
+		cursor: pointer;
+		display: none;
+	}
+	#go-top:hover{
+		background:yellow;
+	}
+</style>
+</head>
+<body>
+   <p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p>
+   <p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p>
+   <p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p>
+   <p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p>
+   <p>内容</p><p>内容</p><p>内容</p><p>内容</p><p>内容</p>
+   <script>
+   		//方法1,jquery的方法
+   		var $goTop=$('<div id="go-top">回到顶部</div>');//创建这个元素
+   		$('body').append($goTop); //添加到dom里面去
+
+   		$(window).on('scroll',function(){
+   			var offsetTop=$('body').scrollTop();  //获取滚动的值
+   			console.log(offsetTop);
+   			if(offsetTop>100){ //如果offsetTop值大于100px 则展示  回到顶部按钮
+   				$goTop.show();
+   			}else{
+   				$goTop.hide() //否则隐藏
+   			}
+   		})
+   		$goTop.on('click',function(){ //点击则跳转到顶部
+   			$(window).scrollTop(0);
+   		})
+
+
+		// 方法2 封装一下，可以随意的调用
+   		// var GoTop={
+   		// 	init:function(){
+   		// 		if( $('#go-top').length>0 ){ //如果多次调用的话，这个元素就多次创建，所以第1次之后再调用时就判断这个元素是否已经存在
+   		// 			return;
+   		// 		}else{
+   		// 			var $goTop=$('<div id="go-top">回到顶部</div>'); //不存在就初始化,创建回到头部这个元素
+	   	// 			$('body').append($goTop);
+
+	   	// 			this.$goTop=$goTop; //this指代的是对象GoTop，相当于绑定了一个属性$goTop,然后给这个属性赋值$goTop
+	   	// 			this.bind();
+   		// 		}
+   		// 	},
+   		// 	bind:function(){
+   		// 		var self=this; //这里this指代的是GoTop对象，要用自定义变量保存，在下面的作用域中使用
+   		// 		$(window).on('scroll',function(){
+   		// 			var offsetTop=$('body').scrollTop();
+   		// 			if(offsetTop>100){
+   		// 				self.$goTop.show();
+   		// 				//this 这里指代的是window，是全局变量
+   		// 			}else{
+   		// 				self.$goTop.hide();
+   		// 			}
+   		// 		})
+   		// 		this.$goTop.on('click',function(){ //this.$goTop就相当于this.$goTop=$goTop,也就是#go-top元素
+   		// 			$(window).scrollTop(0); //点击 回到头部按钮
+   		// 		})
+   		// 	}
+   		// }
+   		// GoTop.init();
+   		// GoTop.init();
+   		//测试会不会重复append，发现不会,去掉前面的 $('#go-top').length>0也不会重复
+
+
+   		//方法3  用了立即执行函数表达式，来实现封装
+   		// var GoTop=(function(){
+   		// 	var $goTop=$('<div id="go-top">回到顶部</div>');
+   		// 	$('body').append($goTop);
+
+   		// 	function init(){
+   		// 		$(window).on('scroll',function(){
+   		// 			var offsetTop=$('body').scrollTop();
+   		// 			console.log(offsetTop);
+   		// 			if(offsetTop>100){
+   		// 				$goTop.show();
+   		// 			}else{
+   		// 				$goTop.hide();
+   		// 			}
+   		// 		});
+   		// 		$goTop.on('click',function(){
+   		// 			$(window).scrollTop(0);
+   		// 		});
+   		// 	}
+
+   		// 	return {me:init} 
+   		// })();
+
+   		// GoTop.me();
+   		// //这里做个测试，看执行两次会不会生成两个 gotop
+   		// GoTop.me();
+   		//测试生成两个 goTop
+   </script>
+</body>
+</html>

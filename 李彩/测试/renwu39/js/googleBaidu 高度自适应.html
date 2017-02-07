@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一键双搜min</title>
+    <style>
+    html,body{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .cloneSearcheBar{
+        height: 58px;
+        width: 100%;
+    }
+
+    .searchBar{
+    	margin: 0 auto;
+        text-align: center;
+        background: #F8E2D5;
+        padding: 12px 0;
+        border-bottom:  1px solid #aaa;
+        width: 100%;
+        position:fixed;
+        top:0;
+        left: 0;
+
+    }
+   #inputWord{
+    width:35%;
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px;
+    background: #fff;
+   -webkit-box-sizing:border-box;
+   box-sizing: border-box;
+   margin: 0;
+   -webkit-border-radius:0;
+   border-radius:0;
+
+   }
+    #submitBtn {
+    font-size: 16px;
+    font-weight: bolder;
+    background: #A982CE;
+    width: 100px;
+    height: 32px;
+    color: #fff;
+     cursor: pointer;
+    outline:medium;
+    text-align: center;
+    letter-spacing:1px;
+    }
+    .iframeCt{
+        width:49%;
+        display: inline-block;
+    }
+    iframe{
+       width:100%;
+        margin-top:18px;
+        border-width:0;
+        height:2250px;
+    }
+    @media (max-width: 1024px) {
+        #inputWord{
+            width:68%;
+        }
+        #submitBtn{
+            width: 22%;
+        }
+        iframe{
+            height: 3800px;
+        }
+    }
+    @media (max-width: 768px){
+            #inputWord{
+                width:55%;
+                height: 45px;
+                line-height: 45px;
+
+            }
+            #submitBtn{
+                width:20%;
+                height: 45px;
+                line-height: 45px;
+                text-align: center;
+            }
+            .iframeCt{
+                display: block;
+                width: 100%;
+
+            }
+
+            iframe{
+                width: 1px;
+                min-width: 100%;
+                *width: 100%;
+            }
+            #iframeBaidu{
+                height: 2200px;
+            }
+            #iframeGoogle{
+                height: 3400px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+<div class="cloneSearcheBar"></div>
+    <div class="searchBar">
+        <input id="inputWord" type="text" name="searchInput" placeholder="输入关键词按回车或点击搜索键即可搜索">
+        <input id="submitBtn" type="submit" name="searchBtn" value="搜索">
+    </div>
+    <div class="iframeCt">
+        <iframe id="iframeBaidu" name="iframeBaidu"   src="" scrolling="no"></iframe>
+        <!--https://www.baidu.com/s?wd=%E7%99%BE%E5%BA%A6-->
+    </div>
+    <div class="iframeCt">
+        <iframe id="iframeGoogle" name="iframeGoogle" src=""    scrolling="no"></iframe>
+        <!--https://g.zmirrordemo.com/search?safe=strict&q=%E7%99%BE%E5%BA%A6-->
+    </div>
+
+
+    <script type="text/javascript">
+    var submitBtn = document.getElementById("submitBtn");
+    function openSearch(){
+        var inputWord = document.getElementById("inputWord").value,
+                iframe = document.getElementsByTagName("iframe");
+        iframe[0].setAttribute("src","https://www.baidu.com/s?wd=" + inputWord );
+        iframe[1].setAttribute("src","https://g.zmirrordemo.com/search?safe=strict&q=" + inputWord );
+
+    }
+    submitBtn.addEventListener("click", function() {
+        openSearch();
+    });
+    document.addEventListener("keydown", function(e) {
+        if (e.keyCode===13){
+            openSearch();
+        }
+    });
+
+
+
+
+    </script>
+</body>
+
+</html>

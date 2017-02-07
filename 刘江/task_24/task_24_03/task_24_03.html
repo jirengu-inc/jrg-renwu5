@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>task_24_03</title>
+        <style>
+            p {
+                color: #aaa;
+                font-size: 12px;
+            }
+            .error {
+                border: 1px solid red;
+            }
+            #register {
+                position: relative;
+            }
+            input {
+                border-radius: 3px;
+                border: 1px solid #888;
+                position: absolute;
+                left: 100px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="register">
+            <h2>注册</h2>
+            <form action="">
+                <label>用户名
+                    <input type="text" name="username" placeholder="用户名(hunger被注册过)" id="username">
+                </label>
+                <p id="usernameRemark">只能是字母,数字,下划线,3-10个字符</p>
+                <label>密码
+                    <input type="password" name="password" id="password">
+                </label>
+                <p id="passwordRemark">大写字母、小写、数字、下划线最少两种，6-15个字符</p>
+                <label>再输一次
+                    <input type="password" name="passwordAgain" placeholder="再输一次密码" id="passwordAgain">
+                </label>
+                <p id="passwordAgainRemark">大写字母、小写、数字、下划线最少两种，6-15个字符</p>
+                <input type="submit" name="提交" id="submit">
+            </form>
+        </div>
+        <script src="ajax.js"></script>
+        <script>
+            // 选取元素
+            function g (id) {
+                return document.querySelector(id)
+            }
+            var form = g('form')
+            var username = g('#username')
+            var usernameRemark = g('#usernameRemark')
+            var password = g('#password')
+            var passwordRemark = g('#passwordRemark')
+            var passwordAgain = g('#passwordAgain')
+            var passwordAgainRemark = g('#passwordAgainRemark')
+            var unm
+            var pwd
+
+            // 绑定"变化"事件
+
+            username.addEventListener('change', function () {
+                usernameValidate() && usernameBeRegistered()
+            })
+
+            password.addEventListener('change', function () {
+                passwordValidate()
+            })
+
+            passwordAgain.addEventListener('change', function () {
+                passwordAgainValidate()
+            })
+
+            // 绑定'提交'事件
+            form.addEventListener('submit', function (e) {
+                if (usernameValidate() && usernameBeRegistered() && passwordValidate() && passwordAgainValidate()) {
+                    alert ('注册成功')
+                    } else {
+                    console.log('no')
+                    e.preventDefault()
+                }
+
+            })
+
+            // 用户名格式验证
+            function usernameValidate () {
+                var usernameValue = form.username.value
+                unm = usernameValue
+                var reg = /^\w{3,10}$/
+                if (reg.test(usernameValue)) {
+                    username.className = ''
+                    usernameRemark.innerHTML = '用户名可用'
+                    return true
+                    } else {
+                    username.className = 'error'
+                    usernameRemark.innerHTML = '用户名格式不正确'
+                    return false
+                    setTimeout(function () {
+                        usernameRemark.innerHTML = '只能是字母,数字,下划线,3-10个字符'
+                    }, 2000)
+                }
+            }
+            // 用户名是否被注册验证
+            function usernameBeRegistered () {
+                var usernameValue = form.username.value
+                unm = usernameValue
+                ajax(
+                {
+                    url: 'register.php',
+                    type: 'get',
+                    data: {
+                        username: unm 
+                    },
+                    success: function (ret) {
+                        if (ret === 1) {
+                            username.className = 'error'
+                            usernameRemark.innerHTML = '用户名已被注册'
+                            setTimeout(function () {
+                                usernameRemark.innerHTML = '只能是字母,数字,下划线,3-10个字符'
+                            }, 2000)
+                            return false
+                            } else {
+                            username.className = ''
+                            usernameRemark.innerHTML = '用户名可用'
+                            return true
+                        }
+
+                    },
+                    error: function () {
+                        alert ('sorry...')
+                        return false
+                    }
+                }
+                )
+            }
+
+
+            // 密码验证
+            function passwordValidate () {
+                var passwordValue = form.password.value
+                pwd = passwordValue
+                if(passwordPass(passwordValue)) {
+                    password.className = ''
+                    passwordRemark.innerHTML = '密码可用'
+                    return true
+                    } else {
+                    password.className = 'error'
+                    passwordRemark.innerHTML = '密码格式不正确'
+                    setTimeout(function () {
+                        passwordRemark.innerHTML = '大写字母、小写、数字、下划线最少两种，6-15个字符'
+                    }, 2000)
+                }
+            }
+
+            // 第二次密码验证
+            function passwordAgainValidate () {
+                var passwordAgainValue = form.passwordAgain.value
+                if (passwordPass(passwordAgainValue)) {
+
+                    if(pwd === passwordAgainValue) {
+                        passwordAgain.className = ''
+                        passwordAgainRemark.innerHTML = '密码可用'
+                        return true
+                        } else {
+                        passwordAgain.className = 'error'
+                        passwordAgainRemark.innerHTML = '密码输入不一致'
+                    }
+
+                    } else {
+                    passwordAgain.className = 'error'
+                    passwordAgainRemark.innerHTML = '密码格式不正确'
+                }
+
+            }
+
+            // 验证密码格式函数
+            function passwordPass (str) {
+                if(str.length < 6 || str.length > 15) {
+                    return false
+                    } else if (/[^A-Za-z_0-9]/.test(str)){
+                    return false
+                    } else if (/(^[a-z]+$)|(^[A-Z]+$)|(^_+$)|(^\d+$)/g.test(str)){
+                    return false
+                    }else {
+                    return true
+                }
+            }
+
+
+        </script>
+
+    </body>
+</html>

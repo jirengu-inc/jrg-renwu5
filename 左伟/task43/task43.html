@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>drag事件</title>
+	<meta name="discription" content="">
+	<meta name="keyword" content="">
+	<style>
+		ul{
+			padding:20px 10px;
+			margin:10px 50px;
+			border:1px solid;
+			font-size: 0; 
+		}
+		li{
+			font-size:14px;
+			list-style:none;
+			display:inline-block;
+			background-color: #ccc;
+			border:1px solid gray;
+			padding:10px;
+			margin-left:30px;
+		}
+	</style>
+</head>
+<body>
+<div id="all">
+	<h3>全部:</h3>
+	<ul ondrop="drop(event)" ondragover="allowDrop(event)">
+		<li id="movie" class="b" draggable="true" ondragstart="drag(event)">电影</li>
+		<li id="technology" draggable="true" ondragstart="drag(event)">科技</li>
+		<li id="amusement" draggable="true" ondragstart="drag(event)">娱乐</li>
+		<li id="game" draggable="true" ondragstart="drag(event)">游戏</li>
+		<li id="comic" draggable="true" ondragstart="drag(event)">动漫</li>
+		<li id="food" draggable="true" ondragstart="drag(event)">美食</li>
+		<li id="music" draggable="true" ondragstart="drag(event)">音乐</li>
+	</ul>
+</div>
+<div id="dist">
+	<h3>订阅:</h3>
+	<ul ondrop="drop(event)" ondragover="allowDrop(event)">
+		<li id="live" draggable="true" ondragstart="drag(event)">直播</li>
+	</ul>
+</div>
+<script type="text/javascript">
+	function allowDrop(ev){
+		ev.preventDefault();
+	}
+	function drag(ev){
+		//每drag event有一个dataTransfer，该属性持有事件的数据。此属性（它是一个DataTransfer对象）也具有对方式管理拖动数据。可以使用setData()方法用于将项目添加到拖动数据，使用getData()取出里面的拖动数据；
+		ev.dataTransfer.setData("Text",ev.target.id);
+	}
+	function drop(ev){
+		ev.preventDefault();
+		//禁止ul下的li元素之间相互执行drop函数
+		if(ev.target.tagName.toLowerCase() =='li'){
+			return ;
+		}
+		var data=ev.dataTransfer.getData("Text");
+		ev.target.appendChild(document.getElementById(data));
+	}
+</script>
+</body>
+</html>

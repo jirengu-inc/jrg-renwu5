@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>封装曝光组件</title>
+	<style>
+		html,body{
+			margin:0;
+			padding:0;
+		}
+		p{
+			padding:20px 20px;
+			margin:20px;
+			border:2px solid #eee;
+		}
+		.target1{
+			background-color:yellow;
+		}
+		.target2{
+			background-color:green;
+		}
+	</style>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+	<p>内容:<b>当黄色内容条出现在屏幕上时，滚动进度条一直打印$target1</b>;<i>绿色进度条出现在屏幕上出现只打印一次$target2</i></p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p class="target1">内容7</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p class="target2">内容9</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>	
+	<script>
+		var Expouse=(function(){
+			return {
+				bind:function($target,handler){
+					var tHeight=$target.offset().top;
+					var _handler=function(){
+						var winHeight=$(window).height(),
+							winScrolltop=$(window).scrollTop();
+						if(tHeight>winScrolltop && tHeight<winScrolltop+winHeight){
+							handler.call($target);
+						}
+					}
+					$(window).on('scroll',_handler);
+				},
+
+				one:function($target,handler){
+					var tHeight=$target.offset().top;
+					var close=false;
+					var _handler=function(){
+						var winHeight=$(window).height(),
+							winScrolltop=$(window).scrollTop();
+						if(!close){
+							if(tHeight>winScrolltop && tHeight<winScrolltop+winHeight){
+								handler.call($target);
+								close=true;
+							}
+						}	
+					}
+					$(window).on('scroll',_handler);
+				}
+			}
+		}());
+
+		Expouse.bind($('.target1'),function(){
+			console.log(this);
+		});
+		Expouse.one($('.target2'),function(){
+			console.log(this);
+		});
+	</script>
+</body>
+</html>

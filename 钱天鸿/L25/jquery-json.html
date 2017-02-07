@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+</head>
+<body>
+    <script>
+    	var json = [
+		    {"id":"1","tagName":"apple"},
+		    {"id":"2","tagName":"orange"},
+		    {"id":"3","tagName":"banana"},
+		    {"id":"4","tagName":"watermelon"},
+		    {"id":"5","tagName":"pineapple"}
+		];
+		$.each(json, function(idx, obj) {
+			console.log(idx);
+			console.log(obj);
+    		console.log(obj.tagName);
+		});
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="http://kejian.jirengu.com/static/js/jquery-1.11.1.min.js"></script>
+
+    <meta charset="utf-8">
+    <title>29-2懒加载</title>
+    <style>
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .ct {
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        .ct li {
+            float: left;
+            margin: 10px 10px;
+        }
+
+        .ct li img {
+            width: 300px;
+            height: 400px;
+        }
+    </style>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body>
+    <ul class="ct">
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://img5q.duitang.com/uploads/item/201409/27/20140927224808_MztTf.thumb.700_0.jpeg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://pic37.nipic.com/20140103/11647838_095042686000_2.jpg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://pic62.nipic.com/file/20150317/20641567_135145532000_2.jpg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://img5q.duitang.com/uploads/item/201409/27/20140927224808_MztTf.thumb.700_0.jpeg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://pic37.nipic.com/20140103/11647838_095042686000_2.jpg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://pic62.nipic.com/file/20150317/20641567_135145532000_2.jpg" /></a>
+        </li>
+
+
+
+
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://img5q.duitang.com/uploads/item/201409/27/20140927224808_MztTf.thumb.700_0.jpeg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://pic37.nipic.com/20140103/11647838_095042686000_2.jpg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://pic62.nipic.com/file/20150317/20641567_135145532000_2.jpg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://img5q.duitang.com/uploads/item/201409/27/20140927224808_MztTf.thumb.700_0.jpeg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://pic37.nipic.com/20140103/11647838_095042686000_2.jpg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://pic62.nipic.com/file/20150317/20641567_135145532000_2.jpg" /></a>
+        </li>
+
+
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://img5q.duitang.com/uploads/item/201409/27/20140927224808_MztTf.thumb.700_0.jpeg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://pic37.nipic.com/20140103/11647838_095042686000_2.jpg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://pic62.nipic.com/file/20150317/20641567_135145532000_2.jpg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://img5q.duitang.com/uploads/item/201409/27/20140927224808_MztTf.thumb.700_0.jpeg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://pic37.nipic.com/20140103/11647838_095042686000_2.jpg" /></a>
+        </li>
+        <li>
+            <a href="#"><img src="http://img02.tooopen.com/images/20150506/tooopen_sy_121854764942.jpg" data-src="http://pic62.nipic.com/file/20150317/20641567_135145532000_2.jpg" /></a>
+        </li>
+
+
+    </ul>
+
+    <script type="text/javascript">
+        var clock;
+        $(window).on('scroll', function() {
+            if (clock) {
+                clearTimeout(clock);
+            }
+            clock = setTimeout(function() {
+                checkShow();
+            }, 300);
+
+        });
+        checkShow();
+        function checkShow() {
+            $('.ct img').each(function() {
+                var $cur = $(this);
+                if ($cur.attr('isLoaded')) {
+                    return;
+                }
+                if (isShow($cur)) {
+                    showImg($cur);
+                }
+            });
+        }
+
+        function isShow($el) {
+            var scrollH = $(window).scrollTop(),
+                winH = $(window).height(),
+                top = $el.offset().top;
+
+            if (top < winH + scrollH) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function showImg($el) {
+            $el.attr('src', $el.attr('data-src'));
+            $el.attr('isLoaded', true);
+        }
+    </script>
+
+</body>
+
+</html>

@@ -61,7 +61,7 @@ define(['jquery'],function($){
 		return{
 			init:init
 		}
-	})()
+	})();
 	
 	return carousel
 })
