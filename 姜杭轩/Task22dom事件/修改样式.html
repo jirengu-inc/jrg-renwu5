@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改样式</title>
+
+<style>
+	.ct{
+		width:200px;
+		height: 80px;
+		border:1px solid #ccc;
+		background-Color:pink;
+	}
+	.state1{
+		width:100px;
+		height: 100px;
+		border:1px dotted #ccc;
+		background-Color:yellow;
+	}
+	.state2{
+		width:200px;
+		height:200px;
+		border-radius: 100px;
+		border:1px solid #fff;
+		background-Color:green;
+	}
+</style>
+</head>
+<body>
+	<div class="ct">
+		
+	</div>
+	<button class="btn1">蓝色</button>
+	<button class="btn2">红色</button>
+
+	<script>
+		var btn1 = document.querySelector('.btn1'),
+		    btn2 = document.querySelector('.btn2'),
+		    ct = document.querySelector('.ct');
+
+		// btn1.addEventListener('click',function(){
+		// 	ct.style.backgroundColor = 'blue';
+		// 	//getComputedStyle('ct').width 获得真实宽度
+		// });
+		// btn2.addEventListener('click',function(){
+		// 	ct.style.backgroundColor = 'red';
+		// });
+		btn1.addEventListener('click',function(){
+			removeClass(ct,'state2');
+			addClass(ct,'state1');
+			//ct.className = 'state1';
+			//getComputedStyle('ct').width 获得真实宽度
+		});
+		btn2.addEventListener('click',function(){
+			removeClass(ct,'state1');
+			addClass(ct,'state2');
+			//ct.className = 'state2';
+		});
+	</script>
+</body>
+</html>

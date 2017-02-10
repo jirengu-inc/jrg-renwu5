@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务22代码4Tab转换功能</title>
+	<style>
+		a{
+		    text-decoration: none;
+		    margin: 0;
+		    padding: 0;
+		    list-style: none;
+		    color: #333;
+		 }
+		.bar{
+		  border:1px solid #ccc;
+		  
+		}
+		.tabs:after{
+		  content:'';
+		  clear:both;
+		  display:block;
+		}
+		header a{
+		  float:left;
+		  width:33.2%;
+		  height: 30px;
+		  line-height: 30px;
+		  text-align: center;
+		  border-bottom:1px solid #ccc;
+		  border-right:1px solid #ccc;
+		  
+		}
+		header .tab3{
+		  border-right:none;
+		}
+		.ct {
+		  display: none;
+		  height: 180px;
+		  padding: 20px;
+		}
+
+		.active {
+		  display: block;
+		}
+		.tabs .active {
+		  background: #eee;
+		}
+	</style>
+</head>
+<body>
+	<div class="bar">
+      <header>
+        <div class="tabs">
+          <a class="active" href="#">Tab1</a>
+          <a  href="#">Tab2</a>
+          <a  href="#">Tab3</a>
+        </div>
+      </header>
+      <content>
+        <div class="ct active">内容1</div>
+        <div class="ct">内容2</div>
+        <div class="ct">内容3</div>
+      </content>
+      <footer></footer>
+   </div> 
+   <script>
+   		var Utils = {
+
+    hasClass: function(ele, cls){
+        return !!ele.className.match(new RegExp('\\b'+cls+'\\b'));
+    },
+    
+    addClass:function(ele, cls){
+      if(ele.length && ele.length > 0){
+          for(var i=0; i<ele.length; i++){
+              Utils.singleAddClass(ele[i], cls); 
+          }
+      }else{
+          Utils.singleAddClass(ele, cls);
+      }  
+    },
+    
+    removeClass:function(ele, cls){
+       if(ele.length && cls.length > 0){
+          for(var i=0; i<ele.length; i++){
+              Utils.singleRemoveClass(ele[i], cls); 
+          }
+      }else{
+          Utils.singleRemoveClass(ele, cls);
+      }   
+    },
+    
+    singleAddClass: function(ele, cls){
+        if(Utils.hasClass(ele,cls)) return;
+        ele.className += ' ' + cls;
+    },
+    
+    singleRemoveClass: function(ele, cls){
+        ele.className = ele.className.replace(new RegExp('\\b'+cls+'\\b', 'g'), '');
+    },
+    
+    indexOf: function(ele){
+        var parent = ele.parentElement,
+            siblings = parent.children;
+        for(var i=0; i<siblings.length; i++){
+            if(ele === siblings[i]) return i;
+        }
+        return -1;
+    }
+};
+
+
+
+var tabCt = document.querySelector('.tabs');
+
+tabCt.addEventListener('click', function(e){
+   var target = e.target,
+       tabs = tabCt.children,
+       index = Utils.indexOf(target),
+       ct = document.querySelectorAll('.ct');
+
+   if(index > -1){
+       Utils.removeClass(tabs, 'active');
+       Utils.addClass(target, 'active');
+       Utils.removeClass(ct, 'active');
+       Utils.addClass(ct[index], 'active');
+   } 
+});
+   </script>
+</body>
+</html>

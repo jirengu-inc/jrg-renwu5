@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="模态框" />
+  <meta charset="utf-8">
+  <title>模态框</title>
+  <style>
+  #btn-start {
+  background-color:transparent;
+  border-radius:5px;
+  padding: 2px 7px;
+}
+.cover{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  opacity: 0.4;
+  z-index: 99;
+}
+.modal-ct{
+  border:3px solid #ccc;
+  width:400px;
+  border-radius:5px;
+  background-color:orange;
+  position:absolute;
+  top:60%;
+  left:50%;
+  margin:-200px;
+  z-index:100;
+}
+.header{
+  border-bottom:2px solid #ccc;  
+  position:relative;
+  line-height:1px;
+  padding-left:10px;
+}
+a{
+  text-decoration: none;
+  color: #333;
+}
+.close{
+  position:absolute;
+  top:2px;
+  right:10px;
+}
+.content{
+  border-bottom:1px solid #ccc;
+  padding-left:10px;
+}
+.clearfix:after{
+  content:'';
+  clear:both;
+  display:block;
+}
+.btn{
+  float:right;
+  padding:10px;
+
+}
+.footer a{
+  border:1px solid #ccc;
+  border-radius:5px;
+  padding: 3px 7px;
+  margin:9px;
+}
+#modal-bar{
+  display:none;
+}
+  </style>
+</head>
+<body>
+    <div class="btn-group">
+        <button id="btn-start">点我</button>
+    </div>
+
+
+    <div id="modal-bar">
+      <div class="cover"></div>
+      <div class="modal-ct">
+        <div class="header">
+          <h3>我是标题1</h3>
+          <a class="close" href="#">×</a>
+        </div>
+        <div class="content">
+            <p>我是内容1</p>
+            <p>我是内容1</p>
+        </div>
+        <div class="footer clearfix">
+          <a class="btn btn-confirm" href="#">确定</a>
+          <a class="btn btn-cancel" href="#">取消</a>
+        </div>
+      </div>  
+    </div>
+<script>
+  var btn = document.querySelector('#btn-start'),
+    modal = document.querySelector('#modal-bar'),
+    close = modal.querySelector('.close '),
+    cancel = modal.querySelector('.btn-cancel '),
+    cover = modal.querySelector('.cover ');
+//     modalCt = document.querySelector('#modal-1 .modal-ct');
+
+    
+
+   
+
+function showModal(modal){
+    modal.style.display = 'block';
+}
+
+function hideModal(modal){
+    modal.style.display = 'none';
+}
+
+
+btn.addEventListener('click',function(e){
+  showModal(modal);
+});
+
+close.addEventListener('click',function(e){
+  hideModal(modal);
+});
+
+cancel.addEventListener('click',function(e){
+  hideModal(modal);
+});
+
+cover.addEventListener('click',function(e){
+  hideModal(modal);
+});
+// btn.addEventListener('click', function(e){
+//     e.stopPropagation();
+//     showModal(modal);
+// });
+
+</script>    
+</body>
+</html>

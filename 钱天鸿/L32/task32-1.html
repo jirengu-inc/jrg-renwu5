@@ -23,6 +23,10 @@
 	}
 	.pic-ct{
 		position: relative;
+<<<<<<< HEAD
+=======
+		/*border:1px solid blue;*/
+>>>>>>> 1bed0319282c2c3b937344bb6f2e8dffeafa1847
 	}
 	.pic-ct .item{
 		position: absolute;
@@ -60,6 +64,7 @@
 <body>
     <div class="wrap">
     	<ul class="pic-ct">
+<<<<<<< HEAD
     		<!-- <li class="item">
     			<a href="#" class="link"><img src="http://s.img.mix.sina.com.cn/auto/resize?img=http%3A%2F%2Fwww.sinaimg.cn%2Fdy%2Fslidenews%2F5_img%2F2016_09%2F453_75615_657883.jpg&size=250_0" alt=""></a>
     			<h4 class="header">标题</h4>
@@ -67,6 +72,16 @@
 			</li> -->
 
 			<li class="item hide"></li>
+=======
+	<!-- <li class="item">
+		<a href="#" class="link"><img src="http://s.img.mix.sina.com.cn/auto/resize?img=http%3A%2F%2Fwww.sinaimg.cn%2Fdy%2Fslidenews%2F5_img%2F2016_09%2F453_75615_657883.jpg&size=250_0" alt=""></a>
+		<h4 class="header">标题</h4>
+		<p class="descrip">dfasdfsdadsfasdfasdf</p>
+	     </li> -->
+		
+	     <!-- 这个很重要，用于计算 item 宽度和列数，但不展示出来。弄了好长时间原来错误在这个地方-->
+	     <li class="item hide"></li>
+>>>>>>> 1bed0319282c2c3b937344bb6f2e8dffeafa1847
     	</ul>
     	<div class="load">我是看不见的</div>
     </div>
@@ -96,7 +111,10 @@
     		var scrollH=$(window).scrollTop(),
     		    winH=$(window).height(),
     		    offsetTop=$el.offset().top;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1bed0319282c2c3b937344bb6f2e8dffeafa1847
     		if(offsetTop<winH+scrollH){
     			return true;
     		}else{
@@ -171,11 +189,13 @@
     	     picWrapWidth=$('.pic-ct').width(),
     	     colNum=parseInt(picWrapWidth/nodeWidth),
     	     colSumHeight=[];
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1bed0319282c2c3b937344bb6f2e8dffeafa1847
     	for(var i=0;i<colNum;i++){
     	     colSumHeight.push(0);
     	}
-
     	function waterFallPlace($nodes){
     		$nodes.each(function(){
     			var $cur=$(this);
@@ -183,25 +203,29 @@
     			// colSumHeight=[100,200,30,50]
     			var idx=0,
     			    minSumHeight=colSumHeight[0];
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1bed0319282c2c3b937344bb6f2e8dffeafa1847
     			for(var i=0;i<colSumHeight.length;i++){
     				if(minSumHeight>colSumHeight[i]){
     					minSumHeight=colSumHeight[i];
     					idx=i;
-    				}
-    			}
-
+    				};
+    			};
     			$cur.css({
     				left:nodeWidth*idx,
     				top:minSumHeight
     			});
-
     			colSumHeight[idx]=$cur.outerHeight(true)+colSumHeight[idx];
     			$('.pic-ct').height(Math.max.apply(null,colSumHeight));
     		});
     	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1bed0319282c2c3b937344bb6f2e8dffeafa1847
     </script>
 </body>
 </html>
