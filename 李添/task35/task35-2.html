@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>task35-2-gotop</title>
+  <style>
+    ul, li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid grey;
+      cursor: pointer;
+    }
+    li:hover {
+      background-color: lightblue;
+    }
+    #go-top {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      padding: 10px;
+      background-color: lightcyan;
+      border: 2px solid lightslategray;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="ct">
+    <ul>
+      <li>内容1</li>
+      <li>内容2</li>
+      <li>内容3</li>
+      <li>内容4</li>
+      <li>内容5</li>
+      <li>内容6</li>
+      <li>内容7</li>
+      <li>内容8</li>
+      <li>内容9</li>
+      <li>内容10</li>
+      <li>内容11</li>
+      <li>内容12</li>
+      <li>内容13</li>
+      <li>内容14</li>
+      <li>内容15</li>
+      <li>内容16</li>
+      <li>内容17</li>
+      <li>内容18</li>
+      <li>内容19</li>
+      <li>内容20</li>
+      <li>内容21</li>
+      <li>内容22</li>
+      <li>内容23</li>
+      <li>内容24</li>
+      <li>内容25</li>
+      <li>内容26</li>
+      <li>内容27</li>
+      <li>内容28</li>
+      <li>内容29</li>
+      <li>内容30</li>
+    </ul>
+  </div>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+    function throttle(method, context, delay) {
+      clearTimeout(method.tId);
+      method.tId = setTimeout(function() {
+        method.call(context);
+      }, delay);
+    }
+
+    function GoTop($el) {
+      this.ct = $el;
+      this.target = $('<div id="go-top">回到顶部</div>');
+      var $gotop = this.target;
+
+      this.creatNode = function() {
+        this.ct.append(this.target);
+        this.target.hide();
+
+        var me = this;
+        $(window).on('scroll', function() {
+          if ($(window).scrollTop() > 300) {
+            throttle(showGoTop, this, 100);
+          } else {
+            throttle(hideGoTop, this, 100);
+          }
+        });
+      };
+
+      this.bindEvent = function() {
+        this.target.on('click', function() {
+          $(window).scrollTop(0);
+        });
+      }
+
+      this.creatNode();
+      this.bindEvent();
+
+      function showGoTop() {
+        console.log(1);
+        $gotop.show();
+      }
+      function hideGoTop() {
+        console.log(2);
+        $gotop.hide();
+      }
+    }
+
+    var gotop = new GoTop($('body'));
+  </script>
+</body>
+</html>

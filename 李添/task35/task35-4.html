@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>task35-4-Tab</title>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <style>
+    .clearfix:after {
+      content: '';
+      display: table;
+      height: 0;
+      clear: both;
+    }
+
+    .mod-tab {
+      width: 800px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+    .mod-tab * {
+      box-sizing: border-box;
+    }
+    .mod-tab ul.tabs, .mod-tab ul.tabs > li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .mod-tab ul.tabs > li {
+      float: left;
+      width: 33.3%;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-right: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+    }
+    .mod-tab ul.tabs > li:last-child {
+      border-right: none;
+    }
+    .mod-tab .tabs > li.active {
+      background-color: #eee;
+    }
+    .mod-tab .panel {
+      display: none;
+      height: 200px;
+      padding: 10px;
+    }
+    .mod-tab .panel.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="mod-tab clearfix">
+    <ul class="tabs">
+      <li class="tab active">tab1</li>
+      <li class="tab">tab2</li>
+      <li class="tab">tab3</li>
+    </ul>
+    <div class="panel active">内容1</div>
+    <div class="panel">内容2</div>
+    <div class="panel">内容3</div>
+  </div>
+
+  <div class="mod-tab clearfix">
+    <ul class="tabs">
+      <li class="tab active">tab1</li>
+      <li class="tab">tab2</li>
+      <li class="tab">tab3</li>
+    </ul>
+    <div class="panel active">内容1</div>
+    <div class="panel">内容2</div>
+    <div class="panel">内容3</div>
+  </div>
+  <script>
+    function Tabs($node) {
+      this.$node = $node;
+      this.$tabs = $node.find('.tabs');
+      this.$tab = $node.find('.tab');
+      this.panels = this.$tabs.siblings('.panel');
+      this.bind();
+    }
+    Tabs.prototype = {
+      bind : function() {
+        console.log(this.panels.length);
+        var _this = this;
+        this.$tab.on('click', function() {
+          var index = $(this).index();
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+          _this.panels.removeClass('active');
+          _this.panels.eq(index).addClass('active');
+        });
+      }
+    };
+
+
+    $('.mod-tab').each(function() {
+      new Tabs($(this));
+    });
+  </script>
+</body>
+</html>
