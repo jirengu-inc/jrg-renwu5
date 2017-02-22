@@ -209,7 +209,7 @@
    					_this.clock=true;
    					_this.ct.animate({left:'+=' + (_this.imgWidth*idx)},function(){
    						_this.curIdx=(_this.imgCount+_this.curIdx-idx)%(_this.imgCount);
-   						//console.log(_this.curIdx);
+   						console.log(_this.curIdx);
    						if(_this.curIdx===(_this.imgCount-1)){
    							_this.ct.css({left:0 - (_this.imgWidth)*(_this.imgCount)})
    						}
