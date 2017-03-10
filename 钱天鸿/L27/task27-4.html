@@ -118,7 +118,6 @@
    <div id="header">
    	<div class="carousel">
    		<ul class="img-ct clearfix">
-
    			<li class="item">
    				<div class="cover" data-bg-img='./img/zgr1.jpg'></div>
    				<div class="main">
@@ -182,12 +181,12 @@
    			var curIdx=0;
    			var isAnimate=false;
 
-   			$next.on('click',function(){
-	    		playNext(); 
-	    	});
-	    	$pre.on('click',function(){
-	    		playPre();
-	    	});
+      		$next.on('click',function(){
+   	    		playNext(); 
+   	    	});
+   	    	$pre.on('click',function(){
+   	    		playPre();
+   	    	});
    			$bullet.find('li').on('click',function(){
    				var idx=$(this).index();
    				if(idx>curIdx){
@@ -209,13 +208,15 @@
    				},3000)
    			}
 
-   			function playNext(idx){
+   			function playNext(idx){ //点击下一页的话，这个图片还没有，所以先要把下一张背景图展示出来
    				var idx=idx||1;
    				if(!isAnimate){
    					isAnimate=true;
+                  // console.log(curIdx);
    					setBg(curIdx+2); //这里的意思是先把后面的背景图设置好，然后再展示出来
    					$ct.animate({left:'-='+(imgWidth*idx)},function(){
    						curIdx=(curIdx+idx)%imgCount;
+                     // console.log(curIdx);
    						if(curIdx===0){
    							$ct.css({left:(0-imgWidth)});
    						}
@@ -242,7 +243,7 @@
    			}
 
    			//这里为了性能让图片用了懒加载
-   			function setBg(idx){
+   			function setBg(idx){  //用来展示图片
    				var idx=idx||0,
    					$node=$ct.children().eq(idx),
    					$cover=$node.find('.cover'),
@@ -256,7 +257,6 @@
    				$bullet.children().removeClass('active')
    					.eq(curIdx).addClass('active');
    			}
-
 
    		})
    </script>

@@ -23,10 +23,7 @@
 	}
 	.pic-ct{
 		position: relative;
-<<<<<<< HEAD
-=======
 		/*border:1px solid blue;*/
->>>>>>> 1bed0319282c2c3b937344bb6f2e8dffeafa1847
 	}
 	.pic-ct .item{
 		position: absolute;
@@ -53,7 +50,7 @@
 		color: #777371;
 	}
 	.load{
-		visibility: hidden;
+		/*visibility: hidden;*/
 		height: 20px;
 	}
 	.hide{
@@ -64,29 +61,19 @@
 <body>
     <div class="wrap">
     	<ul class="pic-ct">
-<<<<<<< HEAD
-    		<!-- <li class="item">
-    			<a href="#" class="link"><img src="http://s.img.mix.sina.com.cn/auto/resize?img=http%3A%2F%2Fwww.sinaimg.cn%2Fdy%2Fslidenews%2F5_img%2F2016_09%2F453_75615_657883.jpg&size=250_0" alt=""></a>
-    			<h4 class="header">标题</h4>
-				<p class="descrip">dfasdfsdadsfasdfasdf</p>
-			</li> -->
-
-			<li class="item hide"></li>
-=======
-	<!-- <li class="item">
-		<a href="#" class="link"><img src="http://s.img.mix.sina.com.cn/auto/resize?img=http%3A%2F%2Fwww.sinaimg.cn%2Fdy%2Fslidenews%2F5_img%2F2016_09%2F453_75615_657883.jpg&size=250_0" alt=""></a>
-		<h4 class="header">标题</h4>
-		<p class="descrip">dfasdfsdadsfasdfasdf</p>
-	     </li> -->
+        	<!-- <li class="item">
+        		<a href="#" class="link"><img src="http://s.img.mix.sina.com.cn/auto/resize?img=http%3A%2F%2Fwww.sinaimg.cn%2Fdy%2Fslidenews%2F5_img%2F2016_09%2F453_75615_657883.jpg&size=250_0" alt=""></a>
+        		<h4 class="header">标题</h4>
+        		<p class="descrip">dfasdfsdadsfasdfasdf</p>
+        	</li> -->
 		
 	     <!-- 这个很重要，用于计算 item 宽度和列数，但不展示出来。弄了好长时间原来错误在这个地方-->
-	     <li class="item hide"></li>
->>>>>>> 1bed0319282c2c3b937344bb6f2e8dffeafa1847
+	       <li class="item hide"></li>
     	</ul>
     	<div class="load">我是看不见的</div>
     </div>
 
-    <script>
+     <script>
 
     	var clock;
     	$(window).on('scroll',function(){
@@ -111,10 +98,7 @@
     		var scrollH=$(window).scrollTop(),
     		    winH=$(window).height(),
     		    offsetTop=$el.offset().top;
-<<<<<<< HEAD
 
-=======
->>>>>>> 1bed0319282c2c3b937344bb6f2e8dffeafa1847
     		if(offsetTop<winH+scrollH){
     			return true;
     		}else{
@@ -146,7 +130,7 @@
     	};
 
     	function place(nodeList){
-    		//console.log(nodeList); //[Obj,Obj,....]
+    		console.log(nodeList); //[Obj,Obj,....]
     		var $nodes=renderData(nodeList); //节点生成后添加到页面上
 		//console.log($nodes); //[li.item,li.item,....]
 
@@ -155,7 +139,7 @@
 			//var img=$nodes.find('img');
 			//console.log(img); //[img,img,...]
     			var defer=$.Deferred(); //创建defered对象
-    			//console.log(defer);
+    			// console.log(defer);
     			$(this).on('load',function(){
     				defer.resolve();//改变Deferred对象的执行状态 变成已完成
     			});
@@ -189,24 +173,18 @@
     	     picWrapWidth=$('.pic-ct').width(),
     	     colNum=parseInt(picWrapWidth/nodeWidth),
     	     colSumHeight=[];
-<<<<<<< HEAD
 
-=======
->>>>>>> 1bed0319282c2c3b937344bb6f2e8dffeafa1847
     	for(var i=0;i<colNum;i++){
     	     colSumHeight.push(0);
     	}
     	function waterFallPlace($nodes){
     		$nodes.each(function(){
     			var $cur=$(this);
-			//console.log($cur);
+			     //console.log($cur);
     			// colSumHeight=[100,200,30,50]
     			var idx=0,
     			    minSumHeight=colSumHeight[0];
-<<<<<<< HEAD
 
-=======
->>>>>>> 1bed0319282c2c3b937344bb6f2e8dffeafa1847
     			for(var i=0;i<colSumHeight.length;i++){
     				if(minSumHeight>colSumHeight[i]){
     					minSumHeight=colSumHeight[i];
@@ -222,10 +200,6 @@
     		});
     	}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 1bed0319282c2c3b937344bb6f2e8dffeafa1847
     </script>
 </body>
 </html>

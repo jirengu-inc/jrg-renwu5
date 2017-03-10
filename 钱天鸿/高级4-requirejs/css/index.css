@@ -3,7 +3,7 @@
 	padding: 0px;
 	box-sizing:border-box;
 }
-body,html{
+body,html,#header,.carousel,.img-ct,.items{
 	font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
 	width: 100%;
 	height: 100%;
@@ -39,14 +39,78 @@ li{
 	background:#fec503;
 }
 /*上面是页面共同的*/
-#header{
-	background:url('../img/header-bg.jpg') 0 0 no-repeat;
-	background-size: cover;
-	background-position: center center;
+
+#header .carousel{
+	position: relative;
+	overflow: hidden;
 }
+.carousel .img-ct{
+	position: absolute;
+	z-index: -1;
+}
+.carousel .img-ct .item{
+	position: relative; 
+	float: left;
+	height: 100%;
+}
+.carousel .item .cover{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	opacity: 0.8;
+}
+
+.arrow{
+	position: absolute;
+	top: 50%;
+	transform:translateY(-50%);
+	width:30px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	background: #bbb;
+	color:red;
+	border-radius: 50%;
+	opacity: 0.5;
+	font-size: 20px;
+} 
+.arrow:hover{
+	opacity: 1;
+}
+.pre{
+		left: 10px;
+}
+.next{
+	right: 10px;
+}
+.bullet{
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform:translateX(-50%);
+}
+.bullet li{
+	width: 20px;
+	height: 8px;
+	border-radius: 4px;
+	background:#888;
+	display: inline-block;
+	cursor: pointer;
+	margin: 0 8px;
+}
+.bullet li.active{
+	background:red;
+}
+/*header的carousel部分结束*/
+
 #header .intro{
 	color: #fff;
-	/*border:1px solid;*/
+	border:1px solid;
 	padding:200px 0;
 }
 .intro h2{
@@ -62,8 +126,9 @@ li{
 	margin-bottom: 70px;
 	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-/*header部分的intro结束*/
-.navbar{
+/*header的intro部分结束*/
+
+#header .navbar{
 	width: 100%;
 	background:#222;
 	padding: 20px 0;
@@ -80,11 +145,12 @@ li{
 }
 .navbar ul{
 	float: right;
-	/*border: 1px solid;*/	
+	/*border: 1px solid;*/
 }
 .navbar ul li{
 	float: left;
 	padding: 15px;
+	transition: 0.2s all;
 }
 .navbar li a{
 	font-size: 14px;
@@ -95,7 +161,8 @@ li{
 .navbar li a:hover{
 	color: #fed136;
 }
-/*header部分的nav结束*/
+/*header的nav部分结束*/
+
 #content .services{
 	padding: 150px 0;
 }
@@ -150,82 +217,64 @@ i.font-laptop:before{
 i.font-lock:before{
 	content: "\e6e3";
 }
-/*content部分的services结束*/
+/*content的services部分结束*/
+
+/*#content .portfolio .container{
+	text-align: left;
+}*/
 #content .portfolio{
 	background:#f7f7f7;
 }
-#content .portfolio-items{
+#content .ct-waterfall{
 	/*border: 1px solid;*/
-	margin-left: -58px;
+	/*margin-left: -58px;*/
+	margin:0 auto;
 }
-#content .portfolio-items li{
-	float: left;
-	background:#fff;
-	padding-bottom: 30px;
-	margin-bottom: 30px;
-	margin-left: 58px;
+.pic-ct{
 	position: relative;
 }
-#content li img{
-	width: 350px;
-	height: 250px;
+.pic-ct .item{
+	position: absolute;
+	width: 250px;
+	border:1px solid red;
+	margin:10px;
+	padding-bottom: 10px;
+	transition:all 2s;
+	border-radius: 10px;
 }
-#content .portfolio-items h4{
+.pic-ct .item img{
+	width: 230px;
+	margin:10px;
+}
+.pic-ct .header{
+	height: 25px;
+	margin:0 10px;
+	border-bottom: 1px solid #ccc;
+}
+.pic-ct .descrip{
+	margin:10px 10px 0px;
+	font-size: 15px;
+	line-height: 1.5;
+	color: #777371;
+}
+.load{
+	/*visibility: hidden;*/
+	display: inline-block;
+	background:#fed136;
+	color: #fff;
+	font-weight: 700;
 	font-size: 18px;
-	padding-top: 20px;
-	font-weight: bold;
+	line-height: 18px;
+	padding: 20px 40px;
+	border-radius: 5px;
+	cursor: pointer;
 }
-#content .portfolio-items p{
-	font-size: 16px;
-	font-style: italic;
-	color: #777;
-	line-height: 1.75;
-	font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+.hide{
+	display:none;
 }
-.portfolio-items a:hover .main-bg{
-	width: 350px;
-	height: 250px;
-	background:rgba(254,209,54,0.8);
-	opacity: 1;
-	position: absolute;
-	top: 0;
-	left: 0;
-	display:block;
-	transition-property: background-color;
-    transition-duration: 1s;
-    z-index: 1;
-}
-.portfolio-items .main-bg{
-	width: 350px;
-	height: 250px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
-}
-.main-bg .bg-row-line{
-	position: absolute;
-	height: 20px;
-    width: 60px;
-    background: #fff;
-    border-radius: 3px;
-    top: 50%;
-    left: 50%;
-    margin-top: -10px;
-    margin-left: -30px;
-}
-.main-bg .bg-vertical-line{
-	position: absolute;
-	height: 60px;
-    width: 20px;
-    background: #fff;
-    border-radius: 3px;
-	top: 50%;
-    left: 50%;
-    margin-left: -10px;
-    margin-top: -30px;
-}
-/*content部分的portfolio结束*/
+/*content的portfolio的瀑布流部分结束*/
+
+
 #content .about-items{
 	position: relative;
 	/*border: 1px solid;*/
@@ -292,7 +341,9 @@ i.font-lock:before{
 .about-summary p{
 	margin:30px auto;
 }
-/*content部分的about结束*/
+/*content的about部分结束*/
+
+
 #content .team{
 	background: #f7f7f7;
 }
@@ -353,7 +404,8 @@ i.font-inverse{
 	line-height: 1.75;
 	margin-top: 50px;
 }
-/*content部分的team结束*/
+/*content的team部分结束*/
+
 #content .clients{
 	padding: 50px 0;
 }
@@ -370,9 +422,10 @@ i.font-inverse{
 	/*border: 1px solid;*/
 	margin-left: 120px;
 }
-/*content部分的clients结束*/
+/*content的clients部分结束*/
+
 #content .contact{
-	background:url('../img/map-image.png') 0 0 no-repeat;
+	background:url('./img/map-image.png') 0 0 no-repeat;
 	background-size: cover;
 	background-position: center center;
 	background-color: #222;
@@ -400,7 +453,8 @@ i.font-inverse{
 	border:1px solid #FED136;
 	cursor: pointer;
 }
-/*content部分的contact结束,content结束*/
+/*content的contact部分结束,content结束*/
+
 #footer{
 	padding: 25px 0;
 }
@@ -438,3 +492,4 @@ i.font-inverse{
 	color: #FEC503;
 }
 /*footer部分结束*/
+ 
