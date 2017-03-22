@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<mate name="viewport" content="width=device-width,initial-scale=1">
+<meta name="discription" content="">
+<meta name= "keywords" content="">
+<style type="text/css">
+	body,div{margin:0;padding:0;}
+	#swap{
+		position:relative;
+	}
+	.box{
+		position:absolute;
+		width:250px;
+		margin-right:10px;
+		margin-top:10px;
+		font-size:40px;
+		transition: all 1s;
+	}
+	.red{
+		height:557px;
+		background-color:red;
+	}
+	.green{
+		height:425px;
+		background-color:green;
+	}
+	.yellow{
+		height:327px;
+		background-color:yellow;
+	}
+	.blue{
+		height:157px;
+		background-color:blue;
+	}
+</style>
+
+</head> 
+<body>
+	<div id="swap">
+		<div class="box red">
+			<div>1</div>
+		</div>
+		<div class="box green">
+			<div>2</div>
+		</div>
+		<div class="box yellow">
+			<div>3</div>
+		</div>
+		<div class="box blue">
+			<div>4</div>
+		</div>
+		<div class="box red">
+			<div>6</div>
+		</div>
+		<div class="box green">
+			<div>7</div>
+		</div>
+		<div class="box yellow">
+			<div>8</div>
+		</div>
+		<div class="box blue">
+			<div>9</div>
+		</div>
+		<div class="box red">
+			<div>10</div>
+		</div>
+		<div class="box green">
+			<div>11</div>
+		</div>
+		<div class="box yellow">
+			<div>12</div>
+		</div>
+		<div class="box blue">
+			<div>13</div>
+		</div>
+		<div class="box red">
+			<div>14</div>
+		</div>
+	</div>
+	<!-- <script src="jquery-1.8.3.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		$(function(){
+			var waterfall=function(){
+				var $winW=$(window).width();
+				var $boxW=$(".box").eq(0).outerWidth(true);
+				var cols=Math.floor($winW/$boxW);
+				var colH=[];
+				for(var i=0;i<cols;i++){
+					colH.push(0);
+				}
+				$(".box").each(function(){
+					var $cur=$(this);
+					var idx=0;
+					var minHeight = colH[0];
+					for(var i=0;i<colH.length;i++){
+						if(minHeight>colH[i]){
+							minHeight=colH[i];
+							idx=i;
+						}
+					}
+					$cur.css({left:$boxW*idx+'px',top:minHeight+'px'});
+					colH[idx]=$cur.outerHeight(true)+colH[idx];
+				});
+			};
+			waterfall();
+			$(window).on("resize",function(){
+				waterfall();
+			})
+		});
+	</script>	
+</body>
+</html>

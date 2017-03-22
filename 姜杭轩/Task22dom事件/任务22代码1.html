@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务22代码1</title>
+</head>
+<body>
+	<ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+</ul>
+<script>
+	var ct = document.getElementById("ct");
+
+	var ct = document.querySelector('.ct');
+  	ct.addEventListener('click', function(e){
+    console.log(e.target.innerText);
+ 	});
+
+  	//方法2， 直接给元素绑定事件
+  	/*var liArr = document.getElementsByClassName('ct')[0].getElementsByTagName('li');    //这样更安全一些
+  	for(var i=0;i<liArr.length;i++){
+    liArr[i].addEventListener('click', function(){
+      console.log(this.innerText);
+    })
+  }*/
+</script>
+</body>
+</html>

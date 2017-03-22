@@ -1,0 +1,17 @@
+<!-- DOM 增删改查 -->
+<script>
+	function $$(el){
+		if(el.length < 1){
+			return;
+		}
+		var sub = el.substring(1);
+		if( el[0] === '#'){
+			return document.getElementById(sub);
+		}else if(el[0] === '.'){
+			return document.getElementByClassName($.sub);
+		}else {
+			return document.getElementByTagName(el);
+		}
+	}
+
+</script>

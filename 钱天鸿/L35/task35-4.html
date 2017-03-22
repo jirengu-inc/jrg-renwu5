@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+    html,body,div,ul,li{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        list-style: none;
+    }
+    .clearfix:after{
+        content: '';
+        display: block;
+        clear:both;
+    }
+
+    .ct{
+        border:1px solid #ccc;
+        width: 902px;
+        margin-bottom: 50px;
+    }
+    .ct .tabs li{
+        /*border:1px solid #ccc;*/
+        float: left;
+        width: 300px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        cursor: pointer;
+    }
+    .ct .tabs li:nth-child(3){
+        border-right: none;
+    }
+    .ct .tabs li.active{
+        background:#eee; /*这里添加背景颜色，用作切换*/
+    }
+    .ct .content{
+        display: none;  /*先将所有的内容隐藏起来,然后进行切换*/
+        height: 200px;
+        padding:20px;
+    }
+    .ct .active{
+        display: block; /*将内容展示*/
+    }
+</style>
+</head>
+<body>
+
+    <div class="ct">
+    	<ul class="tabs clearfix">
+    		<li class="active">tab1</li>
+    		<li>tab2</li>
+    		<li>tab3</li>
+    	</ul>
+    	<div class="content active">内容1</div>
+	    <div class="content">内容2</div>
+	    <div class="content">内容3</div>
+    </div>
+
+    <div class="ct">
+        <ul class="tabs clearfix">
+            <li class="active">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+        </ul>
+        <div class="content active">内容1</div>
+        <div class="content">内容2</div>
+        <div class="content">内容3</div>
+    </div>
+    
+    <script>
+        function Tabs($node){
+            this.$node=$node;
+            this.$tabs=$node.find('.tabs');
+            this.$li=this.$tabs.find('li');
+            this.$content=$node.find('.content');
+            this.bind();
+        }
+        Tabs.prototype={
+
+            bind:function(){
+                var self=this;
+                self.$li.on('click',function(){
+                    var idx=$(this).index();
+                    self.toggle(idx);
+                })
+            },
+            toggle:function(idx){
+                var self=this;
+                self.$li.eq(idx).addClass('active')
+                     .siblings().removeClass('active');
+                self.$content.eq(idx).addClass('active')
+                    .siblings().removeClass('active');
+            }
+        }
+        // var p1=new Tabs( $('.ct') );
+        $('.ct').each(function(){
+            new Tabs( $(this) );
+        })
+    </script>
+</body>
+</html>

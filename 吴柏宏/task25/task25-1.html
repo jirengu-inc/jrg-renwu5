@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task25-1</title>
+    <style>
+      body{
+        margin: 10px;
+        font-size: 12px;
+      }
+      ul,li{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .nav-left{
+        background-color: rgb(199, 23, 30);
+        width: 200px;
+      }
+      .category{
+        position: relative;
+      }
+      .gem{
+        display: block;
+        color: #fff;
+        font-size: 14px;
+        margin: 0 10px;
+        padding: 10px;
+        border-bottom: 1px dotted #de272e;
+      }
+      .icon-goto{
+        color: #fff;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+      }
+      .nav-left-child{
+        position: absolute;
+        top: 0;
+        left: 200px;
+        border: 1px solid #ccc;
+        width: 210px;
+        display: none;
+      }
+      .nav-left-child li{
+        float: left;
+        width: 65px;
+        margin: 10px 20px;
+      }
+      .category.hover .nav-left-child{
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <ul class="nav-left">
+        <li class="category">
+          <a class="gem">珠宝玉器</a>
+          <span class="icon-goto">></span>
+          <ul class="nav-left-child">
+            <li>
+              <a>翡翠</a>
+            </li>
+            <li>
+              <a>玉石</a>
+            </li>
+            <li>
+              <a>宝石</a>
+            </li>
+            <li>
+              <a>水晶</a>
+            </li>
+            <li>
+              <a>玛瑙</a>
+            </li>
+            <li>
+              <a>珍珠</a>
+            </li>
+            <li>
+              <a>钻石</a>
+            </li>
+            <li>
+              <a>琥珀</a>
+            </li>
+            <li>
+              <a>和田</a>
+            </li>
+            <li>
+              <a>琥珀</a>
+            </li>
+          </ul>
+        </li>
+        <li class="category">
+          <a class="gem">珠宝玉器</a>
+          <span class="icon-goto">></span>
+          <ul class="nav-left-child">
+            <li>
+              <a>翡翠</a>
+            </li>
+            <li>
+              <a>玉石</a>
+            </li>
+            <li>
+              <a>宝石</a>
+            </li>
+            <li>
+              <a>水晶</a>
+            </li>
+            <li>
+              <a>玛瑙</a>
+            </li>
+            <li>
+              <a>珍珠</a>
+            </li>
+          </ul>
+        </li>
+        <li class="category">
+          <a class="gem">珠宝玉器</a>
+          <span class="icon-goto">></span>
+          <ul class="nav-left-child">
+            <li>
+              <a>翡翠</a>
+            </li>
+            <li>
+              <a>玉石</a>
+            </li>
+            <li>
+              <a>宝石</a>
+            </li>
+            <li>
+              <a>水晶</a>
+            </li>
+          </ul>
+        </li>
+        <li class="category">
+          <a class="gem">珠宝玉器</a>
+          <span class="icon-goto">></span>
+          <ul class="nav-left-child">
+            <li>
+              <a>翡翠</a>
+            </li>
+            <li>
+              <a>玉石</a>
+            </li>
+            <li>
+              <a>宝石</a>
+            </li>
+            <li>
+              <a>水晶</a>
+            </li>
+            <li>
+              <a>玛瑙</a>
+            </li>
+            <li>
+              <a>珍珠</a>
+            </li>
+          </ul>
+        </li>
+        <li class="category">
+          <a class="gem">珠宝玉器</a>
+          <span class="icon-goto">></span>
+          <ul class="nav-left-child">
+            <li>
+              <a>翡翠</a>
+            </li>
+            <li>
+              <a>玉石</a>
+            </li>
+            <li>
+              <a>宝石</a>
+            </li>
+            <li>
+              <a>水晶</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+      $('.category').on('mouseenter',function(){
+        // $(this).find('.nav-left-child').show();
+        $(this).addClass('hover');
+      });
+      $('.category').on('mouseleave',function(){
+        // $(this).find('.nav-left-child').hide();
+        $(this).removeClass('hover');
+      });
+    </script>
+  </body>
+</html>

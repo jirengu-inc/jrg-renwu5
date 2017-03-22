@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <style>
+        div,ul,li,body{
+            padding:0;
+            margin:0;
+        }
+        li{
+            list-style-type: none;
+            float:left;
+        }
+        a{
+            text-decoration: none;
+        }
+        div.wraper{
+            width:460px;
+            overflow: hidden;
+            position: relative;
+            height:300px;
+            border-radius: 3px;
+            margin:0 auto;
+        }
+        ul.zone{
+            position: relative;
+        }
+        ul.zone:after{
+            content:"";
+            display:block;
+            clear:both;
+        }
+        a.target{
+            position: absolute;
+            top:50%;
+            margin-top: -25px;
+            width:20px;
+            line-height: 50px;
+            background-color: #000;
+            text-align: center;
+            color:#fff;
+            border-radius: 4px;
+            box-shadow: 2px 2px 8px #000;
+        }
+        a.target:hover{
+            opacity: 0.7;
+        }
+        a.pre{
+            left:15px;
+        }
+        a.next{
+            right:15px;
+        }
+        .testBor{
+            border:2px solid red;
+        }
+        .fa{
+            border:2px solid red;
+        }
+    </style>
+</head>
+<body>
+<div class="wraper">
+    <ul class="zone">
+        <li class="item"><a href="#"><img src="https://img.alicdn.com/imgextra/i3/773811758/TB2oHu9aNrxQeBjy1zeXXXhAVXa_!!773811758.jpg" alt="black"></a></li>
+        <li class="item"><a href="#"><img src="https://img.alicdn.com/imgextra/i3/773811758/TB2oHu9aNrxQeBjy1zeXXXhAVXa_!!773811758.jpg" alt="iron man"></a></li>
+        <li class="item"><a href="#"><img src="https://img.alicdn.com/imgextra/i3/773811758/TB2oHu9aNrxQeBjy1zeXXXhAVXa_!!773811758.jpg" alt="black widow"></a></li>
+        <li class="item"><a href="#"><img src="https://img.alicdn.com/imgextra/i3/773811758/TB2oHu9aNrxQeBjy1zeXXXhAVXa_!!773811758.jpg" alt="captain"></a></li>
+    </ul>
+    <a href="#" class="target pre"><i class="fa"></i></a>
+    <a href="#" class="target next"><i class="fa"></i></a>
+</div>
+
+<div class="wraper">
+    <ul class="zone">
+        <li class="item"><a href="#"><img src="https://img.alicdn.com/imgextra/i3/773811758/TB2oHu9aNrxQeBjy1zeXXXhAVXa_!!773811758.jpg" alt="black"></a></li>
+        <li class="item"><a href="#"><img src="https://img.alicdn.com/imgextra/i3/773811758/TB2oHu9aNrxQeBjy1zeXXXhAVXa_!!773811758.jpg" alt="iron man"></a></li>
+        <li class="item"><a href="#"><img src="https://img.alicdn.com/imgextra/i3/773811758/TB2oHu9aNrxQeBjy1zeXXXhAVXa_!!773811758.jpg" alt="black widow"></a></li>
+        <li class="item"><a href="#"><img src="https://img.alicdn.com/imgextra/i3/773811758/TB2oHu9aNrxQeBjy1zeXXXhAVXa_!!773811758.jpg" alt="captain"></a></li>
+    </ul>
+    <a href="#" class="target pre"><i class="fa"></i></a>
+    <a href="#" class="target next"><i class="fa"></i></a>
+</div>
+
+<script>
+    function Carousel($node) {
+        this.$zone = $node.find(".zone");
+        this.$pre = $($node).find(".pre");//前进
+        this.$next = $($node).find(".next");//后一
+        this.zoneWidth = this.$zone.find("li").width();//single width
+        this.$size = this.$zone.find("li").size();//sum number
+        this.$zone.css({"width": this.$size * this.zoneWidth});//打上__宽,doesnt matter
+        this.bind();
+    }
+    Carousel.prototype = {
+        bind: function () {
+            var me = this;
+            this.$pre.on("click", function (e) {
+                e.preventDefault();
+                me.playPre();
+            });
+            this.$next.on("click", function (e) {
+                e.preventDefault();
+                me.playNext();
+            })
+        },
+        playPre: function () {
+            var $zone = this.$zone;
+            if ($zone.attr("playing"))return;
+            $zone.attr("playing", true)
+            this.$zone.prepend(this.$zone.children().last());
+            this.$zone.css({"left": (0 - this.zoneWidth) + "px"});
+            this.$zone.animate({"left": 0 + "px"}, function () {
+                $zone.attr("playing", null);
+            });
+        },
+        playNext: function () {
+            var $zone = this.$zone;
+            if ($zone.attr("playing"))return;
+            $zone.attr("playing", true)
+            $zone.animate({"left": "-=" + this.zoneWidth + "px"}, function () {
+                $zone.append($zone.children().first());
+                $zone.css("left", 0);
+                $zone.attr("playing", null);
+            })
+        }
+    }
+    $(".wraper").each(function () {
+        new Carousel($(this))//$(".wraper")__传入
+    })
+</script>
+</body>
+</html>

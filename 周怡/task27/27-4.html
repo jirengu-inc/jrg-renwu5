@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>无线轮播</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <style type="text/css">
+        html,
+        body,
+        ul,
+        li,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        html,
+        body,
+        #header,
+        #header .carousel,
+        #header .imgs {
+            height: 100%;
+            width: 100%;
+        }
+
+        .carousel {
+            position: relative;
+            width: 310px;
+            height: 206px;
+            overflow: hidden;
+        }
+
+        #header .imgs {
+            position: absolute;
+        }
+
+        #header .imgs:after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        #header .pic {
+            position: relative;
+            float: left;
+            height: 100%;
+        }
+
+        #header .main {
+            position: absolute;
+            width: 600px;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        #header .main h3 {
+            font-size: 34px;
+        }
+
+        #header .main p {
+            font-size: 16px;
+            line-height: 2;
+        }
+
+        #header .photo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            opacity: 0.8;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #4E443C;
+            color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 0 2px #999;
+            opacity: 0.8
+        }
+
+        .arrow:hover {
+            opacity: 1;
+        }
+
+        .pre {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        ul.choose {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        ul.choose li {
+            width: 16px;
+            height: 4px;
+            border-radius: 2px;
+            background: #fff;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        ul.choose li.active {
+            background: #666;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="header">
+        <div class="carousel">
+            <ul class="imgs">
+
+                <li class="pic">
+                    <div class="photo" data-bg-img="http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/03/ChMkJlbKxtqIF93BABJ066MJkLcAALHrQL_qNkAEnUD253.jpg"></div>
+                    <div class="main">
+                        <h3>礼拜一</h3>
+                        <p>星期一</p>
+                    </div>
+                </li>
+                <li class="pic">
+                    <div class="photo" data-bg-img="http://desk.fd.zol-img.com.cn/t_s960x600c5/g1/M00/03/0A/Cg-4jVSORImITDtsAAnpDtmU-6UAAO8BwAjAW8ACekm079.jpg"></div>
+                    <div class="main">
+                        <h3>礼拜一</h3>
+                        <p>星期一</p>
+                    </div>
+                </li>
+                <li class="pic">
+                    <div class="photo" data-bg-img="http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/00/ChMkJ1bKxCSIRtwrAA2uHQvukJIAALHCALaz_UADa41063.jpg"></div>
+                    <div class="main">
+                        <h3>礼拜一</h3>
+                        <p>星期一</p>
+                    </div>
+                </li>
+                <li class="pic">
+                    <div class="photo" data-bg-img="http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/01/0E/ChMkJlbKwaOIN8zJAAs5DadIS-IAALGbQPo5ngACzkl365.jpg"></div>
+                    <div class="main">
+                        <h3>礼拜一</h3>
+                        <p>星期一</p>
+                    </div>
+                </li>
+            </ul>
+            <ul class="choose">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var $imgs = $('.imgs'),
+            $pics = $imgs.children(),
+            $pre = $('.pre'),
+            $next = $('.next'),
+            $choose = $('.choose'),
+            imgWidth = $(window).width(),
+            imgCount = $imgs.children().size();
+
+        $imgs.prepend($pics.last().clone());
+        $imgs.append($pics.first().clone());
+        $imgs.find('.pic').css('width', imgWidth);
+        $imgs.find('.photo').css('width', imgWidth);
+        imgRealCount = $imgs.children().size();
+        $imgs.css({
+            left: 0 - imgWidth,
+            width: imgRealCount * imgWidth
+        })
+
+        var curIdx = 0;
+        var isAnimate = false;
+
+        $choose.find('li').on('click', function() {
+            var idx = $(this).index();
+            if (idx > curIdx) {
+                playNext(idx - curIdx);
+            } else if (idx < curIdx) {
+                playPre(curIdx - idx);
+            }
+        });
+
+        setBg(1);
+        autoPlay();
+
+
+        function stopAuto() {
+            clearInterval(clock);
+        }
+
+        function autoPlay() {
+            clock = setInterval(function() {
+                playNext();
+            }, 3000);
+        }
+
+
+        function playNext(idx) {
+            var idx = idx || 1;
+            if (!isAnimate) {
+                isAnimate = true;
+                setBg(curIdx + 2);
+                $imgs.animate({
+                    left: '-=' + (imgWidth * idx)
+                }, function() {
+                    curIdx = (curIdx + idx) % imgCount;
+                    if (curIdx === 0) {
+                        $imgs.css({
+                            left: 0 - imgWidth
+                        });;
+                    }
+                    isAnimate = false;
+                    setChoose();
+                });
+            }
+        }
+
+        function playPre(idx) {
+            var idx = idx || 1;
+            if (!isAnimate) {
+                isAnimate = true;
+                setBg(curIdx);
+                $imgs.animate({
+                    left: '+=' + (imgWidth * idx)
+                }, function() {
+                    curIdx = (imgCount + curIdx - idx) % imgCount;
+                    if (curIdx === (imgCount - 1)) {
+                        $imgs.css({
+                            left: 0 - imgWidth * imgCount
+                        });;
+                    }
+                    isAnimate = false;
+                    setChoose();
+                });
+            }
+        }
+
+        //这里为了性能让图片用了懒加载
+        function setBg(idx) {
+            var idx = idx || 0,
+                $node = $imgs.children().eq(idx)
+            $photo = $node.find('.photo'),
+                imgUrl = $photo.attr('data-bg-img');
+            if ($node.data('isBgSet')) return;
+            $photo.css('background-image', 'url(' + imgUrl + ')');
+            $node.data('isBgSet', true);
+
+        }
+
+        function setChoose() {
+            $choose.children().removeClass('active')
+                .eq(curIdx).addClass('active');
+        }
+    </script>
+</body>
+
+</html>

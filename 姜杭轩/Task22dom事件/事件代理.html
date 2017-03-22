@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>iten123</title>
+</head>
+<body>
+ <div id="wrap">
+ 	<div class="d">项目1</div>
+ 	<div class="d">项目2</div>
+ 	<div class="d">项目3</div>
+ 	<a id="link" href="#">链接</a>
+ </div>
+ <button id="btn">添加一个项目</button>
+</body>
+
+
+ <script type="text/javascript">
+ var Utils = {
+
+	hasClass: function(ele,cls){
+		return !!ele.className.match(new RegExp('\\b'+cls+'\\b'));
+	},
+
+	addClass:function(ele,cls){
+		if(ele.length && cls.length> 0){
+			for(var i =0;i<ele.length;i++){
+				Utils.singleAddClass(ele[i],cls);
+			}
+		}else{
+			Utils.singleAddClass(ele.cls);
+		}
+	},
+
+	trim:function(str){
+		return str.replace(/^\s+/,'').replace(/\s+$/,'');
+	},
+
+	removeClass:function(ele,cls){
+		if(ele.length && ele.length >0){
+			for(var i =0;i<ele.length;i++){
+				Utils.singleAddClass(ele[i],cls);
+			}
+		}else{
+			Utils.singleAddClass(ele,cls);
+		}
+	},
+
+	singleAddClass:function(ele,cls){
+		if(Utils.hasClass(ele,cls)) return; 
+		ele.className =Utils.trim(ele.className)+ ' ' + cls;
+	},
+
+	singleRemoveClass:function(ele,cls){
+		ele.className = ele.className.replace(new RegExp('\\b'+cls+'\\b',''))
+	},
+
+	indexof:function(ele){
+		var parent = ele.parentElement,
+			siblings = parent.childen;
+			for(var i=0;i<siblings.length;i++){
+				if(ele === siblings[i]) return i;
+			}
+			return -1;
+	}
+};
+ var wrap = document.getElementById("wrap"),
+     ds = wrap.getElementsByClassName("d"),
+     link = document.getElementById("link"),
+     btn = document.getElementById("btn");
+
+
+
+
+ 	
+ wrap.onclick = function(e){
+ 	var target = e.target;
+ 	if (target.id === "link") {
+ 		console.log('welcome')
+ 	}
+ 	// if (hasClass(target."d")) {
+ 	// 	console.log(e.target.innerHTML);
+ 	// }
+ }
+
+ btn.onclick = function(){
+ 	var node = document.createElement("div");
+ 	node.setAttribute("class","d");
+ 	node.innerHTML = "hello";
+ 	wrap.appendChild(node);
+ }	
+ </script>
+	
+
+</html>

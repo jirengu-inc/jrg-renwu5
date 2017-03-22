@@ -123,10 +123,10 @@ a:hover{
 	font-size: 18px;
     font-family: "Microsoft Yahei";
     padding: 10px 14px;
-    text-align: left;
+    /*text-align: left;*/
 }
 .work li p{
-	text-align: left;
+	/*text-align: left;*/
     font-size: 14px;
     padding:0 0 14px 14px;
 }

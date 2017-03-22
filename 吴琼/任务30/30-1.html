@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+	<style>
+		 #container { 
+			 position: relative;
+		} 
+		.item{
+			position: absolute;
+			width: 200px;
+			margin: 10px 10px 0 0;
+			boxing-size: border-box;
+			transition: all 1s;
+		}
+		.h1 {
+			height: 200px;
+			background: #F4B300;
+		}
+		.h2 {
+			height: 400px;
+			background: #006AC1;
+		}
+		.h3 {
+			height: 300px;
+			background: #691BBB;
+		}
+	</style>
+</head>
+<body>
+<div id="container">
+	<div class="item h1">1</div>
+	<div class="item h2">2</div>
+	<div class="item h1">3</div>
+	<div class="item h1">4</div>
+	<div class="item h1">5</div>
+	<div class="item h2">6</div>
+	<div class="item h2">7</div>
+	<div class="item h3">8</div>
+	<div class="item h1">9</div>
+	<div class="item h2">10</div>
+	<div class="item h2">11</div>
+	<div class="item h2">12</div>
+	<div class="item h3">13</div>
+	<div class="item h3">14</div>	
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+var waterfall=(function($){
+ function foo(){
+	var $item=$('.item'),
+			itemWidth=$item.outerWidth(true),
+			windowWidth=$(window).width(),
+			itemNum=parseInt(windowWidth/itemWidth);
+		var sum=[];
+
+		for(var i=0;i<itemNum;i++){
+			sum[i]=0;
+		}
+	
+$item.each(function(){
+	var $ct=$(this);
+	var idx=0,min=sum[0];
+	var ctHeight=$ct.outerHeight(true);
+		for(var i=0;i<sum.length;i++){
+			if(sum[i]<min){
+				idx=i;
+				min=sum[i];
+			}
+		}
+		$ct.css({
+			left: itemWidth*idx,
+			top: 	min
+			});
+		sum[idx]=ctHeight+sum[idx];	
+		})
+}
+
+ foo();
+ $(window).on('resize', function(){
+	 		foo();
+	 	})
+
+return {
+	init: foo
+	}
+
+})(jQuery)
+waterfall.init();	
+</script>
+</body>
+</html>

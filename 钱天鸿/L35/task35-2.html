@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+	.goTop{
+		border: 1px solid yellow;
+	    width: 110px;
+	    height: 40px;
+	    line-height: 40px;
+	    text-align: center;
+	    background: red;
+	    cursor: pointer;
+	    position: fixed;
+	    bottom: 20px;
+	    right: 20px;
+	}
+</style>
+</head>
+<body>
+    <div class="ct">
+    	<p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容1</p><p>内容2</p><p>内容2</p><p>内容2</p><p>内容2</p><p>内容2</p><p>内容2</p><p>内容2</p><p>内容2</p><p>内容2</p><p>内容2</p><p>内容2</p><p>内容3</p><p>内容3</p><p>内容3</p><p>内容3</p><p>内容3</p><p>内容3</p><p>内容3</p><p>内容3</p><p>内容3</p><p>内容3</p><p>内容3</p><p>内容3</p>
+    </div>
+    <script>
+    	function GoTop($ele){
+    		this.ct=$ele;
+    		this.target=$('<div class="goTop">回到顶部</div>');
+    		this.init();
+    	};
+    	GoTop.prototype={
+
+    		init:function(){ //初始化init，能过执行一次性全部执行
+    			this.createNode();
+    			this.bindEvent();
+    		},
+    		createNode:function(){
+    			var me=this;
+    			me.target.hide();
+    			$('body').append(me.target);
+    			$(window).on('scroll',function(){
+    				if($(window).scrollTop()>300){
+    					me.target.show();
+    				}else{
+    					me.target.hide();
+    				}
+    			});	
+    		},
+    		bindEvent:function(){
+    			var me=this;
+    			me.target.on('click',function(){
+    				$(window).scrollTop(0);
+    			})
+    		}
+    		
+
+    	}
+	
+		var go=new GoTop( $('body') );
+
+    </script>
+</body>
+</html>

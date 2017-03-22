@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery插件方式</title>
+	<style>
+		html,body,ul,li{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.carousel{
+			width: 400px;
+			height: 300px;
+			overflow: hidden;
+			position: relative;
+			margin: 0 auto;
+		}
+		.carousel .img-ct{
+			position: absolute;
+		}
+		.carousel .img-ct:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.img-ct li{
+			float: left;
+		}
+		.img-ct li img{
+			width: 400px;
+			height: 300px;
+		}
+		.carousel .arrow{
+			position: absolute;
+			background-color: #4E443C;
+			width: 30px;
+			line-height: 30px;
+			border-radius: 50%;
+			opacity: 0.6;
+			color: white;
+			text-align: center;	
+			top: 50%;
+			margin-top: -15px;
+		}
+		.carousel .next{
+			right: 20px;
+		}
+		.carousel .pre{
+			left: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="carousel carousel1">
+		<ul class="img-ct">
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a></li>
+		</ul>
+		<a href="#" class="pre arrow"><</a>
+		<a href="#" class="next arrow">></a>
+	</div>
+	<div class="carousel carousel2">
+		<ul class="img-ct">
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a></li>
+		</ul>
+		<a href="#" class="pre arrow"><</a>
+		<a href="#" class="next arrow">></a>
+	</div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+	(function($){
+	$.fn.carousel=function(){
+			var $carousel=$(this),
+				$img=$carousel.find('.img-ct'),
+				$pre=$carousel.find('.pre'),
+				$next=$carousel.find('.next'),
+				imgWidth=$img.find('li').width(),
+				imgSize=$img.find('li').length,
+				curIdx=0,
+				isCarousel=false;
+			autoPlay();
+			$img.append($img.find('li').first().clone());
+			$img.prepend($img.find('li').last().clone());
+			var realSize=$img.find('li').length;
+			$img.css({
+				'left':0-imgWidth,
+				'width':imgWidth*realSize
+			})
+			$next.on('click',function(){
+				playNext();
+			})
+			$pre.on('click',function(){
+				playPre();
+			})
+			function playNext(idx){
+				var idx=idx||1;
+				if(!isCarousel){
+					isCarousel=true;
+					$img.animate({left:'-='+(imgWidth*idx)},function(){
+						curIdx+=idx;
+						if(curIdx === imgSize){
+							$img.css({left: 0-imgWidth});
+							curIdx = 0;
+						}
+						isCarousel=false;
+					})
+				}
+			}
+			function playPre(idx){
+				var idx=idx||1;
+				if(!isCarousel){
+					isCarousel=true;
+					$img.animate({left:'+='+(imgWidth*idx)},function(){
+						curIdx-=idx;
+						if (curIdx===-1){
+							$img.css({left:0-imgSize*imgWidth});
+							curIdx=3;
+						}
+						isCarousel=false;
+					})
+				}
+			}
+			function autoPlay(){
+				time=setInterval(function(){
+					playNext()
+				},300)
+			}
+		}
+	})($)
+	$('.carousel').each(function(){
+			$(this).carousel();
+	})
+	</script>
+</body>
+</html>

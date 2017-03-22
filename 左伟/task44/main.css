@@ -1,0 +1,145 @@
+body{
+	margin:30px 50px;
+	background-color:#eee;
+}
+
+#one>span{
+	display:inline-block;
+	width:100px;
+	height:100px;
+	background-color: green;
+}
+.one_1{
+	border-radius:20px;
+}
+.one_2{
+	border-radius:50px;
+}
+
+h3{
+	text-shadow:7px 7px 10px gray;
+}
+.two_1{
+	display:inline-block;
+	width:100px;
+	height:100px;
+	background-color: green;
+	box-shadow:30px 20px 10px #888888;
+}
+
+#three>span{
+	display:inline-block;
+	width:100px;
+	height:100px;
+	background-color: green;
+	box-shadow:30px 20px 10px #888888;
+	margin:50px;
+}
+.three_1{
+	transform:scale(1.5,2);
+}
+.three_2{
+	transform:scale(0.5,0.7);
+}
+.three_3{
+	transform:translate(20px,50px);
+}
+.three_4{
+	transform:rotate(45deg);
+}
+.three_5{
+	transform:skew(45deg,0);
+}
+
+#four>span{
+	display:inline-block;
+	width:100px;
+	height:100px;
+	background-color: green;
+	box-shadow:30px 20px 10px #888888;
+	margin:50px;
+}
+.four_1{
+	transform:rotateX(70deg);
+}
+.four_2{
+	transform:rotateY(130deg);
+}
+.four_3{
+	transform:translateX(50px);
+}
+.four_4{
+	transform:translateY(50px);
+}
+
+#five>span{
+	display:inline-block;
+	width:150px;
+	height:100px;
+	border:1px solid;
+	box-shadow:30px 20px 10px #888888;
+	margin:50px;
+}
+.five_1{
+	background:linear-gradient(red,yellow,green);
+}
+.five_2{
+	background:linear-gradient(to top,red,yellow,green);
+}
+.five_3{
+	background:linear-gradient(to right bottom,red,yellow,green);
+}
+.five_4{
+	background:repeating-linear-gradient(to right bottom,red,yellow 10%,green 20%);
+}
+.five_5{
+	background:radial-gradient(red,yellow,green);
+}
+.five_6{
+	background:radial-gradient(circle,red,yellow,green);
+}
+.five_7{
+	background:radial-gradient(rgba(255,0,0,0),rgba(255,0,0,1));
+}
+.five_8{
+	background:repeating-radial-gradient(red,yellow 10%,green 20%);
+}
+
+.box1{
+	position:relative;
+	width:100px;
+	height:100px;
+	padding:10px;
+	margin:30px 50px;
+	background-color:green;
+	border-radius:30px;
+	box-shadow:30px 20px 10px #888888;
+	color:white;
+	text-align:center;
+	font-weight:bold;
+	transition:background-color,color,font-size,transform 2s;
+	animation-name: myfirst;
+	animation-duration:3s;
+	animation-delay:1s;
+	animation-timing-function:linear;
+	animation-iteration-count:infinite;
+
+	
+
+
+}
+.box1:hover{
+	background-color:yellow;
+	font-size:20px;
+	color:red;
+	transform:rotateY(360deg);
+	border-radius:55px; 
+}
+
+@keyframes myfirst{
+	0% {background-color:green;left:0;top:0;}
+	25%{background-color:blue;left:200px;top:0;}
+	50%{background-color:yellow;left:200px;top:-200px;}
+	75%{background-color:gray;left:0;top:-200px;}
+	100%{background-color:green;left:0;top:0;}
+}

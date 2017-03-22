@@ -1,0 +1,294 @@
+/*rest*/
+* {
+    box-sizing: border-box;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+ul,ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    background: linear-gradient(to left, #9acfea , steelblue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+@font-face {
+    font-family: 'iconfont';
+    src: url('//at.alicdn.com/t/font_1476871522_7526393.eot'); /* IE9*/
+    src: url('//at.alicdn.com/t/font_1476871522_7526393.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('http://at.alicdn.com/t/font_1476871522_7526393.woff') format('woff'), /* chrome、firefox */
+    url('http://at.alicdn.com/t/font_1476871522_7526393.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/font_1476871522_7526393.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont {
+    color: rgba(0,0,0,0.6);
+    font-family:"iconfont";
+    -webkit-text-stroke-width: 0.5px;
+}
+
+.iconfont:hover {
+    cursor: pointer;
+    color: #000;
+}
+::-webkit-scrollbar {
+    overflow-x: hidden;
+    width: 5px;
+}
+::-webkit-scrollbar-corner{
+    display: none;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgba(0,0,0,0.1);
+}
+
+.icon-play:before { content: "\e604"; }
+.icon-stop:before { content: "\e605"; }
+.icon-sound:before { content: "\e60b"; }
+.icon-mute:before { content: "\e60a"; }
+.icon-download:before { content: "\e600"; }
+.icon-circle:before { content: "\e602"; }
+.icon-shuffle:before { content: "\e601"; }
+.icon-pre{
+    color: #fff;
+    opacity: 0.6;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/*fm player*/
+
+.fm {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: 300px;
+    margin-left: -150px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 1px #000;
+    background-color: #f0f0f0;
+}
+
+@media (max-width: 400px) {
+    .fm {top: 0;}
+}
+
+/*音乐图片*/
+.fm-pic {
+    height: 300px;
+    background: linear-gradient(to left, #7ab2d6 , #669fc9);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.fm-pic>img {
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/*图片以下的控制面板*/
+.fm-panel {
+    padding: 10px;
+    background: linear-gradient(to left, #7ab2d6 , #669fc9);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+
+.fm-info>.info-title {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.fm-info>.info-artist {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+/*播放, 停止, 收藏*/
+.fm-control {
+    position: relative;
+    margin-left: -37.5px;
+    height: 27px;
+}
+
+.fm-control span {
+    float: left;
+    margin-left: 37.5px;
+    font-size: 26px;
+}
+
+
+
+
+/*进度条*/
+.fm-progress {
+    height: 5px;
+    background-color: #ccc;
+    margin-top: 1em;
+}
+
+.fm-progress:hover {
+    cursor: pointer;
+}
+
+.fm-progress>.progress-status {
+    height: 100%;
+    width: 0;
+    background-color: #000;
+}
+
+/*播放时间|音乐时长*/
+.fm-time {
+    float: left;
+    color: #fff;
+    line-height: 2;
+}
+
+.fm-time>.current-time {
+    font-size: 1.5em;
+}
+
+/*音量*/
+.fm-sound {
+    float: left;
+    width: 115px;
+    margin-left: 20px;
+    margin-top: 16px;
+}
+
+.sound-control {
+    float: right;
+    height: 5px;
+    width: 90px;
+    margin-top: 8px;
+    background-color: #ccc;
+}
+
+.sound-control:hover {
+    cursor: pointer;
+}
+.sound-status {
+    width: 0;
+    height: 100%;
+    background-color: #000;
+}
+
+
+/*下载*/
+.fm-operation {
+    float: right;
+    margin-left: 20px;
+    margin-top: 13px;
+}
+
+.fm-operation>.operation-download {
+    font-size: 20px;
+}
+
+
+/*歌词*/
+.fm-lrc {
+    position: absolute;
+    left: 50%;
+    top: 490px;
+    z-index: 99;
+    transform: translateX(-50%);
+    padding: 1em;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.5em;
+    white-space: nowrap;
+}
+
+@media (max-width: 400px) {
+    .fm-lrc {display: none;}
+}
+
+.fm-lrc:hover {
+    background-color: rgba(0,0,0,0.3);
+}
+
+
+.fm-lrc li {
+    display: none;
+}
+
+.fm-lrc .lrc-show {
+    display: list-item;
+}
+
+
+/*频道*/
+.channel {
+    display: none;
+    position: absolute;
+    top: 10%;
+    right: 27%;
+    width: 140px;
+    padding: 1.2em 1.2em 0 1.2em;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.1);
+    line-height: 1.6;
+}
+.channel> li >ul{
+    overflow: scroll;
+    max-height: 270px;
+}
+@media (max-width: 400px) {
+    .channel {display: none;}
+}
+
+.channel-list:hover>a {
+    color: #fff;
+    background-color: #008cba;
+}
+
+.channel-list>a {
+    display: block;
+    padding: 0;
+    color: #008cba;
+    transition: all 300ms ease-out;
+    text-align: center;
+}
+
+.channel-list:hover {
+    cursor: pointer;
+}
+
+.channel-list li {
+    display: none;
+    padding: 7px 0 7px 2em;
+    color: #008cba;
+    font-size: 0.9em;
+}
+
+.channel-list li:hover {
+    color: #fff;
+    background-color: #008cba;
+}
+
+.channel-list.channel-show li {
+    display: list-item;
+}
+
+.icon-right {
+    float: right;
+    margin-top: 9px;
+    color: #008cba;
+}
+
+
+

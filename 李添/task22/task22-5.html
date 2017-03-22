@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>模拟框弹窗</title>
+  <style>
+    .dialog {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      width: 300px;
+      height: 180px;
+      background-color: white;
+      border: 1px solid #ccc;
+      display: none;
+      z-index: 10;
+    }
+    .dialog a {
+      float: right;
+      text-decoration: none;
+      color: #333;
+      padding: 3px;
+    }
+    .dialog .header,
+    .dialog .content {
+      border-bottom: 1px solid #ccc;
+      padding: 10px;
+    }
+    .dialog .footer {
+      padding: 10px;
+    }
+    .dialog .footer:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+    .mask {
+      position: absolute;
+      background-color: black;
+      opacity: 0.5;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <button id="click-show">点击</button>
+  <div class="dialog">
+    <div class="header">
+      <span>我是标题</span>
+      <a href="#" class="btn-close">x</a>
+    </div>
+    <div class="content">
+      <p>我是内容1</p>
+      <p>我是内容2</p>
+    </div>
+    <div class="footer">
+      <a href="#" class="btn-close">确定</a>
+      <a href="#" class="btn-close">取消</a>
+    </div>
+  </div>
+  <div class="mask"></div>
+  <script>
+    var btnClose = document.querySelectorAll('.btn-close'),
+        clickToShow = document.querySelector('#click-show'),
+        dialog = document.querySelector('.dialog'),
+        mask = document.querySelector('.mask');
+
+    clickToShow.addEventListener('click', function(){
+      mask.style.display = 'block';
+      dialog.style.display = 'block';
+    });
+    for(var i = 0; i < btnClose.length; i++){
+      btnClose[i].addEventListener('click', function(){
+        mask.style.display = 'none';
+        dialog.style.display = 'none';
+      });
+    }
+    mask.addEventListener('click', function(){
+      mask.style.display = 'none';
+      dialog.style.display = 'none';
+    });
+    // 为什么用 函数 代替不行？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+    function show(){
+      mask.style.display = 'block';
+      dialog.style.display = 'block';
+    }
+    function hide(){
+      mask.style.display = 'none';
+      dialog.style.display = 'none';
+    }
+  </script>
+</body>
+</html>

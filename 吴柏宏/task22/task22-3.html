@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task22-3</title>
+  </head>
+  <body>
+    <ul class="ct">
+      <li data-img="http://img.sj33.cn/uploads/allimg/201412/1122525Z7-0.jpg">鼠标放置查看图片1</li>
+      <li data-img="http://img.sj33.cn/uploads/allimg/201412/1122522134-2.jpg">鼠标放置查看图片2</li>
+      <li data-img="http://img.sj33.cn/uploads/allimg/201412/1122521K1-5.jpg">鼠标放置查看图片3</li>
+    </ul>
+    <div class="img-preview"></div>
+<script>
+  var ct = document.querySelector('.ct'),
+      preview = document.querySelector('.img-preview');
+
+  ct.addEventListener('mouseover',function(e){
+    var target = e.target,
+      dataImg = target.getAttribute('data-img');
+      preview.innerHTML = '<img src="' + dataImg + '">';
+  });
+
+  //方法2
+    // var li = ct.querySelectorAll('li');
+    // for(var i=0; i<li.length; i++){
+    //   li[i].addEventListener('mouseover',function(e){
+    //
+    //   var dataImg = this.getAttribute('data-img');
+    //       preview.innerHTML = '<img src="' + dataImg + '">';
+    //   });
+    // }
+</script>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+	html,body,div,ul,li{
+		margin:0;
+		padding:0;
+	}
+	ul,li{
+		list-style: none;
+	}
+	.clearfix:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	.tab{
+		border:1px solid #ccc;
+		width: 600px;
+		padding: 20px 10px;
+		margin:10px auto;
+		border-radius: 4px;
+	}
+	.tab-header{
+		border-bottom:1px solid #ccc;
+	}
+	.tab-header li{
+		float: left;
+		border-top: 1px solid #fff;
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
+        padding: 10px 20px;
+        color:brown;
+        cursor: pointer;
+	}
+	.tab-header .active{
+		border:1px solid #ccc;
+		border-bottom-color:#fff;
+		border-radius: 4px 4px 0 0;
+		color:#333;
+		margin-bottom: -1px;
+	}
+	.tab-panel{
+		padding:40px 10px;
+	}
+	.tab-panel li{
+		display: none;
+	}
+	.tab-panel .active{
+		display: block;
+	}
+</style>
+</head>
+<body>
+    <div class="tab">
+    	<ul class="tab-header clearfix">
+    		<li class="active">选项1</li>
+    		<li>选项2</li>
+    		<li>选项3</li>
+    	</ul>
+    	<ul class="tab-panel">
+    		<li class="active">内容1</li>
+    		<li>内容2</li>
+    		<li>内容3</li>
+    	</ul>
+    </div>
+
+    <div class="tab">
+    	<ul class="tab-header clearfix">
+    		<li class="active">选项1</li>
+    		<li>选项2</li>
+    		<li>选项3</li>
+    		<li>选项4</li>
+    	</ul>
+    	<ul class="tab-panel">
+    		<li class="active">内容1</li>
+    		<li>内容2</li>
+    		<li>内容3</li>
+    		<li>内容4</li>
+    	</ul>
+    </div>
+
+    <div class="tab">
+    	<ul class="tab-header clearfix">
+    		<li class="active">选项1</li>
+    		<li>选项2</li>
+    		<li>选项3</li>
+    		<li>选项4</li>
+    	</ul>
+    	<ul class="tab-panel">
+    		<li class="active">内容1</li>
+    		<li>内容2</li>
+    		<li>内容3</li>
+    		<li>内容3</li>
+    	</ul>
+    </div>
+
+    <script>
+    	function Tab($ct){
+    		this.$ct=$ct;
+    		this.init();
+    		this.bind();
+    		//console.log(this);
+    	}
+    	Tab.prototype.init=function(){
+    		//console.log(this); //原型对象里的this指代的是实例对象
+    		this.tabLis=this.$ct.find('.tab-header>li'); //将变量绑定在实例对象里，为了函数间的调用
+    		this.tabPanel=this.$ct.find('.tab-panel>li');
+    	}
+    	Tab.prototype.bind=function(){
+    		var _this=this;
+    		this.tabLis.on('click',function(){
+    			var idx=$(this).index();
+    			$(this).addClass('active').siblings().removeClass('active');
+    			_this.tabPanel.eq(idx).addClass('active').siblings().removeClass('active')   					
+    		})
+    	}
+
+    	var tab1=new Tab($('.tab').eq(0));
+    	var tab2=new Tab($('.tab').eq(1));
+    	var tab3=new Tab($('.tab').eq(2));
+
+    </script>
+</body>
+</html>

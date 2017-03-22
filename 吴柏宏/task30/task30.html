@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>瀑布流布局</title>
+    <style>
+      .wrap{
+        position: relative;
+        width: 100%;
+      }
+      .item{
+        position: absolute;
+        /*width: 200px;*/
+        margin-right: 5px;
+        margin-top: 10px;
+        /*border: 5px solid #8b5a2b;*/
+        transition: all 1s;
+        /*-moz-box-shadow: 3px 3px 4px #000;
+        -webkit-box-shadow: 3px 3px 4px #000;
+        box-shadow: 3px 3px 4px #000;*/
+        /*box-shadow:5px -5px 5px rgba(0,0,0,.4);*/
+      }
+      .h1 img{
+        height: 200px;
+      }
+      .h2 img{
+        height: 300px;
+      }
+      .h3 img{
+        height: 400px;
+      }
+      img{
+        /*position: absolute;*/
+        width: 200px;
+        border: 5px solid #8b5a2b;
+        box-shadow:5px 5px 5px rgba(0,0,0,.4);
+      }
+      #go-top{
+        position:fixed;
+        bottom: 10px;
+        right: 10px;
+        border: 1px solid red;
+        padding: 10px;
+        cursor: pointer;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="item h1"><img src="img/g.gif" data-img='img/0.jpg'></div>
+      <div class="item h2"><img src="img/g.gif" data-img='img/1.jpg'></div>
+      <div class="item h3"><img src="img/g.gif" data-img='img/2.jpg'></div>
+      <div class="item h1"><img src="img/g.gif" data-img='img/3.jpg'></div>
+      <div class="item h2"><img src="img/g.gif" data-img='img/4.jpg'></div>
+      <div class="item h3"><img src="img/g.gif" data-img='img/5.jpg'></div>
+      <div class="item h3"><img src="img/g.gif" data-img='img/2.jpg'></div>
+      <div class="item h2"><img src="img/g.gif" data-img='img/1.jpg'></div>
+      <div class="item h3"><img src="img/g.gif" data-img='img/3.jpg'></div>
+      <div class="item h1"><img src="img/g.gif" data-img='img/4.jpg'></div>
+      <div class="item h2"><img src="img/g.gif" data-img='img/5.jpg'></div>
+      <div class="item h3"><img src="img/g.gif" data-img='img/1.jpg'></div>
+      <div class="item h2"><img src="img/g.gif" data-img='img/3.jpg'></div>
+      <div class="item h3"><img src="img/g.gif" data-img='img/5.jpg'></div>
+      <div class="item h1"><img src="img/g.gif" data-img='img/2.jpg'></div>
+      <div class="item h2"><img src="img/g.gif" data-img='img/4.jpg'></div>
+      <div class="item h2"><img src="img/g.gif" data-img='img/1.jpg'></div>
+      <div class="item h3"><img src="img/g.gif" data-img='img/3.jpg'></div>
+      <div class="item h1"><img src="img/g.gif" data-img='img/4.jpg'></div>
+      <div class="item h2"><img src="img/g.gif" data-img='img/5.jpg'></div>
+      <div class="item h3"><img src="img/g.gif" data-img='img/1.jpg'></div>
+      <div class="item h2"><img src="img/g.gif" data-img='img/3.jpg'></div>
+      <div class="item h3"><img src="img/g.gif" data-img='img/5.jpg'></div>
+      <div class="item h1"><img src="img/g.gif" data-img='img/2.jpg'></div>
+      <div class="item h2"><img src="img/g.gif" data-img='img/4.jpg'></div>
+
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="task29-2.js"></script>
+    <script src="task29-3.js"></script>
+    <script>
+      function render(){
+        var nodeWidth = $('.item').outerWidth(true),
+            colNum = parseInt($(window).width()/nodeWidth),
+            colSumHeight = [];
+
+        for(var i = 0; i<colNum; i++){
+          colSumHeight.push(0);
+        }
+
+        $('.item').each(function(){
+          var $cur = $(this);
+
+          var idx = 0,
+              minSumHeight = colSumHeight[0];
+
+
+          for(var i=0; i<colSumHeight.length; i++){
+            if(colSumHeight[i] < minSumHeight){
+              // console.log(minSumHeight);
+              idx = i;
+              minSumHeight = console.log(colSumHeight[i]);
+              // console.log(minSumHeight);
+            }
+          }
+
+          $cur.css({
+            left:nodeWidth*idx,
+            top:minSumHeight
+          })
+          colSumHeight[idx] = $cur.outerHeight(true) + colSumHeight[idx];
+        })
+      }
+
+      render();
+
+      $(window).on('resize',function(){
+        render();
+      })
+
+
+      show();
+
+      //闭包式封装
+      /*var wrap = (function(){
+        function render(){
+          var nodeWidth = $('.item').outerHeight(true),
+              colNum = parseInt($(window).width()/nodeWidth),
+              colSumHeight = [];
+
+          for(var i = 0; i<colNum; i++){
+            colSumHeight.push(0);
+          }
+
+          $('.item').each(function(){
+            var $cur = $(this);
+
+            var idx = 0,
+                minSumHeight = colSumHeight[0];
+
+            for(var i=0; i<colSumHeight.length; i++){
+              if(colSumHeight[i] < minSumHeight){
+                idx = i;
+                minSumHeight = colSumHeight[i];
+              }
+            }
+
+            $cur.css({
+              left:nodeWidth*idx,
+              top:minSumHeight
+            })
+            colSumHeight[idx] = $cur.outerHeight(true) + colSumHeight[idx];
+          })
+        }
+
+        render();
+
+        $(window).on('resize',function(){
+          render();
+        })
+
+
+        show();
+
+        return{
+          init:render
+        }
+      })()*/
+
+      // wrap.init();
+
+      // //封装在对象上
+      // var wrap = {
+      //     colSumHeight: [],
+      //
+      //     init:function($ct){//获取每个元素的高度
+      //       this.$ct = $ct;
+      //       this.$item = $ct.find('.item'),
+      //       this.itemWidth = this.$item.outerWidth(true);
+      //
+      //       this.bind();
+      //       this.statr();
+      //     },
+      //     bind:function(){
+      //       var me = this;
+      //       $(window).on('resize',function(){
+      //         me.statr();
+      //       });
+      //     },
+      //
+      //   statr:function(){
+      //     var me = this;
+      //     this.colNum = Math.floor(this.$ct.width()/this.itemWidth);
+      //       // colSumHeight = [];
+      //
+      //     for(var i=0; i<this.colNum; i++){
+      //       this.colSumHeight[i] = 0;
+      //     }
+      //     this.$item.each(function(){
+      //       me.placeItem($(this));
+      //     });
+      //   },
+      //
+      //   placeItem:function(e){
+      //     var obj = this.getIndexOfMin(this.colSumHeight),
+      //         idx = obj.idx,
+      //         min = obj.min;
+      //     e.css({
+      //       left:idx*this.itemWidth,
+      //       top:min
+      //     });
+      //     this.colSumHeight[idx] += e.outerHeight(true);
+      //   },
+      //
+      //   getIndexOfMin:function(arr){//计算最小值和其下标
+      //     var min = arr[0],
+      //         idx = 0;
+      //     for(var i=1; i<arr.length; i++){
+      //       if(min < arr[i]){
+      //         min = arr[i];
+      //         idx = i;
+      //       }
+      //     }
+      //     return {min:min,idx:idx};
+      //   }
+      // }
+      //
+      // wrap.init($('.wrap'));
+      // show();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>加载更多</title>
+  <style>
+    ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .content > li {
+      padding: 10px;
+      margin-bottom: 5px;
+      border: 2px solid #CCC;
+      border-radius: 10px;
+    }
+    .content > li:hover {
+      background-color: lightgreen;
+    }
+    .btn {
+      border: none;
+      outline: none;
+      padding: 10px;
+      border-radius: 5px;
+      color: #FFF;
+      background-color: #999999;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #6D7D84;
+    }
+    .loadmore {
+      display: block;
+      margin: 0 auto;
+      margin-top: 10px;
+    }
+  </style>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+  <ul class="content">
+    <li>内容1</li>
+    <li>内容2</li>
+    <li>内容3</li>
+    <li>内容4</li>
+    <li>内容5</li>
+  </ul>
+  <button class="btn loadmore">加载更多</button>
+  <script>
+    var isLock = false;
+    $('.loadmore').on('click', function() {
+      var startNum = $('.content li').length + 1;
+      if(isLock) {
+        return;
+      }
+      isLock = true;
+      $.ajax({
+        url : 'getData.php',
+        type : 'GET',
+        dataType : 'JSON',  // 设置返回 JSON 格式，不用再 JSON.parse
+        data : {
+          start : startNum,
+          len : 3
+        },
+        success : function(requestData) {
+          if(requestData.status === 1) {
+            addLi(requestData);
+          }else {
+            alert('数据请求错误');
+          }
+          isLock = false;
+        },
+        error : function() {
+          console.log('error...')
+          isLock = false;
+        }
+      });
+    });
+    
+    function addLi(contentJSON) {
+      for(var i = 0; i < contentJSON.data.length; i++){
+        $('.content').append('<li>' + contentJSON.data[i] + '</li>');
+      }
+    }
+  </script>
+</body>
+</html>

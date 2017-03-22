@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<!--
+Created using JS Bin
+http://js.jirengu.com
+
+Copyright (c) 2016 by anonymous (http://js.jirengu.com/daderifete/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+	<title>模态框</title>
+
+
+<style id="jsbin-css">
+html,body,h1,h2,h3,h4,ul,li {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+  }
+html, body {
+      height: 100%;
+      width: 100%;
+      font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+  }
+li {
+      list-style: none;
+  }
+button{
+      list-style-type:none;
+  }
+  /* #bar{
+      display: none;
+  } */
+#bar{
+  position:relative;
+  top:60%;
+  left:50%;
+  margin:-200px;
+  border:1px solid #ccc;
+  border-radius:4px;
+  width:400px;
+  height:180px;
+}
+.btn{
+  border:none;
+  background-color:transparent;
+}
+.btn1{
+  border-radius:5px;
+  border:2px solid #ccc;
+  background-color:white;
+  padding:1px 10px;
+  margin-left:25px;
+}
+.btn2{
+  font-size:20px; 
+  float:right;
+  position:relative;
+  top:7px;
+  right:10px;
+}
+.btn3{
+  font-size:5px; 
+  float:right;
+  position:relative;
+  top:-31px;
+  right:12px;
+}
+.up{
+  border-bottom:2px solid #ccc;
+  height:40px;
+  line-height:40px;
+  padding-left:15px;
+}
+.d{
+  padding:14px 15px;
+  font-size:20px;
+  line-height:20px;
+}
+
+.down{
+  border-top:1px solid #ccc;
+  
+}
+
+.clearfix:after{
+    clear:both;
+    content:"";
+    display:block;
+}
+/* .back{
+  width:100%;
+  height:100%;
+  
+} */
+
+
+</style>
+</head>
+<body>
+<button class="btn1 btn">点我</button>
+<div class="show">
+  <!-- <div class="back"></div> -->
+  <div id="bar">
+	<div class="up clearfix">
+        <h2>我是标题</h2>
+        <button class="btn3 btn">╳</button>
+    </div>
+<div class="ct"> 
+	<ul class="content">
+		<li class="d">我是内容1</li>
+		<li class="d">我是内容2</li>
+      
+	</ul>
+</div> 
+<div class="down clearfix">
+        <button class="btn2 btn">取消</button>
+	    <button class="btn2 btn">确定</button>
+    </div>
+</div>	
+</div>
+
+</body>
+
+  <script>
+    
+var bar = document.getElementById("bar"),
+	ct = bar.getElementsByClassName("ct"),
+	ds = bar.getElementsByClassName("d"),
+	btn1 = bar.getElementsByClassName("btn1"),
+	btn2 = bar.getElementsByClassName("btn2");
+
+	btn1.onclick = function(){
+		console.log('welcome');
+		bar.display='block';
+	}
+
+  </script>
+</html>
+
+
+
+
+
+

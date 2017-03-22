@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>轮播图－淡入淡出</title>
+  <style>
+    html, body, ul, li {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+    }
+    a {
+      text-decoration: none;
+    }
+
+    .carousel {
+      position: relative;
+      width: 500px;
+      height: 400px;
+    }
+    .slides {
+      position: absolute;
+    }
+    .slides > li {
+      position: absolute;
+      display: none;
+    }
+    .slides > li img {
+      width: 500px;
+      height: 400px;
+    }
+
+    .arrow {
+      position: absolute;
+      display: none;
+      top: 50%;
+      margin-top: -25px;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      border-radius: 50%;
+      text-align: center;
+      color: #FFF;
+      background: #333;
+      opacity: 0.6;
+    }
+    .arrow:hover {
+      opacity: 1;
+    }
+    .carousel:hover .arrow {
+      display: block;
+    }
+    .previous {
+      left: 10px;
+    }
+    .next {
+      right: 10px;
+    }
+
+    .bullet {
+      position: absolute;
+      left: 50%;
+      bottom: 10px;
+      transform: translateX(-50%);
+    }
+    .bullet > li {
+      display: inline-block;
+      width: 20px;
+      height: 5px;
+      border-radius: 3px;
+      background-color: #FFF;
+      cursor: pointer;
+    }
+    .bullet > li.active {
+      background-color: #555;
+    }
+  </style>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+  <div class="carousel carousel1">
+    <ul class="slides">
+      <li data-id="0"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""></a></li>
+      <li data-id="1"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""></a></li>
+      <li data-id="2"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""></a></li>
+      <li data-id="3"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""></a></li>
+      <li data-id="4"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/22.jpg" alt=""></a></li>
+    </ul>
+    <a class="previous arrow" href="javascript:;">&lt;</a>
+    <a class="next arrow" href="javascript:;">&gt;</a>
+    <ul class="bullet">
+      <li class="active"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="carousel carousel2">
+    <ul class="slides">
+      <li data-id="0"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""></a></li>
+      <li data-id="1"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""></a></li>
+      <li data-id="2"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""></a></li>
+      <li data-id="3"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""></a></li>
+      <li data-id="4"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/22.jpg" alt=""></a></li>
+    </ul>
+    <a class="previous arrow" href="javascript:;">&lt;</a>
+    <a class="next arrow" href="javascript:;">&gt;</a>
+    <ul class="bullet">
+      <li class="active"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="carousel carousel3">
+    <ul class="slides">
+      <li data-id="0"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""></a></li>
+      <li data-id="1"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""></a></li>
+      <li data-id="2"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""></a></li>
+      <li data-id="3"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""></a></li>
+      <li data-id="4"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/22.jpg" alt=""></a></li>
+    </ul>
+    <a class="previous arrow" href="javascript:;">&lt;</a>
+    <a class="next arrow" href="javascript:;">&gt;</a>
+    <ul class="bullet">
+      <li class="active"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <script>
+  function playCarousel(carousel) {
+    var $slides = $('.' + carousel + ' .slides'),
+        $slide = $slides.children(),
+        $bullet = $slides.siblings('.bullet'),
+        $previous = $slides.siblings('.previous'),
+        $next = $slides.siblings('.next'),
+        imgCount = $slide.length;
+
+    var currentIndex = 0,
+        isAnimate = false,
+        fadeTime = 500,
+        frameTime = 4000,
+        clock;
+
+    play(0);
+    autoPlay();
+
+    $previous.on('click', function(){
+      playPrevious();
+    });
+    $next.on('click', function() {
+      playNext();
+    });
+    $bullet.find('li').on('click', function() {
+      var index = $(this).index();
+      play(index);
+      setBullet(index);
+    });
+    $slides.on('mouseover', function() {
+      stopPlay();
+    });
+    $slides.on('mouseout', function() {
+      autoPlay();
+    });
+
+    function play(newIndex) {
+      if(!isAnimate) {
+        isAnimate = true;
+        $slide.eq(currentIndex).fadeOut(fadeTime);
+        $slide.eq(newIndex).fadeIn(fadeTime);
+        currentIndex = newIndex;
+        setBullet(currentIndex);
+        isAnimate = false;
+      }
+    }
+    function playNext() {
+      play((currentIndex + 1) % imgCount);
+    }
+    function playPrevious() {
+      play((currentIndex - 1 + imgCount) % imgCount);
+    }
+    function autoPlay() {
+      clock = setInterval(function() {
+        playNext();
+      }, frameTime);
+    }
+    function stopPlay() {
+      clearInterval(clock);
+    }
+    function setBullet(index) {
+      $bullet.children().removeClass('active')
+                        .eq(index).addClass('active');
+    }
+  }
+
+  playCarousel('carousel1');
+  playCarousel('carousel2');
+  playCarousel('carousel3');
+  </script>
+</body>
+</html>

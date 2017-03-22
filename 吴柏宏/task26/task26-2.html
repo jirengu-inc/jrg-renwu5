@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task26-2</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+      body{
+        width: 1700px;
+        height: 1450px;
+      }
+      .bor{
+        border: 1px solid #ccc;
+        height: 80px;
+        width: 80px;
+        margin-bottom: 10px;
+      }
+      .scrollTop{
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #eee;
+        height: 160px;
+        width: 250px;
+      }
+      .scrollTop p{
+        margin-left: 60%;
+      }
+      .div1{
+        border: 1px solid #ccc;
+        height: 80px;
+        width: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <legend>1.当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色</legend>
+      <div class="bor">
+
+      </div>
+      <button type="button" class="btn">点击</button>
+    </fieldset>
+    <fieldset>
+      <legend>2.当窗口滚动时，获取垂直滚动距离</legend>
+      <div class="scrollTop">
+        <h3>窗口滚动条垂直滚动距离</h3>
+        <p>:xp</p>
+        <h3>窗口滚动条水平滚动距离</h3>
+        <p>:xp</p>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>3.当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色</legend>
+      <div class="div1">
+
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>4.当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字</legend>
+      <input class="ipt"></input>
+    </fieldset>
+    <fieldset>
+      <legend>5.当选择 select 后，获取用户选择的内容</legend>
+      <select class="ct">
+        <option>苹果</option>
+        <option>锤子</option>
+        <option>小米</option>
+        <option>乐视</option>
+      </select>
+      <p>当前选择的是：<span class="sp"></span></p>
+    </fieldset>
+  <script>
+    //1.当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色
+    $('.btn').on('click',function(){
+      $('.bor').css('background-color','red');
+      setTimeout(function(){
+        $('.bor').css('background-color','blue');
+      },1000)
+    });
+
+    //2.当窗口滚动时，获取垂直滚动距离
+    $(window).on('scroll',function(){
+      $($('.scrollTop').find('p')[0]).text($(window).scrollTop() + ':px')
+      $($('.scrollTop').find('p')[1]).text($(window).scrollLeft() + ':px')
+    })
+
+    //3.当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色
+    $('.div1').on('mouseenter',function(){
+      $('.div1').css('background-color','red')
+    })
+    $('.div1').on('mouseleave',function(){
+      $('.div1').css('background-color','#fff')
+    })
+
+    //4.当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字
+    $('.ipt').on('focus',function(){ //获得焦点事件
+      $('.ipt').css('outLineColor','blue')
+    })
+    $('.ipt').on('blur',function(){ //失去焦点事件
+      console.log($('.ipt').val())
+    })
+    $('.ipt').on('keyup',function(){ //按键事件
+      $('.ipt').val($('.ipt').val().toUpperCase())
+    })
+
+    //5.当选择 select 后，获取用户选择的内容
+    $('.ct').on('change',function(){
+      $('.sp').text($('.ct').val())
+    })
+  </script>
+  </body>
+</html>

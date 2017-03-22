@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ct{
+            height: 500px;
+            background: green;
+        }
+        .ct1{
+            height: 200px;
+            width: 200px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="ct"></div>
+    <div class="ct"></div>
+    <div class="ct1"></div>
+    <div class="ct"></div>
+    <div class="ct"></div>
+    <div class="ct1"></div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <script>
+        var Expourse = (function () {
+            function bind($target,fn) {
+//                this = $target;
+                $(window).on('scroll',function () {
+                    if(isShow($target)){
+                        fn.call($target[0])
+                    }
+                })
+            }
+
+            function one($target,fn) {
+
+                $(window).on('scroll',function () {
+                    if($target.data('isShow') == true) return;
+                    if(isShow($target)){
+                        fn.call($target[0])
+                        $target.data('isShow',true)
+                    }
+                })
+            }
+
+            function isShow($node) {
+                var winTop = $('body').scrollTop(),
+                    winH = $(window).height(),
+                    nodeTop = $node.offset().top;
+                if(winTop+winH>nodeTop && winTop<nodeTop){
+                    return true
+                }
+
+            }
+            return {
+                bind: bind,
+                one: one
+            }
+        })()
+        Expourse.bind($('.ct1'), function(){
+            console.log($(this));
+        });
+//        Expourse.one($('.ct1'), function(){
+//            console.log($(this));
+//        })
+    </script>
+</body>
+</html>

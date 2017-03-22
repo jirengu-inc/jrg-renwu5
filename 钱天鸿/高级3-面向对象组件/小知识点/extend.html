@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    
+	<div id="log"></div>
+
+	<script>
+		// var object1 = {
+		//   apple: 0,
+		//   banana: {weight: 52, price: 100},
+		//   cherry: 97
+		// };
+		// var object2 = {
+		//   banana: {price: 200},
+		//   durian: 100
+		// };
+
+		// $.extend(object1, object2);
+
+		// var printObj = typeof JSON != "undefined" ? JSON.stringify : function(obj) {
+		// 	//console.log(printObj);
+		//   	var arr = [];
+		//  	$.each(obj, function(key, val) {
+		//     	var next = key + ": ";
+		//     	next += $.isPlainObject(val) ? printObj(val) : val;
+		//     	// next = next + $..   next = "apple: " + $isPlainObject(0) ? printObj(0) : 0;
+		//     	arr.push( next );
+		//   	});
+		//   	return "{ " +  arr.join(", ") + " }";
+		// };
+		 
+		// $("#log").append( printObj(object1) );
+
+
+		//测试extend 能过覆盖几层
+		var obj1 = {
+			a:1,
+			b:2,
+			c:3
+		};
+
+		var obj2 = {
+			d:5,
+			a:6
+		};
+
+		var p1 = $.extend({},obj1,obj2);
+		console.log(p1);
+
+		var p2 = $.extend({},p1,{a:8});
+		console.log(p2)
+	</script>
+</body>
+</html>

@@ -63,7 +63,7 @@ li{
 	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 /*header部分的intro结束*/
-#header .navbar{
+.navbar{
 	width: 100%;
 	background:#222;
 	padding: 20px 0;

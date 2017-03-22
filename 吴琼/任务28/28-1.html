@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>1</title>
+	<style>
+		html,body {
+			margin: 0;
+			padding: 0;
+		}
+		#header,#content,#footer {
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+		#header {
+			height: 80px;
+			margin-bottom: 10px;
+			line-height: 80px;
+			background: red;
+			text-align: center;
+		}
+		.nav {
+			width: 100%;
+			height: 50px;
+			background: blue;
+			margin-bottom: 10px;
+		}
+		#content {
+			position: relative;
+			height: 1000px;
+			background: #ccc;
+		}
+		#content:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.aside {
+			position: absolute;
+			float: left;
+			width: 100px;
+			height: 300px;
+			background: green;
+			margin: 0 10px;
+		}
+		.main {
+			position: absolute;
+			right: 10px;
+			left: 10px;
+			float: left;
+			margin-left: 120px;
+			margin-right: 10px;
+			height:900px;	
+			background: white;
+		}
+		#footer {
+			background: grey;
+			margin-bottom: 10px;
+		}
+		.active {
+			position: fixed;
+			top: 0px;
+			z-index: 99;
+		}
+		</style>
+</head>
+<body>
+<div id="header">
+header
+</div>
+<div id="content">
+<div class="nav">
+nav
+</div>
+<div class="main">
+main
+</div>
+<div class="aside">
+aside
+</div>
+</div>
+<div id="footer">
+footer
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+$.fn.stick=function(){
+	var $nav=this;
+	 var navWidth=$nav.width(); 
+	var $btn=$nav.clone().css({opacity:0}).insertAfter($nav).hide();
+	var navOriginTop=$nav.offset().top;
+	$(window).scroll(function(){
+				var navTop=$(window).scrollTop();
+			
+	if(navTop>=navOriginTop){
+			$nav.addClass('active');
+			$nav.width(navWidth);
+			 $btn.show();
+		}
+		else if(navTop<navOriginTop){
+			$nav.removeClass('active');
+			$btn.hide();
+		}
+			});
+		}
+		$('.nav').stick();
+</script>
+</body>
+</html>

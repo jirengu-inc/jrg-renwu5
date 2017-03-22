@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p>
+<p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p>
+<p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p><p>fd</p>
+	<script>
+
+		var clock;
+   		$(window).on('scroll',function(){
+   			if (clock) {
+   				console.log(clock);
+   				clearTimeout(clock);
+   			}
+   			//else{}
+
+   				clock=setTimeout(function(){
+   					console.log(1.1);
+   				},3000);
+   				//测试结果，如果是if else的形式，clock永远是1；如果只有if，clock在不断变化，而且打印出1.1，说明if执行完后，还会执行后面的代码。而且滚动一次，触发许多事件，而clearTimeout会取消定时器，最后一次取消后，执行了代码			
+   		}); 
+	</script>
+   
+</body>
+</html>

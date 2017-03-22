@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task_22_01</title>
+</head>
+
+<body>
+    <ul class="ct">
+        <li>这里是</li>
+        <li>饥人谷</li>
+        <li>前端6班</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('.ct')
+
+        var addConsole = function(e) {
+            console.log(e.target.textContent)
+        }
+        ul.addEventListener('click', addConsole)
+    </script>
+</body>
+
+</html>

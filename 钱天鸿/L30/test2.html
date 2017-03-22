@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+	.content{
+		position: relative;
+	}
+	.item{
+		position: absolute;
+		width: 200px;
+		margin-right: 10px;
+		margin-top: 10px;
+		transition:all 1s;
+	}
+	.h1{
+		height: 200px;
+		background:red;
+	}
+	.h2{
+		height: 300px;
+		background:blue;
+	}
+	.h3{
+		height: 400px;
+		background:yellow;
+	}
+	.h4{
+		height: 500px;
+		background:orange;
+	}
+</style>
+</head>
+<body>
+    <div class="content">
+    	<div class="item h1">1</div>
+    	<div class="item h2">2</div>
+    	<div class="item h3">3</div>
+    	<div class="item h4">4</div>
+    	<div class="item h2">5</div>
+    	<div class="item h4">6</div>
+    	<div class="item h2">7</div>
+    	<div class="item h1">8</div>
+    	<div class="item h3">9</div>
+    	<div class="item h3">10</div>
+    	<div class="item h1">11</div>
+    	<div class="item h4">12</div>
+    	<div class="item h2">13</div>
+    	<div class="item h1">14</div>
+    	<div class="item h4">15</div>
+    	<div class="item h3">16</div>
+    </div>
+
+    <script>
+    	var WaterFall = {
+
+			//[0,0,0,0]
+			//[20, 10, 30, 15]
+			arrColHeight: [],
+
+			init: function( $ct ){
+				this.$ct = $ct; //this指代是对象WaterFall
+				this.$items = $ct.find('.item'), //对象上添加属性和相应的值
+				this.itemWidth = this.$items.outerWidth(true);
+				this.start();
+				this.bind();
+			},
+
+			bind: function(){
+				var me = this;
+				$(window).on('resize', function(){
+					me.start();
+				});
+			},
+
+			start: function(){
+				var me = this;
+				this.colNum = Math.floor( this.$ct.width() / this.itemWidth ); //文档能放几列
+				//this.arrColHeight = [];
+				for(var i=0; i<this.colNum; i++){
+					this.arrColHeight[i] = 0; //arrColHeight=[0,0,0]
+				}
+				this.$items.each(function(){
+					me.placeItem( $(this) );
+				});
+			},
+
+			placeItem: function( $el ) {
+				// 1. 找到arrColHeight的最小值，得到是第几列
+				// 2. 元素left的值是 列数*宽度
+				// 3. 元素top的值是 最小值
+				// 4. 放置元素的位置，把arrColHeight对应的列数的值加上当前元素的高度
+				var obj = this.getIndexOfMin(this.arrColHeight),
+					idx = obj.idx,
+					min = obj.min;
+				$el.css({
+					left: idx * this.itemWidth,
+					top: min
+				});
+				this.arrColHeight[idx] += $el.outerHeight(true);
+			},
+
+			getIndexOfMin: function( arr ){
+				var min = arr[0],
+					idx = 0;
+				for(var i = 1; i< arr.length; i++){
+					if(min > arr[i]){
+						min = arr[i];
+						idx = i;
+					}
+				}
+				return {min: min, idx: idx};
+			}
+		}
+
+		WaterFall.init($('.content'));
+
+
+    </script>
+</body>
+</html>

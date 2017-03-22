@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Music Player</title>
+    <meta name="referrer" content="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+
+    <div class="fm">
+        <div class="fm-pic"></div>
+        <div class="fm-panel">
+            <div class="fm-info">
+                <h3 class="info-title">歌曲名</h3>
+                <p class="info-artist">歌手</p>
+            </div>
+            <div class="fm-control clearfix">
+                <span class="control-circle iconfont icon-circle" title="循环播放"></span>
+                <span class="control-pre iconfont icon-pre" title="上一曲">&#xe607;</span>
+                <span class="control-play iconfont icon-play"></span>
+                <span class="control-next iconfont icon-next" title="下一首">&#xe606;</span>
+                <span class="control-channel iconfont icon-list" title="频道">&#xe603;</span>
+            </div>
+            <div class="fm-progress">
+                <div class="progress-status"></div>
+            </div>
+            <div class="fm-footer clearfix">
+                <div class="fm-time">
+                    <span class="current-time">0:00</span>
+                    <span class="time-separtor">/</span>
+                    <span class="total-time">0:00</span>
+                </div>
+                <div class="fm-sound">
+                    <span class="sound-icon iconfont icon-sound" title="静音"></span>
+                    <div class="sound-control">
+                        <div class="sound-status"></div>
+                    </div>
+                </div>
+                <div class="fm-operation">
+                    <a class="operation-download iconfont icon-download" href="#!" target="_blank" title="下载"></a>
+                </div>
+            </div>
+
+
+            <div class="fm-lrc"></div>
+
+        </div>
+
+        <audio src="" class="player"></audio>
+    </div>
+
+    <ul class="channel">
+        <li class="channel-list">
+            <span class="iconfont icon-right"></span>
+            <a href="#!">推荐频道</a>
+            <ul class="channel-tuijian"></ul>
+        </li>
+        <li class="channel-list">
+            <span class="iconfont icon-right"></span>
+            <a href="#!">时光频道</a>
+            <ul class="channel-shiguang"></ul>
+        </li>
+        <li class="channel-list">
+            <span class="iconfont icon-right"></span>
+            <a href="#!">风格频道</a>
+            <ul class="channel-fengge"></ul>
+        </li>
+        <li class="channel-list">
+            <span class="iconfont icon-right"></span>
+            <a href="#!">心情频道</a>
+            <ul class="channel-xinqing"></ul>
+        </li>
+        <li class="channel-list">
+            <span class="iconfont icon-right"></span>
+            <a href="#!">语种频道</a>
+            <ul class="channel-yuzhong"></ul>
+        </li>
+    </ul>
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/music.js"></script>
+    <script>
+        var fm = new Fm($('.fm'))
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+<div style="height: 2000px; border: 2px solid black; overflow: hidden;">
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+    <p>1ddwqdwfqervfd</p>
+</div>
+<script>
+    function GoTop(ct) {
+        this.createNode(ct);
+    }
+    GoTop.prototype = {
+        createNode: function (ct) {
+            ct.append('<div id="GoTop"><span class="text">back-to-top</span></div>')
+            $('#GoTop').css({
+                width: '120px',
+                textAlign: 'center',
+                border: '1px solid red',
+                borderRadius: '5px',
+                position: 'fixed',
+                right: '40px',
+                bottom: '40px',
+                cursor: 'pointer',
+            });
+            $('.text').css({
+                color: 'red',
+                fontSize: '22px',
+                lineHeight: '44px'
+            })
+            this.bindEvent();
+        },
+        bindEvent: function () {
+            $('#GoTop').on('click', function () {
+                $('html,body').animate({scrollTop: '0px'}, 800);
+            })
+        }
+    }
+    new GoTop($('body'));
+</script>
+
+</body>
+</html>
