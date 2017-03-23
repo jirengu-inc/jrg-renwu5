@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        input{
+            margin: 20px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<input id="input" type="text" placeholder="http://c.abc.com:8080/b.html">
+<script>
+    document.querySelector('#input').addEventListener('input',function () {
+        window.parent.postMessage(this.value,'*')
+    })
+    window.addEventListener('message',function (e) {
+        document.querySelector('#input').value = e.data
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        #photo{
+            width: 800px;
+            height:600px;
+            margin-top: 20px;
+        }
+        #change{
+            display: block;
+            height: 30px;
+            width: 50px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<img id="photo" src="image/1.jpg"/>
+<button id="change" value="button">下一张</button>
+<script>
+    var change = document.querySelector('#change')
+    var photo = document.querySelector('#photo')
+    change.addEventListener('click',function () {
+        var xhr = new XMLHttpRequest()
+        xhr.open('get','http://b.test.com:8080/getPhoto')
+        xhr.send()
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200){
+                appendHtml(JSON.parse(xhr.responseText))
+            }
+        }
+        window.xhr = xhr
+    })
+    function appendHtml(data) {
+        console.log(data)
+        photo.src = data
+    }
+
+</script>
+</body>
+</html>
