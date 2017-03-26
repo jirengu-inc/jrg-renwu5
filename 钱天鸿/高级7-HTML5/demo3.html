@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	fieldset{
+		height: 200px
+	}
+	.wrap{
+		height: 100%;
+		display: flex;
+		justify-content:space-around;
+		align-items: center;
+	}
+	.demo1{
+		position:relative;
+		width: 10px;
+		height: 50px;
+		background: rgb(13, 206, 203);
+		animation:move1 2s .4s infinite ease-in-out;
+		/*animation-delay: 0.4s;*/
+	}
+	.demo1:before{
+		content: '';
+		position: absolute;
+		width:10px;
+		height: 50px;
+		background: rgb(13, 206, 203);
+		left:-20px;
+		animation:move1 2s infinite ease-in-out;
+	}
+	.demo1:after{
+		content: '';
+		position: absolute;
+		width:10px;
+		height: 50px;
+		background: rgb(13, 206, 203);
+		left:20px;
+		animation:move1 2s .6s infinite ease-in-out;
+		/*animation-delay: 0.6s;*/
+	}
+	@keyframes move1{
+		0%,80%,100%{
+			box-shadow: 0 0 0 rgb(13, 206, 203);
+		}
+		20%{
+			box-shadow: 0 -20px 0 rgb(13, 206, 203);
+			height: 70px;
+		}
+	}
+	.demo2{
+		width: 50px;
+		height:50px;
+		border-top:15px solid green;
+		border-right:15px solid green;
+		border-bottom:15px solid green;
+		border-left:15px solid blue;
+		border-radius: 50px;
+		animation:move2 1s infinite linear;
+	}
+	@keyframes move2{
+		0%{
+			transform:rotate(0deg);
+		}
+		100%{
+			transform:rotate(360deg);
+		}
+	}
+</style>
+</head>
+<body>
+	<fieldset>
+		<legend>loading动画效果1</legend>
+		<section class="wrap">
+			<div class="demo1"></div>
+		</section>
+		
+	</fieldset>
+
+	<fieldset>
+		<legend>loading动画效果2</legend>
+		<section class="wrap">
+			<div class="demo2"></div>
+		</section>	
+	</fieldset>
+</body>
+</html>

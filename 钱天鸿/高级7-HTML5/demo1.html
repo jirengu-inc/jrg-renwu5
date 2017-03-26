@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	*{
+		margin:0;
+		padding: 0;
+	}
+	ul,li{
+		list-style: none;
+	}
+	fieldset{
+		margin-top:30px;
+	}
+	.wrap{
+		display: flex;
+		justify-content: space-around;
+		padding:40px 0;
+	}
+	.demo{
+		width:200px;
+		height: 200px;
+		border:1px solid blue;
+		background:green;
+	}
+	.fillet{
+		border-radius: 50px;
+	}
+	.circular{
+		border-radius: 100px;
+	}
+	.semi-circle{
+		width:200px;
+		height: 100px;
+		border-radius: 100px 100px 0 0;
+		align-self:center;
+	}
+	.shadow1{
+		box-shadow: 9px 13px 8px 10px #ccc;
+	}
+	.shadow2{
+		box-shadow:inset 35px -24px 6px 6px #ccc;
+	}
+	.enlarge,.narrow,.deviation,.rotate{
+		transition:all 1s;
+	}
+	.enlarge:hover{
+		transform:scale(1.2,1.3);
+	}
+	.narrow:hover{
+		transform:scale(0.5);
+	}
+	.deviation:hover{
+		transform:translate(20px,20px);
+	}
+	.rotate:hover{
+		transform:rotate(50deg);
+	}
+	.reference{
+		width: 200px;
+		height: 200px;
+		border:1px dashed red;
+		margin-right: 40px;
+	}
+	@keyframes moveZ_3d{
+		0% {transform:perspective(600px) translateZ(0);}
+		50% {transform:perspective(600px) translateZ(-1000px);}
+		100% {transform:perspective(600px) translateZ(-2000px);}
+	}
+	.moveZ_3d{
+		animation:moveZ_3d 3s infinite linear alternate;
+	}
+	@keyframes moveY_3d{
+		0% {transform:perspective(600px) translateY(0px);}
+		100% {transform:perspective(600px) translateY(20px);}
+	}
+	.moveY_3d{
+		animation:moveY_3d 3s infinite linear alternate;
+	}
+	@keyframes rotateX_3d{
+		0% {transform:perspective(600px) rotateX(0);}
+		100% {transform:perspective(600px) rotateX(180deg);}
+	}
+	.rotateX_3d{
+		animation:rotateX_3d 3s infinite linear alternate;
+	}
+	@keyframes rotateZ_3d{
+		0% {transform:perspective(600px) rotateZ(0);}
+		100% {transform:perspective(600px) rotateZ(180deg);}
+	}
+	.rotateZ_3d{
+		animation:rotateZ_3d 3s infinite linear alternate;
+	}
+	.liner-gradient{
+		width:500px;
+		height: 100px;
+		background:linear-gradient(to right,red,blue);
+		margin-bottom: 20px;
+	}
+	.radial-gradient{
+		width:500px;
+		height: 100px;
+		background:radial-gradient(circle,red,blue);
+	}
+	.transition{
+		transition:all 1s;
+	}
+	.transition:hover{
+		border-radius: 30px;
+		background:red;
+		opacity:0.5;
+	}
+	.container{
+		width:200px;
+		height: 200px;
+		position: relative;
+		perspective:1000px;
+	}
+	#cube{
+		width:100%;
+		height: 100%;
+		position: absolute;
+		transform-style: preserve-3d;
+		transform:rotateY(20px);
+		animation:move 5s infinite alternate;
+	}
+	#cube figure{
+		width: 196px;
+	  	height: 196px;
+	  	display: block;
+	  	position: absolute;
+	  	border:1px solid;
+	}
+	.front{
+		background:red;
+	}
+	.back{
+		background:blue;
+		transform:translateZ(-196px);
+	}
+	.left{
+		background:green;
+		transform:translateX(-98px) translateZ(-98px) rotateY(-90deg);
+	}
+	.right{
+		background:black;
+		transform:translateX(98px) translateZ(-98px) rotateY(-90deg);
+	}
+	.top{
+		background:gray;
+		transform:translateY(-98px) translateZ(-98px) rotateX(-90deg);
+	}
+	.bottom{
+		background:orange;
+		transform:translateY(98px) translateZ(-98px) rotateX(-90deg);
+	}
+	@keyframes move{
+		0%{
+			transform:rotateX(0) rotateY(0) rotateZ(0);
+		}
+		50%{
+			transform:rotateX(180deg) rotateY(180deg) rotateZ(180deg);
+		}
+		100%{
+			transform:rotateX(200deg) rotateY(200deg) rotateZ(200deg);
+		}
+	}
+</style>
+</head>
+<body>
+    <fieldset>
+    	<legend>圆角、圆形、半圆</legend>
+    	<div class="wrap">
+    		<div class="demo fillet"></div>
+	    	<div class="demo circular"></div>
+	    	<div class="demo semi-circle"></div>
+    	</div>
+    </fieldset>
+
+    <fieldset>
+    	<legend>div 阴影</legend>
+    	<div class="wrap">
+    		<div class="demo shadow1"></div>
+			<div class="demo shadow2"></div>
+    	</div>
+    </fieldset>
+
+    <fieldset>
+    	<legend>2D 转换：放大、缩小、偏移、旋转</legend>
+    	<div class="wrap">
+    		<div class="demo enlarge"></div>
+    		<div class="demo narrow"></div>
+    		<div class="demo deviation"></div>
+    		<div class="demo rotate"></div>
+    		<div></div>
+    	</div>
+    </fieldset>
+
+    <fieldset>
+    	<legend>3D 转换：移动、旋转</legend>
+    	<div class="wrap">
+    		<div class="reference">
+    			<div class="demo moveZ_3d"></div>
+    		</div>
+    		<div class="reference">
+    			<div class="demo moveY_3d"></div>
+    		</div>
+    		<div class="reference">
+    			<div class="demo rotateX_3d"></div>
+    		</div>
+    		<div class="reference">
+    			<div class="demo rotateZ_3d"></div>
+    		</div>
+    	</div>
+    </fieldset>
+
+    <fieldset>
+    	<legend>背景色渐变</legend>
+    		<div class="liner-gradient"></div>
+    		<div class="radial-gradient"></div>
+    </fieldset>
+
+    <fieldset>
+    	<legend>过渡效果</legend>
+    	<div class="wrap">
+    		<div class="demo transition"></div>
+    	</div>
+    </fieldset>
+
+    <fieldset>
+    	<legend>动画</legend>
+    	<div class="wrap">
+    		<section class="container">
+			  <div id="cube">
+			    <figure class="front">1</figure>
+			    <figure class="back">2</figure>
+			    <figure class="right">3</figure>
+			    <figure class="left">4</figure>
+			    <figure class="top">5</figure>
+			    <figure class="bottom">6</figure>
+			  </div>
+			</section>
+    	</div> 	
+    </fieldset>
+</body>
+</html>
