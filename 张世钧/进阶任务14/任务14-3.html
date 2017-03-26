@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 12px
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #heading{
+            margin: 10px;
+            color: #666;
+        }
+        #content{
+            margin: 0 auto;
+            width: 822px;
+        }
+        #list{
+            margin-left: -18px;
+            margin-top: -20px;
+        }
+        .goods{
+            position: relative;
+            width: 220px;
+            margin-top: 20px;
+            margin-left: 18px;
+            padding: 10px 20px;
+            text-align: center;
+            float: left;
+            border:1px solid #ccc;
+        }
+        .cover{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            opacity: 0;
+        }
+        .goods.hover .cover{
+            opacity: 1;
+        }
+        .cover-btn{
+            padding: 0 10px;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .price{
+            color: #c81623;
+            text-align: left;
+        }
+        #list:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .name{
+            text-align: left;
+            color: #666;
+        }
+        .btn{
+            height: 40px;
+            width: 56px;
+            line-height: 40px;
+            color: #c81623;
+            background: white;
+            margin-top: 20px;
+            text-align: center;
+            display: inline-block;
+            border: 1px solid #c81623;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="../jquery-3.1.1.js"></script>
+</head>
+<body>
+<div id="content">
+    <h2 id="heading">珠宝首饰</h2>
+    <ul id="list">
+        <li class="goods">
+            <div class="cover"><a class="cover-btn btn" href="">立即抢购</a></div>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <p class="name">藏美千足金和田玉金镶玉路路通吊坠</p>
+            <p class="price">￥1699.00</p>
+        </li>
+        <li class="goods">
+            <div class="cover"><a class="cover-btn btn" href="">立即抢购</a></div>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <p class="name">藏美千足金和田玉金镶玉路路通吊坠</p>
+            <p class="price">￥1699.00</p>
+        </li>
+        <li class="goods">
+            <div class="cover"><a class="cover-btn btn" href="">立即抢购</a></div>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <p class="name">藏美千足金和田玉金镶玉路路通吊坠</p>
+            <p class="price">￥1699.00</p>
+        </li>
+        <li class="goods">
+            <div class="cover"><a class="cover-btn btn" href="">立即抢购</a></div>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <p class="name">藏美千足金和田玉金镶玉路路通吊坠</p>
+            <p class="price">￥1699.00</p>
+        </li>
+        <li class="goods">
+            <div class="cover"><a class="cover-btn btn" href="">立即抢购</a></div>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <p class="name">藏美千足金和田玉金镶玉路路通吊坠</p>
+            <p class="price">￥1699.00</p>
+        </li>
+        <li class="goods">
+            <div class="cover"><a class="cover-btn btn" href="">立即抢购</a></div>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <p class="name">藏美千足金和田玉金镶玉路路通吊坠</p>
+            <p class="price">￥1699.00</p>
+        </li>
+    </ul>
+    <a class="btn btn-add" href="">添加</a>
+</div>
+<script>
+    var products = [
+        {
+            img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+            name: '珂兰 黄金手 猴哥款',
+            price: '￥405.00'
+        },{
+            img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+            name: '珂兰 黄金转运珠 猴哥款',
+            price: '￥100.00'
+        },{
+            img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+            name: '珂兰 黄金手链 3D猴哥款',
+            price: '￥45.00'
+        }
+    ];
+    function getProd(prod) {
+        var html = ''
+        html += '<li class="goods">'
+        html +=     '<div class="cover"><a class="cover-btn btn" href="">立即抢购</a></div>'
+        html +=     '<img src="'+prod.img+'" alt="">'
+        html +=     '<p class="name">'+prod.name+'</p>'
+        html +=     '<p class="price">'+prod.price+'</p>'
+        html += '</li>'
+        return html
+    }
+    $('#list').on('mouseenter','.goods',function () {
+        $(this).addClass('hover')
+    })
+    $('#list').on('mouseleave','.goods',function () {
+        $(this).removeClass('hover')
+    })
+    $('.btn-add').on('click',function (e) {
+        e.preventDefault()
+        $.each(products,function (idx, prod) {
+            var html1 = getProd(prod)
+            $('#list').append(html1)
+        })
+        })
+</script>
+</body>
+</html>

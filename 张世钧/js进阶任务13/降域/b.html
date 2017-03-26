@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        input{
+            margin: 20px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<input id="input" type="text"  placeholder="http://b.test.com:8080/b.html">
+<script>
+    var put = document.querySelector('#input')
+    put.addEventListener('input',function () {
+        window.parent.document.querySelector('input').value = this.value
+    })
+    document.domain = 'test.com'
+</script>
+</body>
+</html>

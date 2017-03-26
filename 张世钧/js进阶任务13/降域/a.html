@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #ct {
+            width: 910px;
+            margin: auto;
+        }
+
+        #main {
+            float: left;
+            width: 450px;
+            height: 300px;
+            border: 1px solid #ccc;
+        }
+
+        #main input {
+            margin: 20px;
+            width: 200px;
+        }
+
+        iframe {
+            width: 450px;
+            height: 300px;
+            border: 1px dashed #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="ct">
+        <div id="main">
+            <input id="num" type="text" placeholder="http://a.test.com:8080/a.html">
+        </div>
+        <iframe src="http://b.test.com:8080/b.html" frameborder="0"></iframe>
+    </div>
+<script>
+    var num = document.querySelector('#num')
+    num.addEventListener('input', function () {
+        console.log(this.value)
+        window.frames[0].document.querySelector('input').value = this.value
+    })
+    document.domain = 'test.com'
+</script>
+</body>
+</html>
