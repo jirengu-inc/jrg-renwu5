@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	@media screen and (min-width: 1200px){
+		body{
+			background:red;
+		}
+	}
+	@media screen and (min-width: 900px) and (max-width: 1200px){
+		body{
+			background:green;
+		}
+	}
+	@media screen and (min-width: 600px) and (max-width: 900px){
+		body{
+			background:yellow;
+		}
+	}
+	@media screen and (max-width: 600px){
+		body{
+			background:gray;
+		}
+	}
+    body{
+        font-size: 25px;
+    }
+</style>
+</head>
+<body>
+	<!-- 注意前后覆盖关系 -->
+	<ul>
+        <li>在页面宽度> 1200px 时页面背景为红色</li>
+        <li>在页面1200px>=宽度> 900px  时页面背景为绿色</li>
+        <li>在页面900px>=宽度> 600px  时页面背景为黄色</li>
+        <li>宽度<=600px 背景为灰色</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	*{
+		box-sizing:border-box;
+	}
+	.row{
+		margin:20px auto;
+		border:1px solid red;
+	}
+	.row:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	.row div{
+		border:1px solid green;
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		font-size: 18px;
+		background:#ccc;
+	}
+	@media screen and (min-width:768px){
+		.row{
+			width:750px;
+		}
+	}
+	@media screen and (min-width: 992px){
+		.row{
+			width:970px;
+		}
+	}
+	@media screen and (min-width: 1200px){
+		.row{
+			width:1170px;
+		}
+	}
+	/*上面不同屏幕宽度下设置容器row的宽度*/
+
+
+	.col-xs-1,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-10,.col-xs-11,.col-xs-12{
+		float:left;
+	}
+	.col-xs-12{
+		width:100%;
+	}
+	.col-xs-11{
+		width:91.66666667%;
+	}
+	.col-xs-10{
+		width:83.33333333%;
+	}
+	.col-xs-9{
+		width:75%;
+	}
+	.col-xs-8{
+		width:66.66666667%;
+	}
+	.col-xs-7{
+		width:58.33333333%;
+	}
+	.col-xs-6{
+		width:50%;
+	}
+	.col-xs-5{
+		width:41.66666667%;
+	}
+	.col-xs-4{
+		width:33.33333333%;
+	}
+	.col-xs-3{
+		width:25%;
+	}
+	.col-xs-2{
+		width:16.66666667%;
+	}
+	.col-xs-1{
+		width: 8.33333333%;
+	}
+	.col-xs-0{
+		display: none;
+	}
+	/*1栏共分成12格，每格占相同的百分比，就看一行有几格就行了。这是最小屏幕宽度下设置的几格占一整行多少宽度百分比*/
+	/*xs中s-small，x就是等级，意思是特别小的意思*/
+	/*这里屏幕宽度要小于768px，设置才有效*/
+
+	@media screen and (min-width: 768px){
+
+		.col-sm-1,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-10,.col-sm-11,.col-sm-12{
+			float: left;
+		}
+
+		.col-sm-12{
+			width:100%;
+		}
+		.col-sm-11{
+			width:91.66666667%;
+		}
+		.col-sm-10{
+			width:83.33333333%;
+		}
+		.col-sm-9{
+			width:75%;
+		}
+		.col-sm-8{
+			width:66.66666667%;
+		}
+		.col-sm-7{
+			width:58.33333333%;
+		}
+		.col-sm-6{
+			width:50%;
+		}
+		.col-sm-5{
+			width:41.66666667%;
+		}
+		.col-sm-4{
+			width:33.33333333%;
+		}
+		.col-sm-3{
+			width:25%;
+		}
+		.col-sm-2{
+			width:16.66666667%;
+		}
+		.col-sm-1{
+			width: 8.33333333%;
+		}
+		.col-sm-0{
+			display: none;
+		}
+
+	}
+	/*这里是屏幕宽在768px-992px之间有效*/
+	/*ms-small的意思，屏幕宽度第2小*/
+
+	@media screen and (min-width: 992px){
+
+		.col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-10,.col-md-11,.col-md-12{
+			float: left;
+		}
+
+		.col-md-12{
+			width:100%;
+		}
+		.col-md-11{
+			width:91.66666667%;
+		}
+		.col-md-10{
+			width:83.33333333%;
+		}
+		.col-md-9{
+			width:75%;
+		}
+		.col-md-8{
+			width:66.66666667%;
+		}
+		.col-md-7{
+			width:58.33333333%;
+		}
+		.col-md-6{
+			width:50%;
+		}
+		.col-md-5{
+			width:41.66666667%;
+		}
+		.col-md-4{
+			width:33.33333333%;
+		}
+		.col-md-3{
+			width:25%;
+		}
+		.col-md-2{
+			width:16.66666667%;
+		}
+		.col-md-1{
+			width: 8.33333333%;
+		}
+		.col-md-0{
+			display: none;
+		}
+
+	}
+	/*这里是屏幕宽在992px-1200px之间有效*/
+	/*ms-middle的意思，正常屏幕大小*/
+
+	@media screen and (min-width: 1200px){
+
+		.col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-10,.col-lg-11,.col-lg-12{
+			float: left;
+		}
+
+		.col-lg-12{
+			width:100%;
+		}
+		.col-lg-11{
+			width:91.66666667%;
+		}
+		.col-lg-10{
+			width:83.33333333%;
+		}
+		.col-lg-9{
+			width:75%;
+		}
+		.col-lg-8{
+			width:66.66666667%;
+		}
+		.col-lg-7{
+			width:58.33333333%;
+		}
+		.col-lg-6{
+			width:50%;
+		}
+		.col-lg-5{
+			width:41.66666667%;
+		}
+		.col-lg-4{
+			width:33.33333333%;
+		}
+		.col-lg-3{
+			width:25%;
+		}
+		.col-lg-2{
+			width:16.66666667%;
+			display: block; 
+			/*注意这里，后面可以覆盖前面的，如果不写的话前面的display存在会影响布局*/
+		}
+		.col-lg-1{
+			width: 8.33333333%;
+		}
+		.col-lg-0{
+			display: none;
+		}
+	}
+	/*这里是屏幕宽大于1200px时有效*/
+	/*lg-large的意思，最大屏幕的宽度*/
+</style>
+</head>
+<body>
+	<div class="row">
+		<div class="col-md-12 col-lg-12 col-sm-2 col-xs-3">1</div>
+		<div class="col-md-2 col-lg-2 col-sm-10 col-xs-3">2</div>
+		<div class="col-md-10 col-lg-8 col-sm-5 col-xs-3">3</div>
+		<div class="col-md-0 col-lg-2 col-sm-7 col-xs-2">4</div>
+		<div class="col-md-12 col-lg-12 col-sm-12 col-xs-1">5</div>
+	</div>
+</body>
+</html>

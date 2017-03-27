@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	/*宽度<=600px 背景为红色*/
+	.box{
+		width:200px;
+		height: 200px;
+		background-color:red;
+	}
+	/*在页面900px>=宽度> 600px  时页面背景为pink*/
+	@media (min-width: 600px){
+		.box{
+			background:pink;
+		}
+	}
+	/*在页面宽度> 900px 时页面背景为blue */
+	@media (min-width:900px){
+		.box{
+			background:blue;
+		}
+	}
+	/*注意：后面的样式如果与前面的样式同时满足条件且css相同的话，后面的css会覆盖前面的css*/
+</style>
+</head>
+<body>
+	<div class="box">
+		200,350,550
+	</div>
+</body>
+</html>
