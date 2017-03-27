@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>slideCarouselPractice</title>
+        <style>
+            html,body,p,div,ul,li {
+                padding: 0;
+                margin: 0;
+            } 
+            li {
+                list-style: none;
+            }
+            .clearfix:after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+            .slideWrapper {
+                position: relative;
+                width: 400px;
+                height: 200px;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            .slideCt {
+                position: relative;
+            }
+            .slideWrapper > .slideCt > .imgList img {
+                width: 400px;
+                height: 200px;
+            }
+            .slideWrapper > .slideCt > .imgList {
+                float: left;
+            }
+            span.prev {
+                position: absolute;
+                left: 5%;
+                top: 50%;
+                color: #fff;
+                background: #000;
+                transform: translateY(-50%);
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                line-height: 30px;
+                text-align: center;
+                opacity: 0.5;
+                cursor: pointer;
+            }
+            span.prev:hover {
+                opacity: 1;
+            }
+            span.next {
+                position: absolute;
+                right: 5%;
+                top: 50%;
+                color: #fff;
+                background: #000;
+                transform: translateY(-50%);
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                line-height: 30px;
+                text-align: center;
+                opacity: 0.5;
+                cursor: pointer;
+            }
+            span.next:hover {
+                opacity: 1;
+            }
+            ul.numberIndex {
+                position: absolute;
+                bottom: 5px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100px;
+            }
+            ul.numberIndex > li {
+                float: left;
+                width: 20px;
+                height: 4px;
+                border-radius: 3px;
+                margin: 2px;
+                background: #fff;
+                cursor: pointer;
+
+            }
+            ul.numberIndex > li.visible {
+                background: #555;
+            }
+        </style>
+
+        <script src="http://og4h4hcqu.bkt.clouddn.com/jquery-3.1.1.js"></script>
+
+    </head>
+    <body>
+        <div class="slideWrapper">
+            <ul class="slideCt clearfix">
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""></a></li>
+            </ul>
+            <span class="prev"><</span>
+            <span class="next">></span>
+            <ul class="numberIndex clearfix">
+                <li class='visible'></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+        <script>
+            var $imgWidth = $('.slideCt').children().width()
+            var $imgCount = $('.slideCt').children().length
+            var $item = $('.slideCt').children()
+            var timer
+
+            $('.slideCt').append($item.first().clone())
+            $('.slideCt').prepend($item.last().clone())
+            var $imgRealCount = $('.slideCt').children().length
+
+            $('.slideCt').css({
+            left: 0 - $imgWidth,
+            width: $imgWidth * $imgRealCount
+            })
+
+
+            var current = 0
+            var locked = false
+            var hover = false
+
+            $('.next').click(function () {
+                playNext(current + 1)
+                })
+                $('.prev').click(function () {
+                    playPrev(current - 1)
+                    })
+
+                    function playNext (){
+                        go(current + 1)
+                    }
+                    function playPrev (){
+                        go(current - 1)
+                    }
+
+                    $('.numberIndex').find('li').on('click', function () {
+                        var idx = $(this).index()
+                        console.log(idx)
+                        go(idx)
+                        })
+
+                        function go(index) {
+                        if (timer) {
+                        clearInterval(timer)
+                        }
+                            if (locked) {
+                                return
+                            }
+                            locked = true
+                            var left = - (index + 1) * $imgWidth
+                            $('.slideCt').animate({left: left}, function () {
+                                current = index
+                                if (current === -1) {
+                                    $('.slideCt').css({left: (-4) * $imgWidth})
+                                    current = 3
+                                }
+                                if(current === 4) {
+                                    $('.slideCt').css({left: (-1) * $imgWidth})
+                                    current = 0
+                                }
+                                console.log(current)
+                                setBullet()
+                                if(!hover) {
+                                autoPlay()  // 动画一完成不应该立马autoPlay,应该等到鼠标移出以后再autoPlay,所以要设置状态锁
+                                }
+                                locked = false
+                                })
+                            }
+
+                            $('.slideCt').mouseenter(function () {
+                            console.log('mouseenter')
+                            hover = true
+                            clearInterval(timer)
+                            }).mouseleave(function () {
+                            console.log('mouseleave')
+                            autoPlay()
+                            hover = false
+                            })
+
+
+
+                            function setBullet () {
+                                $('.numberIndex').find('li').eq(current).addClass('visible').siblings().removeClass('visible')
+                            }
+
+                            function autoPlay () {
+                            timer = setInterval (playNext, 3000)
+                            }
+
+                            autoPlay()
+
+                        </script>
+                    </body>
+                </html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>gradientCarousel</title>
+        <style>
+
+            html,body,ul,li,p {
+                padding: 0;
+                margin: 0;
+            }
+            li {
+                list-style: none;
+            }
+            .clearfix {
+                content: "";
+                display: block;
+                clear: both;
+            }
+            .imgList {
+                list-style: none;
+                position: absolute;
+            }
+            .slideWrapper {
+                position: relative;
+                width: 400px;
+                height: 200px;
+            }
+            .slideWrapper > ul.slideCt > li.imgList img {
+                width: 400px;
+                height: 200px;
+            }
+            .next {
+                position: absolute;
+                right: 5%;
+                top: 50%;
+                z-index: 10;
+                transform: translateY(-50%);
+                width: 30px;
+                height: 30px;
+                background: #000;
+                text-align: center;
+                line-height: 30px;
+                border-radius: 30px;
+                color: #fff;
+                cursor: pointer;
+            }
+            .prev {
+                position: absolute;
+                left: 5%;
+                top: 50%;
+                z-index: 10;
+                transform: translateY(-50%);
+                width: 30px;
+                height: 30px;
+                background: #000;
+                text-align: center;
+                line-height: 30px;
+                border-radius: 30px;
+                color: #fff;
+                cursor: pointer;
+            }
+            ul.slideCt > li {
+                opacity: 0;
+                transition: 5s;
+            }
+            ul.slideCt > li.show {
+                opacity: 1;
+                transition: 2s;
+            }
+            ul.slideCt > li.hidden {
+                opacity: 0;
+                transition: 2s;
+            }
+            ul.numberIndex {
+                position: absolute;
+                bottom: 5px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100px;
+            }
+            ul.numberIndex > li {
+                display: inline-block;
+                width: 19px;
+                height: 4px;
+                border-radius: 3px;
+                background: #fff;
+                cursor: pointer;
+            }
+            ul.numberIndex > li.visible {
+                background: #555;
+                <!--transition: 700ms;-->
+            }
+        </style>
+        <script src="http://og4h4hcqu.bkt.clouddn.com/jquery-3.1.1.js"></script>
+    </head>
+    <body>
+        <div class="slideWrapper">
+            <ul class="slideCt">
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""></a></li>
+                <li class="imgList"><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""></a></li>
+            </ul>
+            <span class="prev"><</span>
+            <span class="next">></span>
+            <ul class="numberIndex clearfix">
+                <li class="visible"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+        <script>
+            var locked = false  // 设置状态锁,false为关闭状态
+            var current = 0
+            var timer
+
+            // 绑定click事件
+            $('.next').click( function () {
+            playNext ()
+            console.log('next')
+            } )
+            $('.prev').click( function () {
+            playPrev ()
+            } )
+
+            function playNext() {
+            go(current + 1)
+            }
+            function playPrev() {
+            go(current - 1)
+            }
+
+            function go(index) {  // 如果状态锁为锁为锁上状态,则退出函数
+
+            if (timer) {
+            window.clearInterval (timer)
+            }
+
+            if(locked) { // 确保每一次轮播都是固定的时间间隔
+            return
+            }
+            locked = true // 状态锁锁上
+
+            if (index === 4) {
+            index = 0
+            } else 
+            if (index === -1) {
+            index = 3
+            }
+
+            var $imgIndex= $('.slideCt').children()
+            $imgIndex.eq(current).removeClass('show')
+            $imgIndex.eq(index).addClass('show')
+            current = index
+            setBullet ()
+            autoPlay ()
+            locked = false // 状态锁关闭
+            }
+
+            function setBullet () {
+            $('.numberIndex').children().eq(current).addClass('visible').siblings('li').removeClass('visible')
+            }
+
+            function autoPlay () {
+            timer = setInterval (playNext, 3000)
+            }
+
+
+            $('.slideCt').mouseenter( function () {
+            window.clearInterval(timer)
+            console.log('mouseenter')
+            } ).mouseleave( function () {
+            autoPlay ()
+            console.log('mouseleave')
+            } )
+
+            autoPlay ()
+            go (0)
+
+
+
+
+        </script>
+
+    </body>
+</html>
