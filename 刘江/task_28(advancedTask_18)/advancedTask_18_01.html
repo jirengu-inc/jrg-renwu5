@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>waterfall-flow</title>
+        <style>
+            body {
+                padding: 10px;
+            }
+            .content{
+                position:relative;
+            }
+            .item{
+                position:absolute;
+                width:200px;
+                margin: 5px;
+                transition:1s;
+            }
+            .h1{
+                height:200px;
+                background-color: #f08ca0;
+            }
+            .h2{
+                height:300px;
+                background-color: #a0c8a0;
+            }
+            .h3{
+                height:400px;
+                background-color: #a0a0c8;
+            }
+        </style>
+        <script src="http://og4h4hcqu.bkt.clouddn.com/jquery-3.1.1.js"></script>
+    </head>
+    <body>
+        <div class="content">
+            <div class="item h3">1</div>
+            <div class="item h2">2</div>
+            <div class="item h2">3</div>
+            <div class="item h1">4</div>
+            <div class="item h3">5</div>
+            <div class="item h1">6</div>
+            <div class="item h2">7</div>
+            <div class="item h1">8</div>
+            <div class="item h3">9</div>
+            <div class="item h3">10</div>
+            <div class="item h2">11</div>
+            <div class="item h2">12</div>
+            <div class="item h1">13</div>
+            <div class="item h2">14</div>
+            <div class="item h3">15</div>
+            <div class="item h1">16</div>
+            <div class="load-more"></div>
+        </div>
+        <script>
+
+            $(window).resize(function () {
+            console.log('resize')
+            waterfallFlow()
+            })
+
+
+            function waterfallFlow () {
+
+            var winWidth = $(window).width()
+            var itemWidth = $('.item').outerWidth(true)
+            var columNum = Math.floor(winWidth / itemWidth)
+            var columHeightArray = []
+            for(var i = 0; i < columNum; i++) {
+            columHeightArray.push(0)
+            }
+            $('.item').each(function () {
+            var idx = 0
+            var minHeight = columHeightArray[0]
+            for(var i = 0; i < columNum; i++) {
+            if (columHeightArray[i] < minHeight) {
+            minHeight = columHeightArray[i]
+            idx = i
+            }
+            }
+            $(this).css({
+            left: idx * itemWidth,
+            top: minHeight
+            })
+            columHeightArray[idx] += $(this).outerHeight(true)
+            })
+            }
+
+
+            waterfallFlow()
+
+        </script>
+    </body>
+</html>

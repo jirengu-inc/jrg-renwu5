@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>barrelLayout</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .imgPreview{
+                width: 1000px;
+                margin: 0 auto;
+            }
+            .img-row {
+                margin-bottom: 8px;
+            }
+            .img-row:after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+            .img-box {
+                float: left;
+            }
+        </style>
+        <script src="http://og4h4hcqu.bkt.clouddn.com/jquery-3.1.1.js"></script>
+    </head>
+    <body>
+        <div class="imgPreview"></div>
+        <script>
+
+            var baseHeight = 100
+            var rowList = []
+            var $ct = $('.imgPreview')
+            var imgInfo 
+            var rowHeight
+
+            // step 0 获取图片的地址
+            function getImgUrls(num) { 
+            var color, width, height, urls=[]
+
+            for(var i = 0; i < num; i++) {
+            color = Math.random().toString(16).substring(2,8)
+            width = Math.floor(Math.random() * 100 + 50);
+            height = Math.floor(Math.random() * 30 + 50);
+            urls.push("http://placehold.it/" + width + "x" + height + "/" + color + "/fff")
+            }
+            return urls
+            }
+
+
+
+            // step 1 加载图片
+            function loadImg () { 
+            var imgUrls = getImgUrls(50)
+            $.each(imgUrls, function (idx, url) {
+            var img = new Image()
+            img.src = url
+            img.onload = function () {
+            var originWidth = img.width
+            var originHeight = img.height
+            var ratio = originWidth / originHeight
+            imgInfo = {
+            target: $(img),
+            width: baseHeight * ratio,
+            height: baseHeight,
+            ratio: ratio
+            }
+            render(imgInfo)
+            }
+            })
+            }
+
+            // step 2 计算一行的图片的个数和最终高度
+            function render (imgInfo) { 
+            var rowWidth = 0
+            rowHeight = 0
+            var clientWidth = $('.imgPreview').width()
+            var lastImgInfo = imgInfo
+            rowList.push(imgInfo)
+            $.each(rowList, function (index, imgInfo) {
+            rowWidth += imgInfo.width
+            console.log(rowWidth > clientWidth)
+            if (rowWidth > clientWidth) {
+            rowList.pop()
+            console.log([rowList])
+            rowWidth = rowWidth - lastImgInfo.width
+            rowHeight = clientWidth * baseHeight / rowWidth
+            createRow(rowHeight)
+            rowList = []
+            rowList.push(lastImgInfo)
+            }
+            })
+            }
+
+            // step 3 向页面中添加元素
+            function createRow (rowHeight) {
+            var $imgRow = $('<div class="img-row"></div>')
+            $.each(rowList, function(idx, imgInfo){
+            var $imgBox = $('<div class="img-box"></div>')
+            var $img = imgInfo.target
+            $img.height(rowHeight)
+            $imgBox.append($img)
+            $imgRow.append($imgBox)
+            $('.imgPreview').append($imgRow)
+            })
+            }
+
+            loadImg()
+
+
+        </script>
+
+    </body>
+</html>
