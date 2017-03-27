@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-3.1.1.js"></script>
+    <style>
+        body{
+            position: relative;
+        }
+        #topic1{
+            width: 200px;
+            border: 1px solid #ccc;
+            margin: 20px;
+            padding: 20px;
+        }
+        #bg{
+            border: 1px solid #333;
+            height: 150px;
+            width: 150px;
+        }
+        #btn{
+            margin-top:20px;
+        }
+        #topic2{
+            height: 150px;
+            width: 150px;
+            position: fixed;
+            margin: 20px;
+            top: 0;
+            right: 0;
+            border: 1px solid #ccc;
+        }
+        #topic3{
+            height: 150px;
+            width: 150px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        #topic4{
+            width: 200px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        #topic5{
+            width: 200px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        #content{
+            height: 20px;
+            border: 1px solid #333;
+        }
+        #test{
+            height: 1000px;
+        }
+    </style>
+    <script src="color.js"></script>
+</head>
+<body>
+<div id="topic1">
+    <div id="bg"></div>
+    <button id="btn">换背景色</button>
+</div>
+<div id="topic2">
+    <p id="dis"></p>
+</div>
+<div id="topic3"></div>
+<div id="topic4">
+    <input id="import" type="text">
+</div>
+<div id="topic5">
+    <select name="choose" id="choose">
+        <option value="COD">COD</option>
+        <option value="PAL">PAL</option>
+        <option value="BF2">BF2</option>
+    </select>
+    <p id="content"></p>
+</div>
+<div id="test"></div>
+<script>
+    //点击换背景色
+    $('#btn').on('click',function () {
+        $('#bg').animate({backgroundColor:"red"},300).animate({backgroundColor:"blue"},1000)
+    })
+    //获取窗口垂直滚动距离
+    $(window).on('scroll',function () {
+        $('#dis').text('滚动距离:'+$(window).scrollTop())
+    })
+    //鼠标进入离开改变背景色
+    $('#topic3').on('mouseenter',function () {
+        $('#topic3').css({background:"red"})
+    })
+    $('#topic3').on('mouseleave',function () {
+        $('#topic3').css({background:"white"})
+    })
+    //改变input框颜色,把输入框值小写变大写并在控制台输入
+    $('#import').focus(function () {
+        $(this).css('outlineColor' , 'red')
+    })
+    $('#import').on('keyup',function () {
+        $(this).val($(this).val().toUpperCase())
+        console.log($(this).val())
+    })
+    //当选择 select 后，获取用户选择的内容
+    $('#choose').on('change',function () {
+        $('#content').text($('#choose>option:selected').text())
+    })
+</script>
+</body>
+</html>
