@@ -144,5 +144,5 @@ Slide.prototype.go = function(index) {
 $('.arts')
   .slides({
   width: 500,
-    auto: false
+    auto: true
   })
