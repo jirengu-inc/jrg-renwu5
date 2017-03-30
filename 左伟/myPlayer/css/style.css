@@ -110,8 +110,7 @@ main{
 }
 .bar{
 	height:4px;
-	width:75px;
-	background-color:red;
+	background-color:#dd5044;
 	border-radius:2px;
 	position:absolute;
 	top:0;
@@ -123,7 +122,7 @@ main{
 	border-radius:4px;
 	position:absolute;
 	top:-2px;
-	left:0;
+	left:-2px;
 	background-color:white;
 	cursor:pointer;
 	box-shadow: 0 0 4px white;

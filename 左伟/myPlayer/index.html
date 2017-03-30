@@ -4,8 +4,8 @@
 	<meta charset="utf-8">
 	<title>A miusic player</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<meta name="referrer" content="no-referrer">
 	<!--  这里需要设置防盗链，才能请求到媒体资源 -->
+	<meta name="referrer" content="no-referrer">
 	<meta name="discription" content="一个简易的音乐播放器">
 	<meta name="keywords" content="音乐播放器">
 	<link rel="shortcut icon" href="favicon.ico">
@@ -36,10 +36,9 @@
 				<p class="lyricSingle">歌词</p>
 				<div class="progressBar">
 					<span class="currentTime">00:00</span>
-					<!-- <input type="range" class="progress" value=0> -->
 					<div class="barWap">
 						<div class="bar"></div>
-						<div class="proBall" dragged></div>
+						<div class="proBall" draggble="true"></div>
 					</div>
 					<span class="endTime">04:00</span>
 				</div>
@@ -71,6 +70,5 @@
 		</footer>
 	</div>
 	<script type="text/javascript" src="./js/events.js"></script>
-	<script type="text/javascript" src="./js/progress.js"></script>
 </body>
 </html>

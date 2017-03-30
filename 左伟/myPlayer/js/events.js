@@ -12,6 +12,7 @@ $(function(){
 	btnEvent();
 	autoPlay();
 	timeUpdate();
+	timeInit();
 })
 
 
@@ -233,3 +234,54 @@ function lyricBoxMove(time){
 		}
 	}
 }
+
+
+//当音频未完全加载时，音频对象的duration属性为NaN；
+function timeInit(){
+  $('audio').on('canplay',function(){
+    $('.endTime').html(timeFormat($('audio')[0].duration));
+    timeMove();
+  })
+
+}
+
+function timeMove(){
+  var endTime=$('audio')[0].duration;
+  var barWidth=$('.barWap').width();
+  var moveTime;
+
+  $('audio').on('play',function(){
+  	moveTime=setInterval(function(){
+  		var currentTime=$('audio')[0].currentTime;
+  		var precent=parseInt(currentTime * 100 / endTime) / 100;
+	    $('.currentTime').text(timeFormat(currentTime));
+	    $('.bar').width(barWidth*precent);
+	    $('.proBall').css('left',barWidth*precent+'px');
+	  },1000);
+  });
+
+  $('audio').on('pause',function(){
+  	clearInterval(moveTime);
+  })
+   
+}
+
+function timeFormat(time){
+  var t='';
+  var m=parseInt(time/60);
+  var s=parseInt(time%60);
+  if(m===0){
+    t='00:' + (s<10 ? '0'+s : s);
+  }else{
+    t='0' + m + ':' + (s<10 ? '0'+s : s);
+  }
+  return t;
+}
+
+$('.barWap').on('click',function(e){
+  var offsetX=e.offsetX;
+  var barWidth=$('.barWap').width();
+  var precentPro=offsetX/barWidth;
+  var endTime=$('audio')[0].duration;
+  $('audio')[0].currentTime=endTime*precentPro;
+})
