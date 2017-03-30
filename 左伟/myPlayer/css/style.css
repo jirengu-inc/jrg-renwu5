@@ -1,0 +1,223 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	font-size:16px;
+}
+.icon {
+   width: 48px; 
+   height: 48px;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+}
+.icon:hover{
+	cursor:pointer;
+	color:red;
+}
+.icon:active{
+	color:green;
+}
+.icon.pause{
+	display:none;
+}
+#wrap{
+	width:300px;
+	/*height:500px;*/
+	background-color:#ccc;
+	margin:50px auto;
+	overflow: hidden;
+}
+header{
+	height:50px;
+	line-height: 50px;
+	padding:10px 10px 0 10px;
+	border-bottom:1px solid #ddd;
+	background-color:rgba(210,210,210,0.5);
+}
+header>.icon{
+	width:32px;
+	height:32px;
+}
+header>.headL{
+	float:left;
+}
+header>.headR{
+	float:right;
+}
+footer{
+	height:70px;
+	border-top:1px solid #ddd;
+	text-align:center;
+	background-color:rgba(204,204,204,0.5);
+}
+footer>.contorlBar{
+	padding-top:10px;
+}
+article{
+	height:400px;
+	position:relative;
+	overflow: hidden;
+}
+main{
+	height:400px;
+	background-color:rgba(177,177,177,0.5);
+	text-align:center;
+	position: relative;
+}
+.needle{
+	position: absolute;
+	width:110px;
+	height:160px;
+	top:-20px;
+	left:150px;
+	background-image:url(../img/needle.png);
+	background-size:cover;
+	z-index: 10;
+	-webkit-transform: rotate(-10deg);
+	-webkit-transform-origin:0 0;
+	-webkit-transition:0.5s;
+	transform: rotate(-10deg);
+	transform-origin:0 0;
+	transition:0.5s;
+}
+.needleOn{
+	-webkit-transform:rotate(4deg);
+	-webkit-transition:0.5s;
+	transform:rotate(4deg);
+	transition:0.5s;
+}
+.songName{
+	padding:8px 0 9px 0;
+}
+.lyricSingle{
+	height:47px;
+}
+
+.progressBar{
+	padding:5px 0 10px 0;
+}
+.barWap,.bar,.proBall{
+	display:inline-block;
+}
+.barWap{
+	height:4px;
+	width:150px;
+	background-color:#eee;
+	border-radius:2px;
+	position:relative;
+	top:-3px;
+}
+.bar{
+	height:4px;
+	width:75px;
+	background-color:red;
+	border-radius:2px;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.proBall{
+	width:8px;
+	height:8px;
+	border-radius:4px;
+	position:absolute;
+	top:-2px;
+	left:0;
+	background-color:white;
+	cursor:pointer;
+	box-shadow: 0 0 4px white;
+}
+
+.styleList{
+	position:absolute;
+	top:0;
+	left:-200px;
+	width:200px;
+	height:400px;
+	overflow: auto;
+	background-color:rgba(0,0,0,0.75);
+	color:#fff;
+	z-index: 200;
+}
+.styleList>p{
+	border-bottom:1px solid #fff;
+	padding:5px;
+	cursor:pointer;
+}
+.styleList>p:hover{
+	background-color:rgba(255,255,255,0.75);
+	color:#000;
+}
+p.selected{
+	border-left:6px solid red;
+}
+.lyric{
+	position:absolute;
+	top:0;
+	right:-300px;
+	width:300px;
+	height:400px;
+	overflow: auto;
+	background-color:rgba(0,0,0,0.5);
+	text-align:center;
+	color:#bbb;
+	z-index: 200;
+	overflow: hidden;
+}
+.lyricBox{
+	overflow:auto;
+	position:relative;
+	top:150px;
+}
+.lyricBox p{
+	font-size:13px;
+	height:40px;
+}
+.lyricBox p.light{
+	color:#75b12c;
+	font-size:15px;
+}
+.pic{
+	position: relative;
+	height:250px;
+	-webkit-transition:1s;
+	-webkit-animation:15s around linear infinite paused;
+	-webkit-transform-origin: 50% 50%;
+	animation:15s around linear infinite paused;
+	transition:1s;
+}
+.picAnimate{
+	-webkit-animation-play-state:running;
+	animation-play-state: running;
+}
+@-webkit-keyframes around {
+	0% {-webkit-transform:rotate(0);transform:rotate(0);}
+	50% {-webkit-transform:rotate(180deg);transform:rotate(180deg);}
+	100% {-webkit-transform:rotate(360deg);transform:rotate(360deg);}
+}
+@keyframes around {
+	0% {-webkit-transform:rotate(0);transform:rotate(0);}
+	50% {-webkit-transform:rotate(180deg);transform:rotate(180deg);}
+	100% {-webkit-transform:rotate(360deg);transform:rotate(360deg);}
+}
+.dataPic{
+	width:190px;
+	height:190px;
+	display: inline-block;
+	margin-top:25px;
+	border-radius: 95px;
+}
+.coverPic{
+	position: absolute;
+	top:0;
+	left:25px;
+	display:block;
+	width:250px;
+	height:250px;
+	background-image:url(../img/singlecover.png);
+	background-size:cover;
+}
+audio{
+	display:none;
+}
