@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #content{
+            position: relative;
+            width: 310px;
+            height: 206px;
+            overflow: hidden;
+        }
+        #img-ct{
+            position: absolute;
+        }
+        #img-ct img{
+            width: 310px;
+            height: 206px;
+        }
+        #img-ct:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        #img-ct>li{
+            position: absolute;
+            display: none;
+        }
+        .arrow{
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #4E443C;
+            color: #fff;
+            border-radius: 30px;
+            opacity: 0.8;
+        }
+        .arrow:hover{
+            opacity: 1;
+        }
+        .pre{
+            left: 10px;
+        }
+        .next{
+            right: 10px;
+        }
+        #billet{
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #billet>li{
+            width: 30px;
+            height: 8px;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .action{
+            background: #666;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <ul id="img-ct">
+        <li data-id="0"><a href="javascript:;"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg" alt=""></a></li>
+        <li data-id="1"><a href="javascript:;"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg" alt=""></a></li>
+        <li data-id="2"><a href="javascript:;"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg" alt=""></a></li>
+        <li data-id="3"><a href="javascript:;"><img src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg" alt=""></a></li>
+    </ul>
+    <a class="pre arrow" href="#">&lt;</a>
+    <a class="next arrow" href="#">&gt;</a>
+    <ul id="billet">
+        <li class="action"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script>
+    var $imgCt = $('#img-ct')
+    var $imgs = $('#img-ct>li')
+    var $preBtn = $('.pre')
+    var $nextBtn = $('.next')
+    var $billet = $('#billet>li')
+    var pageIndex = 0
+    var isAnimate = false
+    var imgCount = $imgs.length
+    var imgWidth = $imgs.width()
+    $nextBtn.on('click',function () {
+        playNext()
+    })
+    $preBtn.on('click',function () {
+        playPre()
+    })
+    $billet.on('click',function () {
+        var index = $(this).index()
+        play(index)
+    })
+    play(0)
+    autoPlay()
+    function playNext() {
+        play((pageIndex+1)%imgCount)
+    }
+    function playPre() {
+        play((imgCount+pageIndex-1)%imgCount)
+    }
+    function play(index) {
+        if (isAnimate) return
+        isAnimate = true
+        $imgs.eq(pageIndex).fadeOut(500)
+        $imgs.eq(index).fadeIn(500,function () {
+            isAnimate = false
+        })
+        pageIndex = index
+        setBillet()
+    }
+    function setBillet() {
+        $billet.removeClass('action').eq(pageIndex).addClass('action')
+    }
+    function stopAuto() {
+        clearInterval(clock)
+    }
+    function autoPlay() {
+        clock = setInterval(function () {
+            playNext()
+        },2000)
+    }
+</script>
+</body>
+</html>

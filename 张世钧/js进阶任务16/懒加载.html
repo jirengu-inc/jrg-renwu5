@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            float: left;
+            width: 350px;
+            height: 300px;
+            margin: 20px 50px;
+            list-style: none;
+        }
+        img{
+            width: 350px;
+            height: 300px;
+        }
+        a{
+            text-decoration: none;
+        }
+        #content{
+            width: 950px;
+            margin: 50px auto;
+            padding: 20px 30px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        #list:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <ul id="list">
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/6.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/7.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/8.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/9.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/10.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/12.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/15.jpg"alt=""></a></li>
+        <li><a href="javascript:;"><img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/16.jpg"alt=""></a></li>
+    </ul>
+</div>
+<script>
+   check()
+   $(window).on('scroll',check)
+   function isShow($node) {
+       var $sTop = $(window).scrollTop()
+       var $wHigh = $(window).height()
+       var $oSet = $node.offset().top
+       var $nHigh = $node.outerHeight(true)
+       if ($wHigh+$sTop>$oSet && $nHigh+$oSet>$sTop){
+           return true
+       }else{
+           return false
+       }
+   }
+   function showImg($imgs) {
+       $imgs.each(function () {
+           var imgUrl = $(this).attr('data-src')
+           $(this).attr('src',imgUrl)
+           $(this).addClass('load')
+       })
+   }
+    function check() {
+        $('img').not('.appear').each(function () {
+            if (isShow($(this))){
+                showImg($(this))
+            }
+        })
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #content{
+            position: relative;
+            width: 310px;
+            height: 206px;
+            overflow: hidden;
+        }
+        #img-ct{
+            position: absolute;
+        }
+        #img-ct img{
+            width: 310px;
+            height: 206px;
+        }
+        #img-ct:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        #img-ct>li{
+            float: left;
+        }
+        .arrow{
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #4E443C;
+            color: #fff;
+            border-radius: 30px;
+            opacity: 0.8;
+        }
+        .arrow:hover{
+            opacity: 1;
+        }
+        .pre{
+            left: 10px;
+        }
+        .next{
+            right: 10px;
+        }
+        #billet{
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #billet>li{
+            width: 30px;
+            height: 8px;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .action{
+            background: #666;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <ul id="img-ct">
+        <li data-id="0"><a href="javascript:;"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg" alt=""></a></li>
+        <li data-id="1"><a href="javascript:;"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg" alt=""></a></li>
+        <li data-id="2"><a href="javascript:;"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg" alt=""></a></li>
+        <li data-id="3"><a href="javascript:;"><img src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg" alt=""></a></li>
+    </ul>
+    <a class="pre arrow" href="#">&lt;</a>
+    <a class="next arrow" href="#">&gt;</a>
+    <ul id="billet">
+        <li class="action"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script>
+    var $imgCt = $('#img-ct')
+    var $imgs = $('#img-ct>li')
+    var $preBtn = $('.pre')
+    var $nextBtn = $('.next')
+    var $billets = $('#billet>li')
+    var pageIndex = 0
+    var isAnimate = false
+    var imgCount = $imgs.length
+    var imgWidth = $imgs.width()
+    $imgCt.append($imgs.first().clone())
+    $imgCt.prepend($imgs.last().clone())
+    $imgCt.width((imgCount+2)*imgWidth)
+    $imgCt.css({left:-imgWidth})
+    $nextBtn.click(function () {
+        playNext(1)
+    })
+    $preBtn.click(function () {
+        playPre(1)
+    })
+    $billets.click(function () {
+        var index = $(this).index()
+        if (index > pageIndex){
+            playNext(index-pageIndex)
+        }else if (index < pageIndex){
+            playPre(pageIndex-index)
+        }
+    })
+    function playNext(len) {
+        if (isAnimate) return
+        isAnimate = true
+        $imgCt.animate({
+            left: '-='+len*imgWidth
+        },function () {
+            pageIndex += len
+            if (pageIndex === imgCount){
+                pageIndex = 0
+                $imgCt.css({left: -imgWidth})
+            }
+            setBillet()
+            isAnimate = false
+        })
+    }
+    function playPre(len) {
+        if (isAnimate) return
+        isAnimate = true
+        $imgCt.animate({
+                left: '+=' + len * imgWidth
+            },
+            function () {
+                pageIndex -= len
+                if (pageIndex < 0) {
+                    pageIndex = imgCount - 1
+                    $imgCt.css({left: -imgCount * imgWidth})
+                }
+                setBillet()
+                isAnimate = false
+            })
+    }
+    function setBillet() {
+        $billets.removeClass('action').eq(pageIndex).addClass('action')
+    }
+</script>
+</body>
+</html>

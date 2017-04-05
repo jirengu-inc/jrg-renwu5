@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #content{
+            position: relative;
+        }
+        .item{
+            position: absolute;
+            width: 200px;
+            margin-right: 10px;
+            margin-top: 10px;
+            transition: all 1s;
+        }
+        .h1{
+            height: 200px;
+            background: #ccc;
+        }
+        .h2{
+            height: 300px;
+            background: #c14d21;
+        }
+        .h3{
+            height: 400px;
+            background: #22aaaa;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <div class="item h1">1</div>
+    <div class="item h3">2</div>
+    <div class="item h2">3</div>
+    <div class="item h1">4</div>
+    <div class="item h1">5</div>
+    <div class="item h3">6</div>
+    <div class="item h3">7</div>
+    <div class="item h2">8</div>
+    <div class="item h1">9</div>
+    <div class="item h3">10</div>
+    <div class="item h3">11</div>
+    <div class="item h3">12</div>
+    <div class="item h2">13</div>
+    <div class="item h2">14</div>
+</div>
+<script>
+    function render() {
+        var nodeWidth = $('.item').outerWidth(true)
+        var colNum = Math.floor($(window).width()/nodeWidth)
+        var sumHeight = []
+        for (var i=0;i<colNum;i++){
+            sumHeight.push(0)
+        }
+        $('.item').each(function () {
+            var idx = 0
+            var minSumHeight = sumHeight[0]
+            for (var i=0;i<sumHeight.length;i++){
+                if (sumHeight[i] < minSumHeight){
+                    idx = i
+                    minSumHeight = sumHeight[i]
+                }
+            }
+            $(this).css({
+                'left': idx*nodeWidth,
+                'top': minSumHeight
+            })
+            sumHeight[idx] += $(this).outerHeight(true)
+        })
+    }
+    render()
+    $(window).on('resize',function () {
+        render()
+    })
+</script>
+</body>
+</html>
