@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js进阶任务18/jquery-3.1.1.js"></script>
+    <style>
+        #content{
+            height: 2000px;
+        }
+        a{
+            position: fixed;
+            bottom: 100px;
+            right: 60px;
+        }
+        #one{
+            height: 200px;
+            width: 400px;
+            background: #22aaaa;
+            margin: 30px;
+        }
+        #two{
+            height: 200px;
+            width: 400px;
+            background: #c14d21;
+            margin: 30px;
+        }
+        #three{
+            height: 200px;
+            width: 400px;
+            background: #4E443C;
+            margin: 30px;
+        }
+        #four{
+            height: 200px;
+            width: 400px;
+            background: #e25f31;
+            margin: 30px;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+    <div id="four"></div>
+</div>
+<script>
+    function Gotop(ct) {
+        this.ct = ct
+        //console.log(this)
+        this.target = $('<a href="javascript:;">回到顶部</a>')
+    }
+    Gotop.prototype.bindEvent = function () {
+        var nThis = this
+        $(window).on('scroll',function () {
+            //console.log(this)
+            if ($(window).scrollTop() < 100){
+                //console.log(this)
+                nThis.target.hide()
+            }else {
+                //console.log(this)
+                nThis.target.show()
+            }
+        })
+        this.target.on('click',function () {
+            $(window).scrollTop(0)
+        })
+    }
+    Gotop.prototype.createNode = function () {
+        console.log(this)
+        this.ct.append(this.target)
+    }
+    var goTop = new Gotop($('#content'))
+    goTop.createNode()
+    goTop.bindEvent()
+</script>
+</body>
+</html>
