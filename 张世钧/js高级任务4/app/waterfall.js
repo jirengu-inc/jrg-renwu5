@@ -37,7 +37,7 @@ var water = (function () {
             var $node = renderData(nodeList),
                 defereds = [];
             $node.find('img').each(function () {
-                var defer = $.deferred();
+                var defer = $.Deferred();
                 $(this).load(function () {
                     defer.resolve();
                 })
