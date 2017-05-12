@@ -313,11 +313,11 @@ ul.bullet li.active {
 
 #pic-ct {
     position: relative;
-    border: 1px solid;
 }
 
 #pic-ct .item {
-    position: absolute;
+    /*position: absolute;*/
+    float: left;
     padding: 0 0 10px 0;
     width: 280px;
     margin: 10px;
@@ -443,7 +443,7 @@ ul.bullet li.active {
 }
 
 .timeline-last {
-    margin-bottom: 0px !important;
+    margin-bottom: 0 !important;
 }
 
 .timeline-last .timeline-pic {
