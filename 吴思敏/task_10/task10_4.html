@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta charset="utf-8"/>
+	<title>task10_4</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.layout{
+		width: 600px;
+        margin: 0 auto;
+      }
+    .h-navbar{
+
+    	list-style: none;
+    	background-color: #f1f1f1;
+    	margin: 10px 0;
+        padding: 0;
+        list-style: none;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+        /*overflow:hidden;*/
+        /*overflow: auto;*/
+
+    }
+   
+    .h-navbar:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+    .h-navbar li{
+    	float: left;
+    	position: relative;
+       
+
+
+    }
+    .h-navbar li a{
+    	text-decoration: none;
+    	display: block;
+    	padding: 8px 16px;
+    	color:black;
+    	/*background: red;*/
+    }
+    .h-navbar li a:hover {
+     /*color: #000;*/
+     background-color: #ccc;
+    }
+
+    .h-navbar .children{
+    	position: absolute;
+    	display: none;
+    	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+    	top: 100%;
+        left: 0;
+        min-width: 160px;
+    }
+     .h-navbar > li:hover .children {
+     	display: block;
+     }
+	</style>
+	
+</head>
+<body>
+<div class="layout">
+	<ul class="h-navbar">
+		<li><a href="#">首页</a></li>
+		<li><a href="#">作品</a></li>
+		<li><a href="#">更多</a>
+            <div class="children">
+            	<a href="#">GitHub</a>
+            	<a href="#">博客</a>
+            	<a href="#">知乎</a>
+            </div>
+		</li>
+        
+	</ul>
+</div>
+</body>
+</html>

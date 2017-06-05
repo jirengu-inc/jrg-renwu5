@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task10_2</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+		font-family: arial;
+	}
+	.layout{
+		width: 600px;
+		margin: 0 auto;
+		
+	}
+
+	
+    .h-collection{
+    	border:1px solid #ccc;
+    	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+    	margin:20px 0;
+    	 padding-bottom: 16px;
+    }
+    .clearfix .half{
+    	 width: 50%;
+            float: left;
+            line-height: 1.4;
+    }
+	 .clearfix:after{
+        content:'';
+        display: block;
+        clear: both;
+        }
+	.h-collection form {
+            margin: 16px;
+        }
+         .h-collection form>div {
+            margin-top: 16px;
+        }
+
+	.h-collection label {
+            color: #757575;
+            vertical-align: middle;
+        }
+
+	h2{
+		padding: 15px 16px;
+		background-color: #009688;
+		color:#fff;
+	}
+	 .h-collection input[type=text],
+        .h-collection textarea {
+            padding: 8px 0;
+            display: block;
+            border: none;
+            border-bottom: 1px solid #808080;
+            width: 100%;
+        }
+        
+        .h-collection input[type=text]:focus,
+        .h-collection textarea:focus {
+            outline: none;
+        }
+        .h-collection input[type=submit] {
+            padding: 8px 16px;
+            color: #fff;
+            background-color: #009688;
+            border: 0;
+        }
+
+
+	</style>
+</head>
+<body>
+<div class="layout">
+	<div class="h-collection">
+		<h2>信息收集表</h2>
+		<form action=" " method="post">
+			<div>
+				<label for="name">姓名</label>
+				<input type="text" id="name" name="name">
+			</div>
+			<div>
+				<label for="qq">QQ</label>
+				<input type="text" id="qq" name="qq">
+			</div>
+			<div>
+				<label for="words">要说的话</label>
+				<textarea id="words" name="words" cols="30" rows="4"></textarea>
+			</div>
+			<div class="clearfix">
+			    <div class="half">
+			    	<input type="checkbox" id="milk" name="drinks" checked="checked" >
+				    <label for="milk">Milk</label></br>
+				    <input type="checkbox" id="sugar " name="drinks">
+				    <label for="sugar">Sugar</label></br>
+				    <input type="checkbox" id="lemon" name="drinks">
+				    <label for="lemon">Lemon</label></br>
+			    </div>
+				<div class="half">
+					<input type="radio" id="male" name="gender" value="male" checked="">
+					<label for="male">Male</label></br>
+					<input type="radio" id="female" name="gender" value="female" >
+					<label for="female">Female</label>
+				</div>
+			</div>
+			<div>
+				<input type="submit" value="提交">
+			</div>
+		</form>
+	</div>
+</div>
+
+</body>
+</html>
