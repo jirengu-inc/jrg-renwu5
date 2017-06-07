@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task11_1三栏布局</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+     .menu{
+     	width: 100px;
+     	height: 500px;
+     	background: pink;
+     	float: left;
+
+     }
+     #content:after{
+     	content:"";
+     	display: block;
+     	clear: both;
+     }
+     .aside{
+     	width: 200px;
+     	height: 500px;
+     	background:yellow;
+     	float: right;
+
+     }
+     .main{
+     	margin-left: 110px;
+     	margin-right: 210px;
+     	height: 500px;
+     	background: #ccc;
+     
+     }
+     .footer{
+     	background: blue;
+     }
+	</style>
+</head>
+<body>
+<div id="content">
+	<div class="menu">menu</div>
+	<div class="aside">aside</div>
+	<div class="main">main</div>
+</div>
+<div class="footer">footer</div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<title>task11_5实现</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+      body{
+        margin: 0;
+
+      }
+      ul,li{
+        padding: 0;
+      }
+       .left_top:after{
+        content:"";
+        display: block;
+        clear: both;
+
+     }
+      .wrapper{
+        
+        display: flex;
+        border-top: 2px solid #ccc;
+        border-bottom: 2px solid #ccc;
+        margin: 15px 30px;
+        
+      }
+      aside{
+        /*min-height: 300px;*/
+        width: 900px;
+        font-family: "微软雅黑";
+        margin: 10px 0;
+       
+      }
+
+       aside li,p,button{
+        font-size: 25px;
+
+     }
+
+    .left_top :nth-child(3){
+        color: #ccc;
+     }
+     .left_top{
+        display: flex;
+        align-items: center;
+     }
+      .left_top li{
+        padding-right: 10px;
+        float: left;
+        list-style: none;  
+      
+
+
+     }
+      .content_main{
+    margin-top: -10px;
+    line-height: 40px;
+    
+    }
+     h1{
+        font-size: 35px;
+
+     }
+
+      main{
+        /*min-height: 300px;*/
+        flex-grow: 1;
+      
+      }
+
+      main img{
+       
+       padding: 60px 20px;
+     }
+
+     button{
+        border:2px solid red;
+        padding: 5px 10px;
+        color: red;
+        border-radius: 5px;
+        background: none;
+        font-weight: bold;
+        opacity: 0.7;
+        cursor: pointer;
+        outline:none;
+        
+     }
+ 
+	</style>
+</head>
+<body>
+
+	<div class="wrapper">
+		<aside class="content_left">
+		  <ul class="left_top">
+
+               <li><img src="imgs/000_03.gif" alt="头像" title="林慕之"></li>
+               <li>林慕之</li>
+               <li>8小时前</li>
+            </ul>
+		    <div class="content_main">
+               <h1>坚持“读书”这些年，人生真是太值了！</h1>
+               <p>2017.5.27|NO.18 前几天，在国内大学的朋友给我发来微信。她说： 5年前，刚进大学的时候，我们是一样的起点，当时我和你一样坚持不断学习...</p>
+               <button>读书</button>
+            </div>
+
+		</aside>
+		
+		   <main > 
+		  <img src="imgs/222_03.gif" alt="广告"/>
+	       </main>
+
+	</div>
+	
+
+</body>

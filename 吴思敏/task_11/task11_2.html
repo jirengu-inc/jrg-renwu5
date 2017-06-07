@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task11_2二栏布局</title>
+	<meta charset="utf-8">
+	<style type="">
+	
+     #content:after{
+     	content:"";
+     	display: block;
+     	clear: both;
+     }
+     .aside{
+     	width: 200px;
+     	height: 500px;
+     	background:yellow;
+     	float: left;
+
+     }
+     .main{
+     
+     	height: 500px;
+     	background: pink;
+     	margin-left: 210px;
+     	/*float: left;*/
+
+     }
+      .footer{
+     	background: #ccc;
+     }
+	</style>
+</head>
+<body>
+<div id="content">
+	<div class="aside">aside</div>
+	<div class="main">main</div>
+</div>
+<div class="footer">footer</div>
+</body>
+</html>
