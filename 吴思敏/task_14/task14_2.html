@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task14_我的项目</title>
+	<meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="font/iconfont.css">
+	<style type="text/css">
+    body{
+        font-family: "微软雅黑";
+        font-size: 16px;
+        /*margin: 0 0;*/
+        background: #FFF2F8;
+    }
+   .layout{
+    width: 900px;
+    margin: 0 auto;
+    border: 1px solid #ccc;  
+    background: #eee;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)!important;
+    border-radius: 2px;
+  }
+   .header{
+    display: flex;
+    justify-content:space-between; 
+    padding: 25px;
+   }
+   .content{
+    padding: 0 25px;
+   }
+   aside{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background: red; */
+    width: 450px;
+   }
+   aside img{
+    border:1px solid #ccc;
+    padding: 10px;
+    background: #fff;
+   }
+   .img_name{
+    margin: 0 20px;
+   }
+   .con{
+     border-bottom: 1px solid #ccc;
+     width: 350px;
+     height: 40px;
+     line-height: 40px;
+     position: relative;
+   }
+   .con_items{
+    /*background: green;*/
+    list-style: none;
+    padding-left: 0;
+    position: relative;
+   }
+   .con_items li{
+    padding:10px 20px;
+   
+   }
+    b{
+      margin-left: -20px;
+    }
+   .item:after{
+    content: "";
+    position: absolute;
+    top: 17px;
+    left: 12px;
+    display: block;
+    height: 200px;
+    border-left: 1px solid #000;
+   }
+   .item{
+    /*list-style: disc;*/
+    margin-left:15px; 
+   }
+   
+   .content:last-child{
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    justify-content: space-between;
+
+   }
+   .footer_top{
+    border-bottom: 1px solid #ccc;
+     width: 350px;
+     height: 40px;
+     line-height: 40px;
+     position: relative;
+   }
+ .footer_main{
+  margin-left: 60px;
+
+ }
+ 
+.iconfont{
+  width: 20px;
+  height: 20px;
+}
+
+.items_last{
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  
+
+
+}
+
+i{
+  padding-right: 20px;
+  margin-left: -15px;
+
+}
+
+.item_pag{
+margin-left: 20px;
+}
+
+b{
+  padding-right:10px; 
+}
+.icon-dian{
+  font-size: 18px;
+}
+
+	</style>
+
+
+
+</head>
+<body>
+<div class="layout">
+<div class="header">  
+    <aside class="content_img">
+     <img src="images/portrait.jpg" width="150" height="200px" alt="" title="">
+     <div class="img_name">
+     <h3>SIMIN_JUN</h3>
+     <p>应聘岗位：前端工程师</p>
+     </div>
+    </aside>
+    <main> 
+      <div class="con">
+      <h2>CONTACTS</h2>
+      </div>
+      <ul class="con_items">
+      <li><b>A</b>59 Somewhere Street,NY,USA</li>
+      <li><b>M</b>12 395 394 3048</li> 
+      <li><b>E</b>steve@gmail.com</li>  
+      <li><b>B</b>www.behance.net/design</li>  
+       
+     </ul>
+         </main>
+</div>
+<div class="content">
+    <div class="con"><h2>WORK EXPERIENCE</h2></div>
+    <ul class="con_items item">
+      <li><i class="iconfont icon-dian"></i><span>college</span>
+      <p class="item_pag">Duis autem veleum iriure dolor in hendrerit in vulputate velit esse molestie consequat,vel illum dolore eu feugiat nulla facilisis at vero.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse.</p></li>
+      <li><i class="iconfont icon-dian"></i><span>college</span>
+      <p class="item_pag">Duis autem veleum iriure dolor in hendrerit in vulputate velit esse molestie consequat,vel illum dolore eu feugiat nulla facilisis at vero.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse.</p></li>   
+      
+
+     </ul>
+</div>
+<div class="content ">
+    <div class="con"><h2>WORK EXPERIENCE</h2></div>
+    <ul class="con_items item">
+       <li><i class="iconfont icon-dian"></i><span>college</span>
+      <p class="item_pag">Duis autem veleum iriure dolor in hendrerit in vulputate velit esse molestie consequat,vel illum dolore eu feugiat nulla facilisis at vero.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse.</p></li>
+      <li><i class="iconfont icon-dian"></i><span>college</span>
+      <p class="item_pag">Duis autem veleum iriure dolor in hendrerit in vulputate velit esse molestie consequat,vel illum dolore eu feugiat nulla facilisis at vero.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse.</p></li>   
+      
+     </ul>
+</div>
+<div class="content">
+    <div class="footer_asider">
+    <div class="footer_top"><h2>WORK EXPERIENCE</h2></div>
+    <ul class="con_items itemm">
+      <li><i class="iconfont icon-addition"></i><span>college</span>
+      <p class="item_pag">Duis autem veleum iriure dolor in hendrerit in vulputate velit esse molestie consequat,vel illum dolore eu feugiat nulla facilisis at vero.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse.</p></li>
+      <li><i class="iconfont icon-addition"></i><span>college</span>
+      <p class="item_pag">Duis autem veleum iriure dolor in hendrerit in vulputate velit esse molestie consequat,vel illum dolore eu feugiat nulla facilisis at vero.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse.</p></li>   
+         
+     
+     </div>
+     <div class="footer_main">
+     <div class="footer_top"><h2>WORK EXPERIENCE</h2></div>
+    <ul class="con_items items_last">
+      <li><i class="iconfont icon-addition"></i>HTML&CSS</li>
+      <li><i class="iconfont icon-addition"></i>JQUERY</li>   
+      <li><i class="iconfont icon-addition"></i>HTML&CSS</li>   
+      <li><i class="iconfont icon-addition"></i>JAVASCRIPT</li>   
+      <li><i class="iconfont icon-addition"></i>PHOTOSHOP</li>
+      <li><i class="iconfont icon-addition"></i>PHOTOSHOP</li>        
+      <li><i class="iconfont icon-addition"></i>PHOTOSHOP</li>  
+     </ul>
+     </div>
+</div>
+</div>
+</body>
+</html>
+
