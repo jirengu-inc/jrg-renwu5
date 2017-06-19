@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task15</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="font/iconfont.css">
+	<style type="text/css">
+	*{
+		margin: 0 0;
+		padding: 0 0;
+		font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+	}
+     .layout{
+     	margin: 0 auto;
+     }
+     .out-first{
+     	background: url(images/header-bg.jpg);
+
+     }
+     .wrap{
+     	width: 1140px;
+     	margin: 0 auto;
+     }
+     
+     .header{
+     	display: flex;
+     	align-items: center;
+     	height: 70px;
+     	justify-content: space-between;
+  
+     }
+    .log a{
+    	text-decoration: none;
+    	color: #fed136;
+    	font-size: 1.5em;
+    	font-style: italic;
+
+    }
+    
+     .items-top{
+     	list-style: none;
+     	/*width: 490px;*/
+     	display: flex;
+     	justify-content:space-between;
+
+
+     }
+     .items-top li a{
+     	
+     	display: block;
+     	margin-left: 15px;
+     	padding: 15px;
+     	text-decoration: none;
+     	color: #fff;
+     	border-radius: 3px;
+     	     	
+     }
+     .items-top li a:hover {
+     	color: #fed136;
+     }
+  
+
+     .content{
+     	text-align: center;
+     	color: #fff;
+     	padding: 220px 0;
+     }
+     .content h1{
+
+        font-style: italic;
+        font-size: 40px;
+        line-height: 40px;
+        margin-bottom: 25px;
+
+     }
+     .content p{
+        font-weight: 700;
+        font-size: 75px;
+        line-height: 75px;
+        margin-bottom: 50px;
+
+     }
+     .content a{
+     	text-decoration: none;
+     	color: #fff;
+     	font-size: 18px;
+     	font-weight: 700;
+     	background: #fed136;
+     	padding: 25px 42px;
+     	border-radius: 3px;
+     }
+     .content a:hover{
+     	background: yellow;
+     }
+     /*第二个*/
+     .service-wrap{
+     	padding: 100px 0;
+     	margin: 0 auto;
+     	width: 1140px;
+
+     }
+
+     .service-text{
+     	width: 100%;
+     	text-align: center;
+     }
+     .service-text h1{
+     	padding: 20px 0;
+     	font-size: 40px;
+     	font-weight: 700;
+     	
+     }
+     
+     .service-text p{
+     	font-style: italic;
+     	color: #777;
+        margin-bottom: 60px;
+
+     }
+     .service-item{
+     	display: flex;
+     	line-height: 20px;
+
+     }
+     .service-item div{
+     	margin: 40px 20px;
+     	text-align: center;
+
+     }
+     .iconfont-item{
+     	font-size: 50px;
+     	color: #fff;
+     	display: block;
+     	width: 100px;
+     	background:#fed136;
+     	height: 100px;
+     	border-radius: 50%;
+     	line-height: 100px;
+     	margin: 25px auto;
+
+     }
+     .service-item h4{
+     	padding-bottom: 10px;
+     }
+     .service-item p{
+     	color: #777;
+     	font-size: 14px;
+     }
+     /*第三个*/
+     .out-wrap{
+     	background: #f7f7f7;
+     }
+     .pro-item{
+      display: flex;
+      flex-wrap:wrap;
+      justify-content: space-between;
+      text-align: center;
+      margin-top: 20px;
+     }
+     .pro-item div{
+     	width: 360px;
+     	margin-top: 30px;
+     	background: #fff;
+     	position: relative;
+     	cursor: pointer;
+     }
+     .pro-item div:hover .wrap-ico{
+     	opacity: 0.7;
+     	z-index: 2;
+     	background: #fed136;
+     }
+     
+     .wrap-ico{
+     	position: absolute;
+     	height: 260px;
+        line-height: 260px;
+     	width: 100%;
+     	z-index: -1;
+     	top: -30px;
+     	left: 0;
+     }
+     .pro-item img{
+     	margin-bottom: 30px;
+     	position: absolute;
+     	top: 0;
+     	left: 0;    	
+     }
+     .icon-center{
+     	font-size: 50px;    	
+     	color:#fff;
+     }
+     .pro-item p{
+     	padding: 20px 0;
+     	font-style: italic;
+     	color: #777;
+     }
+     /*第四个*/
+     ol,ul{
+     	list-style: none;
+     }
+
+     .timeline{
+     	width: 1140px;
+     	margin-left: auto;
+     	margin-right: auto;
+     	margin-top: 60px;
+
+     }
+     .timeline img, .summary-last-img{
+     	width: 156px;
+     	height: 156px;
+     	border:7px solid #F1F1F1;
+     	border-radius: 50%;
+     }
+     .timeline > li{
+     	text-align: center;
+     	position: relative;
+     	padding: 0 0 125px 0;
+     	/*background: yellow;*/
+     }
+     .timeline > li:last-child{
+     	padding-bottom: 0;
+     }
+     .timeline > li > .summary{
+     	position: absolute;
+     	right: 50%;
+     	margin-right: 110px;
+     	text-align: right;
+     	top: 0;
+     	width: 20em;
+     }
+     .timeline > li:nth-child(even) > .summary{
+     	left: 50%;
+     	margin-left: 110px;
+     	text-align: left;
+
+     }
+
+     .timeline > li:after{
+     	content: "";
+     	display: block;
+     	position: absolute;
+     	left: 50%;
+     	top: 0;
+     	border-left: 2px solid #F1F1F1;
+     	margin-left: 1px;
+     	height: 100%;
+     	z-index: -1;
+     }
+     .summary h2, time,.summary-last-img p{
+     	font-size: 18px;
+     	font-weight: 700;
+     	padding: 10px 0;
+     }
+     .summary p{
+     	color: #777;
+     	font-size: 14px;
+     }
+     .summary-last-img {
+     	background:#fed136;
+     	margin: 0 auto;
+
+     }
+     .summary-last-img p{
+     	margin-top: 40px;
+     	color: #fff;
+     }
+
+     /*第五个*/
+     
+     
+     .member-item{
+     	display: flex;
+     	justify-content: space-around;
+
+     }
+     .member-item div{
+     	margin: 40px 0px;
+     	text-align: center;
+     	/*background: yellow;*/
+     	/*display: flex;*/
+
+
+
+     }
+     .member-item img{
+     	border-radius: 50%;
+     	border:5px solid #fff;
+
+     }
+     .member-item h4{
+     	padding-top: 10px;
+     }
+     .member-item p{
+     	color: #777;
+     	font-size: 14px;
+     	padding-top: 10px;
+     	padding-bottom: 20px;
+     
+     }
+     .item-footer{
+     	text-align: center;
+     	margin: 10px 0;
+     }
+     /*第六*/
+     .wrap-imgs{
+     	display: flex;
+     	height: 150px;
+     	/*background: yellow;*/
+     	align-items: center;
+     	justify-content: space-around;
+     }
+     /*第七*/
+     .footer-h1{
+     	color: #fff;
+     }
+     .out-footer{
+     	background: url(images/bag.jpg);
+     }
+     form{
+     	display: flex;
+     	justify-content: space-around;
+     	flex-wrap: wrap;
+     	margin: 60px 0;
+
+     }
+     .form-group{
+     	width: 500px;
+     	height: 20px;
+     	margin-bottom: 70px;
+
+     }
+     
+     	
+     
+     .form-md input,textarea{
+     	width: 100%;
+     	height: 100%;
+     	border-radius: 3px;
+     	border:1px solid #ccc;
+     	font-size: 14px;
+     	padding: 20px ;
+     	text-transform: uppercase;
+     	font-weight: 700;
+     	outline: none;
+
+     }
+    .form-txt{
+    	width: 500px;
+    	height: 200px;
+     	/*margin: 20px 0;*/
+     
+    }
+     .form-btn button{
+     	font-size: 20px;
+     	border-radius: 3px;
+     	border:0;
+     	background: #fed136;
+     	padding: 20px 40px;
+     	color: #fff;
+     	font-weight: 700;
+     	outline: none;
+     	cursor: pointer;
+
+     }
+     .form-btn button:hover{
+     	background: #FEE536
+	   }
+
+     .icon-twitter, .icon-facebook, .icon-linkedin{
+     	margin: 0 5px;
+     	font-size: 20px;
+     	padding: 10px;
+     	background: black;
+     	color: #fff;
+     	border-radius: 50%;
+     }
+     .wrap-footer{
+     	display: flex;
+     	justify-content: space-around;
+     	height: 90px;
+     	/*background: green;*/
+     	align-items: center;
+     }
+     .wrap-footer a{
+     	text-decoration: none;
+     	color: #fed136;
+     }
+
+	</style>
+
+</head>
+<body>
+<div class="layout">
+    <div class="out-first">
+	<div class="wrap">
+		<div class="header">
+			<div class="log"><a href="#">Sart Bootstrap</a></div>
+			<ul class="items-top">
+				<li><a href="#">SERVICES</a></li>
+				<li><a href="#">PORTFOLIO</a></li>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">TEAM</a></li>
+				<li><a href="#">CONTACT</a></li>
+			</ul>
+		</div>
+		<div class="content">
+			<h1>Welcome To Our Studio!</h1>
+			<p>IT'S NICE TO MEET YOU</p>
+			<a href="#">TELL ME MORE</a>
+		</div>
+	</div>	
+	</div>
+	<!-- 第二个 -->
+	<div class="service-wrap">
+		<div class="service-text">
+			<h1>SERVICES</h1>
+			<p>Lorem ipsum dolor sit amet consectetur.</p>
+		</div>
+		<div class="service-item">
+			<div>
+				<i class="icon-gouwuche iconfont iconfont-item"></i>
+				<h4>E-Commerce</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+			</div>
+			<div>
+				<i class="icon-diannao iconfont iconfont-item"></i>
+				<h4>Responsive Design</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+			</div>
+			<div>
+				<i class="icon-mima iconfont iconfont-item"></i>
+				<h4>Web Security</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+			</div>
+		</div>
+	</div>
+	<!-- 第三个 -->
+	<div class="out-wrap">
+	<div class="service-wrap">
+	    <div class="service-text">
+			<h1>SERVICES</h1>
+			<p>Lorem ipsum dolor sit amet consectetur.</p>
+		</div>
+	
+	    <div class="pro-item">
+			<div>
+			    <div class="wrap-ico">
+			    <i class="icon-mima iconfont icon-center"></i>
+			    </div>
+				<img src="images/1.png" width="360px" height="260px">
+				<h4>Round Icons</h4>
+				<p>Graphic Design</p>
+			</div>
+			<div>
+			    <div class="wrap-ico">
+			    <i class="icon-mima iconfont icon-center"></i>
+			    </div>
+				<img src="images/1.png" width="360px">
+				<h4>Startup Framework</h4>
+				<p>Website Design</p>
+			</div>
+			<div>
+			    <div class="wrap-ico">
+			    <i class="icon-mima iconfont icon-center"></i>
+			    </div>
+				<img src="images/1.png" width="360px">
+				<h4>Treehouse</h4>
+				<p>Website Design</p>
+			</div>
+			<div>
+			    <div class="wrap-ico">
+			    <i class="icon-mima iconfont icon-center"></i>
+			    </div>
+				<img src="images/1.png" width="360px">
+				<h4>Golden</h4>
+				<p>Website Design</p>
+			</div>
+			<div>
+			    <div class="wrap-ico">
+			    <i class="icon-mima iconfont icon-center"></i>
+			    </div>
+				<img src="images/1.png" width="360px">
+				<h4>Escape</h4>
+				<p>Website Design</p>
+			</div>
+			<div>
+			    <div class="wrap-ico">
+			    <i class="icon-mima iconfont icon-center"></i>
+			    </div>
+				<img src="images/1.png" width="360px">
+				<h4>Dreams</h4>
+				<p>Website Design</p>
+			</div>
+		</div>
+	</div>
+    </div>
+    <!-- 第四个 -->
+    <div class="service-wrap">
+	    <div class="service-text">
+			<h1>ABOUT</h1>
+			<p>Lorem ipsum dolor sit amet consectetur.</p>
+		</div>
+	
+	    <ol class="timeline">
+	    	<li>
+	    		<img src="images/4.jpg" alt="">
+	    		<div class="summary">
+	    		    <time>2009-2011</time>
+	    		    <h2>Our Humble Beginnings</h2>
+	    		    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+	    		</div>
+	    	</li>
+	    	<li>
+	    		<img src="images/4.jpg" alt="">
+	    		<div class="summary">
+	    		    <time>2009-2011</time>
+	    		    <h2>Our Humble Beginnings</h2>
+	    		    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+	    		</div>    
+	    	</li>
+	    	<li>
+	    		<img src="images/4.jpg" alt="">
+	    		<div class="summary">
+	    		    <time>2009-2011</time>
+	    		    <h2>Our Humble Beginnings</h2>
+	    		    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+	    		</div>    
+	    	</li>
+	    	<li>
+	    		<img src="images/4.jpg" alt="">
+	    		<div class="summary">
+	    		    <time>2009-2011</time>
+	    		    <h2>Our Humble Beginnings</h2>
+	    		    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+	    		</div>    
+	    	</li>
+	    	<li>
+	    		<div class="summary-last-img">
+	    			 <p>BE PART<br> OF OUR<br> STORY!</p>
+	    		</div>	
+	    	</li>
+	    </ol>
+	
+    </div>
+    <!-- 第五个 -->
+    <div class="out-wrap">
+    <div class="service-wrap">
+		<div class="service-text">
+			<h1>OUR AMAZING TEAM</h1>
+			<p>Lorem ipsum dolor sit amet consectetur.</p>
+		</div>
+		<div class="member-item">
+			<div>
+				<img src="images/team1.jpg" width="228px" height="228px">
+				<h4>Kay Garland</h4>
+				<p>Lead Designer</p>
+				<i class="icon-twitter iconfont"></i><i class="icon-facebook iconfont"></i><i class="icon-linkedin iconfont"></i>
+			</div>
+			<div>
+				<img src="images/team2.jpg" width="228px" height="228px">
+				<h4>Larry Parker</h4>
+				<p>Lead Marketer</p>
+				<i class="icon-twitter iconfont"></i><i class="icon-facebook iconfont"></i><i class="icon-linkedin iconfont"></i>
+			</div>
+			<div>
+				<img src="images/team3.jpg" width="228px" height="228px">
+				<h4>Diana Pertersen</h4>
+				<p>Lead Developer</p>
+				<i class="icon-twitter iconfont"></i><i class="icon-facebook iconfont"></i><i class="icon-linkedin iconfont"></i>
+			</div>
+		</div>
+		<div class="item-footer">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non<br> quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+		</div>
+	</div>	
+	</div>
+	<div class="wrap-imgs">
+		<div>
+			<a href="#"><img src="images/envato.jpg" width="200px" height="50px"></a>
+		</div>
+		<div>
+			<a href="#"><img src="images/designmodo.jpg" width="200px" height="50px"></a>
+		</div>
+		<div>
+			<a href="#"><img src="images/themeforest.jpg" width="200px" height="50px"></a>
+		</div>
+		<div>
+			<a href="#"><img src="images/creative-market.jpg" width="200px" height="50px"></a>
+		</div>
+
+	</div>
+	<!-- 第七个 -->
+	<div class="out-footer">
+	<div class="service-wrap">
+		<div class="service-text">
+			<h1 class="footer-h1">SERVICES</h1>
+			<p>Lorem ipsum dolor sit amet consectetur.</p>
+			
+		</div>
+		<form action=" " method="post">
+		    <div class="form-md">
+			<div class="form-group">
+				<input type="text" id="name" name="name" placeholder="your name" >
+				
+			</div>
+			<div class="form-group">
+				<input type="email" id="email" name="email" placeholder="your email">
+				
+			</div>
+			<div class="form-group">
+				<input type="tel" id="phone" name="phone" placeholder="your phone">
+				
+			</div>
+			</div>
+			<div class="form-md">
+			<div class="form-txt">
+				
+				<textarea id="words" name="words" cols="30" rows="4" placeholder="your name"></textarea>
+				
+			</div>
+			
+				
+			</div>
+			<div class="form-btn">
+				<button type="submit">Send Message</button> 
+			</div>
+		</form>
+    </div>
+	</div>
+	<div class="wrap-footer">
+		<div>
+			<p>Copyright © Your Website 2014</p>
+		</div>
+	
+	    <div>
+		<i class="icon-twitter iconfont"></i><i class="icon-facebook iconfont"></i><i class="icon-linkedin iconfont"></i>
+	    </div>
+	    <div>
+		<a href="#">Privacy Policy</a>
+		<a href="#">Terms of Use</a>	  
+	    </div>
+	</div>    
+</div>
+</body>
+</html>
