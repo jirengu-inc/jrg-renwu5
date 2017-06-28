@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task10_2</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+     .modal-dialog{
+     	display: none;
+     	position: fixed;
+     	top: 0;
+     	left: 0;
+     	right:0;
+     	bottom:0;
+     	background: rgba(0,0,0,0,0);
+     }
+     .modal-dialog .bt{
+     	display: inline-block;
+     	padding: 3px 6px;
+     	border:1px solid #ccc;
+     	border-radius: 3px;
+     	font-size: 14px;
+     }
+     .modal-dialog a{
+     	text-decoration: none;
+     	color: #333;
+     }
+     .modal-dialog .cover{
+     	position: fixed;
+     	top: 0;
+     	left: 0;
+     	right:0;
+     	bottom:0;
+     	background: #000;
+     	opacity: 0.4;
+     	z-index: 99;
+
+     }
+     .modal-dialog .modal-ct{
+     	position: fixed;
+     	top:50%;
+     	left: 50%;
+     	transform: translate(-50%,-50%);
+     	-webkit-transform: translate(-50%,-50%);
+     	border-radius:3px;
+     	border:1px solid #ccc;
+     	background: #fff;
+     	z-index: 100;
+     	width: 300px;
+     }
+     .modal-dialog .modal-ct .header{
+     	position: relative;
+     	height: 36px;
+     	line-height: 36px;
+     	border-bottom: 1px solid #ccc; 
+     }
+     .modal-dialog .modal-ct .header h3{
+     	margin: 0;
+     	padding-left: 10px;
+     	font-size: 16px;
+
+     }
+     .modal-dialog .modal-ct .header .close{
+     	position: absolute;
+     	right: 10px;
+     	top: 10px;
+     	line-height: 1;
+     }
+     .modal-dialog .modal-ct .content{
+     	padding: 10px;
+     }
+     .modal-dialog .modal-ct .footer{
+     	padding: 10px;
+     	border-top: 1px solid #eee;
+     }
+     .modal-dialog .modal-ct .footer:after{
+     	content: '';
+     	display: block;
+     	clear: both;
+     }
+     .modal-dialog .modal-ct .footer .btn{
+     	float: right;
+     	margin-left: 10px;
+     }
+     .open{
+     	display: block;
+     }
+	</style>
+</head>
+<body>
+<div class="btn-group">
+	<button id="btn-modal">点我1</button>
+</div>
+<div id="modal-1" class="modal-dialog">
+	<div class="modal-ct">
+		<div class="header">
+			<h3>我是标题1</h3>
+			<a href="#" class="close">X</a>
+		</div>
+		<div class="content">
+			<p>我是内容1</p>
+			<p>我是内容1</p>
+		</div>
+		<!-- <div class="footer">
+			<a href="#" class="btn btn-confirm">确定</a>
+			<a href="#" class="btn btn-cancel">取消</a>
+		</div> -->
+	</div>
+</div>
+<script type="text/javascript">
+	var btn=document.querySelector('#btn-modal')
+	var modal=document.querySelector('#modal-1')
+	var modalCt=document.querySelector('#modal-1 .modal-ct')
+	var close=document.querySelector('#modal-1 .close')
+	btn.addEventListener('click',function(){
+		modal.classList.add('open');
+	})
+	close.addEventListener('click',function(){
+		modal.classList.remove('open')
+	})
+	modal.addEventListener('click',function(){
+		modal.classList.remove('open')
+	})
+	modalCt.addEventListener('click',function(e){
+		e.stopPropagation();
+	})
+</script>
+</body>
+</html>
