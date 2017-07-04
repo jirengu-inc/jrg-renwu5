@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>加载</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+    ul,li{
+    	margin: 0;
+    	padding: 0;
+    }
+    #ct li{
+    	list-style: none;
+    	border:1px solid;
+    	padding: 10px;
+    	margin-top: 10px;
+    	cursor: pointer;
+    }
+    #load-more{
+    	display: block;
+    	margin: 10px auto;
+    	text-align: center;
+    	cursor: pointer;
+    }
+    #load-more img{
+    	width: 40px;
+    	height: 40px;
+    }
+    .btn{
+    	display: inline-block;
+    	height: 40px;
+    	line-height: 40px;
+    	width: 80px;
+    	border-radius: 3px;
+    	text-decoration: none;
+    	color: #E27272;
+    	border:1px solid #E27272;
+
+    }
+    .btn:hover{
+    	background: green;
+    	color: #fff;
+    }
+	</style>
+</head>
+<body>
+<ul id="ct">
+	
+</ul>
+<a href="javascript:void(0)" id="load-more" class="btn">
+	加载更多
+</a>
+</body>
+<script type="text/javascript">
+    var btn=document.querySelector('#load-more')
+    var ct=document.querySelector('#ct')
+    var pageIdex=0
+    var isDataArrie=true//防止重复点击
+    btn.addEventListener('click',function(){
+    	if(!isDataArrie){
+    		return;
+    	}
+        var xhr=new XMLHttpRequest()
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState ===4){
+            	if(xhr.status === 200|| xhr.status == 304){
+
+
+                var results=JSON.parse(xhr.responseText)
+                console.log(results)
+                var fragment=document.createDocumentFragment()
+                for(var i =0;i<results.length;i++){
+                	var node=document.createElement('li')
+                	node.innerText=results[i]
+                	fragment.appendChild(node)
+                }
+                ct.appendChild(fragment)
+                pageIdex=pageIdex + 5
+            }else{
+            	console.log('出错啦')
+            }
+            isDataArrie=true
+            }
+        }
+        xhr.open('get','/loadMore?index='+pageIdex+'&length=5',true)
+        xhr.send()
+        isDataArrie=false
+    })
+</script>
+</html>

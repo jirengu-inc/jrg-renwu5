@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>加载更多</title>
+	<meta charset="utf-8">
+	<style>
+li{
+  list-style: none;
+}
+ul{
+  padding: 0;
+}
+.content{
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #ccc;
+}
+.container{
+  margin-top: 5px;
+}
+.button{
+  color: red;
+  border: 1px solid red;
+  text-align: center;
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 auto;
+}
+</style>
+</head>
+<body>
+<ul>
+<li class="content">内容1</li>
+<li class="content">内容2</li>
+</ul>
+<div class="container">
+  <div class="button">加载更多</div>
+</div>
+
+  	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    document.querySelector('.button').addEventListener('click',function(){
+      var resdata = [];
+      var xhr = new XMLHttpRequest();
+      xhr.open('get','/hello',true);
+      xhr.send();
+      xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4 && xhr.status === 200){
+          resdata = JSON.parse(xhr.responseText);
+          var node;
+          for(var i=0;i<resdata.length;i++){
+            node = document.createElement('li');
+            node.innerText = resdata[i];
+            node.classList.add('content');
+            document.querySelector('ul').appendChild(node);
+          }   
+        }
+      }
+    });
+  	</script>
+</body>
+</html>
