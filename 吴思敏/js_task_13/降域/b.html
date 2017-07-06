@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+	html,body{
+		margin: 0;
+	}
+	input{
+		margin: 20px;
+		width: 200px;
+	}
+</style>
+	<input id="input" type="text"  placeholder="http://localhost:8080/b.html">
+<script>
+// URL: http://b.jrg.com:8080/b.html
+ 
+document.querySelector('#input').addEventListener('input', function(){
+	window.parent.document.querySelector('input').value = this.value;
+})
+document.domain = 'localhost';//端口
+</script>
+
+</html>

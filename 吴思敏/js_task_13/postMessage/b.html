@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+	html,body{
+		margin: 0;
+	}
+	input{
+		margin: 20px;
+		width: 200px;
+	}
+</style>
+
+	<input id="input" type="text"  placeholder="http://b.jrg.com:8080/b.html">
+<script>
+// URL: http://b.jrg.com:8080/b.html
+ 
+$('#input').addEventListener('input', function(){
+	window.parent.postMessage(this.value, '*');
+	//星号表示所有域名
+})
+window.addEventListener('message',function(e) {
+		$('#input').value = e.data
+    console.log(e.data);
+});
+function $(id){
+	return document.querySelector(id);
+}	
+</script>
+</html>
