@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo-4</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+     
+  
+.mod-tab {
+  border: 1px solid #ccc;
+  margin-top: 30px;
+  width: 800px;
+}
+.mod-tab * {
+  box-sizing: border-box;
+}
+.mod-tab ul,
+.mod-tab li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mod-tab .tabs:after {
+  content: '';
+  height: 0;
+  display: table;
+  clear: both;
+}
+.mod-tab .tabs{
+	width: 800px;
+}
+.mod-tab .tabs li {
+  float: left;
+  width: 33.3%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+.mod-tab .tabs li:last-child {
+  border-right: none;
+}
+.mod-tab .tabs .active {
+  background: #eee;
+}
+.mod-tab .wrap {
+  position: relative;
+  height: 180px;
+  width: 800px;
+  overflow: hidden;
+}
+.mod-tab .panels {
+  position: absolute;
+  /*width: 100%;*/
+  width: 2400px;
+}
+.mod-tab .panels>li {
+  height: 180px;
+  width: 800px;
+  padding: 20px;
+  float: left;
+}
+.mod-tab .panels>li:nth-child(1) {
+  background-color: red;
+}
+.mod-tab .panels>li:nth-child(2) {
+  background-color: green;
+}
+.mod-tab .panels>li:nth-child(3) {
+  background-color: blue;
+}
+.mod-tab .active {
+  display: block;
+}
+	</style>
+</head>
+<body>
+<div class="mod-tab">
+   <ul class="tabs">
+     <li class="active">tab1</li>
+     <li>tab2</li>
+     <li>tab3</li>
+   </ul>
+   <div class="wrap">
+     <ul class="panels">
+       <li>content 1</li>
+       <li>content 2</li>
+       <li>content 3</li>
+     </ul>
+   </div>
+
+ </div>  
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+	
+
+$('.tabs>li').on('click', function(){
+  var $this = $(this)
+  var index = $this.index()
+  var panelWidth = $('.mod-tab .wrap').width()
+  console.log(index)
+  $this.addClass('active').siblings().removeClass('active')
+  $this.parents('.mod-tab').find('.panels')
+       .animate({left: -panelWidth*index})
+
+})
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

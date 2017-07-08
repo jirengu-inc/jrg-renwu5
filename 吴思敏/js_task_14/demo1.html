@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo1</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="font/iconfont.css">
+	<style type="text/css">
+	*{
+		font-family: "微软雅黑";
+	}
+	ul,li{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+	}
+     #contain{
+     	width: 500px;
+     	border:1px solid #ccc;
+
+     }
+     .nav-items >li:after{
+     	
+     	content: '';
+     	display: block;
+     	clear: both;
+
+     }
+     .nav-items{
+     	width: 200px;
+     	margin:20px 10px;
+     	background: #E83333;
+     }
+     .nav-items >li{
+     	position: relative;
+     }
+     .nav-items .nav2-items{
+     	position: absolute;
+     	top: 0;
+     	left: 200px;
+     	width: 200px;
+     	border:1px solid #ccc;
+     	display: none;
+
+     }
+     .nav-items .nav2-items > li{
+        padding: 10px 0px;
+     	margin: 0 10px;
+        float: left;
+        line-height: 20px;
+     	height: 20px;
+     	border-bottom:1px solid #fff;
+     }
+      .nav-items > li> a{
+        color: #fff;
+        text-decoration: none;
+        padding: 10px;
+        margin:0  10px;
+        display: block;
+        border-bottom:1px solid #CB2020;
+
+     }
+     .nav-items>li:last-child a {
+     	border:0;
+     }
+     .nav2-items>li>a{
+     	padding: 10px;
+     	margin: 0 10px;
+     	text-decoration: none;
+     	color: #857171;
+     }
+     span{
+     	float: right;
+     	color: #fff;
+     	font-weight: 700;
+     	position: absolute;
+     	top: 10px;
+     	left: 180px;
+     	
+     }
+  
+	</style>
+</head>
+<body>
+<div id="contain" >
+	<ul class="nav-items">
+		<li><a href="#">珠宝玉器</a><span>></span>
+			<ul class="nav2-items">
+				<li><a href="#">翡翠</a></li>
+				<li><a href="#">玉石</a></li>
+				<li><a href="#">宝石</a></li>
+				<li><a href="#">水晶</a></li>
+				<li><a href="#">翡翠</a></li>
+				<li><a href="#">玉石</a></li>
+				<li><a href="#">宝石</a></li>
+				<li><a href="#">水晶</a></li>
+			</ul>
+		</li>
+
+		<li><a href="#">珠宝玉器</a><span>></span>
+			<ul class="nav2-items">
+				<li><a href="#">翡翠</a></li>
+				<li><a href="#">玉石</a></li>
+				<li><a href="#">宝石</a></li>
+				<li><a href="#">水晶</a></li>
+			</ul>
+		</li>
+		<li><a href="#">珠宝玉器</a><span>></span>
+			<ul class="nav2-items">
+				<li><a href="#">翡翠</a></li>
+				<li><a href="#">玉石</a></li>
+				<li><a href="#">宝石</a></li>
+				<li><a href="#">水晶</a></li>
+			</ul>
+		</li>
+		<li><a href="#">珠宝玉器</a><span>></span>
+			<ul class="nav2-items">
+				<li><a href="#">翡翠</a></li>
+				<li><a href="#">玉石</a></li>
+				<li><a href="#">宝石</a></li>
+				<li><a href="#">水晶</a></li>
+			</ul>
+		</li>
+		<li><a href="#">珠宝玉器</a><span>></span>
+			<ul class="nav2-items">
+				<li><a href="#">翡翠</a></li>
+				<li><a href="#">玉石</a></li>
+				<li><a href="#">宝石</a></li>
+				<li><a href="#">水晶</a></li>
+			</ul>
+		</li>
+	</ul>
+	
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script type="text/javascript">
+	
+    $(function(){
+    	$('.nav-items >li').on('mouseenter', function(){
+    		// console.log($('.nav-items >li'))
+    		// 或者
+    		 $(this).find('.nav2-items').show();
+    		// 或者
+    		// $(this).find('.nav2-items').css('display', 'block');
+    	});
+     	$('.nav-items >li').on('mouseleave', function(){
+    		//$(this).removeClass('hover');
+    		// 或者
+    		 $(this).find('.nav2-items').hide();
+    		// 或者
+    		// $(this).find('.nav2-items').css('display', 'none');
+    	});   	
+    });
+    
+</script>
+
+</body>
+</html>
