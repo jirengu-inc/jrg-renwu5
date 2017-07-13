@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>carousel</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+     *{
+
+     }
+     ul,li{
+     	list-style: none;
+     	margin: 0;
+     	padding: 0;
+     }
+     .carousel{
+     	width: 600px;
+     	height: 400px;
+     	/*background: red;*/
+     	margin:20px auto;
+     	position: relative;
+     	overflow: hidden;
+     }
+     .items:after{
+     	content: '';
+     	display: block;
+     	clear: both;
+     }
+     .items{
+     	/*width: 1280px;*/
+     	position: absolute;
+        overflow: hidden;
+     }
+     .carousel .items>li{
+        float: left;
+     }
+     .carousel .items img{
+     	width: 600px;
+     	height: 400px;	
+     }
+     .arrow{
+     	position: absolute;
+     	text-decoration: none;
+     	color:#fff;
+     	top: 50%;
+     	width: 30px;
+        height: 30px;
+        background: #4E443C;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 50%;
+        opacity: 0.8;
+     }
+     .pre{
+     	left: 10px;
+     }
+     .next{
+     	right:10px;
+     }
+     .bullet{
+     	position: absolute;
+     	/*top: 90%;*/
+     	bottom:10px;
+        left: 50%;
+        transform: translateX(-50%);
+        /*background: green;*/
+
+     }
+    .bullet:after{
+     	display: block;
+     	content: "";
+     	clear: both;
+     }
+     .bullet li{
+     	width: 16px;
+     	height: 4px;
+     	border:1px solid #ccc;
+     	margin:0 4px;
+     	float:left;
+        border-radius:2px;
+        cursor: pointer;
+     }
+     .bullet li.active{
+     	background: #fff;
+     }
+	</style>
+</head>
+<body>
+<div class="carousel">
+	<ul class="items">
+		<li data-id=0>
+		<a href="#">
+			<img src="../images/1.jpg">
+		</a>
+		</li>
+		<li data-id=1>
+		<a href="#">
+			<img src="../images/2.jpg">
+		</a>
+		</li>
+		<li data-id=2>
+		<a href="#">
+			<img src="../images/3.jpg">
+		</a>
+		</li>
+		<li data-id=3>
+		<a href="#">
+			<img src="../images/4.jpg">
+		</a>
+		</li>
+	</ul>
+	<a href="#" class="arrow pre"><</a>
+	<a href="#" class="arrow next">></a>
+	<ul class="bullet">
+		<li class="active"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+	
+		// $(function(){
+			
+			var $ct = $('.items'),
+			    $img=$('.items>li'),
+			    $imgCount=$img.length,
+			    $imgWidth=$img.width(),
+			    $preBtn=$('.pre'),
+			    $nextBtn=$('.next'),
+			    $bullets=$('.bullet li')
+			    pageIndex=0
+			    //防止重复点击
+			    isAnimate=false
+
+				
+            $ct.append($img.first().clone())
+            $ct.prepend($img.last().clone())
+            //items的宽度不要固定，容易导致li不能并排，在js里计算，li并排
+            $ct.width(($imgCount + 2)*$imgWidth)
+            //让第一张图片默认展示
+            $ct.css({left:-$imgWidth})
+
+            $preBtn.click(function(){
+            	playPre(1)
+
+            })
+            $nextBtn.click(function(){
+            	playNext(1)
+            })
+
+            //定位
+            $bullets.click(function(){
+            	var index=$(this).index()
+            	if(index > pageIndex){
+            		playNext(index - pageIndex)
+            	}else if(index < pageIndex)
+            	playPre(pageIndex - index)
+            	
+            })
+
+            function playNext(len){
+            	if(isAnimate) return
+            	isAnimate = true
+            	$ct.animate({
+            		left:"-="+len*$imgWidth
+            	},function(){
+            		pageIndex += len
+            		if(pageIndex === $imgCount){
+            			pageIndex=0
+            			$ct.css({left:-$imgWidth})
+            		}
+            		console.log($imgCount)
+            		console.log(pageIndex)
+            		setBullet()
+            		isAnimate=false
+            	})
+
+            }
+            
+            function playPre(len){
+            	$ct.animate({
+            		left:"+="+len*$imgWidth
+            	},function(){
+            		pageIndex -= len
+            		if(pageIndex<0){
+            			pageIndex=$imgCount-1
+            			$ct.css({left:-$imgCount*$imgWidth})
+            		}
+            		console.log(pageIndex)
+            		setBullet()
+            	})
+
+            }
+
+            function setBullet(){
+            	$bullets.removeClass('active')
+            	.eq(pageIndex)
+            	.addClass('active')
+            }
+
+           // setInterval(function(){
+           //      playNext(1),2000
+           //  })
+
+
+
+		    
+</script>
+</body>
+</html>

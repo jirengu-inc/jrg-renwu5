@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>css 轮播</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+    *{
+    	margin: 0;
+    	padding: 0
+    }
+    ol{
+    	list-style: none;
+    }
+    .demo{
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+    	align-items: center;
+
+    }
+    .slides{
+    	position: relative;
+    	width: 640px;
+    	height: 400px;
+
+    }
+    .slides>li{
+    	position: absolute;
+    	display: none;
+    }
+    .slides>li>img{
+    	height: 400px;
+    }
+    input[name=currentSlide]:nth-child(1):checked ~ .slides > li:nth-child(1),
+    input[name=currentSlide]:nth-child(2):checked ~ .slides > li:nth-child(2),
+    input[name=currentSlide]:nth-child(3):checked ~ .slides > li:nth-child(3),
+    input[name=currentSlide]:nth-child(4):checked ~ .slides > li:nth-child(4){
+    	display: block;
+    	animation: slide 1s;
+    }
+    input[name=currentSlide]:nth-child(1):checked~.labels > li:nth-child(1)>label,
+    input[name=currentSlide]:nth-child(2):checked~.labels > li:nth-child(2)>label,
+    input[name=currentSlide]:nth-child(3):checked~.labels > li:nth-child(3)>label,
+    input[name=currentSlide]:nth-child(4):checked~.labels > li:nth-child(4)>label{
+    	background: #999;
+    	color: #fff;
+    }
+    
+    input[name=currentSlide]{
+    	display: none;
+    }
+    .labels{
+    	display: flex;
+    }
+    .labels label{
+    	width: 20px;
+    	height: 20px;
+    	background: #ddd;
+    	display: block;
+    	border-radius: 50%;
+    	text-align: center;
+    	line-height: 20px;
+    	margin: 5px;
+
+    }
+    @keyframes slide{
+    	from{
+    		opacity: 0.5;
+    	}
+    	to{
+    		opacity: 1;
+    	}
+    }
+	</style>
+</head>
+<body>
+<section class="demo">
+    <input type="radio" name="currentSlide" id="slide1"checked>
+    <input type="radio" name="currentSlide" id="slide2">
+    <input type="radio" name="currentSlide" id="slide3">
+    <input type="radio" name="currentSlide" id="slide4">
+	<ol class="slides">
+		<li><img src="../images/1.jpg"></li>
+		<li><img src="../images/2.jpg"></li>
+		<li><img src="../images/3.jpg"></li>
+		<li><img src="../images/4.jpg"></li>
+	</ol>
+	<ol class="labels">
+		<li><label for="slide1">1</label></li>
+		<li><label for="slide2">2</label></li>
+		<li><label for="slide3">3</label></li>
+		<li><label for="slide4">4</label></li>
+	</ol>
+</section>
+</body>
+</html>
