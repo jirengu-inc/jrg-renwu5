@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>waterFall</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+    .content {
+            position: relative;
+        }
+        
+        .item {
+            position: absolute;
+            width: 200px;
+            margin-right: 10px;
+            margin-top: 10px;
+            transition: all 1s;
+        }
+        .item img{
+        	width: 200px;
+
+        }
+        
+       
+	</style>
+</head>
+<body>
+<div class="content">
+       
+		<div class="item">
+			<img src="imgs/1.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/2.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/3.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/4.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/5.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/6.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/7.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/8.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/9.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/10.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/11.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/12.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/13.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/14.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/15.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/16.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/17.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/18.jpg">
+		</div>
+	
+		<div class="item">
+			<img src="imgs/19.jpg">
+		</div>
+	
+	
+		<div class="item">
+			<img src="imgs/20.jpg">
+		</div>
+	
+	
+		<div class="item">
+			<img src="imgs/21.jpg">
+		</div>
+	
+    </div>
+     <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(window).resize(function(){
+        	waterFall()
+        })
+
+        waterFall()
+        function waterFall(){
+        	var collength = parseInt($('.content').width()/$('.item').width())
+        	console.log(collength)
+        	var itemArr=[]
+        	for(var i =0; i<collength; i++){
+        		//初始化赋值为0
+        		itemArr[i] = 0
+        	}
+
+        	$('.item').each(function(){
+        		//得到最小值
+        		var minValue = Math.min.apply(null,itemArr)
+        		//得到最小值的下标
+        		 var minIndex = itemArr.indexOf(minValue)
+        		 $(this).css({
+        		 	top:itemArr[minIndex],
+        		 	left:$(this).outerWidth(true)*minIndex
+        		 })
+        		 itemArr[minIndex]+=$(this).outerHeight(true)
+        	})
+        }
+    </script>
+</body>
+
+
+
+
+</html>
