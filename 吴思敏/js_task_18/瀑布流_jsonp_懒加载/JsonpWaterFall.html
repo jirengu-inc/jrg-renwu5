@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jsonpWaterFall</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+    
+        html,
+        body,
+        ul,
+        li,
+        p,
+        div {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .wrap {
+            width: 900px;
+            margin: 0 auto;
+        }
+        
+        #pic-ct {
+            position: relative;
+        }
+        
+        #pic-ct .item {
+            position: absolute;
+            padding: 0 0 10px 0;
+            width: 280px;
+            margin: 10px;
+            border: 1px solid #DFDFDF;
+            background: #FFF;
+            opacity: 0;
+            transition: all 2s;
+        }
+        
+        #pic-ct .item img {
+            margin: 10px;
+            width: 260px;
+        }
+        
+        #pic-ct .item .header {
+            height: 25px;
+            margin: 0 12px;
+            border-bottom: 1px solid #DBDBDB;
+        }
+        
+        #pic-ct .desp {
+            font-size: 12px;
+            line-height: 1.8;
+            margin: 10px 15px 0;
+            color: #777371;
+        }
+        
+        .hide {
+            display: none;
+        }
+    
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<div class="ct-water-fall">
+		<ul id="pic-ct" class="clearfix">
+		   <!--  <li class="item">
+		    	<a href="#">
+		    		<img src="http://n.sinaimg.cn/tech/transform/20170714/3YmH-fyiavtv5835292.jpg">
+		    	</a>
+		    	<h4>标题</h4>
+		    	<p>美国俄亥俄州，一直受到网友们广泛关注的辛辛那提动植物园网红小河马Fiona首次与妈妈Bibi、爸爸Henry一家团聚，画面分外温馨。</p>
+		    </li> -->
+			
+		   
+			<li class="item hide"></li>
+		</ul>
+		<div id="load">我是看不见的</div>
+	</div>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	
+
+    // 1. 获取数据
+    // 2. 把数据变为 Dom， 通过瀑布流的方式放到页面上
+    // 3. 当滚动到底部的时候， 继续获取数据， 加载DOM， 布局
+
+    loadNews() //页面初始化
+
+    $(window).on('scroll', function() { //滚动到底部开始加载
+        if (isBottom()) {
+            console.log('到底了')
+            loadNews()
+        }
+    })
+
+    function loadNews() {
+        getData(function(news) {
+            $(news).each((index, item) => {
+                var $item = render(item)
+                $item.find('img').on('load', function() { //JS是异步的，所以要在DOM加载完毕后再开始计算插入节点的位置  这里是图片加载完毕再计算每一列的高度的意思
+                    $('#pic-ct').append($item)
+                    layout($item)
+                })
+            })
+        })
+
+    }
+
+    var page = 1,
+        perPageCount = 6;
+
+    function getData(callback) {
+        var url = "http://platform.sina.com.cn/slide/album_tech"
+        $.ajax({
+            url: url,
+            method: "get",
+            dataType: "jsonp",
+            data: {
+                app_key: 1271687855,
+                num: perPageCount,
+                page: page
+            },
+            jsonp: "jsoncallback"
+        }).then(function(response) {
+            if (response && response.status && response.status.code) {
+                callback(response.data)
+            }
+            page++
+        }, function() {
+            alert('数据错误！')
+        })
+    }
+
+    function render(item) {
+        var html = `<li class="item">
+                    <a href="${item.url}" class="link">
+                        <img src="${item.img_url}">
+                    </a>
+                    <h4 class="header">${item.short_name}</h4>
+                    <p class="desp">${item.short_intro}</p>
+                </li>`
+        return $(html)
+    }
+
+
+    // 瀑布流布局
+    var columnWidth = $('.item').outerWidth(true)
+    var columnNumber = Math.floor($('.wrap').width() / columnWidth)
+    var columnHeight = []
+    for (let i = 0; i < columnNumber; i++) {
+        columnHeight.push(0)
+    }
+
+    function layout(item) {
+        var minIndex = 0,
+            minHeight = columnHeight[minIndex]
+        $(columnHeight).each((index, columnItem) => {
+            if (columnHeight[index] < minHeight) {
+                minIndex = index
+                minHeight = columnHeight[index]
+            }
+        })
+
+        item.css({
+            left: columnWidth * minIndex,
+            top: minHeight,
+            opacity: 1
+        });
+        columnHeight[minIndex] = item.outerHeight(true) + columnHeight[minIndex]
+            // $('#pic-ct').height(Math.max.apply(null, columnHeight))   //设置图片外层高度
+    }
+
+    function isBottom() { //检测是否拖到浏览器底部，手动设置了容器高度时 $(window).height() === $(document).height() 检测不到是否到了底部，变通的方法是在底部加一个元素，检测该元素是否进入可视区
+        return $(window).scrollTop() + $(window).height() == $(document).height()
+    }
+    
+
+</script>
+</body>
+</html>

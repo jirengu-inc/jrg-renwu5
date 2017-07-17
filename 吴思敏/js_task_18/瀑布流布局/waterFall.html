@@ -4,7 +4,7 @@
 	<title>waterFall</title>
 	<meta charset="utf-8">
 	<style type="text/css">
-    .content {
+     .content {
             position: relative;
         }
         
@@ -15,136 +15,109 @@
             margin-top: 10px;
             transition: all 1s;
         }
-        .item img{
-        	width: 200px;
-
+        
+        .h1 {
+            height: 200px;
+            background-color: #f4b300;
         }
         
-       
+        .h2 {
+            height: 300px;
+            background-color: #691BB8;
+        }
+        
+        .h3 {
+            height: 400px;
+            background-color: #006ac1;
+        }
 	</style>
 </head>
 <body>
-<div class="content">
-       
-		<div class="item">
-			<img src="imgs/1.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/2.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/3.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/4.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/5.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/6.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/7.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/8.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/9.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/10.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/11.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/12.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/13.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/14.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/15.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/16.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/17.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/18.jpg">
-		</div>
-	
-		<div class="item">
-			<img src="imgs/19.jpg">
-		</div>
-	
-	
-		<div class="item">
-			<img src="imgs/20.jpg">
-		</div>
-	
-	
-		<div class="item">
-			<img src="imgs/21.jpg">
-		</div>
-	
-    </div>
+ <div class="content">
+        <div class="item h1">
+            1
+        </div>
+        <div class="item h3">
+            2
+        </div>
+        <div class="item h2">
+            3
+        </div>
+        <div class="item h1">
+            4
+        </div>
+        <div class="item h1">
+            5
+        </div>
+        <div class="item h3">
+            6
+        </div>
+        <div class="item h3">
+            7
+        </div>
+        <div class="item h2">
+            8
+        </div>
+        <div class="item h1">
+            9
+        </div>
+        <div class="item h3">
+            10
+        </div>
+        <div class="item h3">
+            11
+        </div>
+        <div class="item h3">
+            12
+        </div>
+        <div class="item h2">
+            13
+        </div>
+        <div class="item h2">
+            14
+        </div>
      <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
-        $(window).resize(function(){
-        	waterFall()
-        })
+      
+        function render() {
 
-        waterFall()
-        function waterFall(){
-        	var collength = parseInt($('.content').width()/$('.item').width())
-        	console.log(collength)
-        	var itemArr=[]
-        	for(var i =0; i<collength; i++){
-        		//初始化赋值为0
-        		itemArr[i] = 0
-        	}
+            var columnWidth = $('.item').outerWidth(true),
+                columnLength = parseInt($(window).width() / columnWidth),
+                columnHeight = [];
 
-        	$('.item').each(function(){
-        		//得到最小值
-        		var minValue = Math.min.apply(null,itemArr)
-        		//得到最小值的下标
-        		 var minIndex = itemArr.indexOf(minValue)
-        		 $(this).css({
-        		 	top:itemArr[minIndex],
-        		 	left:$(this).outerWidth(true)*minIndex
-        		 })
-        		 itemArr[minIndex]+=$(this).outerHeight(true)
-        	})
+            for (var i = 0; i < columnLength; i++) {
+                columnHeight.push(0);
+            }
+
+            $('.item').each((index, element) => {
+                var minIndex = 0,
+                    minHeight = columnHeight[0];
+
+                for (var i = 0; i < columnHeight.length; i++) {
+                    if (columnHeight[i] < minHeight) {
+                        minIndex = i;
+                        minHeight = columnHeight[i];
+                    }
+                }
+                $(element).css({
+                    left: columnWidth * minIndex,
+                    top: minHeight
+                });
+                columnHeight[minIndex] = $(element).outerHeight(true) + columnHeight[minIndex];
+            });
         }
+
+        render();
+
+        $(window).on('resize', function() {
+            render();
+        })
+    
     </script>
 </body>
 
 
+        
 
 
 </html>
