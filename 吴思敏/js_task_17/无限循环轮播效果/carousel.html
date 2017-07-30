@@ -150,14 +150,14 @@
             })
 
             //定位
-            $bullets.click(function(){
-            	var index=$(this).index()
-            	if(index > pageIndex){
-            		playNext(index - pageIndex)
-            	}else if(index < pageIndex)
-            	playPre(pageIndex - index)
+            // $bullets.click(function(){
+            // 	var index=$(this).index()
+            // 	if(index > pageIndex){
+            // 		playNext(index - pageIndex)
+            // 	}else if(index < pageIndex)
+            // 	playPre(pageIndex - index)
             	
-            })
+            // })
 
             function playNext(len){
             	if(isAnimate) return

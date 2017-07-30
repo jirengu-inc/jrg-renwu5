@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task10_1</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	*{
+		box-sizing: border-box;
+	}
+	ul,li{
+		margin:0;
+		padding: 0;
+		list-style: none;
+	}
+	.tab-ct .header:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	.tab-ct .header>li{
+		width: 60px;
+		height: 30px;
+		line-height: 30px;
+		border:1px solid #ccc;
+		border-right: none;
+		float: left;
+		text-align: center;
+
+	}
+	.tab-ct .header>li.active{
+		background: #ccc;
+
+	}
+	.tab-ct .header>li:last-child{
+		border-right: 1px solid #ccc;
+	}
+	.tab-ct .content>li{
+		width: 180px;
+		height: 100px;
+		border:1px solid #ccc;
+		border-top: none;
+		padding: 10px;
+		display: none;
+		
+	}
+	.tab-ct .content>li.active{
+		display: block;
+	}
+		</style>
+	</head>
+	<body>
+	<div class="tab-ct">
+		<ul class="header">
+			<li data-index='0' class="active">tab1</li>
+			<li data-index='1'>tab2</li>
+			<li data-index='2'>tab3</li>
+		</ul>
+		<ul class="content">
+			<li data-index='0' class="active" >ct1</li>
+			<li data-index='1'>ct2</li>
+			<li data-index='2'>ct3</li>
+		</ul>
+
+	</div>
+	
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+	<script>
+	    // function Tab(ct){
+	    // 	this.ct=ct
+	    //     this.init()
+	    //     this.bind()	    		
+     //    }
+
+     //    Tab.prototype.init=function(){
+     //    	this.tabLis=this.ct.querySelectorAll('.header>li')
+	    // 	this.panels = this.ct.querySelectorAll('.content>li')
+     //    }
+     //    Tab.prototype.bind=function(){
+     //    	var _this = this;
+
+     //    	[].slice.call(this.tabLis).forEach(function(tabli) {
+	    // 	    console.log(tabli)
+     //            tabli.onclick = function(e) {
+     //                var target = e.target;
+     //                console.log(target)
+     //                var index = [].indexOf.call(_this,target)
+     //                [].slice.call(_this.tabLis).forEach(function(li){
+     //                	li.classList.remove('active')
+     //                })
+     //                target.classList.add('active')
+     //                _this.classList.forEach(function(panel){
+     //                	panel.classList.remove('active')
+     //                })
+     //                _this.panels[index].classList.add('active')
+     //            }
+     //        })
+     //    }
+	    // var tab1=new Tab(document.querySelectorAll('.tab-ct')[0]);
+	    // var tab2=new Tab(document.querySelectorAll('.tab-ct')[1]);
+
+
+// var words = ["one", "two", "three", "four"];
+// words.forEach(function(word) {
+//   console.log(word);
+//   if (word === "two") {
+//     words.shift();
+//   }
+// });
+
+
+	 
+var Tab=function(headerDom,bodyDom){
+	this.headerDom=headerDom.find('li')
+	console.log(this.headerDom)
+	this.bodyDom=bodyDom.find('li')
+	this.addEvent()
+}
+Tab.prototype.addEvent=function(){
+
+	var that=this
+	this.headerDom.on('click',function(){
+		var index=$(this).data('index')
+		that.highLight(index)
+		that.bodySwitch(index)
+	})
+}
+Tab.prototype.highLight=function(index){
+	var headerLi=this.headerDom
+	headerLi.removeClass('active')
+	headerLi.eq(index).addClass('active')
+}
+Tab.prototype.bodySwitch=function(index){
+	var bodyLi=this.bodyDom
+	bodyLi.removeClass('active')
+	bodyLi.eq(index).addClass('active')
+}
+new Tab($(".header"),$(".content"))
+
+    </script>
+</body>
+</html>

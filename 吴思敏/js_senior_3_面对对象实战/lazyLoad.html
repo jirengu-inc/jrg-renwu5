@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+    ul,li{
+      list-style:none;
+    }
+    .container{
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .container:after{
+    	content: '';
+    	display: block;
+    	clear: both;
+    }
+    .container li{
+      float: left;
+      margin: 10px 10px;
+    }
+    .container li img{
+      width: 380px;
+      height: 380px;
+    }
+    p{
+      float: left;
+    }
+  </style>
+</head>
+<body>
+<ul class="container">
+  <li><a href="#"><img src="images/1.jpg" data-src="images/1.jpg"/></a></li>
+  <li><a href="#"><img src="images/2.jpg" data-src="images/2.jpg"/></a></li>
+  <li><a href="#"><img src="images/3.jpg" data-src="images/3.jpg"/></a></li>
+  <li><a href="#"><img src="images/4.jpg" data-src="images/4.jpg"/></a></li>
+  <li><a href="#"><img src="images/1.jpg" data-src="images/1.jpg"/></a></li>
+  <li><a href="#"><img src="images/2.jpg" data-src="images/2.jpg"/></a></li>
+  <li><a href="#"><img src="images/3.jpg" data-src="images/3.jpg"/></a></li>
+  <li><a href="#"><img src="images/4.jpg" data-src="images/4.jpg"/></a></li>
+  <li><a href="#"><img src="images/1.jpg" data-src="images/1.jpg"/></a></li>
+  <li><a href="#"><img src="images/2.jpg" data-src="images/2.jpg"/></a></li>
+  <li><a href="#"><img src="images/3.jpg" data-src="images/3.jpg"/></a></li>
+  <li><a href="#"><img src="images/4.jpg" data-src="images/4.jpg"/></a></li>
+  <li><a href="#"><img src="images/1.jpg" data-src="images/1.jpg"/></a></li>
+  <li><a href="#"><img src="images/2.jpg" data-src="images/2.jpg"/></a></li>
+  <li><a href="#"><img src="images/3.jpg" data-src="images/3.jpg"/></a></li>
+  <li><a href="#"><img src="images/4.jpg" data-src="images/4.jpg"/></a></li>
+  <p id="hello">hello</p>
+  <p id="world">world</p>
+
+</ul>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script type="text/javascript">
+
+
+
+function Exposure($target, callback){
+  this.$target = $target;
+  this.callback = callback;
+  this.bind();
+  this.check();
+}
+
+// Exposure.prototype.init = function(){
+
+// }
+
+Exposure.prototype.bind = function(){
+  var _this = this;
+  $(window).on('scroll', function(){
+    _this.check();
+  })
+}
+
+Exposure.prototype.check = function(){
+    if(this.isShow(this.$target)){
+      this.callback(this.$target);
+    }
+}
+Exposure.prototype.isShow = function(){
+  var windowHeight = $(window).height(),
+      scrollTop = $(window).scrollTop(),
+      offsetTop = this.$target.offset().top,
+      nodeHeight = this.$target.height();
+  if(windowHeight + scrollTop > offsetTop && scrollTop < offsetTop + nodeHeight){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+// new Exposure($('#hello'), function($node){
+//     $node.text( $node.text() + $node.text());
+// })
+
+// new Exposure($('#world'), function(){
+//   $('#world').text( 'hello ' + $('#world').text() );
+// })
+
+// $('.container img').each(function(idx, img){
+//   new Exposure($(img), function($img){
+//       showImg($img)
+//   })
+// })
+
+var Lazy = (function(){
+
+  return {
+    init: function($targets, callback){
+      $targets.each(function(idx, target){
+        new Exposure($(target), callback);
+      })
+
+    },
+    one: function($targets, callback){
+      
+    }
+
+  }
+})();
+
+Lazy.init($('#hello'), function($node){
+  $node.text( $node.text() + '123');
+});
+Lazy.init($('#world'), function($node){
+  $node.text( $node.text() + '456');
+});
+Lazy.init($('.container img'), function($node){
+  showImg($node);
+});
+
+
+
+
+function showImg($img){
+		var imgUrl = $img.attr('data-src');
+		$img.attr('src', imgUrl);
+}
+
+
+
+</script>
+</body>
+</html>
