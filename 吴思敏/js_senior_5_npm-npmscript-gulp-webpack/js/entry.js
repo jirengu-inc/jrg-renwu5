@@ -1,0 +1,5 @@
+require('./jquery.js')
+require('../css/style.css')
+require('./carousel.js')
+require('./goTop.js')
+require('./waterFall.js')
