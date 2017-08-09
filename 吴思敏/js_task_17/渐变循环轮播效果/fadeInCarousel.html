@@ -5,12 +5,13 @@
 	<meta charset="utf-8">
 	<style type="text/css">
      *{
+        margin: 0;
+        padding: 0;
 
      }
      ul,li{
         list-style: none;
-        margin: 0;
-        padding: 0;
+      
      }
      .carousel{
         width: 600px;
@@ -20,18 +21,14 @@
         position: relative;
         overflow: hidden;
      }
-     .items:after{
-        content: '';
-        display: block;
-        clear: both;
-     }
+
      .items{
-        /*width: 1280px;*/
-        position: absolute;
-        overflow: hidden;
+       overflow: hidden;
      }
      .carousel .items>li{
-        float: left;
+        display: none;
+        position: absolute;
+        /*float: left;*/
      }
      .carousel .items img{
         width: 600px;
@@ -58,11 +55,11 @@
      }
      .bullet{
         position: absolute;
-        /*top: 90%;*/
+
         bottom:10px;
         left: 50%;
         transform: translateX(-50%);
-        /*background: green;*/
+
 
      }
     .bullet:after{
