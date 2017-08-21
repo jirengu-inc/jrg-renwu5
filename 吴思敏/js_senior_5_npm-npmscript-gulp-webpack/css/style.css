@@ -399,7 +399,7 @@
      	color: #fff;
      }
      .out-footer{
-     	background: url(../images/prod-8.jpg);
+     	/*background: url(../images/prod-8.jpg);*/
      }
      form{
      	display: flex;
@@ -458,8 +458,9 @@
      	display: flex;
      	justify-content: space-around;
      	height: 90px;
-     	/*background: green;*/
+     	background: #f7f7f7;
      	align-items: center;
+     	box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
      }
      .wrap-footer .iconfont{
      	cursor: pointer;
@@ -471,13 +472,7 @@
      	text-decoration: none;
      	color: #fed136;
      }
-     .J_GoTop{
-     position: fixed;
-     right: 20px;
-     bottom: 10px;
-     /*background: green;*/
 
-    }
 
 	/*pubuliu*/
    
@@ -512,3 +507,13 @@
 .waterFall_ct .item img {
   width: 100%;
 }
+/*gotop*/
+  .J_GoTop{
+     position: fixed;
+
+     right: 20px;
+     bottom: 20px;
+     /*background: #f7f7f7;*/
+     z-index: 22;
+
+    }

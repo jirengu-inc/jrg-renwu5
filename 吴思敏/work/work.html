@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+     .ct {border: 1px solid;
+            width: 960px;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+
+            p,span {
+                font-family: arial;
+            }
+            .major,span{
+                color: gray;
+            }
+            footer span {
+                color: black;
+            }
+           ul {
+            list-style: none;
+           }
+           header>.avatar {
+            float: left;
+            padding: 10px 20px;
+           }
+            header>.avatar>img {
+                border: 1px solid;
+                width: 100px;
+                height: 100px;
+                opacity: 0.9;
+                border-radius: 50%;
+                float: left;
+           }           
+           .avatar>.author {
+            font-size: 30px;
+            padding: 0 0 0 120px ;
+            margin-bottom: 5px;
+            margin-top: 20px;
+           }
+           .avatar>.job {
+            margin:0 0 0 120px;          
+           }
+           .intro {
+            float: right;
+            width: 360px;
+            font-family: arial;
+           }
+           .intro>h4{
+            letter-spacing: 2px;
+            margin: 25px 0 3px 0;
+            padding-bottom:  8px;
+            border-bottom: 5px solid #584646;
+           }
+           .intro>ul {
+            margin: 0;
+            padding: 10px;
+           }
+           .intro ul li::first-letter {
+            text-transform: capitalize;
+           }
+           .clearfix::after{
+            content: '';
+            display: block;
+            clear: both;
+           }
+           .wrap {
+            padding-left: 20px;
+           }
+           .wrap h2,footer h2 {
+            width: 380px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #cccbcb;
+           }
+           .inner {
+            padding-left: 60px;
+            padding-right: 18px;
+            border-left: 3px solid #af9797;
+            position: relative;
+           }
+            .inner li::before {
+            content: '';
+            display: inline-block;
+            border: 5px solid black;
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+           }
+           .inner h3 {
+            display: inline-block;
+            margin-top: 0;
+            margin-bottom: 0;
+           }
+           .inner h3::after {
+            content: ' /';
+            color:gray;
+           } 
+           a{
+           	text-decoration: none;
+           }       
+           footer {
+            padding:0 20px;
+           }
+           footer ul {
+            padding: 0;
+           }
+           footer .act {
+            float: left;
+            width: 420px;
+           }
+           footer .skill {
+            float: right;
+            width: 420px;
+            position: relative;
+           }
+           footer .skill li {
+            height: 55px;
+            float: left;
+            width: 180px;
+
+           }
+           footer .icon {
+            padding: 0 3px;
+            border: 1px solid black;
+            border-radius: 50%;
+            margin-right: 25px;
+           }
+           footer .act p {
+            margin-left: 55px;
+           }
+	</style>
+</head>
+<body>
+<div class="ct ">
+<header class="clearfix">
+
+      <div class="avatar">
+      <img src="01.jpg">
+      <p class="author" >吴思敏</p>
+      <p  class="job">Web前端开发</p>
+      
+    </div>
+    
+    <div class="intro">
+        <h4>联系方式</h4>
+        <ul>
+            <li>
+            a&nbsp&nbsp 深圳 南山区
+            </li>           
+            <li>
+            m&nbsp&nbsp 176888909xx
+            </li>
+            <li>
+            e&nbsp&nbsp simin_jun@163.com
+            </li>
+            <li>
+            B&nbsp&nbsp http://www.jianshu.com/u/dfe01d67bd2f
+            </li>
+        </ul>
+    </div>
+
+</header>
+<main>
+    <ul class="wrap">
+
+        <li>
+            <h2>项目作品</h2>
+            <ul class="inner">
+                <li>
+                    <h3>实战页面</h3>
+                    <a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E5%90%B4%E6%80%9D%E6%95%8F/js_senior_5_npm-npmscript-gulp-webpack/task15.html"><span class="time">点击查看项目</span></a>
+                    <p>1. 首屏大图为全屏轮播</p>
+                    <p>2. 有回到顶部功能</p>
+                    <p>3. 图片区使用瀑布流布局（图片高度不一），下部有加载更多按钮，点击加载更多会加载更多数据(数据在后端 mock)</p>
+                    <p>4. 使用 webpack 打包应用</p>
+                </li>
+                <li>
+                    <h3>渐变循环轮播效果</h3>
+                    <a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E5%90%B4%E6%80%9D%E6%95%8F/js_task_17/%E6%B8%90%E5%8F%98%E5%BE%AA%E7%8E%AF%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/fadeInCarousel.html#"><span class="time">点击查看页面</span></a>
+                    <p>轮播是前端最常见的效果，这里利用jquery实现一个简单的渐变循环轮播效果</p>
+
+                </li>
+                <li>
+                    <h3>Node.js在线备忘录</h3>
+                    <a href="https://github.com/siminmin/demo/tree/master/note"><span class="time">点击查看页面</span></a>
+                    <p>使用 NodeJS + Express 搭建一个在线便利贴，带数据库、登录等功能。</p>
+
+                </li>
+                <li>
+                    <h3>项目库</h3>
+                    <a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E5%90%B4%E6%80%9D%E6%95%8F/task_14/task14_1.html"><span class="time">点击查看</span></a>
+                    <p>一个用html+css写的静态页面，想要查看更多代码可以在我的github查看。</p>
+                    <a href="https://github.com/jirengu-inc/jrg-renwu5/tree/master/%E5%90%B4%E6%80%9D%E6%95%8F"><p>点击查看github</p></a>
+                </li>
+            </ul>
+
+        </li>
+        <li>
+            <h2>教育经历</h2>
+            <ul class="inner">
+                <li>
+                    <h3>陕西理工大学</h3>
+                    <span class="time">2012.9 - 2016.6</span>
+                    <p class="major">陕西理工大学本科生</p>
+                    
+                </li>
+                <li>
+                    <h3>台湾世新大学</h3>
+                    <span class="time">2014.2 - 2014.6</span>
+                    <p class="major">台湾世新大学交流生</p>
+                    
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</main>
+ <footer class="clearfix">
+     <div class="act">
+         <h2>博客&github</h2>
+         <ul>
+             <li>
+                 <span class="icon">+</span>
+                 <a href="http://www.jianshu.com/u/dfe01d67bd2f"><span>博客:简书(点击可查看地址)</span></a>
+                 <p></p>
+                 <p>俗话说好记性不如烂笔头，学习前端最重要的就是写博客，因为前端技术革命的特别快，新技术、新技巧在不断地被发明出来。所以利用博客记录工作中遇到的问题,以及经验总结都非常重要</p>
+             </li>
+             <li>
+                 <span class="icon">+</span>
+                 <a href="https://github.com/siminmin"><span>github(点击可查看地址)</span></a>
+                 <p>gitHub是一个面向开源及私有软件项目的托管平台,通过gitHub，既可以让别人参与你的开源项目，也可以参与别人的开源项目。</p>
+             </li>
+         </ul>
+     </div>
+     <div class="skill">
+         <h2>技能</h2>
+         <ul>
+             <li>
+                 <span class="icon">+</span>
+                 <span>html&css</span>
+             </li>
+             <li>
+                 <span class="icon">+</span>
+                 <span>jQuery</span>
+             </li>
+             <li>
+                 <span class="icon">+</span>
+                 <span>JavaScript</span>
+             </li>
+             <li>
+                 <span class="icon">+</span>
+                 <span>webpack</span>
+             </li>
+             <li>
+                 <span class="icon">+</span>
+                 <span>ajax</span>
+             </li>
+             <li>
+                 <span class="icon">+</span>
+                 <span>glup</span>
+             </li>
+         </ul>
+     </div>
+ </footer> 
+
+</div>
+</body>
+</html>

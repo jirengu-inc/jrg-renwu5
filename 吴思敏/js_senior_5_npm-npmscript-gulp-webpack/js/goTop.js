@@ -1,5 +1,5 @@
 
-		function GoTop(ct,target){
+function GoTop(ct,target){
 	this.ct=ct;
 	this.target=target;
 	//绑定事件
