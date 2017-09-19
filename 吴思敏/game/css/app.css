@@ -1,0 +1,169 @@
+html{
+    font-size:10px;
+}
+body{
+    margin:0;
+    background: #f8f8f8;
+}
+[hidden]{
+    /* 可以覆盖覆盖其他样式 */
+    display: none!important;
+}
+.container{
+    width:27rem;
+    margin:auto;
+    padding:2rem 0;
+}
+.players{
+    display: flex;
+    position: relative;
+}
+.players > div{
+    flex: 1;
+    height: 9rem;
+    /* border:1px solid #eee; */
+    background-size: 80%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+.players .vs{
+    background-size: 50%;
+    background-image: url('../images/vs.png')
+}
+.players .vue{
+    background-image: url('../images/vue.png')
+}
+.players .react{
+    background-image: url('../images/react.png')
+}
+.players .angular{
+    background-image: url('../images/angular.svg')
+}
+.players .dice{
+    width: 2.5rem;
+    height: 2.5rem;
+    border:.0;
+    outline: 0;
+    bottom:.5rem;
+    position: absolute;
+    -webkit-appearance: none;
+    background:url('../images/dice.svg') no-repeat 50% 50%; 
+    cursor: pointer;
+}
+.players #dice-p1{
+    left:80px;
+}
+.players #dice-p2{
+    right:90px;
+}
+.players #p1,.players #p2{
+    position: relative
+}
+.players .caret{
+    border-top: 1rem solid #555;
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    position: absolute;
+    left: 3.5rem;
+    top:-3px;
+    opacity: 0.8;
+}
+.playground{
+    margin: 10px 0;
+    border-radius: 2px;
+    background:#fff;
+    box-shadow:0 0 2px #ccc;
+    border: .1rem solid #ddd;
+    position: relative;
+}
+.playground .row{
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+.square{
+    height: 9rem;
+    flex: 1;
+    cursor: pointer;
+    border-right: 1px solid #ccc;
+    background-size: 80%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+.square:last-child{
+    border-right: 0;
+}
+.square.vue{
+    background-size: 70%;
+    background-image: url('../images/vue.png');
+}
+.square.react{
+    background-size: 70%;
+    background-image: url('../images/react.png');
+}
+.square.angular{
+    background-size: 70%;
+    background-image: url('../images/angular.svg');
+}
+.playground .overlay{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background:rgba(255, 255, 255, .9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn{
+    width: 10rem;
+    height: 3.6rem;
+    outline: 0;
+    border: 0;
+    color:#fff;
+    font-size: 1.6rem;
+    border-radius: .4rem;
+    -webkit-appearance: none;
+    font-weight: bold;
+    letter-spacing: .1rem;
+    box-shadow: 0 0 .1rem #ccc;
+    cursor: pointer;
+}
+.btn.start{
+    background:#23d87c;
+}
+.btn.reset{
+    background:#ff9800;
+}
+.controls{
+    margin-top:3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.winner{
+    position: relative;
+    top:-1rem;
+}
+.winner .badge{
+    width:10rem;
+    margin: auto;
+    display: block;
+}
+.winner .logo{
+    width: 15rem;
+    height: 15rem;
+    top:-1rem;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+.winner.vue .logo{
+    background-image: url('../images/vue.png');
+}
+.winner.react .logo{
+    background-image: url('../images/react.png');
+}
+.winner.angular .logo{
+    background-image: url('../images/angular.svg');
+}
