@@ -1,0 +1,67 @@
+html,body{
+    color: #585858;
+    overflow: hidden;
+}
+*{
+	list-style: none;
+	box-sizing: border-box;
+}
+.main{
+	padding-left: 250px;
+}
+.maininner{
+	background: url(https://oapy20uns.qnssl.com/baground.jpg);
+	background-position: center;
+	background-size: cover;
+}
+.maininner .information{
+	background: rgba(0, 0, 0, 0.5);
+	height: 100vh;
+	padding: 30px 60px;
+	color: #fff;
+	position: relative;
+	text-align: left;
+}
+.maininner .information .title{
+	font-size: 28px;
+}
+.maininner .information .detail{
+	margin: 15px 0;
+}
+.maininner .information .detail li{
+	display: block;
+	margin: 5px 0;
+	height: 30px;
+	line-height: 30px;
+}
+.maininner .information .detail li span{
+	font-size: 18px;
+
+}
+.maininner .information .about{
+	padding: 10px 45% 0 0;
+	line-height: 26px;
+}
+.maininner .information img{
+	margin-top: 40px;
+	width: 20%;
+}
+@media screen and (max-width: 770px){
+	.main{
+		padding: 0;
+		position: absolute;
+		height: 100vh;
+		width: 100vw;
+	}
+	.maininner .information .about{
+		font-size: 12px;
+		width: 100%;
+		padding: 0;
+	}
+	.maininner .information img{
+		margin-top: 20px;
+	}
+	.maininner .information{
+		padding: 60px 20px 0px 20px;
+	}
+}

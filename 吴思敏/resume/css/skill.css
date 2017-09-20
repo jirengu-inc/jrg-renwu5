@@ -1,0 +1,60 @@
+html,body{
+    color: #585858;
+	height: 100%;
+	width: 100%;
+}
+.main{
+	padding-left: 250px;
+	height: 100%;	
+}
+.main .myskill{
+	display: block;
+	padding: 10px 0;
+	margin: 20px auto;
+	text-align: center;
+	color:#222;
+	font-size: 40px;
+	font-weight: 900;
+    line-height: 1.1;
+	letter-spacing: .05em;
+}
+.main .echart-wrapper{
+	margin: auto;
+	width: 100%;
+	height: 80%;
+	background: #fff;
+}
+.main #echart{
+	max-width: 700px;
+	margin: auto;
+	width: 100%;
+	height: 100%;
+}
+.main .skill{
+	width: 100%;
+	font-size: 0px;
+	margin-top: 20px;
+}
+.main .skill .skilldetail,.main .skill .skilldetail2{
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;
+	padding: 20px 30px;
+	box-sizing: border-box;
+}
+.skill li{
+	margin: 10px 0 0 1em;
+
+}
+@media screen and (max-width: 770px){
+	.main{
+		padding: 50px 0 0 0;
+	}
+	.main .echart-wrapper{
+		height: 60%;
+	}
+	.main .skill .skilldetail,.main .skill .skilldetail2{
+		display: block;
+		width: 100%;
+	}
+}

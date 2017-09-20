@@ -1,0 +1,94 @@
+html,body{
+    color: #585858;
+	width: 100%;
+}
+.main{
+	padding-left: 250px;
+    background: #fafafa;
+}
+.maininner{
+	padding:30px;
+}
+.maininner>.qr-code:after{
+    content: '';
+    border: 1px solid #242525;
+    display: block;
+    position: relative;
+    margin-bottom: 60px;
+    top: 30px;
+}
+.maininner>.qr-code>div{
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+.maininner>.qr-code>div>img{
+    width: 50%;
+}
+.maininner>p{
+	margin-bottom: 0.5em;
+    font-size: 28px;
+    line-height: 1.2em;
+}
+.maininner form input[type='text'],.maininner form input[type='email'],.maininner form textarea{
+    border: #CCC solid 1px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-box-shadow: inset 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    color: #666666;
+    background: #fff;
+    padding-left: 5px;
+    margin-bottom: 30px;
+}
+.maininner form textarea{
+    height: 312px;
+    line-height: 24px;
+}
+.maininner form input[type='submit'],.maininner form input[type='reset']{
+    color: #FFF;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #111;
+    background-repeat: repeat-x;
+    font-size: 16px;
+    font-weight: bold;
+    vertical-align: middle;
+    height: 36px;
+    display: inline-block;
+    line-height: 36px;
+    padding: 0 2em;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #333333;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #111111), color-stop(1, #333333));
+    background-image: -ms-linear-gradient(bottom, #111111, #333333);
+    background-image: -moz-linear-gradient(center bottom, #111111 0%, #333333 100%);
+    background-image: -o-linear-gradient(bottom, #111111, #333333);
+}
+@media screen and (max-width: 770px){
+	.main{
+		padding: 50px 0 0 0;
+		width: 100%;
+	}
+	.maininner form input[type='submit'],.maininner form input[type='reset']{
+		width: 48%;
+	}
+    .maininner>.qr-code>div>img{
+    width: 80%;
+    }
+}

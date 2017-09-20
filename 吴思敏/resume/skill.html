@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/skill.css"> 
+    <script>
+		var pageWidth = document.documentElement.clientWidth;
+		var content = 'html{font-size:'+pageWidth/64+'px};'
+		var style = document.createElement('style')
+		style.innerHTML = content
+		document.head.appendChild(style)
+	</script>
+</head>
+<body>
+    <div class="page-wrapper clear-fix">
+		<aside>
+			<div class="headimg">
+				<img src="images/pro.jpg" alt="头像">
+			</div>
+			<a href="resume.html" class="myname">张新望</a>
+			<div class="menu">
+				<div class="menubox">
+					<div class="menuinner"></div>
+				</div>
+			</div>
+			<footer>
+				<ul class="nav">
+					<li><a href="resume.html">个人</a></li>
+					<li><a href="work.html">作品</a></li>
+					<li><a href="skill.html" class="selected">技能</a></li>
+					<li><a href="contact.html">联系</a></li>
+					<li><a href="tencent://Message/?Uin=408788213
+					">QQ</a></li>
+				</ul>
+				<div id="footer">
+					<div class="logo">
+						<a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=nObk662lpa6pra-c7e2y--Px" target="_blank" class="r-youxiang r-icon"></a>
+						<a href="http://www.jianshu.com/users/0ec02b597a36/latest_articles" target="_blank" class="r-shu r-icon"></a>
+						<a href="https://github.com/Zegendary" target="_blank" class="r-github r-icon"></a>
+						<a href="http://weibo.com/2192809270/profile?topnav=1&wvr=6" target="_blank" class="r-weibo r-icon"></a>
+					</div>
+					<p class="source">
+					Open source:<a href="https://github.com/siminmin" target="_blank">GitHub</a>
+					<br>
+					<span class="right">© copyright 吴思敏,2017</span>
+					</p>
+				</div>
+			</footer>
+		</aside>
+		<div class="main">
+			<p class="myskill">我的技能</p>
+			<div class="echart-wrapper"><div id="echart"></div></div>
+			<div class="skill">
+				<ul class="skilldetail">
+					<h4>能力技能</h4>
+					<li>熟悉使用PhotoShop切图，像素级重构，可准确还原设计</li>
+					<li>熟悉HTML、CSS、页面架构和布局，对Web标准和标签语义化有深入理解</li>
+					<li>熟悉Ajax、JavaScript、jQuery、JSON等前端技术，掌握面向对象编程思想</li>
+					<li>了解ECMA5的标签规范以及HTML5新标签及CSS3样式及动画</li>
+					<li>了解产出兼容于目前主流浏览器的前端页面</li>
+				</ul>
+				<ul class="skilldetail2">
+					<h4>优势特长</h4>
+					<li>了解Bootstrap、less、ECharts、React等前端框架工具</li>
+					<li>良好的代码风格，对自己代码质量有高要求，注释清晰</li>
+					<li>良好的逻辑思维能力和团队合作能力，有快速分析和解决问题的能力</li>
+					<li>有解决问题、钻研新技术的兴趣和能力，善于交流和表达</li>
+					<li>了解掌握浏览器的调试，可快速寻找bug</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+	<script src="https://oapy20uns.qnssl.com/jquery-1.12.4.min.js"></script>
+	<script src="https://oapy20uns.qnssl.com/echarts.min.js"></script>
+	<script>
+		$('.menu').on('click',function(){
+			$('aside').toggleClass('active')
+		})
+		var myChart = echarts.init(document.getElementById('echart'));
+		var option = {
+		    title: {
+		        text: ''
+		    },
+		    tooltip: {},
+		    legend: {
+		        data: ['能力', '兴趣']
+		    },
+		    radar: {
+		        // shape: 'circle',
+		        indicator: [
+		           { name: 'HTML&HTML5', max: 100},
+		           { name: 'CSS&CSS3', max: 100},
+		           { name: 'JS', max: 100},
+		           { name: 'jQuery', max: 100},
+		           { name: 'LESS&SASS', max: 100},
+		           { name: 'Bootstrap', max: 100},
+		           { name: 'Gulp',max:100},
+		           { name: 'React JS', max:100}
+		           
+		        ]
+		    },
+		    series: [{
+		        name: '能力 vs 兴趣（skill vs interesting）',
+		        type: 'radar',
+		        // areaStyle: {normal: {}},
+		        data : [
+		            {
+		                value : [90, 80, 70, 75, 60, 70, 70, 60],
+		                name : '能力'
+		            },
+		            {
+		                value : [80, 100, 80, 85, 60, 75, 80, 100],
+		                name : '兴趣'
+		            }
+		        ]
+		    }]
+		};
+		myChart.setOption(option);
+	</script>
+</body>
+</html>

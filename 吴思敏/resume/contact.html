@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/contact.css"> 
+</head>
+<body>
+    <div class="page-wrapper clear-fix">
+		<aside>
+			<div class="headimg">
+				<img src="images/pro.jpg" alt="头像">
+			</div>
+			<a href="resume.html" class="myname">吴思敏</a>
+			<div class="menu">
+				<div class="menubox">
+					<div class="menuinner"></div>
+				</div>
+			</div>
+			<footer>
+				<ul class="nav">
+					<li><a href="resume.html">个人</a></li>
+					<li><a href="work.html">作品</a></li>
+					<li><a href="skill.html">技能</a></li>
+					<li><a href="contact.html" class="selected">联系</a></li>
+					<li><a href="tencent://Message/?Uin=408788213
+					">QQ</a></li>
+				</ul>
+				<div id="footer">
+					<div class="logo">
+						<a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=nObk662lpa6pra-c7e2y--Px" target="_blank" class="r-youxiang r-icon"></a>
+						<a href="http://www.jianshu.com/users/0ec02b597a36/latest_articles" target="_blank" class="r-shu r-icon"></a>
+						<a href="https://github.com/Zegendary" target="_blank" class="r-github r-icon"></a>
+						<a href="http://weibo.com/2192809270/profile?topnav=1&wvr=6" target="_blank" class="r-weibo r-icon"></a>
+					</div>
+					<p class="source">
+					Open source:<a href="https://github.com/siminmin" target="_blank">GitHub</a>
+					<br>
+					<span class="right">© copyright 吴思敏,2017</span>
+					</p>
+				</div>
+			</footer>
+		</aside>
+		<div class="main clear-fix">
+			<div class="maininner">
+				<div class="qr-code clear-fix">
+					<div class="wx">
+						<img src="images/wx.jpg" alt="">
+						<p>微信二维码</p>
+					</div>
+					<div class="qq">
+						<img src="images/qq.jpg" alt="">
+						<p>QQ二维码</p>
+					</div>
+				</div>
+				<p>Send me an email</p>
+				<form id='myform' action="mailto:18817337828@168.com?subject=Job Opportunity" method="post" enctype="text/plain" novalidate="novalidate">
+					<p class="name">Your name:</p>
+					<input type="text" name="name" size="40" placeholder="Your English Name">
+					<p class="add">Your email:</p>
+					<input type="email" name="mail" size="40" placeholder="example@mail.com">
+					<p class="text">Your message:</p>
+					<textarea name="your-massage" id="message" cols="40" rows="10" placeholder="期待您的邮件"></textarea>
+					<input type="submit" value="SEND">
+					<input type="reset" value="RESET">
+				</form>				
+			</div>
+		</div>
+	</div>
+	<script src="https://oapy20uns.qnssl.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$('.menu').on('click',function(){
+			$('aside').toggleClass('active')
+		})
+        // $(document).ready(function() { 
+        //     // bind 'myForm' and provide a simple callback function 
+        //     $('#myForm').ajaxForm(function() { 
+        //         alert("Thank you for your comment!"); 
+        //     }); 
+        // }); 
+	</script>
+</body>
+</html>
